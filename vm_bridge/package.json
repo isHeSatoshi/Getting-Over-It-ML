@@ -1,0 +1,10 @@
+{
+  "name": "physics-server-bridge",
+  "version": "1.0.0",
+  "description": "Headless Scratch-VM physics server bridge for Getting Over It",
+  "main": "physics_server.js",
+  "dependencies": {
+    "scratch-storage": "^2.3.0",
+    "scratch-vm": "5.0.300"
+  }
+}

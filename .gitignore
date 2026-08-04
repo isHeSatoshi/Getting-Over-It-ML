@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+venv/
+.env
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+install_output.txt
+
+# Large binary / archive files & Chrome profiles
+Getting Over It v1.zip
+chrome_profiles/
+ppo_tensorboard/
+models/
+
+# OS / Editor files
+.DS_Store
+Thumbs.db
+.vscode/

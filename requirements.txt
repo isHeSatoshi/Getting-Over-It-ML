@@ -1,0 +1,14 @@
+pyautogui
+selenium
+webdriver-manager
+python-dotenv
+pillow
+trio
+trio-websocket
+websocket-client
+wsproto
+requests
+numpy
+gymnasium
+stable-baselines3
+sb3-contrib
