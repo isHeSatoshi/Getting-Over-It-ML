@@ -1,10 +1,10 @@
 {
-  "name": "physics-server-bridge",
+  "name": "goi-physics-server",
   "version": "1.0.0",
-  "description": "Headless Scratch-VM physics server bridge for Getting Over It",
+  "description": "Headless scratch-vm physics server bridge for Getting Over It RL training",
   "main": "physics_server.js",
   "dependencies": {
-    "scratch-storage": "^2.3.0",
-    "scratch-vm": "5.0.300"
+    "scratch-vm": "5.0.300",
+    "scratch-storage": "^2.0.5"
   }
 }

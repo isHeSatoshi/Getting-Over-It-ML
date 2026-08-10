@@ -115,19 +115,7 @@ async function main() {
     getNativeSize: () => [480, 360],
     getBoundsForBubble: () => ({ left: 0, right: 0, top: 0, bottom: 0 }),
     isTouchingColor: () => false,
-    isTouchingDrawables: (id, candidateIds) => {
-      // Ground / terrain collision logic for Player & Hammer against Level
-      if (levelDrawableId !== null && candidateIds.includes(levelDrawableId)) {
-        if (id === playerDrawableId || id === hammerDrawableId) {
-          const stage = vm.runtime.getTargetForStage();
-          if (stage && stage.variables) {
-            const py = Number(Object.values(stage.variables).find(v => v.name === 'PLAYER Y')?.value || 0);
-            if (py <= 21) return true; // Landed on ground rock at starting altitude
-          }
-        }
-      }
-      return false;
-    }
+    isTouchingDrawables: () => false,
   };
 
   stubRenderer.v2BitmapAdapter = {

@@ -23,11 +23,11 @@ class EnvWrapper:
         self.driver_path = driver_path
 
     def __call__(self):
-        # Stagger startup to prevent CPU/Disk contention
+        # Stagger startup by 1.5s per rank to allow Node server ready signals to resolve cleanly
         time.sleep(self.rank * 1.5)
-        # Headless=False to show browser windows
-        env = GettingOverItEnv(port=self.port_base + self.rank + 1, max_mouse_speed=35.0, headless=False, driver_path=self.driver_path)
-        env = TimeLimit(env, max_episode_steps=15000)
+        # Headless=True to use fast NodeBridge physics server
+        env = GettingOverItEnv(port=self.port_base + self.rank + 1, headless=True)
+        env = TimeLimit(env, max_episode_steps=4000)   # hard cap; stalls truncate much earlier
         env = Monitor(env)
         return env
 
@@ -59,52 +59,65 @@ def main():
         os.environ['WDM_SSL_VERIFY'] = '0'
         driver_path = ChromeDriverManager().install()
 
-        # Initialize parallel envs
-        num_envs = 4
-        print(f"🎮 Initializing {num_envs} Parallel GettingOverIt Environments...")
+        # Initialize parallel envs tuned for Intel i7-12700K (8 Performance Cores)
+        num_envs = 8
+        print(f"🎮 Initializing {num_envs} Parallel GettingOverIt Environments (i7-12700K P-Core Scaled)...")
         env = SubprocVecEnv([EnvWrapper(i, PORT_BASE, driver_path) for i in range(num_envs)])
 
         # 3. Load or Initialize Model
         potential_models = []
-        if os.path.exists("ppo_interrupted.zip"):
-            potential_models.append("ppo_interrupted.zip")
-        if os.path.exists("./models/"):
-            potential_models.extend([os.path.join("./models/", f) for f in os.listdir("./models/") if f.endswith(".zip")])
-            
+        # Important: do NOT auto-resume from a checkpoint trained on the OLD
+        # (broken) reward function.  Continuing from a poisoned policy is
+        # worse than starting fresh because the LSTM hidden state has locked
+        # in "don't move" biases.  Set RESUME_CHECKPOINT env var to a path
+        # explicitly if you intentionally want to resume.
+        resume_override = os.environ.get("RESUME_CHECKPOINT", "")
+        if resume_override and os.path.exists(resume_override):
+            potential_models = [resume_override]
+
         if potential_models:
             checkpoint_path = max(potential_models, key=os.path.getmtime)
-            print(f"♻️ Loading existing model from {checkpoint_path}...")
+            print(f"🔄 Resuming from latest checkpoint: {checkpoint_path}")
             model = RecurrentPPO.load(checkpoint_path, env=env, device="cuda")
-            # Ensure the tensorboard log path is still set
             model.tensorboard_log = "./ppo_tensorboard/"
         else:
-            print("🧠 Initializing a fresh Recurrent PPO Model...")
+            print("🧠 Initializing a fresh Recurrent PPO Model (new reward fn)...")
             model = RecurrentPPO(
                 policy="MlpLstmPolicy",
                 env=env,
                 device="cuda",
-                learning_rate=0.0003,
+                learning_rate=3e-4,
                 n_steps=2048,
-                batch_size=64,
+                batch_size=256,             # 2048/8 sequences per batch fits LSTM better
                 n_epochs=10,
+                gamma=0.99,
+                gae_lambda=0.95,
+                clip_range=0.2,
+                ent_coef=0.01,              # CRITICAL: positive entropy to force exploration
+                vf_coef=0.5,
+                max_grad_norm=0.5,
                 policy_kwargs=dict(
                     lstm_hidden_size=128,
-                    net_arch=[128, 128]
+                    net_arch=[128, 128],
+                    # Orthogonal init helps LSTMs break early symmetry.
+                    ortho_init=True,
                 ),
                 tensorboard_log="./ppo_tensorboard/",
                 verbose=1
             )
 
         checkpoint_callback = CheckpointCallback(
-            save_freq=8192,
+            save_freq=16384,
             save_path='./models/',
             name_prefix='recurrent_ppo_gettingoverit'
         )
 
-        # 4. Training Loop
-        print("\n🚀 Starting Training Loop (Press Ctrl+C to Stop)...")
+        # 4. Training Loop.  Note the env already truncates stalled episodes,
+        # so each iteration produces a mixture of (fall, summit, truncated)
+        # trajectories — exactly the data distribution PPO needs.
+        print("\n🚀 Starting Training (200,000 steps on 8 parallel Node workers)...")
         model.learn(
-            total_timesteps=1_000_000,
+            total_timesteps=200_000,
             callback=checkpoint_callback,
             reset_num_timesteps=False
         )

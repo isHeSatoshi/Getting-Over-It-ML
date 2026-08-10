@@ -13,6 +13,15 @@ yarn-error.log*
 *.log
 install_output.txt
 
+# Diagnostic Snapshots & Data Buffers
+*_snapshots/
+browser_snapshots/
+manual_edge_case_snapshots/
+swing_snapshots/
+diagnostic_snapshots/
+monitor_snapshots/
+Getting Over It v1/live_action.json
+
 # Large binary / archive files & Chrome profiles
 Getting Over It v1.zip
 chrome_profiles/

@@ -22,7 +22,7 @@ def main():
     env = None
     try:
         print("🎮 Instantiating GettingOverItEnv...")
-        env = GettingOverItEnv(port=8000, max_mouse_speed=30.0)
+        env = GettingOverItEnv(port=8000)
         
         print("🔄 Calling env.reset()...")
         obs, info = env.reset()
@@ -38,8 +38,8 @@ def main():
             # 2. Step the environment
             obs, reward, terminated, truncated, info = env.step(action)
             
-            # 3. Extract current altitude from the environment's telemetry records
-            current_altitude = env.prev_telemetry['py']
+            # 3. Extract current altitude from the returned info dict
+            current_altitude = info['player_world_y']
             
             # 4. Print the telemetry out for monitoring
             print(f"Step: {step_count:04d} | Action: [{action[0]:+0.2f}, {action[1]:+0.2f}] | Reward: {reward:+0.4f} | Alt: {current_altitude:0.2f}")

@@ -274,6 +274,34 @@
       window.DEMO_RECORDING = false;
       window.DEMO_BUFFER = [];
 
+      // Live AI stream fetch poller (updates mouse target in user browser tab)
+      setInterval(async function() {
+        try {
+          const r = await fetch('/live_action.json?t=' + Date.now());
+          if (r.ok) {
+            const data = await r.json();
+            if (data && data.screen_x !== undefined) {
+              window.nextCommand = data;
+              window.isResetting = true;
+              const mouse = vm.runtime.ioDevices.mouse;
+              if (mouse) {
+                const sx = data.screen_x;
+                const sy = data.screen_y;
+                const canvasX = (sx / 240.0 * 0.5 + 0.5) * 480.0;
+                const canvasY = (0.5 - sy / 180.0 * 0.5) * 360.0;
+                mouse.postData({
+                  x: canvasX,
+                  y: canvasY,
+                  canvasWidth: 480,
+                  canvasHeight: 360,
+                  isDown: data.is_down !== false
+                });
+              }
+            }
+          }
+        } catch(e) {}
+      }, 20);
+
       window.getStageVar = function(name) {
         if (!window.vm || !window.vm.runtime) return 0;
         const stage = window.vm.runtime.targets.find(t => t.isStage);
@@ -322,9 +350,17 @@
         if (window.nextCommand) {
           const mouse = vm.runtime.ioDevices.mouse;
           if (mouse) {
-            mouse._scratchX = window.nextCommand.screen_x;
-            mouse._scratchY = window.nextCommand.screen_y;
-            mouse._isDown = window.nextCommand.is_down;
+            const sx = window.nextCommand.screen_x;
+            const sy = window.nextCommand.screen_y;
+            const canvasX = (sx / 240.0 * 0.5 + 0.5) * 480.0;
+            const canvasY = (0.5 - sy / 180.0 * 0.5) * 360.0;
+            mouse.postData({
+              x: canvasX,
+              y: canvasY,
+              canvasWidth: 480,
+              canvasHeight: 360,
+              isDown: window.nextCommand.is_down !== false
+            });
           }
           window.lastAppliedCommandId = window.nextCommand.command_id;
           window.nextCommand = null;

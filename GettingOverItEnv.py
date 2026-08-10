@@ -39,19 +39,64 @@ from StaticCollisionMap import StaticCollisionMap
 # ----------------------------------------------------------------------------
 # PMDP config — the knobs that define "progress-asymmetry" for this domain.
 # These are read by both the env (reward) and the trainer (value shaping).
+#
+# ML-researcher notes on the redesign (2026-08-05):
+#   * Phi(s) = Y_rel = Y_t - Y_spawn.  Phi(s_spawn) = 0.  Camping at
+#     spawn now yields zero shaping reward (was +2.65/frame at Y=-264).
+#   * Terminal falls detected via the game's own respawn (huge Y drop in
+#     one k_frames window), not by absolute altitude.  The physics bridge
+#     never lets the agent leave the world: when the body hits the water,
+#     Scratch auto-respawns the player.  Reward must reflect that.
+#   * Milestone bonus replaces the absolute-Y potential as the dominant
+#     shaping signal.  Each new high adds a fixed positive reward.  This
+#     gives PPO an explorable gradient the whole way to summit (16,000).
+#   * Hammer-placement alignment bonus uses raycast normals of ledges
+#     above the player.  Rewards pointing the hammer at overhead
+#     hookable surfaces — the actual skill the game demands.
+#   * Stalled truncation based on *episode-local* high; episode variable
+#     reset EVERY reset() call.
 # ----------------------------------------------------------------------------
 PMDP_CONFIG = {
-    "gamma": 0.99,                 # discount for potential-based shaping
-    "potential": "altitude",       # Phi(s) = player_world_y
+    "gamma": 0.99,                     # discount for potential-based shaping
+
+    # ---- Potential (zero-based; centered at spawn) ----
+    "potential_scale": 0.01,           # 1 unit of Y_rel -> 0.01 potential.
+
+    # ---- Per-frame shaping ----
     "time_penalty_per_frame": -0.01,
-    "contact_bonus_per_frame": 0.002,   # small reward for being in contact (latched)
-    "setback_threshold": 60.0,         # if y drops >60 in one decision, it's a "setback"
-    "setback_penalty_scale": 0.05,      # asymmetric penalty proportional to drop
+    "contact_bonus_per_frame": 0.002,
+
+    # ---- New-high milestone (per k_frames decision chunk) ----
+    # Reward paid only the FIRST time a new episode high is crossed.
+    # Scale: 1 unit of gain -> milestone_scale reward.  At the start,
+    # climbing from ground to first ledge is +50 -> +0.5 reward.
+    "milestone_scale": 0.5,            # big lump-sum for each new unit of high
+
+    # ---- Hammer-placement alignment ----
+    # Look up; if a ledge exists with sufficient clearance above, reward
+    # pointing the hammer roughly toward it.  This is the actual
+    # "hook-up" skill the game requires.
+    "hook_bonus_per_frame": 0.02,      # active only when aligned
+    "hook_align_cos_min": 0.5,         # cos(angle) >= 0.5 (within 60 deg)
+
+    # ---- Action smoothness (gentle; LSTMs shouldn't jitter) ----
+    "smooth_penalty_scale": 0.005,
+
+    # ---- Success / termination ----
     "success_y": 16000.0,
-    "fall_budget_base": 100.0,         # terminal-fall slack at spawn
-    "fall_budget_per_high": 1.5,        # extra slack per unit of max_progress
-    "fall_suppress_decisions": 50,     # no terminal fall for first 50 decisions
-    "stall_frame_budget": 300,         # fixed truncation horizon (frames w/o new high)
+    "success_bonus": 100.0,
+
+    # The game world physically respawns the player on water contact
+    # (PLAYER Y drops to ~-264.7 from any height).  Detect terminal falls
+    # by a large negative Y-jump within one k_frames window.
+    "respawn_drop_threshold": 100.0,   # Y dropped >100 in one decision
+    "respawn_penalty": -5.0,           # explicit, learnable cost
+
+    # Stalled truncation: episode-local high hasn't moved in N frames.
+    # 300 frames @ 60fps = 5 seconds of game time — enough to attempt one
+    # swing but short enough that exploration doesn't get permanently
+    # stuck at a local plateau.
+    "stall_frame_budget": 300,
 }
 
 
@@ -179,12 +224,15 @@ class SeleniumBridge:
         if not self._is_alive():
             return None
         try:
-            history = self.driver.execute_script("return window.stateHistory;")
-            if not history:
-                return None
-            # Latest frame = max key
-            latest_id = max(int(k) for k in history.keys())
-            return history[str(latest_id)]
+            return self.driver.execute_script(
+                "var h = window.stateHistory; if (!h) return null;"
+                "var keys = Object.keys(h); if (keys.length === 0) return null;"
+                "var maxK = keys[0];"
+                "for (var i = 1; i < keys.length; i++) { if (parseInt(keys[i]) > parseInt(maxK)) maxK = keys[i]; }"
+                "var latest = h[maxK];"
+                "if (keys.length > 5) { for (var j = 0; j < keys.length; j++) { if (keys[j] !== maxK) delete h[keys[j]]; } }"
+                "return latest;"
+            )
         except Exception:
             return None
 
@@ -275,14 +323,21 @@ class GettingOverItEnv(gym.Env):
 
         # State tracking
         self.prev_state: Optional[Dict[str, Any]] = None
-        self.max_progress = 0.0
-        self.start_y = 0.0
+        self.prev_potential = 0.0                       # potential at last step
+        self.spawn_y = 0.0                              # Y at episode start
+        self.start_y = 0.0                              # kept for info dict
+        self.episode_high_y = 0.0                       # episode-local high
+        self.max_progress = 0.0                         # legacy alias -> info
         self.steps_since_new_high = 0
         self.total_steps = 0
         self.decision_idx = 0
         self.last_command_id = 0
-        self._decision_start_y = 0.0
         self.prior_action = np.zeros(2, dtype=np.float32)
+        # Cache for terrain descriptor — recomputed ONCE per decision,
+        # not per frame.  StaticCollisionMap.raycast is expensive
+        # (16 rays x binary search x pixel lookups), so caching it
+        # matters on a hot path.
+        self._terrain_cache: Optional[tuple] = None     # (rays, ledges)
         self._render_mode = "human" if render_every > 0 else None
 
         log_port = port_for_log if port_for_log is not None else port
@@ -358,13 +413,10 @@ class GettingOverItEnv(gym.Env):
         effort = max(0.0, min(1.0, float(state.get('effort', 0.0))))
         hammer_air = float(state.get('hammer_air', 0.0))
 
-        # Terrain rays + ledges
-        if self.collision_map is not None:
-            try:
-                rays, ledges = self.collision_map.get_terrain_descriptor(px, py, hx, hy)
-            except Exception:
-                rays = [[150.0, 0.0, 0.0, 0.0]] * 32
-                ledges = [[0.0] * 5] * 8
+        # Terrain rays + ledges.  Computed once per decision in step() and
+        # cached — not on every obs getter call.
+        if self._terrain_cache is not None:
+            rays, ledges = self._terrain_cache
         else:
             rays = [[150.0, 0.0, 0.0, 0.0]] * 32
             ledges = [[0.0] * 5] * 8
@@ -422,6 +474,14 @@ class GettingOverItEnv(gym.Env):
         gamma = self.cfg["gamma"]
         time_pen = self.cfg["time_penalty_per_frame"]
         contact_b = self.cfg["contact_bonus_per_frame"]
+        potential_scale = self.cfg["potential_scale"]
+        milestone_scale = self.cfg["milestone_scale"]
+        hook_bonus = self.cfg["hook_bonus_per_frame"]
+        hook_cos_min = self.cfg["hook_align_cos_min"]
+        smooth_pen = self.cfg["smooth_penalty_scale"]
+        respawn_drop_threshold = self.cfg["respawn_drop_threshold"]
+        respawn_penalty = self.cfg["respawn_penalty"]
+        stall_budget = self.cfg["stall_frame_budget"]
 
         state = self.bridge.read_state()
         if state is None:
@@ -430,11 +490,47 @@ class GettingOverItEnv(gym.Env):
                 raise RuntimeError("Telemetry not active.")
 
         prev_y = float(state.get('player_world_y', 0.0))
-        prev_potential = prev_y
-        self._decision_start_y = prev_y  # altitude at decision start
+
+        # Potential is zero-based at episode spawn: stationary at spawn => 0.
+        prev_potential = (prev_y - self.spawn_y) * potential_scale
         accumulated_reward = 0.0
         contact_frames = 0
+        hook_frames = 0
 
+        # Terrain descriptor is computed ONCE per decision, here, using
+        # the pre-step position as the physics proxy.  Cached for obs.
+        if self.collision_map is not None:
+            try:
+                px = float(state.get('player_world_x', 0.0))
+                py = float(state.get('player_world_y', 0.0))
+                hx = float(state.get('hammer_world_x', 0.0))
+                hy = float(state.get('hammer_world_y', 0.0))
+                self._terrain_cache = self.collision_map.get_terrain_descriptor(px, py, hx, hy)
+            except Exception:
+                self._terrain_cache = None
+
+        # Use the pre-step terrain to derive the overhead ledge target.
+        # Convention: ledge rows are [dx, dy, nx, ny, clearance];
+        # we only consider ledges above the player (dy > 10) with
+        # clearance, and take the closest one.
+        hook_target = None
+        if self._terrain_cache is not None:
+            _, ledges = self._terrain_cache
+            best = None
+            best_dist = float('inf')
+            for row in ledges:
+                if len(row) < 5:
+                    continue
+                dx, dy, nx_l, ny_l, clr = float(row[0]), float(row[1]), float(row[2]), float(row[3]), float(row[4])
+                if clr > 0.5 and dy > 10.0:
+                    d = math.hypot(dx, dy)
+                    if d < best_dist:
+                        best_dist = d
+                        best = (dx, dy, nx_l, ny_l)
+            hook_target = best
+
+        initial_y = prev_y
+        ep_decision_gain = 0.0          # track milestones paid within this decision
         for _ in range(self.k_frames):
             self.last_command_id += 1
             state = self.bridge.step_screen_pointer(
@@ -446,18 +542,47 @@ class GettingOverItEnv(gym.Env):
                     break
 
             curr_y = float(state.get('player_world_y', prev_y))
-            curr_potential = curr_y
+            curr_potential = (curr_y - self.spawn_y) * potential_scale
 
-            # Potential-based shaping (policy-invariant).
+            # ---- Dense potential shaping (zero-based) ----
+            # gamma * Phi(s_{t+1}) - Phi(s_t).  Phi(spawn)=0, so standing at
+            # spawn yields exactly 0 reward per frame (no camping exploit).
             frame_reward = gamma * curr_potential - prev_potential
             frame_reward += time_pen
+
             if float(state.get('contact_flag', 0.0)) > 0:
                 frame_reward += contact_b
                 contact_frames += 1
 
-            # Progress bookkeeping (for success/stall only, NOT for reward).
-            if curr_y > self.max_progress:
-                self.max_progress = curr_y
+            # ---- Hook alignment bonus ----
+            # Active when an overhead ledge exists and hammer-head sits at
+            # least hook_cos_min of the way toward it.  This teaches the
+            # policy to lift the hammer toward grabbable surfaces.
+            if hook_target is not None:
+                dx, dy, nx_l, ny_l = hook_target
+                ledge_dir_x, ledge_dir_y = dx, dy
+                norm = math.hypot(ledge_dir_x, ledge_dir_y)
+                if norm > 1e-6:
+                    ux, uy = ledge_dir_x / norm, ledge_dir_y / norm
+                    hdx = float(state.get('hammer_world_x', 0.0)) - float(state.get('player_world_x', 0.0))
+                    hdy = float(state.get('hammer_world_y', 0.0)) - float(state.get('player_world_y', 0.0))
+                    hnorm = math.hypot(hdx, hdy)
+                    if hnorm > 1e-6:
+                        cos_angle = (hdx * ux + hdy * uy) / hnorm
+                        if cos_angle >= hook_cos_min:
+                            frame_reward += hook_bonus
+                            hook_frames += 1
+
+            # ---- Episode-local high progress bookkeeping ----
+            if curr_y > self.episode_high_y and (curr_y <= -200.0 or self.decision_idx >= 15):
+                # Milestone bonus proportional to gain (dense, larger than
+                # the shaped reward, and paid only on NEW highs).  This is
+                # the main "you are doing the right thing" signal.
+                gain = curr_y - self.episode_high_y
+                milestone_amount = milestone_scale * (gain * potential_scale * 100.0)
+                accumulated_reward += milestone_amount
+                ep_decision_gain += milestone_amount
+                self.episode_high_y = curr_y
                 self.steps_since_new_high = 0
             else:
                 self.steps_since_new_high += 1
@@ -466,21 +591,11 @@ class GettingOverItEnv(gym.Env):
             prev_potential = curr_potential
             prev_y = curr_y
 
-        # ---- PMDP setback measurement (asymmetric) ----
-        # A "setback" = losing a lot of altitude in one decision. We add an
-        # asymmetric penalty so the value function learns setbacks are costly
-        # beyond the lost potential. This is the measurement; the cure lives
-        # in the training-time value shaping (see train_ppo.py ablations).
-        decision_start_y = float(self._decision_start_y)
         end_y = float(state.get('player_world_y', prev_y)) if state else prev_y
-        net_drop = max(0.0, decision_start_y - end_y)
-        if net_drop > self.cfg["setback_threshold"]:
-            accumulated_reward -= self.cfg["setback_penalty_scale"] * (
-                net_drop - self.cfg["setback_threshold"]
-            )
+        decision_drop = initial_y - end_y
 
-        # Tiny action-smoothness term (NOT the old -0.1 jerk; this is gentle).
-        accumulated_reward -= 0.01 * float(np.sum(np.abs(action - self.prior_action)))
+        # Gentle smoothness penalty — LSTMs shouldn't jitter output.
+        accumulated_reward -= smooth_pen * float(np.sum(np.abs(action - self.prior_action)))
         self.prior_action = action.copy()
 
         obs = self._get_obs(state)
@@ -488,35 +603,36 @@ class GettingOverItEnv(gym.Env):
         # ---- Termination ----
         terminated = False
         truncated = False
-        end_y = float(state.get('player_world_y', prev_y)) if state else prev_y
 
+        # Summit success
         if end_y >= self.cfg["success_y"]:
             terminated = True
-            accumulated_reward += 100.0
+            accumulated_reward += self.cfg["success_bonus"]
             self._log(f"[SUCCESS] at y={end_y:.1f}!")
-
-        # Terminal fall: only after the suppress window, with a growing budget.
-        # max_progress/start_y are SCRATCH-WORLD Y, so this budget is in world units.
-        if not terminated and self.decision_idx >= self.cfg["fall_suppress_decisions"]:
-            budget = (self.cfg["fall_budget_base"]
-                      + self.cfg["fall_budget_per_high"] * max(0.0, self.max_progress - self.start_y))
-            if end_y < max(self.start_y - 100.0, self.max_progress - budget):
-                terminated = True
-                accumulated_reward -= 25.0
-                self._log(f"[TERMINAL FALL] y={end_y:.1f}, max={self.max_progress:.1f}")
-
-        # Truncation: fixed frame budget (NOT action-dependent).
-        if self.steps_since_new_high >= self.cfg["stall_frame_budget"]:
+        # Fall: the game's bridge auto-respawns the player.  We detect the
+        # respawn event (huge Y-drop in one decision) and terminate the
+        # episode with a penalty.
+        elif decision_drop > 150.0 and initial_y > -100.0 and end_y <= -200.0:
+            terminated = True
+            accumulated_reward += respawn_penalty
+            self._log(f"[RESPAWN FALL] drop={decision_drop:.1f} (y {initial_y:.1f} -> {end_y:.1f})")
+        # Stall: no new episode high in N frames.
+        elif self.steps_since_new_high >= stall_budget:
             truncated = True
-            self._log(f"[TRUNCATED] stalled {self.steps_since_new_high} frames.")
+            self._log(f"[STALL TRUNCATION] high={self.episode_high_y:.1f}, frames={self.steps_since_new_high}")
 
         self.prev_state = state
         self.total_steps += self.k_frames
         self.decision_idx += 1
 
         if self.total_steps % 100 < self.k_frames:
-            self._log(f"[STEP] step {self.total_steps} | y={end_y:.1f} | max={self.max_progress:.1f} "
-                      f"| contact={contact_frames}/{self.k_frames} | r={accumulated_reward:+.3f}")
+            self._log(
+                f"[STEP] {self.total_steps} | y={end_y:.1f} | high={self.episode_high_y:.1f}"
+                f" | mile=+{ep_decision_gain:.3f}"
+                f" | contact={contact_frames}/{self.k_frames}"
+                f" | hook={hook_frames}/{self.k_frames}"
+                f" | r={accumulated_reward:+.3f}"
+            )
 
         if self.render_every and (self.total_steps % self.render_every == 0):
             try:
@@ -526,12 +642,18 @@ class GettingOverItEnv(gym.Env):
             except Exception:
                 pass
 
+        # Keep legacy info key working
+        self.max_progress = self.episode_high_y
         info = {
             "player_world_x": float(state.get('player_world_x', 0.0)) if state else 0.0,
             "player_world_y": end_y,
             "max_progress": self.max_progress,
-            "setback_drop": max(0.0, net_drop),
+            "episode_high_y": self.episode_high_y,
+            "setback_drop": max(0.0, decision_drop),
             "contact_frames": contact_frames,
+            "hook_frames": hook_frames,
+            # Pass through values the trainer's LSTM state needs
+            "_terrain_cache_present": self._terrain_cache is not None,
         }
         return obs, float(accumulated_reward), terminated, truncated, info
 
@@ -542,15 +664,40 @@ class GettingOverItEnv(gym.Env):
         state = self.bridge.reset()
         if state is None:
             raise RuntimeError("Bridge.reset() returned no state.")
+
+        # Double read to absorb any reset lag; some bridges return a stale
+        # first state packet.  We only accept a state whose player_world_y
+        # is finite and non-None.
+        state2 = self.bridge.read_state()
+        if state2 and state2.get("player_world_y") is not None:
+            state = state2
+
+        # Ensure state has settled to true ground level (<= -200.0)
+        attempts = 0
+        while float(state.get('player_world_y', 0.0)) > -200.0 and attempts < 20:
+            time.sleep(0.02)
+            st = self.bridge.read_state()
+            if st and st.get("player_world_y") is not None:
+                state = st
+            attempts += 1
+
         self.prev_state = state
-        self.max_progress = float(state.get('player_world_y', 0.0))
-        self.start_y = self.max_progress
+        raw_y0 = float(state.get('player_world_y', -264.7))
+        # Starting rock altitude is -264.7. If Scratch VM returns air height (> -200), anchor to ground.
+        y0 = -264.7 if raw_y0 > -200.0 else raw_y0
+        self.spawn_y = y0
+        self.prev_potential = 0.0
+        self.episode_high_y = y0
+        self.start_y = y0
+        self.max_progress = y0
         self.steps_since_new_high = 0
         self.total_steps = 0
         self.decision_idx = 0
         self.last_command_id = 0
         self.prior_action = np.zeros(2, dtype=np.float32)
-        self._decision_start_y = float(state.get('player_world_y', 0.0))
+        # Terrain cache gets recomputed lazily on first step() after reset.
+        self._terrain_cache = None
+
         return self._get_obs(state), {}
 
     # ------------------------------------------------------------------ close
