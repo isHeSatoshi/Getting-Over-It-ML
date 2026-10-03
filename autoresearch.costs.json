@@ -1,0 +1,19 @@
+{
+  "currency": "USD",
+  "operating_ceiling": 10.0,
+  "estimation_policy": "Conservatively count all time since a persisted batch start, including pauses, until its verified end. This is not a bill or a statement of remaining HF credits.",
+  "batches": [
+    {
+      "session": "poc-20261004-v1",
+      "space": "isHeSatoshi/rl-over-it-poc-20261004",
+      "tier": "cpu-upgrade",
+      "rate_per_hour": 0.03,
+      "pricing_last_verified": "2026-10-03",
+      "start_epoch": 1791058868.8050392,
+      "deadline_epoch": 1791116468.8050392,
+      "verified_end_epoch": null,
+      "maximum_estimated_compute_cost": 0.48,
+      "actual_billed_cost_known": false
+    }
+  ]
+}
