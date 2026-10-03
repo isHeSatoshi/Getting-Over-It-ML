@@ -184,13 +184,31 @@ Record failed experiments and why they failed; do not erase them.
   The three-seed cohort is still incomplete, so no variant-level selection
   is made. Latest pinned review:
   `artifacts/remote_goal_review_20261003T210724262386Z/`.
+- The complete PPO cohort is now validated: v1 holds 0/9, 0/9, and 1/9 for
+  seeds 0/1/2, with no full completions and no deaths in these final horizons.
+  Seed 2's `action_noise_2` case holds by 5.33 game seconds, then stays near
+  `(328.75,104)` through the 60-second horizon, retaining 83 units.
+  This is the first learned-controller ledge hold, not robust success or
+  promotion. Nominal finals are approximately `(277.30,51.38)`,
+  `(280.26,64.50)`, and `(652.03,54)`. The PPO cohort is recorded as failing
+  the robustness gate; finish both SAC cohorts before selecting the next batch.
+  Evidence: `artifacts/remote_ppo_cohort_20261003T212305324947Z/`.
 - The 20k checkpoint visibly controls the real hammer and moves to about
   `(109.28,79.70)` in a short nominal trace. It is brittle. An evaluation's
   post-reset screenshot must not be presented as its final policy pose.
-- Latest baseline validation: 60 Python tests and JS collision tests pass.
-- PPO `training_summary.gradient_updates` currently stores SB3 `_n_updates`,
-  an epoch count, not individual minibatch optimizer steps. Correct and
-  version this measurement in the next source snapshot, not the live image.
+- The live pilot's PPO `training_summary.gradient_updates` stores SB3
+  `_n_updates`, an epoch count rather than minibatch optimizer steps.
+  A **local, not deployed** future-snapshot correction uses removable Torch
+  post-step hooks and `optimizer-step-calls-v1` per-optimizer counters.
+  It leaves tested PPO weights bitwise unchanged, supports checkpoint save/load
+  during instrumentation, and removes hooks after success/failure.
+  Actual 128-transition game smoke integrations report PPO 8 policy calls
+  versus internal counter 4, and SAC 64 actor +64 critic +64 temperature calls
+  versus internal counter 64. These are pipeline tests, not climbing evidence.
+  Evidence: `artifacts/trial_20261003T212111941726Z/` and
+  `artifacts/trial_20261003T212200168900Z/`.
+  Optimizer-call counts are not equal FLOPs or equal compute across algorithms;
+  keep wall time, configuration, physical exposure and hardware alongside.
 
 ## Continuity and termination
 
@@ -212,3 +230,5 @@ entrypoint syntax checks, and read-only metric extraction against the pinned
 partial pilot snapshot. Windows' default WSL Bash is broken on this host;
 Git Bash syntax validation succeeds. Use the venv Python directly on Windows.
 The timing diagnostic subsequently passes all 75 Python tests plus JS checks.
+Future-snapshot optimizer accounting subsequently passes all 81 Python tests,
+JS checks, and bounded real-game PPO/SAC integration checks.

@@ -14,7 +14,9 @@
   alone is not learned robustness.
 - Test ordinary-start skill composition before a privileged-reset curriculum.
   Never include diagnostic placements in claimed policy success.
-- Correct PPO epoch-versus-minibatch update reporting in a future snapshot.
+- Completed locally: named optimizer-step accounting with weight/checkpoint
+  compatibility and bounded PPO/SAC integration checks. Deploy only after the
+  current pilot, as a new source snapshot; old pilot fields retain old units.
 - Extend golden contact traces to learned upper-route sections before claiming
   full-game fast-backend fidelity.
 - Add independent held-out final verification and a saved-policy replay package.
