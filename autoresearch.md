@@ -161,6 +161,12 @@ Record failed experiments and why they failed; do not erase them.
   0/9 full completions, median retained gain 24 versus baseline 0, no deaths
   in the nine 60-game-second final cases. This is movement, not climbing skill.
   Evidence: `artifacts/remote_pilot_review_20261003T204729761166Z/`.
+- Pilot PPO/absolute seed 1 also completed 98,304 transitions with 0/9 ledge
+  holds and 0/9 full completions, median retained gain 43.51, and no deaths
+  within its final reference cases. Both runs pass contract aggregation.
+  The three-seed cohort is still incomplete, so no variant-level selection
+  is made. Latest pinned review:
+  `artifacts/remote_goal_review_20261003T210724262386Z/`.
 - The 20k checkpoint visibly controls the real hammer and moves to about
   `(109.28,79.70)` in a short nominal trace. It is brittle. An evaluation's
   post-reset screenshot must not be presented as its final policy pose.
