@@ -108,6 +108,13 @@ Review: `artifacts/v2_preflight_review_20261003T215809890172Z/`.
 After those checks, the operator intentionally changed only `RL_MODE` to
 `pilot` while PAUSED and requested a fresh start. It returned BUILDING on the
 same source revision. No checkpoint or prior run was resumed or mixed in.
+The replacement's first completed PPO/absolute seed-0 run is contract-validated:
+98,304 transitions, 0/9 v1 holds, no full completions, no deaths in the final
+reference horizons, and median retained gain 24. It reports 3,840 actual policy
+optimizer calls versus the separately labelled SB3 counter 480. Learning wall
+time was 813.01 seconds. These physical outcomes agree with historical seed 0,
+but the runs remain separately recorded under their own source snapshots.
+Evidence: `artifacts/v2_run_review_20261003T222052247473Z/`.
 
 ## How to inspect and measure
 
@@ -281,3 +288,19 @@ JS checks, and bounded real-game PPO/SAC integration checks.
 Recovery admission/deadline safeguards subsequently pass all 83 Python tests
 plus JS checks. A first assertion expected literal sleep_time=-1; inspection
 confirmed HF's paid-default None representation, and tests now cover both.
+
+## Prepared next-snapshot shutdown hardening
+
+The live v2 source remains unchanged. A **local-only** worker correction bounds
+initial/final artifact flushing to 20 seconds and pauses even if upload fails
+or hangs. It covers normal completion, expired budget at boot, interrupted
+restart refusal, deadline watchdog, and fatal startup handling. This addresses
+an unbounded final `sync()` after the live worker stops its watchdog. Periodic
+snapshots and the external operator remain the current live safeguards.
+Do not deploy it mid-pilot; apply it only in a future paused source snapshot
+with fresh preflight. A timed-out flush may leave the last snapshot incomplete,
+so verify durable models/evaluations/replay before any recovery or promotion.
+
+The correction passes **90 Python tests plus JS checks**, including successful,
+failed, and deliberately blocked upload fixtures proving pause still occurs.
+No changes to learner, reward, physics, budget reservation, or live deployment.

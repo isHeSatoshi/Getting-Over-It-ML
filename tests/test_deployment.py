@@ -1,13 +1,14 @@
 import os
 from pathlib import Path
 import tempfile
+import threading
 import unittest
-from unittest.mock import patch
+from unittest.mock import patch, Mock
 from types import SimpleNamespace
 from deploy.bundle import build_bundle
 from deploy.space_worker import (
     sanitized, ALLOWED_ARTIFACT_SUFFIXES, copy_artifact,
-    batch_deadline, require_unattended_runtime)
+    batch_deadline, require_unattended_runtime, Worker)
 
 
 class DeploymentTests(unittest.TestCase):
@@ -136,6 +137,43 @@ class DeploymentTests(unittest.TestCase):
         runtime.hardware = "cpu-xl"
         with self.assertRaisesRegex(RuntimeError, "allocation"):
             require_unattended_runtime(runtime)
+
+    def test_hung_final_upload_cannot_prevent_pause(self):
+        worker = Worker.__new__(Worker)
+        release = threading.Event()
+        done = threading.Event()
+
+        def stuck_upload():
+            try:
+                release.wait()
+            finally:
+                done.set()
+
+        worker.sync = stuck_upload
+        worker.pause = Mock()
+        original = worker.bounded_sync
+        worker.bounded_sync = lambda: original(timeout=0.01)
+        try:
+            worker.flush_and_pause()
+            worker.pause.assert_called_once()
+        finally:
+            release.set()
+            self.assertTrue(done.wait(1))
+
+    def test_upload_failure_cannot_prevent_pause(self):
+        worker = Worker.__new__(Worker)
+        worker.sync = Mock(side_effect=RuntimeError("fixture upload failure"))
+        worker.pause = Mock()
+        worker.flush_and_pause()
+        worker.pause.assert_called_once()
+
+    def test_successful_flush_is_reported_and_then_paused(self):
+        worker = Worker.__new__(Worker)
+        events = []
+        worker.sync = lambda: events.append("sync")
+        worker.pause = lambda: events.append("pause")
+        worker.flush_and_pause()
+        self.assertEqual(events, ["sync", "pause"])
 
 
 if __name__ == "__main__":

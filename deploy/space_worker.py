@@ -158,6 +158,35 @@ class Worker:
                                        folder_path=snapshot, path_in_repo=self.session,
                                        commit_message=f"Research artifact snapshot: {self.session}")
 
+    def bounded_sync(self, timeout=20):
+        if not math.isfinite(timeout) or timeout <= 0:
+            raise ValueError("Invalid artifact flush timeout")
+        result = {}
+
+        def upload():
+            try:
+                self.sync()
+                result["complete"] = True
+            except Exception as error:
+                result["error"] = sanitized(error)
+
+        backup = threading.Thread(target=upload, daemon=True)
+        backup.start()
+        backup.join(timeout=timeout)
+        if backup.is_alive():
+            print("Artifact flush timed out; pause takes precedence over upload", flush=True)
+            return False
+        if "error" in result:
+            print("Artifact flush failed:", result["error"], flush=True)
+            return False
+        return result.get("complete", False)
+
+    def flush_and_pause(self):
+        try:
+            self.bounded_sync()
+        finally:
+            self.pause()
+
     def pause(self):
         try:
             self.api.pause_space(self.space)
@@ -204,10 +233,7 @@ class Worker:
                 self.terminate_owned_job()
                 self.write_status(phase="budget_stopped")
                 # A stuck upload must not defeat the spending bound.
-                backup = threading.Thread(target=self.sync, daemon=True)
-                backup.start()
-                backup.join(timeout=20)
-                self.pause()
+                self.flush_and_pause()
                 return
 
     def periodic_sync(self):
@@ -233,7 +259,7 @@ class Worker:
         if previous:
             if previous["phase"] not in FINAL_PHASES:
                 self.write_status(phase="interrupted", error="Previous worker stopped mid-job; no silent restart/resume")
-                self.sync(); self.pause(); return
+                self.flush_and_pause(); return
             if self.mode == "preflight" or previous["phase"] != "preflight_complete":
                 self.status.update(previous)
                 self.pause(); return
@@ -244,11 +270,13 @@ class Worker:
             original_start, self.max_hours, os.environ.get("RL_DEADLINE_EPOCH"))
         if time.time() >= self.deadline:
             self.write_status(phase="budget_stopped", error="Persisted wall-clock budget expired")
-            self.sync(); self.pause(); return
+            self.flush_and_pause(); return
         runtime_policy = require_unattended_runtime(self.api.get_space_runtime(self.space))
         self.write_status(campaign_budget_start_epoch=original_start, deadline_epoch=self.deadline,
                           provenance=fingerprint(), host=hardware(), runtime_policy=runtime_policy)
-        self.sync()  # Prove durable write access before spending compute.
+        # Prove durable write access without an unbounded upload before the watchdog.
+        if not self.bounded_sync():
+            raise RuntimeError("Initial durable artifact synchronization failed or timed out")
         threading.Thread(target=self.watchdog, daemon=True).start()
         threading.Thread(target=self.periodic_sync, daemon=True).start()
         try:
@@ -274,10 +302,7 @@ class Worker:
             self.stop.set()
             self.terminate_owned_job()
             time.sleep(2.1)  # Let completed files pass the stable-file sync filter.
-            try:
-                self.sync()
-            finally:
-                self.pause()
+            self.flush_and_pause()
 
 
 def serve(worker):
@@ -303,10 +328,7 @@ def serve(worker):
             worker.stop.set()
             worker.terminate_owned_job()
             worker.write_status(phase="failed", error=sanitized(error))
-            try:
-                worker.sync()
-            finally:
-                worker.pause()
+            worker.flush_and_pause()
     threading.Thread(target=guarded_run, daemon=True).start()
     server.serve_forever()
 

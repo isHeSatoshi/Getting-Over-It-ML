@@ -23,3 +23,6 @@
 - Add independent held-out final verification and a saved-policy replay package.
 - Test whether current CPU Upgrade concurrency can improve useful throughput
   before spending on CPU XL. Never resize during an active batch.
+- Completed locally for the next paused snapshot: bounded initial/final artifact
+  flush, with pause guaranteed after upload failure or timeout. Do not deploy
+  during v2. Confirm durable final evidence despite bounded shutdown.
