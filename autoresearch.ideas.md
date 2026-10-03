@@ -12,6 +12,11 @@
   at decision 2. Isolate fixed-input network/normalizer differences and test
   tiny-perturbation robustness. Exact physics parity does not imply a portable
   learned trajectory.
+- Causal refinement: changing decision-7 X by ~0.000252 pixel, or all first
+  seven local targets by <=0.00253 pixel, still holds under the recorded suffix.
+  Closed-loop target drift exceeds 1 pixel by decision 16. Investigate later
+  feedback/observation amplification rather than blaming the first tiny
+  physics perturbation.
 - Verify whether failures near X=277-280 are controller saturation, missed
   contacts, or deficient observations before modifying the action interface.
 - Use the legal successful first-ledge trajectory as a skill-acquisition

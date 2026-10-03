@@ -358,3 +358,26 @@ candidate cause; its exact origin is not yet isolated. Do not claim a portable
 edge skill or alter the pilot gates. Future robust-policy studies should include
 fixed-input inference comparisons and tiny-action/observation perturbations,
 not just backend equivalence or selected seeded-noise success.
+
+### Causal check of early action drift
+
+The first body-position difference in the local/remote edge comparison occurs
+at decision 7, about 0.00125 world units. Target differences grow above 0.01
+pixel at decision 10, above 0.1 pixel at decision 15, and above 1 pixel at
+decision 16; they later reach about 254.71 pixels within the 96-decision window.
+
+A bounded three-case exact-game replay tests the recorded baseline, changing
+only decision 7's X target by about 0.000252 pixel, and substituting all first
+seven local applied targets (maximum change about 0.00253 pixel) while retaining
+the recorded suffix. **All three still hold the platform**, retain 83 units,
+and have zero measured fast/reference error. The perturbed final X positions
+differ from baseline by less than 0.001 unit.
+Evidence: `artifacts/action_sensitivity_20261003T231829646100Z/`.
+
+Thus those early tiny action changes alone do not destroy the landing under
+the fixed suffix. The failure involves later closed-loop amplification, rather
+than a demonstrated catastrophic open-loop physics sensitivity at the first
+drift. Exact observation/network/normalization causes remain unisolated.
+Prioritize fixed-input inference and observation-path diagnostics, and robust
+reactive control, before declaring that higher sampling rate or more compute
+is the solution. These are post-hoc causal diagnostics, not policy promotion.
