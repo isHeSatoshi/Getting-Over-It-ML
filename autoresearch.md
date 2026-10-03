@@ -115,6 +115,10 @@ optimizer calls versus the separately labelled SB3 counter 480. Learning wall
 time was 813.01 seconds. These physical outcomes agree with historical seed 0,
 but the runs remain separately recorded under their own source snapshots.
 Evidence: `artifacts/v2_run_review_20261003T222052247473Z/`.
+Replacement seed 1 subsequently passes contract aggregation with 98,304
+transitions and 3,840 optimizer calls: 0/9 holds, no full completions/deaths,
+median retained gain 43.51. The cohort remains incomplete; no promotion.
+Review: `artifacts/v2_two_run_review_20261003T224226570388Z/`.
 
 ## How to inspect and measure
 
@@ -304,3 +308,23 @@ so verify durable models/evaluations/replay before any recovery or promotion.
 The correction passes **90 Python tests plus JS checks**, including successful,
 failed, and deliberately blocked upload fixtures proving pause still occurs.
 No changes to learner, reward, physics, budget reservation, or live deployment.
+
+## Learned-trajectory transfer verification
+
+A local-only extension of `research.policy_fidelity` can replay any declared
+standard perturbation with the same reset seed, warm-up actions, and action
+noise stream as the standard evaluator. Tests preserve legacy fixture behavior
+and check exact seeded-noise/warm-up semantics. All **93 Python tests plus JS
+checks** pass. Do not deploy diagnostic changes into the running pilot.
+
+Using the trusted historical PPO seed-2 final checkpoint and its frozen matching
+normalizer, `action_noise_2` reproduces the v1 hold on both original reference
+and fast backends for 96 decisions (12.8 game seconds). Predicted/applied actions,
+normalized observations, rewards, physical/outcome info, and recorded telemetry
+agree. Both retain 83 units and report `first_ledge_v1=True`; neither completes
+the game. This is a selected learned-controller outcome under a declared noise
+stream, **not** a held-out robustness test or general climbing competence.
+Checkpoint download provenance and original game/environment fingerprints are
+checked before loading. Evidence:
+`artifacts/trusted_ledge_policy_20261003T224013267424Z/` and
+`artifacts/policy_fidelity_20261003T224034122281Z/`.
