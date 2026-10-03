@@ -89,6 +89,12 @@ The new worker rejects finite sleep time, wrong hardware, or extra replicas.
 Preflight must pass and auto-pause before any intentional switch to pilot.
 The initial v1 epoch/source in older loop text is historical: read this state
 and the actual configured session rather than overwriting it with old values.
+Replacement source is uploaded as Space commit
+`34c35854133294f97fef741479641f571371b8a3` from the allowlisted bundle
+`artifacts/hf_bundle_20261003T214507412596Z/`. Its explicitly fresh preflight
+restart returned BUILDING. Local replacement validation passes **87 Python
+tests plus JS tests**; remote preflight success is not yet established.
+The active operator was replaced with updated session-aware instructions.
 
 ## How to inspect and measure
 
