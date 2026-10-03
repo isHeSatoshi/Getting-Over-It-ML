@@ -11,9 +11,25 @@
       "pricing_last_verified": "2026-10-03",
       "start_epoch": 1791058868.8050392,
       "deadline_epoch": 1791116468.8050392,
-      "verified_end_epoch": null,
+      "verified_end_epoch": 1791063527.5881104,
       "maximum_estimated_compute_cost": 0.48,
-      "actual_billed_cost_known": false
+      "actual_billed_cost_known": false,
+      "termination": "Provider idle sleep; operator verified PAUSED",
+      "estimated_elapsed_compute_cost_upper_bound": 0.03882319226066271
+    },
+    {
+      "session": "poc-20261004-v2",
+      "space": "isHeSatoshi/rl-over-it-poc-20261004",
+      "tier": "cpu-upgrade",
+      "rate_per_hour": 0.03,
+      "pricing_last_verified": "2026-10-03",
+      "start_epoch": 1791063527.5881104,
+      "deadline_epoch": 1791116468.8050392,
+      "verified_end_epoch": null,
+      "maximum_estimated_compute_cost": 0.44117680773933726,
+      "actual_billed_cost_known": false,
+      "status": "reserved_for_fresh_preflight",
+      "replaces_interrupted_session": "poc-20261004-v1"
     }
   ]
 }

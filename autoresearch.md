@@ -63,6 +63,33 @@ Finish and validate this pilot first. Its original gates remain unchanged.
 If it fails, a new diagnostic experiment is allowed under the newly delegated
 authority, but is **not** a promotion of the failed pilot.
 
+### Provider interruption and fresh replacement
+
+On the 2026-10-03 21:35 UTC check, v1 was **SLEEPING** under the provider's
+one-hour idle timeout, despite active background training. The operator
+verified and requested PAUSED, then confirmed PAUSED. Three complete PPO runs
+remain durable; SAC/absolute seed 0 has only a 20k checkpoint and telemetry
+through transition 21,500, no final evaluation, and no saved replay buffer.
+Do not silently resume that checkpoint or merge partial SAC into cohort results.
+Incident: `artifacts/provider_sleep_incident_20261003T213845836829Z/`.
+
+The explicitly fresh replacement session is **`poc-20261004-v2`**, with a full
+new nine-run matrix under one new source snapshot, unchanged scientific
+settings, corrected optimizer accounting, and append-only artifact snapshots.
+This is a recovery/rerun, not promotion or checkpoint resume. Never overwrite
+v1's artifact prefix. Replacement budget is reserved in the cost ledger.
+Its deadline remains **1791116468.8050392**, with `RL_DEADLINE_EPOCH` enforced
+in addition to the ordinary per-batch cap.
+
+While PAUSED, the operator called `set_space_sleep_time(-1)` and configured
+the replacement session in `preflight` mode. HF represents the paid-tier
+never-sleep default by **omitting gcTimeout**, so `sleep_time` is `None`,
+not necessarily `-1`. The verified API returned PAUSED with no finite timeout.
+The new worker rejects finite sleep time, wrong hardware, or extra replicas.
+Preflight must pass and auto-pause before any intentional switch to pilot.
+The initial v1 epoch/source in older loop text is historical: read this state
+and the actual configured session rather than overwriting it with old values.
+
 ## How to inspect and measure
 
 On Windows, from the repository, using the existing authenticated HF CLI:
@@ -232,3 +259,6 @@ Git Bash syntax validation succeeds. Use the venv Python directly on Windows.
 The timing diagnostic subsequently passes all 75 Python tests plus JS checks.
 Future-snapshot optimizer accounting subsequently passes all 81 Python tests,
 JS checks, and bounded real-game PPO/SAC integration checks.
+Recovery admission/deadline safeguards subsequently pass all 83 Python tests
+plus JS checks. A first assertion expected literal sleep_time=-1; inspection
+confirmed HF's paid-default None representation, and tests now cover both.
