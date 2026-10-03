@@ -3,6 +3,10 @@
 - After the current nine-run pilot: one-tick feedback versus four-tick holds.
   Match physical exposure, gamma, episode/evaluation duration, and warm-ups.
   Treat samples and optimizer steps as separate resource axes.
+- Retain v1's narrow central-landing target, but calibrate and predeclare a
+  separate actual-platform-support metric for the next study. Four-tick phases
+  1/2 of the known legal trajectory already hold the platform at X about 290;
+  rejecting those as "no climbing" would misdiagnose timing capability.
 - Verify whether failures near X=277-280 are controller saturation, missed
   contacts, or deficient observations before modifying the action interface.
 - Use the legal successful first-ledge trajectory as a skill-acquisition

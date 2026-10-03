@@ -131,7 +131,9 @@ Record failed experiments and why they failed; do not erase them.
    controlled broader-climb follow-up, not immediate large-scale training.
 2. If it fails, prioritize **action timing/feedback**. An exact legal per-tick
    trajectory already reaches and holds the first ledge; resampling it to
-   four-tick actions fails. Test one-tick versus four-tick control with matched
+   four-tick actions at phase zero fails. Other sampling phases can land and
+   hold the same platform outside the narrow benchmark region. Test one-tick
+   versus four-tick control with matched
    physical exposure, physical-time gamma, horizon, warm-up duration, and
    evaluation duration. Separately report decision and optimizer budgets.
 3. If timing alone is insufficient, investigate exploration/skill acquisition:
@@ -155,6 +157,21 @@ Record failed experiments and why they failed; do not erase them.
   Body spawns at Y=21; real contact-based actions move and lift it.
 - Legal bounded per-tick search holds the first ledge near `(322.59,104)`;
   four-tick resampling and the bounded four-tick search fail the hold.
+- A matched 600-tick causal timing probe reproduces that per-tick success and
+  all four held-action phases with **zero** fast/reference telemetry error.
+  Phase 0 retains only 38.33 units. Phases 1/2 settle at approximately
+  `(289.50,104)` / `(289.92,104)`, retain 83 units, and have body contact on
+  every tick of the final four seconds. The original pilot's X `[305,335]`
+  region rejects these genuine edge-supported platform landings.
+  Keep the pilot contract frozen, but do not infer "four-tick control cannot
+  climb" or "no platform support" from that narrow metric.
+  A post-hoc **secondary diagnostic**, `first_platform_support_diagnostic_v2`,
+  uses X `[285,345]`, the same Y/speed/three-second/body-contact requirements.
+  It passes per-tick and coarse phases 1/2, not phases 0/3. It is neither a
+  promotion gate nor learned-policy evidence. Declare/calibrate any new
+  platform metric before a future learning experiment and retain v1 alongside.
+  Evidence: `artifacts/timing_probe_20261003T211346899540Z/` and
+  `artifacts/timing_support_review_20261003T211614229092Z/`.
 - `climb-v2` reward is raw, potential-based, physically discounted, with observed
   settled-history state. Transient peaks and repeated contact are not success.
 - Pilot PPO/absolute seed 0: 98,304 transitions, 0/9 reference ledge holds,
@@ -194,3 +211,4 @@ Goal setup checks pass 68 Python tests, the JS collision tests, both Bash
 entrypoint syntax checks, and read-only metric extraction against the pinned
 partial pilot snapshot. Windows' default WSL Bash is broken on this host;
 Git Bash syntax validation succeeds. Use the venv Python directly on Windows.
+The timing diagnostic subsequently passes all 75 Python tests plus JS checks.
