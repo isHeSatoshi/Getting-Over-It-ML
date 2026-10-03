@@ -46,18 +46,21 @@ verified from standard campaign aggregation alone.
 
 - Private Space: `isHeSatoshi/rl-over-it-poc-20261004`.
 - Private artifacts: `isHeSatoshi/rl-over-it-research-artifacts`.
-- Dataset session: `poc-20261004-v1`.
-- Deployed revision: `b3bf197090f1fb5219e5cce70a0dbfcca6576ce1`.
+- Active dataset session: `poc-20261004-v2`.
+- Active deployed revision: `34c35854133294f97fef741479641f571371b8a3`.
+- Interrupted historical session: `poc-20261004-v1`, revision
+  `b3bf197090f1fb5219e5cce70a0dbfcca6576ce1`.
 - Tier: CPU Upgrade, one replica, sequential nine-run pilot.
 - Persisted deadline: **2026-10-04 12:21:08 UTC**, epoch `1791116468.8050392`.
 - PPO/absolute, SAC/absolute, SAC/velocity, seeds 0/1/2, 98,304 transitions
   each. Four-tick actions, settled reward, terrain, raw rewards, common
   physical-time discount, reference evaluation.
 
-Do not modify, upload, restart, or resize this running image. A stale uploaded
-log is not a stalled learner: continuously appended files can be skipped by
-its stable-file backup rule. Stable checkpoints and completed files still
-upload. The append-only snapshot fix is local and tested, not deployed.
+Do not modify, upload, restart, or resize the running image. The replacement
+includes complete-prefix snapshots for append-only logs/CSV/JSONL; binary
+checkpoints still require stable-copy checks. The historical v1 image could
+skip continuously appended files, so its stale logs are not a stalled-learner
+proof.
 
 Finish and validate this pilot first. Its original gates remain unchanged.
 If it fails, a new diagnostic experiment is allowed under the newly delegated
@@ -93,8 +96,18 @@ Replacement source is uploaded as Space commit
 `34c35854133294f97fef741479641f571371b8a3` from the allowlisted bundle
 `artifacts/hf_bundle_20261003T214507412596Z/`. Its explicitly fresh preflight
 restart returned BUILDING. Local replacement validation passes **87 Python
-tests plus JS tests**; remote preflight success is not yet established.
+tests plus JS tests**.
 The active operator was replaced with updated session-aware instructions.
+The replacement's remote preflight subsequently completed and auto-paused.
+A pinned dataset review verifies all 87 tests, JS checks, 17 fidelity cases with
+zero measured error, exact game/source fingerprints, effective 8 CPU /32 GB
+quota, never-sleep policy, and the unchanged deadline.
+Benchmark: about 247 terrain-enabled decisions/s without optimization;
+worker plus reference peaked at about 6.07 GiB summed RSS.
+Review: `artifacts/v2_preflight_review_20261003T215809890172Z/`.
+After those checks, the operator intentionally changed only `RL_MODE` to
+`pilot` while PAUSED and requested a fresh start. It returned BUILDING on the
+same source revision. No checkpoint or prior run was resumed or mixed in.
 
 ## How to inspect and measure
 
@@ -229,9 +242,9 @@ Record failed experiments and why they failed; do not erase them.
 - The 20k checkpoint visibly controls the real hammer and moves to about
   `(109.28,79.70)` in a short nominal trace. It is brittle. An evaluation's
   post-reset screenshot must not be presented as its final policy pose.
-- The live pilot's PPO `training_summary.gradient_updates` stores SB3
+- The historical v1 pilot's PPO `training_summary.gradient_updates` stores SB3
   `_n_updates`, an epoch count rather than minibatch optimizer steps.
-  A **local, not deployed** future-snapshot correction uses removable Torch
+  The correction, now deployed in v2, uses removable Torch
   post-step hooks and `optimizer-step-calls-v1` per-optimizer counters.
   It leaves tested PPO weights bitwise unchanged, supports checkpoint save/load
   during instrumentation, and removes hooks after success/failure.

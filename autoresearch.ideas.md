@@ -14,9 +14,10 @@
   alone is not learned robustness.
 - Test ordinary-start skill composition before a privileged-reset curriculum.
   Never include diagnostic placements in claimed policy success.
-- Completed locally: named optimizer-step accounting with weight/checkpoint
-  compatibility and bounded PPO/SAC integration checks. Deploy only after the
-  current pilot, as a new source snapshot; old pilot fields retain old units.
+- Completed and deployed in the fresh v2 recovery: named optimizer-step
+  accounting with weight/checkpoint compatibility and bounded integrations.
+  Historical v1 fields retain old units; never pool its incomplete matrix into
+  the new source-pinned pilot.
 - Extend golden contact traces to learned upper-route sections before claiming
   full-game fast-backend fidelity.
 - Add independent held-out final verification and a saved-policy replay package.

@@ -28,11 +28,14 @@
       "verified_end_epoch": null,
       "maximum_estimated_compute_cost": 0.44117680773933726,
       "actual_billed_cost_known": false,
-      "status": "fresh_preflight_requested",
+      "status": "validated_fresh_pilot_start_requested",
       "replaces_interrupted_session": "poc-20261004-v1",
       "source_space_revision": "34c35854133294f97fef741479641f571371b8a3",
       "sleep_policy": "paid_default_never",
-      "training_started": false
+      "training_started": false,
+      "remote_preflight_complete": true,
+      "preflight_evidence": "artifacts/v2_preflight_review_20261003T215809890172Z",
+      "training_launch_requested": true
     }
   ]
 }
