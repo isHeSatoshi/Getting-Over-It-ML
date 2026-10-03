@@ -119,6 +119,11 @@ Replacement seed 1 subsequently passes contract aggregation with 98,304
 transitions and 3,840 optimizer calls: 0/9 holds, no full completions/deaths,
 median retained gain 43.51. The cohort remains incomplete; no promotion.
 Review: `artifacts/v2_two_run_review_20261003T224226570388Z/`.
+The complete replacement PPO cohort subsequently validates at v1 hold counts
+0/9, 0/9, 1/9, with no full completions or final-horizon deaths. It reproduces
+the historical cohort's aggregate physical outcomes, without pooling sessions.
+The first SAC/absolute run is actively training; no SAC effectiveness conclusion
+is available yet. Review: `artifacts/v2_ppo_cohort_20261003T225813655321Z/`.
 
 ## How to inspect and measure
 
@@ -328,3 +333,28 @@ Checkpoint download provenance and original game/environment fingerprints are
 checked before loading. Evidence:
 `artifacts/trusted_ledge_policy_20261003T224013267424Z/` and
 `artifacts/policy_fidelity_20261003T224034122281Z/`.
+
+### Secondary edge-support and inference-portability limitation
+
+The replacement seed-2 `action_noise_5` evaluation remains at about
+`(296.15,104)` but never satisfies v1's central X region. A coordinate-only
+scan identified it as a candidate, not certified support. Replaying its exact
+recorded remote actions for 384 ticks verifies real secondary platform support
+by 7.13 game seconds, with **zero** measured local-fast/reference telemetry
+error and **zero** remote-recorded body-position error at decision boundaries.
+Evidence: `artifacts/recorded_edge_replay_20261003T230135948311Z/`.
+
+However, loading the same trusted replacement checkpoint/normalizer for local
+closed-loop inference does **not** reproduce that edge landing. Its predicted
+action first differs from the remote trace at decision 2 by about 6e-8, while
+body positions still agree then. The local fast/reference closed-loop traces
+agree with each other but finish near `(88.59,38.04)` after 96 decisions.
+Evidence: `artifacts/learned_edge_audit_20261003T225954450734Z/` and
+`artifacts/v2_edge_policy_20261003T225850873712Z/`.
+
+This separates reproducible recorded-action physics from a brittle portable
+policy-inference outcome. Numerical inference/observation sensitivity is a
+candidate cause; its exact origin is not yet isolated. Do not claim a portable
+edge skill or alter the pilot gates. Future robust-policy studies should include
+fixed-input inference comparisons and tiny-action/observation perturbations,
+not just backend equivalence or selected seeded-noise success.

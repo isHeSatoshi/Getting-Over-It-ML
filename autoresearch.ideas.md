@@ -7,6 +7,11 @@
   separate actual-platform-support metric for the next study. Four-tick phases
   1/2 of the known legal trajectory already hold the platform at X about 290;
   rejecting those as "no climbing" would misdiagnose timing capability.
+- Replacement PPO seed-2 noise_5 has genuine edge support under exact recorded
+  remote actions, but local model inference diverges after a ~6e-8 action change
+  at decision 2. Isolate fixed-input network/normalizer differences and test
+  tiny-perturbation robustness. Exact physics parity does not imply a portable
+  learned trajectory.
 - Verify whether failures near X=277-280 are controller saturation, missed
   contacts, or deficient observations before modifying the action interface.
 - Use the legal successful first-ledge trajectory as a skill-acquisition
