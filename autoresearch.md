@@ -124,6 +124,21 @@ The complete replacement PPO cohort subsequently validates at v1 hold counts
 the historical cohort's aggregate physical outcomes, without pooling sessions.
 The first SAC/absolute run is actively training; no SAC effectiveness conclusion
 is available yet. Review: `artifacts/v2_ppo_cohort_20261003T225813655321Z/`.
+SAC/absolute seed 0 subsequently completes and passes contract aggregation:
+98,304 transitions, 0/9 holds, no full completions/deaths, median retained
+gain 0. Every final case remains at `(0,21)`. Its nominal predicted Y target
+stays positive, approximately `[0.704,0.990]` normalized, and the hammer records
+zero terrain-contact ticks while the body remains grounded for all 1,800 ticks.
+This is a physically inactive controller outcome, not a control-bridge failure.
+The exact cause of learning this behavior is not yet isolated; one seed does
+not establish an algorithm-level conclusion.
+It performs 88,304 actor, 88,304 critic, and 88,304 temperature optimizer calls
+(264,912 total), with learning wall time 2,154.72 seconds, versus PPO seed 0's
+3,840 combined-policy calls and 813.01 seconds at equal transitions.
+Calls are different operations, not equivalent FLOPs. Both sample and wall-time
+comparisons must remain explicit. A durable final SAC replay buffer is present;
+only JSON metadata was downloaded for this review, not the large replay object.
+Evidence: `artifacts/v2_first_sac_review_20261003T233847089245Z/`.
 
 ## How to inspect and measure
 
