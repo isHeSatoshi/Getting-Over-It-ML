@@ -178,6 +178,13 @@ def validate_run(manifest, training, evaluation, run, provenance):
     require(manifest["purpose"] == "remote research run" and config["smoke"] is False
             and config["remote_training"] is True and config["timing_study"] is True,
             "Smoke or unadmitted run type cannot count as study evidence")
+    admission = manifest.get("timing_admission")
+    require(isinstance(admission, dict) and admission.get("version") == "timing-execution-admission-v1"
+            and isinstance(admission.get("session"), str) and admission["session"].startswith("timing-")
+            and admission.get("run") == run["name"] and finite(admission.get("deadline_epoch"))
+            and isinstance(admission.get("source_space_revision"), str)
+            and len(admission["source_space_revision"]) == 40,
+            "Missing or changed saved run admission")
     for key, value in {"algorithm": "ppo", "action": "absolute", "seed": run["seed"],
                        "frame_skip": repeat, "steps": steps, "backend": "fast",
                        "reward_profile": "settled", "discount_half_life": 120,
@@ -241,7 +248,8 @@ def validate_run(manifest, training, evaluation, run, provenance):
             "hold_rate_improvement": {name: after["hold_rates"][name] - before["hold_rates"][name]
                                       for name in METRIC_NAMES},
             "training_physical_work": work, "optimizer_work": optimizer,
-            "learning_wall_seconds": training["learning_wall_seconds"], "dependencies": versions}
+            "learning_wall_seconds": training["learning_wall_seconds"], "dependencies": versions,
+            "timing_admission": {key: value for key, value in admission.items() if key != "run"}}
 
 
 def aggregate(directory):
@@ -262,6 +270,11 @@ def aggregate(directory):
         if dependency_versions is None:
             dependency_versions = row["dependencies"]
         require(row["dependencies"] == dependency_versions, "Mixed learner dependency versions")
+        if rows:
+            require(row["timing_admission"] == rows[0]["timing_admission"], "Mixed timing admission sessions")
+        if record.get("execution_admission") is not None:
+            require(row["timing_admission"] == record["execution_admission"],
+                    "Saved run admission differs from claimed execution")
         rows.append(row)
     cohorts = []
     for arm in record["contract"]["study"]["arms"]:

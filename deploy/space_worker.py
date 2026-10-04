@@ -20,7 +20,7 @@ import time
 from research.browser_bridge import ROOT
 
 ALLOWED_ARTIFACT_SUFFIXES = {".json", ".jsonl", ".csv", ".log", ".png", ".zip", ".pkl", ".pt"}
-FINAL_PHASES = {"preflight_complete", "pilot_complete", "failed", "budget_stopped", "interrupted"}
+FINAL_PHASES = {"preflight_complete", "pilot_complete", "timing_complete", "failed", "budget_stopped", "interrupted"}
 APPEND_ONLY_SUFFIXES = {".log", ".csv", ".jsonl"}
 
 
@@ -109,8 +109,12 @@ class Worker:
         if not self.session.replace("-", "").replace("_", "").isalnum():
             raise ValueError("Invalid artifact session")
         self.mode = os.environ.get("RL_MODE", "preflight")
-        if self.mode not in ("preflight", "pilot"):
-            raise ValueError("Only preflight or bounded pilot is permitted")
+        if self.mode not in ("preflight", "pilot", "timing_preflight", "timing_study"):
+            raise ValueError("Unknown bounded research mode")
+        if self.mode.startswith("timing_"):
+            from research.timing_execution import SPACE, ARTIFACT_REPO
+            if self.space != SPACE or self.artifact_repo != ARTIFACT_REPO or not self.session.startswith("timing-"):
+                raise ValueError("Timing modes require a fresh session on the owned private targets")
         self.api = HfApi(token=os.environ["HF_TOKEN"])
         self.max_hours = min(float(os.environ.get("RL_MAX_HOURS", "16")), 16.0)
         if not 0 < self.max_hours <= 16:
@@ -196,16 +200,18 @@ class Worker:
             # running paid status server. Operator should verify via HF CLI.
             os._exit(1)
 
-    def run_command(self, args, name):
+    def run_command(self, args, name, environment=None):
         self.write_status(phase=name, command=[str(a) for a in args])
-        environment = {k: v for k, v in os.environ.items()
-                       if k not in ("HF_TOKEN", "HUGGING_FACE_HUB_TOKEN", "RL_CONTROL_TOKEN")}
+        from research.timing_execution import child_environment, FINALIZATION_SECONDS
+        environment = child_environment(os.environ if environment is None else environment)
         log = self.artifacts / (name + ".log")
         with log.open("a", encoding="utf-8") as handle:
             self.process = subprocess.Popen(args, cwd=ROOT, env=environment, stdout=handle,
                                             stderr=subprocess.STDOUT, start_new_session=True)
             while self.process.poll() is None:
-                if self.stop.wait(1):
+                expired = (self.mode.startswith("timing_")
+                           and time.time() >= self.deadline - FINALIZATION_SECONDS)
+                if expired or self.stop.wait(1):
                     self.terminate_owned_job()
                     raise TimeoutError("Runtime budget reached")
             code = self.process.returncode
@@ -227,8 +233,10 @@ class Worker:
                 self.process.wait(timeout=5)
 
     def watchdog(self):
-        while not self.stop.wait(10):
-            if time.time() >= self.deadline:
+        from research.timing_execution import FINALIZATION_SECONDS
+        timing = self.mode.startswith("timing_")
+        while not self.stop.wait(1 if timing else 10):
+            if time.time() >= self.deadline - (FINALIZATION_SECONDS if timing else 0):
                 self.stop.set()
                 self.terminate_owned_job()
                 self.write_status(phase="budget_stopped")
@@ -253,6 +261,10 @@ class Worker:
                     return
 
     def run(self):
+        if self.mode.startswith("timing_"):
+            from deploy.timing_worker import run_timing
+            run_timing(self)
+            return
         from research.provenance import fingerprint
         from research.resources import hardware
         previous = self.restore_status()

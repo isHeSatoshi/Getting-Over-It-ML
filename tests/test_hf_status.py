@@ -2,7 +2,7 @@ from types import SimpleNamespace
 import unittest
 from unittest.mock import Mock
 
-from tools.hf_research_status import selected_session, SESSION
+from tools.hf_research_status import campaign_prefix, selected_session, SESSION
 
 
 class StatusSessionTests(unittest.TestCase):
@@ -29,6 +29,13 @@ class StatusSessionTests(unittest.TestCase):
             with self.subTest(session=session):
                 with self.assertRaises(ValueError):
                     selected_session(Mock(), session)
+
+    def test_timing_monitor_uses_only_its_own_runs_not_imported_pilot(self):
+        prefix = campaign_prefix("timing-synthetic-1")
+        self.assertEqual(prefix, "timing-synthetic-1/timing_campaign/runs/")
+        self.assertFalse("timing-synthetic-1/prior_pilot/runs/model/evaluation.json".startswith(prefix))
+        self.assertEqual(campaign_prefix("poc-20261004-v2"),
+                         "poc-20261004-v2/pilot_campaign/runs/")
 
 
 if __name__ == "__main__":

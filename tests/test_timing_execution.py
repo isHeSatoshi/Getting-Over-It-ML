@@ -4,12 +4,13 @@ from pathlib import Path
 import tempfile
 import unittest
 from unittest.mock import Mock, patch
+from types import SimpleNamespace
 
 from research.campaign import digest
 from research.timing_campaign import contract
 from research.timing_execution import (
     ADMISSION_VERSION, ARTIFACT_REPO, PREFLIGHT_CHECKS, SPACE, child_environment,
-    execute, run_bounded, terminate_owned_process, validate_admission,
+    execute, load_trainer_grant, run_bounded, terminate_owned_process, validate_admission,
 )
 
 
@@ -196,6 +197,54 @@ class TimingExecutionTests(unittest.TestCase):
                 patch("research.timing_execution.signal.SIGKILL", 9, create=True):
             terminate_owned_process(process)
         self.assertEqual([call.args[0] for call in terminate.call_args_list], [123, 123])
+
+    def test_trainer_grant_binds_direct_parent_declared_run_output_and_claim(self):
+        import hashlib
+        ticket, ledger, environment = admission_fixture()
+        run = contract()["runs"][0]
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            claim = root / "execution_claim.json"
+            claim.write_text('{"owned":"synthetic"}')
+            output = root / "runs" / run["name"]
+            grant = root / "grant.json"
+            payload = {"version": ADMISSION_VERSION, "ticket": ticket, "ledger": ledger,
+                       "parent_pid": 123, "run": run, "output_dir": str(output),
+                       "claim_file": str(claim), "claim_sha256": hashlib.sha256(claim.read_bytes()).hexdigest()}
+            grant.write_text(json.dumps(payload))
+            environment["RL_TIMING_GRANT"] = str(grant)
+            args = SimpleNamespace(algorithm="ppo", action="absolute", frame_skip=1, seed=3,
+                                   steps=run["steps"], timing_study=True, remote_training=True,
+                                   smoke=False, output_dir=str(output))
+            with patch("research.timing_execution.remote_host", return_value=True), \
+                    patch("research.timing_execution.os.getppid", return_value=123), \
+                    patch("research.timing_execution.fingerprint", return_value=CURRENT), \
+                    patch("research.timing_execution.time.time", return_value=200.0):
+                self.assertEqual(load_trainer_grant(args, environment)["run"], run["name"])
+                args.seed = 4
+                with self.assertRaisesRegex(ValueError, "arguments"):
+                    load_trainer_grant(args, environment)
+                args.seed = 3
+                claim.write_text('{"changed":true}')
+                with self.assertRaisesRegex(ValueError, "claim"):
+                    load_trainer_grant(args, environment)
+
+    def test_undurable_execution_claim_never_dispatches_a_learner(self):
+        ticket, ledger, environment = admission_fixture()
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            (root / "timing_campaign.json").write_text(json.dumps({
+                "contract": contract(), "provenance": CURRENT}))
+            with patch("research.timing_execution.remote_host", return_value=True), \
+                    patch("research.timing_execution.fingerprint", return_value=CURRENT), \
+                    patch("research.timing_execution.time.time", return_value=200.0), \
+                    patch("research.timing_execution.effective_limits", return_value={
+                        "logical_cpus": 8, "available_ram_bytes": 32 * 2**30}), \
+                    patch("research.timing_execution.psutil.disk_usage", return_value=Mock(free=20 * 2**30)), \
+                    patch("research.timing_execution.run_bounded") as launch:
+                with self.assertRaisesRegex(ValueError, "durable"):
+                    execute(root, ticket, ledger, environment, durable_claim=lambda: False)
+                launch.assert_not_called()
 
 
 if __name__ == "__main__":

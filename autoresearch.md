@@ -83,10 +83,12 @@ training/reset tick accounting now pass local tests and bounded smokes.
 Secondary-detector integration and bounded local timing-specific reactive
 fidelity now pass. A distinct non-executing run contract/aggregator now passes
 local tests. A remote-only sequential executor/admission foundation now passes
-local tests but is not wired into the worker or trainer. Next integrate/test
-those launch paths and fresh-session budget/preflight context, then run fresh
-remote preflight and verify PAUSED before any intentional study launch.
-Remote timing-study execution is still deliberately blocked in the CLI.
+local tests and is now wired into fresh timing worker modes and narrowly scoped
+trainer admission. Local integration checks and smokes pass; no deployment or
+reservation has occurred. Next reserve a fresh capped CPU Upgrade session,
+publish its private source/context, run timing preflight and verify durable
+passed evidence plus PAUSED before any intentional study launch. Direct remote
+timing CLI use without a parent-bound run grant remains refused.
 
 Never modify, upload, restart, or resize an active future image. The replacement
 includes complete-prefix snapshots for append-only logs/CSV/JSONL; binary
@@ -775,3 +777,66 @@ status, and the trainer's narrowly scoped admission check. Keep the existing
 pilot path and completed artifact prefixes immutable. Only after integration
 passes locally should a new capped CPU Upgrade reservation/private snapshot be
 preflighted, reviewed while PAUSED and intentionally launched.
+
+### Worker/trainer timing admission wired and tested locally
+
+Local `space_worker` now recognizes `timing_preflight` and `timing_study` only
+for a distinct `timing-*` session on the owned Space/private dataset. The old
+preflight/pilot paths remain intact. `deploy.timing_worker` reads only
+`<session>/operator/timing_context.json`, pinned by **`RL_CONTEXT_REVISION`** to
+one immutable dataset commit, with a 2 MiB JSON bound. Context must contain the
+ledger snapshot and ticket for the new reservation plus pinned prior-pilot
+summary/source evidence. It is not bundled or stored in source code.
+
+For timing preflight, the operator ticket's `preflight` must be null and there
+must be no persisted session status. Reservation/runtime/source checks occur
+before any jobs. The eight actual check processes include unit/JS, raw physics
+fidelity, reactive timing fidelity, benchmark/resources and both matched
+pipeline smokes; they are not substantive training. Only successful checks
+produce durable `preflight_complete` with `study_kind=timing` and the eight
+passed flags. The worker then bounded-flushes and pauses.
+
+To intentionally start a study, the operator must independently verify that
+preflight and PAUSED, then publish a new pinned context whose ticket contains
+the exact durable preflight fields and set the fresh session to `timing_study`
+while PAUSED. The worker rechecks actual immutable Space revision, runtime,
+source/game and persisted budget. It imports only bounded JSON from the
+completed pinned v2 pilot, validates the old ineligibility evidence, prepares
+a fresh timing campaign and durably records dispatch/claim **before learners**.
+Interrupted/nonfinal statuses block all restart/resume. Completed/failed or
+wrong-kind preflight evidence cannot start a study.
+
+Each trainer receives a parent-owned grant binding its direct parent PID,
+declared seed/arm/budget, new output path and immutable execution-claim hash.
+Linux/context/ledger/source/preflight/deadline admission is checked before
+model/browser creation. The manifest retains a small admitted-session record;
+the timing aggregator rejects missing/mixed admission sessions and binds
+results to the claimed execution. Smokes remain explicitly unadmitted.
+The parent runs/terminates only its owned learner/browser process group,
+removes credential variables, preserves the 60-second finalization reserve,
+and guarantees bounded final flush/pause paths.
+
+All **168 Python tests plus JS checks** pass. New fixtures cover pinned private
+reads, preflight-only commands, stale/repeated/wrong-source contexts, durable
+pre-dispatch synchronization, interrupted sessions, initial sync failure,
+successful mocked study dispatch, direct-parent/argument/claim grant checks,
+and refusal after an undurable claim. Completed/failed sessions are preserved
+without overwriting or relaunching. The read-only monitor now distinguishes
+timing runs from imported prior-pilot files and reports secondary support/
+controlled-reset ticks when present. These are mocks, not live HF admission.
+
+Two bounded real-game smokes still report 256 controlled ticks, 120 reset ticks
+and four policy calls per arm. Their weights are bitwise equal to prior smokes;
+all nine before/after reference traces pass the physical checker. They claim
+no remote admission or competence. The allowlisted bundle includes both
+integration modules without runtime contexts/ledger/artifacts.
+Evidence: `artifacts/worker_admission_smoke_20261004T0425133084373Z/verification.json`.
+No HF writes, source/variable changes, paid reservation or remote jobs occurred.
+
+Next bounded priority: verify current CPU Upgrade pricing, reserve a unique
+`timing-*` session within the $10 total ceiling (including preflight/build
+elapsed time), build/publish the allowlisted private snapshot while preserving
+PAUSED and completed v2, and upload its secret-free operator context. Keep the
+same new-session start/deadline through preflight and study; never reuse/extend
+v2's old deadline. Run only `timing_preflight` first and independently inspect
+its immutable outputs and PAUSED state before any study mode change.

@@ -64,6 +64,8 @@ def run_fixture(run):
             [case.describe() for case in STANDARD_CASES])), "decisions": timing["evaluation_decisions"],
             "benchmarks": benchmark_contract(True)},
         "optimizer_work_contract": {"version": "optimizer-step-calls-v1"},
+        "timing_admission": {"version": "timing-execution-admission-v1", "session": "timing-synthetic-1",
+                             "source_space_revision": "a" * 40, "deadline_epoch": 3700.0, "run": run["name"]},
     }
     resets = steps // timing["episode_decisions"] + 1
     work = {"version": "controlled-reset-ticks-v1",
@@ -135,6 +137,7 @@ class TimingCampaignTests(unittest.TestCase):
         run = contract()["runs"][0]
         for mutate in (
             lambda m, t, e: m["config"].update(smoke=True),
+            lambda m, t, e: m.update(timing_admission=None),
             lambda m, t, e: m["config"].update(timing_study=False),
             lambda m, t, e: m["config"].update(seed=0),
             lambda m, t, e: m["reward_contract"].update(gamma=0.5),

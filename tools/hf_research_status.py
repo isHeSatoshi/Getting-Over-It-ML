@@ -20,6 +20,11 @@ def selected_session(api, requested=None):
     return session
 
 
+def campaign_prefix(session):
+    campaign = "timing_campaign" if session.startswith("timing-") else "pilot_campaign"
+    return f"{session}/{campaign}/runs/"
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--session", help="Inspect a historical session instead of the configured active one")
@@ -41,8 +46,9 @@ def main():
               "stage": runtime["stage"], "phase": state.get("phase"),
               "updated_utc": state.get("updated_utc"), "deadline_epoch": state.get("deadline_epoch"),
               "error": state.get("error"), "completed_runs": [], "progress_samples": []}
+    prefix = campaign_prefix(session)
     for path in files:
-        if path.startswith(f"{session}/pilot_campaign/runs/") and path.endswith("/evaluation.json"):
+        if path.startswith(prefix) and path.endswith("/evaluation.json"):
             local = hf_hub_download(REPO, repo_type="dataset", revision=revision, filename=path)
             with open(local, encoding="utf-8") as handle:
                 evaluation = json.load(handle)
@@ -52,8 +58,11 @@ def main():
                 "reference_cases": len(records),
                 "ledge_successes": sum(bool(r["final"]["milestone_success"]["first_ledge_v1"]) for r in records),
                 "full_climb_successes": sum(bool(r["final"]["success"]) for r in records),
+                "secondary_support_successes": sum(bool(r["final"]["milestone_success"].get(
+                    "first_platform_support_diagnostic_v2", False)) for r in records)
+                    if session.startswith("timing-") else None,
             })
-        if path.startswith(f"{session}/pilot_campaign/runs/") and path.endswith("/physical_trace.jsonl"):
+        if path.startswith(prefix) and path.endswith("/physical_trace.jsonl"):
             local = hf_hub_download(REPO, repo_type="dataset", revision=revision, filename=path)
             with open(local, encoding="utf-8") as handle:
                 lines = [line for line in handle if line.strip()]
@@ -64,6 +73,8 @@ def main():
                     "body_x": sample.get("player_world_x"), "body_y": sample.get("player_world_y"),
                     "retained_gain": sample.get("retained_gain"), "max_gain": sample.get("max_gain"),
                     "milestone_success": sample.get("milestone_success"),
+                    "controlled_physics_ticks_total": sample.get("controlled_physics_ticks_total"),
+                    "reset_settling_physics_ticks_total": sample.get("reset_settling_physics_ticks_total"),
                 })
     print(json.dumps(report, indent=2))
 

@@ -1,4 +1,5 @@
-"""Remote-only execution foundation; the live worker/trainer are not wired to it."""
+"""Remote-only timing execution and parent-bound per-run trainer admission."""
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -133,7 +134,37 @@ def run_bounded(args, log_path, environment, deadline):
             terminate_owned_process(process)
 
 
-def execute(directory, ticket, ledger, environment=None):
+def load_trainer_grant(args, environment=None):
+    environment = dict(os.environ if environment is None else environment)
+    require(remote_host(environment), "Trainer timing admission requires an isolated Linux host")
+    filename = environment.get("RL_TIMING_GRANT")
+    require(filename, "Missing bounded runner admission grant")
+    path = Path(filename)
+    require(path.is_absolute() and not path.is_symlink(), "Invalid trainer grant path")
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    require(payload["version"] == ADMISSION_VERSION and payload["parent_pid"] == os.getppid(),
+            "Trainer grant does not belong to the direct owned parent")
+    validate_admission(payload["ticket"], payload["ledger"], fingerprint(), time.time(), environment)
+    run = payload["run"]
+    require(run in contract()["runs"] and args.algorithm == "ppo" and args.action == "absolute"
+            and args.frame_skip == run["frame_skip"] and args.seed == run["seed"]
+            and args.steps == run["steps"] and args.timing_study and args.remote_training and not args.smoke,
+            "Trainer arguments differ from the admitted run")
+    output = Path(args.output_dir or "")
+    require(output.is_absolute() and output == Path(payload["output_dir"]) and not output.exists(),
+            "Trainer output differs from the new admitted run directory")
+    claim = Path(payload["claim_file"])
+    require(claim.is_absolute() and claim.parent == output.parent.parent and claim.is_file()
+            and hashlib.sha256(claim.read_bytes()).hexdigest() == payload["claim_sha256"],
+            "Execution interruption claim is missing or changed")
+    require(time.time() < payload["ticket"]["deadline_epoch"] - FINALIZATION_SECONDS,
+            "Trainer timing budget reached its cleanup reserve")
+    return {"version": ADMISSION_VERSION, "session": payload["ticket"]["session"],
+            "source_space_revision": payload["ticket"]["source_space_revision"],
+            "deadline_epoch": payload["ticket"]["deadline_epoch"], "run": run["name"]}
+
+
+def execute(directory, ticket, ledger, environment=None, dispatch=None, durable_claim=None):
     environment = dict(os.environ if environment is None else environment)
     require(remote_host(environment),
             "Timing-study execution is isolated Linux remote-only, never desktop training")
@@ -153,15 +184,38 @@ def execute(directory, ticket, ledger, environment=None):
     require(limits["logical_cpus"] >= 4 and limits["available_ram_bytes"] >= 12 * 2**30,
             "Insufficient effective CPU/RAM for one timing learner plus reference")
     require(psutil.disk_usage(directory).free >= 10 * 2**30, "Insufficient free artifact disk")
+    record["execution_admission"] = {"version": ADMISSION_VERSION, "session": ticket["session"],
+                                   "source_space_revision": ticket["source_space_revision"],
+                                   "deadline_epoch": ticket["deadline_epoch"]}
+    temporary = directory / "timing_campaign.tmp"
+    temporary.write_text(json.dumps(record, indent=2), encoding="utf-8")
+    temporary.replace(directory / "timing_campaign.json")
     with claim.open("x", encoding="utf-8") as handle:
         json.dump({"version": ADMISSION_VERSION, **admitted, "state": "claimed_no_resume",
                    "source_space_revision": ticket["source_space_revision"]}, handle, indent=2)
     runs.mkdir(exist_ok=False)
+    if durable_claim is not None:
+        # Give the immutable newly written claim the stable-copy interval;
+        # timing worker watchdog remains active and preserves its cleanup reserve.
+        time.sleep(2.1)
+        require(durable_claim() is True, "Execution claim must be durable before learner dispatch")
+    grants = directory / "grants"
+    grants.mkdir(exist_ok=False)
     for run in record["contract"]["runs"]:
         validate_admission(ticket, ledger, current, time.time(), environment)
         output = runs / run["name"]
-        run_bounded(command(run, output), directory / (run["name"] + ".log"),
-                    environment, admitted["deadline_epoch"])
+        grant = grants / (run["name"] + ".json")
+        with grant.open("x", encoding="utf-8") as handle:
+            json.dump({"version": ADMISSION_VERSION, "ticket": ticket, "ledger": ledger,
+                       "run": run, "output_dir": str(output), "parent_pid": os.getpid(),
+                       "claim_file": str(claim),
+                       "claim_sha256": hashlib.sha256(claim.read_bytes()).hexdigest()}, handle, indent=2)
+        run_environment = {**environment, "RL_TIMING_GRANT": str(grant)}
+        if dispatch is None:
+            run_bounded(command(run, output), directory / (run["name"] + ".log"),
+                        run_environment, admitted["deadline_epoch"])
+        else:
+            dispatch(command(run, output), run["name"], run_environment)
         result = aggregate(directory)
         require(any(row["run"] == run["name"] for row in result["rows"]),
                 "Run returned without complete contract-valid evidence")

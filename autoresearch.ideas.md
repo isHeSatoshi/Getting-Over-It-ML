@@ -23,10 +23,11 @@
   Remote-only executor/admission foundation now passes 157 tests with six-run
   sequential scheduling, immutable session/source/preflight/deadline binding,
   ceiling/credential/interruption guards and a 60-second cleanup reserve.
-  It is not wired into the worker/trainer and has not launched real jobs.
-  Worker/preflight/context transport and narrowly scoped trainer admission
-  integration remain required before reservation/deployment. No future job
-  is launched.
+  Worker timing modes, pinned private context and parent-bound trainer admission
+  are now wired locally and pass 168 tests plus unchanged matched smokes.
+  No future reservation/deployment/jobs exist. Next verify price and reserve/
+  privately deploy a distinct capped timing preflight. Require its durable
+  checks and independently verified PAUSED before intentional study admission.
 - Retain v1's narrow central-landing target, but calibrate and predeclare a
   separate actual-platform-support metric for the next study. Four-tick phases
   1/2 of the known legal trajectory already hold the platform at X about 290;

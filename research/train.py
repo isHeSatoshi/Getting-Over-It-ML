@@ -109,7 +109,7 @@ def main():
     parser.add_argument("--smoke", action="store_true")
     parser.add_argument("--remote-training", action="store_true")
     parser.add_argument("--timing-study", action="store_true",
-                        help="Prepared physical-time PPO settings; currently local pipeline smokes only")
+                        help="Physical-time PPO settings; remote runs require a parent-bound admission grant")
     parser.add_argument("--frame-skip", type=int, choices=[1, 4], default=4)
     parser.add_argument("--steps", type=int)
     parser.add_argument("--seed", type=int, default=0)
@@ -122,8 +122,13 @@ def main():
     args = parser.parse_args()
     if args.smoke == args.remote_training:
         parser.error("Choose exactly one: --smoke or --remote-training")
+    timing_admission = None
     if args.timing_study and args.remote_training:
-        parser.error("Timing-study remote execution requires the not-yet-implemented bounded runner admission")
+        try:
+            from research.timing_execution import load_trainer_grant
+            timing_admission = load_trainer_grant(args)
+        except (ValueError, KeyError, OSError):
+            parser.error("Timing-study remote execution requires valid bounded runner admission")
     if not 1000 <= args.replay_buffer_size <= 1000000:
         parser.error("Invalid replay buffer budget")
     if args.timing_study and (args.action != "absolute" or args.no_terrain
@@ -165,6 +170,7 @@ def main():
         "torch": torch.__version__, "stable_baselines3": sb3.__version__,
         "reward_contract": reward_config.describe(args.frame_skip),
         "control_timing_contract": timing,
+        "timing_admission": timing_admission,
         "reward_normalization": {"enabled": False, "clipping": "disabled", "units": "raw_task_units"},
         "optimizer_work_contract": {"version": WORK_VERSION,
                                     "units": "Completed optimizer.step calls per named optimizer"},
