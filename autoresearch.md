@@ -42,7 +42,36 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Latest local diagnostic: saved-policy portability gate failed
+## Latest bounded diagnostic: archived-input inference is repeatable
+
+Offline clone7 inference used512archived pre-action normalized217-feature
+float32 inputs (256nominal/256noise8105), eight frozen variants and4096total
+inference presentations. Default one-thread singleton, repetition, threads2/4,
+MKLDNN disabling and deterministic-algorithm mode reproduce local archived
+actions **exactly**. Batch8/512 differ by at most1.3411e-7/2.3842e-7 normalized
+action units (1.7166e-5/3.0518e-5pointer pixels). This demonstrates batch-shape
+numeric sensitivity, not a solution to cross-host portability or lost holds.
+
+The remote study evaluation did **not** record full observations. Comparing
+local-input predictions to remote actions gives up to0.0480786normalized units,
+but those inputs are unverified and may differ through feedback. Do not label
+that number equal-state error, Torch-build causality, or evidence of corruption.
+Weights/timestep and saved RMS bytes are unchanged;0control/reset/training
+ticks, no new paid reservation or remote write.23focused tests pass.
+Private Space source/session/mode/deadline are unchanged and PAUSED at
+1791122563.818163; closed estimate stays$0.4074241866528988. Goal metric0.
+Evidence: `artifacts/imitation_fixed_input_20261004T135949710988Z/verification.json`.
+
+Next frozen step: replay only the recorded full-noise8105 **applied** controls
+from reset1001 on reference/fast, capturing raw/normalized pre-action inputs
+and off-policy predictions. Max2rollouts/3600control+480reset ticks/300seconds,
+0updates/new paid work. Require exact recorded physics/outcomes and backend
+fields; stop on mismatch. No predicted action may feed physics. This is a
+forensic recorded trajectory, not saved-controller competence, held-out skill,
+corrective oracle, or permission to bypass the blocked causal-feedback gate.
+Plan: `artifacts/imitation_fixed_input_20261004T135949710988Z/recorded_action_plan.json`.
+
+## Previous local diagnostic: saved-policy portability gate failed
 
 The frozen clone7/reset1001 prefix/suffix probe ran only its four baseline
 rollouts (nominal/full-noise8105, reference/fast). Recorded local observations,
@@ -114,17 +143,18 @@ No blind BC/PPO scaling, closed-session restart or viewer work.
   is1179648control ticks/11520calls; resets13200/13680 and
   learning4318.47146/4515.74139seconds. BC-only/hybrid supervised wall
   20.19971/20.33349seconds. Not equal total compute, sample presentations or FLOPs.
-- Final model/RMS/clone24companions have bounded immutable metadata, not
-  reloaded or proven portable. Standard structured cases are not IID; the
+- Final model/RMS/clone24companions have bounded immutable metadata. Only
+  selected clone7 has subsequently been reloaded; its noisy held baseline is
+  not portable. Standard structured cases are not IID; the
   goal helper still requires independent held-out, upper-route fidelity and
   replayable saved-policy completion. Seventeen checker/goal tests pass.
   Closure evidence:
   `artifacts/imitation_finish_review_20261004T125810739136Z/complete_review.json`.
-- **Next bounded step:** implement/execute the frozen local noise-prefix/
-  suffix probe, max14400control+1920reset ticks/600seconds/zero training
-  or new paid reservation. Reproduce nominal/full-noise saved baselines and
-  exact backend behavior first; stop on portability/fidelity failure.
-  This closure satisfies its terminal/PAUSED/ledger gate, not its baseline gate.
+- **Next bounded step:** the declared recorded-action replay above, not another
+  blind saved-feedback rollout. Noise-prefix/suffix causal interventions remain
+  blocked by the failed saved-baseline gate. Closure satisfies only the
+  terminal/PAUSED/ledger requirement; never substitute recorded controls for
+  the original saved-controller baseline requirement.
 - **Do not restart this closed session, silently renew its deadline, or scale
   failed arms.** The autonomous operator remains active (Loop22bd00f8 listed
   running after closure), because original summit/robust multiple-seed

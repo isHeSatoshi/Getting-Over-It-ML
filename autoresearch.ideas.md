@@ -16,8 +16,17 @@
   body trace remains exact, but noise8105 separates by>1coordinate pixel at
   tick257 and loses the recorded hold. Early/late interventions were blocked.
   Torch CPU versus CUDA-enabled CPU-inference builds are observed, not a cause.
-  Next: fixed-input saved-policy/normalizer and recorded-action portability
-  diagnosis, then retry only after exact baseline reproduction. Keep the
+  Offline512fixed local inputs now reproduce singleton predictions exactly;
+  repetition,threads2/4,MKLDNN disabling and deterministic mode also exact.
+  Batch8/512 introduce up to1.3411e-7/2.3842e-7 differences. Remote full
+  observations are absent, so cross-host equal-input error remains unknown.
+  Next: frozen2-backend recorded-action physics replay/off-policy inference,
+  max3600control+480reset ticks/300seconds/zero updates or paid reservation.
+  Apply only saved noise8105 controls; record raw/normalized input states.
+  Require exact recorded physics/outcomes, stop on mismatch. This cannot count
+  as saved-controller skill or bypass the causal-feedback baseline gate.
+  Plan: artifacts/imitation_fixed_input_20261004T135949710988Z/recorded_action_plan.json.
+  Then select an actual matched-input host comparison if needed. Keep the
   operator running. Never restart this closed session or silently renew
   budgets. No more disconnected infrastructure or viewer work.
 
