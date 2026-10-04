@@ -95,6 +95,18 @@
 - Use the legal successful first-ledge trajectory as a skill-acquisition
   baseline. Imitation may initialize a reactive controller; open-loop replay
   alone is not learned robustness.
+  Implemented local legal pre-action 217-feature collection and actor-only
+  PPO BC initialization, with provenance/bounded non-pickled persistence.
+  Nine separate training streams produce 5,400 rows, six central expert holds,
+  and 3,576 eligible rows after excluding forced warm-up labels. A remaining
+  exact-state target range ~0.0281 warns that a time-indexed/noisy teacher is
+  not a corrective oracle. Nominal reference/fast collection matches exactly.
+  Eight-update pipeline BC, saved reload and 128-tick policy parity pass, but
+  the smoke remains at spawn; no full learning result is claimed. 187 tests
+  plus JS pass. A conditional scratch/BC/BC+PPO seeds-6/7/8 proposal exists.
+  Next: validate terminal timing evidence/PAUSED, then wire full remote-only
+  clone/fine-tune admission and distinct capped preflight. No viewer polish
+  or more smoke-only scaffolding should replace that substantive experiment.
   A bounded 20-second prerequisite now tests raw/float32 controls and all nine
   existing physical-time warm-up/noise streams: 11 reference/fast cases have
   zero measured per-tick error; 8/9 perturbed experts pass both frozen ledge
@@ -132,6 +144,10 @@
   the new source-pinned pilot.
 - Extend golden contact traces to learned upper-route sections before claiming
   full-game fast-backend fidelity.
+  Fine timing seed 5 now has a contract-validated nominal central hold and
+  totals 2/9 central, 5/9 secondary, median retained 82. It stalls on the ledge,
+  with no full completion. Fine seeds 3/4 still have zero central holds, so
+  this is promising seed-specific skill rather than robust promotion.
 - Add independent held-out final verification and a saved-policy replay package.
 - Test whether current CPU Upgrade concurrency can improve useful throughput
   before spending on CPU XL. Never resize during an active batch.

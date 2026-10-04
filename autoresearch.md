@@ -344,6 +344,109 @@ states for conflicting time-indexed targets, then separately predeclare an
 imitation-plus-recovery/RL comparison. No such training, new reservation,
 deployment, source change or paid batch is launched by this diagnostic.
 
+### Demonstration-assisted learning foundation implemented locally
+
+The user explicitly requested implementation after the literature review.
+`research.demonstrations` now collects **pre-action** raw 217-feature
+observations and actual legal float32 targets from ordinary spawn. It uses
+training reset 6001/noise streams 9100..9105, separate from standard evaluation
+1001/8100..8105. The same original physics, reward/history observations,
+one-tick absolute interface and both frozen metrics are preserved.
+Bounded NPZ/JSON persistence verifies hashes, shapes, finite/legal values,
+non-pickled data, game/environment provenance and physical eligibility.
+Failed expert trajectories stay in the data with false training eligibility.
+
+Nine 600-tick expert collection cases produce **5,400 physical rows**; six
+pass the frozen central detector. **3,576 rows** are BC-eligible after removing
+forced 12-tick left/right warm-up labels. Teaching opposing externally imposed
+warm-ups at the same spawn caused an exact-state target conflict of about
+1.0035; those intervention labels are not policy targets. After exclusion, one
+exact-state conflict remains with target range about 0.0281, attributable to
+the varied demonstrated actions. Near-state ambiguity and off-trajectory
+corrective expertise remain untested. Do not call this time-indexed teacher
+a DAgger oracle.
+
+A first nominal reference comparison passes observation/action equality but
+fails direct metadata equality because Python tuples become JSON lists.
+Descriptors are now canonically serialized, and a new corpus is collected
+without overwriting the first artifacts. The corrected **600-tick nominal
+reference/fast raw pre-action observations, actions and outcome info match
+exactly**. This does not verify all training streams or an upper route.
+Corpus: `artifacts/demonstrations_20261004T072714652488Z/`.
+Parity: `artifacts/demo_collection_parity_20261004T073039320276Z/`.
+
+`research.behavior_cloning` implements actor-only PPO initialization using a
+separate optimizer. It fits observation RMS on eligible demo data, freezes it,
+and leaves value parameters, action log-std, fresh PPO optimizer state and RL
+transition counts unchanged. Full cloning is deliberately **not admitted**
+through this local smoke CLI. An eight-update/64-sample pipeline smoke lowers
+supervised mean-square action error **0.255668 -> 0.145106**, but its short
+nominal reference trajectory remains at spawn, with no hold/full completion.
+This is working initialization machinery, not acquired climbing skill.
+
+Saved model weights and frozen normalizer statistics match a repeated seeded
+warm start exactly. A saved-model 128-tick reference/fast closed-loop check
+has zero measured action/observation/reward/telemetry error and no success.
+Smoke: `artifacts/cloning_smoke_20261004T073212387553Z/`.
+Verification: `artifacts/cloning_pipeline_verification_20261004T073750651481Z/`.
+All **187 Python tests plus JS collision tests pass**, including refusal to
+silently extend a cloning smoke by repeatedly warming the same learner.
+
+`research.imitation_study` records a **non-executing proposal** for fresh
+seeds 6/7/8: scratch PPO, BC-only and BC-then-PPO, with common frozen demo RMS,
+unchanged observations/reward/actions, central/secondary reference cases and
+separate BC/RL sample and optimizer work. It is not equal total compute.
+Plan: `artifacts/imitation_study_20261004T074252246079Z/plan.json`.
+No new reservation, paid training, source upload, worker/queue change or
+deployment occurred. The full clone/recovery/RL trainer, complete-study
+checker and bounded worker admission still need integration and tests; the
+current full-cloning guard must stay until those exist. Next bounded priority:
+finish timing closure, then implement that admission and a genuine remote
+first-skill comparison, not another viewer feature or unrestricted desktop
+training. Preserve the $10 ceiling and require a fresh preflight/session/cap.
+
+### Promising fine-control seed 5 and requested visible replay
+
+Pinned dataset `0c07c5cbce7ae847715b815c044e668df363eff5` independently passes
+the complete repeat-1 seed-5 manifest/training/reference contract. Its final
+nine cases have **2/9 central and 5/9 secondary holds**, median retained gain
+**82**, zero full completions and zero evaluation deaths. Nominal ends at
+`(320.52873,104)`, retaining 83 and passing both hold metrics; hammer-left
+also passes central at approximately `(333.28,103)`. This is the first
+validated nominal learned hold in this timing study, but not robust all-seed
+or full-game competence. Fine central counts across seeds 3/4/5 are 0/0/2,
+secondary 1/0/5, so this configuration still lacks all-seed retention.
+
+Training reports 393,216 controlled ticks, 4,440 reset ticks/37 resets,
+zero short decisions, 3,840 actual policy calls and 1,450.23 learning seconds.
+Final binary companions have immutable nonzero metadata; they were not
+downloaded/reloaded. The full coarse cohort/terminal pause is not reviewed
+in this implementation chunk. The latest actual-variable check at 07:19 UTC
+had unchanged source/context/session/deadline, RUNNING, one never-sleep CPU
+Upgrade replica. Read actual status again next invocation, not this historical
+phase, before acting.
+Evidence: `artifacts/visible_learned_run_20261004T072937674870Z/run_review.json`.
+
+The user asked to watch the most promising run. `research.visible_replay`
+checks all nine run contracts plus actual game/critical-source hashes, then
+plays recorded nominal targets through the original renderer, with per-tick
+body-position checks. It is labelled **recorded actions, not live training,
+local inference or full completion**, runs near 30 Hz, pauses at the final
+pose and repeats for at most 30 minutes.
+
+Detached-process viewer attempts fail first from a Git dependency and then
+ChromeDriver initialization; the native detached window does not persist
+across command cleanup here. The browser-owned implementation uses Factory's
+persistent Chrome Browser pane instead, not a saved user browser profile.
+It is observed progressing through tick 587 without recorded-position error;
+the user subsequently confirms seeing it sit on the ledge. Some later pane
+inspection calls return an about:blank evaluation context despite the tab
+listing the game. Do not claim that proves a replay failure or keep navigating
+the user's requested view. They have been told that the policy stalls on this
+ledge and cannot improve while replaying. Do not spend more research time on
+viewer polish, do not portray this hold as the summit, and do not cancel the
+operator merely because a run/study finishes.
+
 ### Completed historical pilot, immutable evidence
 
 - Private Space: `isHeSatoshi/rl-over-it-poc-20261004`.
