@@ -42,7 +42,7 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current remote state: imitation study RUNNING, hybrid prefix and same-reset pair audited
+## Current remote state: imitation study RUNNING, complete seeds6/7 validated
 
 - Fresh session **`imitation-20261004-v1`**, mode **`imitation_study`**.
 - Private source **`95a8e311664789bcf1be5c609dce148e1f300f93`**,
@@ -280,7 +280,7 @@ verified from standard campaign aggregation alone.
   `artifacts/imitation_seed7_results_20261004T111807286622Z/review.json`
   and `held_window.json`. All remote actions were reads; no new local
   training/rollouts or running-batch changes.
-- Latest **`490e7e803d6ecad7ada8c6b5c8fb320a6015b861`** has no new
+- Earlier hybrid prefix **`490e7e803d6ecad7ada8c6b5c8fb320a6015b861`** has no new
   final result: five validated runs unchanged, four incomplete. Actual
   RUNNING phase **`behavior_cloning_then_ppo_seed_7`**, no reported error;
   source/context/data/runtime/deadline/cap unchanged. Hybrid prefix
@@ -309,6 +309,39 @@ verified from standard campaign aggregation alone.
   assertions pass; **zero new rollouts/updates**, no binary reload or HF
   writes. Evidence:
   `artifacts/imitation_pair_review_20261004T113802850890Z/pair_diagnostic.json`.
+- Latest **`7edf76f63f4a67a236145b9cf5e0e8b183688972`** validates
+  **six completed runs/three incomplete**, all arms for seeds6/7.
+  Actual RUNNING phase **`ppo_from_scratch_seed_8`**, no error; exact
+  source/data/context/runtime/deadline/cap remain unchanged.
+- Seed7 hybrid final: **0/9 central/secondary holds, 0/9 full completions,
+  zero deaths**, median retained **6** (scratch10.9245, BC7.5115).
+  Nominal **`(134.8168496,23)`**, retained **2**. Complete work:
+  393216control +4320reset ticks,36resets,3840policy calls,
+  1634.03892learning seconds, plus2000BCcalls/512000presentations.
+- **Matched-stage comparability passes for both complete seeds:** all
+  initial reference traces agree within seed; BC-only and hybrid post-clone
+  reference traces match exactly. Seed7's noisycase8105 hold is present
+  before PPO, then absent afterward: retained81.66391 ->3.52790, final
+  **`(211.4653104,24.5278985)`**. This is observed paired skill loss,
+  **not a diagnosed cause or a universal claim that PPO harms cloning**.
+  Seed6 hybrid median rose9->24 whereas seed7 fell7.5115->6; no robust
+  benefit or stable timing/control conclusion follows.
+- Six completed final inventories: **one central/secondary held case,
+  0/54 full completions, zero deaths**, all nominal held gates false.
+  No declared three-seed cohort, first-skill candidate or final goal.
+- Complete seeds6/7 totals: **1572864 training control +17280 reset
+  ticks**,15360PPOcalls,8000BCcalls/2048000BCpresentations. Distinct
+  reference work126case rollouts,226800control +30240reset ticks,
+  excluding duplicate BC final/post-clone JSON.
+- Full source/data/dependencies/physical-time/stage/work checker and
+  projected goal helper pass; sixteen binary companion identities validate
+  immutable bounded metadata only, no reload/portability claim.
+  Seventeen checker/goal tests pass. Evidence:
+  `artifacts/imitation_two_seed_review_20261004T115807788438Z/review.json`.
+  All HF operations were reads, no new local training or running-batch changes.
+- Complete frozen seed8 and verify automatic PAUSED before closure.
+  Investigate first-divergence/recovery and preservation of primitive skills
+  in a separately bounded follow-up, not blind scaling or new active settings.
 - **No robust cloning advantage, skill or full completion is claimed.** Keep
   this active image/variables/hardware/queue unchanged. Next: independently
   review actual training exposure and the nine

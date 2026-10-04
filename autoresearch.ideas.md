@@ -8,16 +8,13 @@
   `95a8e311664789bcf1be5c609dce148e1f300f93`, new study context
   `ae958180b348432f236c6c1e72f832a723164199`. Same $0.48 cap and
   2026-10-05 01:08:43 UTC deadline; closed-plus-reserved $0.772696 under $10.
-  Latest `44d2c66f7287e8cc31cdfcfa92af8103eb662db9` validates five finals:
-  seed6 all0/27; seed7 scratch0/9, clone1/9central/secondary, all0/45summits,
-  no final deaths. Seed7 medians scratch10.9245/BC7.5115; BC nominal fails.
-  Single noisycase8105 hold at `(334.48,102.66)` independently reconstructs
-  90ticks,90body hits,maxspeed0.8281. This is genuine measured first-ledge
-  contact, not robust skill or method superiority. Seed7 hybrid is active;
-  four final runs remain incomplete.
-  Seed6 all initial/post-clone traces agree; seed7 scratch/BC initial traces
-  agree, hybrid post-clone comparison pending. ZIP differences are not
-  behavior differences.
+  Latest `7edf76f63f4a67a236145b9cf5e0e8b183688972` validates six finals,
+  all arms seeds6/7: one central/secondary held case,0/54summits/no deaths,
+  all nominal gates false. Seed7 medians scratch/BC/hybrid10.9245/7.5115/6.
+  The clone's noisy8105 held case is present in matched hybrid post-clone
+  traces but absent after PPO, retained81.66->3.53. This is measured paired
+  loss, not a proven cause or general PPO-effect claim. All initial/post-clone
+  traces agree within both seeds. Seed8 scratch is active; three finals remain.
   Next: finish the unchanged scratch/BC-only/BC+PPO comparison, seeds6/7/8,
   before choosing a recovery/corrective demonstration follow-up. No robust
   cloning advantage or promotion from these partial and brittle outcomes.
@@ -34,6 +31,13 @@
   hammer-query hits despite strongly varying legal actions. These are
   hypotheses, not proven causes; do not alter current observations,
   normalization, reward, evaluation or queues while the study runs.
+
+- **Primitive-skill preservation is also a follow-up axis:** seed7 PPO removes
+  the one cloned noisy-case hold; seed6 median improves but no held gate passes.
+  After closure, diagnose controlled alignment/recovery and on-policy noise/
+  actor drift before considering demonstration-retention losses or changing
+  exploration. Do not call this a general catastrophic-forgetting result or
+  alter the current PPO/BC budgets and contracts.
 
 - **Offline drift evidence, not a cause:** seed6 clone nominal differs from
   legal teacher by about2.006px on the first pointer target; body paths separate
