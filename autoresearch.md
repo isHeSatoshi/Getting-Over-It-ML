@@ -82,10 +82,11 @@ blind sample/hardware scaling. Timing-aware trainer/GAE/horizon and actual
 training/reset tick accounting now pass local tests and bounded smokes.
 Secondary-detector integration and bounded local timing-specific reactive
 fidelity now pass. A distinct non-executing run contract/aggregator now passes
-local tests. Next implement the bounded executor and worker/new-session budget/
-preflight admission, then fresh remote tests/fidelity/preflight and verified
-PAUSED before any intentional study launch. Remote timing-study execution is
-still deliberately blocked in the CLI.
+local tests. A remote-only sequential executor/admission foundation now passes
+local tests but is not wired into the worker or trainer. Next integrate/test
+those launch paths and fresh-session budget/preflight context, then run fresh
+remote preflight and verify PAUSED before any intentional study launch.
+Remote timing-study execution is still deliberately blocked in the CLI.
 
 Never modify, upload, restart, or resize an active future image. The replacement
 includes complete-prefix snapshots for append-only logs/CSV/JSONL; binary
@@ -724,3 +725,53 @@ and source/preflight evidence, secret-stripped children, final-flush/auto-pause
 and interruption refusal. Do not remove the trainer's remote-study refusal
 until that admission is complete and tested. Then reserve/preflight a new
 private CPU Upgrade snapshot; never relaunch or extend completed v2.
+
+### Remote-only execution/admission foundation tested locally
+
+`research.timing_execution` now provides a sequential six-run executor API
+and strict admission validation. It is **not wired into `space_worker` or the
+trainer CLI**, has no command-line execution entrypoint, and was not invoked
+against a real learner. The trainer still refuses remote timing-study runs.
+This is a tested foundation, not a claim that live deployment admission is
+complete. No new reservation, upload, variable change or restart occurred.
+
+Admission binds a distinct `timing-*` session to the owned Space/artifact repo,
+declared contract, independently verified pre-launch PAUSED assertion, one
+never-sleep CPU Upgrade replica, and all eight declared preflight checks on
+the admitted source/game snapshot. It requires one active, unclosed reservation
+with the same immutable Space revision/start/deadline, at most 16 hours, and
+the $10 cumulative ceiling counting other elapsed/reserved charges. Source,
+failed/incomplete preflight, expired/changed budget or another paid session
+is refused. The parent must gather/verify that context from actual HF/runtime
+and ledger evidence; this pure validator does not authenticate arbitrary JSON.
+
+Execution requires isolated Linux, effective CPU/RAM/disk capacity and matching
+prepared source/assets. It creates an exclusive execution claim before any
+learner; an existing claim/run directory blocks all silent resume/reruns.
+Only the declared paired seed order is scheduled, with per-run deadline and
+complete artifact validation, and no new run after failure. Parent credential
+variables are removed from child environments. Only its newly owned process
+group may be terminated. Learners stop with a **60-second finalization reserve**
+before the paid deadline; worker integration still must bound final upload/
+pause and persist interruption evidence before dispatch.
+
+All **157 Python tests plus JS checks** pass, including 11 new admission,
+sequential scheduling, credential, deadline and interruption fixtures.
+The first test attempt had three Windows fixture errors caused by globally
+mocking `os.name` and assuming POSIX process-group attributes. A scoped host
+predicate and mocked POSIX signals fix the fixtures without weakening the
+real Linux-only guard. No real processes or provider state were affected.
+
+A non-executing check against the actual closed ledger rejects completed
+`poc-20261004-v2` as nonfresh and an unreserved diagnostic `timing-*` session
+as lacking a reservation. Evidence:
+`artifacts/timing_execution_checks_20261004T040407335016Z/verification.json`.
+The actual Space remains PAUSED on its original source; its deadline and ledger
+were not edited.
+
+Next bounded priority: wire/test the worker's fresh timing preflight and study
+modes, persisted source/ledger/context transport and initial/terminal durable
+status, and the trainer's narrowly scoped admission check. Keep the existing
+pilot path and completed artifact prefixes immutable. Only after integration
+passes locally should a new capped CPU Upgrade reservation/private snapshot be
+preflighted, reviewed while PAUSED and intentionally launched.

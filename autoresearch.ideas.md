@@ -20,8 +20,13 @@
   Distinct non-executing timing run contract/aggregator now passes 146 tests
   and real smoke case checks; six runs are prepared, none launched. It refuses
   smoke/source/settings/work/case drift and never verifies the final goal.
-  Remote-only executor, worker/new-session budget/admission and fresh remote
-  preflight remain required. No future job is launched.
+  Remote-only executor/admission foundation now passes 157 tests with six-run
+  sequential scheduling, immutable session/source/preflight/deadline binding,
+  ceiling/credential/interruption guards and a 60-second cleanup reserve.
+  It is not wired into the worker/trainer and has not launched real jobs.
+  Worker/preflight/context transport and narrowly scoped trainer admission
+  integration remain required before reservation/deployment. No future job
+  is launched.
 - Retain v1's narrow central-landing target, but calibrate and predeclare a
   separate actual-platform-support metric for the next study. Four-tick phases
   1/2 of the known legal trajectory already hold the platform at X about 290;
