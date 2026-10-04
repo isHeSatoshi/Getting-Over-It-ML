@@ -1,5 +1,24 @@
 # Deferred hypotheses
 
+- **Next learning comparison, stop adding diagnostics:** offline successful
+  learner-state audit now complete. 1800 rows versus 3576 eligible demos, only 1 exact
+  input match; normalized nearest medians 7.6021 versus original leave-one-out
+  0.26765. Not an OOD threshold or causal diagnosis. One shared-input action
+  ambiguity widens from 0.02806386 to 0.03898251; 39 learner rows are clip-bound.
+  Existing validated replay raw inputs normalize exactly to all 1800 successful
+  feedback inputs and its applied labels match exactly. No inversion, new
+  recording or transport is needed. Next implement safe admitted data derivation
+  and matched fresh three-seed actor-only BC comparison, original data versus
+  original plus logged successful learner-state labels, fixed old RMS and equal
+  update/sample budget. Predeclare mixture/ambiguity handling and fresh legal
+  reference perturbations; 8105 cannot be independent validation after training
+  selection. Retain strict physical skill/summit/held-out gates. No new PPO,
+  kernel tuning or funding/session renewal. 0 current new physics/training,
+  Space PAUSED and closed estimated $0.417924187 unchanged.
+  Evidence: artifacts/learner_coverage_audit_20261004T163822133756Z/.
+  User-facing reports must explain player behavior and the learning decision
+  first, not machinery. This audit is not a controller improvement.
+
 - **Closed imitation baseline for the current diagnostic:** complete/validated at
   c40574bb709f64fba893d3b44bc6f302306a51ad. All nine full contracts and all
   matched initial/post-clone traces pass. Central counts scratch0/0/2,

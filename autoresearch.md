@@ -42,7 +42,65 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current result: full perturbation holds; either isolated segment fails
+## Current result: useful new state coverage, not improved climbing
+
+The offline audit compares 1800 successful full-noise learner inputs against
+3576 eligible original demonstration inputs under the exact same frozen RMS.
+Only 1 learner input is bitwise identical to an original input. Median nearest
+distance is 7.6021 in Euclidean normalized-policy-input units, versus 0.26765 for
+original demonstration leave-one-out neighbors. Base/history-only and
+terrain-only medians are 3.9915 and 4.5977. These are descriptive distances,
+not calibrated out-of-distribution tests or proof of the failure's cause.
+The successful run offers candidate data at different states, not evidence
+that it supplies corrective expertise or will generalize.
+
+The shared starting input increases its logged action range from 0.02806386
+to 0.03898251 (normalized control units, about 4.9898 pointer pixels). There is
+still 1 exact-input conflicting group in the merged 5376 rows / 5372 groups;
+all 1800 learner inputs are unique. Different noisy applied labels at an
+identical input are ambiguous targets, not proof that no legal action works.
+Do not silently replace targets or describe the selected noisy run as an oracle.
+
+39 learner rows contain 43 clip-bound feature elements (limit 10); 66 original rows
+also touch a clip bound. Never invert clipped inputs to fabricate raw data.
+A separate exact offline linkage finds the previously captured 1800 raw replay
+inputs, normalized inputs and actually applied controls all match the successful
+feedback probe exactly. Those raw inputs were captured during the prior
+validated legal recorded-action replay, not recovered by inversion. Thus
+no new replay/transport work is needed to obtain candidate raw samples.
+Their dataset admission and new learning contract are still unimplemented.
+
+Next controlled learning test: fresh matched actor-only BC arms using original
+demonstrations versus original plus these actual logged learner-state controls.
+Keep the original frozen RMS, architecture, initialization per seed and total
+optimizer/sample budgets identical; predeclare mixture weights, handle label
+ambiguity visibly and avoid additional PPO until this data hypothesis is tested.
+Use three fresh training seeds and newly frozen reference perturbations.
+Noise 8105 is now development/training-selected evidence and cannot be independent
+validation for this candidate. Repeating that run is an overfit diagnostic,
+not the success criterion. The unchanged first-skill and summit conditions
+remain physical gates; final held-out full-climb verification remains necessary.
+
+Current work: 0 new game/reset ticks and 0 updates, no paid reservation/HF write.
+Live monitor rechecks PAUSED/noise_probe_complete, same terminal `12c5b0fa`.
+All six batches stay closed at estimated $0.4179241866528988, not a provider bill.
+25 repository unittest data/cloning/study/goal safeguards pass; a first pytest
+invocation could not run because pytest is not installed. No package installed.
+Bounded audit executed successfully and 24 nearest distances independently checked.
+Goal metric remains 0; no improved saved controller has been produced.
+Evidence: `artifacts/learner_coverage_audit_20261004T163822133756Z/audit.json`
+and `raw_link.json`. No new training/session/source deployment launched.
+
+### Communication contract
+
+The user reports feeling left out and confused by machinery-heavy updates.
+Future updates must lead with: what the player can do, what failed, what this
+step actually changed, and the next learning comparison. Separate diagnostic
+progress from skill progress. Say explicitly when no training is running or
+when another check cannot itself improve control. Do not lead with hashes,
+commit IDs, test counts or deployment plumbing. Keep research autonomous.
+
+## Previous result: full perturbation holds; either isolated segment fails
 
 `noise-probe-20261004-v1` completed all8legal feedback rollouts and auto-paused.
 Original nominal/full-noise saved-action/body/outcome baselines reproduce
