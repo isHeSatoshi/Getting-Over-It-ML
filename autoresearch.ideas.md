@@ -10,7 +10,8 @@
   Worker complete12:57:06UTC; PAUSED independently1791118690.7391362.
   Its reservation closed at estimated$0.114728001,cumulative then$0.407424187.
   Later inference closure brings current cumulative$0.408424187 under$10,
-  not bills/credit balance. No active reservation or new paid batch.
+  not bills/credit balance. Current fresh noise-probe reservation adds at most
+  $0.01, combined closed-plus-reserved estimate$0.418424187 under$10.
   Frozen local probe now ran four baselines,7200control+960reset ticks,0updates.
   Local fast/reference recorded fields agree exactly; both first predictions
   differ from remote by5.960464477539063e-8. Saved bytes/RMS match. Nominal
@@ -57,10 +58,15 @@
   before interventions, max8cases/14400control+1920reset ticks/600seconds/0updates,
   owned headless only, claim/source/deadline/no-resume/backup/pause gates remain.
   Declaration: artifacts/linux_noise_transport_20261004T153843356715Z/transport_declaration.json.
-  Next: pricing/PAUSED ownership checks, unique fresh physics-only reservation,
-  publish tested bundle and exact original plan/model/RMS/remote baseline JSON/
-  explicit amendment/context, then launch only noise_control_probe. Never
-  restart completed inference, bypass baseline failure or kernel-tune Windows.
+  Fresh noise-probe-20261004-v1 now admitted/launched, source7be7d58d,
+  context ef63e649/input c29033b9, fixed deadline1791130828.5921772/
+  2026-10-04 16:20:28UTC,<=20min/<=0.01USD. First pinned snapshot258c7a3f shows
+  RUNNING/noise_probe_claimed,no error/no report; no physical effects inferred.
+  Next: later pinned result review of baseline fidelity, held/retained physical
+  outcomes and early/late contrast; preserve active source/configuration/budget.
+  Require durable terminal artifacts and independent PAUSED, then close cost.
+  Never restart completed inference or partial probe, bypass failed baselines,
+  extend deadline, kernel-tune Windows or scale blind failure.
   Plan: artifacts/imitation_recorded_action_v2_20261004T143756537682Z/matched_host_plan.json.
   After isolation prioritize robust reactive recovery, not kernel thrashing.
   Keep the

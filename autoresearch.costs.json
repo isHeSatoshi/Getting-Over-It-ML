@@ -173,6 +173,31 @@
       "conservative_billable_minutes": 2,
       "end_artifact_revision": "498527aa104591beda94b2cf3bac69c1fbf2d9f7",
       "end_evidence": "D:\\Project\\cat\\artifacts\\inference_deployment_20261004T152045604879Z\\complete_review.json"
+    },
+    {
+      "session": "noise-probe-20261004-v1",
+      "space": "isHeSatoshi/rl-over-it-poc-20261004",
+      "tier": "cpu-upgrade",
+      "rate_per_hour": 0.03,
+      "pricing_last_verified": "2026-10-04",
+      "pricing_evidence_url": "https://huggingface.co/docs/hub/en/spaces-gpus",
+      "start_epoch": 1791129628.5921772,
+      "deadline_epoch": 1791130828.5921772,
+      "verified_end_epoch": null,
+      "maximum_estimated_compute_cost": 0.01,
+      "actual_billed_cost_known": false,
+      "status": "reserved_noise_probe",
+      "source_space_revision": "7be7d58de881f1b9e4c69c87958e1818d4693d8b",
+      "study": "linux-noise-probe-transport-v1",
+      "sleep_policy": "paid_default_never",
+      "training_started": false,
+      "physics_probe_started": false,
+      "reservation_evidence": "D:\\Project\\cat\\artifacts\\noise_probe_deployment_20261004T155845805666Z\\reservation.json",
+      "source_bundle": "D:\\Project\\cat\\artifacts\\hf_bundle_20261004T154829964910Z",
+      "context_dataset_revision": "ef63e649fdd60ef045a01b98519c5b064e2fa420",
+      "input_dataset_revision": "c29033b9937ef9d3e074d3c2d2f28d2adaefd303",
+      "launch_requested_epoch": 1791129649.1917527,
+      "launch_requested": true
     }
   ],
   "postclosure_local_diagnostics": [

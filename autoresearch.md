@@ -42,7 +42,41 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Latest implementation: Linux control probe ready, no new execution
+## Current experiment: four-condition Linux control diagnostic launched
+
+Fresh session `noise-probe-20261004-v1`, mode `noise_control_probe`, is admitted
+and intentionally restarted on the owned private CPU Upgrade/never-sleep/
+one-replica Space. The player experiment compares nominal, fullnoise8105,
+first60ticks-only noise and noise after tick60. It asks whether the selected
+successful held trajectory depends on early alignment or continuing correction.
+It is exploratory, not new training, held-out skill or full-climb promotion.
+Exact nominal/full-noise saved-feedback baselines must pass before interventions.
+
+Source `7be7d58de881f1b9e4c69c87958e1818d4693d8b`, context
+`ef63e649fdd60ef045a01b98519c5b064e2fa420`, inputs
+`c29033b9937ef9d3e074d3c2d2f28d2adaefd303`. Tested434file bundle and the original
+scientific plan/model/RMS/baselines plus explicit transport amendment were
+published while independently PAUSED. No closed session resumed.
+Immutable start1791129628.5921772/deadline1791130828.5921772,
+**2026-10-04 16:20:28UTC**, <=20minutes including startup and **$0.01** reserved.
+Official CPU Upgrade price$0.03/hour reverified2026-10-04. Closed estimates
+$0.40842418665 plus reservation=$0.41842418665 under$10; estimate, not bill/credits.
+
+One pinned startup snapshot at1791129705.3538482, dataset
+`258c7a3f8ba7e7e5a5b557e9a75395cd88488aaf`, shows actual **RUNNING** with durable
+`noise_probe_claimed`, no error. No report yet; do not infer actual game work,
+baseline reproduction, held outcomes or intervention effects from its claim.
+Eighteen control/admission/goal guard tests pass. Active image/variables/
+session/context/deadline remain unchanged after launch.
+Evidence: `artifacts/noise_probe_deployment_20261004T155845805666Z/startup_verification.json`.
+Next bounded review: pin a later dataset revision and examine actual legal
+actions/control-reset work, exact baseline/backend gates, held events,
+retained endpoints/deaths/summits and early/late contrast. At terminal/failure/
+deadline verify durable artifacts and independent PAUSED, close reservation;
+never silently resume, extend deadline, change running deployment or promote
+post-hoc selected cases as robust learned control.
+
+## Previous implementation: Linux control probe ready, no execution then
 
 Fresh mode `noise_control_probe`/session prefix `noise-probe-*` now reuses the
 original `tools/imitation_noise_probe.py` core through an owned Linux wrapper.
@@ -76,7 +110,7 @@ launch only its new mode. Require genuine nominal/full-noise saved-feedback
 reproduction before early/late interventions. Stop on mismatch, do not skip
 gates or continue a partial case. No blind scale, kernel tuning or goal promotion.
 
-## Actual remote state: matched-host inference complete, validated and PAUSED
+## Closed previous matched-host inference: validated and PAUSED before this probe
 
 Fresh `inference-20261004-v1` completed its3600inference presentations,
 0game/reset/training ticks, and auto-paused before the first startup snapshot.
