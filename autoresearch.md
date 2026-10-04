@@ -42,7 +42,7 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current remote state: imitation study RUNNING, durable no-resume claim verified
+## Current remote state: imitation study RUNNING, seed-6 scratch training audited
 
 - Fresh session **`imitation-20261004-v1`**, mode **`imitation_study`**.
 - Private source **`95a8e311664789bcf1be5c609dce148e1f300f93`**,
@@ -91,6 +91,34 @@ verified from standard campaign aggregation alone.
   Corrected review uses the **same immutable startup revision**, no new
   monitor/poll or deployment change. This was not a worker failure.
 - Eight goal tests and six imitation-execution guard tests pass locally.
+- Latest bounded audit pins dataset
+  **`baa7233e4b149fdddd3ec982bb7fa659f4edd8d9`** at
+  `1791106840.1407928`. Actual Space/source/session/mode/context/deadline
+  and one never-sleep CPU Upgrade replica are unchanged; phase
+  **`ppo_from_scratch_seed_6`**, no reported error.
+- The exact full-budget scratch manifest, parent grant/claim hash,
+  prepared contract, corpus/RMS declaration, raw reward and physical counters
+  validate. **116400/393216 controlled ticks**, **1320 reset-settling
+  ticks** (11 resets), **117720 total counted ticks**. All 291 complete
+  400-tick sampled rows pass accounting and reward/outcome checks.
+- Two model/normalizer checkpoint pairs at **40000/80000** transitions have
+  bounded nonzero metadata at that same revision. No checkpoint binary reload,
+  portability or exact completed optimizer-call count is inferred.
+- Training detector flags are latched central-held in 56 sampled rows and
+  secondary-held in 83. These are **not independent successes, final policy
+  evaluation or episode counts**. The last sampled pose is
+  `(788.55567,-9.12384)`, retained gain **-30.12384**, both holds false.
+  Zero summit/death flags occur in sampled rows; sparse sampling cannot count
+  all terminal events or prove a continuous trajectory.
+- 132 sampled raw Gaussian policy draws exceed the unit box. Bound SB3/env
+  source clips them to legal controls; the trace's `action` is the raw draw,
+  not an illegal applied pointer input. Never replay these sparse samples as
+  if they were every-tick applied actions.
+- Imitation checker reports **zero completed runs**, all nine incomplete;
+  `tools.research_goal_metrics` reports no candidate/final goal. Seventeen
+  imitation-checker/goal tests pass locally. Evidence:
+  `artifacts/imitation_progress_review_20261004T093741216495Z/audit.json`.
+  All HF operations in this chunk were reads; no running-batch changes.
 - **No learning effectiveness or full completion result is claimed.** Keep
   this active image/variables/hardware/queue unchanged. Next: independently
   review actual training exposure and the nine

@@ -8,10 +8,13 @@
   `95a8e311664789bcf1be5c609dce148e1f300f93`, new study context
   `ae958180b348432f236c6c1e72f832a723164199`. Same $0.48 cap and
   2026-10-05 01:08:43 UTC deadline; closed-plus-reserved $0.772696 under $10.
-  RUNNING/`imitation_dispatch` and durable no-resume claim validate at pinned
-  startup `8b3acc244d88f174e7fddb5ec84eebb94ae896fa`; no learner work or
-  completed result was present yet. Next: review actual training exposure and
-  nine-run scratch/BC-only/BC+PPO outcomes, seeds6/7/8. No effectiveness result yet.
+  Latest audit `baa7233e4b149fdddd3ec982bb7fa659f4edd8d9` verifies actual
+  scratch seed6 training: 116400 control +1320 reset ticks, 291 complete
+  sampled rows, two checkpoint pairs. Central/secondary training flags appear,
+  but last retained gain is -30.12384 and no final run is complete. These
+  sparse latched training flags do not establish robustness or terminal counts.
+  Next: review final reference scratch/BC-only/BC+PPO outcomes, seeds6/7/8,
+  not reward/peaks or early on-policy flags. No effectiveness result yet.
   Do not change active source/variables/hardware/queue, poll, resume
   interruptions or extend this budget. No more disconnected infrastructure
   or viewer work. Historical bullets below do not authorize old restarts.
