@@ -42,7 +42,7 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current remote state: imitation study RUNNING, seed-7 prefix and offline clone drift audited
+## Current remote state: imitation study RUNNING, seed-7 scratch/clone results validated
 
 - Fresh session **`imitation-20261004-v1`**, mode **`imitation_study`**.
 - Private source **`95a8e311664789bcf1be5c609dce148e1f300f93`**,
@@ -215,7 +215,7 @@ verified from standard campaign aggregation alone.
 - All seed6 arms fail the first-skill gate. Finish frozen seeds7/8 before
   comparison/closure, then select a bounded first-divergence/reactive
   corrective-control diagnostic rather than blind scaling or a relaxed gate.
-- Latest bounded snapshot **`8393e54e26fda29106f20add394f17ba76609ce7`**
+- Earlier prefix snapshot **`8393e54e26fda29106f20add394f17ba76609ce7`**
   has **no new final result**: three validated seed6 runs unchanged.
   Actual RUNNING phase **`ppo_from_scratch_seed_7`**, no reported error;
   source/mode/context/data/deadline/hardware/replicas/reservation unchanged.
@@ -248,6 +248,38 @@ verified from standard campaign aggregation alone.
   closure, a controlled **same-reset legal expert-prefix/clone-continuation**
   diagnostic can test whether early alignment/recovery matters, before
   designing new corrective data or spending on more optimizer steps.
+- Latest **`44d2c66f7287e8cc31cdfcfa92af8103eb662db9`** validates **five
+  full runs/four incomplete**, including seed7 scratch and clone-only.
+  Actual RUNNING phase **`behavior_cloning_then_ppo_seed_7`**, no error;
+  all source/data/context/runtime/deadline/cap settings are unchanged.
+- Seed7 scratch final: **0/9 central/secondary holds, 0/9 full completions,
+  zero deaths**, median retained **10.924516**; nominal
+  **`(223.5328626,28.8316762)`**, retained **7.831676**. Work393216control
+  +4560reset ticks,38resets,3840policy calls,1499.03449learning seconds.
+- Seed7 clone-only: **1/9 central/secondary holds, 0/9 full completions,
+  zero deaths**, median retained **7.511521**, nominal **false** at
+  **`(62.2241726,21.5291058)`**, retained **0.529106**. Cloning2000calls/
+  512000presentations, MSE0.25613758->0.0001062434,6.70341seconds;
+  zero RL control/reset/PPO work. Lower median than scratch is not a method
+  conclusion; the one hold remains far below the declared8/9+nominal gate.
+- Held case is **`action_noise_5`**, fixed noise8105/std0.02, final
+  **`(334.4829333,102.6639127)`**, retained **81.663913**.
+  First hold at **52.833333seconds/tick1585**. Independently recomputed
+  both frozen detectors from every-tick body positions, displacement
+  velocities (as in bound runtime), outcomes and body-query hits.
+  The90-tick window is X334.15169..334.48293,Y102.52794..103;
+  **90/90 body-query hits**, max speed **0.828092px/tick**. This validates
+  the held event, not support forces, portability, robust learning or summit.
+- Seed7 matched untrained reference traces agree; hybrid post-clone equality
+  awaits its final trace package. BC final/post-clone alias is not another
+  independent evaluation. All five completed final inventories total
+  **one central/secondary held case, 0/45 full completions, zero deaths**.
+  No complete three-seed cohort or goal-helper candidate/final success.
+- Seventeen checker/goal tests pass. Saved companion metadata is immutable
+  and bounded but not reloaded. Evidence:
+  `artifacts/imitation_seed7_results_20261004T111807286622Z/review.json`
+  and `held_window.json`. All remote actions were reads; no new local
+  training/rollouts or running-batch changes.
 - **No robust cloning advantage, skill or full completion is claimed.** Keep
   this active image/variables/hardware/queue unchanged. Next: independently
   review actual training exposure and the nine
