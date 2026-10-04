@@ -499,3 +499,19 @@ It remains separate from ordinary-start policy outcomes and does not alter
 pilot reward/gates. The conditional timing study's calibration prerequisite
 has evidence; timing-aware implementation, further preflight, finished-pilot
 admission, and a new budget/session are still required before any launch.
+
+### Physical-time perturbation controller prepared
+
+`research.case_clock.PhysicalCaseClock` is a local-only future-study helper.
+It indexes legal warm-up targets and seeded action-noise offsets by controlled
+physics ticks. It reproduces the existing four-tick evaluator's applied actions
+exactly for all nine declared cases, and gives one-tick control the same
+four-tick noise offset cadence while allowing its model prediction to update
+every tick. Warm-up lasts 12 physical ticks in either arm, not 12 one-tick
+decisions. Clock regression/repeated calls/skipped blocks are refused.
+
+All **109 Python tests plus JS checks** pass, including old-evaluator equality,
+shared noise streams, held-noise/changing-policy separation, warm-up duration,
+and noise-after-warm-up behavior. It is not integrated into the live evaluator,
+does not execute the conditional plan, and is not deployed. Timing-aware
+trainer/evaluator integration and fresh fidelity remain outstanding.

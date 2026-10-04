@@ -7,6 +7,8 @@
   physical-time GAE, noise cadence, new seeds, equal planned optimizer calls,
   larger one-tick minibatches and explicit actual-exposure/compute caveats.
   Trainer/evaluator support and calibration remain required before activation.
+  Local physical-time case clock now preserves old four-tick applied actions
+  exactly and matches one-tick warm-up/noise durations; integration remains.
 - Retain v1's narrow central-landing target, but calibrate and predeclare a
   separate actual-platform-support metric for the next study. Four-tick phases
   1/2 of the known legal trajectory already hold the platform at X about 290;
