@@ -42,19 +42,33 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current remote state: admitted timing study running
+## Current remote state: timing study complete, verified PAUSED
 
-- Configured session: **`timing-20261004-v1`**, mode **`timing_study`**.
+- Configured closed session: **`timing-20261004-v1`**, mode **`timing_study`**.
 - Private Space revision: **`362327f3281811b924089251aa67438fe64dc31e`**.
 - Pinned secret-free operator context dataset commit:
   **`80884fcb942397b783c9562b2cf3b987879a21a8`**.
   Historical preflight context: `1df89ec0fe48a579c234fed9e4a2e26085279811`.
-- CPU Upgrade, one replica, paid-default never-sleep (`sleep_time=None`).
+- Requested CPU Upgrade, one replica, paid-default never-sleep (`sleep_time=None`).
+  Actual stage is **PAUSED**; current allocated hardware is absent while paused.
 - Reservation start: `1791088706.4052017`; immutable deadline:
   **2026-10-04 20:38:26 UTC**, epoch **`1791146306.4052017`**.
-- Fresh maximum reservation **$0.48** at published $0.03/hour, verified
-  2026-10-04. Closed v1/v2 elapsed estimates plus this reservation total
-  **$0.672547**, below the unchanged $10 ceiling; this is not the actual bill.
+- Historical maximum reservation **$0.48** at published $0.03/hour.
+  Timing is now closed at **$0.100149** through verified pause; all closed
+  batches total **$0.292696**, below the unchanged $10 ceiling. These are
+  conservative estimates, not provider bills or remaining-credit balances.
+- All six timing results are complete/contract-valid at dataset commit
+  **`05c589ad26da16a3cfe6885c2948990f45a6e9c5`**.
+  Worker completion is **2026-10-04 07:19:31 UTC**; independent pause
+  verification is epoch **`1791100724.3051379`**, about **07:58:44 UTC**.
+  No source/session/context/deadline change or operator pause/restart occurred.
+- No timing arm qualifies for robust promotion or scaling. Next priority:
+  integrate the separately proposed remote BC/BC+PPO trainer/checker/admission,
+  then a fresh capped source/preflight/session. **Do not restart this closed
+  timing session or deploy smoke-only imitation as full training.**
+
+The following kickoff/progress sections are historical evidence, not current
+runtime instructions. Complete timing closure is recorded below.
 - Explicit restart requested at `1791088979.409153` after source/context/
   variables were verified while PAUSED; it returned BUILDING. The next bounded
   monitor read returned APP_STARTING with durable phase `timing_admitted`.
@@ -446,6 +460,60 @@ the user's requested view. They have been told that the policy stalls on this
 ledge and cannot improve while replaying. Do not spend more research time on
 viewer polish, do not portray this hold as the summit, and do not cancel the
 operator merely because a run/study finishes.
+
+### Complete timing study validated and cost closed
+
+At the 2026-10-04 07:58 UTC closing review, actual variables still bind the
+same closed timing session/source/context/deadline and the Space is PAUSED.
+Worker `timing_complete` is durable with no error at pinned dataset
+`05c589ad26da16a3cfe6885c2948990f45a6e9c5`. All six manifests, training
+summaries and complete before/after reference traces pass the timing checker;
+dependency/admission/game/assets and every recorded research-source hash
+agree. New local imitation modules were never part of this deployed source.
+All six final model/normalizer pairs (12 objects) have nonzero immutable
+Hub metadata, but are not downloaded/reloaded in this closure.
+
+| Repeat | Central holds, seeds 3/4/5 | Secondary holds | Median retained gains |
+| --- | --- | --- | --- |
+| 1 | 0/9, 0/9, 2/9 | 1/9, 0/9, 5/9 | 0, 23.57, 82 |
+| 4 | 0/9, 0/9, 0/9 | 0/9, 0/9, 0/9 | 27.77, -30, 4 |
+
+All untrained median gains were 0. There are **0/54 final full completions**
+and **zero deaths within the 60-second evaluation horizons**. Both complete
+arms have worst-seed central/secondary hold rates 0 and worst-seed completion
+0; the predeclared worst-seed timing difference is 0. Fine seed 5's nominal
+hold is genuine seed-specific progress, not robust all-seed success or full
+climbing. Endpoint gains favor different arms for different seeds, so do not
+claim a general timing improvement from these three structured pairs.
+
+The final coarse seed 5 reports median retained 4, 393,190 actual controlled
+ticks, 5,520 reset ticks/46 resets, 12 shortened terminal decisions,
+3,840 actual policy optimizer calls and 764.95 learning seconds.
+Across each full arm, policy calls total **11,520**. Fine/coarse controlled
+ticks are **1,179,648 /1,179,553** (95 fewer coarse), reset ticks
+**13,200 /18,120**, and learning wall seconds **4,303.33 /2,131.54**.
+One-tick decision/gradient sample presentations are four times greater.
+Equal planned exposure/calls do not imply equal realized physics, reset work,
+compute or information. This is a diagnostic result, not CPU XL justification.
+
+Independent verified PAUSED epoch `1791100724.3051379` closes the conservative
+elapsed estimate at **$0.1001491661** for timing and **$0.2926961857** for all
+closed sessions. The estimate intentionally includes time until operator
+verification, including already paused time; it is not actual billing.
+No new reservation, paid run, upload, variable change or restart occurred.
+Evidence: `artifacts/timing_complete_review_20261004T075825867253Z/`.
+The frozen pilot goal checker was rerun against the separate completed v2
+snapshot and still reports zero worst-seed completion, no candidate/final goal.
+
+The next hypothesis is demonstration-assisted reactive skill acquisition,
+not more samples of this failed setup. Implement the complete proposed
+remote-only scratch/BC/BC+PPO comparison and checker, preserve separate BC/RL
+work, frozen demo RMS, no privileged reset and original reference cases.
+Require fresh worker admission, passed preflight, independently verified
+PAUSED and a new capped reservation before full learning. The existing
+smoke-only guard stays until that integration is tested. No final-goal or
+saved-policy portability claim follows from this closure; keep the operator
+for further bounded useful work rather than cancelling at batch completion.
 
 ### Completed historical pilot, immutable evidence
 

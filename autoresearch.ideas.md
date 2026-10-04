@@ -1,5 +1,16 @@
 # Deferred hypotheses
 
+- **Current priority after timing closure:** the six-run timing diagnostic is
+  complete/validated and the owned Space is independently PAUSED. Fine central
+  holds 0/0/2, secondary 1/0/5; coarse all zero. Both worst-seed completion and
+  holds remain zero, with 0/54 full completions. Timing alone does not give
+  robust skill or justify scaling. Finish the full remote-only imitation
+  trainer/checker/admission for the prepared scratch/BC/BC+PPO comparison;
+  fresh source/preflight/session/reservation required. No more viewer work.
+  Timing closed estimate $0.100149, cumulative closed $0.292696 under $10;
+  no new batch or silent renewal has started. Historical bullets below retain
+  the intermediate evidence; they are not instructions to resume old sessions.
+
 - After the current nine-run pilot: one-tick feedback versus four-tick holds.
   Match physical exposure, gamma, episode/evaluation duration, and warm-ups.
   Treat samples and optimizer steps as separate resource axes.
