@@ -1,5 +1,22 @@
 # Deferred hypotheses
 
+- **Active next action is review, not another implementation/launch:** fresh
+  `onstate-20261004-v1` runs `onstate_preflight`, source80444390/context0675220a/
+  data b1d44bd3. Everything published while PAUSED, private/owned CPU Upgrade,
+  never-sleep/one replica and official$0.03/hour verified. Unique2h/$0.06
+  reservation start1791136940.4793909/deadline1791144140.4793909
+  (2026-10-04 20:02:20UTC), closed+reserved$0.477924187 under$10.
+  Startup pinned3416e48b at1791136999.7649724:RUNNING/onstate_admitted/no error,
+  remote source/game/data fingerprints exact; no checks or physics outcomes
+  inferred. Full six-run training not launched and ticket.preflight=None.
+  22 local guards pass. Keep current image/variables/deadline untouched.
+  Next pinned bounded review must validate all eight complete checks plus
+  independent PAUSED before intentional matching study-context/mode restart
+  inside this SAME reservation/deadline. No second cap or deadline renewal.
+  Failure/interruption/deadline: preserve artifacts, verify owned PAUSED and
+  close ledger. No automatic full training or retry from startup/failed evidence.
+  Evidence: artifacts/onstate_deployment_20261004T175845470617Z/startup_verification.json.
+
 - **Ready for the next fresh preflight:** new data/source/contract-bound Linux
   on-state runner, actor-only trainer, strict six-run checker and private
   preflight/study worker are implemented and tested. Scientific settings are

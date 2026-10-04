@@ -42,7 +42,53 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current result: remote learning runner ready for fresh preflight, unlaunched
+## Current state: fresh Linux preflight launched, full training not started
+
+Fresh session `onstate-20261004-v1` is running only `onstate_preflight`.
+The learning hypothesis remains original demonstrations versus original plus
+logged successful learner-state controls, matched budgets/seeds/RMS and fresh
+reference trials. This launch is a correctness/transport preflight, not the
+full six-run comparison or evidence of improved climbing.
+
+Current deployed source `8044439043a1725dc5911577c85096cd04ddc4ae`,
+context `0675220a2a01544e20fdee9bfc4e2f01aa168f00`, admitted data revision
+`b1d44bd3f157e0a00809116c7b3c1e085401b6a1`. Fresh 448-file reviewed source bundle
+and exact unchanged 5376-row corpus were published while independently PAUSED.
+Authenticated ownership, both private targets, 8vCPU/32GB CPU Upgrade,
+one replica and paid never-sleep default were verified. Official
+`hf://docs/hub/spaces-gpus.md` reverified $0.03/hour and minute billing.
+22 local admission/result/worker/trainer guards pass; source/data hashes
+match the previously 289-test+JS/end-to-end-smoke validated implementation.
+
+One new immutable reservation covers preflight AND any later admitted study:
+start1791136940.4793909 / **2026-10-04 18:02:20UTC**,
+deadline1791144140.4793909 / **2026-10-04 20:02:20UTC**,
+maximum **$0.06** including startup, CPU Upgrade/one replica. Six old batches
+stay closed at estimated $0.4179241866528988; closed plus reserved
+**$0.4779241866528988**, below $10. Estimates are not bills or remaining credits.
+Do not create a second reservation for the study or extend this deadline.
+
+One pinned startup snapshot at1791136999.7649724, dataset
+`3416e48bb72d84c475e3f1e1b8f70f41578e95d6`, shows actual **RUNNING**,
+durable **onstate_admitted**, no error. Actual source/session/mode/context/
+deadline/max-hours match admission; all source/game/data fingerprints are
+independently exact. No complete checks or physical results are yet validated.
+Do not infer successful preflight, game exposure or learned control from
+startup admission. Full training has not been requested. Persisted operator
+ticket has `preflight=None`; prospective local validation is not passed
+remote evidence. No running image, variables, deadline or queue edits.
+Evidence: `artifacts/onstate_deployment_20261004T175845470617Z/startup_verification.json`.
+
+Next bounded review: inspect one pinned later snapshot for all eight declared
+checks, source/data/RMS/fidelity/smoke/resource reports and exact physical work,
+plus independently verify PAUSED. Only durable complete passed preflight and
+PAUSED permit a new matching study context and intentional `onstate_study`
+restart within the SAME deadline/reservation. Failure/interruption/deadline
+requires durable artifacts and owned PAUSED verification, then ledger closure;
+never silently resume, relaunch a failed preflight or renew its cap.
+No full training or physical skill promotion from this startup record.
+
+## Previous implementation: remote learning runner ready for fresh preflight
 
 The frozen original-versus-added-successful-data comparison now has its
 Linux-only execution path, private worker and strict six-run result checker.
