@@ -42,7 +42,7 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current remote state: imitation study RUNNING, complete seeds6/7 validated
+## Current remote state: imitation study RUNNING, final scratch prefix and follow-up probe declared
 
 - Fresh session **`imitation-20261004-v1`**, mode **`imitation_study`**.
 - Private source **`95a8e311664789bcf1be5c609dce148e1f300f93`**,
@@ -309,7 +309,7 @@ verified from standard campaign aggregation alone.
   assertions pass; **zero new rollouts/updates**, no binary reload or HF
   writes. Evidence:
   `artifacts/imitation_pair_review_20261004T113802850890Z/pair_diagnostic.json`.
-- Latest **`7edf76f63f4a67a236145b9cf5e0e8b183688972`** validates
+- Two-seed review **`7edf76f63f4a67a236145b9cf5e0e8b183688972`** validates
   **six completed runs/three incomplete**, all arms for seeds6/7.
   Actual RUNNING phase **`ppo_from_scratch_seed_8`**, no error; exact
   source/data/context/runtime/deadline/cap remain unchanged.
@@ -342,6 +342,37 @@ verified from standard campaign aggregation alone.
 - Complete frozen seed8 and verify automatic PAUSED before closure.
   Investigate first-divergence/recovery and preservation of primitive skills
   in a separately bounded follow-up, not blind scaling or new active settings.
+- Latest **`5df6c20390ca641d8d10a2c62471e7f4142b922e`** adds no final
+  result: six validated runs unchanged. Actual RUNNING phase
+  **`ppo_from_scratch_seed_8`**, no error; all source/data/runtime/context/
+  deadline/cap bindings remain valid. Prefix393200control +4560reset ticks,
+  983complete sampled rows,nine checkpoint pairs through360000.
+  Last on-policy retained26,both holds false; **393200 is not the complete
+  393216 training summary or a final reference policy outcome**.
+- Predeclared a **non-executing four-condition causal diagnostic**, pinned
+  to clone-only seed7 saved model/RMS identities: nominal, full noisy8105,
+  noise only ticks0..59, noise only ticks60..1799. Cutoff60 (two seconds)
+  follows the observed early divergence, so selection is **post-hoc/
+  exploratory, not held-out verification**. Same global four-tick Gaussian
+  stream must advance even during masked intervals; no stream restart at60.
+- All cases use ordinary reset1001, no warm-up/placement, frozen217-feature
+  RMS/raw reward and deterministic one-tick legal controls. Reference+fast:
+  maximum8case rollouts, **14400control +1920reset ticks**, **600-second
+  wall cap**, zero training updates/new paid reservation, owned headless
+  processes only. No probe has launched, no binaries downloaded or loaded.
+- **Admission waits for current comparison terminal review plus independent
+  PAUSED and ledger closure.** First reproduce nominal/full-noise saved
+  reference traces and exact local fast/reference actions, normalized
+  observations, reward and telemetry; if baseline portability/fidelity fails,
+  stop without interpreting early/late intervention effects. No current
+  source/context/queue/hardware/deadline change or silent resume.
+- Prefix/source/hash/admission assertions and pure array noise-mask fixtures
+  pass. Same six final-reference LFS identities keep the projected goal helper
+  candidate/final false. Evidence:
+  `artifacts/imitation_last_seed_review_20261004T121802090256Z/`
+  (`causal_probe_plan.json`, `declaration_verification.json`).
+  This is bounded diagnostic preparation, **not a new ML result or
+  hypothesis confirmation**, with zero new physical work or updates.
 - **No robust cloning advantage, skill or full completion is claimed.** Keep
   this active image/variables/hardware/queue unchanged. Next: independently
   review actual training exposure and the nine

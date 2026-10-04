@@ -39,6 +39,17 @@
   exploration. Do not call this a general catastrophic-forgetting result or
   alter the current PPO/BC budgets and contracts.
 
+- **Concrete next probe is frozen, not launched:** after comparison terminal
+  review/PAUSED/ledger closure, use clone-only seed7/reset1001 for nominal,
+  fullnoise8105, earlynoise ticks0..59, latenoise ticks60..1799. Preserve
+  the global four-tick noise sequence while masking blocks. Max8reference/
+  fast cases,14400control+1920reset ticks,600seconds,zero updates/new paid
+  reservation. Reproduce both saved baselines and exact fast/reference
+  behavior first; stop on portability/fidelity mismatch. Post-hoc selection,
+  not held-out skill or a corrective oracle. Plan:
+  artifacts/imitation_last_seed_review_20261004T121802090256Z/causal_probe_plan.json.
+  Current scratch8 prefix393200/393216 is not a final result; no active changes.
+
 - **Offline drift evidence, not a cause:** seed6 clone nominal differs from
   legal teacher by about2.006px on the first pointer target; body paths separate
   by1px at tick27 and10px at49, ending111.55px apart at600. Decode/phase
