@@ -30,9 +30,10 @@
 - Use the legal successful first-ledge trajectory as a skill-acquisition
   baseline. Imitation may initialize a reactive controller; open-loop replay
   alone is not learned robustness.
-- SAC/absolute seeds 0/1 both complete mean-policy evaluation with the hammer
+- SAC/absolute seeds 0/1/2 all complete mean-policy evaluation with the hammer
   above the player, no hammer terrain contact, and no meaningful movement
-  from spawn despite substantial optimizer work. Finish cohort accounting;
+  from spawn despite substantial optimizer work. Cohort is validated and fails
+  the frozen gate; do not scale this configuration. Await velocity controls and
   investigate safe/stalled behavior, exploration and
   reward/entropy scale rather than blindly increasing sample count. Preserve
   the raw task contract and isolate any proposed change in a new experiment.

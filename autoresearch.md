@@ -150,6 +150,16 @@ outcome at a second training seed under this configuration and sample budget.
 The three-seed cohort remains incomplete, but these failed seeds already
 prevent its predeclared all-seed promotion gate; do not silently loosen it.
 Evidence: `artifacts/v2_second_sac_review_20261004T001803114793Z/`.
+The complete SAC/absolute cohort subsequently validates **0/9 holds in all
+three seeds**, zero full completions/deaths, and median retained gain 0 for
+each. Seed 2 repeats the grounded/no-hammer-contact outcome: nominal `(0,21)`,
+predicted Y approximately `[0.273,0.987]`, zero hammer contact and 1,800 body
+contact ticks. It records the same 264,912 named optimizer calls and 2,166.11
+learning seconds. All three final replay buffers are durable.
+This source/configuration/budget fails the predeclared gate and is not eligible
+for broader-climb scaling. Do not generalize this to all SAC variants or game
+solvability. The three velocity-action SAC runs remain in the unchanged queue.
+Evidence: `artifacts/v2_absolute_cohorts_20261004T005803065949Z/`.
 
 ## How to inspect and measure
 
