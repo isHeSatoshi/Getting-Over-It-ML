@@ -42,7 +42,41 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current state: matched-host inference complete, validated and PAUSED
+## Latest implementation: Linux control probe ready, no new execution
+
+Fresh mode `noise_control_probe`/session prefix `noise-probe-*` now reuses the
+original `tools/imitation_noise_probe.py` core through an owned Linux wrapper.
+No scientific conditions, model/RMS, noise clock, detector or exact saved-
+feedback/reference-fast gates change. Missing baseline comparisons, expanded
+work or interventions after failed baselines are refused. Matching recorded
+Linux dependencies and no desktop/browser attachments are checked before
+fresh owned headless instances; child credentials/attachment variables removed.
+Per-case control/reset totals, no-resume claim, paths/source/tool/provenance,
+absolute budget,20second backups and cleanup/auto-pause are tested.
+
+**Explicit transport amendment, not silent plan editing:** original local
+zero-new-paid/no-session-change execution envelope stays in its immutable file.
+Demonstrated host/stack numerical differences motivate a separately declared
+fresh Linux execution envelope: <=20minutes/<=0.01USD including startup,
+<=600second child including30second cleanup,8cases/14400control+1920reset ticks,
+0updates. The original scientific plan SHA remains
+aeb940ac3fb32209de78795cb83ebbabc69166c28ff85c47ba10651e92fe3d7c.
+Declaration: `artifacts/linux_noise_transport_20261004T153843356715Z/transport_declaration.json`.
+
+All256Python tests plus JS pass.434file allowlisted bundle built at
+`artifacts/hf_bundle_20261004T154829964910Z/`, not uploaded. Actual new control/
+reset/training work0. Space last independently PAUSED1791128916.506885, same
+ce53b512source/inference completed session/mode/deadline; all reservations
+closed at estimated$0.40842418665. No new reservation, HF write or deployment.
+Evidence: `artifacts/linux_noise_transport_20261004T153843356715Z/verification.json`.
+Next: verify current pricing/PAUSED ownership, reserve a unique fresh bounded
+physics-only session, publish this tested bundle plus pinned original plan,
+model/RMS and9.059MBbaseline JSON/context/amendment while PAUSED, intentionally
+launch only its new mode. Require genuine nominal/full-noise saved-feedback
+reproduction before early/late interventions. Stop on mismatch, do not skip
+gates or continue a partial case. No blind scale, kernel tuning or goal promotion.
+
+## Actual remote state: matched-host inference complete, validated and PAUSED
 
 Fresh `inference-20261004-v1` completed its3600inference presentations,
 0game/reset/training ticks, and auto-paused before the first startup snapshot.

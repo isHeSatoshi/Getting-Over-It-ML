@@ -247,6 +247,19 @@
       "inferred_sample_presentations": 3600,
       "remote_host_comparison_not_launched": true,
       "all_closed_estimate_unchanged": 0.4074241866528988
+    },
+    {
+      "name": "linux_noise_transport_implementation_validation",
+      "evidence": "artifacts/linux_noise_transport_20261004T153843356715Z/verification.json",
+      "paused_verified_epoch": 1791128916.506885,
+      "space_stage": "PAUSED",
+      "new_paid_reservation": false,
+      "remote_writes": false,
+      "controlled_ticks": 0,
+      "reset_ticks": 0,
+      "training_updates": 0,
+      "scientific_plan_unchanged_explicit_transport_amendment": true,
+      "all_closed_estimate_unchanged": 0.4084241866528988
     }
   ]
 }

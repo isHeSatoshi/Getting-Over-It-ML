@@ -23,6 +23,8 @@ class DeploymentTests(unittest.TestCase):
             self.assertTrue((bundle / "tools/imitation_noise_probe.py").exists())
             self.assertTrue((bundle / "tools/matched_host_inference.py").exists())
             self.assertTrue((bundle / "deploy/inference_worker.py").exists())
+            self.assertTrue((bundle / "tools/linux_noise_probe.py").exists())
+            self.assertTrue((bundle / "deploy/noise_probe_worker.py").exists())
             self.assertTrue((bundle / "deployment_provenance.json").exists())
             self.assertFalse((bundle / "venv").exists())
             self.assertFalse((bundle / "chrome_profiles").exists())

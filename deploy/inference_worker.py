@@ -37,14 +37,21 @@ def configure_http_requests():
 
 
 def validate_ticket(ticket, ledger, now, environment):
-    require(ticket["version"] == VERSION and ticket["contract_sha256"] == digest(contract()),
+    return validate_bounded_ticket(
+        ticket, ledger, now, environment, version=VERSION, contract_hash=digest(contract()),
+        prefix="inference-", mode="inference_probe", reservation_status="reserved_inference")
+
+
+def validate_bounded_ticket(ticket, ledger, now, environment, *,
+                            version, contract_hash, prefix, mode, reservation_status):
+    require(ticket["version"] == version and ticket["contract_sha256"] == contract_hash,
             "Changed inference-only admission/contract")
     session = ticket["session"]
-    require(session.startswith("inference-") and session.replace("-", "").isalnum()
+    require(session.startswith(prefix) and session.replace("-", "").isalnum()
             and ticket["space"] == SPACE and ticket["artifact_repo"] == REPO
             and ticket["paused_before_launch"] is True,
             "Fresh owned paused inference session required")
-    require(environment.get("RL_SESSION_ID") == session and environment.get("RL_MODE") == "inference_probe"
+    require(environment.get("RL_SESSION_ID") == session and environment.get("RL_MODE") == mode
             and environment.get("RL_SPACE_ID") == SPACE and environment.get("RL_ARTIFACT_REPO") == REPO,
             "Inference worker configuration differs")
     require(ticket["runtime_policy"] == {"hardware": "cpu-upgrade", "sleep_policy": "never", "replicas": 1},
@@ -63,7 +70,7 @@ def validate_ticket(ticket, ledger, now, environment):
             and 0 < rate <= .03 and 0 < reserved <= .01
             and reserved >= (deadline - start) / 3600 * rate,
             "Invalid or expired inference reservation")
-    require(batch["verified_end_epoch"] is None and batch["status"] == "reserved_inference"
+    require(batch["verified_end_epoch"] is None and batch["status"] == reservation_status
             and batch["tier"] == "cpu-upgrade" and batch["space"] == SPACE
             and batch["source_space_revision"] == revision,
             "Closed/started or mismatched inference reservation")

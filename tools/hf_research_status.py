@@ -38,6 +38,26 @@ def inference_summary(payload):
         "versus_local_archived_same_inputs", "singleton_repeat_comparison")}
 
 
+def noise_probe_summary(payload):
+    if (payload.get("training_updates") != 0 or not 0 <= payload.get("controlled_ticks", -1) <= 14400
+            or not 0 <= payload.get("reset_ticks", -1) <= 1920
+            or not 0 <= payload.get("case_rollouts", -1) <= 8):
+        raise ValueError("Physics-only probe exceeds its declared work")
+    outcomes = {}
+    for condition, backends in payload.get("rollouts", {}).items():
+        if "reference" in backends:
+            final = backends["reference"]["final"]
+            outcomes[condition] = {"retained_gain": final["retained_gain"],
+                                   "central_held_event": final["milestone_success"]["first_ledge_v1"],
+                                   "secondary_held_event": final["milestone_success"][
+                                       "first_platform_support_diagnostic_v2"],
+                                   "summit": final["success"], "dead": final["dead"]}
+    return {"status": payload.get("status"), "controlled_ticks": payload["controlled_ticks"],
+            "reset_ticks": payload["reset_ticks"], "rollouts": payload["case_rollouts"],
+            "training_updates": 0, "reference_outcomes": outcomes,
+            "limit": "Selected exploratory cases, never held-out robustness or goal promotion"}
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--session", help="Inspect a historical session instead of the configured active one")
@@ -59,8 +79,9 @@ def main():
               "stage": runtime["stage"], "phase": state.get("phase"),
               "updated_utc": state.get("updated_utc"), "deadline_epoch": state.get("deadline_epoch"),
               "error": state.get("error"), "completed_runs": [], "progress_samples": []}
-    if session.startswith("inference-"):
-        path = f"{session}/inference_result/report.json"
+    if session.startswith(("inference-", "noise-probe-")):
+        noise = session.startswith("noise-probe-")
+        path = f"{session}/{'noise_probe_result' if noise else 'inference_result'}/report.json"
         if path in files:
             metadata = api.repo_info(REPO, repo_type="dataset", revision=revision, files_metadata=True)
             item = next(item for item in metadata.siblings if item.rfilename == path)
@@ -68,7 +89,8 @@ def main():
                 raise ValueError("Inference result is not private bounded JSON")
             local = hf_hub_download(REPO, repo_type="dataset", revision=revision, filename=path)
             with open(local, encoding="utf-8") as handle:
-                report["inference_only"] = inference_summary(json.load(handle))
+                report["physics_only_probe" if noise else "inference_only"] = (
+                    noise_probe_summary(json.load(handle)) if noise else inference_summary(json.load(handle)))
         print(json.dumps(report, indent=2))
         return
     prefix = campaign_prefix(session)

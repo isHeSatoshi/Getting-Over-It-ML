@@ -49,11 +49,18 @@
   build alone, feedback-failure causality or new learned/held-out skill.
   Independently PAUSED1791127420.855593/rechecked1791127558.0345054; cap closed
   at minute-rounded$0.001,cumulative$0.408424187, no active reservation.
-  Next: implement/test fresh private physics-only execution of the original
-  frozen nominal/full-noise/early/late probe on matching Linux stack. Keep
-  exact saved-feedback baselines before interventions, max8cases/14400control+
-  1920reset ticks/600seconds/0updates, unique source/context/budget/deadline and
-  backups/auto-pause. Never restart completed inference or kernel-tune Windows.
+  Linux physics-only transport now implemented/tested:256Python+JS,
+  434file tested bundle ready,0new game/training work, no HF writes/reservation.
+  Explicit predeclared amendment replaces only original local zero-paid/no-
+  session-change execution envelope for fresh <=20min/<=0.01USD Linux transport;
+  original file and science stay immutable. Exact saved-feedback baselines
+  before interventions, max8cases/14400control+1920reset ticks/600seconds/0updates,
+  owned headless only, claim/source/deadline/no-resume/backup/pause gates remain.
+  Declaration: artifacts/linux_noise_transport_20261004T153843356715Z/transport_declaration.json.
+  Next: pricing/PAUSED ownership checks, unique fresh physics-only reservation,
+  publish tested bundle and exact original plan/model/RMS/remote baseline JSON/
+  explicit amendment/context, then launch only noise_control_probe. Never
+  restart completed inference, bypass baseline failure or kernel-tune Windows.
   Plan: artifacts/imitation_recorded_action_v2_20261004T143756537682Z/matched_host_plan.json.
   After isolation prioritize robust reactive recovery, not kernel thrashing.
   Keep the
