@@ -42,7 +42,70 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current partial result: added-data benefit reverses in seed10; last arm active
+## Current result: comparison complete and PAUSED; selected-data addition fails
+
+All six runs are complete and independently contract-validated at pinned
+dataset `d3fc0808ad5e434b839963529989c6bf4545f739`. Source/game/data, frozen
+settings/RMS, exact legal action clocks, real optimizer/source-sample work,
+matched-seed initial parameters/reference traces and saved reload flags pass.
+Remote summary and `tools.research_goal_metrics` projection equal the
+independent review. Durable no-resume claim and all12saved companion
+identities are present; same-seed RMS companion bytes match. Binary packages
+were not downloaded/reloaded here, so no portable/saved-policy replay claim.
+
+| Recipe | Central holds seeds9/10/11 | Secondary holds | Median retained gains | Final central endpoints |
+|---|---|---|---|---|
+| Original demonstrations |2/3/2 out of9 each|2/4/3|4.3693/18.3677/11.5412|2/3/2|
+| Original plus logged success |3/1/0 out of9 each|3/1/0|13/4/10.5001|2/0/0|
+
+All six nominal central holds fail,0/54final/postclone summits and deaths.
+Original worst-seed central fraction2/9; augmented0/9. Both full-climb
+fractions0 and first-skill candidatesfalse. Added selected trajectory does
+not consistently improve control and worsens this comparison's worst-seed
+held-event result. It is not proof that all self-imitation is ineffective.
+Do not promote, scale, repeat unchanged, or reinterpret small supervised
+error/retained altitude as robust learning. The original recipe also fails.
+
+Two augmented central events are transient: seed9noise5 and seed10noise2
+leave after holding.24central/secondary position/contact windows and9final
+central-region90tick contact windows checked. Query hits are not forces;
+raw velocities are absent from evaluator info, so tracker speed qualification
+is not independently reconstructed. The original source/physical benchmarks
+remain frozen. This study is structured-case replication, not IID population
+statistics or final held-out/upper-route summit verification.
+
+Actual full-comparison work12000BC calls/3072000sample presentations:
+2688000original and384000logged.0PPO/training control/reset physics.
+108distinct before/after reference rollouts194400control+25920reset ticks;
+54final/postclone cases. Preflight and local smokes remain separately
+accounted, not counted as learned-policy replication.11checker/goal tests pass.
+Evidence: `artifacts/onstate_complete_review_20261004T191902458785Z/complete_review.json`.
+
+Worker completed2026-10-04 19:01:44UTC. Private owned Space independently
+PAUSED1791141541.9557095 /19:19:01UTC, rechecked1791141827.4268486.
+Same80444390source/onstate session/study mode/ed3a53c3context/original deadline.
+Original reservation closes at conservative **$0.0385**,77rounded minutes
+including all elapsed time until independent pause verification, even paused
+operator gaps. All seven batches now closed at **$0.4564241866528988**.
+These are estimates, not actual provider bills or remaining credits.
+No new reservation, remote write, restart or source/configuration change.
+Goal metric0; researcher remains active, no current access/funds blocker.
+
+Next bounded implementation: prototype a **state-responsive legal corrective
+teacher** for reliable first-ledge acquisition. Use the known real hammer-plant
+primitive/validated legal trajectory as a prior, but choose/adjust actions
+from observed pose/hammer/contact feedback rather than a blindly advanced
+time index. This controller is not built or validated yet; no oracle claim.
+Freeze its observation/control/resource contract before any rollouts and
+validate ordinary-spawn nominal plus declared perturbation recovery on
+independent reference and fast backends before new data or learner training.
+Only actually applied controls at their exact captured pre-action states can
+be corrective labels. Failed examples stay diagnostic; no teacher suffix at
+unrelated states, arbitrary extra noisy-success pooling or inverse clipping.
+Require demonstrated recovery/target consistency before another matched
+learning study. No unchanged BC/PPO extension, kernel loop or paid scaling.
+
+## Previous partial result: added-data benefit reversed; last arm active then
 
 Five complete run contracts pass at pinned dataset
 `d797a550c6ae7085fe604542690a59959b3eca13`, last augmented seed11 missing.

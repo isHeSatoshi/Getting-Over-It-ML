@@ -1,5 +1,29 @@
 # Deferred hypotheses
 
+- **Closed full comparison; next is validated corrective feedback, not pooling
+  more lucky trajectories:** all6contracts valid atd3fc0808, original central
+  2/3/2/secondary2/4/3 and augmented3/1/0/secondary3/1/0 (ninecases/seed).
+  Original medians4.3693/18.3677/11.5412, augmented13/4/10.5001; final central
+  endpoints2/3/2 versus2/0/0. All nominalcentralfalse,0/54summits/deaths.
+  Worstheld2/9 versus0/9, fullgoal0, no firstskill/promotion/scaling. Added
+  selected noisy trajectory not consistently helpful, not general proof
+  against self-imitation.24position/contact and9final90tick windows checked,
+  no raw-speed or force claim; saved companion metadata only.
+  Actual12000BCcalls/3072000presentations (2688000old+384000logged),
+  108reference rollouts194400control+25920reset,0PPO/trainingphysics.
+  Workercomplete19:01:44UTC; independently PAUSED1791141541.9557095,
+  rechecked1791141827.4268486, source/mode/context/deadline unchanged.
+  Reservation closed77conservative roundedminutes=$0.0385; all7closed
+  estimated$0.456424187, no active reservation or new remote write.
+  Next prototype state-responsive legal corrective teacher using known
+  hammer-plant/validated trajectory priors but observable feedback, not
+  fixed time-index controls. Predeclare bounded contract and require actual
+  ordinary-spawn nominal/perturbed reference recovery plus backend fidelity
+  before collecting/labeling new corrective data or training. Not an oracle
+  until validated; no action suffix at unrelated states or random-noise-as-
+  expert claim. No unchanged BC/PPO extension, kernel work or paid scaling.
+  11checker/goal tests pass; evidence: artifacts/onstate_complete_review_20261004T191902458785Z/complete_review.json.
+
 - **Five-run partial evidence rules out a robust gate, not a complete winner:**
   d797a550snapshot validates original seeds9/10/11 and augmented9/10;
   augmented11still active. Original central2/3/2,secondary2/4/3,retained
