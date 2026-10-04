@@ -42,20 +42,63 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current remote state: imitation study RUNNING, scratch/clone three-seed cohorts validated
+## Current remote state: imitation comparison complete, validated and PAUSED
 
-- Fresh session **`imitation-20261004-v1`**, mode **`imitation_study`**.
+- Closed session **`imitation-20261004-v1`**, configured mode **`imitation_study`**.
 - Private source **`95a8e311664789bcf1be5c609dce148e1f300f93`**,
   exact locally tested bundle `artifacts/hf_bundle_20261004T090634364226Z/`.
 - Pinned study operator context **`ae958180b348432f236c6c1e72f832a723164199`**;
   passed-preflight context **`9b3f4f0d6f1128e301e9603edecabecf12de8567`**;
   corpus revision **`c09410fbf4fd7b36bfb6976f3659b7ec28b2e38c`**.
-- CPU Upgrade, one never-sleep replica. Published $0.03/hour is reverified
-  from official HF docs on 2026-10-04. New maximum reservation **$0.48**,
-  closed estimates plus reservation **$0.772696**, unchanged $10 ceiling.
-- Start **`1791104923.3790162`**; immutable deadline
+- Actual **PAUSED**, allocated hardware absent; requested CPU Upgrade,
+  one never-sleep replica remains configured. Published $0.03/hour was
+  reverified from official HF docs on 2026-10-04. Historical cap **$0.48**;
+  imitation closes at conservative **$0.114728001**, cumulative all closed
+  **$0.407424187**, unchanged $10 ceiling. These are estimates, not bills
+  or remaining HF credits. **No active paid reservation or new batch.**
+- Historical reservation start **`1791104923.3790162`**; immutable deadline
   **`1791162523.3790162`**, **2026-10-05 01:08:43 UTC**. This is a distinct
   new budget, not renewal/extension/resume of the closed timing or v2 sessions.
+- Complete pinned dataset **`c40574bb709f64fba893d3b44bc6f302306a51ad`**:
+  all nine full contracts, exact initial/post-clone traces within every seed,
+  dependency/source/data/work bindings and24saved-companion identities
+  validate. Worker complete **2026-10-04 12:57:06 UTC**; independent
+  PAUSED epoch **`1791118690.7391362`**, about12:58:10UTC, rechecked PAUSED.
+- Final central held counts, seeds6/7/8: **scratch0/0/2, BC-only0/1/2,
+  BC+PPO0/0/0**. Secondary **scratch0/0/6, BC0/1/4, hybrid0/0/0**.
+  Medians **scratch-0.1973/10.9245/81.8234, BC9/7.5115/11.5050,
+  hybrid24/6/5**. All worst-seed held/full-climb rates **0**; all nominal
+  central-held gates false. **0/81 final full completions, zero final deaths**.
+  No first-skill candidate, robust imitation advantage, promotion or scaling.
+- Last hybrid seed8:393216control+5040reset ticks,42resets,3840PPOcalls,
+  1437.29855learning seconds plus2000BCcalls/512000presentations.
+  Nominal `(133.2963364,21.5586272)`,retained0.55863;median5,zero holds.
+  Its post-clone trace matches BC-only exactly but its two central/four
+  secondary cloned held cases are absent after PPO. This is paired outcome
+  loss, not a general causal forgetting diagnosis.
+- Whole comparison: **2359296 training control +26880 reset ticks**,
+  23040PPOcalls,12000BCcalls/3072000BCpresentations. Actual distinct
+  reference189case rollouts,340200control+45360reset ticks, excluding
+  duplicate BC final/post-clone JSON. PPO work per scratch/hybrid cohort
+  is1179648control ticks/11520calls; resets13200/13680 and
+  learning4318.47146/4515.74139seconds. BC-only/hybrid supervised wall
+  20.19971/20.33349seconds. Not equal total compute, sample presentations or FLOPs.
+- Final model/RMS/clone24companions have bounded immutable metadata, not
+  reloaded or proven portable. Standard structured cases are not IID; the
+  goal helper still requires independent held-out, upper-route fidelity and
+  replayable saved-policy completion. Seventeen checker/goal tests pass.
+  Closure evidence:
+  `artifacts/imitation_finish_review_20261004T125810739136Z/complete_review.json`.
+- **Next bounded step:** implement/execute the frozen local noise-prefix/
+  suffix probe, max14400control+1920reset ticks/600seconds/zero training
+  or new paid reservation. Reproduce nominal/full-noise saved baselines and
+  exact backend behavior first; stop on portability/fidelity failure.
+  This closure satisfies its terminal/PAUSED/ledger gate, not its baseline gate.
+- **Do not restart this closed session, silently renew its deadline, or scale
+  failed arms.** The autonomous operator remains active (Loop22bd00f8 listed
+  running after closure), because original summit/robust multiple-seed
+  held-out completion is still unverified. Historical sections below are
+  intermediate evidence, not instructions to resume the closed batch.
 - All **nine remote preflight checks** pass at immutable dataset
   **`67712baf8f4f0464a4b03e133ed97439b32462ef`**. Worker completed at
   **09:17:38 UTC**; independently verified **PAUSED** at
@@ -373,7 +416,7 @@ verified from standard campaign aggregation alone.
   (`causal_probe_plan.json`, `declaration_verification.json`).
   This is bounded diagnostic preparation, **not a new ML result or
   hypothesis confirmation**, with zero new physical work or updates.
-- Latest **`8ab8568c299c2563302ee5ddb51c6339e7a280ef`** validates
+- Eight-run historical review **`8ab8568c299c2563302ee5ddb51c6339e7a280ef`** validates
   **eight completed runs**, only **`behavior_cloning_then_ppo_seed_8`**
   remains. Actual RUNNING phase is that last hybrid, no error;
   source/context/data/runtime/deadline/cap unchanged. No PAUSED/closure yet.
@@ -409,12 +452,10 @@ verified from standard campaign aggregation alone.
   Evidence: `artifacts/imitation_seed8_results_20261004T123812526317Z/review.json`
   and `held_windows.json`. All HF operations were reads, no new local
   training/rollouts, active changes or budget renewal.
-- **No robust cloning advantage, skill or full completion is claimed.** Keep
-  this active image/variables/hardware/queue unchanged. Next: independently
-  review actual training exposure and the nine
-  sequential scratch/BC-only/BC+PPO results for seeds 6/7/8 using the imitation
-  checker. No polling, automatic scaling, interrupted resume or deadline
-  extension. Saved-policy portability and the full-game goal remain unverified.
+- **Closed-comparison instruction:** no robust cloning advantage, first-skill
+  candidate or full completion is established. Do not restart or extend this
+  session. Proceed only with the separately declared bounded causal probe,
+  enforcing saved-baseline portability first; no new paid training/scaling.
 
 ### Closed timing study, immutable history
 

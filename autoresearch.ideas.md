@@ -1,27 +1,20 @@
 # Deferred hypotheses
 
-- **Current action:** all nine immutable imitation preflight checks validate,
-  including 17 raw/six reactive cases with zero fast/reference errors and
-  common frozen RMS/matched cloned weights. Independently PAUSED, then
-  intentionally started `imitation_study` at epoch1791105924.3108993,
-  session `imitation-20261004-v1`, unchanged source
-  `95a8e311664789bcf1be5c609dce148e1f300f93`, new study context
-  `ae958180b348432f236c6c1e72f832a723164199`. Same $0.48 cap and
-  2026-10-05 01:08:43 UTC deadline; closed-plus-reserved $0.772696 under $10.
-  Latest `8ab8568c299c2563302ee5ddb51c6339e7a280ef` validates eight finals:
-  scratch central0/0/2,BC0/1/2; both complete cohorts have worst-seed0 and
-  fail first-skill gates. Seed8 scratch2central/6secondary,median81.8234;
-  BC2central/4secondary,median11.5050,nominal false. BC noise3/4 secondary
-  holds are real but transient; do not call latched flags final support.
-  All18new final detector traces recompute. Last hybrid8 is active; no
-  PAUSED/closure or paired seed8 post-clone comparison yet. Prior within-seed
-  initial/post-clone comparisons pass. Final inventories0/72summits/no deaths.
-  Next: finish the unchanged scratch/BC-only/BC+PPO comparison, seeds6/7/8,
-  before choosing a recovery/corrective demonstration follow-up. No robust
-  cloning advantage or promotion from these partial and brittle outcomes.
-  Do not change active source/variables/hardware/queue, poll, resume
-  interruptions or extend this budget. No more disconnected infrastructure
-  or viewer work. Historical bullets below do not authorize old restarts.
+- **Current action:** imitation comparison is complete/validated/PAUSED at
+  c40574bb709f64fba893d3b44bc6f302306a51ad. All nine full contracts and all
+  matched initial/post-clone traces pass. Central counts scratch0/0/2,
+  BC0/1/2,hybrid0/0/0; secondary0/0/6,0/1/4,0/0/0. Worst-seed held/full
+  rates0,nominal central gates allfalse,0/81summits/no deaths. Hybrid seed8
+  median5 and no held cases despite cloned stage2central/4secondary.
+  No promotion, scaling or generic forgetting conclusion.
+  Worker complete12:57:06UTC; PAUSED independently1791118690.7391362.
+  Reservation closed at estimated$0.114728001,cumulative$0.407424187 under
+  $10,not bills/credit balance. No active reservation or new paid batch.
+  Next: implement/execute the frozen local causal probe; terminal/pause/
+  ledger gates now pass, but require saved-baseline reproduction and exact
+  backend fidelity before interpreting prefix/suffix effects. Keep the
+  operator running. Never restart this closed session or silently renew
+  budgets. No more disconnected infrastructure or viewer work.
 
 - **Conditional diagnosis after this comparison:** BC-only seed6 already
   fits corpus targets closely but fails closed-loop ledge reproduction. If
