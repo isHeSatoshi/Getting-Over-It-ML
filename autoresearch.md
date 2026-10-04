@@ -42,12 +42,13 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current remote state: fresh timing preflight started
+## Current remote state: admitted timing study running
 
-- Configured session: **`timing-20261004-v1`**, mode **`timing_preflight`**.
+- Configured session: **`timing-20261004-v1`**, mode **`timing_study`**.
 - Private Space revision: **`362327f3281811b924089251aa67438fe64dc31e`**.
 - Pinned secret-free operator context dataset commit:
-  **`1df89ec0fe48a579c234fed9e4a2e26085279811`**.
+  **`80884fcb942397b783c9562b2cf3b987879a21a8`**.
+  Historical preflight context: `1df89ec0fe48a579c234fed9e4a2e26085279811`.
 - CPU Upgrade, one replica, paid-default never-sleep (`sleep_time=None`).
 - Reservation start: `1791088706.4052017`; immutable deadline:
   **2026-10-04 20:38:26 UTC**, epoch **`1791146306.4052017`**.
@@ -62,16 +63,43 @@ verified from standard campaign aggregation alone.
   hashes, start/deadline, configured context and runtime policy, with no error.
   Evidence: `artifacts/timing_deployment_20261004T044058033509Z/`.
 
-**No full timing study has launched or passed preflight yet.** Do not upload,
-restart, resize, change variables/secrets or queue while this preflight runs.
-Next scheduled priority is to review an immutable snapshot of all eight
-completed check outputs, matching source/game/dependency/resource contracts,
-and independently verify PAUSED. Only then may the operator intentionally
-publish a new context with the exact durable passed preflight fields and switch
-to `timing_study` while PAUSED, keeping this same session/start/deadline.
-Do not start from failed/incomplete checks or silently restart interrupted work.
-If a terminal/expired worker remains running, pause only this owned Space and
-verify. The first durable state is admission proof, not a fidelity/test pass.
+**Timing preflight passed all eight checks and automatically paused.**
+Pinned review at dataset commit `471eadaf676a498b52cabb5962312e3da94e378b`
+validates exact source/game/assets, 17 raw-physics and six reactive timing
+fidelity cases with zero measured errors, both matched smoke contracts,
+effective 8 CPUs/32 GB cgroup allocation and never-sleep/one replica.
+Terrain benchmark is about 266 decisions/s excluding optimization; summed
+worker+reference peak RSS is about 6.08 GiB, not exclusive physical memory.
+Independent PAUSED verification epoch: `1791089935.6895523`.
+Evidence: `artifacts/timing_preflight_review_20261004T045845231549Z/`.
+
+After reviewing that evidence while PAUSED, the operator published the exact
+durable passed-preflight fields in the new pinned context, validated admission,
+and changed **only `RL_CONTEXT_REVISION` and `RL_MODE`**. An intentional
+`timing_study` restart at `1791090090.08562` returned BUILDING. Source, hardware,
+session/start/deadline and $0.48 reservation are unchanged. No checkpoint resume,
+extra replica, widened pilot gate or CPU XL scaling occurred.
+The subsequent bounded monitor read returned **RUNNING**, durable phase
+`timing_dispatch`, with no error. At dataset commit
+`7a9a6cdb066dd30bc93da01a7228b7ce4aea38e6`, the operator verifies the exact
+six-run campaign, admitted source/context/deadline and persisted
+`claimed_no_resume` execution claim. Evidence:
+`artifacts/timing_preflight_review_20261004T045845231549Z/study_kickoff/`.
+No completed learner outcome or learning-progress snapshot is available in
+that kickoff commit; `training_started=false` in the cost ledger is not a
+runtime monitor. Inspect actual next durable status/trace rather than assuming
+that stale metadata means training is inactive.
+
+The admitted study has six sequential runs: seeds 3,4,5, each repeat 1 then 4.
+Each arm has nominal 393,216 controlled ticks and 3,840 planned policy optimizer
+calls; decisions/gradient sample presentations/FLOPs are not equal. Both metrics
+and all nine physical-time perturbation cases remain frozen. No learned outcome
+is available at this kickoff, and no improvement/completion is claimed.
+Do not upload, restart, resize, change variables/secrets or queue while it runs.
+Next scheduled priority: inspect one pinned durable snapshot of current status,
+claim/manifest/progress and any complete results with the timing checker.
+Do not blindly resume interrupted work. At terminal failure/completion/deadline
+verify durable artifacts and PAUSED; pause only this owned Space if necessary.
 
 ### Completed historical pilot, immutable evidence
 

@@ -27,10 +27,12 @@
   are now wired locally and pass 168 tests plus unchanged matched smokes.
   The distinct timing-20261004-v1 preflight is now deployed/started on CPU
   Upgrade with a $0.48 reservation and 2026-10-04 20:38:26 UTC deadline.
-  Initial durable source/context/budget admission passes, not the eight
-  preflight checks yet. Review those immutable outputs and independently
-  verify PAUSED before any intentional full-study admission. Do not alter
-  the running image/variables or reuse the completed v2 session/deadline.
+  All eight preflight checks now pass in a pinned review; independent PAUSED
+  verification preceded intentional study admission and start. The six paired
+  runs use the same source/reservation/deadline; no learning outcome yet.
+  Inspect immutable current claim/progress/results, keep actual controlled/
+  reset exposure and optimizer work explicit, and never change the active
+  image or silently resume partial work. Completed v2 remains immutable.
 - Retain v1's narrow central-landing target, but calibrate and predeclare a
   separate actual-platform-support metric for the next study. Four-tick phases
   1/2 of the known legal trajectory already hold the platform at X about 290;

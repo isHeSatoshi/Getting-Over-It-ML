@@ -61,11 +61,20 @@
       "preflight_launch_requested": true,
       "source_bundle": "artifacts/hf_bundle_20261004T043918760630Z",
       "source_upload_evidence": "artifacts/timing_deployment_20261004T044058033509Z/source_upload.json",
-      "context_dataset_revision": "1df89ec0fe48a579c234fed9e4a2e26085279811",
+      "context_dataset_revision": "80884fcb942397b783c9562b2cf3b987879a21a8",
+      "preflight_context_dataset_revision": "1df89ec0fe48a579c234fed9e4a2e26085279811",
       "restart_requested_epoch": 1791088979.409153,
       "initial_durable_phase": "timing_admitted",
       "initial_state_evidence": "artifacts/timing_deployment_20261004T044058033509Z/initial_status_verification.json",
-      "full_study_launch_requested": false
+      "full_study_launch_requested": true,
+      "remote_preflight_complete": true,
+      "preflight_evidence": "artifacts/timing_preflight_review_20261004T045845231549Z/review.json",
+      "preflight_evidence_revision": "471eadaf676a498b52cabb5962312e3da94e378b",
+      "study_restart_requested_epoch": 1791090090.08562,
+      "study_start_evidence": "artifacts/timing_preflight_review_20261004T045845231549Z/study_start.json",
+      "initial_study_phase": "timing_dispatch",
+      "initial_study_dataset_revision": "7a9a6cdb066dd30bc93da01a7228b7ce4aea38e6",
+      "durable_execution_claim_verified": true
     }
   ]
 }
