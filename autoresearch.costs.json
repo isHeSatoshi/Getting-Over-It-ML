@@ -201,6 +201,20 @@
       "recorded_physics_exact_selected_hold_reproduced": true,
       "not_saved_controller_skill_or_new_learning": true,
       "all_closed_estimate_unchanged": 0.4074241866528988
+    },
+    {
+      "name": "matched_host_local_pipeline_validation",
+      "evidence": "artifacts/matched_host_pipeline_20261004T150755974935Z/verification.json",
+      "paused_verified_epoch": 1791126722.6764882,
+      "space_stage": "PAUSED",
+      "new_paid_reservation": false,
+      "remote_writes": false,
+      "controlled_ticks": 0,
+      "reset_ticks": 0,
+      "training_updates": 0,
+      "inferred_sample_presentations": 3600,
+      "remote_host_comparison_not_launched": true,
+      "all_closed_estimate_unchanged": 0.4074241866528988
     }
   ]
 }

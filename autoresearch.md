@@ -42,7 +42,46 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Latest corrected replay: recorded hold and physical portability verified
+## Latest implementation: inference-only comparison ready, not deployed
+
+`tools/matched_host_inference.py` and `deploy/inference_worker.py` implement
+the frozen1800input/two-singleton-pass comparison with0game/training work.
+Private mode `inference_probe` accepts only fresh `inference-*` reservations,
+<=20minute immutable startup deadline,<=120second child and<=$0.01 within$10.
+Owned hash-bound NPZ/model/RMS metadata are checked before deserialization;
+ZIP member sizes and NPY headers/shapes/dtypes are checked before allocation.
+Direct parent PID/creation time, source/tool/provenance, output paths, grant
+hash and durable no-resume claim are bound. Credential-free children,20second
+backups, bounded HF requests and cleanup/pause paths are tested. Repeated,
+interrupted, failed or completed sessions never dispatch again. No browser
+or trainer path is dispatched, and the monitor reports inference separately.
+
+All246Python tests plus JS pass;429file allowlisted bundle built locally at
+`artifacts/hf_bundle_20261004T151054432121Z/`. Initial mocked-dispatch test
+used an incorrect argument slice; corrected fixture passes, no real worker
+failure or training occurred. Real bounded secret-stripped local pipeline:
+3600flushed inference presentations, raw-RMS normalization, archived singleton
+predictions and repeat predictions all exact. Parameters/timestep/RMS and
+files unchanged;0control/reset/optimizer work. LocalPython3.11.9/Torchcu124 CPU
+is explicitly **not** the proposed Linux3.11.17/Torch2.6.0+cpu comparison.
+Subsequent source-grant safety-only additions are fixture-tested; original
+executed tool hash is preserved separately from final bundle hash.
+Evidence: `artifacts/matched_host_pipeline_20261004T150755974935Z/verification.json`.
+
+Space independently PAUSED at1791126722.6764882, same95a8e311source,
+imitation completed session/mode/deadline. Estimated total$0.40742418665, all
+reservations closed. **No HF upload, source/configuration change, reservation
+or remote inference launch.** Goal metric remains0.
+Next: verify current CPU Upgrade pricing and fresh admission, reserve unique
+inference session <=20minutes/<=0.01USD including startup, publish tested private
+bundle and exact numeric fixture/operator context while PAUSED, then launch
+only this new inference mode. Never restart/renew closed imitation. Require
+actual dependency/source/data/work and independent PAUSED evidence afterward.
+Use `docs/INFERENCE_DIAGNOSTIC.md` and the frozen matched_host_plan.json below.
+Do not prolong kernel investigations or blind training scale after this one
+matched-input isolation; prioritize perturbation-robust reactive recovery.
+
+## Previous corrected replay: recorded hold and physical portability verified
 
 Fresh v2 recorded-control replay completes1800ticks/backend. All declared
 remote physical fields match exactly throughout; local reference/fast raw and

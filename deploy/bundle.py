@@ -18,7 +18,7 @@ def build_bundle(output=None):
     files = [ROOT / "StaticCollisionMap.py", ROOT / "requirements-research.txt",
              ROOT / "Getting Over It v1/script.js", ROOT / "Getting Over It v1/research.html",
              ROOT / "tools/research_goal_metrics.py", ROOT / "tools/hf_research_status.py",
-             ROOT / "tools/imitation_noise_probe.py"]
+             ROOT / "tools/imitation_noise_probe.py", ROOT / "tools/matched_host_inference.py"]
     files.extend(ROOT / "deploy" / name for name in ("Dockerfile", "requirements-space.txt", "README-space.md"))
     for folder, suffixes in (("research", (".py", ".js")), ("tests", (".py", ".js")),
                              ("deploy", (".py",)), ("docs", (".md",))):

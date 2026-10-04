@@ -26,6 +26,18 @@ def campaign_prefix(session):
     return f"{session}/{campaign}/runs/"
 
 
+def inference_summary(payload):
+    if any(payload.get(key) != 0 for key in ("controlled_ticks", "reset_ticks", "training_updates")):
+        raise ValueError("Inference-only result contains physical/training work")
+    count = payload.get("actual_inference_presentations")
+    if type(count) is not int or not 0 <= count <= 3600:
+        raise ValueError("Invalid inference-only work counter")
+    return {key: payload.get(key) for key in (
+        "kind", "status", "actual_inference_presentations", "controlled_ticks",
+        "reset_ticks", "training_updates", "dependencies", "raw_normalization_comparison",
+        "versus_local_archived_same_inputs", "singleton_repeat_comparison")}
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--session", help="Inspect a historical session instead of the configured active one")
@@ -47,6 +59,18 @@ def main():
               "stage": runtime["stage"], "phase": state.get("phase"),
               "updated_utc": state.get("updated_utc"), "deadline_epoch": state.get("deadline_epoch"),
               "error": state.get("error"), "completed_runs": [], "progress_samples": []}
+    if session.startswith("inference-"):
+        path = f"{session}/inference_result/report.json"
+        if path in files:
+            metadata = api.repo_info(REPO, repo_type="dataset", revision=revision, files_metadata=True)
+            item = next(item for item in metadata.siblings if item.rfilename == path)
+            if not metadata.private or not 0 < item.size <= 2 * 2**20:
+                raise ValueError("Inference result is not private bounded JSON")
+            local = hf_hub_download(REPO, repo_type="dataset", revision=revision, filename=path)
+            with open(local, encoding="utf-8") as handle:
+                report["inference_only"] = inference_summary(json.load(handle))
+        print(json.dumps(report, indent=2))
+        return
     prefix = campaign_prefix(session)
     for path in files:
         if path.startswith(prefix) and path.endswith("/evaluation.json"):

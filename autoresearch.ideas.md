@@ -34,11 +34,16 @@
   Safe553101-byte matched-input NPZ preserves1800raw/normalized217features;
   saved-RMS normalization exact. Missing historical remote observations still
   prevent a diagnosed numerical-build versus observation contribution.
-  Next: implement/test one inference-only matched-host comparison,0game/training,
-  max3600inference presentations/120worker seconds. Any future private Linux
-  CPU Upgrade session needs current price/source/admission checks, unique
-  <=20minute deadline and <=$0.01 reservation including startup, no trainer/
-  browser dispatch and guaranteed backup/pause. No current launch/reservation.
+  Inference-only tool/private worker mode now implemented:246tests+JS,
+  safe pre-allocation NPZ checks, exact parent/source/claim/path guards,
+  <=120second child,20second backups and guaranteed pause/no-resume.
+  Local3600inference presentations reproduce raw normalization and archived/
+  repeat singleton outputs exactly,0game/training.429file tested bundle ready.
+  No remote upload/configuration change or paid reservation has occurred.
+  Next: current-price/source/PAUSED checks, unique fresh private Linux
+  inference-only session with<=20minute deadline and <=$0.01 reserved including
+  startup, then deploy admitted tested bundle/context/data and verify results/
+  independent PAUSED. Never resume closed imitation or dispatch trainer/browser.
   Plan: artifacts/imitation_recorded_action_v2_20261004T143756537682Z/matched_host_plan.json.
   After isolation prioritize robust reactive recovery, not kernel thrashing.
   Keep the
