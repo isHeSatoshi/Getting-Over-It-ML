@@ -95,6 +95,18 @@
 - Use the legal successful first-ledge trajectory as a skill-acquisition
   baseline. Imitation may initialize a reactive controller; open-loop replay
   alone is not learned robustness.
+  A bounded 20-second prerequisite now tests raw/float32 controls and all nine
+  existing physical-time warm-up/noise streams: 11 reference/fast cases have
+  zero measured per-tick error; 8/9 perturbed experts pass both frozen ledge
+  metrics. Noise-4 misses, retaining 62.83 with no final body-query hits.
+  Float32 retains the exact nominal endpoint/hold, but intermediate body-Y
+  differs by up to 0.00027 and rounded pointer-Y by 0.001; an initial mistaken
+  whole-trace identity assertion is recorded, not hidden.
+  This is open-loop expert evidence, not a learned/held-out/60-second result.
+  Next conditional prerequisite: collect ordinary-start 217-feature
+  observation/action pairs and check for time-sequence target conflicts before
+  predeclaring imitation with reactive recovery or RL fine-tuning. Do not
+  train/deploy/reserve a new batch while the timing study remains active.
 - SAC/absolute seeds 0/1/2 all complete mean-policy evaluation with the hammer
   above the player, no hammer terrain contact, and no meaningful movement
   from spawn despite substantial optimizer work. Cohort is validated and fails

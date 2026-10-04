@@ -288,6 +288,62 @@ queue, context and immutable deadline stay untouched. Next scheduled priority:
 the complete seed-5 arms or a bounded terminal/deadline verification, then
 full-cohort analysis and verified automatic PAUSED before any new experiment.
 
+### Legal expert demonstration prerequisite, no learning
+
+At the 2026-10-04 06:57 UTC monitor snapshot, the actual timing session/source/
+mode/context/deadline and one never-sleep CPU Upgrade replica remain unchanged
+and RUNNING. Dataset `02c1e44b5b7088ed8e6d477e7919fc692a9f2e4a` still has
+four completed evaluations. Seed-5 repeat-1 training telemetry reaches 360,400
+controlled ticks with 4,080 reset ticks and both ledge flags latched in that
+episode near `(322.82,103.78)`. This stochastic training episode is not a
+complete frozen-policy reference result or a reason to promote the study.
+
+Instead of polling or altering the batch, a bounded local prerequisite checks
+the known legal first-ledge expert for possible future imitation. Eleven
+ordinary-start reference/fast cases use 600 ticks each: original float64
+targets, float32-normalized targets, and the nine already declared physical-
+time warm-up/noise streams with float32 targets. Warm-up replaces the first
+12 ticks, prediction remains indexed by controlled tick, and noise is held
+for four ticks. No placement, policy inference, optimizer or learning occurs.
+The diagnostic plan is saved before the replays; total controlled work is
+13,200 ticks across both backends, plus separate reset settling.
+
+Raw and float32 nominal trajectories both finish at `(322.58589,104)`,
+retaining 83 units and passing both frozen ledge descriptors. Maximum action
+quantization is approximately **0.00000381 pointer pixel**. Of the nine
+20-second perturbed expert cases, **8/9 pass both central and secondary
+detectors**, retaining 83 at their endpoints. Noise stream 4 fails both,
+ends near `(246.91,83.83)` retaining **62.83**, never qualifies a central hold,
+and has zero body-query hits over its final four seconds. All eleven tested
+reference/fast traces have **zero measured per-tick error** and no full
+completions or deaths.
+
+An additional verifier incorrectly expected raw/float32 inputs to produce an
+identical entire trajectory. It fails at tick index 40 with a 0.0002 body-Y
+difference. Direct comparison finds maximum body-Y difference 0.00027,
+body-X difference 0, rounded pointer-Y difference 0.001 and no tested
+discrete-state mismatch. Correct interpretation: the same final landing/hold
+survives this conversion, not bitwise intermediate-state identity. This
+operator assertion failure is preserved in `validation.json`; it is not a
+reference/fast fidelity failure.
+
+These are open-loop **demonstration diagnostics**, not learned-policy,
+independent held-out, three-seed robustness, full 60-second study evaluations
+or final-game evidence. The selected historical expert and familiar noise
+streams are not new IID trials. Keep active metrics and the primary learned
+completion metric unchanged. The eight short legal landings make this expert
+a plausible demonstration source, while the miss motivates reactive recovery/
+observation-action data rather than assuming a memorized time sequence is
+sufficient.
+
+Evidence: `artifacts/expert_robustness_probe_20261004T070002812275Z/`.
+Next priority remains completed seed-5 outcomes and verified terminal PAUSED.
+Conditional future hypothesis: collect provenance-bound ordinary-start
+observation/action demonstrations, check identical or nearby observation
+states for conflicting time-indexed targets, then separately predeclare an
+imitation-plus-recovery/RL comparison. No such training, new reservation,
+deployment, source change or paid batch is launched by this diagnostic.
+
 ### Completed historical pilot, immutable evidence
 
 - Private Space: `isHeSatoshi/rl-over-it-poc-20261004`.
