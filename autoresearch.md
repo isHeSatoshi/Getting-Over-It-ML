@@ -42,7 +42,62 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current result: comparison complete and PAUSED; selected-data addition fails
+## Current result: phase-feedback prototype reproduces nominal but fails recovery
+
+Implemented `research/phase_controller.py`: a non-learning state-matched
+trajectory prior, not a corrective oracle. It selects among8preceding/
+12following rows of the validated600row nominal demonstration using13existing
+body/hammer/contact features, original3576row frozen RMS and fixed weighted
+distance. No unconditional clock advance, hidden teacher index, reset
+placement, altered physics or learned update. Targets are actual prior
+applied controls, legal float32 relative-pointer actions; nearest-state
+proximity alone never makes them corrective labels at another state.
+
+The frozen first physical check compares time-indexed versus state-matched
+controls in nominal/reset12001, legal left warm-up and fresh noise11105.
+Each600tick case runs reference and fast after an exact central-held
+time-indexed nominal baseline gate.12rollouts/7200control+1440reset ticks,
+0learning,0summits/deaths. All phase/action/raw observation/reward/info/
+physical telemetry backend fields match exactly. Copies are fidelity,
+not independent recovery successes. No paid reservation or HF write.
+All twelve frozen metric traces independently reconstruct exactly from raw
+position, velocity and body-contact telemetry, including failed held fields.
+
+| Condition | Time-indexed control | State-matched prototype |
+|---|---|---|
+| Nominal |central+secondary held,(322.586,104),gain83|identical held result,phase599|
+| Left warm-up |central+secondary held,(322.577,104),gain83|nohold,(-3.362,21.996),gain0.996,phase28|
+| Noise11105 |secondary held only,(335.292,103),gain82|nohold,(35.640,19),gain-2,phase106|
+
+Do not relax the central X<=335gate for the baseline noise endpoint.
+Feedback13feature nearest-phase matching stalls/cycles under both
+perturbations: left last120phases27..29 (425unchanged/83backtracks across
+600ticks); noise last120phases106..115 (462unchanged/29backtracks).
+Nominal offline600recorded-input actions reproduce exactly, as does the
+physical nominal run, but that does not establish off-state recovery.
+The simpler timed recording is better on these two selected perturbations.
+Reject this matcher as a corrective-data teacher; no new corpus or learner
+training is admitted.295Python tests+JS pass. New tool/tests/docs committed,
+raw failed trajectories remain diagnostic only.
+Evidence: `artifacts/phase_controller_probe_20261004T194209476868Z/verification.json`.
+
+Next single-axis prototype: include existing pointer and control-history
+features (pointer_x/y,last_tx/ty,control_memory_x/y,last_hammer_distance,
+last_effort) in the matcher while preserving prior/RMS/window/weights/actions/
+test cases. They may disambiguate similar poses mid-stroke; this is a
+hypothesis, not causal proof or a fix. Freeze a fresh declaration before
+running; no repeated tuning/cutoff search or arbitrary corpus collection.
+Only actual physical recovery and fidelity can admit a corrective teacher.
+
+External budget notice was reviewed; cost contents match the committed
+seven closed batches and are left byte-for-byte unchanged. Cumulative
+closed estimate$0.4564241866528988, no active reservation. Private Space
+independently PAUSED1791143260.6853201, same80444390source/onstate completed
+session/mode, no configuration/image/deadline change. Goal metric0, no new
+learned-policy competence. Continue controller-learning research, not
+kernel/transport work or unchanged BC/PPO scaling.
+
+## Previous result: completed comparison; selected-data addition failed
 
 All six runs are complete and independently contract-validated at pinned
 dataset `d3fc0808ad5e434b839963529989c6bf4545f739`. Source/game/data, frozen

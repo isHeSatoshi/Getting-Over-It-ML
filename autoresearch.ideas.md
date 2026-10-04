@@ -1,5 +1,25 @@
 # Deferred hypotheses
 
+- **Next fixed-axis feedback prototype, no data admission yet:** the
+  13feature state-matched nominal trajectory controller is implemented/tested,
+  but fails both selected off-state tests. Nominal held(322.586,104) exactly;
+  leftwarmupstallsphase28 at(-3.362,21.996),noise11105stallsphase106 at
+  (35.640,19). Time-indexed baseline instead holds central after warm-up and
+  secondary only undernoise (X335.292outsideunchanged central range).
+  12rollouts/7200control+1440reset,0updates/summits/deaths; all backend fields
+  exact, all12raw position/velocity/contact metric traces reconstruct.
+  Offline600prior inputs/actions exact,295Python+JS pass. Not a
+  corrective oracle/robust skill; failed rows are diagnostic, no learner
+  training or new corpus. Budget externally touched but contents same,
+  preservedbytes;7closed$0.456424187, Space PAUSED1791143260.6853201.
+  Next add only existing pointer/control-memory features to the phase metric,
+  keeping prior, frozen RMS,8back/12ahead window, actions/weights/cases fixed.
+  Similar observed poses may hide unfinished control strokes, but cause/fix
+  unproven. Fresh predeclared bounded test required; no same-plan retry,
+  parameter sweep, teacher-label suffix at unrelated states or data admission
+  until actual reference recovery and backend fidelity pass.
+  Evidence: artifacts/phase_controller_probe_20261004T194209476868Z/verification.json.
+
 - **Closed full comparison; next is validated corrective feedback, not pooling
   more lucky trajectories:** all6contracts valid atd3fc0808, original central
   2/3/2/secondary2/4/3 and augmented3/1/0/secondary3/1/0 (ninecases/seed).
