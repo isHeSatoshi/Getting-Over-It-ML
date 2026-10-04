@@ -42,7 +42,57 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current partial result: one extra seed9 held event, not robust improvement
+## Current partial result: added-data benefit reverses in seed10; last arm active
+
+Five complete run contracts pass at pinned dataset
+`d797a550c6ae7085fe604542690a59959b3eca13`, last augmented seed11 missing.
+Source/game/data, frozen settings/RMS, actual optimizer/source-sample counts,
+fresh legal action traces, matched initialization/reference behavior and
+durable no-resume claim all validate. Complete original-data cohort fails
+the unchanged first-skill/summit gates; augmented cohort is incomplete.
+No winner or robust improvement is declared from the partial matrix.
+
+| Arm/seed | Central held | Secondary held | Median retained gain | Final central-region endpoints |
+|---|---|---|---|---|
+| Original9 |2/9|2/9|4.3693|2|
+| Augmented9 |3/9|3/9|13|2|
+| Original10 |3/9|4/9|18.3677|3|
+| Augmented10 |1/9|1/9|4|0|
+| Original11 |2/9|3/9|11.5412|2|
+
+All five nominal central holds are false;0/45final/postclone summits/deaths.
+Original cohort worst central fraction2/9, worst full completion0 and no
+nominal completion. Seed10 reverses seed9's one extra event: added data
+loses held cases, retained median and final ledge support. Its only central
+event (`new_action_noise_2`) is transient, ending(520.535,26.521), retained
+5.521. Seed9's augmented noise5 transient remains. This one selected
+successful trajectory does not show consistent benefit across the observed
+seeds. Wait for the last control before closing; even favorable seed11
+cannot rescue existing nominal and>=8/9-per-seed first-skill gate failures.
+Do not scale or start another data/optimizer experiment while this one runs.
+
+Twenty-four central/secondary qualifying position/contact windows checked;
+9final90tick central-region/contact windows pass. Speeds are absent from
+evaluator info, so raw velocity qualification is not independently rebuilt.
+Query hits are not forces and latched events are not final support.
+Actual five-run work10000BC calls/2560000presentations,0PPO/training physics.
+90distinct before/after reference rollouts162000control+21600reset ticks;
+45final/postclone cases. Saved companion identities/size hashes are pinned
+metadata only, not locally downloaded/reloaded or proved portable. Active
+seed11's initial parameters match its original peer; no completed active
+learning work is inferred.11local checker/goal tests pass; goal metric0.
+Evidence: `artifacts/onstate_later_review_20261004T185906597412Z/verification.json`.
+
+At UTCepoch1791140346.597413 /2026-10-04 18:59:06, private Space RUNNING
+`original_plus_logged_success_seed_11`, no error, same80444390source,
+session/mode/contexted3a53c3 and1791144140.4793909deadline;3793.882seconds
+remained. Original$0.06 reservation stays open, closed+reserved estimate
+$0.4779241866528988 unchanged. No remote write, new local game/training,
+pause, budget renewal, source edit or deadline change. Next: one bounded
+terminal/last-arm review and original reservation closure ONLY after durable
+artifacts and independently owned PAUSED. Keep the researcher running.
+
+## Previous partial result: one extra seed9 event, not robust improvement
 
 The running comparison has two complete contract-valid seed9 runs at pinned
 dataset `0f0ae67493534e4bffc3d8a01ef11ace20f0111b`. All source/game/data,

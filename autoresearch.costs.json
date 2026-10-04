@@ -234,12 +234,12 @@
       "preflight_independent_paused_epoch": 1791137892.5876534,
       "full_study_launch_requested": true,
       "full_study_restart_requested_epoch": 1791138225.383253,
-      "validated_completed_runs": 2,
-      "latest_partial_artifact_revision": "0f0ae67493534e4bffc3d8a01ef11ace20f0111b",
-      "latest_partial_evidence": "D:\\Project\\cat\\artifacts\\onstate_partial_review_20261004T183915603589Z\\verification.json",
-      "last_observed_active_phase": "original_demonstrations_seed_10",
-      "validated_bc_optimizer_calls": 4000,
-      "validated_bc_sample_presentations": 1024000
+      "validated_completed_runs": 5,
+      "latest_partial_artifact_revision": "d797a550c6ae7085fe604542690a59959b3eca13",
+      "latest_partial_evidence": "D:\\Project\\cat\\artifacts\\onstate_later_review_20261004T185906597412Z\\verification.json",
+      "last_observed_active_phase": "original_plus_logged_success_seed_11",
+      "validated_bc_optimizer_calls": 10000,
+      "validated_bc_sample_presentations": 2560000
     }
   ],
   "postclosure_local_diagnostics": [

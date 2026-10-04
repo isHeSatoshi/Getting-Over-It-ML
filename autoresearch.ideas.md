@@ -1,5 +1,26 @@
 # Deferred hypotheses
 
+- **Five-run partial evidence rules out a robust gate, not a complete winner:**
+  d797a550snapshot validates original seeds9/10/11 and augmented9/10;
+  augmented11still active. Original central2/3/2,secondary2/4/3,retained
+  medians4.3693/18.3677/11.5412; augmentedcentral3/1,secondary3/1,medians13/4.
+  All five nominalcentralfalse,0/45summits/deaths. Original worstheld2/9,
+  full0. Augmentedseed10reversesseed9gain: only1event and0final central-region
+  endpoints, versus original3persistent endpoints. Its noise2hold is
+  transient, ending(520.535,26.521); seed9noise5also transient. Added selected
+  trajectory not consistently helpful. Lastseed11still required for complete
+  comparison; existing nominal/per-seed gates cannot be rescued by its result.
+  Actual10000BCcalls/2560000presentations,90reference rollouts162000control+
+  21600reset,0PPO/trainingphysics.24qualifying position/contact windows and
+  9last90tickendpoint/contact windows checked, not raw velocity reconstruction.
+  Saved companion metadata and active initialseed11peerhash verified.
+  11checker/goal tests pass, goal0. SpaceRUNNING/original_plus_logged_success_seed_11
+  at1791140346.597413,3793.882seconds before original deadline. Same source/
+  context/session/$0.06 reservation and$0.477924187closed+reserved; no writes.
+  Next bounded last-arm/terminal contract audit, then artifacts/owned PAUSED
+  and original closure. No data/optimizer changes, scaling or new cap mid-run.
+  Evidence: artifacts/onstate_later_review_20261004T185906597412Z/verification.json.
+
 - **Latest partial learning evidence, keep the active study untouched:** two
   complete seed9 contracts pass at0f0ae674. Original2central/2secondary holds,
   median retained4.3693; augmented3/3,median13. Both nominal holds false,
