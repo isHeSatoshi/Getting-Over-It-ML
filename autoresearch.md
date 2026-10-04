@@ -160,6 +160,17 @@ This source/configuration/budget fails the predeclared gate and is not eligible
 for broader-climb scaling. Do not generalize this to all SAC variants or game
 solvability. The three velocity-action SAC runs remain in the unchanged queue.
 Evidence: `artifacts/v2_absolute_cohorts_20261004T005803065949Z/`.
+SAC/velocity seed 0 subsequently passes contract validation: 98,304 transitions,
+264,912 named optimizer calls, 2,092.21 learning seconds, 0/9 holds and no full
+completions/deaths, but median retained gain 6 rather than complete inactivity.
+Its nominal case finishes near `(86.83,27)`, retaining 6 units, with 18 hammer
+contact ticks and 1,776 body-contact ticks. Other cases retain roughly 0..8 units
+on low terrain and reach X up to about 210. This is physical movement under
+velocity control, not first-platform retention or robust climbing.
+One seed remains insufficient for the parameterization comparison. Because
+this seed fails the frozen all-seed gate, the variant cannot qualify for the
+current follow-up even if later seeds improve; preserve their remaining runs.
+Evidence: `artifacts/v2_first_velocity_review_20261004T013812716866Z/`.
 
 ## How to inspect and measure
 

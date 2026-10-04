@@ -40,6 +40,10 @@
   investigate safe/stalled behavior, exploration and
   reward/entropy scale rather than blindly increasing sample count. Preserve
   the raw task contract and isolate any proposed change in a new experiment.
+- First SAC/velocity seed does move/contact terrain and retains median 6 units,
+  unlike the inactive absolute-action cohort, but still has 0/9 platform holds.
+  Finish the other seeds; distinguish low-terrain traversal from retention
+  before attributing improvement to the control parameterization.
 - Test ordinary-start skill composition before a privileged-reset curriculum.
   Never include diagnostic placements in claimed policy success.
 - Completed and deployed in the fresh v2 recovery: named optimizer-step
