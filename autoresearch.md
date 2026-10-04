@@ -42,12 +42,13 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current remote state: fresh imitation preflight RUNNING
+## Current remote state: imitation study RUNNING, durable no-resume claim verified
 
-- Fresh session **`imitation-20261004-v1`**, mode **`imitation_preflight`**.
+- Fresh session **`imitation-20261004-v1`**, mode **`imitation_study`**.
 - Private source **`95a8e311664789bcf1be5c609dce148e1f300f93`**,
   exact locally tested bundle `artifacts/hf_bundle_20261004T090634364226Z/`.
-- Pinned operator context **`9b3f4f0d6f1128e301e9603edecabecf12de8567`**;
+- Pinned study operator context **`ae958180b348432f236c6c1e72f832a723164199`**;
+  passed-preflight context **`9b3f4f0d6f1128e301e9603edecabecf12de8567`**;
   corpus revision **`c09410fbf4fd7b36bfb6976f3659b7ec28b2e38c`**.
 - CPU Upgrade, one never-sleep replica. Published $0.03/hour is reverified
   from official HF docs on 2026-10-04. New maximum reservation **$0.48**,
@@ -55,20 +56,47 @@ verified from standard campaign aggregation alone.
 - Start **`1791104923.3790162`**; immutable deadline
   **`1791162523.3790162`**, **2026-10-05 01:08:43 UTC**. This is a distinct
   new budget, not renewal/extension/resume of the closed timing or v2 sessions.
-- Source/corpus/context/variables were published while independently PAUSED.
-  Intentional preflight restart at `1791105056.135345` returned BUILDING.
-  One bounded monitor read subsequently returned RUNNING, durable
-  **`imitation_admitted`**, no error.
-- Pinned initial dataset **`08234198856fa67a72702e89a827a6e3a3d98678`**
-  verifies source/game/all research hashes, corpus/RMS identity, context,
-  start/deadline and one never-sleep CPU Upgrade replica.
-  Evidence: `artifacts/imitation_deployment_20261004T090843379016Z/`.
-- **No passed preflight or full training is claimed yet.** Keep this active
-  image/variables/hardware/queue unchanged. Next bounded priority: inspect all
-  nine durable passed checks and auto-PAUSED; independently verify PAUSED before
-  publishing the exact passed evidence in a new context, switching only to
-  `imitation_study` and intentionally restarting under the same source/data/
-  reservation/deadline. Never start from incomplete/failed preflight.
+- All **nine remote preflight checks** pass at immutable dataset
+  **`67712baf8f4f0464a4b03e133ed97439b32462ef`**. Worker completed at
+  **09:17:38 UTC**; independently verified **PAUSED** at
+  `1791105736.9293103`. 219 Python tests and JS collision checks pass.
+- Review binds the exact source/game/corpus/normalization/budget. All 17 raw
+  cases and six 384-tick reactive cases have zero measured fast/reference
+  error. Three-arm smoke settings, work and reference stage traces validate;
+  saved RMS equals a fresh eligible-corpus fit exactly, and same-seed
+  untrained traces and post-clone traces/weights agree. These short smokes
+  establish pipeline integrity, **not learned skill or portability**.
+- Effective allocation is 8 CPUs/32 GB. Summed worker/reference peak RSS is
+  about 6.09 GiB (can double-count shared pages); terrain benchmark is
+  about 258 decisions/s, excluding optimization. Static terrain approximation
+  disagrees at one of 135 sampled points; this is not fast/reference drift.
+- Published the exact durable passed ticket while independently PAUSED.
+  Changed **only mode/context**, then intentionally restarted the study at
+  **`1791105924.3108993`**, returning BUILDING. Source, corpus, session,
+  start/deadline, CPU Upgrade/never-sleep/one replica and $0.48 reservation
+  are unchanged. No old session was resumed and no budget was renewed.
+- Evidence: `artifacts/imitation_preflight_review_20261004T092140390244Z/`
+  (`review.json`, `imitation_study_context.json`, `study_start.json`).
+- One bounded startup monitor pins dataset
+  **`8b3acc244d88f174e7fddb5ec84eebb94ae896fa`**. Independent verification
+  at `1791106097.4731588` finds **RUNNING**, **`imitation_dispatch`**, no
+  error, and validates the exclusive durable **`claimed_no_resume`**
+  execution claim, prepared nine-run contract and corpus/source/deadline.
+  No learner manifest, controlled-work sample or completed result was present
+  in this initial pinned snapshot. Full study dispatch is verified; optimizer
+  work and skill are not inferred from startup.
+- Initial operator verification incorrectly required the paused replica dict
+  to remain identical while RUNNING. HF legitimately added `current:1`;
+  the existing unattended-runtime guard validates requested/current=1.
+  Corrected review uses the **same immutable startup revision**, no new
+  monitor/poll or deployment change. This was not a worker failure.
+- Eight goal tests and six imitation-execution guard tests pass locally.
+- **No learning effectiveness or full completion result is claimed.** Keep
+  this active image/variables/hardware/queue unchanged. Next: independently
+  review actual training exposure and the nine
+  sequential scratch/BC-only/BC+PPO results for seeds 6/7/8 using the imitation
+  checker. No polling, automatic scaling, interrupted resume or deadline
+  extension. Saved-policy portability and the full-game goal remain unverified.
 
 ### Closed timing study, immutable history
 

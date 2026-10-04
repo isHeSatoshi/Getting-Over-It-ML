@@ -1,14 +1,20 @@
 # Deferred hypotheses
 
-- **Current action:** full-budget imitation stages/executor/private worker now
-  pass 219 local tests plus exact-bundle checks; updated smokes are bitwise
-  unchanged. Fresh `imitation-20261004-v1` preflight is RUNNING on private
-  source `95a8e311664789bcf1be5c609dce148e1f300f93`, context
-  `9b3f4f0d6f1128e301e9603edecabecf12de8567`, $0.48 reservation and deadline
-  2026-10-05 01:08:43 UTC. Full training is not started. Next: review all nine
-  durable checks and verified PAUSED before intentionally admitting the study.
-  No new implementation, variable/source change or polling while preflight
-  is active. Closed estimates plus reservation $0.772696 remain under $10.
+- **Current action:** all nine immutable imitation preflight checks validate,
+  including 17 raw/six reactive cases with zero fast/reference errors and
+  common frozen RMS/matched cloned weights. Independently PAUSED, then
+  intentionally started `imitation_study` at epoch1791105924.3108993,
+  session `imitation-20261004-v1`, unchanged source
+  `95a8e311664789bcf1be5c609dce148e1f300f93`, new study context
+  `ae958180b348432f236c6c1e72f832a723164199`. Same $0.48 cap and
+  2026-10-05 01:08:43 UTC deadline; closed-plus-reserved $0.772696 under $10.
+  RUNNING/`imitation_dispatch` and durable no-resume claim validate at pinned
+  startup `8b3acc244d88f174e7fddb5ec84eebb94ae896fa`; no learner work or
+  completed result was present yet. Next: review actual training exposure and
+  nine-run scratch/BC-only/BC+PPO outcomes, seeds6/7/8. No effectiveness result yet.
+  Do not change active source/variables/hardware/queue, poll, resume
+  interruptions or extend this budget. No more disconnected infrastructure
+  or viewer work. Historical bullets below do not authorize old restarts.
 
 - **Current priority after timing closure:** the six-run timing diagnostic is
   complete/validated and the owned Space is independently PAUSED. Fine central
