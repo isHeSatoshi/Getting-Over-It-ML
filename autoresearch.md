@@ -42,7 +42,7 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current remote state: imitation study RUNNING, all seed-6 arms validated
+## Current remote state: imitation study RUNNING, seed-7 prefix and offline clone drift audited
 
 - Fresh session **`imitation-20261004-v1`**, mode **`imitation_study`**.
 - Private source **`95a8e311664789bcf1be5c609dce148e1f300f93`**,
@@ -183,7 +183,7 @@ verified from standard campaign aggregation alone.
   pass. Clone evaluation123902707bytes is below the prechecked128MiB gate;
   this chunk used HF reads only. Evidence:
   `artifacts/imitation_clone_review_20261004T101754929686Z/review.json`.
-- Latest **`11678b29c6b960586a1455c82a1e1218b9d21ba4`** validates all
+- Seed6 full review **`11678b29c6b960586a1455c82a1e1218b9d21ba4`** validates all
   three **seed6** arms, **three completed runs/six incomplete**. Actual
   RUNNING phase is **`ppo_from_scratch_seed_7`**, no error; source, data,
   context, start/deadline, CPU Upgrade/one never-sleep replica and cap unchanged.
@@ -215,6 +215,39 @@ verified from standard campaign aggregation alone.
 - All seed6 arms fail the first-skill gate. Finish frozen seeds7/8 before
   comparison/closure, then select a bounded first-divergence/reactive
   corrective-control diagnostic rather than blind scaling or a relaxed gate.
+- Latest bounded snapshot **`8393e54e26fda29106f20add394f17ba76609ce7`**
+  has **no new final result**: three validated seed6 runs unchanged.
+  Actual RUNNING phase **`ppo_from_scratch_seed_7`**, no reported error;
+  source/mode/context/data/deadline/hardware/replicas/reservation unchanged.
+  Seed7 prefix validates **302000 control +3720 reset ticks**, **755
+  complete 400-tick sample rows**, seven bounded checkpoint pairs through
+  280000. Latest training retained **24**, neither hold flag. No final
+  outcome, exact optimizer-call count or binary portability is inferred.
+- Used this invocation for an **offline 600-tick comparison**, not more
+  polling or new physical work: the frozen failed clone nominal reference
+  from `d3ed8abd...` versus the legal nominal training expert/corpus.
+  Corpus/expert/clone file hashes and current game/source bindings validate.
+  Expert pre-action float32 body observations are shifted to post-action
+  indices, with exact manifest endpoint; maximum decoded-position rounding
+  bound about **0.0000218 pixel**, much smaller than measured departures.
+- First relative target component differs by **2.00631 pixels**:
+  expert `(0.49577025,-0.19169308)`, clone
+  `(0.48009592,-0.20012996)`. Time-aligned body distance first exceeds
+  **1 pixel at tick27**, **10 pixels at tick49**. At tick600 expert is
+  **`(322.5858865,104)`**, clone **`(237.3790079,32)`**, distance
+  **111.55363 pixels**. This locates early departure, not its proven cause.
+- **Limits:** training expert reset6001 differs from reference reset1001;
+  exact full initial reference observations are absent. Once paths differ,
+  equal-time action discrepancy is **not supervised error at equal states**,
+  and the expert recording is not an off-state corrective oracle. No
+  intervention, rollout, model reload, learning update or competence gain.
+  Same final-reference LFS identities are unchanged; goal helper remains
+  candidate/final false. Evidence:
+  `artifacts/imitation_seed7_review_20261004T105752209730Z/offline_diagnostic.json`.
+- Next bounded priority is actual seed7/8 final contracts. After comparison
+  closure, a controlled **same-reset legal expert-prefix/clone-continuation**
+  diagnostic can test whether early alignment/recovery matters, before
+  designing new corrective data or spending on more optimizer steps.
 - **No robust cloning advantage, skill or full completion is claimed.** Keep
   this active image/variables/hardware/queue unchanged. Next: independently
   review actual training exposure and the nine

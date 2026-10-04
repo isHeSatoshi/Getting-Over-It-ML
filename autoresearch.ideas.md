@@ -32,6 +32,17 @@
   hypotheses, not proven causes; do not alter current observations,
   normalization, reward, evaluation or queues while the study runs.
 
+- **Offline drift evidence, not a cause:** seed6 clone nominal differs from
+  legal teacher by about2.006px on the first pointer target; body paths separate
+  by1px at tick27 and10px at49, ending111.55px apart at600. Decode/phase
+  alignment is checked; trainreset6001 versus referencereset1001 and absent
+  full initial observations prevent causal attribution or equal-state error
+  claims. After study closure, predeclare a small same-reset legal
+  expert-prefix/clone-continuation test, then corrective recovery coverage if
+  warranted. Never label learner states with an arbitrary time-indexed suffix.
+  Current seed7 audit302000control/3720reset with seven checkpoint pairs;
+  three finals remain unchanged at snapshot8393e54e26fda29106f20add394f17ba76609ce7.
+
 - **Current priority after timing closure:** the six-run timing diagnostic is
   complete/validated and the owned Space is independently PAUSED. Fine central
   holds 0/0/2, secondary 1/0/5; coarse all zero. Both worst-seed completion and
