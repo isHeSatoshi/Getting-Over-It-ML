@@ -78,9 +78,11 @@ These estimates are not the actual provider bill. There is no active paid
 research batch. Keep the operator running for useful bounded research work.
 Do not restart the completed pilot or overwrite either artifact session.
 The next priority is the predeclared timing diagnostic, not promotion or
-blind sample/hardware scaling. Complete timing-aware trainer/GAE/horizon,
-actual training/reset tick accounting, independent closed-loop fidelity/smokes,
-and a runner with new session/budget admission before any launch.
+blind sample/hardware scaling. Timing-aware trainer/GAE/horizon and actual
+training/reset tick accounting now pass local tests and bounded smokes.
+Complete the secondary-detector integration, independent timing-specific
+reactive-policy fidelity and a runner with new session/budget admission before
+any launch. Remote timing-study execution is deliberately blocked in the CLI.
 
 Never modify, upload, restart, or resize an active future image. The replacement
 includes complete-prefix snapshots for append-only logs/CSV/JSONL; binary
@@ -590,3 +592,40 @@ one-tick reactive-policy fidelity. It is local only, not deployed or wired
 into the trainer CLI. Remaining next-study work: trainer timing/GAE/budgets,
 actual training/reset exposure, secondary-detector integration, independent
 closed-loop fidelity/smokes, runner and new bounded-session admission.
+
+### Timing-aware trainer and physical-work accounting integrated locally
+
+The trainer now has an explicit `--timing-study --frame-skip 1|4` path.
+`research.training_timing.training_settings` derives its full-run budgets,
+rollouts/minibatches, physical-time gamma/GAE and episode/evaluation horizons
+from the prepared plan; it refuses changed full-run budgets, reward settings
+or algorithm. Smoke reductions are labelled pipeline-only and also preserve
+matched nominal physical time. Trace/checkpoint intervals use physical cadence.
+The legacy path keeps its former PPO/SAC learner defaults and four-tick
+evaluation semantics. Timing-study **remote execution is explicitly refused**
+until the bounded runner/preflight admission is implemented. This is not a
+reservation, deployment, new study launch or promotion.
+
+`PhysicalWork` observes successful steps and resets without changing returned
+observations/rewards/info. It checks actual tick differences against telemetry,
+counts terminal short decisions, and reports controlled versus reset-settling
+work separately. Training summaries/trace rows now retain this actual exposure;
+preflight/evaluation/runtime boot work are explicitly outside that scope.
+Synthetic tests cover auto-resets, short terminals, invalid telemetry and
+bitwise PPO/SAC weight equality with accounting enabled.
+All **128 Python tests plus JS checks** pass.
+
+Two matched ordinary-start **pipeline-only** smokes use training seed 3,
+256 one-tick versus 64 four-tick transitions. Each reports **256 actual
+controlled ticks, 120 reset-settling ticks and four policy optimizer calls**.
+Both frozen-reference evaluations use all nine cases before/after for 128
+controlled ticks per case, plus 240 initial/automatic reset ticks. Saved model
+and 217-dimensional normalizer reloads preserve matching gamma and each arm's
+physical-time GAE. Both have zero ledge holds/full completions in these short
+horizons; this is pipeline correctness, not timing effectiveness or learning.
+Evidence: `artifacts/timing_trainer_smoke_20261004T0302556740868Z/`,
+including `verification.json`. No remote settings or source changed.
+
+Next bounded priority: secondary support integration alongside frozen v1 and
+independent contact-rich one/four-tick closed-loop fidelity, then the distinct
+bounded session/runner/preflight. Preserve the existing pilot artifact prefix.

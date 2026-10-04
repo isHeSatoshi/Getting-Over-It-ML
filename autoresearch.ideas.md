@@ -10,9 +10,11 @@
   conditional diagnostic is the next priority, never pilot promotion.
   Physical calibration and opt-in timing-aware evaluation now pass locally,
   including real-game one/four-tick parity and exact legacy four-tick traces.
-  Trainer/GAE/horizon and actual training/reset exposure accounting, secondary
-  detector integration, reactive-policy fidelity/smokes and new-session runner/
-  budget admission remain required before activation. No future job is launched.
+  Trainer/GAE/horizon and actual training/reset exposure now pass local tests
+  and matched pipeline smokes (256 actual ticks and four optimizer calls/arm).
+  The CLI explicitly blocks remote study execution until runner admission.
+  Secondary detector integration, contact-rich reactive-policy fidelity and
+  new-session runner/budget/preflight remain required. No future job is launched.
 - Retain v1's narrow central-landing target, but calibrate and predeclare a
   separate actual-platform-support metric for the next study. Four-tick phases
   1/2 of the known legal trajectory already hold the platform at X about 290;

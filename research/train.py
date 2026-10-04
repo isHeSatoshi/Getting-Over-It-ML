@@ -16,6 +16,7 @@ from research.backends import make_bridge
 from research.evaluation_cases import STANDARD_CASES, EvaluationCase, perturb
 from research.optimizer_work import OptimizerWork, WORK_VERSION
 from research.case_clock import PhysicalCaseClock
+from research.training_timing import PhysicalWork, training_settings
 
 
 def evaluate(model, normalization, bridge, action_mode, terrain, decisions, seeds,
@@ -101,22 +102,27 @@ def main():
     parser.add_argument("--backend", choices=["reference", "fast"], default="fast")
     parser.add_argument("--smoke", action="store_true")
     parser.add_argument("--remote-training", action="store_true")
+    parser.add_argument("--timing-study", action="store_true",
+                        help="Prepared physical-time PPO settings; currently local pipeline smokes only")
+    parser.add_argument("--frame-skip", type=int, choices=[1, 4], default=4)
     parser.add_argument("--steps", type=int)
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--reward-profile", choices=PROFILES, default="settled")
     parser.add_argument("--discount-half-life", type=float, default=120.0, help="Discount half-life in game seconds")
-    parser.add_argument("--evaluation-decisions", type=int, default=450)
+    parser.add_argument("--evaluation-decisions", type=int)
     parser.add_argument("--evaluation-suite", choices=["standard", "replay"], default="standard")
     parser.add_argument("--replay-buffer-size", type=int, default=200000)
     parser.add_argument("--output-dir", type=str, help="New absolute output directory; refuses existing paths")
     args = parser.parse_args()
     if args.smoke == args.remote_training:
         parser.error("Choose exactly one: --smoke or --remote-training")
-    steps = args.steps if args.steps is not None else (512 if args.smoke else 1_000_000)
-    if steps < 1 or (args.smoke and steps > 2048):
-        parser.error("Local smoke tests are capped at 2048 transitions")
-    if not 32 <= args.evaluation_decisions <= 3000 or not 1000 <= args.replay_buffer_size <= 1000000:
-        parser.error("Invalid evaluation or replay buffer budget")
+    if args.timing_study and args.remote_training:
+        parser.error("Timing-study remote execution requires the not-yet-implemented bounded runner admission")
+    if not 1000 <= args.replay_buffer_size <= 1000000:
+        parser.error("Invalid replay buffer budget")
+    if args.timing_study and (args.action != "absolute" or args.no_terrain
+                             or args.backend != "fast" or args.evaluation_suite != "standard"):
+        parser.error("The prepared timing study fixes absolute actions, terrain, fast training and standard cases")
     if args.remote_training and os.environ.get("FACTORY_DESKTOP_CDP_PORT"):
         parser.error("Full training is disabled on this desktop. Use a separate training host.")
     if args.remote_training and args.driver == "embedded" and args.backend == "reference":
@@ -124,9 +130,15 @@ def main():
     try:
         reward_config = RewardConfig(profile=args.reward_profile,
                                      discount_half_life_seconds=args.discount_half_life)
+        timing = training_settings(
+            args.algorithm, args.smoke, frame_skip=args.frame_skip, timing_study=args.timing_study,
+            steps=args.steps, evaluation_decisions=args.evaluation_decisions, reward_config=reward_config)
     except ValueError as error:
         parser.error(str(error))
-    gamma = reward_config.gamma(4)
+    steps, gamma = timing["requested_transitions"], timing["gamma"]
+    args.evaluation_decisions = timing["declared_evaluation_decisions"]
+    evaluation_budget = timing["evaluation_decisions"]
+    evaluation_options = {"frame_skip": args.frame_skip, "physical_case_clock": args.timing_study}
 
     import torch
     import stable_baselines3 as sb3
@@ -144,13 +156,14 @@ def main():
         "config": vars(args), "steps": steps, "device": "cpu",
         "python": platform.python_version(), "numpy": np.__version__,
         "torch": torch.__version__, "stable_baselines3": sb3.__version__,
-        "reward_contract": reward_config.describe(4),
+        "reward_contract": reward_config.describe(args.frame_skip),
+        "control_timing_contract": timing,
         "reward_normalization": {"enabled": False, "clipping": "disabled", "units": "raw_task_units"},
         "optimizer_work_contract": {"version": WORK_VERSION,
                                     "units": "Completed optimizer.step calls per named optimizer"},
         "evaluation_contract": {"suite": args.evaluation_suite, "cases": [
             c.describe() for c in STANDARD_CASES] if args.evaluation_suite == "standard" else [],
-            "decisions": 32 if args.smoke else args.evaluation_decisions},
+            "decisions": evaluation_budget},
         **fingerprint(),
         "purpose": "pipeline-only smoke test" if args.smoke else "remote research run",
     }, indent=2), encoding="utf-8")
@@ -158,9 +171,10 @@ def main():
         print("Validating the real-game state/action loop before training...", flush=True)
         proof = validate(bridge)
         (output / "validation.json").write_text(json.dumps(proof, indent=2), encoding="utf-8")
-        vector = DummyVecEnv([lambda: Monitor(RealGettingOverItEnv(
+        physical_work = PhysicalWork(RealGettingOverItEnv(
             bridge=bridge, action_mode=args.action, terrain=not args.no_terrain,
-            horizon=256 if args.smoke else 3000, reward_config=reward_config), str(output / "monitor.csv"),
+            horizon=timing["episode_decisions"], frame_skip=args.frame_skip, reward_config=reward_config))
+        vector = DummyVecEnv([lambda: Monitor(physical_work, str(output / "monitor.csv"),
             info_keywords=("max_gain", "retained_gain", "success"))])
         # Keep the raw objective. Online reward rescaling and nonlinear clipping
         # invalidate the fixed-scale potential-return contract during training.
@@ -169,46 +183,54 @@ def main():
         kwargs = dict(seed=args.seed, device="cpu", verbose=1, gamma=gamma,
                       policy_kwargs={"net_arch": [64, 64] if args.smoke else [256, 256]})
         if args.algorithm == "ppo":
-            kwargs.update(n_steps=64 if args.smoke else 2048, batch_size=32 if args.smoke else 256,
-                          n_epochs=2 if args.smoke else 10)
+            kwargs.update(timing["ppo"])
         else:
             kwargs.update(learning_starts=64 if args.smoke else 10000,
                           buffer_size=4096 if args.smoke else args.replay_buffer_size,
                           batch_size=32 if args.smoke else 256)
         model = algorithm("MlpPolicy", vector, **kwargs)
-        evaluation_budget = 32 if args.smoke else args.evaluation_decisions
         evaluation_cases = STANDARD_CASES if args.evaluation_suite == "standard" else None
         # Evaluation uses the rendered, uncached reference, not the training worker.
-        with make_bridge("reference", "selenium") as reference:
-            before = evaluate(model, vector, reference, args.action, not args.no_terrain,
-                              evaluation_budget, (1001, 1002, 1003), reward_config, evaluation_cases)
         class PhysicalTrace(BaseCallback):
             def _on_step(self):
-                if args.smoke or self.num_timesteps % 100 == 0:
+                if args.smoke or self.num_timesteps % timing["trace_every_decisions"] == 0:
                     info = self.locals["infos"][0]
                     record = {k: v for k, v in info.items() if k not in ("terminal_observation", "episode")}
-                    record.update(transition=self.num_timesteps, action=self.locals["actions"][0].tolist())
+                    record.update(transition=self.num_timesteps, action=self.locals["actions"][0].tolist(),
+                                  controlled_physics_ticks_total=physical_work.controlled_ticks,
+                                  reset_settling_physics_ticks_total=physical_work.reset_ticks)
                     with (output / "physical_trace.jsonl").open("a", encoding="utf-8") as log:
                         log.write(json.dumps(record) + "\n")
                 return True
         try:
+            with make_bridge("reference", "selenium") as reference:
+                before = evaluate(model, vector, reference, args.action, not args.no_terrain,
+                                  evaluation_budget, (1001, 1002, 1003), reward_config,
+                                  evaluation_cases, **evaluation_options)
             learning_start = time.perf_counter()
             with OptimizerWork(model, args.algorithm) as optimizer_work:
                 model.learn(total_timesteps=steps, callback=[PhysicalTrace(), CheckpointCallback(
-                    save_freq=10000, save_path=str(output / "checkpoints"),
+                    save_freq=timing["checkpoint_every_decisions"], save_path=str(output / "checkpoints"),
                     save_vecnormalize=True, save_replay_buffer=False)])
+            if physical_work.decisions != model.num_timesteps:
+                raise RuntimeError("Training decision accounting disagrees with learner transitions")
             training_summary = {"actual_transitions": model.num_timesteps, "requested_transitions": steps,
                                 "optimizer_work": optimizer_work.summary(),
+                                "physical_work": physical_work.summary(),
+                                "control_timing_contract": timing,
                                 "learning_wall_seconds": time.perf_counter() - learning_start,
                                 "complete": True, "learner_gamma": model.gamma,
                                 "torch_threads": torch.get_num_threads()}
+            if args.algorithm == "ppo":
+                training_summary["learner_gae_lambda"] = model.gae_lambda
             model.save(str(output / "model"))
             vector.save(str(output / "normalization.pkl"))
             if args.algorithm == "sac" and not args.smoke:
                 model.save_replay_buffer(str(output / "replay_buffer.pkl"))
             with make_bridge("reference", "selenium") as reference:
                 after = evaluate(model, vector, reference, args.action, not args.no_terrain,
-                                 evaluation_budget, (1001, 1002, 1003), reward_config, evaluation_cases)
+                                 evaluation_budget, (1001, 1002, 1003), reward_config,
+                                 evaluation_cases, **evaluation_options)
             (output / "training_summary.json").write_text(json.dumps(training_summary, indent=2), encoding="utf-8")
             (output / "evaluation.json").write_text(
                 json.dumps({"training_backend": args.backend, "evaluation_backend": "reference",
