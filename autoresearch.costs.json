@@ -186,6 +186,21 @@
       "full_replay_not_completed": true,
       "fresh_corrected_plan_unlaunched": true,
       "all_closed_estimate_unchanged": 0.4074241866528988
+    },
+    {
+      "name": "imitation_recorded_action_v2",
+      "evidence": "artifacts/imitation_recorded_action_v2_20261004T143756537682Z/verification.json",
+      "paused_verified_epoch": 1791125021.4120429,
+      "space_stage": "PAUSED",
+      "new_paid_reservation": false,
+      "remote_writes": false,
+      "controlled_ticks": 3600,
+      "reset_ticks": 480,
+      "case_rollouts": 2,
+      "training_updates": 0,
+      "recorded_physics_exact_selected_hold_reproduced": true,
+      "not_saved_controller_skill_or_new_learning": true,
+      "all_closed_estimate_unchanged": 0.4074241866528988
     }
   ]
 }

@@ -25,14 +25,23 @@
   extra remote fields. All declared physical fields and applied controls match
   exactly through the prefix; no fast/full hold result or physics-disproof.
   Four explicit-scope regression tests now pass; old evidence is preserved.
-  Next: fresh v2 recorded-action replay, max3600control+480reset ticks/300seconds/
-  zero updates or paid reservation, never continuation of the partial case.
-  Keep exact declared physical fields and same-host full backend comparisons.
-  Extra cross-host reward scalars are diagnostics, not an undeclared stop.
-  Apply only saved noise8105 controls and capture raw/normalized input states.
-  This cannot count as saved-controller skill or bypass causal-feedback gates.
-  Plan: artifacts/imitation_recorded_action_20261004T141840833438Z/corrected_replay_plan.json.
-  Then select an actual matched-input host comparison if needed. Keep the
+  Corrected fresh replay now passes all1800ticks/backend: exact remote required
+  physics and full same-host comparisons; hold at1585/52.8333seconds, final
+  (334.4829333,102.6639127),retained81.6639127,bothdetectors, no summit/death.
+  Actual3600control+480reset,0updates. Same selected recording, not replicated
+  learned skill; saved-feedback causal gate remains blocked. Off-policy
+  prediction drift max2.9802e-7; cross-host extra reward drift1.1102e-16.
+  Safe553101-byte matched-input NPZ preserves1800raw/normalized217features;
+  saved-RMS normalization exact. Missing historical remote observations still
+  prevent a diagnosed numerical-build versus observation contribution.
+  Next: implement/test one inference-only matched-host comparison,0game/training,
+  max3600inference presentations/120worker seconds. Any future private Linux
+  CPU Upgrade session needs current price/source/admission checks, unique
+  <=20minute deadline and <=$0.01 reservation including startup, no trainer/
+  browser dispatch and guaranteed backup/pause. No current launch/reservation.
+  Plan: artifacts/imitation_recorded_action_v2_20261004T143756537682Z/matched_host_plan.json.
+  After isolation prioritize robust reactive recovery, not kernel thrashing.
+  Keep the
   operator running. Never restart this closed session or silently renew
   budgets. No more disconnected infrastructure or viewer work.
 

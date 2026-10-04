@@ -42,7 +42,47 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Latest recorded-action attempt: operator comparison-scope failure
+## Latest corrected replay: recorded hold and physical portability verified
+
+Fresh v2 recorded-control replay completes1800ticks/backend. All declared
+remote physical fields match exactly throughout; local reference/fast raw and
+normalized observations, diagnostic predictions, applied controls, rewards/
+info and pre/post telemetry agree exactly. Original recorded controls alone
+drive physics. Both detectors latch at tick1585/52.833333seconds; final
+`(334.4829332500256,102.66391274492042)`,retained81.66391274492042.
+Independent90tick windows have90body-query hits,maxspeed0.82809209255,
+X334.15169..334.48293,Y102.52794..103. No summit/death. Query hits are not forces.
+
+This reproduces one selected recorded trajectory, not two independent learned
+successes, saved-controller robustness, held-out validation or full climbing.
+Local off-policy predictions differ from historical raw predictions by at
+most2.980232238769531e-7 normalized units/3.8147e-5pointer pixels. Remote full
+observations were not recorded, so equal historical inputs or a Torch-build
+cause remain unproven. Extra cross-host reward differences reach1.1102e-16;
+they are diagnostics. Original causal saved-feedback baselines remain blocked.
+
+Actual3600control+480reset ticks,2rollouts,0updates; frozen weights/RMS unchanged.
+Saved-RMS normalization of all1800raw inputs exactly reproduces captured
+normalized inputs. A safe numeric1800x217matched-input NPZ is553101bytes,
+SHA455b95f026e78e64b01ea37326f420e76bb45bf39f5eda193118ee24d3cc19ab.
+The old84+120failed attempt is preserved separately and unchanged.
+23focused tests,4comparison regressions,control/capture fixture and JS pass.
+PAUSED independently1791125021.4120429; same private source/session/mode/
+deadline, no remote writes or paid reservation, estimated total$0.40742418665.
+Evidence: `artifacts/imitation_recorded_action_v2_20261004T143756537682Z/verification.json`.
+
+Next frozen design: one inference-only matched-input Linux/Windows comparison,
+1800samples/two singleton passes/3600inference presentations,0game ticks or
+updates,max120worker seconds. Implement/test a fresh private source/context
+mode before any deployment; no browser/trainer dispatch. Any future CPU
+Upgrade admission requires verified pricing, unique <=20minute immutable
+deadline and <=$0.01 reservation including build/preflight, backed-up outputs
+and independent auto-pause. **Nothing is reserved, uploaded or launched now.**
+Plan: `artifacts/imitation_recorded_action_v2_20261004T143756537682Z/matched_host_plan.json`.
+Then prioritize perturbation-robust reactive recovery/primitive preservation,
+not blind BC/PPO scaling or repeated kernel tuning. Goal metric remains0.
+
+## Previous recorded-action attempt: operator comparison-scope failure
 
 Frozen v1 replay stopped at tick84 in its reference case before fast ran.
 The operator compared **all** remote info fields, exceeding the declared
