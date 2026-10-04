@@ -240,6 +240,54 @@ experiment. The active remote six-run batch and financial reservation remain
 untouched. Next scheduled priority: seed-4 complete reference results, then
 seed 5, or a genuine terminal/deadline check.
 
+### Second matched timing seed pair validated
+
+At the 2026-10-04 06:38 UTC check, the actual Space is RUNNING in
+`timing_study`, phase `ppo_absolute_repeat_1_seed_5`, with unchanged
+source/context/session/deadline, one never-sleep CPU Upgrade replica and no
+durable error. Dataset commit `d939596698dc137221c4a9fa8faba5f510a06b22`
+passes all four completed timing run contracts, including both seed-4 arms.
+All game/assets/research-source hashes match the declared campaign. Final
+model/normalizer companions have nonzero immutable Hub metadata; they were
+not downloaded/reloaded, so this is not saved-policy portability evidence.
+
+For seed 4, both repeats have **0/9 central and 0/9 secondary holds**, no full
+completions and no deaths in the nine final 60-second reference cases.
+Repeat 1 has median retained gain **23.57**, nominal `(646.96,52.59)` retaining
+31.59; repeat 4 has median retained **-30**, nominal `(821.47,-9)` retaining
+-30. Both untrained baseline medians were 0. The one-tick endpoint gain is
+better for this seed, whereas seed 3's endpoint median favors repeat 4.
+These two pairs do not establish a replicated timing effect, robust platform
+retention, promotion or scaling eligibility.
+
+Repeat-1 seed 4 records **393,216 controlled ticks**, **4,320 reset ticks**
+(36 resets), no terminal-short decisions and **1,399.51 learning seconds**.
+Repeat 4 records **393,196 controlled ticks**, **5,640 reset ticks** (47 resets),
+12 terminal-short decisions and **676.22 learning seconds**. Both record
+**3,840 actual policy optimizer calls**, separate from the internal counter
+480. Actual controlled exposure differs by 20 ticks; reset work and decision/
+gradient sample presentations also differ. Equal planned ticks/calls must not
+be described as equal actual exposure, computation or information.
+
+Repeat-1 `hammer_left` ends at `(282.42,101.50)` retaining 80.50, with all final
+120 body-query-hit ticks, outside secondary X minimum 285. Repeat-4
+`action_noise_4` ends at `(1015.57,176.71)` retaining 155.71, also with 120/120
+final body-query hits. These are post-hoc contact/pose observations, not
+independently calibrated landings or support-force measurements; neither
+satisfies the frozen first-platform descriptors or constitutes full climbing.
+Preserve them without widening active metrics or treating high endpoints as
+policy success.
+
+Across the four validated runs, **0/36 final reference cases complete the
+game**, and none dies within its declared horizon. Both three-seed cohorts
+remain incomplete, with no worst-seed arm comparison returned by the checker.
+Evidence: `artifacts/timing_seed4_pair_20261004T063847993651Z/`, including
+pinned companions, complete JSONs, summary and actual runtime/variable review.
+Only evidence metadata in the local ledger changes; the reservation, source,
+queue, context and immutable deadline stay untouched. Next scheduled priority:
+the complete seed-5 arms or a bounded terminal/deadline verification, then
+full-cohort analysis and verified automatic PAUSED before any new experiment.
+
 ### Completed historical pilot, immutable evidence
 
 - Private Space: `isHeSatoshi/rl-over-it-poc-20261004`.

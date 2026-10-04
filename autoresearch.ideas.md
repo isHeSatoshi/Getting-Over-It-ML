@@ -58,6 +58,15 @@
   hits. Original renderer shows the pot at the raised block's left lip.
   Keep both detector results false; this validates a missed stationary contact
   sequence, not contact forces, portable policy inference or robust success.
+  Seed 4's complete pair now has 0/9 central/secondary holds in both arms,
+  no full completions/deaths and medians +23.57/-30 for repeats 1/4 versus
+  baseline 0/0. Endpoint preference reverses seed 3; do not claim a replicated
+  timing effect from two seeds. Both use 3,840 calls but actual controlled/
+  reset exposure and wall time differ. Finish seed 5 unchanged.
+  Fine seed-4 hammer-left has a contact-rich endpoint `(282.42,101.50)` outside
+  secondary bounds; coarse noise-4 ends at `(1015.57,176.71)` with final
+  body-query hits. These remain post-hoc pose observations, not calibrated
+  platform landings, contact-force evidence, robust skill or widened metrics.
 - Retain v1's narrow central-landing target, but calibrate and predeclare a
   separate actual-platform-support metric for the next study. Four-tick phases
   1/2 of the known legal trajectory already hold the platform at X about 290;
