@@ -52,6 +52,12 @@
   body-query hits, outside secondary X minimum 285. Preserve it as a post-hoc
   calibration/replay candidate, not certified support or a reason to widen
   this active study's metric.
+  A post-hoc ordinary-reset recorded-action replay now reproduces all 1,800
+  ticks of that outside-detector case: zero reference/fast per-tick and remote
+  body-position error, zero final-four-second motion and 120/120 body-query
+  hits. Original renderer shows the pot at the raised block's left lip.
+  Keep both detector results false; this validates a missed stationary contact
+  sequence, not contact forces, portable policy inference or robust success.
 - Retain v1's narrow central-landing target, but calibrate and predeclare a
   separate actual-platform-support metric for the next study. Four-tick phases
   1/2 of the known legal trajectory already hold the platform at X about 290;

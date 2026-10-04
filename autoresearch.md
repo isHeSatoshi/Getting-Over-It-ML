@@ -207,6 +207,39 @@ Evidence: `artifacts/timing_seed3_pair_20261004T055834361889Z/`.
 Next scheduled priority: complete seed-4 results or bounded status/progress,
 then seed 5; keep source, queue, variables, cap and deadline unchanged.
 
+### Outside-detector recorded-action replay, post-hoc only
+
+At the 2026-10-04 06:17 UTC snapshot, seed-4 repeat-1 transition collection
+is durable through 393,200 but no complete reference result is available yet.
+The image/source/context/deadline are still unchanged and RUNNING. Rather than
+poll or alter it, a bounded local diagnostic replays the recorded seed-3
+repeat-4 `hammer_right` case from an ordinary reset, without policy inference,
+training, privileged placement or new metric definitions.
+
+All **1,800 controlled ticks** reproduce the remote body positions with
+**zero** measured decision-boundary error. The independent local original
+reference and fast traces have **zero** measured error in all tested per-tick
+numeric/discrete telemetry. Final pose is `(281.47135,100.50353)`, retained
+79.50 units. For the final four seconds, X/Y are unchanged on every tick,
+body-query hits cover 120/120 ticks and physical speed is zero.
+The headed original-renderer capture shows the pot at the raised Scratch
+block's left lip with the hammer planted on lower terrain, consistent with
+the observed contact/pose. No contact-force telemetry is claimed.
+
+Both frozen central and secondary detectors still return false because this
+pose is outside their X regions. Preserve that result exactly. The replay
+establishes a real stationary contact sequence missed by these region bounds,
+not cross-host closed-loop policy portability, general/held-out climbing skill,
+full completion, or permission to retroactively widen a success metric.
+Any future descriptor extension must be separately calibrated/predeclared;
+do not infer "four-tick control cannot support the platform" from this miss.
+Evidence: `artifacts/outside_detector_replay_20261004T061945777984Z/`,
+including the original-renderer final capture and full legal action/trace JSON.
+This is a post-hoc diagnostic of an already selected case, not a new learner
+experiment. The active remote six-run batch and financial reservation remain
+untouched. Next scheduled priority: seed-4 complete reference results, then
+seed 5, or a genuine terminal/deadline check.
+
 ### Completed historical pilot, immutable evidence
 
 - Private Space: `isHeSatoshi/rl-over-it-poc-20261004`.
