@@ -63,8 +63,8 @@ verified from standard campaign aggregation alone.
   verification is epoch **`1791100724.3051379`**, about **07:58:44 UTC**.
   No source/session/context/deadline change or operator pause/restart occurred.
 - No timing arm qualifies for robust promotion or scaling. Next priority:
-  integrate the separately proposed remote BC/BC+PPO checker/admission and
-  connect it to the now-tested three-arm trainer stages,
+  integrate Linux parent-bound remote BC/BC+PPO worker admission and
+  connect it to the tested three-arm trainer and nine-run checker,
   then a fresh capped source/preflight/session. **Do not restart this closed
   timing session or deploy smoke-only imitation as full training.**
 
@@ -563,6 +563,56 @@ nine-run imitation campaign checker and Linux parent-bound worker admission,
 then full-budget trainer dispatch under a fresh capped preflight/session.
 Reuse these tested stages rather than another disconnected smoke or viewer
 feature; do not remove full-run refusal until admission is real and tested.
+
+### Nine-run imitation campaign contract/checker implemented locally
+
+`research.imitation_campaign` now prepares and validates the declared
+scratch/BC/BC+PPO comparison, sequential within fresh seeds 6/7/8. It has
+only preparation/summarization commands and cannot execute jobs. Preparation
+requires complete timing evidence without robust all-seed central retention,
+validates the separate training demonstration streams/data hash, and freezes
+eligible-observation normalization and current source/game provenance.
+No paid reservation, worker dispatch or remote activation is conferred.
+
+The strict JSON checker binds each full run to source/dependencies, admitted
+session/deadline/corpus, full per-arm budgets, original one-tick ordinary-start
+environment, raw reward/discount/GAE, frozen demo RMS and all nine original
+reference cases. It validates untrained/after-cloning/final checkpoints,
+separate 2,000 BC calls/512,000 presentations versus 3,840 PPO calls where
+applicable, actual controlled/reset exposure and BC-only zero RL work.
+Matched-seed initial reference traces must agree across arms; the two clone
+checkpoints must agree before PPO. Changed/missing stages, data/settings,
+forced reward scaling, mixed dependencies/admission and smoke evidence are
+refused. Missing companion files remain incomplete. Three distinct complete
+seeds are required per arm before candidate retention is considered, and
+standard cases never establish final goal or automatic scaling.
+Binary integrity, frozen saved-RMS contents and saved-policy portability
+still need independent verification; this is a JSON checker, not a proof
+that arbitrary metadata is authenticated physical evidence.
+
+Initial validation has two recorded failures: a paired-trace test mutation
+changed the trace but not its duplicated pre-reset final record, so it was
+correctly rejected earlier than the expected invariant; the fixture is fixed.
+Actual preparation then compared JSON list warm-ups with tuple descriptors
+from the raw plan. It now uses the canonical serialized contract and has a
+regression test. Neither failure affected the paused remote Space or learner.
+
+Preparation against the complete trusted timing snapshot and 3,576-row
+eligible corpus succeeds; all nine full runs remain missing/unlaunched.
+Real before/after stage traces from all three bounded trainer smokes pass
+their declared 128-tick physical case checks but are intentionally rejected
+as full-study evidence. Synthetic full-budget fixtures test only checker
+orchestration; no full learner/physics outcome is inferred from them.
+Evidence: `artifacts/imitation_campaign_20261004T084341116202Z/checker_verification.json`.
+All **205 Python tests plus JS collision tests pass**.
+
+The owned Space remains independently checked PAUSED on the same closed
+timing source/variables; cost ledger, historical deadlines and $10 ceiling
+are unchanged. Next bounded priority: implement the Linux-only sequential
+imitation executor/parent grants, pinned data/context/preflight transport and
+worker integration, then enable full trainer/clone budgets only under that
+tested admission. Keep the current full-run refusal until then. Do not
+prepare another disconnected plan, polish the viewer or renew old sessions.
 
 ### Completed historical pilot, immutable evidence
 

@@ -16,6 +16,13 @@
   PPO work are separated, and full runs still refuse dispatch. Next is the
   strict campaign checker plus Linux parent-bound worker admission, then the
   full-budget remote launch. Do not rebuild the trainer or spend on viewer work.
+  The separate nine-run imitation checker now passes 205 tests and trusted
+  pipeline case checks. It freezes source/corpus/RMS/budgets/reference stages,
+  separates BC and PPO work, and refuses smoke/mixed admission/dependencies.
+  Initial fixture consistency and tuple/list declaration errors are preserved
+  and corrected. Nine runs are prepared, none launched. Next is Linux-only
+  sequential executor/parent grants and worker/pinned-data preflight transport,
+  then admitted full budgets; do not rebuild the checker or renew old batches.
 
 - After the current nine-run pilot: one-tick feedback versus four-tick holds.
   Match physical exposure, gamma, episode/evaluation duration, and warm-ups.
