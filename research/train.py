@@ -17,16 +17,20 @@ from research.evaluation_cases import STANDARD_CASES, EvaluationCase, perturb
 from research.optimizer_work import OptimizerWork, WORK_VERSION
 from research.case_clock import PhysicalCaseClock
 from research.training_timing import PhysicalWork, training_settings
+from research.study_metrics import benchmark_contract, enable_platform_support
 
 
 def evaluate(model, normalization, bridge, action_mode, terrain, decisions, seeds,
-             reward_config=None, cases=None, *, frame_skip=4, physical_case_clock=False):
+             reward_config=None, cases=None, *, frame_skip=4, physical_case_clock=False,
+             secondary_support=False):
     if (type(frame_skip) is not int or frame_skip not in (1, 4)
             or type(decisions) is not int or decisions < 1
-            or type(physical_case_clock) is not bool):
+            or type(physical_case_clock) is not bool or type(secondary_support) is not bool):
         raise ValueError("Invalid evaluation timing configuration")
     if frame_skip != 4 and not physical_case_clock:
         raise ValueError("One-tick evaluation requires the physical case clock")
+    if secondary_support and not physical_case_clock:
+        raise ValueError("Secondary support requires the explicit future evaluation contract")
     reward_config = reward_config if reward_config is not None else RewardConfig()
     gamma = reward_config.gamma(frame_skip)
     if model.gamma != gamma or normalization.gamma != model.gamma:
@@ -37,6 +41,8 @@ def evaluate(model, normalization, bridge, action_mode, terrain, decisions, seed
     environment = RealGettingOverItEnv(
         bridge=bridge, action_mode=action_mode, terrain=terrain, horizon=decisions,
         frame_skip=frame_skip, reward_config=reward_config)
+    if secondary_support:
+        enable_platform_support(environment)
     evaluation = VecNormalize(DummyVecEnv([lambda: environment]),
                               norm_obs=True, norm_reward=False, gamma=gamma)
     evaluation.obs_rms = normalization.obs_rms
@@ -138,7 +144,8 @@ def main():
     steps, gamma = timing["requested_transitions"], timing["gamma"]
     args.evaluation_decisions = timing["declared_evaluation_decisions"]
     evaluation_budget = timing["evaluation_decisions"]
-    evaluation_options = {"frame_skip": args.frame_skip, "physical_case_clock": args.timing_study}
+    evaluation_options = {"frame_skip": args.frame_skip, "physical_case_clock": args.timing_study,
+                          "secondary_support": args.timing_study}
 
     import torch
     import stable_baselines3 as sb3
@@ -163,7 +170,7 @@ def main():
                                     "units": "Completed optimizer.step calls per named optimizer"},
         "evaluation_contract": {"suite": args.evaluation_suite, "cases": [
             c.describe() for c in STANDARD_CASES] if args.evaluation_suite == "standard" else [],
-            "decisions": evaluation_budget},
+            "decisions": evaluation_budget, "benchmarks": benchmark_contract(args.timing_study)},
         **fingerprint(),
         "purpose": "pipeline-only smoke test" if args.smoke else "remote research run",
     }, indent=2), encoding="utf-8")
@@ -171,9 +178,12 @@ def main():
         print("Validating the real-game state/action loop before training...", flush=True)
         proof = validate(bridge)
         (output / "validation.json").write_text(json.dumps(proof, indent=2), encoding="utf-8")
-        physical_work = PhysicalWork(RealGettingOverItEnv(
+        environment = RealGettingOverItEnv(
             bridge=bridge, action_mode=args.action, terrain=not args.no_terrain,
-            horizon=timing["episode_decisions"], frame_skip=args.frame_skip, reward_config=reward_config))
+            horizon=timing["episode_decisions"], frame_skip=args.frame_skip, reward_config=reward_config)
+        if args.timing_study:
+            enable_platform_support(environment)
+        physical_work = PhysicalWork(environment)
         vector = DummyVecEnv([lambda: Monitor(physical_work, str(output / "monitor.csv"),
             info_keywords=("max_gain", "retained_gain", "success"))])
         # Keep the raw objective. Online reward rescaling and nonlinear clipping

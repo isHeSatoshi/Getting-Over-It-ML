@@ -13,8 +13,12 @@
   Trainer/GAE/horizon and actual training/reset exposure now pass local tests
   and matched pipeline smokes (256 actual ticks and four optimizer calls/arm).
   The CLI explicitly blocks remote study execution until runner admission.
-  Secondary detector integration, contact-rich reactive-policy fidelity and
-  new-session runner/budget/preflight remain required. No future job is launched.
+  Secondary detector integration and six bounded contact-rich reactive-network
+  timing cases now pass locally with zero measured reference/fast differences.
+  Adding metric info preserves bitwise PPO weights/normalizer and existing
+  training/evaluation traces in matched smokes. This is not policy success.
+  Distinct timing runner/aggregator, new-session budget/admission and fresh
+  remote preflight remain required. No future job is launched.
 - Retain v1's narrow central-landing target, but calibrate and predeclare a
   separate actual-platform-support metric for the next study. Four-tick phases
   1/2 of the known legal trajectory already hold the platform at X about 290;
@@ -22,6 +26,8 @@
   Physical placement calibration now passes at six sampled X positions
   285..345 and rejects outside low ground and too-short hold controls, with
   exact fast/reference parity. This is detector evidence, never policy success.
+  Both metric descriptors now accompany future timing-study outputs; the old
+  campaign aggregator remains frozen and must not aggregate them as pilot runs.
 - Replacement PPO seed-2 noise_5 has genuine edge support under exact recorded
   remote actions, but local model inference diverges after a ~6e-8 action change
   at decision 2. Isolate fixed-input network/normalizer differences and test

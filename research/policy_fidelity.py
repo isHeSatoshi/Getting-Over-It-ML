@@ -13,29 +13,52 @@ from research.provenance import fingerprint
 from research.reward import RewardConfig
 from research.fast_fidelity import compare
 from research.evaluation_cases import STANDARD_CASES, perturb
+from research.case_clock import PhysicalCaseClock
+from research.study_metrics import enable_platform_support
 
 
 def rollout(model, rms, bridge, config, decisions, case=None):
     from stable_baselines3.common.vec_env import DummyVecEnv, VecNormalize
+    repeat = config.get("frame_skip", 4)
+    physical_clock = config.get("timing_study", False)
+    if (type(decisions) is not int or not 1 <= decisions <= 512
+            or type(repeat) is not int or repeat not in (1, 4)
+            or type(physical_clock) is not bool or (repeat != 4 and not physical_clock)):
+        raise ValueError("Invalid policy fidelity timing contract")
+    reward = RewardConfig(profile=config.get("reward_profile", "settled"),
+                          discount_half_life_seconds=config.get("discount_half_life", 120))
+    if hasattr(model, "gamma") and model.gamma != reward.gamma(repeat):
+        raise ValueError("Policy discount differs from its fidelity environment")
     env = RealGettingOverItEnv(bridge=bridge, action_mode=config.get("action", "absolute"),
                               terrain=not config.get("no_terrain", False), horizon=decisions,
-                              reward_config=RewardConfig(profile=config.get("reward_profile", "settled"),
-                                                         discount_half_life_seconds=config.get("discount_half_life", 120)))
+                              frame_skip=repeat, reward_config=reward)
+    if physical_clock:
+        enable_platform_support(env)
     vector = VecNormalize(DummyVecEnv([lambda: env]), norm_obs=True, norm_reward=False, gamma=env.gamma)
     vector.obs_rms = rms
     vector.training = False
     vector.seed(case.reset_seed if case else 42)
     observation = vector.reset()
     rng = np.random.default_rng(case.noise_seed if case else 0)
+    clock = PhysicalCaseClock(case) if physical_clock and case else None
+    elapsed_ticks = 0
     records = []
     begin = time.perf_counter()
     try:
         for index in range(decisions):
             action, _ = model.predict(observation, deterministic=True)
-            applied = (np.asarray([case.warmup[index]], dtype=np.float32)
-                       if case and index < len(case.warmup)
-                       else perturb(action, case, rng) if case else action)
+            if clock is not None:
+                applied = clock.apply(action, elapsed_ticks)
+            else:
+                applied = (np.asarray([case.warmup[index]], dtype=np.float32)
+                           if case and index < len(case.warmup)
+                           else perturb(action, case, rng) if case else action)
             observation, rewards, done, info = vector.step(applied)
+            if physical_clock:
+                ticks = info[0]["physics_ticks"]
+                if type(ticks) is not int or not 1 <= ticks <= repeat:
+                    raise RuntimeError("Invalid fidelity physical tick count")
+                elapsed_ticks += ticks
             records.append({"action": action[0].tolist(), "observation": observation[0].tolist(),
                             "applied_action": applied[0].tolist(),
                             "reward": float(rewards[0]), "info": {
@@ -47,6 +70,32 @@ def rollout(model, rms, bridge, config, decisions, case=None):
     finally:
         vector.close()
     return records, time.perf_counter() - begin
+
+
+def compare_rollouts(reference, fast):
+    if not reference or len(reference) != len(fast):
+        raise AssertionError("Policy trajectory lengths differ or are empty")
+    errors = {"max_normalized_observation_error": 0.0, "max_reward_error": 0.0,
+              "max_telemetry_error": 0.0}
+    for a, b in zip(reference, fast):
+        if not np.array_equal(a["action"], b["action"]):
+            raise AssertionError("Policy actions diverge")
+        if not np.array_equal(a["applied_action"], b["applied_action"]):
+            raise AssertionError("Applied actions diverge")
+        if not np.allclose(a["observation"], b["observation"], rtol=0, atol=1e-6):
+            raise AssertionError("Normalized observations diverge")
+        if abs(a["reward"] - b["reward"]) >= 1e-8:
+            raise AssertionError("Rewards diverge")
+        if a["info"] != b["info"] or (a["state"] is None) != (b["state"] is None):
+            raise AssertionError("Physical/reward/outcome info diverges")
+        errors["max_normalized_observation_error"] = max(
+            errors["max_normalized_observation_error"],
+            float(np.max(np.abs(np.asarray(a["observation"]) - b["observation"]))))
+        errors["max_reward_error"] = max(errors["max_reward_error"], abs(a["reward"] - b["reward"]))
+        if a["state"] is not None:
+            errors["max_telemetry_error"] = max(
+                errors["max_telemetry_error"], max(compare([a["state"]], [b["state"]]).values()))
+    return errors
 
 
 def main():
@@ -80,17 +129,19 @@ def main():
                 if manifest["source_sha256"].get(path) != current["source_sha256"][path]:
                     raise ValueError("Trial contract changed: " + path)
             config = manifest["config"]
+            repeat = config.get("frame_skip", 4)
             reward_config = RewardConfig(profile=config["reward_profile"],
                                          discount_half_life_seconds=config["discount_half_life"])
             dummy = VecNormalize(DummyVecEnv([lambda: RealGettingOverItEnv(
                 bridge=reference, action_mode=config["action"], terrain=not config["no_terrain"],
-                reward_config=reward_config)]), norm_obs=True, norm_reward=False, gamma=reward_config.gamma(4))
+                frame_skip=repeat, reward_config=reward_config)]),
+                norm_obs=True, norm_reward=False, gamma=reward_config.gamma(repeat))
             normalizer = VecNormalize.load(str(args.trial / "normalization.pkl"), dummy.venv)
             if normalizer.norm_reward:
                 raise ValueError("Trial uses an incompatible normalized reward")
             algorithm = sb3.PPO if config["algorithm"] == "ppo" else sb3.SAC
             fixtures = [("saved_" + config["algorithm"], algorithm.load(str(args.trial / "model.zip"), device="cpu"), config)]
-            if fixtures[0][1].gamma != reward_config.gamma(4) or normalizer.gamma != reward_config.gamma(4):
+            if fixtures[0][1].gamma != reward_config.gamma(repeat) or normalizer.gamma != reward_config.gamma(repeat):
                 raise ValueError("Trial reward/normalization/policy discounts disagree")
             rms = normalizer.obs_rms
         else:
@@ -112,15 +163,9 @@ def main():
         for name, model, config in fixtures:
             a, a_time = rollout(model, rms, reference, config, args.decisions, selected_case)
             b, b_time = rollout(model, rms, fast, config, args.decisions, selected_case)
-            assert len(a) == len(b)
-            for x, y in zip(a, b):
-                assert np.array_equal(x["action"], y["action"]), "Policy actions diverge"
-                assert np.array_equal(x["applied_action"], y["applied_action"]), "Applied actions diverge"
-                assert np.allclose(x["observation"], y["observation"], rtol=0, atol=1e-6), "Normalized observations diverge"
-                assert abs(x["reward"] - y["reward"]) < 1e-8
-                assert x["info"] == y["info"], "Physical/reward/outcome info diverges"
-                if x["state"] is not None: compare([x["state"]], [y["state"]])
+            errors = compare_rollouts(a, b)
             report["cases"][name] = {"decisions": len(a), "reference_seconds": a_time, "fast_seconds": b_time,
+                                    **errors,
                                     "actions_observations_rewards_match": True,
                                     "max_gain": a[-1]["info"]["max_gain"],
                                     "retained_gain": a[-1]["info"]["retained_gain"],

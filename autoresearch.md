@@ -80,9 +80,11 @@ Do not restart the completed pilot or overwrite either artifact session.
 The next priority is the predeclared timing diagnostic, not promotion or
 blind sample/hardware scaling. Timing-aware trainer/GAE/horizon and actual
 training/reset tick accounting now pass local tests and bounded smokes.
-Complete the secondary-detector integration, independent timing-specific
-reactive-policy fidelity and a runner with new session/budget admission before
-any launch. Remote timing-study execution is deliberately blocked in the CLI.
+Secondary-detector integration and bounded local timing-specific reactive
+fidelity now pass. Next implement a distinct source-pinned runner/aggregator
+with new session/budget admission, then fresh remote tests/fidelity/preflight
+and verified PAUSED before any intentional study launch. Remote timing-study
+execution is still deliberately blocked in the CLI.
 
 Never modify, upload, restart, or resize an active future image. The replacement
 includes complete-prefix snapshots for append-only logs/CSV/JSONL; binary
@@ -629,3 +631,50 @@ including `verification.json`. No remote settings or source changed.
 Next bounded priority: secondary support integration alongside frozen v1 and
 independent contact-rich one/four-tick closed-loop fidelity, then the distinct
 bounded session/runner/preflight. Preserve the existing pilot artifact prefix.
+
+### Secondary support and contact-rich timing fidelity integrated locally
+
+`research.study_metrics` adds the calibrated platform-support tracker only
+under an explicit future-study contract, before the first environment reset.
+It retains the original v1 descriptor unchanged and refuses an already changed
+tracker. The timing-study trainer, evaluator and policy-fidelity rollout all
+use both declared metrics. Legacy runs retain v1 alone. This is diagnostic
+info, not a reward term or extra observation. The original campaign aggregator
+must continue rejecting a changed pilot metric contract; the future timing
+runner needs its own source-pinned aggregation for the declared two metrics.
+
+The independent fidelity rollout now supports saved one/four-tick timing
+contracts, physical-time warm-up/noise and per-arm discounts. Its comparison
+checks exact predicted/applied actions and outcome/reward info, normalized
+observations, rewards and decision-boundary runtime telemetry.
+`research.timing_fidelity` uses an **untrained observation-dependent network**
+whose legal downward target varies with the current observation. It performs
+no learning or placement, caps each case at 512 controlled ticks and can run
+headless on a future isolated preflight host.
+
+Six ordinary-start checks, repeats 1/4 times nominal/hammer-left/noise-2,
+each consume 384 ticks and pass **zero measured reference/fast differences**
+in normalized observations, rewards and decision-boundary numeric telemetry,
+with exact actions/info and production-evaluator trace equality. Each has
+368..383 hammer-hit ticks, 3..17 body-hit ticks and varying predicted actions.
+Retained gains are approximately 18.65..21.67; all central/secondary holds and
+full completions are false. This verifies a contact-rich feedback path, not
+learned climbing, every intermediate tick, cross-host portability or upper
+route fidelity. Evidence: `artifacts/timing_fidelity_20261004T032235733238Z/`.
+All **137 Python tests plus JS checks** pass.
+
+Matched trainer smokes after adding the diagnostic retain **bitwise-equal
+PPO weights and frozen normalizer statistics** to the prior timing smokes.
+Training traces and all nine before/after reference case traces are identical
+except for added secondary-metric info. Both arms still count 256 controlled
+ticks, 120 reset ticks and four policy optimizer calls, with 217 observations.
+Evidence: `artifacts/secondary_metrics_smoke_20261004T0324127860597Z/verification.json`.
+No remote source/settings, budget reservation or pilot artifacts changed.
+
+Next bounded priority: implement a distinct timing-study runner/aggregator
+that freezes seeds/arms/metrics, validates all settings and dependencies, keeps
+optimizer/actual controlled/reset work explicit, and enforces new session/
+deadline/cost/preflight admission. Do not remove the CLI's remote-study refusal
+until that admission is complete and tested. Then reserve a bounded CPU Upgrade
+session and preflight a fresh private source snapshot; CPU XL is not justified
+by these correctness checks.
