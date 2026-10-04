@@ -42,7 +42,61 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current result: local contact-sign gate passes; full recovery not tested yet
+## Current result: contact-sign controller holds all three development cases
+
+Completed the admitted fixed-rule full comparison with no controller edits:
+pure playback, old timed correction and contact-sign timed correction,
+nominal/reset12001,leftwarmup,noise11105,600ticks each/reference+fast.
+Actual candidate controls apply throughout after fixed forced warm-up;
+no recorded-prefix override, placement, learned update or rule sweep.
+
+| Reference case | Pure playback central/secondary | Old feedback central/secondary | Contact-sign central/secondary |
+|---|---|---|---|
+| Nominal |true/true,gain83|true/true,gain83|true/true,gain83|
+| Left warm-up |true/true,gain83|true/true,gain83|true/true,gain83|
+| Noise11105 |false/true,gain82|false/false,gain61.027|true/true,gain83|
+
+New final poses(322.585886,104),(322.585838,104),(330.224551,104).
+All three final90tick windows stay inside unchanged central region, body
+querycontactfraction1 and maxspeeds0/0/.445238. Nominal/warm-up Xconstant,
+noiseX330.224551constant and Yrange103.554762..104. This is real final
+supported ledge acquisition on these selected development disturbances,
+not just latched events. Candidate correctedticks579/573afterinterventions,
+nonzero sign reversals142/139; nominal correction0 and full traceexact.
+
+Broader-validation gate passes, but only for a hand-designed clock-guided
+controller: not new learned policy, robust teacher, summit or model promotion.
+Three reused cases cannot establish general correction competence. No
+corpus/labels admitted or training launched. Primary fullcompletion metric0.
+
+18rollouts/10800control+2160reset,0updates/summits/deaths. All nine full
+same-host backend pairs exact; all twelve old pure/world-feedback full
+traces reproduce exactly. Independent18full raw milestone/action/case-clock
+traces and final support windows reconstruct.26focusedPython+JS pass;
+no repo controller code changed (last full315suite remains recorded).
+Owned elapsed73.8478seconds within immutable300second work bound.
+Evidence: `artifacts/contact_recovery_probe_20261004T213808503161Z/verification.json`.
+Backend copies are fidelity, not extra independent successes.
+
+Independently private PAUSED1791150349.8276567;80444390source,
+onstate-20261004-v1/onstate_study and closed historical deadline unchanged.
+Ledger bytes preserved,7closed$0.4564241866528988; no new paid reservation,
+HF writes, deployment or public release.
+
+Next admitted bounded direction: freeze broader fresh development-validation
+cases for exact same rule versus pure playback, with no retuning/data
+collection. Proposal: reset13001, nominal, left/rightwarmups(+/-0.875,.125)
+times3/fourticks each, noise std.02/seeds12100..12105, ninecases/600ticks/
+reference+fast. Maximum36rollouts/21600control+4320reset,300work/330owned
+seconds. Persist fresh actual source/cases/deadline before gameplay, verify
+new seeds/cases and nominal baseline. Require all9reference central final
+supported holds/no deaths/nominal parity/exact backend fidelity before
+considering corrective corpus admission. Even passing needs separate
+captured pre-action/applied-control data and a learner contract that handles
+explicit clock/memory honestly; not ordinary feed-forward imitation by
+assumption, not final held-out multi-seed policy completion.
+
+## Prior result: local contact-sign gate passes; full recovery not tested yet
 
 Added opt-in `mode="contact_timed_feedback"` only. Fixed explicit clock,
 prior, gain1/norm16/axis128caps; reverse correction when causal raw previous
@@ -78,7 +132,7 @@ onstate-20261004-v1/onstate_study and closed historical deadline unchanged.
 Ledger bytes preserved,7closed$0.4564241866528988, no new paid reservation,
 HF write, deployment or training. Full goal0.
 
-Next admitted bounded diagnostic: freeze full600tick comparison of pure
+The historical admitted diagnostic, now completed above, froze comparison of pure
 playback, unchanged timed feedback and contact-sign timed feedback on the
 same nominal/reset12001,leftwarmup,noise11105development cases, reference/
 fast,18rollouts/10800control+2160reset maximum,300second work/330owned

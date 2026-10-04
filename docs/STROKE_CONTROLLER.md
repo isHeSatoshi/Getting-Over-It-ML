@@ -184,3 +184,49 @@ contact-sign timed feedback, the same three development cases, 600 ticks each,
 both backends, with no rule/threshold/gain/cap changes. Require nominal exact
 replay and actual perturbed holds before any broader teacher validation.
 No automatic corpus or learning admission even if those three cases pass.
+
+## Full fixed-case recovery check
+
+The rule is unchanged from the local sign check. All candidate proposals
+after the declared forced warm-up are applied through the fixed noise clock,
+with no recorded-prefix overrides. The three-arm comparison runs pure
+playback, old timed feedback and contact-sign timed feedback for 600 ticks
+on each of the same three development cases, on both backends.
+
+| Case | Pure playback central/secondary | Old feedback central/secondary | Contact-sign central/secondary |
+|---|---|---|---|
+| Nominal | Yes / Yes, gain 83 | Yes / Yes, gain 83 | Yes / Yes, gain 83 |
+| Left warm-up | Yes / Yes, gain 83 | Yes / Yes, gain 83 | Yes / Yes, gain 83 |
+| Noise11105 | No / Yes, gain 82 | No / No, gain 61.027 | Yes / Yes, gain 83 |
+
+Candidate final positions are `(322.586,104)`, `(322.586,104)` and
+`(330.225,104)`. Every final 90-tick body window stays inside the unchanged
+central region, with body-query contact fraction 1 and maximum speed
+0, 0 and 0.44524 pixels/tick. These are final supported holds, not merely
+latched earlier events. Warm-up/noise corrected ticks are 579/573, including
+142/139 nonzero contact-reversed corrections. Nominal corrections are zero.
+
+The development gate passes: all three reference central holds, exact nominal
+replay, exercised feedback/sign reversal and exact full backend traces.
+All twelve old playback/feedback traces reproduce exactly. Eighteen rollouts,
+10800 control and 2160 reset ticks, zero updates, summits or deaths.
+Independent review reconstructs every raw milestone/control/clock field and
+final support window. Twenty-six focused Python tests and collision checks
+pass; the controller's last full 315-test suite remains unchanged.
+The owned study finishes in 73.85 seconds within its frozen 300-second bound.
+Evidence: `artifacts/contact_recovery_probe_20261004T213808503161Z/verification.json`.
+
+This admits broader fresh perturbation validation only. It is a hand-designed,
+clock-guided controller, not learned-policy improvement or a corrective
+teacher established across states. No new training corpus or paid learning.
+
+Next freeze two arms, pure playback and this exact contact-sign rule, on nine
+new development-validation cases: reset 13001, nominal, legal left/right
+`(+/-0.875,0.125)` warm-ups repeated three times (four ticks each), and six
+noise streams 12100..12105 with standard deviation 0.02. Use 600 ticks and both
+backends, maximum 36 rollouts/21600 control/4320 reset, 300-second work bound.
+Require all nine reference central final supported holds, no deaths, nominal
+parity and exact backend fidelity before even considering corrective-data
+admission. New cases are not final held-out learned-policy tests. No retuning
+or label collection during validation; passing still needs a distinct data
+and learner contract that handles the controller's explicit clock honestly.

@@ -1,6 +1,26 @@
 # Deferred hypotheses
 
-- **Next fixed full recovery comparison, local sign gate only passed:** causal
+- **Next broader fresh perturbation validation, no data/learning yet:** exact
+  contact-sign timed rule holds central+secondary in all3selected cases,
+  gain83each; noisefinal(330.225,104) instead of oldfeedback(208.585,82.027).
+  Final90central support/bodyqueryfraction1, speeds0/0/.44524. Actual
+  full candidate controls after forced warm-up, no prefix override; sign
+  reversals142/139.18rollouts/10800control+2160reset,0updates/summits/deaths,
+  all nine full backend pairs/twelveoldbaselines/rawmetrics/controls exact.
+  26focusedPython+JS; no controller edits. Broader-validation gate passes,
+  not robust teacher/learned policy or labels. Freeze same rule vsplayback on
+  nine new cases:reset13001,nominal,left/right(+/-.875,.125)*3warmups at4ticks,
+  noise.02/seeds12100..12105;600ticks/reference+fast,max36rollouts/
+  21600control+4320reset,300work/330ownedseconds. Verify freshness and persist
+  hashes/deadline before play. Require9/9central final supported holds/no
+  deaths/nominalexact/fidelity before considering corpus; no retuning or
+  collection during validation. Later data/learner contract must account
+  for explicit clock/memory; no assumed feed-forward clone or unchanged
+  BC/PPO scale. Not final held-out learned-policy cases. Private PAUSED
+  1791150349.8276567,7closed$0.456424187, ledger unchanged.
+  Evidence: artifacts/contact_recovery_probe_20261004T213808503161Z/verification.json.
+
+- **Closed fixed full recovery comparison, completed above:** causal
   contactproxy(previousqueryhit==1 AND previoushammertravel<3) reverses
   correction with sameclock/prior/gain1/norm16/axis128. Noise identical
   prefix/pre-input at28: old bodydelta(+.098,+.114), new(-.098,-.1138),
