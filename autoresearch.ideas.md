@@ -43,6 +43,15 @@
   repeat-4 run and all seeds; no timing effect or scaling conclusion yet.
   One-tick evaluation JSON is ~81 MB; precheck immutable sizes and use bounded
   128 MiB result limits instead of the pilot's operator-only 32 MiB assumption.
+  The first seed pair is now validated: repeat 4 has 0/9 central/secondary
+  holds but median retained 27.77 versus repeat 1's median 0 and one isolated
+  secondary hold. Both lack full completion; this is not a replicated timing
+  result. Actual controlled/reset ticks and wall time differ despite 3,840
+  policy calls each. Finish seeds 4/5 without scaling or changing metrics.
+  Repeat-4 hammer-right settles at `(281.47,100.50)` with all last-four-second
+  body-query hits, outside secondary X minimum 285. Preserve it as a post-hoc
+  calibration/replay candidate, not certified support or a reason to widen
+  this active study's metric.
 - Retain v1's narrow central-landing target, but calibrate and predeclare a
   separate actual-platform-support metric for the next study. Four-tick phases
   1/2 of the known legal trajectory already hold the platform at X about 290;

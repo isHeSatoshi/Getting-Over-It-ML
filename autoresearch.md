@@ -168,6 +168,45 @@ infer a three-seed effect from it. Finish the same six-run study under its
 unchanged deadline/cost cap; next scheduled priority is the paired four-tick
 result or a bounded terminal/progress check.
 
+### First matched timing seed pair validated
+
+At the 2026-10-04 05:57 UTC check both training-seed-3 arms are complete;
+`ppo_absolute_repeat_1_seed_4` is now actively training in the unchanged queue.
+Dataset commit `b0865f09d77e33efe5cc3d7b660a9cb40b539517` validates both
+complete run contracts, common dependencies/admission/source and durable
+model/normalizer metadata. Three-seed cohorts remain incomplete, so the
+aggregator deliberately returns no worst-seed timing-arm comparison.
+
+Repeat-1 seed 3 retains its **0/9 central, 1/9 secondary holds**, median retained
+0. Repeat-4 seed 3 has **0/9 central and 0/9 secondary holds**, median retained
+**27.77**, nominal approximately `(271.29,51.95)` with retained 30.95.
+Both untrained medians were 0; both trained arms have zero reference full
+completions and zero evaluation deaths in the nine 60-second cases.
+This is a descriptive single-seed tradeoff, not an established timing effect,
+robustness claim, promotion or reason to scale.
+
+Repeat-4 training has 98,304 decisions, **393,167 actual controlled ticks**
+versus nominal 393,216, **6,960 reset ticks** (58 resets) and 24 terminal short
+decisions. Repeat 1 has 393,216 decisions/controlled ticks, 4,440 reset ticks
+and no shortened decisions. Each performs **3,840 policy optimizer calls**;
+learning wall time is **1,453.60 /690.37 seconds** for repeats 1/4. Thus actual
+controlled exposure differs by 49 ticks, reset exposure also differs, and
+equal calls are not equal computation or gradient sample presentations.
+Keep these differences explicit rather than labelling the arms equal-cost.
+
+Repeat-4 `hammer_right` finishes at approximately `(281.47,100.50)`, retaining
+79.50. Its last four seconds have unchanged decision-boundary coordinates
+and 120/120 body-query hits, but it is outside the frozen secondary X minimum
+285. This is an **outside-detector contact/pose candidate**, not independently
+calibrated platform support. Do not call it "no physical support" solely from
+the detector, and do not widen the metric after seeing it. Any future physical
+calibration/replay must be separate, labelled post-hoc and leave the study
+contracts unchanged.
+
+Evidence: `artifacts/timing_seed3_pair_20261004T055834361889Z/`.
+Next scheduled priority: complete seed-4 results or bounded status/progress,
+then seed 5; keep source, queue, variables, cap and deadline unchanged.
+
 ### Completed historical pilot, immutable evidence
 
 - Private Space: `isHeSatoshi/rl-over-it-poc-20261004`.
