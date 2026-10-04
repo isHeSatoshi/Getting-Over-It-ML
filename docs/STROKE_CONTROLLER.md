@@ -230,3 +230,44 @@ parity and exact backend fidelity before even considering corrective-data
 admission. New cases are not final held-out learned-policy tests. No retuning
 or label collection during validation; passing still needs a distinct data
 and learner contract that handles the controller's explicit clock honestly.
+
+## Fresh nine-case validation
+
+The frozen rule was not changed. Reset 13001, stronger left/right warm-ups
+and noise seeds 12100..12105 were verified unused before declaration.
+All 36 actual 600-tick runs completed on reference and fast.
+
+| Reference arm | Central final holds | Secondary holds | Retained height |
+|---|---:|---:|---|
+| Pure playback | 5/9 | 6/9 | 63.697..83 pixels |
+| Contact-sign feedback | 8/9 | 9/9 | 83 pixels in every case |
+
+Nominal and both stronger warm-ups end centrally at Y104. Noise streams
+12101..12105 also finish centrally, at X322.016..325.548. Noise12100 instead
+ends at `(293.728,104)`: the final 90-tick body window remains supported in
+the secondary region, with contact fraction 1, maximum speed 0.46138 and
+Y103.539..104. X is constant and below the unchanged central minimum 305.
+No deaths or summits.
+
+The strict 9/9 central-final-support gate fails. Do not promote 8/9 as a
+retrospective pass or relax the detector. The controller materially improves
+these cases versus playback, but remains a hand-designed clock-guided prior,
+not a learned policy or admitted corrective teacher. All traces remain
+diagnostic, with no training corpus or learner updates.
+
+21600 controlled and 4320 reset ticks. All eighteen full backend pairs and
+four historical nominal traces are exact. Independent review reconstructs
+all raw milestones, actions, perturbation clocks and final support windows.
+Twenty-six focused tests and collision checks pass. Runtime is 152.994 seconds
+inside the unchanged 300-second envelope.
+Evidence: `artifacts/contact_validation_probe_20261004T215921117225Z/verification.json`
+and `edge_support_review.json` beside it.
+
+Next inspect terminal body-control authority using these captured edge-state
+observations and original collision/terrain geometry. The final correction
+is norm-saturated at 16 pixels, yet body X is fixed and sign proxy inactive.
+That does not prove a larger gain will help or reveal contact forces.
+Determine whether a distinct legal plant-and-recenter terminal stroke is
+mechanically justified before freezing a new local test. No gain/cap/sign/
+threshold sweep, replay of the closed validation or successful-case-only
+corpus. Preserve all nine cases and the failed gate.

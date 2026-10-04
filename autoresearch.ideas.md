@@ -1,6 +1,24 @@
 # Deferred hypotheses
 
-- **Next broader fresh perturbation validation, no data/learning yet:** exact
+- **Next edge-state terminal-authority audit, no teacher admission:** fixed
+  rule on9freshcases improves central finalsupport5/9to8/9 and secondary
+  held6/9to9/9 versus playback; gain83every candidate. Noise12100ends
+  (293.728,104), final90Xfixed/Y103.539..104/contact1/speed.46138, valid
+  secondary edgehold but outside unchanged centralX>=305. Strict9/9gate
+  false; no posthoc8/9/secondarysubstitute, labels or learning.36rollouts/
+  21600control+4320reset,0updates/summits/deaths; all18backend/fournominal/
+  rawmetrics/controls exact;26focusedPython+JS,152.994sinside300s.
+  Inspect final hammer/terrain/planted-response authority using captured
+  edge state. Norm16correction saturated, bodyXconstant and proxyinactive
+  does not identify forces or justify larger gain. Only derive a distinct
+  legal plant/recenter terminal primitive with mechanical justification and
+  fresh frozen local test. No closed-plan retry, gain/cap/threshold/sign
+  sweep, detector relaxation, successful-only corpus or unchanged learner
+  scaling. Private PAUSED1791151516.0854468,7closed$0.456424187, ledger
+  unchanged. Not learned-policy/multi-seed/held-out completion.
+  Evidence: artifacts/contact_validation_probe_20261004T215921117225Z/verification.json.
+
+- **Closed broader fresh perturbation validation, completed above:** exact
   contact-sign timed rule holds central+secondary in all3selected cases,
   gain83each; noisefinal(330.225,104) instead of oldfeedback(208.585,82.027).
   Final90central support/bodyqueryfraction1, speeds0/0/.44524. Actual

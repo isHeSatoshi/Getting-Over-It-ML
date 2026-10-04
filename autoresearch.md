@@ -42,7 +42,57 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current result: contact-sign controller holds all three development cases
+## Current result: fresh validation improves to8/9central, fails strict9/9gate
+
+Frozen exact same contact-sign clock-guided rule versus pure playback,
+reset13001,nominal,strongerleft/right(+/-.875,.125)*3/fourtickwarmups,
+noise std.02/seeds12100..12105,600tick cases/reference+fast. Exact
+noise_seed/reset_seed field search found no prior use before declaration;
+numeric matches in benchmark hashes/terrainY12100were not case seeds.
+No rule/source edit, gain/cap/threshold/sign sweep or prefix overrides.
+
+| Reference arm | Central final support | Secondary held | Retained gain |
+|---|---|---|---|
+| Pure playback |5/9|6/9|63.697..83|
+| Contact-sign feedback |8/9|9/9|83each|
+
+Candidate nominal/strongleft/strongright finalX322.585886/322.585759/
+322.585918,Y104. New noise12101..12105finalX325.311196/322.016009/
+325.547513/324.204089/324.070853,Y104, central final support.
+Noise12100fails central, final(293.727677,104),gain83; final90Xconstant,
+Y103.538617..104,speedmax.461383,bodyquerycontactfraction1, secondary
+final support. It physically holds the ledge edge, not the frozen central
+regionX305..335. No claim of climbing/control impossibility.
+
+Strict all9central-final-support/no-death/nominal/fidelity consideration
+gatefalse. Do not substitute8/9orsecondary9/9post hoc: no teacher/corpus/data
+admission or paid learning. Controller is hand-designed/time-guided, not
+learned-policy progress; primaryfullgoal0. Improvement relative to playback
+on this declared subset is real, but not multi-seed/held-out summit proof.
+
+36rollouts/21600control+4320reset,0updates/summits/deaths. All18fullbackend
+pairs and fourhistoricalnominaltraces exact. Independent36full rawmilestone/
+action/caseclock traces and final support checks pass.26focusedPython+JS.
+Ownedelapsed152.9937seconds within immutable300second budget. Source/rules/
+prior/admission/script/plan/ledger bindingsverified; tracesdiagnosticonly.
+Evidence: `artifacts/contact_validation_probe_20261004T215921117225Z/verification.json`
+and `edge_support_review.json` beside it.
+
+Independently private PAUSED1791151516.0854468;80444390source,
+onstate-20261004-v1/onstate_study and closed historical deadline unchanged.
+Ledger bytes preserved,7closed$0.4564241866528988, no new reservation,
+HF writes, deployment, public release or substantive local training.
+
+Next bounded diagnostic: inspect terminal actuator authority at the captured
+edge landing, including hammer pose/query/travel, original planted response
+and terrain. Final16pixel correction is saturated, bodyXconstant, signproxy
+inactive; do not infer a force or that more gain cures it. Determine whether
+a distinct legal plant-and-recenter terminal stroke is justified before
+freezing any local physical test. Preserve all cases/failed strictgate; no
+closed-plan retry, successful-case-only labels, gain/cap/threshold/sign
+sweep, detector relaxation or unchanged BC/PPO scaling.
+
+## Prior result: contact-sign controller holds all three development cases
 
 Completed the admitted fixed-rule full comparison with no controller edits:
 pure playback, old timed correction and contact-sign timed correction,
@@ -83,7 +133,7 @@ onstate-20261004-v1/onstate_study and closed historical deadline unchanged.
 Ledger bytes preserved,7closed$0.4564241866528988; no new paid reservation,
 HF writes, deployment or public release.
 
-Next admitted bounded direction: freeze broader fresh development-validation
+The historical admitted direction, now completed above, froze fresh development-validation
 cases for exact same rule versus pure playback, with no retuning/data
 collection. Proposal: reset13001, nominal, left/rightwarmups(+/-0.875,.125)
 times3/fourticks each, noise std.02/seeds12100..12105, ninecases/600ticks/
