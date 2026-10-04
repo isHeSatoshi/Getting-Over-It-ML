@@ -42,7 +42,55 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current result: explicit clock restores warm-up hold, correction harms noise
+## Current result: offline audit finds one same-prefix planted-response reversal
+
+Completed a frozen180second offline audit of12captured clock-ablation traces/
+7200rows;0newgameplay/reset/learning and no HF writes. Trace/project/source/
+completed-review/script/plan/budget hashes match. Actual physical results
+remain the prior study's2/3central feedback holds, no noisehold/gain61.027
+versus playback secondaryhold/gain82,0summits/deaths. This audit is not new
+player or learned-policy progress.
+
+Noise11105first applied contrast is controlledtick28 after27exact common
+legal action/full physical-state rows, with identical raw pre-input.
+Feedback correction(-0.490001,-0.569308)pointerpixels becomes actual delta
+(-0.490,-0.570); hammer response difference0, body extra(+0.098,+0.114).
+Body moves opposite intended correction. Previous hammer-queryhittrue and
+previoushammertravel0. Originalmove-hammerf/b{ blocked branch passes
+(-0.5*requested hammer motion) to the body; with motor0.4, this local response
+matches the expected negative0.2pointer-to-body sign. This is one controlled
+common-prefix contrast, not a complete later-failure causal diagnosis.
+
+Warm-up first proposed control differs tick2, but forced warm-up masks it
+until appliedtick14 after13exact common action/state rows. First equal-input
+contrast changes hammer position, not body; previous queryhitfalse and
+previoushammertravel37.203pixels. Ignored proposals are not applied actions.
+Noise body separation>1pixel begins tick30, query-hitflag difference tick285;
+warm-up counterparts32/61. Those later pre-inputs differ: descriptive only.
+Both successful/failed segments can have the same query-hit flag, so it is
+not force, normal, a planted-state guarantee or the internal solver branch.
+Audit correction-contact counts are descriptive and include ignored warm-up
+proposals; they do not identify a causal contact-effect frequency.
+Evidence: `artifacts/contact_response_audit_20261004T205819078549Z/verification.json`.
+
+Independently private PAUSED1791147764.199187; actual80444390source,
+onstate-20261004-v1/onstate_study and closed deadline unchanged. Ledger bytes
+preserved,7closedestimated$0.4564241866528988, no new reservation. Goal0.
+The completed audit ran inside its immutable deadline; subsequent bounded
+verification checked hashes/first proposed-versus-applied contrasts/pause,
+without rerunning the audit, extending its deadline or changing its results.
+
+Next mechanically motivated hypothesis: keep clock/prior/gain1/norm16/
+axis128fixed; reverse correction only when raw causal pre-input has hammer
+queryhit and previoushammertravel<3pixels, matching the original wall-test
+threshold. Proxy is fallible, not privileged true-contact/branch observation.
+First freeze a bounded ordinary-spawn recorded-prefix one-step sign check on
+reference and fast, reproducing the prior baseline before local inversion.
+Only intended local body response/fidelity can admit a fresh fixed-case
+recovery check. No teacher/labels/learning admission from that single point,
+no sign/threshold/gain sweep or unchanged BC/PPO scaling.
+
+## Prior result: explicit clock restores warm-up hold, correction harms noise
 
 Added only opt-in `mode="timed_feedback"` in `research/stroke_controller.py`.
 Phase is explicitlymin(one-tickdecisioncalls,599), not inferred from pose.
@@ -79,7 +127,7 @@ onstate-20261004-v1/onstate_study and its closed deadline unchanged. Ledger
 bytes preserved; seven closed estimates$0.4564241866528988, no new paid
 reservation, HF write, public release or local learner training. Goal0.
 
-Next bounded diagnostic: inspect the first harmful corrective segment in
+The historical diagnostic, now completed above, inspected corrective segments in
 captured noisy playback/feedback and the original planted-hammer-to-body
 transfer. Determine whether a contact-aware correction rule is mechanically
 justified before proposing it. Query contact is not force or complete

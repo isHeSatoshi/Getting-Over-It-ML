@@ -101,3 +101,44 @@ response before proposing a contact-aware rule. Use existing captured traces;
 do not launch another gain/cap/tube sweep or assume that a query hit is a force
 measurement. Any new feedback rule needs a fresh frozen physical test before
 teacher validation, training data or paid learning.
+
+## Offline planted-response audit
+
+No new gameplay or training. Twelve captured traces, 7200 rows, remain
+hash-bound to the closed clock ablation. The nominal streams are identical.
+
+The noisy streams share the first 27 legal applied controls and full physical
+states. At controlled tick 28, raw pre-inputs still match exactly, but feedback
+adds `(-0.490001,-0.569308)` pointer pixels. The actual pointer difference is
+`(-0.490,-0.570)` after the game's input reporting. The hammer does not move
+differently, while the body moves an extra `(+0.098,+0.114)` pixels, opposite
+the intended correction. The previous hammer query-hit is true and previous
+hammer travel is zero.
+
+Original `move hammer` blocks `f`/`b{` contain a blocked branch that calls body
+motion with `-0.5 * requested_hammer_motion`. Combined with motor gain 0.4,
+the observed first response is consistent with a `-0.2` local body response
+to pointer change. This is evidence of one same-prefix response reversal,
+not proof that every later failure has that cause.
+
+Warm-up first proposed controls differ at tick 2, but forced inputs mask the
+change until tick 14. The exact common applied-control/state prefix is 13
+ticks. At the first applied contrast, previous query hit is false, previous
+hammer travel is 37.203 pixels, the hammer moves differently and body motion
+does not. Do not treat ignored warm-up proposals as applied corrections.
+
+Noisy body separation exceeds 1 pixel at tick 30; query-hit flags first differ
+at tick 285. Warm-up counterparts are ticks 32 and 61. Later inputs are already
+unequal, so these milestones describe divergence, not isolated causal effects.
+An aggregate query-hit flag does not expose the current internal wall-test
+branch, contact normal, force, or whether the hammer will remain planted.
+Evidence: `artifacts/contact_response_audit_20261004T205819078549Z/verification.json`.
+
+Next hypothesis: retain explicit clock, prior, gain and bounds, but reverse
+the correction only when the causal pre-input has a hammer query hit and
+previous hammer travel below the original 3-pixel wall-test threshold.
+Treat this as a fallible observable proxy, not the true solver branch.
+First freeze a legal recorded-prefix, one-step sign check on both backends
+from ordinary spawn, with no state placement. Only a verified intended local
+response can admit the next fixed-case recovery check; neither stage admits
+teacher labels or learning automatically. No sign/threshold/gain sweep.

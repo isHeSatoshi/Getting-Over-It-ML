@@ -1,6 +1,26 @@
 # Deferred hypotheses
 
-- **Next contact-response audit before a new correction rule:** replacing
+- **Next same-prefix sign test, not teacher admission:** offline12trace/
+  7200row audit,0newgameplay/training. Noise first applied contrasttick28
+  after27exact common applied-control/state rows and equal raw pre-inputs.
+  Correction(-.490001,-.569308), actualpointerdelta(-.490,-.570), fixed
+  hammer and extra body(+.098,+.114), opposite intended motion. Previous
+  queryhittrue/travel0; original blocked branch body=-.5hammerrequest,
+  motor.4, consistent negative.2local sign. Later bodysep>1tick30 and
+  queryflagchange285have unequal inputs, not isolated causal evidence.
+  Warm-up firstproposal2/applied14 after13commonrows, previoushitfalse/
+  travel37.203; first contrast moves hammer not body. No ignored-label claim.
+  Keep clock/prior/gain1/norm16/axis128, reverse correction only for causal
+  previousqueryhit AND previoushammertravel<3(original wall-test threshold).
+  Fallible proxy, not true-contact/force/solver observation. Freeze legal
+  recorded-prefix one-step reference/fast check from ordinaryspawn first;
+  only intended local response can admit separate fixed-case recovery
+  validation, never immediate teacher labels/learning. No sign/threshold/
+  gain sweep or unchanged learner scaling. Private PAUSED1791147764.199187,
+  7closed$0.456424187, ledger unchanged. Existing physical outcome unchanged.
+  Evidence: artifacts/contact_response_audit_20261004T205819078549Z/verification.json.
+
+- **Closed contact-response audit, completed above:** replacing
   stroke gating with explicit clock restores warm-up central+secondary holds
   at(319.942,104),gain83, but noise11105loses playback secondary support,
   ending(208.585,82.027),gain61.027versus82. Nominal exact; all phases599,
