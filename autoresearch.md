@@ -42,7 +42,61 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current result: control-history feedback improves one partial climb, not recovery
+## Current result: ordered stroke feedback preserves nominal but fails recovery
+
+Inspected original PlayerbF/bG: motor request0.4*(pointer-hammer+body+render
+offset), change limit40, motor limit50, reach26..102 and real contact solver.
+Those physics are unchanged. The new diagnostic `research/stroke_controller.py`
+uses only raw217pre-action inputs and resettable private phase. Body/hammer
+world-position projection onto the next ordered reference stroke gates at
+most one forward row; fixed perpendicular tube26pixels, stationary points
+within1pixel/speeds<=2. No nearest-state search, backtracking, forced phase
+jump or unconditional elapsed-clock progress.
+
+Adds gain1*(reference body-actual body) to the prior pointer, norm-capped16
+pixels then legal128axis limits. This approximates world-target compensation,
+not inverse collision control or a guaranteed corrective label. The unchanged
+600row prior reproduces all600offline actions/phases and actual nominal
+reference/fast trajectory exactly, including the central+secondary hold.
+
+| Reference case | Timed recording | Ordered stroke feedback |
+|---|---|---|
+| Nominal |central+secondary held,(322.586,104),gain83|identical,phase599,zero correction|
+| Left warm-up |central+secondary held,(322.577,104),gain83|nohold,(59.448,20.770),gain-0.230,phase58|
+| Noise11105 |secondary only held,(335.292,103),gain82|nohold,(169.478,29),gain8,phase173|
+
+Both perturbed final120phase ranges are constant; after interventions,
+correction acts on564/572ticks. Maximum correction norms8.36655/16pixels.
+Warm-up final progress-15.6753; noise finalprogress0.939637/perpendicular
+distance27.3929, with both completion gates false. These gate states describe
+failure, not single-factor causality; progress and correction changed together.
+The baseline noise is still outside unchanged centralX<=335, not promoted.
+Reject the stroke recipe as corrective teacher: no corpus/data admission,
+learning, model improvement or summit.307Python tests+JS pass.
+
+Frozen12rollouts/7200control+1440reset,0updates/summits/deaths, within the
+300second work deadline. All six full backend pairs and all six old timed
+baseline traces exact. Independent review reconstructs all12full raw
+position/velocity/contact milestone traces and verifies every proposed and
+actually perturbed legal control against captured pre-inputs and case clocks.
+Backend copies are fidelity, not independent successes.
+Evidence: `artifacts/stroke_feedback_probe_20261004T202114143143Z/verification.json`.
+
+Independently private PAUSED1791145725.5072744; actual80444390source,
+onstate-20261004-v1/onstate_study and closed historical deadline unchanged.
+Seven closed estimated costs$0.4564241866528988; ledger bytes preserved,
+no paid reservation/remote writes/public release. Full goal remains0.
+
+Next single-axis ablation: keep this exact gain1 body-error correction,
+16pixel norm/128axis caps and prior fixed; replace observable-stroke gating
+with an explicitly declared physical playback clock. Compare timed-feedback
+versus pure playback on the same three development cases. This tests whether
+correction can help without deadlocking progress; it is not state-inferred
+phase acquisition, a fix, teacher admission or robust learned skill. Freeze
+fresh source/rule/case/deadline bounds before any physics. No tube/gain/cap
+sweep, arbitrary phase jumps, off-state teacher suffix or learner scaling.
+
+## Prior result: control-history feedback improves one partial climb, not recovery
 
 The frozen second prototype changes only phase-distance features:
 `feature_set="control_history"` adds pointer_x/y,last_tx/ty,control_memory_x/y,
@@ -81,7 +135,7 @@ sessiononstate-20261004-v1/modeonstate_study and its closed historical deadline
 are unchanged. Seven closed estimates total$0.4564241866528988; ledger bytes
 preserved. No paid reservation, remote write or public release. Full goal0.
 
-Next bounded structural feedback work: inspect the original pointer-to-hammer
+The historical structural follow-up, now tested above, was to inspect the pointer-to-hammer
 servo and these stalled strokes; derive a legal stroke-progress controller
 with observable completion gates and state-error action correction, rather
 than selecting another nearest-pose metric. Freeze its actual rule, action

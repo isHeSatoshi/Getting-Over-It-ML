@@ -69,11 +69,11 @@ Final warm-up contact and zero speed confirm stationary support below the
 ledge, not ledge acquisition. No detector changes or teacher/data admission.
 Evidence: `artifacts/phase_history_probe_20261004T200234917165Z/verification.json`.
 
-Reject further nearest-feature/window sweeps. Next inspect the original
+Reject further nearest-feature/window sweeps. The subsequent check inspected the original
 pointer-to-hammer servo and stalled strokes, then freeze a legal stroke-progress
 controller with observable completion gates and bounded state-error action
 correction. Physical recovery and fidelity must precede labels or learning.
-The structural design remains a hypothesis, not an established fix.
+That structural check also fails perturbation recovery; see `STROKE_CONTROLLER.md`.
 
 Nearest-state proximity does **not** establish a corrective target. Physical
 nominal/perturbation tests and independent reference/fast agreement must pass

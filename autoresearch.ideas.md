@@ -1,6 +1,23 @@
 # Deferred hypotheses
 
-- **Next structural stroke feedback, not more nearest-phase tuning:** the
+- **Next fixed-axis timed-feedback ablation:** ordered observable stroke
+  feedback preserves600nominal action/phase/physical rows and heldgain83,
+  but both perturbed cases stall. Leftwarmup ends(59.448,20.770),gain-0.230,
+  phase58;noise11105ends(169.478,29),gain8,phase173. Final120phases constant,
+  564/572post-intervention corrected ticks; no central/secondary perturbed
+  holds, teacher labels or learning.12rollouts/7200control+1440reset,
+  0updates/summits/deaths; all six backend pairs/historical timed baselines,
+  all12raw milestone/control traces exact.307Python+JS pass.
+  Retain identical gain1body-error correction/norm16/axis128/prior, replace
+  progress gating with explicit physical playback clock, compare pure timed
+  recording on the same development cases. Gate and correction changed
+  together previously, so failure not attributed to either alone. No
+  tube/gain/cap sweep or pretend observed-state phase. Fresh frozen plan and
+  actual recovery/fidelity required before broader teacher validation/data.
+  Space PAUSED1791145725.5072744,7closed$0.456424187, budget bytes unchanged.
+  Evidence: artifacts/stroke_feedback_probe_20261004T202114143143Z/verification.json.
+
+- **Closed structural stroke-feedback hypothesis, tested above:** the
   one-axis addition of eight pointer/control-history features preserves the
   nominal exact hold but fails both perturbations. Warm-up improves from
   gain0.996to58.011 at(280.249,79.011), then staysphase280; noise ends
@@ -8,7 +25,7 @@
   perturbed holds, no teacher/data admission.14rollouts/8400control+1680reset,
   0updates/summits/deaths; all backend and six historical baseline traces
   exact, all14raw milestone traces reconstruct.299Python+JS pass.
-  Inspect original pointer-to-hammer servo and stalled stroke telemetry, then
+  Historical follow-up: inspect pointer-to-hammer servo and stalled stroke telemetry, then
   derive a legal stroke-progress controller with observable completion gates
   and bounded state-error action correction. Freeze rules/actions/work/cases
   before physics, compare timed playback and require real recovery/fidelity.
