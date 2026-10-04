@@ -42,7 +42,55 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current result: push/release settles centrally, fixed90hold gate one tick short
+## Current result: settle-aware local recenter hold passes, conditional design only
+
+Implemented/tested separate `research/settled_hold.py` monitor, never
+changing originalMilestoneTracker. Consecutivefinite30Hzstates, atmost30
+settle ticks; centralposition/speed<=2/bodyqueryhit triggers independent
+holding phase. Trigger sample excluded, next90region/speed/alive ticks
+counted with originalbodyfraction>=.8. Timeout, terminal, any holdregion/
+speed loss or insufficientcontact fails with no rearming/cap renewal.
+All323Python+JS pass; edge predicate/hold criteria unchanged.
+
+New separately frozen local test retains600ordinaryprefix/30plant/
+onepush/noise12100/originalcontactcontroller. Maximum751ticks/180seconds,
+not the closed90window extended inplace. Pushed branch settles in2ticks,
+then90qualifiedholdticks/90bodyqueryhits, final(314.427961,104),gain83,
+velocity0; original3secondcentralheld detector alsotrue. Controlled723ticks.
+Unchanged and plant-only branches failsettlingtimeout30 atX293.727677/
+303.229350, stop661ticks, no restart. No deaths/summits/learnerupdates.
+
+8rollouts/5290control+960reset, all fourfullbackendpairs exact. Oldprefix
+controls/observations/rewards/physicalstates identical through available
+history; monitor metadata alone added. Independent8full rawmilestone/
+proposed-applied-control/noise/monitor traces reconstruct; held samples are
+distinct from trigger. No forces/privileged reset or backend duplication
+claimed as independent success. New localconditionalterminaldesigngate
+passes, not robustteacher/model/data admission or primaryfullgoal.
+Evidence: `artifacts/settle_aware_probe_20261004T232031597236Z/verification.json`.
+
+Closedfixed90failure89ticks and original8/9central/9/9secondary/failedstrict
+9/9cohort remain unchanged. This is hand-designed single-edge recovery,
+not learnedpolicy/multipletrainingseed/held-out summit competence. Goal0.
+Independently private PAUSED1791156280.5652258;80444390source,
+onstate-20261004-v1/onstate_study and closed historical deadline unchanged.
+Ledgerbytespreserved,7closed$0.4564241866528988; no new reservation/HFwrite/
+deployment/publicrelease/substantive local training.
+
+Next admitted bounded implementation: causal terminal wrapper around fixed
+contact-signcontroller, one attempt after600decisions only for raw supported
+slow left-edge landing(285<=X<305,100<=Y<=112,bodyquerytrue,speed<=2).
+No case/seed/trace-index trigger. Already-central inputs remain exactoriginal
+controller. Keep30plant(26,-56),onepush(0,-56),originalrelease controller,
+30settle cap/90hold and no-rearm failure. Inputs raw217plus private resettable
+phase/clock only; align monitor update to actually applied one-tick states,
+not ignored predicted controls or futureobservations. Freeze wrapper contract
+and bounded original-physics smoke before play; preserve safety/action caps.
+Only subsequent separately declared whole-wrapper cohort can reconsider
+teacher/corpus admission, and later learner must handle clock/memory honestly.
+No automatic old9casegate rewrite, labels or paid learner scaling.
+
+## Prior result: push/release settles centrally, fixed90hold gate one tick short
 
 Completed frozen release diagnostic with unchanged600ordinaryprefix,
 30plant(26,-56),onecontrast hold/push(0,-56),90original contact-controller
@@ -83,7 +131,7 @@ Ledger bytes preserved,7closed$0.4564241866528988, no reservation/HFwrite/
 deployment/publicrelease/substantive local training. Goal0; original8/9
 central/9/9secondary and failedstrict9/9gate unchanged.
 
-Next distinct diagnostic hypothesis: settling and qualified-hold timing must
+The historical diagnostic hypothesis, now tested above, separated settling and qualified-hold timing
 be separate state-observed phases, not a fixed90wallclock immediately after
 an impulse. Keep prefix/30plant/onepush/controller/noise fixed; predeclare
 atmost30settle ticks using originalcentralregion/speed<=2/bodyquery evidence,

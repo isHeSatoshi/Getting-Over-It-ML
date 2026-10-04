@@ -401,3 +401,44 @@ before physics. Timeout or loss of qualification is a failure, not an excuse
 to extend the window. The closed fixed-90 failure and old nine-case failure
 remain immutable. This new protocol can at most admit conditional-controller
 design, not labels, teacher validation, learned skill or summit promotion.
+
+## Observed settling and independent hold
+
+`research/settled_hold.py` implements the new diagnostic monitor separately
+from the unchanged `MilestoneTracker`. It accepts only consecutive finite
+30 Hz states. A bounded settling phase waits at most 30 ticks for central
+position, speed at most 2 and a body query hit. That trigger sample is not
+counted. The next 90 consecutive region/speed/alive ticks form the hold window,
+with original body-contact fraction at least 0.8. Timeout, qualification loss
+or inadequate contact fails permanently; no rearming or renewed caps.
+
+The unchanged action/noise diagnostic reproduces all old states and controls
+through the available old prefixes. No extra pushes, target changes or speed
+relaxation. The pushed branch settles in two ticks, then measures 90 hold
+ticks with 90 body-query hits. It finishes at `(314.428,104)`, gain 83,
+zero velocity, and also passes the original three-second central milestone.
+Its continuous run ends after 723 controlled ticks. Both unchanged and
+plant-without-push branches time out after 30 settling ticks at X293.728 and
+X303.229, respectively; their runs stop at tick 661 without retries.
+
+Eight rollouts, 5290 control and 960 reset ticks, zero updates, deaths or
+summits. All four full backend pairs and old prefix controls/physical states
+are exact. Independent review reconstructs the full monitor state machine,
+distinct trigger/measurement samples, original milestones and every actual
+control/noise tick. All 323 Python tests and collision checks pass.
+Evidence: `artifacts/settle_aware_probe_20261004T232031597236Z/verification.json`.
+
+This passes only the local conditional-terminal-design gate. The old fixed
+90-tick failure and original 8/9 central validation remain unchanged. No
+teacher labels or learner training admitted.
+
+Next implement one causal conditional wrapper around the fixed contact
+controller. It may attempt the unchanged 30-plant/one-push/settle/hold sequence
+once, after 600 decisions only when the raw input reports a supported, slow
+left-edge landing in secondary X285..305 and Y100..112. It must ignore case
+names, noise seeds and recorded trace indices. Already-central states must
+stay on the original controller exactly. Use only raw input and private
+resettable phase/clock, preserve all action caps and no-rearm failure rules.
+Predeclare clock alignment and a bounded real-game wrapper smoke before any
+fresh cohort. A separate whole-wrapper validation and data/learner contract
+are still required; no automatic old-gate pass or paid scaling.

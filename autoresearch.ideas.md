@@ -1,6 +1,24 @@
 # Deferred hypotheses
 
-- **Next distinct settle-aware local test, not a one-tick extension:** fixed
+- **Next causal conditional-wrapper implementation, no corpus yet:** separate
+  settlemonitor<=30states followedby90holdstates (triggerexcluded) passes
+  pushedknownedge:2settleticks+90hold/90bodyhits,723controlledticks,
+  final(314.428,104)/gain83/velocity0/originalcentralheldtrue. Unchanged/
+  plant-only fail30settletimeout at293.728/303.229,661ticks.8rollouts/
+  5290control+960reset,0updates/deaths/summits; all rawmonitor/oldprefix/
+  backend checks exact,323Python+JS. Old90failure and9casefailedgate fixed.
+  Implement one-attempt terminal wrapper after600decisions only for raw
+  slow/body-supported leftsecondaryedge(285<=X<305,Y100..112,speed<=2).
+  No case/seed/trace-index oracle. Already-central states exactoriginal.
+  Fixed30plant(26,-56)/onepush(0,-56)/originalrelease/30settle/90hold,
+  causal actually-applied state alignment, private resettableclock/phase,
+  no rearm/caprenewal/action-limit changes. Freeze source/contract and
+  bounded physicalsmoke, then separately wholewrapper cohort before any
+  teacher/labels/paidlearning. Not learnedpolicy/heldout/multiseed/summit.
+  Private PAUSED1791156280.5652258,7closed$0.456424187,ledgerpreserved.
+  Evidence: artifacts/settle_aware_probe_20261004T232031597236Z/verification.json.
+
+- **Closed observed settling/hold diagnostic, completed above:** fixed
   plant/push+90release settlesbody(314.428,104),velocity0, butfirstrelease
   tick632speed2.18276fails2limit; remaining89ticksqualify/2.96667s,
   bodyfraction.98889. Strict90support/3sheldgatefalse, no conditional
