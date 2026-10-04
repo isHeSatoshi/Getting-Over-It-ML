@@ -1,6 +1,23 @@
 # Deferred hypotheses
 
-- **Next frozen release/settling check, not teacher admission:** realrenderer
+- **Next distinct settle-aware local test, not a one-tick extension:** fixed
+  plant/push+90release settlesbody(314.428,104),velocity0, butfirstrelease
+  tick632speed2.18276fails2limit; remaining89ticksqualify/2.96667s,
+  bodyfraction.98889. Strict90support/3sheldgatefalse, no conditional
+  controller/teacher/label admission. Plant-only ends303.229outsidecenter.
+  8rollouts/5526control+960reset,0updates/deaths/summits; all raw/backend/
+  old631historychecks exact,26focusedPython+JS. Keep failed90plan immutable.
+  Predeclare separate state-observed settling phase<=30ticks using original
+  centralregion/speed/bodyquery evidence, then90qualified hold ticks under
+  unchanged controller/noise/bodyfraction>=.8. Same600prefix/30plant/onepush,
+  no target/gain/cap/threshold/timing sweep. Freeze complete phase failure/
+  timeout/no-renewal rules, workmax/deadline before newphysics. Local pass
+  only admits later conditionalterminaldesign, not labels/old9casegate
+  rewrite/learnedgoal. Private PAUSED1791154976.046585,7closed$0.456424187,
+  ledger preserved.
+  Evidence: artifacts/terminal_release_probe_20261004T225830472380Z/verification.json.
+
+- **Closed fixed release/settling check, completed above:** realrenderer
   plant(26,-56)*30ticks yields13hammerqueryhits/finaltravel0. Equalhistory/
   preinput one(0,-56)push vsplant-held contrast addsbody(+5.2,+.183846),
   hammerdelta0, gatepasses. Finalpushed(309.941,104.565) centralcoordinates

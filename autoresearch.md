@@ -42,7 +42,59 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current result: real planting/push moves body into center, hold not settled yet
+## Current result: push/release settles centrally, fixed90hold gate one tick short
+
+Completed frozen release diagnostic with unchanged600ordinaryprefix,
+30plant(26,-56),onecontrast hold/push(0,-56),90original contact-controller
+release steps. Continuednoise12100, equal721terminal horizons, no
+extra pushes/targets/gain/caps/threshold changes or privileged placement.
+Nominal600baseline and all prior631tick histories reproduce exactly.
+
+| Reference arm | Final pose | Central qualification |
+|---|---|---|
+| Unchanged terminal |(293.727677,104)|nohold|
+| Plant-only+release |(303.229350,104)|best.166667s,nohold|
+| Plant+push+release |(314.427961,104)|89qualifiedticks/2.966667s,nohold|
+
+Pushed body settles with finalvelocity0, centrally positioned and body
+supported. But the firstrelease tick632is at(312.001215,103.842922),
+speed2.182757>original2limit/bodyqueryfalse. It is the sole nonqualified
+row in final90. Remaining89region/speed ticksqualify; bodyqueryfraction
+.988889. Declaredfinal90body-support/original3sheldgatefalse. Do not append
+one tick, relax speed/hold or treat nearby successful state as a pass.
+This is settling progress, not admitted recovery/teacher/learnedpolicy.
+
+Prior localbodyauthority(+5.2,.183846),fixedhammer,13/30hits/travel0
+reproduced at contrasttick631. Later release states differ across arms,
+so late outcomes are a full feedback-stage comparison, not an isolated
+one-step action causal contrast. Fullconditionalterminaldesignblocked.
+
+8rollouts/5526control+960reset,0updates/summits/deaths. All four fullbackend
+pairs and eight priornominal/631traces exact. Independent8full rawmilestone/
+proposed-applied-control/noise reconstructions and boundaryreview pass.
+26focusedPython+JS, source/prior/controller/admission/script/plan/deadline/
+ledger bindingsvalid. No newgameplay for the boundary analysis.
+Evidence: `artifacts/terminal_release_probe_20261004T225830472380Z/verification.json`
+and `settling_boundary_review.json` beside it.
+
+Independently private PAUSED1791154976.046585;80444390source,
+onstate-20261004-v1/onstate_study and closed historical deadline unchanged.
+Ledger bytes preserved,7closed$0.4564241866528988, no reservation/HFwrite/
+deployment/publicrelease/substantive local training. Goal0; original8/9
+central/9/9secondary and failedstrict9/9gate unchanged.
+
+Next distinct diagnostic hypothesis: settling and qualified-hold timing must
+be separate state-observed phases, not a fixed90wallclock immediately after
+an impulse. Keep prefix/30plant/onepush/controller/noise fixed; predeclare
+atmost30settle ticks using originalcentralregion/speed<=2/bodyquery evidence,
+then90qualified hold ticks under the same controller with full original
+bodyfraction>=.8support contract. No timing sweep or closed90plan retry;
+failure/timeout/lostqualification cannot renew caps. Freeze the full phase
+rule and maximumwork/deadline before physics. Only such local settledhold
+would admit conditionalterminal design, not labels, nine-case gate changes
+or learner/summit promotion.
+
+## Prior result: real planting/push moves body into center, hold not settled yet
 
 Completed frozen8rollout local original-renderer test. Nominal600tick
 playback central hold reproduces first. Terminal arms use unchanged
@@ -81,7 +133,7 @@ onstate-20261004-v1/onstate_study and closed historical deadline unchanged.
 Ledger bytes preserved,7closed$0.4564241866528988, no reservation/HFwrite/
 deployment/publicrelease/localtraining. Primarycompletion0.
 
-Next admitted bounded diagnostic: sameknownedgeordinary600prefix,
+The historical admitted diagnostic, now completed above, used knownedge600prefix,
 unchanged30plant and onepush, then90ticks resumed original contact-sign
 controller to test release/settling. Compare unchanged continuation,
 plant-without-push and plant-plus-push through equal721tick horizons,

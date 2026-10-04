@@ -362,3 +362,42 @@ same total horizon. Require final 90-tick central position/speed/body-contact
 support and exact fidelity before admitting a full conditional terminal
 controller. No extra pushes, target/cutoff tuning, labels, old nine-case gate
 rewrites or immediate teacher/learning promotion.
+
+## Fixed release and settling comparison
+
+The previous nominal and 631-tick plant/contrast histories reproduce exactly.
+Only the newly declared 90-tick release continuation is added, with the same
+controller, targets and ongoing noise. All terminal arms run 721 ticks.
+
+| Arm | Final position | Central qualified window |
+|---|---|---:|
+| Unchanged continuation | `(293.728,104)` | 0 seconds |
+| Plant without push, then release | `(303.229,104)` | 0.16667 seconds best |
+| Plant plus one push, then release | `(314.428,104)` | 2.96667 seconds |
+
+The pushed branch settles to zero final velocity inside the central region.
+However, its first release tick (controlled tick 632) has speed 2.18276,
+above the unchanged limit 2. All remaining 89 ticks qualify for region/speed;
+the final 90-tick body-query fraction is 0.98889. The original three-second
+held detector and declared final-support gate therefore remain false.
+No extra tick, relaxed detector or retrospective pass.
+
+Eight rollouts, 5526 control and 960 reset ticks, zero updates, deaths or
+summits. All four full backend pairs and all eight old nominal/631-tick
+prefixes are exact. Independent review reconstructs every raw milestone,
+continued noise and proposed/applied control, and identifies the lone
+nonqualified transition tick without new gameplay. Twenty-six focused tests
+and collision checks pass.
+Evidence: `artifacts/terminal_release_probe_20261004T225830472380Z/verification.json`
+and `settling_boundary_review.json` beside it.
+
+Full conditional-terminal design and corrective-data admission remain blocked.
+Next propose a distinct settle-aware local diagnostic, not a one-tick retry:
+keep the same prefix, plant and push; explicitly allow a bounded settling phase
+under the unchanged controller, then measure 90 qualified hold ticks using
+the original region, speed and body-contact contract. Predeclare a 30-tick
+settling safety cap, independent hold clock and complete maximum work budget
+before physics. Timeout or loss of qualification is a failure, not an excuse
+to extend the window. The closed fixed-90 failure and old nine-case failure
+remain immutable. This new protocol can at most admit conditional-controller
+design, not labels, teacher validation, learned skill or summit promotion.
