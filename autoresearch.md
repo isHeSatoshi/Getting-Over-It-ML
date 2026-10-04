@@ -63,7 +63,8 @@ verified from standard campaign aggregation alone.
   verification is epoch **`1791100724.3051379`**, about **07:58:44 UTC**.
   No source/session/context/deadline change or operator pause/restart occurred.
 - No timing arm qualifies for robust promotion or scaling. Next priority:
-  integrate the separately proposed remote BC/BC+PPO trainer/checker/admission,
+  integrate the separately proposed remote BC/BC+PPO checker/admission and
+  connect it to the now-tested three-arm trainer stages,
   then a fresh capped source/preflight/session. **Do not restart this closed
   timing session or deploy smoke-only imitation as full training.**
 
@@ -514,6 +515,54 @@ PAUSED and a new capped reservation before full learning. The existing
 smoke-only guard stays until that integration is tested. No final-goal or
 saved-policy portability claim follows from this closure; keep the operator
 for further bounded useful work rather than cancelling at batch completion.
+
+### Three-arm imitation/PPO trainer stages integrated locally
+
+`research.imitation_train` now runs scratch PPO, BC-only and BC-then-PPO
+through one explicit staged pipeline. All arms fit observation RMS once from
+the same eligible demonstrations, freeze it before baseline evaluation and
+keep it unchanged throughout cloning, PPO and reference evaluation. The
+cloner can consume this pre-fitted RMS without refitting it. Original
+observations/reward, one-tick absolute actions, physical-time gamma/GAE and
+both frozen metrics remain unchanged; no privileged resets or recovery oracle
+are introduced.
+
+Each run writes provenance/data/normalization/settings, untrained reference
+cases, optional post-cloning checkpoint/evaluation, final model/normalizer,
+actual BC calls/presentations and separate PPO/controlled/reset work.
+The local pipeline accepts only the small smoke settings. Actual model
+rollout/batch/epoch/gamma/GAE/architecture must match those declared settings
+before any work, preventing larger rollouts from silently exceeding the cap.
+Full CLI execution and full function settings remain refused before data,
+output creation or browser access until separate remote admission exists.
+The existing legacy/timing trainer and worker are not changed.
+
+Three ordinary-start pipeline smokes at seed 6 use the same 3,576 eligible
+demo rows and shared frozen statistics. Scratch and BC+PPO each perform
+**256 actual controlled ticks**, **120 reset-settling ticks** and **four PPO
+optimizer calls**; BC-only consumes **zero RL/control/reset ticks**. Cloning
+arms separately perform **eight BC calls /512 sample presentations**.
+All declared reference stages use the nine original cases at 128 ticks each,
+with reset work counted separately. Their short finals have no holds/full
+completions/deaths and median retained 0; these are pipeline checks, not
+learning-effectiveness evidence.
+
+All three untrained nine-case reference traces are exactly equal. Saved
+frozen mean/variance/count are exactly equal across arms. BC-only final policy
+weights are bitwise equal to BC+PPO's pre-PPO clone checkpoint; saved gamma
+and GAE match the one-tick physical-time contract. These checks establish
+stage/normalization comparability, not cross-host robustness or upper-route
+fidelity. Evidence:
+`artifacts/imitation_three_arm_smokes_20261004T082101406129Z/verification.json`.
+All **196 Python tests plus JS collision checks pass**.
+
+The owned Space is independently rechecked PAUSED with its same closed timing
+source/session/context/deadline. No upload, reservation, restart, new paid
+training or settings change occurs. Next bounded priority is the strict
+nine-run imitation campaign checker and Linux parent-bound worker admission,
+then full-budget trainer dispatch under a fresh capped preflight/session.
+Reuse these tested stages rather than another disconnected smoke or viewer
+feature; do not remove full-run refusal until admission is real and tested.
 
 ### Completed historical pilot, immutable evidence
 

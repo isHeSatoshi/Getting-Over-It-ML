@@ -10,6 +10,12 @@
   Timing closed estimate $0.100149, cumulative closed $0.292696 under $10;
   no new batch or silent renewal has started. Historical bullets below retain
   the intermediate evidence; they are not instructions to resume old sessions.
+  Three-arm trainer stages are now integrated and pass 196 tests plus real
+  scratch/BC/BC+PPO pipeline smokes. Common demo RMS and untrained reference
+  traces are identical; pre-PPO clone weights match BC-only exactly. BC and
+  PPO work are separated, and full runs still refuse dispatch. Next is the
+  strict campaign checker plus Linux parent-bound worker admission, then the
+  full-budget remote launch. Do not rebuild the trainer or spend on viewer work.
 
 - After the current nine-run pilot: one-tick feedback versus four-tick holds.
   Match physical exposure, gamma, episode/evaluation duration, and warm-ups.

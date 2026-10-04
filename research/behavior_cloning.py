@@ -16,7 +16,7 @@ VERSION = "ppo-actor-demonstration-warm-start-v1"
 
 
 def warm_start(model, normalization, observations, actions, *, updates=8, batch_size=64,
-               seed=0, learning_rate=0.001, pipeline_smoke=True):
+               seed=0, learning_rate=0.001, pipeline_smoke=True, fit_normalization=True):
     """Separate BC optimizer leaves value, log-std and PPO optimizer state alone."""
     import torch
     from stable_baselines3 import PPO
@@ -44,8 +44,14 @@ def warm_start(model, normalization, observations, actions, *, updates=8, batch_
     require(model.num_timesteps == 0 and not model.policy.optimizer.state
             and not getattr(model, "_demonstration_warm_started", False),
             "Warm start requires a fresh learner, never silent checkpoint resume")
-    normalization.obs_rms.update(observations)
-    normalization.training = False
+    require(type(fit_normalization) is bool, "Invalid normalization fitting mode")
+    if fit_normalization:
+        normalization.obs_rms.update(observations)
+        normalization.training = False
+    else:
+        require(normalization.training is False
+                and normalization.obs_rms.count == n + 0.0001,
+                "Pre-fitted demonstration normalization must be frozen with matching sample count")
     normalized = normalization.normalize_obs(observations)
     inputs = torch.as_tensor(normalized, device=model.device)
     targets = torch.as_tensor(actions, device=model.device)
