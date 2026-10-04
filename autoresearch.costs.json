@@ -221,7 +221,7 @@
       "source_space_revision": "8044439043a1725dc5911577c85096cd04ddc4ae",
       "study": "logged-success-data-comparison-v1",
       "sleep_policy": "paid_default_never",
-      "training_started": false,
+      "training_started": true,
       "preflight_launch_requested": true,
       "reservation_evidence": "D:\\Project\\cat\\artifacts\\onstate_deployment_20261004T175845470617Z\\reservation.json",
       "source_bundle": "D:\\Project\\cat\\artifacts\\hf_bundle_20261004T175843094830Z",
@@ -233,7 +233,13 @@
       "preflight_evidence": "D:\\Project\\cat\\artifacts\\onstate_preflight_review_20261004T181812585650Z\\complete_review.json",
       "preflight_independent_paused_epoch": 1791137892.5876534,
       "full_study_launch_requested": true,
-      "full_study_restart_requested_epoch": 1791138225.383253
+      "full_study_restart_requested_epoch": 1791138225.383253,
+      "validated_completed_runs": 2,
+      "latest_partial_artifact_revision": "0f0ae67493534e4bffc3d8a01ef11ace20f0111b",
+      "latest_partial_evidence": "D:\\Project\\cat\\artifacts\\onstate_partial_review_20261004T183915603589Z\\verification.json",
+      "last_observed_active_phase": "original_demonstrations_seed_10",
+      "validated_bc_optimizer_calls": 4000,
+      "validated_bc_sample_presentations": 1024000
     }
   ],
   "postclosure_local_diagnostics": [

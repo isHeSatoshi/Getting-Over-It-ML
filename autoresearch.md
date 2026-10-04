@@ -42,7 +42,61 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current state: preflight passed; matched learning comparison launched
+## Current partial result: one extra seed9 held event, not robust improvement
+
+The running comparison has two complete contract-valid seed9 runs at pinned
+dataset `0f0ae67493534e4bffc3d8a01ef11ace20f0111b`. All source/game/data,
+frozen settings/RMS, legal fresh-case action traces, actual update/source-sample
+work and matched initial parameters/reference traces pass the strict checker.
+The exclusive durable no-resume claim is verified. Four runs remain missing;
+no complete three-seed cohort, skill candidate or full-goal improvement exists.
+
+| Seed9 arm | Central/secondary held events | Median retained gain | Nominal hold | Summits/deaths |
+|---|---|---|---|---|
+| Original demonstrations |2/9,2/9|4.3693|no|0/9,0/9|
+| Original plus logged success |3/9,3/9|13|no|0/9,0/9|
+
+Original arm holds `new_hammer_right` and `new_action_noise_3`; augmented
+holds `new_hammer_right`, `new_action_noise_2` and `new_action_noise_5`.
+Both finish in the central ledge region in only2cases, with90body-query
+hits across their final90ticks. Augmented noise5 held at tick893 but later
+left, ending(536.593,60.896), retained39.896. Its extra counted held event
+is transient; the original noise1 ends above the ledge at(306.283,124.032),
+retained103.032 but does NOT satisfy the held gate. Endpoint height is not
+skill. Both no-noise trials fail: original(137.660,24), augmented(21.867,21).
+Higher one-seed counts/median are not robustness, population statistics or
+proof of a beneficial data recipe. Keep all remaining controls unchanged.
+
+Independently checked qualifying90tick position/contact windows:
+original held ticks629/1064 with89body-query hits each; augmented850/1140/893
+with90/90/88hits. Query hits are not forces. Exact velocities are not exposed
+in evaluator info, so speed qualification remains the frozen source tracker,
+not a claimed independent velocity reconstruction. All actual legal actions,
+clock, latched held fields/outcomes and retained origins validate.
+
+Actual verified work for these two completed runs:4000BC optimizer calls,
+1024000sample presentations (896000original+128000logged),0PPO and0training
+control/reset ticks.36distinct executed before/after reference rollouts,
+64800control+8640reset ticks;18final/postclone cases,0summits/deaths.
+Four completed saved companion identities/size hashes are pinned by metadata,
+same-seed RMS companion bytes match. Model/RMS binaries were NOT downloaded
+or reloaded here; trainer's saved-reload checks do not prove portable replay.
+Active seed10 has only its initial manifest/RMS in this snapshot; no completed
+work is inferred.11local checker/goal tests pass; conservative goal projection0.
+Evidence: `artifacts/onstate_partial_review_20261004T183915603589Z/verification.json`.
+
+Actual private Space is RUNNING `original_demonstrations_seed_10`, same
+source80444390/session/mode/contexted3a53c3. The real epoch check at
+1791139109.743019 is UTC2026-10-04 18:38:29, leaving5030.736seconds before
+deadline1791144140.4793909 (20:02:20UTC). Use the configured epoch/UTC clock,
+not date-only interface notices, for expiry decisions. No pause, upload,
+source/configuration/deadline change, reservation closure or renewal.
+Original$0.06 remains open, closed+reserved$0.4779241866528988 unchanged.
+Next: one bounded later snapshot of remaining seed10/11 complete controls,
+claim/progress/saved metadata and physical outcomes. Only terminal/failure/
+actual epoch expiry permits closure after verified owned PAUSED.
+
+## Previous launch: preflight passed; matched comparison started
 
 All eight declared Linux preflight checks are complete and independently
 validated at pinned dataset `53b2f8dec8f361f193a14a299d466caab711ed30`.

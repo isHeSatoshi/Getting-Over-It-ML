@@ -1,5 +1,26 @@
 # Deferred hypotheses
 
+- **Latest partial learning evidence, keep the active study untouched:** two
+  complete seed9 contracts pass at0f0ae674. Original2central/2secondary holds,
+  median retained4.3693; augmented3/3,median13. Both nominal holds false,
+  0/18summits/deaths. Both have only2final central-region endpoints; augmented
+  noise5's extra event is transient, leaving for(536.593,60.896). Original
+  noise1 ends higher atY124without held success. Never promote heights or
+  latched events as reliable skill. Five qualifying position/contact windows
+  independently checked; speeds unavailable in info, frozen tracker only.
+  Actual4000BCcalls/1024000presentations,0PPO/training physics;36before/after
+  reference rollouts64800control+8640reset. Saved companion metadata pinned,
+  not local binary reload/portability.11checker/goal tests pass; no complete
+  three-seed cohorts and goal0. Source/game/data/settings/action clocks valid,
+  matched initial hashes/traces exact, durable no-resume claim valid.
+  SpaceRUNNING/original_demonstrations_seed_10, UTCepoch1791139109.743019
+  leaves~84min before original1791144140.4793909deadline. Date-only interface
+  notices do not override the verified UTC epoch. Original$0.06 reservation
+  stays open, closed+reserved$0.477924187 unchanged. No remote writes/renewal.
+  Next bounded remaining-cohort review, then terminal/failure/epoch-expiry
+  PAUSED/artifact verification and closure. No blind scale or changes mid-run.
+  Evidence: artifacts/onstate_partial_review_20261004T183915603589Z/verification.json.
+
 - **Active task is now full-comparison evidence review:** Linux preflight
   passed all eight checks, pinned53b2f8de, independent PAUSED1791137892.5876534.
   Source/game/data/RMS/controls/fidelity/resources and both small smokes valid.
