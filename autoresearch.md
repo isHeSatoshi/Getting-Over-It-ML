@@ -42,7 +42,60 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current state: fresh Linux preflight launched, full training not started
+## Current state: preflight passed; matched learning comparison launched
+
+All eight declared Linux preflight checks are complete and independently
+validated at pinned dataset `53b2f8dec8f361f193a14a299d466caab711ed30`.
+Owned private Space was independently PAUSED1791137892.5876534 before the
+intentional study transition. Exact source/game/data/RMS, original legal
+timing/controls, physical metric contracts, same-seed initialization/reload,
+resources and both small smoke runs pass. The known terrain descriptor
+disagreement at(-80,-30) remains documented, not hidden or a physics change.
+
+Fast/reference numeric physics errors are0 across the declared fidelity
+cases; six contact-rich timing cases match observations/rewards/telemetry
+exactly and production evaluation agrees. Placement tests are diagnostic
+only, never task progress or training labels. Two smoke arms share exact
+initial weights/untrained traces, preserve RMS/value/logstd/PPO and saved
+reload, using16BC calls/1024presentations. Four128tick reference smoke runs
+stay at(0,21), retained0, no holds/summits/deaths; these are not the full study.
+Linux stack Python3.11.17/NumPy2.4.3/Torch2.6.0+cpu/SB3 2.7.1/one thread.
+Effective8CPU/32GB capacity and>=12GiB available RAM pass. Worst measured
+reference fixture0.00956727s/tick gives a descriptive linear108rollout
+projection1859.88seconds, not a completion guarantee. More than twice that
+projection plus300seconds remained at launch; CPU XL is unnecessary.
+Evidence: `artifacts/onstate_preflight_review_20261004T181812585650Z/complete_review.json`.
+
+The frozen actual six-run comparison is intentionally started on the SAME
+session `onstate-20261004-v1`, mode `onstate_study`, source
+`8044439043a1725dc5911577c85096cd04ddc4ae`. New passed context
+`ed3a53c349d08380401bc2a27d466ea58c378210` was published while PAUSED, then
+only context/mode changed and one intentional restart requested. No source,
+hardware, scientific controls, data, budget or deadline changed. Original
+start1791136940.4793909/deadline1791144140.4793909 (**20:02:20UTC today**),
+$0.06 reservation and closed+reserved estimate$0.4779241866528988 remain.
+No second reservation, extension or resumed checkpoint.
+
+One pinned study startup at1791138266.1662903, dataset
+`392854a3fe7ed9214d79fdee38d3ecb8b9b390f7`, shows actual RUNNING,
+`onstate_dispatch`, no error. Source/game/data and actual variables are
+exact. No durable execution claim appears in that snapshot yet, and no
+completed learner work/reference outcome is inferred. Restart's immediate
+return said PAUSED, but this independent snapshot proves running dispatch.
+22local admission/result/worker/trainer tests pass. Goal metric stays0.
+Evidence: `artifacts/onstate_preflight_review_20261004T181812585650Z/study_startup_verification.json`.
+
+Next bounded review: keep active source/variables/deadline untouched; pin
+later artifacts and inspect claim, flushed BC call/source-sample prefixes,
+complete saved model/RMS metadata and strict six-run checker/reference
+outcomes. Report held events, retained final height/deaths/summits and actual
+control/reset/update work, not supervised error or peaks. At terminal/failure/
+deadline preserve durable artifacts, independently verify owned PAUSED and
+close the original reservation. Never resume, renew or skip missing arms.
+Standard aggregate still cannot verify final held-out summit/upper-route
+fidelity/saved-controller goal, even if a first-skill candidate emerges.
+
+## Previous launch: fresh Linux preflight, full training not started then
 
 Fresh session `onstate-20261004-v1` is running only `onstate_preflight`.
 The learning hypothesis remains original demonstrations versus original plus

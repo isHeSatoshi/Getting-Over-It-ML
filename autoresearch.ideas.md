@@ -1,5 +1,25 @@
 # Deferred hypotheses
 
+- **Active task is now full-comparison evidence review:** Linux preflight
+  passed all eight checks, pinned53b2f8de, independent PAUSED1791137892.5876534.
+  Source/game/data/RMS/controls/fidelity/resources and both small smokes valid.
+  Smokes16BCcalls/1024presentations,512control+960reset, four ground(0,21)
+  endpoints/noholds/summits/deaths, not full learning results. Known terrain
+  descriptor discrepancy(-80,-30) retained; placement probes not task success.
+  Effective8CPU/32GB and conservative~31minute physics projection fit the
+  existing time envelope; no CPU XL need.22local guards pass.
+  Matching passed contexted3a53c3 intentionally started `onstate_study` on SAME
+  source80444390/session onstate-20261004-v1/deadline1791144140.4793909/
+  $0.06 reservation. Closed+reserved$0.477924187 unchanged. No science changes.
+  Study startup pinned392854a3 at1791138266.1662903:RUNNING/onstate_dispatch/
+  no error, no durable claim yet in that snapshot, no completed work inferred.
+  Next inspect one bounded pinned later claim/BC progress/complete six-run
+  physical outcomes and strict checker. Keep active image/variables/deadline
+  unchanged; no partial checkpoint resume, new cap, source edits or skipped
+  controls. At terminal/failure/deadline verify artifacts and owned PAUSED,
+  then close original reservation. Keep goal/held-out/upper-route gates fixed.
+  Evidence: artifacts/onstate_preflight_review_20261004T181812585650Z/.
+
 - **Active next action is review, not another implementation/launch:** fresh
   `onstate-20261004-v1` runs `onstate_preflight`, source80444390/context0675220a/
   data b1d44bd3. Everything published while PAUSED, private/owned CPU Upgrade,

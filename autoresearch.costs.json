@@ -225,9 +225,15 @@
       "preflight_launch_requested": true,
       "reservation_evidence": "D:\\Project\\cat\\artifacts\\onstate_deployment_20261004T175845470617Z\\reservation.json",
       "source_bundle": "D:\\Project\\cat\\artifacts\\hf_bundle_20261004T175843094830Z",
-      "context_dataset_revision": "0675220a2a01544e20fdee9bfc4e2f01aa168f00",
+      "context_dataset_revision": "ed3a53c349d08380401bc2a27d466ea58c378210",
       "data_dataset_revision": "b1d44bd3f157e0a00809116c7b3c1e085401b6a1",
-      "launch_requested_epoch": 1791136966.7067666
+      "launch_requested_epoch": 1791136966.7067666,
+      "remote_preflight_complete": true,
+      "preflight_review_revision": "53b2f8dec8f361f193a14a299d466caab711ed30",
+      "preflight_evidence": "D:\\Project\\cat\\artifacts\\onstate_preflight_review_20261004T181812585650Z\\complete_review.json",
+      "preflight_independent_paused_epoch": 1791137892.5876534,
+      "full_study_launch_requested": true,
+      "full_study_restart_requested_epoch": 1791138225.383253
     }
   ],
   "postclosure_local_diagnostics": [
