@@ -1,6 +1,24 @@
 # Deferred hypotheses
 
-- **Next renderer planting/authority test, no recenter/teacher claim:** offline
+- **Next frozen release/settling check, not teacher admission:** realrenderer
+  plant(26,-56)*30ticks yields13hammerqueryhits/finaltravel0. Equalhistory/
+  preinput one(0,-56)push vsplant-held contrast addsbody(+5.2,+.183846),
+  hammerdelta0, gatepasses. Finalpushed(309.941,104.565) centralcoordinates
+  butvelocity(3.745,1.051)too fast; bestcentralwindowonly.166667s/no new
+  heldevent.8rollouts/4986control+960reset,0updates/deaths/summits, all
+  prefixes/backend/rawcontrolmetrics exact;26focusedPython+JS. Same
+  original600edgeprefix/noise12100continued; no placement.
+  Freeze3arms through721ticks:unchanged,30plant+1planthold+90original
+  contact-controller release,30plant+1push+90release; bothbackends plus
+  nominal600baseline,8rollouts/max5526control+960reset/180work/210owned.
+  Keeptargets/timing/noise/controller fixed; require final90central
+  position/speed/bodycontact/fidelity before any fullconditionalcontroller.
+  No extra pushes, cutoff/target/gain search, old9/9gate rewrite or labels.
+  Private PAUSED1791153896.6747024,7closed$0.456424187,ledgerunchanged;
+  prior8central/9secondary/failedstrict9gate remains, no learnedprogress.
+  Evidence: artifacts/terminal_plant_probe_20261004T223832761543Z/verification.json.
+
+- **Closed renderer planting/authority check, completed above:** offline
   6traces/3600rows show final120bodycontact120/hammerhit0 and fixedbodyX in
   edge+central cases; onlyedgecorrection saturated120. HammerX383..391over
   free space versusbody293.728. Original SVG collider extends37.059below

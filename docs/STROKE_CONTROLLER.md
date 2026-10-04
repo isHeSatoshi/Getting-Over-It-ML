@@ -316,3 +316,49 @@ plant cutoff, scan pointer targets, place state or admit labels if it fails.
 Only demonstrated local planting/body authority can admit a separately
 declared full recentering stage. No force, recovery, teacher or learning claim
 from approximate alpha or a one-step response.
+
+## Real renderer plant and matched push
+
+The frozen local test first reproduces the nominal 600-tick playback hold.
+Each terminal arm then reaches the same edge state through the unchanged
+600-tick contact-controller/noise history from ordinary spawn. Noise seed
+12100 continues through the terminal actions; it is not switched off.
+
+Plant-only and plant-push share 30 identical `(26,-56)` plant ticks. At the
+one contrast tick, plant-only keeps that target and plant-push uses `(0,-56)`.
+Their raw pre-inputs and full prior histories match exactly. The comparator's
+one hold tick is the declared contrast, not a planting-cutoff extension.
+
+| Arm | Final body position | Final retained gain |
+|---|---|---:|
+| Unchanged continuation | `(293.728,104)` | 83 |
+| Plant-only | `(304.741,104.381)` | 83.381 |
+| Plant plus one push | `(309.941,104.565)` | 83.565 |
+
+Planting produces renderer hammer query hits on 13 of the 30 ticks, with zero
+hammer travel at the last common plant step. The matched push adds
+`(+5.2,+0.183846)` body displacement relative to plant-only, with exactly zero
+hammer displacement difference. Both resulting states remain alive in the
+secondary region with body or hammer query contact. This passes the declared
+local planting/body-authority gate, not a three-second body hold.
+
+At the pushed endpoint, body velocity is `(3.745,1.051)` pixels/tick, above
+the central hold speed limit. Both intervention arms' best central qualified
+window is only 0.16667 seconds. No new central hold, death or summit occurred.
+Reaching X310 for one step is not safe completed recentering.
+
+Eight rollouts use 4986 controlled and 960 reset ticks, zero learning. All
+four full backend pairs and every recorded 600-tick prefix agree exactly.
+Independent review reconstructs all raw milestones, proposed/applied controls,
+continued noise and matched local response. Twenty-six focused tests and
+collision checks pass.
+Evidence: `artifacts/terminal_plant_probe_20261004T223832761543Z/verification.json`.
+
+Next freeze a separate release/settling diagnostic on this known edge case:
+retain the original 600-tick prefix, 30 fixed plant ticks and one fixed push;
+then resume the unchanged contact-sign controller for 90 ticks. Compare
+unchanged continuation, plant-without-push and plant-plus-push through that
+same total horizon. Require final 90-tick central position/speed/body-contact
+support and exact fidelity before admitting a full conditional terminal
+controller. No extra pushes, target/cutoff tuning, labels, old nine-case gate
+rewrites or immediate teacher/learning promotion.

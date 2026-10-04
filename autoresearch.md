@@ -42,7 +42,57 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current result: terminal audit supports a right-side plant test, not recentering yet
+## Current result: real planting/push moves body into center, hold not settled yet
+
+Completed frozen8rollout local original-renderer test. Nominal600tick
+playback central hold reproduces first. Terminal arms use unchanged
+ordinary-start600tick edge_case/noise12100 contact-controller history;
+all sourcepre/action/post/reward/info/telemetry rows exact. Noise continues
+after600with the same physical clock, no placement or noise suppression.
+
+Plant-only and plant-push share30identical(26,-56)steps and exact pre-input
+before the one contrast step: hold(26,-56)versus push(0,-56). Comparator
+hold is the declared contrast, not a cutoff extension. Real hammer-query
+hits13/30, last common hammertravel0. Matched push adds(+5.2,+.183846)
+body motion, hammer difference0. Local planting/body-authority gatepasses;
+local support may be bodyORhammer query, explicitly not the milestone hold.
+
+| Reference terminal arm | Final body pose | Retained gain |
+|---|---|---|
+| Unchanged continuation |(293.727677,104)|83|
+| Plant-only |(304.741395,104.381272)|83.381272|
+| Plant+onepush |(309.941395,104.565118)|83.565118|
+
+The push reaches centralcoordinates, but bodyvelocity(3.745127,1.050551)
+is too fast for the original<=2hold criterion. Both intervention best
+qualified centralwindows only.166667seconds, no new held event. No deaths/
+summits/learnerupdates. This is real local actuator authority and direction,
+not settled recentering, robust teacher or learned-policy progress.
+
+4986control+960reset,all fourfullbackendpairs exact. Independent8full raw
+milestone/proposed-applied-control/continued-noise traces reconstruct and
+the equal-history response gate recomputes.26focusedPython+JS pass.
+Source/controller/geometryadmission/script/plan/deadline/ledgerbindingsvalid.
+Evidence: `artifacts/terminal_plant_probe_20261004T223832761543Z/verification.json`.
+Original8/9central,9/9secondary and failed strict9/9gate remain unchanged.
+
+Independently private PAUSED1791153896.6747024;80444390source,
+onstate-20261004-v1/onstate_study and closed historical deadline unchanged.
+Ledger bytes preserved,7closed$0.4564241866528988, no reservation/HFwrite/
+deployment/publicrelease/localtraining. Primarycompletion0.
+
+Next admitted bounded diagnostic: sameknownedgeordinary600prefix,
+unchanged30plant and onepush, then90ticks resumed original contact-sign
+controller to test release/settling. Compare unchanged continuation,
+plant-without-push and plant-plus-push through equal721tick horizons,
+plus nominal600reference/fast baseline: max8rollouts/5526control+960reset,
+180work/210ownedseconds. Keepnoise/rules/targets/gain/caps/thresholds fixed,
+freeze actual source/admission/cases/deadline before execution. Require final
+90central position/speed/bodycontact support and fidelity before a full
+conditional terminalcontroller design. No secondpush/target/cutoff search,
+old9case retry/gate rewrite, label admission or learned/summit claims.
+
+## Prior result: terminal audit supports a right-side plant test, not recentering yet
 
 Completed frozen180second offline audit of6captured traces/3600rows:
 nominal,edge_noise12100,central_noise12101,reference+fast.0newgameplay/
@@ -82,7 +132,7 @@ Independently private PAUSED1791152688.22913;80444390source,
 onstate-20261004-v1/onstate_study and closed historical deadline unchanged.
 Ledger bytes preserved,7closed$0.4564241866528988, no new reservation. Goal0.
 
-Next bounded physics proposal: freeze ordinary-start legal600tick edge
+The historical bounded physics proposal, now completed above, froze legal600tick edge
 prefix reproduction, then unchanged terminal continuation versus fixed
 (26,-56)plant, atmost30ticks. A third branch uses identical plant history
 and one(0,-56)push; require equal pre-input, actual query/travel evidence and
