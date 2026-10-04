@@ -33,6 +33,10 @@
   Inspect immutable current claim/progress/results, keep actual controlled/
   reset exposure and optimizer work explicit, and never change the active
   image or silently resume partial work. Completed v2 remains immutable.
+  First one-tick seed-3 run now has an audited 174,800 controlled ticks,
+  2,040 reset ticks and durable model/normalizer pairs through 160k. Contracts
+  and physical accounting pass, but no final reference result is available.
+  Do not compare timing arms or claim skill from that training telemetry.
 - Retain v1's narrow central-landing target, but calibrate and predeclare a
   separate actual-platform-support metric for the next study. Four-tick phases
   1/2 of the known legal trajectory already hold the platform at X about 290;

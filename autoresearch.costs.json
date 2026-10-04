@@ -57,7 +57,7 @@
       "source_space_revision": "362327f3281811b924089251aa67438fe64dc31e",
       "study": "physical-time-control-study-v1",
       "sleep_policy": "paid_default_never",
-      "training_started": false,
+      "training_started": true,
       "preflight_launch_requested": true,
       "source_bundle": "artifacts/hf_bundle_20261004T043918760630Z",
       "source_upload_evidence": "artifacts/timing_deployment_20261004T044058033509Z/source_upload.json",
@@ -74,7 +74,11 @@
       "study_start_evidence": "artifacts/timing_preflight_review_20261004T045845231549Z/study_start.json",
       "initial_study_phase": "timing_dispatch",
       "initial_study_dataset_revision": "7a9a6cdb066dd30bc93da01a7228b7ce4aea38e6",
-      "durable_execution_claim_verified": true
+      "durable_execution_claim_verified": true,
+      "last_audited_run": "ppo_absolute_repeat_1_seed_3",
+      "last_audited_transition": 174800,
+      "last_audit_dataset_revision": "0520df2b4c6ab9e04f83e9fb71769900c23c61e3",
+      "last_audit_evidence": "artifacts/timing_active_audit_20261004T051847531397Z/audit.json"
     }
   ]
 }

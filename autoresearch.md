@@ -85,10 +85,11 @@ The subsequent bounded monitor read returned **RUNNING**, durable phase
 six-run campaign, admitted source/context/deadline and persisted
 `claimed_no_resume` execution claim. Evidence:
 `artifacts/timing_preflight_review_20261004T045845231549Z/study_kickoff/`.
-No completed learner outcome or learning-progress snapshot is available in
-that kickoff commit; `training_started=false` in the cost ledger is not a
-runtime monitor. Inspect actual next durable status/trace rather than assuming
-that stale metadata means training is inactive.
+No completed learner outcome or learning-progress snapshot was available in
+that kickoff commit. Its then-false training-start metadata was not a runtime
+monitor; the later active-run audit below corrects it from actual telemetry.
+Inspect durable status/trace rather than assuming bookkeeping indicates
+whether training is active.
 
 The admitted study has six sequential runs: seeds 3,4,5, each repeat 1 then 4.
 Each arm has nominal 393,216 controlled ticks and 3,840 planned policy optimizer
@@ -100,6 +101,32 @@ Next scheduled priority: inspect one pinned durable snapshot of current status,
 claim/manifest/progress and any complete results with the timing checker.
 Do not blindly resume interrupted work. At terminal failure/completion/deadline
 verify durable artifacts and PAUSED; pause only this owned Space if necessary.
+
+### First active run contract/accounting audit
+
+At the 2026-10-04 05:17 UTC check the study remains RUNNING on the unchanged
+source/context/deadline, phase `ppo_absolute_repeat_1_seed_3`. A pinned audit
+at dataset commit `0520df2b4c6ab9e04f83e9fb71769900c23c61e3` validates its
+remote admission, exact campaign/source/assets, default raw settled reward,
+one-tick gamma `0.9998074776513175`, physical-time GAE `0.9872585449014338`,
+rollout 8,192/minibatch 1,024/10 epochs and declared nine-case reference horizon.
+All 437 complete sampled JSONL rows have the expected 400-decision cadence,
+controlled ticks equal transitions, and monotonic whole 120-tick reset counts.
+The last durable sample is transition **174,800**, controlled ticks **174,800**,
+reset-settling ticks **2,040** (17 resets). Four stable checkpoint/normalizer
+pairs through 160,000 transitions have immutable Hub metadata/nonzero sizes;
+they were not downloaded/reloaded, so this is not policy portability evidence.
+
+The sampled pose is approximately `(150.46,26.74)`, retaining 5.74 units, with
+both central/secondary hold flags false in that current episode. Training
+telemetry/previous peaks are not competence. No final training summary or
+reference evaluation exists yet; the timing aggregator correctly reports all
+six runs incomplete, no arm comparison or final-goal verification.
+Evidence: `artifacts/timing_active_audit_20261004T051847531397Z/`.
+The cost ledger's training-start metadata is now corrected from this actual
+trace; reservation/start/deadline/source and financial caps are unchanged.
+Next scheduled priority is the first completed result with companions, or a
+bounded progress/terminal-status check. Keep the live study unchanged.
 
 ### Completed historical pilot, immutable evidence
 
