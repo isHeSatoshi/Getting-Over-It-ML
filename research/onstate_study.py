@@ -49,7 +49,8 @@ def plan():
                     "sampling": "Uniform with replacement within each source, then shuffle batch",
                     "value_logstd_and_ppo_optimizer_preserved": True,
                     "rl_transitions": 0, "ppo_optimizer_calls": 0,
-                    "admission": "Current on-state warm-start support is smoke-only, at most8updates x64"},
+                    "admission": "Unadmitted work is smoke-only, at most8updates x64; full runs require "
+                                 "separate data-bound Linux execution admission"},
         "evaluation": {"backend": "reference", "seconds": 60, "decisions": 1800,
                        "physical_case_clock": True, "noise_hold_ticks": 4,
                        "cases": [case.describe() for case in VALIDATION_CASES],

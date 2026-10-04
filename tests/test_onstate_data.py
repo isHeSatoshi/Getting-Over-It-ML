@@ -134,8 +134,11 @@ class OnStateDataTests(unittest.TestCase):
         model, vector = self.setup_model(data)
         parameters = {key: value.clone() for key, value in model.policy.state_dict().items()}
         rms = {key: np.asarray(getattr(vector.obs_rms, key)).copy() for key in ("mean", "var", "count")}
+        progress = []
         result = warm_start(model, vector, *data.training_arrays(ARMS[1]),
-                            fit_normalization=False, onstate_data=data, onstate_arm=ARMS[1], seed=9)
+                            fit_normalization=False, onstate_data=data, onstate_arm=ARMS[1], seed=9,
+                            onstate_progress=lambda *counts: progress.append(counts))
+        self.assertEqual(progress, [(8, 384, 128)])
         self.assertEqual(result["sample_presentations"], 512)
         self.assertEqual(result["onstate_sampling"]["original_presentations"], 384)
         self.assertEqual(result["onstate_sampling"]["logged_success_presentations"], 128)
@@ -165,6 +168,18 @@ class OnStateDataTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "original frozen"):
             warm_start(model, vector, *data.training_arrays(ARMS[1]),
                        fit_normalization=False, onstate_data=data, onstate_arm=ARMS[1])
+
+    def test_failed_progress_flush_cannot_silently_repeat_a_partial_warm_start(self):
+        data = self.admitted_fixture()
+        model, vector = self.setup_model(data)
+        def fail(*counts):
+            raise OSError("owned fixture progress failure")
+        with self.assertRaisesRegex(OSError, "progress failure"):
+            warm_start(model, vector, *data.training_arrays(ARMS[1]), fit_normalization=False,
+                       onstate_data=data, onstate_arm=ARMS[1], onstate_progress=fail)
+        with self.assertRaisesRegex(ValueError, "fresh learner"):
+            warm_start(model, vector, *data.training_arrays(ARMS[1]), fit_normalization=False,
+                       onstate_data=data, onstate_arm=ARMS[1])
 
 
 if __name__ == "__main__":

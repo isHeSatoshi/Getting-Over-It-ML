@@ -17,24 +17,31 @@ VERSION = "ppo-actor-demonstration-warm-start-v1"
 
 def warm_start(model, normalization, observations, actions, *, updates=8, batch_size=64,
                seed=0, learning_rate=0.001, pipeline_smoke=True, fit_normalization=True, permit=None,
-               onstate_data=None, onstate_arm=None):
+               onstate_data=None, onstate_arm=None, onstate_progress=None):
     """Separate BC optimizer leaves value, log-std and PPO optimizer state alone."""
     import torch
     from stable_baselines3 import PPO
     require(isinstance(model, PPO) and type(pipeline_smoke) is bool,
             "Invalid cloning model/run type")
     using_onstate = onstate_data is not None or onstate_arm is not None
+    require(onstate_progress is None or (using_onstate and callable(onstate_progress)),
+            "Progress callback requires the declared on-state data path")
     if using_onstate:
         from research.onstate_data import OnStateData
-        require(pipeline_smoke and type(onstate_data) is OnStateData
-                and fit_normalization is False,
-                "On-state comparison is smoke-only until separately admitted; never refit its RMS")
+        require(type(onstate_data) is OnStateData and fit_normalization is False,
+                "On-state comparison requires admitted data; never refit its RMS")
     if not pipeline_smoke:
-        from research.imitation_execution import require_permit
-        arm = getattr(permit, "run", {}).get("arm")
-        require_permit(permit, arm, seed)
-        require(arm in ("behavior_cloning_only", "behavior_cloning_then_ppo")
-                and updates == 2000 and batch_size == 256 and learning_rate == 0.001,
+        if using_onstate:
+            from research.onstate_execution import require_permit
+            arm = onstate_arm
+            require_permit(permit, arm, seed, onstate_data.record["data_sha256"])
+        else:
+            from research.imitation_execution import require_permit
+            arm = getattr(permit, "run", {}).get("arm")
+            require_permit(permit, arm, seed)
+            require(arm in ("behavior_cloning_only", "behavior_cloning_then_ppo"),
+                    "Unknown admitted imitation arm")
+        require(updates == 2000 and batch_size == 256 and learning_rate == 0.001,
                 "Full cloning differs from its admitted budget")
     require(type(updates) is int and 1 <= updates <= (8 if pipeline_smoke else 2000)
             and type(batch_size) is int and 1 <= batch_size <= (64 if pipeline_smoke else 256)
@@ -86,6 +93,8 @@ def warm_start(model, normalization, observations, actions, *, updates=8, batch_
         before = float(torch.mean((prediction(inputs) - targets) ** 2).cpu())
     begin = time.perf_counter()
     original_presentations = logged_presentations = 0
+    # An interrupted partial optimizer stage must not be retried on this model.
+    model._demonstration_warm_started = True
     try:
         model.policy.set_training_mode(True)
         for index in range(updates):
@@ -103,12 +112,13 @@ def warm_start(model, normalization, observations, actions, *, updates=8, batch_
             loss.backward()
             torch.nn.utils.clip_grad_norm_(actor, 1.0, error_if_nonfinite=True)
             optimizer.step()
+            if onstate_progress is not None and ((index + 1) % 32 == 0 or index + 1 == updates):
+                onstate_progress(index + 1, original_presentations, logged_presentations)
         optimizer.zero_grad(set_to_none=True)
         with torch.no_grad():
             after = float(torch.mean((prediction(inputs) - targets) ** 2).cpu())
     finally:
         model.policy.set_training_mode(was_training)
-    model._demonstration_warm_started = True
     return {"version": VERSION, "purpose": ("Pipeline-only smoke, NOT skill acquisition evidence"
                                           if pipeline_smoke else "Admitted remote actor demonstration warm start"),
             "samples": n, "optimizer_step_calls": updates, "batch_size": batch_size,

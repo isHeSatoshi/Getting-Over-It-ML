@@ -84,10 +84,11 @@ def prepare(directory, pilot_directory):
     return record
 
 
-def summarize_evaluation(records, repeat, decisions):
+def summarize_evaluation(records, repeat, decisions, *, cases=STANDARD_CASES):
     require(type(repeat) is int and repeat in (1, 4) and integer(decisions, 1),
             "Invalid declared evaluation timing")
-    expected = {case.name: case for case in STANDARD_CASES}
+    expected = {case.name: case for case in cases}
+    require(len(cases) == 9 and len(expected) == 9, "Expected nine unique declared reference cases")
     require(len(records) == len(expected) and {row["case"]["name"] for row in records} == set(expected),
             "Missing, duplicate or changed evaluation cases")
     totals = {name: 0 for name in METRIC_NAMES}

@@ -20,7 +20,7 @@ import time
 from research.browser_bridge import ROOT
 
 ALLOWED_ARTIFACT_SUFFIXES = {".json", ".jsonl", ".csv", ".log", ".png", ".zip", ".pkl", ".pt", ".npz"}
-FINAL_PHASES = {"preflight_complete", "pilot_complete", "timing_complete", "imitation_complete",
+FINAL_PHASES = {"preflight_complete", "pilot_complete", "timing_complete", "imitation_complete", "onstate_complete",
                 "inference_complete", "noise_probe_complete", "noise_probe_stopped",
                 "failed", "budget_stopped", "interrupted"}
 APPEND_ONLY_SUFFIXES = {".log", ".csv", ".jsonl"}
@@ -112,7 +112,8 @@ class Worker:
             raise ValueError("Invalid artifact session")
         self.mode = os.environ.get("RL_MODE", "preflight")
         if self.mode not in ("preflight", "pilot", "timing_preflight", "timing_study",
-                             "imitation_preflight", "imitation_study", "inference_probe", "noise_control_probe"):
+                             "imitation_preflight", "imitation_study", "onstate_preflight", "onstate_study",
+                             "inference_probe", "noise_control_probe"):
             raise ValueError("Unknown bounded research mode")
         if self.mode.startswith("timing_"):
             from research.timing_execution import SPACE, ARTIFACT_REPO
@@ -122,6 +123,10 @@ class Worker:
             from research.imitation_execution import SPACE, ARTIFACT_REPO
             if self.space != SPACE or self.artifact_repo != ARTIFACT_REPO or not self.session.startswith("imitation-"):
                 raise ValueError("Imitation modes require a fresh session on the owned private targets")
+        if self.mode.startswith("onstate_"):
+            from research.onstate_execution import SPACE, ARTIFACT_REPO
+            if self.space != SPACE or self.artifact_repo != ARTIFACT_REPO or not self.session.startswith("onstate-"):
+                raise ValueError("On-state modes require a fresh owned private session")
         if self.mode == "inference_probe":
             from deploy.inference_worker import SPACE, REPO
             if self.space != SPACE or self.artifact_repo != REPO or not self.session.startswith("inference-"):
@@ -228,7 +233,7 @@ class Worker:
             self.process = subprocess.Popen(args, cwd=ROOT, env=environment, stdout=handle,
                                             stderr=subprocess.STDOUT, start_new_session=True)
             while self.process.poll() is None:
-                expired = (self.mode.startswith(("timing_", "imitation_", "inference_", "noise_"))
+                expired = (self.mode.startswith(("timing_", "imitation_", "onstate_", "inference_", "noise_"))
                            and time.time() >= self.deadline - FINALIZATION_SECONDS)
                 expired = expired or (timeout_seconds is not None and time.time() >= job_started + timeout_seconds)
                 if expired or self.stop.wait(1):
@@ -254,7 +259,7 @@ class Worker:
 
     def watchdog(self):
         from research.timing_execution import FINALIZATION_SECONDS
-        timing = self.mode.startswith(("timing_", "imitation_", "inference_", "noise_"))
+        timing = self.mode.startswith(("timing_", "imitation_", "onstate_", "inference_", "noise_"))
         while not self.stop.wait(1 if timing else 10):
             if time.time() >= self.deadline - (FINALIZATION_SECONDS if timing else 0):
                 self.stop.set()
@@ -281,6 +286,10 @@ class Worker:
                     return
 
     def run(self):
+        if self.mode.startswith("onstate_"):
+            from deploy.onstate_worker import run_onstate
+            run_onstate(self)
+            return
         if self.mode == "noise_control_probe":
             from deploy.noise_probe_worker import run_noise_probe
             run_noise_probe(self)

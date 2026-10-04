@@ -1,5 +1,24 @@
 # Deferred hypotheses
 
+- **Ready for the next fresh preflight:** new data/source/contract-bound Linux
+  on-state runner, actor-only trainer, strict six-run checker and private
+  preflight/study worker are implemented and tested. Scientific settings are
+  unchanged; old imitation permits and closed sessions cannot authorize them.
+  Direct-parent creation time/claim/archive, absolute2h/$0.06 ledger cap,
+  secret/browser stripping,20s backups, durable BC prefix accounting,
+  no failed-stage retry and guaranteed final pause are checked.
+  Actual two bounded seed9 CLI smokes:4x128reference ticks,512control+960reset,
+  16BCcalls/1024presentations,0PPO/full-study work. All four retained0, no
+  holds/deaths/summits; matching initial weights/untrained traces exact.
+  289Python+JS pass,448file final bundle not uploaded. No climbing improvement.
+  Space remains private/PAUSED, allclosed$0.417924187 unchanged.
+  Next reserve/publish a unique fresh <=2h/$0.06 session while PAUSED and run
+  `onstate_preflight`, then require all eight durable checks plus independent
+  PAUSED before intentionally starting its matching study ticket/mode within
+  the same immutable deadline. No automatic launch, old-session restart,
+  source edits mid-batch, new kernel diagnostics or extra PPO.
+  Evidence: artifacts/onstate_execution_20261004T172829900864Z/verification.json.
+
 - **Next actionable implementation:** data admission and the matched learning
   comparison are ready and smoke-tested, not full-training authorized. New
   `research/onstate_data.py` derives 5376 raw rows (3576 old +1800 logged), preserves

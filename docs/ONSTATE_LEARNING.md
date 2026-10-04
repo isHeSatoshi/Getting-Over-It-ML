@@ -51,14 +51,39 @@ oracles.
 
 ## Execution boundary
 
-Data derivation does not run the game or learn. `warm_start` supports the new
-source-balanced data path only as a bounded smoke, at most 8 updates of at most
-64 samples, and requires the exact original frozen RMS. Full on-state training
-is intentionally refused, even with an old imitation permit.
+Data derivation does not run the game or learn. Unadmitted `warm_start` work
+is restricted to a bounded smoke, at most 8 updates of at most 64 samples,
+and requires the exact original frozen RMS. Full on-state training now requires
+its separate data-bound Linux parent permit. An old imitation permit cannot
+authorize it. A failed partial warm start cannot be repeated on the same model.
 
-This proposal does not reserve money or launch a Space. Before full execution,
-implement separate data/contract/source-bound Linux admission, a fresh
-session and immutable deadline, remote preflight, durable claims/backups and
-automatic pause. The declared envelope is CPU Upgrade, one replica, at most
+The runner does not itself reserve money or launch a Space. Before full execution,
+it requires separate data/contract/source-bound Linux admission, a fresh
+session and immutable deadline, passed remote preflight, durable claims/backups
+and automatic pause. The declared envelope is CPU Upgrade, one replica, at most
 2 hours including startup and at most $0.06, inside the cumulative $10 ceiling.
 Never restart or reuse a closed imitation or diagnostic session.
+
+## Runner and review
+
+- `research/onstate_execution.py` checks the frozen study, original data archive,
+  passed preflight, source, ledger, live direct parent PID/creation time and
+  durable no-resume claim before admitting a full stage.
+- `research/onstate_train.py` uses a no-physics training interface. Only the
+  independent original-renderer reference evaluator runs the game. It records
+  completed BC prefixes, source sampling counts, saved reload, RMS preservation
+  and actual evaluation control/reset ticks separately.
+- `research/onstate_campaign.py` refuses smokes, mixed seeds/dependencies/source,
+  changed inputs/mixture/budgets, old validation streams or mismatched initial
+  reference behavior. Its goal projection uses `tools.research_goal_metrics`
+  and never declares final completion from the standard comparison alone.
+- `deploy/onstate_worker.py` provides fresh `onstate_preflight` and
+  `onstate_study` modes, eight exact preflight checks, bounded private downloads,
+  20-second progress backups, cleanup reserve and automatic pause.
+
+Publish the reviewed source and admitted corpus only while the Space is paused.
+Run the fresh preflight first, verify its durable `preflight_complete` record
+and independent PAUSED state, then intentionally publish the matching passed
+ticket and start only that session's study mode within the original deadline.
+Missing or failed preflight never launches training. Full execution has not
+been launched merely by building or testing these files.

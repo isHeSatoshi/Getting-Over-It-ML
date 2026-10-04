@@ -42,7 +42,64 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current result: next learning data and comparison implemented, smoke only
+## Current result: remote learning runner ready for fresh preflight, unlaunched
+
+The frozen original-versus-added-successful-data comparison now has its
+Linux-only execution path, private worker and strict six-run result checker.
+The scientific conditions remain fixed: seeds 9/10/11, actor-only 2000x256,
+original RMS/architecture, 256old versus192old+64logged per batch, and fresh
+reference cases. Only the operational admission description changed.
+No full study, paid preflight, source upload or new reservation has launched.
+
+`research/onstate_execution.py` binds the new `onstate-*` session, source,
+data archive, passed preflight, two-hour/$0.06 envelope, cumulative ledger,
+live direct parent PID/creation time, exclusive durable claim and fresh paths.
+Old imitation permits cannot admit this work. Credentials and browser
+attachments are stripped from children. Interruption/failure stops scheduling;
+no checkpoint continuation or rerun in-place. The existing immutable-deadline
+and cleanup-reserve protections are reused.
+
+`research/onstate_train.py` never runs training physics or PPO. Its training
+interface rejects reset/step. Only fresh owned original-renderer reference
+evaluation controls the game. Completed BC prefixes/source presentations are
+flushed to JSONL, and a partially failed warm start is marked used before
+optimization so it cannot silently retry. It verifies frozen RMS,
+value/logstd/PPO state and saved parameter/prediction reload.
+
+`research/onstate_campaign.py` checks actual work, source/data/dependencies,
+fresh legal action-noise clock, control/reset totals, matched-seed initial
+weights/reference traces, frozen physical holds, retained height/deaths/summits.
+Only complete three-seed cohorts can form candidates. Its projection uses
+`tools.research_goal_metrics` and cannot verify final held-out completion.
+`deploy/onstate_worker.py` adds `onstate_preflight` and `onstate_study`,
+eight exact preflight checks, source-private bounded downloads,20second
+durable backups, automatic pause even if owned cleanup raises, and no resume.
+Core old timing evaluation defaults remain the unchanged standard cases;
+the new explicit cases argument does not alter historical checks.
+
+Two bounded actual seed9 CLI smokes passed on the original reference renderer.
+Four128tick rollouts all end retained gain0, no central/secondary holds,
+summits or deaths. Initial policy hashes and both untrained traces are exact.
+Actual512control+960reset ticks,16BC calls/1024presentations,0PPO/full-study work.
+These short lightly fitted policies show no new climbing ability; they only
+validate the pipeline, not the frozen1800tick skill hypothesis. All289Python
+tests plus JS collision checks pass; no unresolved test failure.
+448file reviewed bundle `artifacts/hf_bundle_20261004T173335214453Z/` not uploaded.
+Evidence: `artifacts/onstate_execution_20261004T172829900864Z/verification.json`.
+
+Private Space independently PAUSED1791135286.9078948, same7be7d58dsource,
+noise-probe session/mode/context/deadline. All six reservations stay closed
+at estimated$0.4179241866528988, no new spend. Goal metric remains0.
+Next bounded management step: verify current CPU Upgrade price/PAUSED source
+ownership, reserve a fresh <=2hour/<=0.06USD on-state session, publish the
+tested source, unchanged admitted data and preflight context while PAUSED,
+then intentionally start only `onstate_preflight`. Require durable complete
+eight-check passed preflight and independent PAUSED before a matching passed
+study ticket/mode restart. Preserve the original session deadline through
+preflight and study; no automatic training from an incomplete/failed preflight.
+Do not reopen any old closed session or expand budgets silently.
+
+## Previous implementation: next learning data and comparison, smoke only
 
 The next controller-learning comparison now has an admitted data path and a
 frozen scientific contract. It compares original demonstrations alone with
