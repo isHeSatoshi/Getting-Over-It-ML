@@ -42,7 +42,51 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Latest implementation: inference-only comparison ready, not deployed
+## Current state: matched-host inference complete, validated and PAUSED
+
+Fresh `inference-20261004-v1` completed its3600inference presentations,
+0game/reset/training ticks, and auto-paused before the first startup snapshot.
+All private source/data/context/dependency/claim/grant/work contracts pass.
+Actual source `ce53b512e2ed0a2eb0a41da63a88f59e65c18634`, mode `inference_probe`,
+context `25d7cbd21967f956fafc5dd1e2b34b66352dfb7a`, fixture revision
+`3208843a8632eaafebb3136f0628ae562b7395fa`, complete result revision
+`498527aa104591beda94b2cf3bac69c1fbf2d9f7`. Source was the tested429file bundle;
+publication/configuration occurred while independently PAUSED, then one
+intentional restart. No existing batch was resumed.
+
+**Host/stack numerical difference is now demonstrated on identical normalized
+float32 inputs and byte-identical model tensors.** Linux predictions match
+all1800historical raw predictions exactly; Windows differs on1658/1800inputs,
+maximum2.980232238769531e-7, firstaction X0.4903483986854553 versus
+Linux0.4903484582901001. Both hosts repeat singleton outputs exactly, and
+saved-RMS raw normalization is exact across hosts. Input SHA
+d398647de2f561181993b387f7b80df66a31c37fad67feffdc4f20c6a82d329a and
+parameter SHA bfaa256665fbcb52fe8b01603db98f62245abc0f5cdef2dc3734a27337005c7f.
+WindowsPython3.11.9/Torch2.6.0+cu124 CPU versus LinuxPython3.11.17/
+Torch2.6.0+cpu, bothNumPy2.4.3/SB32.7.1/AVX2/one thread: this isolates the
+host/stack contribution, **not Torch build alone**, nor a historical full-input
+proof or specific feedback-hold failure cause. No new skill, held-out,
+upper-route or summit outcome. Goal metric remains0.
+
+Reservation start1791127352.9995596, unchanged deadline1791128552.9995596
+(2026-10-04 15:42:32UTC), cap$0.01/20minutes including startup. Independently
+PAUSED1791127420.855593, rechecked1791127558.0345054. Reservation closes at
+conservative **$0.001**, rounding the67.856second persisted elapsed interval
+up to2provider minutes; actual bill unknown. All closed estimates now
+**$0.4084241866528988**, no active reservation or next batch. Hardware stays
+requestedCPUUpgrade/never-sleep/one replica. Seventeen admission/goal tests pass.
+Evidence: `artifacts/inference_deployment_20261004T152045604879Z/complete_review.json`.
+
+Next: implement/admit the already frozen nominal/full-noise/early/late noise
+control diagnostic on the matching Linux stack, fresh physics-only session,
+zero updates,<=8rollouts/14400control+1920reset ticks/600seconds. Keep its exact
+saved-feedback baseline gates first; this inference-only result is **not**
+permission to skip them. No kernel tuning or local Windows feedback retry.
+Use fresh tested source/context/deadline/reservation and independent pause,
+never restart this completed inference session. Then act on alignment/
+continuing-recovery evidence with robust primitive control, not blind scaling.
+
+## Previous implementation: inference-only comparison ready, not deployed then
 
 `tools/matched_host_inference.py` and `deploy/inference_worker.py` implement
 the frozen1800input/two-singleton-pass comparison with0game/training work.
@@ -214,7 +258,7 @@ All229Python tests and JS checks pass. Next: fixed-input inference/recorded-
 action portability diagnosis before retrying this exact frozen intervention.
 No blind BC/PPO scaling, closed-session restart or viewer work.
 
-## Current remote state: imitation comparison complete, validated and PAUSED
+## Closed imitation comparison: historical source/configuration and results
 
 - Closed session **`imitation-20261004-v1`**, configured mode **`imitation_study`**.
 - Private source **`95a8e311664789bcf1be5c609dce148e1f300f93`**,

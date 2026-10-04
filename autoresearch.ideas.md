@@ -1,6 +1,6 @@
 # Deferred hypotheses
 
-- **Current action:** imitation comparison is complete/validated/PAUSED at
+- **Closed imitation baseline for the current diagnostic:** complete/validated at
   c40574bb709f64fba893d3b44bc6f302306a51ad. All nine full contracts and all
   matched initial/post-clone traces pass. Central counts scratch0/0/2,
   BC0/1/2,hybrid0/0/0; secondary0/0/6,0/1/4,0/0/0. Worst-seed held/full
@@ -8,8 +8,9 @@
   median5 and no held cases despite cloned stage2central/4secondary.
   No promotion, scaling or generic forgetting conclusion.
   Worker complete12:57:06UTC; PAUSED independently1791118690.7391362.
-  Reservation closed at estimated$0.114728001,cumulative$0.407424187 under
-  $10,not bills/credit balance. No active reservation or new paid batch.
+  Its reservation closed at estimated$0.114728001,cumulative then$0.407424187.
+  Later inference closure brings current cumulative$0.408424187 under$10,
+  not bills/credit balance. No active reservation or new paid batch.
   Frozen local probe now ran four baselines,7200control+960reset ticks,0updates.
   Local fast/reference recorded fields agree exactly; both first predictions
   differ from remote by5.960464477539063e-8. Saved bytes/RMS match. Nominal
@@ -39,11 +40,20 @@
   <=120second child,20second backups and guaranteed pause/no-resume.
   Local3600inference presentations reproduce raw normalization and archived/
   repeat singleton outputs exactly,0game/training.429file tested bundle ready.
-  No remote upload/configuration change or paid reservation has occurred.
-  Next: current-price/source/PAUSED checks, unique fresh private Linux
-  inference-only session with<=20minute deadline and <=$0.01 reserved including
-  startup, then deploy admitted tested bundle/context/data and verify results/
-  independent PAUSED. Never resume closed imitation or dispatch trainer/browser.
+  Fresh inference-20261004-v1 now completed/validated/PAUSED at pinned revision
+  498527aa104591beda94b2cf3bac69c1fbf2d9f7. Sourcece53b512/context25d7cbd2,
+  matching Linux dependencies,3600presentations/0game/training, durable claim/
+  grant/input/tensor identities pass. Equal-input host/stack difference shown:
+  Linux matches all1800historical predictions, Windows1658inputs differ up to
+  2.9802e-7; both singleton repeats and raw-RMS normalization exact. Not Torch
+  build alone, feedback-failure causality or new learned/held-out skill.
+  Independently PAUSED1791127420.855593/rechecked1791127558.0345054; cap closed
+  at minute-rounded$0.001,cumulative$0.408424187, no active reservation.
+  Next: implement/test fresh private physics-only execution of the original
+  frozen nominal/full-noise/early/late probe on matching Linux stack. Keep
+  exact saved-feedback baselines before interventions, max8cases/14400control+
+  1920reset ticks/600seconds/0updates, unique source/context/budget/deadline and
+  backups/auto-pause. Never restart completed inference or kernel-tune Windows.
   Plan: artifacts/imitation_recorded_action_v2_20261004T143756537682Z/matched_host_plan.json.
   After isolation prioritize robust reactive recovery, not kernel thrashing.
   Keep the
