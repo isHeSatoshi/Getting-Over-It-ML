@@ -42,7 +42,7 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current remote state: imitation study RUNNING, seed-6 scratch training audited
+## Current remote state: imitation study RUNNING, seed-6 scratch final result validated
 
 - Fresh session **`imitation-20261004-v1`**, mode **`imitation_study`**.
 - Private source **`95a8e311664789bcf1be5c609dce148e1f300f93`**,
@@ -91,7 +91,7 @@ verified from standard campaign aggregation alone.
   Corrected review uses the **same immutable startup revision**, no new
   monitor/poll or deployment change. This was not a worker failure.
 - Eight goal tests and six imitation-execution guard tests pass locally.
-- Latest bounded audit pins dataset
+- First bounded training audit pins dataset
   **`baa7233e4b149fdddd3ec982bb7fa659f4edd8d9`** at
   `1791106840.1407928`. Actual Space/source/session/mode/context/deadline
   and one never-sleep CPU Upgrade replica are unchanged; phase
@@ -119,7 +119,38 @@ verified from standard campaign aggregation alone.
   imitation-checker/goal tests pass locally. Evidence:
   `artifacts/imitation_progress_review_20261004T093741216495Z/audit.json`.
   All HF operations in this chunk were reads; no running-batch changes.
-- **No learning effectiveness or full completion result is claimed.** Keep
+- Latest pinned result **`abe4b0aa973c702b1637648be1f1afbb703d0db8`**
+  validates one full run, **`ppo_from_scratch_seed_6`**, with eight still
+  incomplete. Actual Space remains RUNNING, phase
+  **`behavior_cloning_only_seed_6`** at that snapshot; source, context,
+  corpus, deadline, hardware and reservation are unchanged, no reported error.
+- Final 60-second original-reference outcomes: **0/9 central holds,
+  0/9 secondary holds, 0/9 full completions, 0 deaths**. Median retained
+  gain **-0.197324** (untrained median 0). Nominal final pose
+  **`(-2.4797933,20.7844254)`**, retained gain **-0.215575**.
+  Last four nominal seconds have 120 body-query-hit ticks and zero hammer
+  hits, near spawn, not ledge support or a force measurement. Applied actions
+  still vary; this is not a constant-action diagnosis.
+- Complete work is **393216 controlled ticks +4080 reset ticks**, **34
+  resets**, **397296 counted ticks**, **3840 actual policy optimizer calls**,
+  **1412.54336 learning seconds**, zero BC work/terminal-short decisions.
+  Baseline/final reference stages each have 16200 control +2160 reset ticks.
+- The strict imitation checker validates exact source/assets/data/RMS,
+  admission/dependencies/settings/work and all before/final legal traces;
+  remote partial summary agrees on complete outcomes. Its missing-file list
+  predates the next arm's manifest, so compare missing-run identities, not
+  stale missing-file lists. Final model/RMS companions have immutable bounded
+  metadata only, not reloaded or proven portable.
+- This scratch seed fails the frozen first-skill gate despite earlier
+  on-policy held flags. Do not infer a cloning effect, skip the remaining
+  controls, enlarge compute, or change the running experiment. Complete all
+  predeclared arms/seeds before comparison and selection.
+- Existing physical goal helper receives an explicit field projection of the
+  validated imitation row, not fabricated pilot artifacts. No complete
+  three-seed cohort, candidate or final goal. Seventeen checker/goal tests
+  pass; this entire chunk used HF reads only. Evidence:
+  `artifacts/imitation_snapshot_review_20261004T095748247801Z/review.json`.
+- **No cloning advantage, robust skill or full completion is claimed.** Keep
   this active image/variables/hardware/queue unchanged. Next: independently
   review actual training exposure and the nine
   sequential scratch/BC-only/BC+PPO results for seeds 6/7/8 using the imitation

@@ -8,16 +8,25 @@
   `95a8e311664789bcf1be5c609dce148e1f300f93`, new study context
   `ae958180b348432f236c6c1e72f832a723164199`. Same $0.48 cap and
   2026-10-05 01:08:43 UTC deadline; closed-plus-reserved $0.772696 under $10.
-  Latest audit `baa7233e4b149fdddd3ec982bb7fa659f4edd8d9` verifies actual
-  scratch seed6 training: 116400 control +1320 reset ticks, 291 complete
-  sampled rows, two checkpoint pairs. Central/secondary training flags appear,
-  but last retained gain is -30.12384 and no final run is complete. These
-  sparse latched training flags do not establish robustness or terminal counts.
-  Next: review final reference scratch/BC-only/BC+PPO outcomes, seeds6/7/8,
-  not reward/peaks or early on-policy flags. No effectiveness result yet.
+  Latest result `abe4b0aa973c702b1637648be1f1afbb703d0db8` validates scratch
+  seed6 final: central/secondary/full 0/9, no deaths, median retained -0.1973,
+  nominal near spawn. Actual work393216 control/4080 reset/3840 calls.
+  Early sampled training holds did not transfer to deterministic reference.
+  BC-only seed6 is running in that snapshot; eight final runs remain missing.
+  Next: finish the unchanged scratch/BC-only/BC+PPO comparison, seeds6/7/8,
+  before choosing a recovery/corrective demonstration follow-up. No cloning
+  effect, robust skill or promotion from this single failed baseline.
   Do not change active source/variables/hardware/queue, poll, resume
   interruptions or extend this budget. No more disconnected infrastructure
   or viewer work. Historical bullets below do not authorize old restarts.
+
+- **Conditional diagnosis after this comparison:** if cloned arms also fail,
+  examine stochastic-versus-deterministic control, action saturation and
+  eligible-demo RMS sensitivity near spawn, plus missing reactive recovery
+  coverage. Scratch seed6 nominal ends on the floor with no last-four-second
+  hammer-query hits despite strongly varying legal actions. These are
+  hypotheses, not proven causes; do not alter current observations,
+  normalization, reward, evaluation or queues while the study runs.
 
 - **Current priority after timing closure:** the six-run timing diagnostic is
   complete/validated and the owned Space is independently PAUSED. Fine central
