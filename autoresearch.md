@@ -469,3 +469,22 @@ session/reservation before it can execute. The preparation module cannot
 launch training or bypass current campaign gates. If the remaining pilot
 produces a legitimately eligible variant, prioritize its gated follow-up
 instead of automatically executing this conditional plan.
+
+### Secondary-detector physical calibration completed
+
+A bounded **placement-only calibration**, explicitly `NOT_POLICY_SUCCESS`,
+tests proposed platform-support X positions 285,290,296,320,340,345 by dropping
+the body from Y=150 through original gravity with neutral pointer commands.
+All six settle near Y=103/104 and pass the three-second/body-contact/speed
+secondary detector. Only central X=320 passes the original narrow v1 region.
+Outside positions X=250 and X=360 settle on low ground and fail; a 60-tick
+contact window at `(320,104)` fails the three-second requirement.
+All nine reference/fast calibration traces have zero measured telemetry error.
+Evidence: `artifacts/support_calibration_20261004T011827646610Z/`.
+
+This validates the secondary descriptor at the sampled physical positions and
+negative cases, not every possible contact/trajectory or learner performance.
+It remains separate from ordinary-start policy outcomes and does not alter
+pilot reward/gates. The conditional timing study's calibration prerequisite
+has evidence; timing-aware implementation, further preflight, finished-pilot
+admission, and a new budget/session are still required before any launch.
