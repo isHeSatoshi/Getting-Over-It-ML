@@ -1,6 +1,25 @@
 # Deferred hypotheses
 
-- **Next causal conditional-wrapper implementation, no corpus yet:** separate
+- **Next separately frozen whole-wrapper cohort:** causal wrapper rawpre/post
+  action-observe pairs, one checkpoint after600executed transitions:
+  supportedslowleftedge285<=X<305/Y100..112/speed<=2, encodedcentral305
+  bypasses. No case/seed/traceoracle/rearm,751cap; fixed30plant/onepush/
+  release/30settle/90hold. Smoke6rollouts/4450control+720resetpasses:
+  edge723actualcontrols reproduce knownrecovery at(314.428,104),2settle/
+  90hold; nominal andcentralnoise751bypassexact. All3central/gain83,
+  0updates/deaths/summits, all raw/backends/noise/prepostchecks exact;
+  330fullPython+JS and15finalfocused tests. No teacher/labels/learning.
+  Freezeoriginalcontactprior vswrapper on same9developmentcases, max751
+  ticks/arm/reference+fast,36rollouts/27036control+4320reset/300work/
+  330ownedseconds. Keepallrules fixed, preserve600oldprefixes/bypass;
+  require9/9reference finalcentral support/no deaths/fidelity. Old600gate
+  immutable, not freshheldout; evenpass needs freshwholewrapper validation
+  and later clock/memory-aware data/learnercontract. No paidunchanged
+  learner scaling. Private PAUSED1791157675.4369287,7closed$0.456424187,
+  ledgerpreserved.
+  Evidence: artifacts/terminal_wrapper_smoke_20261004T234047944352Z/verification.json.
+
+- **Closed causal conditional-wrapper implementation, completed above:** separate
   settlemonitor<=30states followedby90holdstates (triggerexcluded) passes
   pushedknownedge:2settleticks+90hold/90bodyhits,723controlledticks,
   final(314.428,104)/gain83/velocity0/originalcentralheldtrue. Unchanged/

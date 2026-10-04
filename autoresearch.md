@@ -42,7 +42,56 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current result: settle-aware local recenter hold passes, conditional design only
+## Current result: causal terminal wrapper smoke passes, whole cohort pending
+
+Implemented `research/terminal_controller.py` around unchanged contact-sign
+prior. Only raw217pre/post float32 and resettable privateclock/phase, no
+case/seed/trace-index/privileged-state inputs. One checkpoint after600actual
+observed transitions, beforedecision601: slow/body-supported leftsecondary
+edge285<=X<305,Y100..112,speed<=2. Float32encodedboundaries used to ensure
+encodedcentralX305bypasses instead of roundoff-triggering. No missed-checkpoint
+rearming, secondattempt or caprenewal. Max751decisions.
+
+Fixed30plant(26,-56),onepush(0,-56),originalrelease. Require action/pre then
+actualapplied one-tick observe/post; nextpre equalslastpost exactly. Base
+clock advances even during override; settling monitor consumes firstrelease
+post-state, neverpushpost. Monitor ticksrelativecontrolledclock, not global
+resetsettling. Old330fullPython+JS pass; final encodedboundary edit verified
+with15focused tests. Newtests coverbypass/unsupported/fast/coordinateguards,
+no-rearm, plant/push/monitoralignment, prepostlink,751cap and reset.
+
+Frozen6rollout implementation smoke: nominal andnoise12101central bypass
+all751ticks on originalcontrols; knownnoise12100edge activatesonce,
+30plant/onepush/92release(2settle+90hold),723ticks,final(314.427961,104).
+All three finalcentral supported holds/gain83,0updates/deaths/summits.
+Edge full723physicaltrace equals validatedmanualprimitive; first600ofall
+cases exactoldcontroller. Candidate outputs actually applied with original
+noise, no sourceprefixoverride or case-oraclebranch in controller.
+Nominalfinal(322.585886,104),centralnoisefinal(325.311196,104).
+
+4450control+720reset,all threefullbackendpairs exact. Independent6full
+rawmilestone/proposed/applied/prepost/monitor/noise traces verify, both
+bypasses exactbaseoutputs. Wrapper smoke passes, only wholecohortadmitted.
+No teacher/corpus/data/learner/summit promotion. Primarygoal0.
+Evidence: `artifacts/terminal_wrapper_smoke_20261004T234047944352Z/verification.json`.
+Closedfixed90failure and old600ninecase8/9central/failed9gate unchanged.
+
+Independently private PAUSED1791157675.4369287;80444390source,
+onstate-20261004-v1/onstate_study and closed historical deadline unchanged.
+Ledgerbytespreserved,7closed$0.4564241866528988; no new reservation/HFwrite/
+deployment/publicrelease/substantive local training.
+
+Next admitted bounded direction: separately freeze wholewrapper versus
+originalcontactcontroller on same9developmentcases reset13001/warmups/
+noise12100..12105, atmost751ticks/arm/reference+fast,36rollouts/max27036
+control+4320reset/300work/330ownedseconds. No controller/rule/timing edits,
+all old600prefixes exact and bypassexact; require9/9reference finalcentral
+supported holds/no deaths/fidelity. This newcontroller/horizon does not
+rewrite old600failedgate or qualify as freshheldout. Even passing requires
+fresh wrappervalidation before data/clock-memory-aware learnercontract;
+no labels, paidlearning or unchanged BC/PPO scaling.
+
+## Prior result: settle-aware local recenter hold passes, conditional design only
 
 Implemented/tested separate `research/settled_hold.py` monitor, never
 changing originalMilestoneTracker. Consecutivefinite30Hzstates, atmost30
@@ -77,7 +126,7 @@ onstate-20261004-v1/onstate_study and closed historical deadline unchanged.
 Ledgerbytespreserved,7closed$0.4564241866528988; no new reservation/HFwrite/
 deployment/publicrelease/substantive local training.
 
-Next admitted bounded implementation: causal terminal wrapper around fixed
+The historical admitted implementation, now completed above, wraps the fixed
 contact-signcontroller, one attempt after600decisions only for raw supported
 slow left-edge landing(285<=X<305,100<=Y<=112,bodyquerytrue,speed<=2).
 No case/seed/trace-index trigger. Already-central inputs remain exactoriginal

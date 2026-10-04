@@ -442,3 +442,13 @@ resettable phase/clock, preserve all action caps and no-rearm failure rules.
 Predeclare clock alignment and a bounded real-game wrapper smoke before any
 fresh cohort. A separate whole-wrapper validation and data/learner contract
 are still required; no automatic old-gate pass or paid scaling.
+
+## Causal wrapper implemented
+
+`TerminalController` now takes only actual raw pre/post inputs and a private
+clock. One state-based checkpoint after 600 executed transitions chooses the
+unchanged plant/push/settle/hold sequence or permanent bypass. The complete
+known edge recovery reproduces exactly; nominal and an already-central noisy
+case remain on the original controls. Six-rollout smoke passes with no
+learning or label admission. See `TERMINAL_CONTROLLER.md` for its alignment,
+limits, evidence and separately required whole-wrapper validation.
