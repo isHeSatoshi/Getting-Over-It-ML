@@ -42,7 +42,7 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current remote state: imitation study RUNNING, seed-6 clone-only result validated
+## Current remote state: imitation study RUNNING, all seed-6 arms validated
 
 - Fresh session **`imitation-20261004-v1`**, mode **`imitation_study`**.
 - Private source **`95a8e311664789bcf1be5c609dce148e1f300f93`**,
@@ -150,7 +150,7 @@ verified from standard campaign aggregation alone.
   three-seed cohort, candidate or final goal. Seventeen checker/goal tests
   pass; this entire chunk used HF reads only. Evidence:
   `artifacts/imitation_snapshot_review_20261004T095748247801Z/review.json`.
-- Latest result **`d3ed8abd536e99a85a0820f1eb5f749089d7ac12`** validates
+- Clone-only review **`d3ed8abd536e99a85a0820f1eb5f749089d7ac12`** validates
   **two completed runs**, scratch and **`behavior_cloning_only_seed_6`**;
   seven final runs remain incomplete. RUNNING, no error, unchanged
   **`behavior_cloning_then_ppo_seed_6`** is active.
@@ -183,6 +183,38 @@ verified from standard campaign aggregation alone.
   pass. Clone evaluation123902707bytes is below the prechecked128MiB gate;
   this chunk used HF reads only. Evidence:
   `artifacts/imitation_clone_review_20261004T101754929686Z/review.json`.
+- Latest **`11678b29c6b960586a1455c82a1e1218b9d21ba4`** validates all
+  three **seed6** arms, **three completed runs/six incomplete**. Actual
+  RUNNING phase is **`ppo_from_scratch_seed_7`**, no error; source, data,
+  context, start/deadline, CPU Upgrade/one never-sleep replica and cap unchanged.
+- Hybrid final original-reference result: **0/9 central/secondary holds,
+  0/9 full completions, zero deaths**, median retained **24** (scratch
+  -0.1973, BC-only9). Nominal final **`(585.4595583,40)`**, retained **19**,
+  last four seconds120body-query hits/zero hammer hits. All three arms
+  therefore have **0/27 final held outcomes/completions**, no final deaths.
+  Increased retained height is not the demonstrated first-ledge skill.
+- Hybrid actual work: **393216 control +4320 reset ticks**, **36 resets**,
+  **3840 policy optimizer calls**, **1444.40392 learning seconds**, plus
+  **2000 BC calls/512000 presentations**, BC about **6.70779 seconds**.
+  Early near-platform training flags remain distinct from final reference.
+- **Matched-seed comparability now passes:** all three untrained legal
+  reference trace hashes agree; BC-only and hybrid post-clone traces match
+  exactly across all nine60-second cases, including applied actions/outcomes.
+  The earlier differing whole-ZIP hashes are not a behavior mismatch.
+  No tensor equality or cross-host saved-policy portability is inferred.
+- Seed6 totals: **786432 training control +8400 reset ticks**, **7680 PPO
+  calls**, **4000 BC calls/1024000 BC presentations**. Actual distinct
+  reference work is **63 case rollouts**, **113400 control +15120 reset
+  ticks**, excluding BC-only's duplicate post-clone/final JSON.
+- Strict full-stage/source/dependency/work checker and projected physical
+  goal helper pass; no three-seed cohort, candidate or final goal. Eight
+  saved-model/RMS/clone companion identities are bounded immutable metadata
+  only. Seventeen checker/goal tests pass. Evidence:
+  `artifacts/imitation_seed6_review_20261004T103801371190Z/review.json`.
+  This chunk used HF reads only; no local training or batch changes.
+- All seed6 arms fail the first-skill gate. Finish frozen seeds7/8 before
+  comparison/closure, then select a bounded first-divergence/reactive
+  corrective-control diagnostic rather than blind scaling or a relaxed gate.
 - **No robust cloning advantage, skill or full completion is claimed.** Keep
   this active image/variables/hardware/queue unchanged. Next: independently
   review actual training exposure and the nine

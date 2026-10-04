@@ -8,16 +8,16 @@
   `95a8e311664789bcf1be5c609dce148e1f300f93`, new study context
   `ae958180b348432f236c6c1e72f832a723164199`. Same $0.48 cap and
   2026-10-05 01:08:43 UTC deadline; closed-plus-reserved $0.772696 under $10.
-  Latest result `d3ed8abd536e99a85a0820f1eb5f749089d7ac12` validates
-  scratch/BC-only seed6: both central/secondary/full0/9, no deaths;
-  median retained -0.1973 versus9. BC nominal `(227.90,30)` misses the ledge
-  despite in-corpus MSE0.25623->0.00010845,2000BCcalls/zeroRL.
-  BC+PPOseed6 is active at137200control/1680reset; seven final runs missing.
-  Exact initial reference traces agree. Hybrid after-clone reference
-  comparability is pending; ZIP-file hash differences are not weight differences.
+  Latest `11678b29c6b960586a1455c82a1e1218b9d21ba4` validates all three
+  seed6 arms: central/secondary/full0/27, no final deaths; median retained
+  scratch/BC/BC+PPO -0.1973/9/24. Low BC corpus MSE and near-platform
+  on-policy flags did not yield frozen first-skill success. Seed7 scratch
+  is active; six final runs remain missing.
+  Exact initial traces agree across all three, and BC/hybrid post-clone
+  traces now match exactly. Whole-ZIP differences were not behavior drift.
   Next: finish the unchanged scratch/BC-only/BC+PPO comparison, seeds6/7/8,
   before choosing a recovery/corrective demonstration follow-up. No robust
-  cloning advantage or promotion from these two failed first-skill outcomes.
+  cloning advantage or promotion from this one-seed, three-arm failure.
   Do not change active source/variables/hardware/queue, poll, resume
   interruptions or extend this budget. No more disconnected infrastructure
   or viewer work. Historical bullets below do not authorize old restarts.
