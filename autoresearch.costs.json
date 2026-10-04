@@ -25,17 +25,21 @@
       "pricing_last_verified": "2026-10-03",
       "start_epoch": 1791063527.5881104,
       "deadline_epoch": 1791116468.8050392,
-      "verified_end_epoch": null,
+      "verified_end_epoch": 1791081974.4473813,
       "maximum_estimated_compute_cost": 0.44117680773933726,
       "actual_billed_cost_known": false,
-      "status": "validated_fresh_pilot_start_requested",
+      "status": "pilot_complete_validated_paused",
       "replaces_interrupted_session": "poc-20261004-v1",
       "source_space_revision": "34c35854133294f97fef741479641f571371b8a3",
       "sleep_policy": "paid_default_never",
-      "training_started": false,
+      "training_started": true,
       "remote_preflight_complete": true,
       "preflight_evidence": "artifacts/v2_preflight_review_20261003T215809890172Z",
-      "training_launch_requested": true
+      "training_launch_requested": true,
+      "termination": "Nine-run pilot complete; independent API verification of PAUSED and pinned durable outputs",
+      "estimated_elapsed_compute_cost_upper_bound": 0.15372382725675898,
+      "end_evidence": "artifacts/v2_complete_review_20261004T024603257492Z/complete_review.json",
+      "end_artifact_revision": "7c29b01d5cae53606f252511337a70b07a09699c"
     }
   ]
 }

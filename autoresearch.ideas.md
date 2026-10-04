@@ -6,9 +6,13 @@
   A tested non-executing plan now exists in `research.timing_study`, including
   physical-time GAE, noise cadence, new seeds, equal planned optimizer calls,
   larger one-tick minibatches and explicit actual-exposure/compute caveats.
-  Trainer/evaluator support and calibration remain required before activation.
-  Local physical-time case clock now preserves old four-tick applied actions
-  exactly and matches one-tick warm-up/noise durations; integration remains.
+  The pilot is now complete/validated/PAUSED with no eligible variant, so the
+  conditional diagnostic is the next priority, never pilot promotion.
+  Physical calibration and opt-in timing-aware evaluation now pass locally,
+  including real-game one/four-tick parity and exact legacy four-tick traces.
+  Trainer/GAE/horizon and actual training/reset exposure accounting, secondary
+  detector integration, reactive-policy fidelity/smokes and new-session runner/
+  budget admission remain required before activation. No future job is launched.
 - Retain v1's narrow central-landing target, but calibrate and predeclare a
   separate actual-platform-support metric for the next study. Four-tick phases
   1/2 of the known legal trajectory already hold the platform at X about 290;
@@ -44,11 +48,14 @@
   the raw task contract and isolate any proposed change in a new experiment.
 - First SAC/velocity seed does move/contact terrain and retains median 6 units,
   unlike the inactive absolute-action cohort, but still has 0/9 platform holds.
-  Finish the other seeds; distinguish low-terrain traversal from retention
+  All three now complete with 0/9 holds each and no full completions. Distinguish
+  low-terrain traversal from retention
   before attributing improvement to the control parameterization.
   Second seed retains median 31.91, with nominal +109.67 height but no body
   contact in its last four seconds. Target a reactive landing/retention skill,
   not just further lift on a planted hammer or high endpoints.
+  Seed 2 retains median 3.51. Untrained->trained medians are 26.54->6,
+  22.71->31.91,25.40->3.51: no consistent endpoint-gain learning improvement.
 - Test ordinary-start skill composition before a privileged-reset curriculum.
   Never include diagnostic placements in claimed policy success.
 - Completed and deployed in the fresh v2 recovery: named optimizer-step

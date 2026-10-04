@@ -42,7 +42,7 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current remote experiment
+## Current remote state: pilot complete and paused
 
 - Private Space: `isHeSatoshi/rl-over-it-poc-20261004`.
 - Private artifacts: `isHeSatoshi/rl-over-it-research-artifacts`.
@@ -56,15 +56,41 @@ verified from standard campaign aggregation alone.
   each. Four-tick actions, settled reward, terrain, raw rewards, common
   physical-time discount, reference evaluation.
 
-Do not modify, upload, restart, or resize the running image. The replacement
+**The full v2 pilot completed and automatically paused on 2026-10-04.**
+A pinned review of dataset commit
+`7c29b01d5cae53606f252511337a70b07a09699c` validates all nine runs under
+their recorded source/game/reward/evaluation contracts. The original source
+revision is still deployed; no local diagnostic changes were uploaded.
+All 81 final reference cases have zero full-climb completions and zero deaths
+within their 60-second horizons. PPO v1 holds are 0/9,0/9,1/9; both SAC
+cohorts are 0/9,0/9,0/9. No variant passes follow-up or scale admission.
+Worst-seed reference completion is 0; neither candidate nor final goal passes.
+All nine final models/normalizers and all six SAC replay buffers are durable
+at that immutable dataset revision, with nonzero sizes and Hub object metadata.
+This closing review did not download/reload those large binary companions;
+do not mistake durable presence for cross-host policy-transfer verification.
+Evidence: `artifacts/v2_complete_review_20261004T024603257492Z/`.
+
+The operator independently verified PAUSED at epoch `1791081974.4473813`.
+The ledger is closed at a conservative v2 compute estimate of $0.153724,
+or $0.192547 across v1/v2, including elapsed pauses/build/preflight time.
+These estimates are not the actual provider bill. There is no active paid
+research batch. Keep the operator running for useful bounded research work.
+Do not restart the completed pilot or overwrite either artifact session.
+The next priority is the predeclared timing diagnostic, not promotion or
+blind sample/hardware scaling. Complete timing-aware trainer/GAE/horizon,
+actual training/reset tick accounting, independent closed-loop fidelity/smokes,
+and a runner with new session/budget admission before any launch.
+
+Never modify, upload, restart, or resize an active future image. The replacement
 includes complete-prefix snapshots for append-only logs/CSV/JSONL; binary
 checkpoints still require stable-copy checks. The historical v1 image could
 skip continuously appended files, so its stale logs are not a stalled-learner
 proof.
 
-Finish and validate this pilot first. Its original gates remain unchanged.
-If it fails, a new diagnostic experiment is allowed under the newly delegated
-authority, but is **not** a promotion of the failed pilot.
+The completed pilot's original gates remain unchanged. A separately labelled
+new diagnostic is allowed under the delegated authority, but is **not**
+promotion of this failed pilot.
 
 ### Provider interruption and fresh replacement
 
@@ -182,6 +208,16 @@ Two warm-up cases remain at spawn; other final cases retain roughly 29..40.47
 units. A final replay buffer is present. The velocity cohort still has one
 missing seed, and both completed seeds fail the fixed retention gate.
 Evidence: `artifacts/v2_second_velocity_review_20261004T021802585667Z/`.
+SAC/velocity seed 2 subsequently completes and validates: 98,304 transitions,
+264,912 named optimizer calls, 2,087.04 learning seconds, 0/9 holds and zero
+full completions/deaths. Median retained gain is **3.51**, with nominal endpoint
+approximately `(141.49,24.51)`, 1,723 hammer-hit ticks and 1,085 body-hit ticks.
+The complete velocity cohort fails the frozen gate. Its untrained versus
+trained median retained gains are respectively 26.54->6, 22.71->31.91,
+25.40->3.51 for seeds 0/1/2. Therefore even low-terrain endpoint movement
+must not be presented as consistent improvement from learning.
+The complete matrix is validated and PAUSED, not awaiting another run.
+Evidence: `artifacts/v2_complete_review_20261004T024603257492Z/`.
 
 ## How to inspect and measure
 
@@ -526,3 +562,31 @@ shared noise streams, held-noise/changing-policy separation, warm-up duration,
 and noise-after-warm-up behavior. It is not integrated into the live evaluator,
 does not execute the conditional plan, and is not deployed. Timing-aware
 trainer/evaluator integration and fresh fidelity remain outstanding.
+
+### Timing-aware evaluator integrated locally
+
+`research.train.evaluate` now accepts explicit one/four-tick control and an
+opt-in physical case clock. One-tick evaluation refuses legacy per-decision
+perturbations or incompatible policy/normalizer/reward discounts. The default
+four-tick path preserves existing case descriptors, trace rows and record keys.
+The opt-in `physical-case-evaluation-v1` records requested versus actual
+controlled ticks and reset-settling ticks separately, including VecEnv's
+automatic reset after terminal/truncated steps. Final info remains pre-reset.
+Cleanup now also runs if prediction/stepping fails.
+
+All **117 Python tests plus JS checks** pass. Eight new synthetic tests cover
+legacy traces, one-tick warm-up/noise duration, frozen normalization, short
+terminal steps, incompatible configuration and failure cleanup.
+`research.evaluation_timing_probe` runs no training and caps its fixture at
+128 controlled ticks per case. A 96-tick constant-action ordinary-start check
+passes all nine declared cases for repeats 1/4: **18 exact reference/fast
+evaluation trace matches**, zero measured normalized-observation error, and
+exact legacy/new four-tick trace equality on both backends. Each case reports
+96 controlled ticks and 240 initial/automatic reset-settling ticks.
+Evidence: `artifacts/evaluation_timing_probe_20261004T024404911122Z/`.
+
+This is evaluator/fixture evidence, **not policy success** or comprehensive
+one-tick reactive-policy fidelity. It is local only, not deployed or wired
+into the trainer CLI. Remaining next-study work: trainer timing/GAE/budgets,
+actual training/reset exposure, secondary-detector integration, independent
+closed-loop fidelity/smokes, runner and new bounded-session admission.

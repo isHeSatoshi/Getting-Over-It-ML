@@ -15,40 +15,80 @@ from research.reward import RewardConfig, PROFILES
 from research.backends import make_bridge
 from research.evaluation_cases import STANDARD_CASES, EvaluationCase, perturb
 from research.optimizer_work import OptimizerWork, WORK_VERSION
+from research.case_clock import PhysicalCaseClock
 
 
-def evaluate(model, normalization, bridge, action_mode, terrain, decisions, seeds, reward_config=None, cases=None):
+def evaluate(model, normalization, bridge, action_mode, terrain, decisions, seeds,
+             reward_config=None, cases=None, *, frame_skip=4, physical_case_clock=False):
+    if (type(frame_skip) is not int or frame_skip not in (1, 4)
+            or type(decisions) is not int or decisions < 1
+            or type(physical_case_clock) is not bool):
+        raise ValueError("Invalid evaluation timing configuration")
+    if frame_skip != 4 and not physical_case_clock:
+        raise ValueError("One-tick evaluation requires the physical case clock")
     reward_config = reward_config if reward_config is not None else RewardConfig()
-    if model.gamma != reward_config.gamma(4) or normalization.gamma != model.gamma:
+    gamma = reward_config.gamma(frame_skip)
+    if model.gamma != gamma or normalization.gamma != model.gamma:
         raise ValueError("Reward, learner, and normalization discounts must match")
     if normalization.norm_reward:
         raise ValueError("This reward contract requires raw, unnormalized training rewards")
     from stable_baselines3.common.vec_env import DummyVecEnv, VecNormalize
-    evaluation = DummyVecEnv([lambda: RealGettingOverItEnv(
-        bridge=bridge, action_mode=action_mode, terrain=terrain, horizon=decisions, reward_config=reward_config)])
-    evaluation = VecNormalize(evaluation, norm_obs=True, norm_reward=False, gamma=reward_config.gamma(4))
+    environment = RealGettingOverItEnv(
+        bridge=bridge, action_mode=action_mode, terrain=terrain, horizon=decisions,
+        frame_skip=frame_skip, reward_config=reward_config)
+    evaluation = VecNormalize(DummyVecEnv([lambda: environment]),
+                              norm_obs=True, norm_reward=False, gamma=gamma)
     evaluation.obs_rms = normalization.obs_rms
     evaluation.training = False
     records = []
     selected = cases if cases is not None else tuple(EvaluationCase(f"reset_{seed}", seed) for seed in seeds)
-    for case in selected:
-        seed = case.reset_seed
-        evaluation.seed(seed)
-        observation = evaluation.reset()
-        rng = np.random.default_rng(case.noise_seed)
-        trace = []
-        for index in range(decisions):
-            action, _ = model.predict(observation, deterministic=True)
-            applied = np.asarray([case.warmup[index]], dtype=np.float32) if index < len(case.warmup) else perturb(action, case, rng)
-            observation, _, done, info = evaluation.step(applied)
-            trace.append({"action": action[0].tolist(),
-                          "applied_action": applied[0].tolist(),
-                          **{k: v for k, v in info[0].items()
-                             if k not in ("terminal_observation", "episode")}})
-            if done[0]:
-                break
-        records.append({"case": case.describe(), "seed": seed, "final": trace[-1], "decisions": len(trace), "trace": trace})
-    evaluation.close()
+    try:
+        for case in selected:
+            seed = case.reset_seed
+            evaluation.seed(seed)
+            observation = evaluation.reset()
+            rng = np.random.default_rng(case.noise_seed)
+            clock = PhysicalCaseClock(case) if physical_case_clock else None
+            controlled_ticks = 0
+            reset_ticks = environment.state["tick"] if physical_case_clock else 0
+            trace = []
+            for index in range(decisions):
+                action, _ = model.predict(observation, deterministic=True)
+                if clock is not None:
+                    applied = clock.apply(action, controlled_ticks)
+                else:
+                    applied = (np.asarray([case.warmup[index]], dtype=np.float32)
+                               if index < len(case.warmup) else perturb(action, case, rng))
+                observation, _, done, info = evaluation.step(applied)
+                if clock is not None:
+                    ticks = info[0]["physics_ticks"]
+                    if type(ticks) is not int or not 1 <= ticks <= frame_skip:
+                        raise RuntimeError("Invalid controlled physics tick count")
+                    controlled_ticks += ticks
+                    # VecEnv already settled a new spawn on terminal/truncated
+                    # steps; count its reset work separately from the trajectory.
+                    if done[0]:
+                        reset_ticks += environment.state["tick"]
+                trace.append({"action": action[0].tolist(),
+                              "applied_action": applied[0].tolist(),
+                              **{k: v for k, v in info[0].items()
+                                 if k not in ("terminal_observation", "episode")}})
+                if done[0]:
+                    break
+            record = {"case": case.describe(), "seed": seed, "final": trace[-1],
+                      "decisions": len(trace), "trace": trace}
+            if clock is not None:
+                record.update(
+                    timing_contract={"version": "physical-case-evaluation-v1",
+                                     "frame_skip": frame_skip,
+                                     "physics_hz": reward_config.physics_hz,
+                                     "perturbation_hold_ticks": clock.hold_ticks,
+                                     "requested_physics_ticks": decisions * frame_skip},
+                    controlled_physics_ticks=controlled_ticks,
+                    reset_settling_physics_ticks=reset_ticks)
+            records.append(record)
+    finally:
+        evaluation.close()
     return records
 
 
