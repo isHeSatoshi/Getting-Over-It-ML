@@ -46,6 +46,17 @@
   Current seed7 audit302000control/3720reset with seven checkpoint pairs;
   three finals remain unchanged at snapshot8393e54e26fda29106f20add394f17ba76609ce7.
 
+- **Same-reset pair strengthens the diagnostic design, not causal attribution:**
+  seed7 clone nominal/noise8105 share reset1001/no warm-up and exact first
+  prediction. First applied delta(-3.8331,-0.9575)px separates body0.06175px;
+  predictions differ tick2, hammer/body queries26/27, body distance>1px28.
+  Noise persists throughout; no particular block is established as the
+  successful cause. After closure, controlled legal prefix/suffix and
+  noise-removal tests should separate early alignment from continuing recovery.
+  Latest hybrid258000control/3000reset, no new final at
+  490e7e803d6ecad7ada8c6b5c8fb320a6015b861; do not infer skill from
+  its on-policy retained189.48 or add compute while the study runs.
+
 - **Current priority after timing closure:** the six-run timing diagnostic is
   complete/validated and the owned Space is independently PAUSED. Fine central
   holds 0/0/2, secondary 1/0/5; coarse all zero. Both worst-seed completion and

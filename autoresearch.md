@@ -42,7 +42,7 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current remote state: imitation study RUNNING, seed-7 scratch/clone results validated
+## Current remote state: imitation study RUNNING, hybrid prefix and same-reset pair audited
 
 - Fresh session **`imitation-20261004-v1`**, mode **`imitation_study`**.
 - Private source **`95a8e311664789bcf1be5c609dce148e1f300f93`**,
@@ -248,7 +248,7 @@ verified from standard campaign aggregation alone.
   closure, a controlled **same-reset legal expert-prefix/clone-continuation**
   diagnostic can test whether early alignment/recovery matters, before
   designing new corrective data or spending on more optimizer steps.
-- Latest **`44d2c66f7287e8cc31cdfcfa92af8103eb662db9`** validates **five
+- Seed7 partial review **`44d2c66f7287e8cc31cdfcfa92af8103eb662db9`** validates **five
   full runs/four incomplete**, including seed7 scratch and clone-only.
   Actual RUNNING phase **`behavior_cloning_then_ppo_seed_7`**, no error;
   all source/data/context/runtime/deadline/cap settings are unchanged.
@@ -280,6 +280,35 @@ verified from standard campaign aggregation alone.
   `artifacts/imitation_seed7_results_20261004T111807286622Z/review.json`
   and `held_window.json`. All remote actions were reads; no new local
   training/rollouts or running-batch changes.
+- Latest **`490e7e803d6ecad7ada8c6b5c8fb320a6015b861`** has no new
+  final result: five validated runs unchanged, four incomplete. Actual
+  RUNNING phase **`behavior_cloning_then_ppo_seed_7`**, no reported error;
+  source/context/data/runtime/deadline/cap unchanged. Hybrid prefix
+  **258000 control +3000 reset ticks**,645complete sampled rows,six
+  checkpoint pairs through240000. Last training retained189.47804,
+  neither held flag; this is not final performance or robust climbing.
+- Used the remaining chunk for **offline paired1800-tick clone traces**,
+  nominal versus fixed noisycase8105: same reset1001, no warm-ups,
+  exact same first raw policy prediction. All applied actions independently
+  recompute from the unchanged four-tick noise clock.
+- First noise changes the relative pointer by
+  **`(-3.833073,-0.957458)` pixels**. Body post-action separation is
+  **0.0617523pixel** on tick1; policy predictions first differ on **tick2**,
+  hammer queries on **tick26**, body queries on **tick27**, body distance
+  exceeds1pixel on **tick28**. Later outputs are feedback at different
+  states, not proof of different weights.
+- The nominal finishes at `(62.22417,21.52911)`, retained0.52911, no hold;
+  the noisy run at `(334.48293,102.66391)`, retained81.66391, both holds.
+  This is a post-hoc paired description of already counted outcomes,
+  **not new evidence of a success rate or any particular helpful noise block**.
+  Noise continues through all1800ticks; equal first outputs do not prove all
+  initial features equal. A future prefix/suffix intervention must test
+  necessity/sufficiency before using this as a corrective recipe.
+- Same five final-reference LFS identities and projected goal-helper
+  candidate/final false are confirmed. Hash/source/case-clock/prefix
+  assertions pass; **zero new rollouts/updates**, no binary reload or HF
+  writes. Evidence:
+  `artifacts/imitation_pair_review_20261004T113802850890Z/pair_diagnostic.json`.
 - **No robust cloning advantage, skill or full completion is claimed.** Keep
   this active image/variables/hardware/queue unchanged. Next: independently
   review actual training exposure and the nine
