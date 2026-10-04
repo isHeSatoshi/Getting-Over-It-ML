@@ -42,7 +42,56 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current result: phase-feedback prototype reproduces nominal but fails recovery
+## Current result: control-history feedback improves one partial climb, not recovery
+
+The frozen second prototype changes only phase-distance features:
+`feature_set="control_history"` adds pointer_x/y,last_tx/ty,control_memory_x/y,
+last_hammer_distance,last_effort to the original13features. Prior, raw217input,
+original3576row RMS, weights4forposition/1elsewhere,8back/12ahead window,
+actual recorded actions, reset12001, left warm-up and noise11105 are unchanged.
+The original matcher remains the default. Both versions exactly reproduce all
+600actual recorded-input/control pairs; this is not off-state label validity.
+
+| Reference condition | Original13feature matcher | Added21feature matcher |
+|---|---|---|
+| Nominal |central+secondary held,(322.586,104),gain83|identical held result,phase599|
+| Left warm-up |nohold,(-3.362,21.996),gain0.996,phase28|nohold,(280.249,79.011),gain58.011,phase280|
+| Noise11105 |nohold,(35.640,19),gain-2,phase106|nohold,(33.936,19),gain-2,phase135|
+
+This is real partial climbing progress in one selected warm-up, not a learned
+policy or successful recovery. New left/noise phases remain exactly280/135
+through the final120ticks. Warm-up final90ticks have body-querycontactfraction1
+and speed0, but Y79.011is below both unchanged ledge regions. Noise final90
+maxspeed0.44524and contactfraction1 atY19are floor support, not climbing.
+Neither perturbed case passes either detector; no corrective teacher/corpus
+or learner training is admitted. Stop nearest-feature/window tuning.
+
+Fresh14rollouts comprise nominal timed reference/fast gate plus three cases
+times two matchers times two backends:8400control+1680reset,0updates/summits/
+deaths. Every full backend trace agrees exactly; all six old13feature traces
+also exactly reproduce their pinned historical files, with no baseline drift.
+All14full milestone traces independently reconstruct from raw position,
+velocity and body-contact telemetry. Backend copies are fidelity, not new
+recovery trials.299Python tests+JS pass. Frozen300second work envelope ran
+within its deadline; immutable plan/script/prior/source/budget hashes verified.
+Evidence: `artifacts/phase_history_probe_20261004T200234917165Z/verification.json`.
+
+Independently private PAUSED1791144426.67216; actual source8044439043a1725dc5911577c85096cd04ddc4ae,
+sessiononstate-20261004-v1/modeonstate_study and its closed historical deadline
+are unchanged. Seven closed estimates total$0.4564241866528988; ledger bytes
+preserved. No paid reservation, remote write or public release. Full goal0.
+
+Next bounded structural feedback work: inspect the original pointer-to-hammer
+servo and these stalled strokes; derive a legal stroke-progress controller
+with observable completion gates and state-error action correction, rather
+than selecting another nearest-pose metric. Freeze its actual rule, action
+limits, tick/deadline bounds and nominal/perturbation cases before physics.
+Compare with timed playback and require actual recovery/reference-fast parity
+before any labels or new learning contract. No forced arbitrary phase jump,
+teacher suffix at unrelated states, metric/window sweep or unchanged BC/PPO
+scaling. This design is a hypothesis, not a proven fix.
+
+## Prior result: phase-feedback prototype reproduces nominal but fails recovery
 
 Implemented `research/phase_controller.py`: a non-learning state-matched
 trajectory prior, not a corrective oracle. It selects among8preceding/
@@ -81,7 +130,7 @@ training is admitted.295Python tests+JS pass. New tool/tests/docs committed,
 raw failed trajectories remain diagnostic only.
 Evidence: `artifacts/phase_controller_probe_20261004T194209476868Z/verification.json`.
 
-Next single-axis prototype: include existing pointer and control-history
+The historical next hypothesis, now tested above, was to include pointer and control-history
 features (pointer_x/y,last_tx/ty,control_memory_x/y,last_hammer_distance,
 last_effort) in the matcher while preserving prior/RMS/window/weights/actions/
 test cases. They may disambiguate similar poses mid-stroke; this is a

@@ -1,6 +1,23 @@
 # Deferred hypotheses
 
-- **Next fixed-axis feedback prototype, no data admission yet:** the
+- **Next structural stroke feedback, not more nearest-phase tuning:** the
+  one-axis addition of eight pointer/control-history features preserves the
+  nominal exact hold but fails both perturbations. Warm-up improves from
+  gain0.996to58.011 at(280.249,79.011), then staysphase280; noise ends
+  (33.936,19),gain-2,phase135. Final120phases constant; no central/secondary
+  perturbed holds, no teacher/data admission.14rollouts/8400control+1680reset,
+  0updates/summits/deaths; all backend and six historical baseline traces
+  exact, all14raw milestone traces reconstruct.299Python+JS pass.
+  Inspect original pointer-to-hammer servo and stalled stroke telemetry, then
+  derive a legal stroke-progress controller with observable completion gates
+  and bounded state-error action correction. Freeze rules/actions/work/cases
+  before physics, compare timed playback and require real recovery/fidelity.
+  No nearest-feature/window sweep, forced phase jumps, unrelated-state teacher
+  suffix, label collection or unchanged BC/PPO scaling. Private Space PAUSED
+  1791144426.67216; ledger bytes unchanged,7closed$0.456424187.
+  Evidence: artifacts/phase_history_probe_20261004T200234917165Z/verification.json.
+
+- **Closed first13feature test; fixed-axis addition tested above:** the
   13feature state-matched nominal trajectory controller is implemented/tested,
   but fails both selected off-state tests. Nominal held(322.586,104) exactly;
   leftwarmupstallsphase28 at(-3.362,21.996),noise11105stallsphase106 at
@@ -12,7 +29,7 @@
   corrective oracle/robust skill; failed rows are diagnostic, no learner
   training or new corpus. Budget externally touched but contents same,
   preservedbytes;7closed$0.456424187, Space PAUSED1791143260.6853201.
-  Next add only existing pointer/control-memory features to the phase metric,
+  Historical follow-up (now tested above): add pointer/control-memory to the phase metric,
   keeping prior, frozen RMS,8back/12ahead window, actions/weights/cases fixed.
   Similar observed poses may hide unfinished control strokes, but cause/fix
   unproven. Fresh predeclared bounded test required; no same-plan retry,

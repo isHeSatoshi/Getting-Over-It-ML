@@ -17,15 +17,20 @@ FEATURES = ("world_x", "altitude", "body_dx", "body_dy", "hammer_offset_x", "ham
             "hammer_dx", "hammer_dy", "angle_sin", "angle_cos", "angular_delta",
             "body_collision", "hammer_collision")
 INDICES = np.asarray([BASE_FEATURES.index(name) for name in FEATURES])
+HISTORY_FEATURES = ("pointer_x", "pointer_y", "last_tx", "last_ty", "control_memory_x",
+                    "control_memory_y", "last_hammer_distance", "last_effort")
+FEATURE_SETS = {"kinematic": FEATURES, "control_history": FEATURES + HISTORY_FEATURES}
 
 
-def contract():
+def contract(feature_set="kinematic"):
+    require(feature_set in FEATURE_SETS, "Unknown fixed phase-matching feature set")
     return {
-        "version": VERSION, "source_data_sha256": SOURCE_DATA_SHA,
+        "version": (VERSION if feature_set == "kinematic" else "state-matched-control-history-v2"),
+        "source_data_sha256": SOURCE_DATA_SHA,
         "nominal_pre_observations_sha256": SOURCE_OBSERVATION_SHA,
         "nominal_applied_actions_sha256": SOURCE_ACTION_SHA,
         "source_rows": 600, "input": "Raw legal217feature pre-action float32 observations only",
-        "distance_features": list(FEATURES), "position_squared_distance_weight": 4.0,
+        "distance_features": list(FEATURE_SETS[feature_set]), "position_squared_distance_weight": 4.0,
         "other_squared_distance_weight": 1.0,
         "normalization": "Original3576eligible-row RMS; clipped10,epsilon1e-8, no refitting",
         "backtrack_rows": 8, "lookahead_rows": 12, "first_phase": 0,
@@ -58,8 +63,9 @@ def load_prior(directory, current=None):
 
 
 class PhaseController:
-    def __init__(self, observations, actions, rms, mode="state_matched"):
+    def __init__(self, observations, actions, rms, mode="state_matched", *, feature_set="kinematic"):
         require(mode in ("state_matched", "time_indexed"), "Unknown phase-controller mode")
+        require(feature_set in FEATURE_SETS, "Unknown fixed phase-matching feature set")
         observations, actions = np.asarray(observations), np.asarray(actions)
         require(observations.shape == (600, 217) and actions.shape == (600, 2)
                 and observations.dtype == actions.dtype == np.float32
@@ -69,15 +75,17 @@ class PhaseController:
                 and np.isfinite(rms.var).all() and (rms.var >= 0).all(),
                 "Invalid fixed observation scale")
         self.mode = mode
+        self.feature_set = feature_set
+        self.indices = np.asarray([BASE_FEATURES.index(name) for name in FEATURE_SETS[feature_set]])
         self.mean, self.variance = rms.mean.copy(), rms.var.copy()
         self.references = self._features(observations).copy()
         self.actions = actions.copy()
-        self.weights = np.asarray([4, 4] + [1]*(len(FEATURES)-2), dtype=np.float64)
+        self.weights = np.asarray([4, 4] + [1]*(len(self.indices)-2), dtype=np.float64)
         self.reset()
 
     def _features(self, observations):
-        return np.clip((observations[..., INDICES] - self.mean[INDICES])
-                       / np.sqrt(self.variance[INDICES] + 1e-8), -10, 10)
+        return np.clip((observations[..., self.indices] - self.mean[self.indices])
+                       / np.sqrt(self.variance[self.indices] + 1e-8), -10, 10)
 
     def reset(self):
         self.phase, self.calls = 0, 0
