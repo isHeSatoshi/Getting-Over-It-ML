@@ -42,7 +42,53 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current experiment: four-condition Linux control diagnostic launched
+## Current result: full perturbation holds; either isolated segment fails
+
+`noise-probe-20261004-v1` completed all8legal feedback rollouts and auto-paused.
+Original nominal/full-noise saved-action/body/outcome baselines reproduce
+exactly; all4reference/fast comparisons match on actions, observations,
+rewards/info and pre/post physical telemetry. Every applied action is independently
+recomputed from the frozen global masked noise stream. Nominal/late and
+full/early first60tick prefixes match exactly. All frozen held-event summaries
+are reconstructed from original per-tick states. No placement or learning.
+
+What the player actually did (same selected clone7/reset1001/noise8105):
+
+| Condition | Central/secondary held event | Retained final gain | Final X,Y |
+|---|---|---|---|
+| No extra noise | no/no |0.5291|62.2242,21.5291|
+| Noise throughout |yes/yes|81.6639|334.4829,102.6639|
+| First2seconds only |no/no|10.5361|268.7793,31.5361|
+| After2seconds only |no/no|7.5005|226.1886,28.5005|
+
+Full noise latches both at1585ticks/52.833333seconds,90body-query hits in its
+90tick window,maxspeed0.82809209255. No summits or deaths in any case. Query
+hits are not forces. These are4conditions duplicated for backend fidelity,
+not8independent learned successes. Neither segment alone suffices for this
+selected trajectory; no unique helpful action, general recovery mechanism,
+population robustness, corrective oracle or full-goal result is established.
+
+Actual14400control+1920reset ticks,0updates. Terminal pinned dataset
+`12c5b0fa35ad89a4001a0ee886b142a7e8b2373e`, worker complete16:03:43UTC;
+independently PAUSED1791130711.5065403 and rechecked after offline review.
+Same7be7d58dsource/mode/context, original deadline1791130828.5921772 unchanged.
+Reservation closes at conservative **$0.0095**, rounding persisted elapsed to
+19minutes including all time until independent pause verification, not actual
+provider bill. Cumulative closed estimates **$0.4179241866528988**, no active
+reservation or new batch.18control/admission/goal tests pass. Goal metric0.
+Evidence: `artifacts/noise_probe_review_20261004T161832060135Z/complete_review.json`.
+
+Next meaningful learning step: audit successful full-noise learner-state
+coverage and valid logged applied-action labels against existing demonstrations,
+then design a fresh gated on-state self-imitation/robust recovery comparison.
+Only controls actually applied at their exact pre-action inputs may become
+labels; never use a time-indexed teacher at unrelated states or assume random
+noise is an expert. One successful trajectory is not enough to promise
+generalization. No more kernel/transport experiments, repeated cheap cutoff
+searches, unchanged PPO extension or blind scaling. Keep the Linux evaluation
+stack and original physical/held-out/summit gates fixed.
+
+## Previous launch: four-condition Linux control diagnostic
 
 Fresh session `noise-probe-20261004-v1`, mode `noise_control_probe`, is admitted
 and intentionally restarted on the owned private CPU Upgrade/never-sleep/

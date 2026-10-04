@@ -10,8 +10,8 @@
   Worker complete12:57:06UTC; PAUSED independently1791118690.7391362.
   Its reservation closed at estimated$0.114728001,cumulative then$0.407424187.
   Later inference closure brings current cumulative$0.408424187 under$10,
-  not bills/credit balance. Current fresh noise-probe reservation adds at most
-  $0.01, combined closed-plus-reserved estimate$0.418424187 under$10.
+  not bills/credit balance. The subsequent noise probe is now validated/closed
+  at conservative$0.0095; cumulative allclosed$0.417924187, no active reservation.
   Frozen local probe now ran four baselines,7200control+960reset ticks,0updates.
   Local fast/reference recorded fields agree exactly; both first predictions
   differ from remote by5.960464477539063e-8. Saved bytes/RMS match. Nominal
@@ -58,15 +58,19 @@
   before interventions, max8cases/14400control+1920reset ticks/600seconds/0updates,
   owned headless only, claim/source/deadline/no-resume/backup/pause gates remain.
   Declaration: artifacts/linux_noise_transport_20261004T153843356715Z/transport_declaration.json.
-  Fresh noise-probe-20261004-v1 now admitted/launched, source7be7d58d,
-  context ef63e649/input c29033b9, fixed deadline1791130828.5921772/
-  2026-10-04 16:20:28UTC,<=20min/<=0.01USD. First pinned snapshot258c7a3f shows
-  RUNNING/noise_probe_claimed,no error/no report; no physical effects inferred.
-  Next: later pinned result review of baseline fidelity, held/retained physical
-  outcomes and early/late contrast; preserve active source/configuration/budget.
-  Require durable terminal artifacts and independent PAUSED, then close cost.
-  Never restart completed inference or partial probe, bypass failed baselines,
-  extend deadline, kernel-tune Windows or scale blind failure.
+  Fresh noise-probe-20261004-v1 now complete/validated/PAUSED, terminal12c5b0fa,
+  exact saved-feedback baselines and all4backend comparisons/clock/work/held
+  reconstructions pass. Nominal/full/early/late retained0.5291/81.6639/10.5361/
+  7.5005; only full holds both detectors at1585ticks.0summits/deaths,14400control+
+  1920reset,0updates. Prefixes match exactly. Neither isolated segment suffices
+  for this selected trajectory, not general learned recovery or8replications.
+  Source7be7d58d/context ef63e649/input c29033b9/deadline1791130828.5921772 unchanged;
+  closed$0.0095/cumulative$0.417924187, no active reservation.
+  Next: audit exact logged successful learner-state/applied-action coverage
+  against existing demos, then fresh gated on-state self-imitation/robust
+  recovery learning comparison. No arbitrary teacher suffix at unrelated
+  states, assumption that random noise is corrective expertise, kernel/transport
+  repetitions, cheap cutoff search or blind unchanged-PPO scaling.
   Plan: artifacts/imitation_recorded_action_v2_20261004T143756537682Z/matched_host_plan.json.
   After isolation prioritize robust reactive recovery, not kernel thrashing.
   Keep the
