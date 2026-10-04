@@ -396,3 +396,24 @@ drift. Exact observation/network/normalization causes remain unisolated.
 Prioritize fixed-input inference and observation-path diagnostics, and robust
 reactive control, before declaring that higher sampling rate or more compute
 is the solution. These are post-hoc causal diagnostics, not policy promotion.
+
+### Fixed-input inference fixture
+
+A local-only `research.inference_probe` extracts continuous next-observation/
+next-action pairs from saved policy traces, rejects auto-reset boundaries,
+and hashes the normalized float32 fixture and trusted model. It runs no
+physics and no training. This creates a portable fixture for a later
+paused-host comparison without changing current inference or the live image.
+
+On 95 fixed 217-dimensional inputs from the failed local edge rollout,
+singleton inference reproduces its recorded actions **exactly**, including
+repeat calls and tested thread counts 1/2/4. Batch sizes 8/95 produce maximum
+normalized-action differences about 6.56e-7 /6.85e-7 (pointer differences below
+0.000088 pixel). This demonstrates within-host inference-level rounding
+differences under batching, independent of feedback/physics.
+It does **not** establish that batching or thread count caused the live
+remote/local divergence; the live evaluator uses singleton inference.
+Local Torch is `2.6.0+cu124` running on CPU; deployed Torch is `2.6.0+cpu`.
+Evidence: `artifacts/inference_probe_20261003T235912700282Z/`.
+All **98 Python tests plus JS checks** pass. The source is local only and must
+not be deployed during the current pilot.

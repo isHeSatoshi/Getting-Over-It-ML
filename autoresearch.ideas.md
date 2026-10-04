@@ -17,6 +17,10 @@
   Closed-loop target drift exceeds 1 pixel by decision 16. Investigate later
   feedback/observation amplification rather than blaming the first tiny
   physics perturbation.
+- Fixed-input fixture now exists locally: singleton calls and tested thread
+  counts reproduce stored local actions exactly; batching differs <7e-7.
+  Compare the same hashed normalized inputs on a later paused Linux host.
+  Do not assume batching explains the current singleton evaluator divergence.
 - Verify whether failures near X=277-280 are controller saturation, missed
   contacts, or deficient observations before modifying the action interface.
 - Use the legal successful first-ledge trajectory as a skill-acquisition
