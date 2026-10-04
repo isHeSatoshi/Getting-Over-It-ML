@@ -139,6 +139,17 @@ Calls are different operations, not equivalent FLOPs. Both sample and wall-time
 comparisons must remain explicit. A durable final SAC replay buffer is present;
 only JSON metadata was downloaded for this review, not the large replay object.
 Evidence: `artifacts/v2_first_sac_review_20261003T233847089245Z/`.
+SAC/absolute seed 1 subsequently passes the same contracts with 98,304
+transitions and 264,912 named optimizer calls, learning wall time 2,180.17
+seconds, 0/9 holds, no full completions/deaths, and median retained gain 0.
+Its nominal body remains near `(0,20.57)`, predicted Y is approximately
+`[0.821,0.988]`, hammer contact is zero, and body contact covers all 1,800 ticks.
+Across final cases the body stays at X=0 with Y approximately 20.57 or 21.
+A final replay buffer is durable. This repeats the inactive/above-ground-hammer
+outcome at a second training seed under this configuration and sample budget.
+The three-seed cohort remains incomplete, but these failed seeds already
+prevent its predeclared all-seed promotion gate; do not silently loosen it.
+Evidence: `artifacts/v2_second_sac_review_20261004T001803114793Z/`.
 
 ## How to inspect and measure
 
