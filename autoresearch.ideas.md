@@ -1,6 +1,23 @@
 # Deferred hypotheses
 
-- **Next fixed-axis timed-feedback ablation:** ordered observable stroke
+- **Next contact-response audit before a new correction rule:** replacing
+  stroke gating with explicit clock restores warm-up central+secondary holds
+  at(319.942,104),gain83, but noise11105loses playback secondary support,
+  ending(208.585,82.027),gain61.027versus82. Nominal exact; all phases599,
+  so noise failure not phase stall.579/573post-intervention corrected ticks.
+  Samegain1/norm16/axis128/prior/cases;3600olddefault logged action/metadata
+  rows unchanged.12rollouts/7200control+1440reset,0updates/summits/deaths,
+  full backend/baseline/raw metric/control/clock parity,311Python+JS.
+  Reject teacher/data admission; three reused development cases not robust
+  held-out learning. Audit first harmful corrective segment and original
+  planted-hammer-to-body transfer using existing traces. Query hits not
+  forces; no arbitrary gain/cap/tube/metric sweep. Only propose mechanically
+  justified contact-aware feedback with fresh frozen physics test. No
+  unchanged BC/PPO scaling or off-state teacher suffix. Private PAUSED
+  1791146514.6997206,7closed$0.456424187, budget bytes unchanged.
+  Evidence: artifacts/timed_feedback_probe_20261004T203929123127Z/verification.json.
+
+- **Closed fixed-axis timed-feedback ablation, tested above:** ordered observable stroke
   feedback preserves600nominal action/phase/physical rows and heldgain83,
   but both perturbed cases stall. Leftwarmup ends(59.448,20.770),gain-0.230,
   phase58;noise11105ends(169.478,29),gain8,phase173. Final120phases constant,

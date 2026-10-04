@@ -16,9 +16,10 @@ STATIC_SPEED_PER_TICK = 2.0
 CORRECTION_CAP_PIXELS = 16.0
 
 
-def contract():
+def contract(mode="stroke_feedback"):
+    require(mode in ("stroke_feedback", "timed_feedback"), "Unknown declared stroke-feedback mode")
     source = prior_contract()
-    return {
+    record = {
         "version": VERSION,
         **{key: source[key] for key in ("source_data_sha256", "nominal_pre_observations_sha256",
                                       "nominal_applied_actions_sha256", "source_rows")},
@@ -44,6 +45,12 @@ def contract():
         "limit": "Experimental causal feedback, not validated teacher, labels or learned policy. "
                  "Actual physical nominal and perturbed recovery must precede any data admission.",
     }
+    if mode == "timed_feedback":
+        record["version"] = "explicit-clock-world-feedback-v1"
+        record["input"] = "Raw217float32 pre-action observation plus explicit resettable physical decision clock"
+        record["progress"] = ("min(one-tick decision calls,599); explicit physical playback clock, "
+                              "not observed-state phase acquisition. Original stroke gating is inactive.")
+    return record
 
 
 def points(observations):
@@ -54,13 +61,15 @@ def points(observations):
 
 
 class StrokeController:
-    def __init__(self, observations, actions):
+    def __init__(self, observations, actions, mode="stroke_feedback"):
+        require(mode in ("stroke_feedback", "timed_feedback"), "Unknown declared stroke-feedback mode")
         observations, actions = np.asarray(observations), np.asarray(actions)
         require(observations.shape == (600, 217) and actions.shape == (600, 2)
                 and observations.dtype == actions.dtype == np.float32
                 and np.isfinite(observations).all() and np.isfinite(actions).all()
                 and np.abs(actions).max() <= 1, "Invalid legal stroke prior")
         self.references, self.actions = points(observations).copy(), actions.copy()
+        self.mode = mode
         self.reset()
 
     def reset(self):
@@ -73,7 +82,9 @@ class StrokeController:
         require(self.calls < 1800, "Stroke controller call budget exhausted")
         current, previous = points(observation), self.phase
         reached, progress, perpendicular = False, None, None
-        if self.calls and self.phase < 599:
+        if self.mode == "timed_feedback":
+            self.phase = min(self.calls, 599)
+        elif self.calls and self.phase < 599:
             start, endpoint = self.references[self.phase:self.phase+2]
             segment = endpoint - start
             squared_length = float(segment @ segment)
@@ -95,7 +106,7 @@ class StrokeController:
         pointer = np.asarray(self.actions[self.phase], dtype=np.float64)*128 + correction
         action = (np.clip(pointer, -128, 128)/128).astype(np.float32)
         self.calls += 1
-        self.last = {"mode": "stroke_feedback", "previous_phase": previous,
+        self.last = {"mode": self.mode, "previous_phase": previous,
                      "selected_phase": self.phase, "observed_completion": bool(reached),
                      "segment_progress": progress, "perpendicular_distance_pixels": perpendicular,
                      "pointer_correction_pixels": correction.tolist(), "calls": self.calls}

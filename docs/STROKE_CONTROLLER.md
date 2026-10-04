@@ -3,7 +3,8 @@
 `research/stroke_controller.py` is a non-learning experiment, not a validated
 teacher. It uses the same hash-bound 600-row nominal prior as the phase
 controller. Only legal raw 217-feature pre-action inputs enter the controller.
-Private phase and call count reset with every episode.
+Private phase and call count reset with every episode. The default remains
+`mode="stroke_feedback"`; the opt-in clock ablation is described separately.
 
 ## Original motor and proposed feedback
 
@@ -55,9 +56,48 @@ All 307 Python tests and collision checks pass.
 Evidence: `artifacts/stroke_feedback_probe_20261004T202114143143Z/verification.json`.
 
 Reject this recipe for corrective teaching or new training data. Keep only
-the tested diagnostic tooling and evidence. Next freeze one ablation: retain
-the exact body-error correction and bounds, but use the declared physical
+the tested diagnostic tooling and evidence. The following ablation retained
+the exact body-error correction and bounds, but used the declared physical
 playback clock instead of stroke-completion gating. This is explicitly timed
 feedback, not observed-state phase acquisition. Compare with pure playback
 on the same development cases, with no gain/tube/cap sweep, and require actual
 recovery plus fidelity before broader teacher validation or learning.
+
+## Explicit-clock ablation
+
+`mode="timed_feedback"` selects `min(one-tick decision calls,599)`. The clock
+advances through legal forced warm-up inputs exactly as pure playback does.
+It is explicitly timed feedback, not observed-state phase acquisition.
+The same correction code, gain 1, 16-pixel norm cap, 128-pixel axis limits,
+prior and cases remain fixed. Completion-gate settings remain recorded but
+are inactive in this mode.
+
+Both modes preserve 600 offline nominal action/phase pairs. The original
+default also reproduces all 3600 logged action/metadata pairs unchanged.
+Nominal physical controls and observations remain identical to playback.
+
+| Case | Pure playback | Explicit-clock feedback |
+|---|---|---|
+| Nominal | Central and secondary holds, gain 83 | Identical |
+| Left warm-up | Central and secondary holds, gain 83 | Both holds, `(319.942,104)`, gain 83 |
+| Noise11105 | Secondary only, `(335.292,103)`, gain 82 | No hold, `(208.585,82.027)`, gain 61.027 |
+
+Removing stroke gating restores the selected warm-up hold, but this correction
+harms the noisy playback case. Feedback acts after interventions on 579/573
+ticks. All cases reach phase 599, so that noisy failure is not phase stalling.
+The fixed three-case central gate still fails. These reused development cases
+do not establish general robustness or justify teaching or label admission.
+
+Twelve rollouts, 7200 control and 1440 reset ticks, zero updates, summits or
+deaths. All six full backend pairs and historical playback baselines are
+exact. Independent review reconstructs every raw milestone and verifies every
+control, perturbation and explicit-clock row. All 311 Python tests and
+collision checks pass.
+Evidence: `artifacts/timed_feedback_probe_20261004T203929123127Z/verification.json`.
+
+Reject this fixed world/body-error correction as a teacher. Next audit the
+first harmful corrective segment and the original planted-hammer-to-body
+response before proposing a contact-aware rule. Use existing captured traces;
+do not launch another gain/cap/tube sweep or assume that a query hit is a force
+measurement. Any new feedback rule needs a fresh frozen physical test before
+teacher validation, training data or paid learning.

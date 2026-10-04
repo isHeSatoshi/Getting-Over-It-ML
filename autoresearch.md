@@ -42,7 +42,54 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current result: ordered stroke feedback preserves nominal but fails recovery
+## Current result: explicit clock restores warm-up hold, correction harms noise
+
+Added only opt-in `mode="timed_feedback"` in `research/stroke_controller.py`.
+Phase is explicitlymin(one-tickdecisioncalls,599), not inferred from pose.
+The gain1body-error correction, norm16/axis128caps, actual600row prior,
+source/world-coordinate decoding and three development cases remain fixed.
+Default stroke gating unchanged:3600logged old actions/metadata reproduce
+exactly. Both modes still reproduce600actual nominal actions/phases; nominal
+physical control/observation/reward/telemetry trace exactly matches playback.
+Stroke gate settings remain recorded but inactive in the timed mode.
+
+| Reference case | Pure timed recording | Explicit-clock feedback |
+|---|---|---|
+| Nominal |central+secondary held,(322.586,104),gain83|identical,zero correction|
+| Left warm-up |central+secondary held,(322.577,104),gain83|both held,(319.942,104),gain83|
+| Noise11105 |secondary only held,(335.292,103),gain82|nohold,(208.585,82.027),gain61.027|
+
+Removing completion gating restores the selected warm-up central hold; it
+does not fix everything. Noise feedback loses the secondary hold that pure
+playback has and retains less height. All feedback phases reach599, not a
+phase stall. Correction acts on579/573post-interventionticks. The reused
+three-case central gate remainsfalse, no teacher/corpus/data admission or
+learned-policy progress. No claim of general feedback impossibility.
+Keep centralX<=335unchanged; the timednoisebaseline remains secondary only.
+
+Fresh12rollouts/7200control+1440reset,0updates/summits/deaths, within immutable
+300second owned work bound. All six full same-host backend pairs and six
+pinned old timed baselines exact. Independent full raw milestone/control/
+perturbation-clock reconstruction passes.311Python tests+JS pass.
+Evidence: `artifacts/timed_feedback_probe_20261004T203929123127Z/verification.json`.
+Backend copies are fidelity, development cases are not fresh held-out trials.
+
+Independently private PAUSED1791146514.6997206; actual80444390source,
+onstate-20261004-v1/onstate_study and its closed deadline unchanged. Ledger
+bytes preserved; seven closed estimates$0.4564241866528988, no new paid
+reservation, HF write, public release or local learner training. Goal0.
+
+Next bounded diagnostic: inspect the first harmful corrective segment in
+captured noisy playback/feedback and the original planted-hammer-to-body
+transfer. Determine whether a contact-aware correction rule is mechanically
+justified before proposing it. Query contact is not force or complete
+collision response. Use existing traces first, no new gain/cap/tube/nearest
+metric sweep or controller retries. A new rule needs fresh frozen bounds/
+cases and actual recovery/fidelity before teacher validation, labels or any
+paid learning contract. Do not simply rerun unchanged BC/PPO or collect
+off-state teacher suffix labels.
+
+## Prior result: ordered stroke feedback preserves nominal but fails recovery
 
 Inspected original PlayerbF/bG: motor request0.4*(pointer-hammer+body+render
 offset), change limit40, motor limit50, reach26..102 and real contact solver.
@@ -87,7 +134,7 @@ onstate-20261004-v1/onstate_study and closed historical deadline unchanged.
 Seven closed estimated costs$0.4564241866528988; ledger bytes preserved,
 no paid reservation/remote writes/public release. Full goal remains0.
 
-Next single-axis ablation: keep this exact gain1 body-error correction,
+The historical single-axis ablation, now tested above, kept gain1 body-error correction,
 16pixel norm/128axis caps and prior fixed; replace observable-stroke gating
 with an explicitly declared physical playback clock. Compare timed-feedback
 versus pure playback on the same three development cases. This tests whether

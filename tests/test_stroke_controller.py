@@ -99,6 +99,51 @@ class StrokeControllerTests(unittest.TestCase):
         actions[:] = 99
         np.testing.assert_array_equal(controller.action(np.zeros(217, np.float32)), [0, -.5])
 
+    def test_clock_ablation_keeps_prior_correction_and_bounds_contract_exact(self):
+        original, timed = contract(), contract("timed_feedback")
+        for key in ("version", "input", "progress"):
+            original[key] = timed[key]
+        self.assertEqual(original, timed)
+        self.assertIn("not observed-state phase", timed["progress"])
+        with self.assertRaises(ValueError):
+            contract("silent_clock")
+
+    def test_timed_feedback_uses_explicit_clock_even_if_pose_has_not_advanced(self):
+        observations, actions = fixture()
+        timed = StrokeController(observations, actions, "timed_feedback")
+        for index in range(5):
+            result = timed.action(observations[0])
+            self.assertEqual(timed.phase, index)
+            self.assertAlmostEqual(float(result[0])*128, float(actions[index, 0])*128+index, places=5)
+        timed.reset()
+        np.testing.assert_array_equal(timed.action(observations[0]), actions[0])
+        self.assertEqual(timed.phase, 0)
+
+    def test_timed_feedback_preserves_nominal_parity_and_caps_phase(self):
+        observations, actions = fixture()
+        timed = StrokeController(observations, actions, "timed_feedback")
+        for index in range(600):
+            np.testing.assert_array_equal(timed.action(observations[index]), actions[index])
+        np.testing.assert_array_equal(timed.action(observations[599]), actions[599])
+        self.assertEqual(timed.phase, 599)
+
+    def test_timed_feedback_preserves_raw_input_work_and_correction_guards(self):
+        observations, actions = fixture()
+        with self.assertRaises(ValueError):
+            StrokeController(observations, actions, "hidden_clock")
+        timed = StrokeController(observations, actions, "timed_feedback")
+        with self.assertRaises(ValueError):
+            timed.action(observations[0].astype(np.float64))
+        far = observations[0].copy()
+        far[:2] = (-1000/5500, -1000/16000)
+        result = timed.action(far)
+        self.assertAlmostEqual(np.linalg.norm(timed.last["pointer_correction_pixels"]), 16)
+        self.assertEqual(result.dtype, np.float32)
+        self.assertLessEqual(np.abs(result).max(), 1)
+        timed.calls = 1800
+        with self.assertRaisesRegex(ValueError, "budget"):
+            timed.action(observations[0])
+
 
 if __name__ == "__main__":
     unittest.main()
