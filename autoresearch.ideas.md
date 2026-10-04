@@ -25,9 +25,12 @@
   ceiling/credential/interruption guards and a 60-second cleanup reserve.
   Worker timing modes, pinned private context and parent-bound trainer admission
   are now wired locally and pass 168 tests plus unchanged matched smokes.
-  No future reservation/deployment/jobs exist. Next verify price and reserve/
-  privately deploy a distinct capped timing preflight. Require its durable
-  checks and independently verified PAUSED before intentional study admission.
+  The distinct timing-20261004-v1 preflight is now deployed/started on CPU
+  Upgrade with a $0.48 reservation and 2026-10-04 20:38:26 UTC deadline.
+  Initial durable source/context/budget admission passes, not the eight
+  preflight checks yet. Review those immutable outputs and independently
+  verify PAUSED before any intentional full-study admission. Do not alter
+  the running image/variables or reuse the completed v2 session/deadline.
 - Retain v1's narrow central-landing target, but calibrate and predeclare a
   separate actual-platform-support metric for the next study. Four-tick phases
   1/2 of the known legal trajectory already hold the platform at X about 290;

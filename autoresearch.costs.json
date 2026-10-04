@@ -40,6 +40,32 @@
       "estimated_elapsed_compute_cost_upper_bound": 0.15372382725675898,
       "end_evidence": "artifacts/v2_complete_review_20261004T024603257492Z/complete_review.json",
       "end_artifact_revision": "7c29b01d5cae53606f252511337a70b07a09699c"
+    },
+    {
+      "session": "timing-20261004-v1",
+      "space": "isHeSatoshi/rl-over-it-poc-20261004",
+      "tier": "cpu-upgrade",
+      "rate_per_hour": 0.03,
+      "pricing_last_verified": "2026-10-04",
+      "pricing_evidence_url": "https://huggingface.co/docs/hub/en/spaces-gpus",
+      "start_epoch": 1791088706.4052017,
+      "deadline_epoch": 1791146306.4052017,
+      "verified_end_epoch": null,
+      "maximum_estimated_compute_cost": 0.48,
+      "actual_billed_cost_known": false,
+      "status": "reserved_preflight",
+      "source_space_revision": "362327f3281811b924089251aa67438fe64dc31e",
+      "study": "physical-time-control-study-v1",
+      "sleep_policy": "paid_default_never",
+      "training_started": false,
+      "preflight_launch_requested": true,
+      "source_bundle": "artifacts/hf_bundle_20261004T043918760630Z",
+      "source_upload_evidence": "artifacts/timing_deployment_20261004T044058033509Z/source_upload.json",
+      "context_dataset_revision": "1df89ec0fe48a579c234fed9e4a2e26085279811",
+      "restart_requested_epoch": 1791088979.409153,
+      "initial_durable_phase": "timing_admitted",
+      "initial_state_evidence": "artifacts/timing_deployment_20261004T044058033509Z/initial_status_verification.json",
+      "full_study_launch_requested": false
     }
   ]
 }

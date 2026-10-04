@@ -42,12 +42,43 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current remote state: pilot complete and paused
+## Current remote state: fresh timing preflight started
+
+- Configured session: **`timing-20261004-v1`**, mode **`timing_preflight`**.
+- Private Space revision: **`362327f3281811b924089251aa67438fe64dc31e`**.
+- Pinned secret-free operator context dataset commit:
+  **`1df89ec0fe48a579c234fed9e4a2e26085279811`**.
+- CPU Upgrade, one replica, paid-default never-sleep (`sleep_time=None`).
+- Reservation start: `1791088706.4052017`; immutable deadline:
+  **2026-10-04 20:38:26 UTC**, epoch **`1791146306.4052017`**.
+- Fresh maximum reservation **$0.48** at published $0.03/hour, verified
+  2026-10-04. Closed v1/v2 elapsed estimates plus this reservation total
+  **$0.672547**, below the unchanged $10 ceiling; this is not the actual bill.
+- Explicit restart requested at `1791088979.409153` after source/context/
+  variables were verified while PAUSED; it returned BUILDING. The next bounded
+  monitor read returned APP_STARTING with durable phase `timing_admitted`.
+- Pinned first-state review at dataset commit
+  `bcdd369f039cb3cdfaf0fa654e378d209e423f9c` verifies exact source/game/asset
+  hashes, start/deadline, configured context and runtime policy, with no error.
+  Evidence: `artifacts/timing_deployment_20261004T044058033509Z/`.
+
+**No full timing study has launched or passed preflight yet.** Do not upload,
+restart, resize, change variables/secrets or queue while this preflight runs.
+Next scheduled priority is to review an immutable snapshot of all eight
+completed check outputs, matching source/game/dependency/resource contracts,
+and independently verify PAUSED. Only then may the operator intentionally
+publish a new context with the exact durable passed preflight fields and switch
+to `timing_study` while PAUSED, keeping this same session/start/deadline.
+Do not start from failed/incomplete checks or silently restart interrupted work.
+If a terminal/expired worker remains running, pause only this owned Space and
+verify. The first durable state is admission proof, not a fidelity/test pass.
+
+### Completed historical pilot, immutable evidence
 
 - Private Space: `isHeSatoshi/rl-over-it-poc-20261004`.
 - Private artifacts: `isHeSatoshi/rl-over-it-research-artifacts`.
-- Active dataset session: `poc-20261004-v2`.
-- Active deployed revision: `34c35854133294f97fef741479641f571371b8a3`.
+- Completed dataset session: `poc-20261004-v2`.
+- Historical deployed revision: `34c35854133294f97fef741479641f571371b8a3`.
 - Interrupted historical session: `poc-20261004-v1`, revision
   `b3bf197090f1fb5219e5cce70a0dbfcca6576ce1`.
 - Tier: CPU Upgrade, one replica, sequential nine-run pilot.
@@ -60,7 +91,8 @@ verified from standard campaign aggregation alone.
 A pinned review of dataset commit
 `7c29b01d5cae53606f252511337a70b07a09699c` validates all nine runs under
 their recorded source/game/reward/evaluation contracts. The original source
-revision is still deployed; no local diagnostic changes were uploaded.
+revision was retained at closing; it is now historical. Never mix these
+completed outputs with the separately versioned timing diagnostic.
 All 81 final reference cases have zero full-climb completions and zero deaths
 within their 60-second horizons. PPO v1 holds are 0/9,0/9,1/9; both SAC
 cohorts are 0/9,0/9,0/9. No variant passes follow-up or scale admission.
@@ -74,8 +106,9 @@ Evidence: `artifacts/v2_complete_review_20261004T024603257492Z/`.
 The operator independently verified PAUSED at epoch `1791081974.4473813`.
 The ledger is closed at a conservative v2 compute estimate of $0.153724,
 or $0.192547 across v1/v2, including elapsed pauses/build/preflight time.
-These estimates are not the actual provider bill. There is no active paid
-research batch. Keep the operator running for useful bounded research work.
+These estimates are not the actual provider bill. That pilot is closed;
+the distinct active timing reservation is described above. Keep the operator
+running for useful bounded research work.
 Do not restart the completed pilot or overwrite either artifact session.
 The next priority is the predeclared timing diagnostic, not promotion or
 blind sample/hardware scaling. Timing-aware trainer/GAE/horizon and actual
@@ -84,10 +117,9 @@ Secondary-detector integration and bounded local timing-specific reactive
 fidelity now pass. A distinct non-executing run contract/aggregator now passes
 local tests. A remote-only sequential executor/admission foundation now passes
 local tests and is now wired into fresh timing worker modes and narrowly scoped
-trainer admission. Local integration checks and smokes pass; no deployment or
-reservation has occurred. Next reserve a fresh capped CPU Upgrade session,
-publish its private source/context, run timing preflight and verify durable
-passed evidence plus PAUSED before any intentional study launch. Direct remote
+trainer admission. Local integration checks and smokes passed before the
+distinct capped timing reservation/deployment described above. Review durable
+passed timing preflight evidence plus PAUSED before any intentional study launch. Direct remote
 timing CLI use without a parent-bound run grant remains refused.
 
 Never modify, upload, restart, or resize an active future image. The replacement
