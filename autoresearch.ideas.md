@@ -17,8 +17,11 @@
   timing cases now pass locally with zero measured reference/fast differences.
   Adding metric info preserves bitwise PPO weights/normalizer and existing
   training/evaluation traces in matched smokes. This is not policy success.
-  Distinct timing runner/aggregator, new-session budget/admission and fresh
-  remote preflight remain required. No future job is launched.
+  Distinct non-executing timing run contract/aggregator now passes 146 tests
+  and real smoke case checks; six runs are prepared, none launched. It refuses
+  smoke/source/settings/work/case drift and never verifies the final goal.
+  Remote-only executor, worker/new-session budget/admission and fresh remote
+  preflight remain required. No future job is launched.
 - Retain v1's narrow central-landing target, but calibrate and predeclare a
   separate actual-platform-support metric for the next study. Four-tick phases
   1/2 of the known legal trajectory already hold the platform at X about 290;

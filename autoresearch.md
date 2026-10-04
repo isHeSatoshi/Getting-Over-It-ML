@@ -81,10 +81,11 @@ The next priority is the predeclared timing diagnostic, not promotion or
 blind sample/hardware scaling. Timing-aware trainer/GAE/horizon and actual
 training/reset tick accounting now pass local tests and bounded smokes.
 Secondary-detector integration and bounded local timing-specific reactive
-fidelity now pass. Next implement a distinct source-pinned runner/aggregator
-with new session/budget admission, then fresh remote tests/fidelity/preflight
-and verified PAUSED before any intentional study launch. Remote timing-study
-execution is still deliberately blocked in the CLI.
+fidelity now pass. A distinct non-executing run contract/aggregator now passes
+local tests. Next implement the bounded executor and worker/new-session budget/
+preflight admission, then fresh remote tests/fidelity/preflight and verified
+PAUSED before any intentional study launch. Remote timing-study execution is
+still deliberately blocked in the CLI.
 
 Never modify, upload, restart, or resize an active future image. The replacement
 includes complete-prefix snapshots for append-only logs/CSV/JSONL; binary
@@ -678,3 +679,48 @@ deadline/cost/preflight admission. Do not remove the CLI's remote-study refusal
 until that admission is complete and tested. Then reserve a bounded CPU Upgrade
 session and preflight a fresh private source snapshot; CPU XL is not justified
 by these correctness checks.
+
+### Separate timing-study contract and artifact checker prepared
+
+`research.timing_campaign` prepares/checks the timing study independently of
+the frozen pilot aggregator. It has **no execute operation and launches no
+learner or browser jobs**. Full command generation is only a plan; the trainer still refuses
+remote timing-study execution. Its six declared runs are sequential paired
+repeats 1/4 within training seeds 3,4,5, with the original prepared budgets,
+both metric descriptors and independent frozen reference cases.
+
+Preparation requires the complete contract-validated nine-run pilot with no
+eligible variant and refuses an existing output directory. It fingerprints
+the current source/assets and retains a digest of prior pilot evidence.
+Latest preparation:
+`artifacts/timing_campaign_20261004T034517908263Z/timing_campaign.json`.
+This is not a paid reservation, deployment or launch.
+
+The JSON-only checker validates fixed settings/reward/normalization, gamma and
+physical-time GAE, dependency/source/game equality, 3,840 actual policy calls
+versus the separate 480 internal counter, actual controlled/reset work and
+terminal short-step accounting. It rejects impossible reset counts given
+episode horizons, counts exposure separately from requested ticks, checks all
+nine legal seeded warm-up/noise action streams, metric contracts/latched hold
+times, outcome-height agreement, contact counts and retained-spawn consistency.
+Missing companion JSONs remain incomplete. Smoke results cannot be study
+evidence. Three complete distinct training seeds per arm are required before
+worst-seed arm comparisons; no automatic scale or final-goal verification.
+Binary model/normalizer object integrity and independent saved-policy replay
+remain separate requirements, not things this JSON checker establishes.
+
+All **146 Python tests plus JS checks** pass, including nine new synthetic
+acceptance/refusal tests. Real complete nine-case before/after traces from
+both matched smoke arms pass the physical case checker and are deliberately
+rejected as full-study artifacts. The prepared campaign reports six missing
+runs, no comparison or success. Checker evidence:
+`artifacts/timing_campaign_20261004T034517908263Z/checker_verification.json`.
+The original pilot goal checker still reports 0 worst-seed completion and no
+candidate/final success. No remote source/settings or ledger changed.
+
+Next bounded priority: implement/test the remote-only sequential executor and
+worker admission for a fresh distinct session, using explicit persisted budget
+and source/preflight evidence, secret-stripped children, final-flush/auto-pause
+and interruption refusal. Do not remove the trainer's remote-study refusal
+until that admission is complete and tested. Then reserve/preflight a new
+private CPU Upgrade snapshot; never relaunch or extend completed v2.
