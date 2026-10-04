@@ -42,7 +42,54 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current result: offline audit finds one same-prefix planted-response reversal
+## Current result: local contact-sign gate passes; full recovery not tested yet
+
+Added opt-in `mode="contact_timed_feedback"` only. Fixed explicit clock,
+prior, gain1/norm16/axis128caps; reverse correction when causal raw previous
+hammer queryhit==1 AND previoushammertravel<3pixels. Raw binary/nonnegative
+proxy guards, no true solver branch/force observation. Old modes unchanged:
+7200saved action/metadata rows exact. All three modes reproduce600actual
+nominal actions/phases.315Python tests+JS pass.
+
+Fresh frozen180second local check first reproduces nominal timed central
+hold at(322.586,104),gain83 on reference/fast, not a new learned hold.
+Then three arms replay identical legal prefixes from ordinary(0,21), with
+no state placement, and differ only at one local action. Candidate proposals
+are explicitly overridden during prefixes, never candidate closed-loop
+skill or eligible teacher labels. All arms share exact final raw pre-input.
+
+Noise11105tick28: old relative-to-playback body response(+.098,+.114);
+new sign-aware response(-.098,-.1138), hammer difference0. Dot with intended
+body error changes-.112921to+.112807, proxyactive. Warm-up tick14 proxyfalse,
+new/old action and responseexact. Local intended-response gate passes.
+This is a concrete one-step direction improvement, not recovery, teacher
+validity or primary completion improvement. Zero full new-controller
+closed-loop recovery cases. Prior failed noisy recipe remains rejected.
+
+14rollouts/1452control+1680reset,0updates/summits/deaths, all seven full
+backend pairs exact. All legal prefixes, pinned nominal and old local
+final-step baselines exact. Independent14full raw milestone/proposed/
+applied-control/clock traces reconstruct and local gate recomputes.
+Evidence: `artifacts/contact_sign_probe_20261004T212005018592Z/verification.json`.
+Backend copies are fidelity, not independent recovery successes.
+
+Independently private PAUSED1791149106.3813038;80444390source,
+onstate-20261004-v1/onstate_study and closed historical deadline unchanged.
+Ledger bytes preserved,7closed$0.4564241866528988, no new paid reservation,
+HF write, deployment or training. Full goal0.
+
+Next admitted bounded diagnostic: freeze full600tick comparison of pure
+playback, unchanged timed feedback and contact-sign timed feedback on the
+same nominal/reset12001,leftwarmup,noise11105development cases, reference/
+fast,18rollouts/10800control+2160reset maximum,300second work/330owned
+including cleanup. Keep sign proxy/threshold/gain/caps/prior/clocks fixed.
+Nominal pure baseline/old timed traces must reproduce; nominal candidate
+must be exact, actual perturbation holds and fidelity required. Do not
+retry/retune failed rules or admit teacher labels/learning from a tiny
+development subset. Passing would only allow broader predeclared feedback
+validation, never summit or saved-policy promotion.
+
+## Prior result: offline audit finds one same-prefix planted-response reversal
 
 Completed a frozen180second offline audit of12captured clock-ablation traces/
 7200rows;0newgameplay/reset/learning and no HF writes. Trace/project/source/
@@ -80,7 +127,7 @@ The completed audit ran inside its immutable deadline; subsequent bounded
 verification checked hashes/first proposed-versus-applied contrasts/pause,
 without rerunning the audit, extending its deadline or changing its results.
 
-Next mechanically motivated hypothesis: keep clock/prior/gain1/norm16/
+The historical mechanically motivated hypothesis, now tested above, kept clock/prior/gain1/norm16/
 axis128fixed; reverse correction only when raw causal pre-input has hammer
 queryhit and previoushammertravel<3pixels, matching the original wall-test
 threshold. Proxy is fallible, not privileged true-contact/branch observation.

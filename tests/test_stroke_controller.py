@@ -144,6 +144,56 @@ class StrokeControllerTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "budget"):
             timed.action(observations[0])
 
+    def test_contact_sign_contract_keeps_clock_prior_gain_caps_unchanged(self):
+        previous, contact = contract("timed_feedback"), contract("contact_timed_feedback")
+        for key in ("version", "correction"):
+            previous[key] = contact[key]
+        for key in ("contact_proxy_features", "contact_proxy_travel_threshold_pixels"):
+            previous[key] = contact[key]
+        self.assertEqual(previous, contact)
+        self.assertIn("Fallible", contact["correction"])
+
+    def test_sign_reverses_only_for_previous_hit_and_strictly_low_travel(self):
+        observations, actions = fixture()
+        for hit, travel, reverse in ((1, 0, True), (1, 2.5, True), (1, 3, False),
+                                     (0, 0, False), (0, 2.5, False), (1, 4, False)):
+            controller = StrokeController(observations, actions, "contact_timed_feedback")
+            current = observations[0].copy()
+            current[0] = -10/5500
+            current[BASE_FEATURES.index("hammer_collision")] = hit
+            current[BASE_FEATURES.index("last_hammer_distance")] = travel/64
+            result = controller.action(current)
+            self.assertAlmostEqual(float(result[0])*128, -10 if reverse else 10, places=5)
+            self.assertEqual(controller.last["contact_sign_reversed"], reverse)
+
+    def test_contact_sign_preserves_nominal_parity_clock_reset_and_legal_caps(self):
+        observations, actions = fixture()
+        controller = StrokeController(observations, actions, "contact_timed_feedback")
+        for index in range(600):
+            np.testing.assert_array_equal(controller.action(observations[index]), actions[index])
+        controller.reset()
+        current = observations[0].copy()
+        current[:2] = (-1000/5500, -1000/16000)
+        current[BASE_FEATURES.index("hammer_collision")] = 1
+        result = controller.action(current)
+        self.assertAlmostEqual(np.linalg.norm(controller.last["pointer_correction_pixels"]), 16)
+        self.assertEqual(result.dtype, np.float32)
+        self.assertLessEqual(np.abs(result).max(), 1)
+        self.assertEqual(controller.phase, 0)
+        controller.calls = 1800
+        with self.assertRaisesRegex(ValueError, "budget"):
+            controller.action(current)
+
+    def test_contact_proxy_rejects_normalized_or_invalid_contact_travel_values(self):
+        observations, actions = fixture()
+        for contact, travel in ((.5, 0), (-1, 0), (1, -1)):
+            controller = StrokeController(observations, actions, "contact_timed_feedback")
+            current = observations[0].copy()
+            current[BASE_FEATURES.index("hammer_collision")] = contact
+            current[BASE_FEATURES.index("last_hammer_distance")] = travel
+            with self.assertRaises(ValueError):
+                controller.action(current)
+
 
 if __name__ == "__main__":
     unittest.main()

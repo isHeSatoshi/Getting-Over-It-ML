@@ -1,6 +1,24 @@
 # Deferred hypotheses
 
-- **Next same-prefix sign test, not teacher admission:** offline12trace/
+- **Next fixed full recovery comparison, local sign gate only passed:** causal
+  contactproxy(previousqueryhit==1 AND previoushammertravel<3) reverses
+  correction with sameclock/prior/gain1/norm16/axis128. Noise identical
+  prefix/pre-input at28: old bodydelta(+.098,+.114), new(-.098,-.1138),
+  fixed hammer; dot(error,response) -.112921to+.112807. Warmuptick14proxy
+  false and old/new actions/responsesexact.14rollouts/1452control+1680reset,
+  0updates/summits/deaths, all backend/prefix/old-final/rawcontrol metrics
+  exact,315Python+JS;7200old savedcontrols unchanged. Full new-controller
+  recovery cases0, only original nominal playback holds; no teacher/data/
+  learned skill admission. Freeze18rollout/10800control+2160reset/300work/
+  330owned second diagnostic:3arms(pure,oldtimed,contacttimed),same3
+  development cases/600ticks/bothbackends. No threshold/sign/gain/cap
+  tuning. Require nominal exactness and actual perturbed holds/fidelity;
+  tiny subset pass only admits broader predeclared teacher validation, not
+  labels/training. Private PAUSED1791149106.3813038,7closed$0.456424187,
+  ledger bytes unchanged.
+  Evidence: artifacts/contact_sign_probe_20261004T212005018592Z/verification.json.
+
+- **Closed same-prefix sign hypothesis, tested above:** offline12trace/
   7200row audit,0newgameplay/training. Noise first applied contrasttick28
   after27exact common applied-control/state rows and equal raw pre-inputs.
   Correction(-.490001,-.569308), actualpointerdelta(-.490,-.570), fixed

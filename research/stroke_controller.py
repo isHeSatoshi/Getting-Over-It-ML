@@ -14,10 +14,14 @@ TUBE_PIXELS = 26.0
 STATIC_POSITION_PIXELS = 1.0
 STATIC_SPEED_PER_TICK = 2.0
 CORRECTION_CAP_PIXELS = 16.0
+MODES = ("stroke_feedback", "timed_feedback", "contact_timed_feedback")
+HAMMER_CONTACT = BASE_FEATURES.index("hammer_collision")
+HAMMER_TRAVEL = BASE_FEATURES.index("last_hammer_distance")
+PLANT_TRAVEL_PIXELS = 3.0
 
 
 def contract(mode="stroke_feedback"):
-    require(mode in ("stroke_feedback", "timed_feedback"), "Unknown declared stroke-feedback mode")
+    require(mode in MODES, "Unknown declared stroke-feedback mode")
     source = prior_contract()
     record = {
         "version": VERSION,
@@ -45,11 +49,18 @@ def contract(mode="stroke_feedback"):
         "limit": "Experimental causal feedback, not validated teacher, labels or learned policy. "
                  "Actual physical nominal and perturbed recovery must precede any data admission.",
     }
-    if mode == "timed_feedback":
+    if mode != "stroke_feedback":
         record["version"] = "explicit-clock-world-feedback-v1"
         record["input"] = "Raw217float32 pre-action observation plus explicit resettable physical decision clock"
         record["progress"] = ("min(one-tick decision calls,599); explicit physical playback clock, "
                               "not observed-state phase acquisition. Original stroke gating is inactive.")
+    if mode == "contact_timed_feedback":
+        record["version"] = "explicit-clock-contact-sign-feedback-v1"
+        record["correction"] = ("Same gain1 body-error correction, but reverse its sign only when "
+                                "previous raw hammer query-hit==1 and previous hammer travel<3pixels; "
+                                "same norm16/axis128 caps. Fallible causal proxy, not the solver branch.")
+        record["contact_proxy_travel_threshold_pixels"] = PLANT_TRAVEL_PIXELS
+        record["contact_proxy_features"] = ["hammer_collision", "last_hammer_distance"]
     return record
 
 
@@ -62,7 +73,7 @@ def points(observations):
 
 class StrokeController:
     def __init__(self, observations, actions, mode="stroke_feedback"):
-        require(mode in ("stroke_feedback", "timed_feedback"), "Unknown declared stroke-feedback mode")
+        require(mode in MODES, "Unknown declared stroke-feedback mode")
         observations, actions = np.asarray(observations), np.asarray(actions)
         require(observations.shape == (600, 217) and actions.shape == (600, 2)
                 and observations.dtype == actions.dtype == np.float32
@@ -79,10 +90,13 @@ class StrokeController:
         observation = np.asarray(observation)
         require(observation.shape == (217,) and observation.dtype == np.float32
                 and np.isfinite(observation).all(), "Stroke controller needs raw217float32 input")
+        if self.mode == "contact_timed_feedback":
+            require(observation[HAMMER_CONTACT] in (0, 1) and observation[HAMMER_TRAVEL] >= 0,
+                    "Contact proxy requires raw query flag and nonnegative observed travel")
         require(self.calls < 1800, "Stroke controller call budget exhausted")
         current, previous = points(observation), self.phase
         reached, progress, perpendicular = False, None, None
-        if self.mode == "timed_feedback":
+        if self.mode != "stroke_feedback":
             self.phase = min(self.calls, 599)
         elif self.calls and self.phase < 599:
             start, endpoint = self.references[self.phase:self.phase+2]
@@ -100,6 +114,12 @@ class StrokeController:
             if reached:
                 self.phase += 1
         correction = self.references[self.phase, :2] - current[:2]
+        reverse = False
+        if self.mode == "contact_timed_feedback":
+            reverse = bool(observation[HAMMER_CONTACT] == 1 and
+                           float(observation[HAMMER_TRAVEL])*64 < PLANT_TRAVEL_PIXELS)
+            if reverse:
+                correction = -correction
         magnitude = float(np.linalg.norm(correction))
         if magnitude > CORRECTION_CAP_PIXELS:
             correction *= CORRECTION_CAP_PIXELS / magnitude
@@ -110,4 +130,7 @@ class StrokeController:
                      "selected_phase": self.phase, "observed_completion": bool(reached),
                      "segment_progress": progress, "perpendicular_distance_pixels": perpendicular,
                      "pointer_correction_pixels": correction.tolist(), "calls": self.calls}
+        if self.mode == "contact_timed_feedback":
+            self.last.update(contact_sign_reversed=reverse,
+                             previous_hammer_travel_pixels=float(observation[HAMMER_TRAVEL])*64)
         return action

@@ -142,3 +142,45 @@ First freeze a legal recorded-prefix, one-step sign check on both backends
 from ordinary spawn, with no state placement. Only a verified intended local
 response can admit the next fixed-case recovery check; neither stage admits
 teacher labels or learning automatically. No sign/threshold/gain sweep.
+
+## Same-prefix contact-sign check
+
+Opt-in `mode="contact_timed_feedback"` changes only correction sign. It uses
+the existing explicit clock and reverses the body-error pointer correction
+when raw previous hammer query-hit is exactly 1 and raw previous hammer
+travel is below 3 pixels. Gain 1, norm cap 16, legal axis cap 128 and prior
+remain fixed. Proxy inputs must be raw binary/nonnegative values. The default
+and earlier timed modes remain unchanged.
+
+All three modes reproduce the 600 nominal recorded action/phase pairs.
+Earlier modes reproduce all 7200 captured action/metadata rows unchanged.
+The new ordinary-spawn diagnostic first revalidates the 600-tick nominal
+playback central hold on reference and fast. It then replays legal common
+prefixes and compares pure playback, old correction and contact-sign
+correction for just one step at warm-up tick 14 and noisy tick 28.
+Prefix candidate proposals are explicitly overridden by recorded controls;
+they are not claimed candidate-policy behavior or training labels.
+
+At the identical noisy pre-input, the old correction adds body motion
+`(+0.098,+0.114)` relative to playback. The new correction instead adds
+`(-0.098,-0.1138)`, with zero hammer displacement difference. Response dotted
+with intended body error changes from -0.112921 to +0.112807. The proxy is
+active. In the free-motion warm-up state it is inactive, with exactly the same
+action and response as the old correction. The declared local sign gate passes.
+
+Fourteen rollouts, 1452 controlled and 1680 reset ticks, zero updates, summits
+or deaths. All seven full backend pairs are exact. Legal prefixes and old
+final-step baselines reproduce exactly. Independent review reconstructs all
+raw milestone traces, proposed-versus-applied controls and perturbation
+clocks, and recomputes the local response gate. All 315 Python tests and
+collision checks pass.
+Evidence: `artifacts/contact_sign_probe_20261004T212005018592Z/verification.json`.
+
+Zero new-controller full closed-loop recovery cases were evaluated. The only
+ledge acquisition here is the existing nominal playback baseline. A positive
+one-step effect is not a teacher, saved policy, recovery or summit.
+Next freeze one full diagnostic: pure playback, unchanged timed feedback and
+contact-sign timed feedback, the same three development cases, 600 ticks each,
+both backends, with no rule/threshold/gain/cap changes. Require nominal exact
+replay and actual perturbed holds before any broader teacher validation.
+No automatic corpus or learning admission even if those three cases pass.
