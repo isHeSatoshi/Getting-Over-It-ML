@@ -271,3 +271,48 @@ Determine whether a distinct legal plant-and-recenter terminal stroke is
 mechanically justified before freezing a new local test. No gain/cap/sign/
 threshold sweep, replay of the closed validation or successful-case-only
 corpus. Preserve all nine cases and the failed gate.
+
+## Offline terminal-authority audit
+
+No new gameplay. Six captured traces, 3600 rows, compare the edge failure with
+nominal and a central noisy success. Every final 120-tick body window has
+query contact on all ticks and zero horizontal movement. Hammer query hits
+are zero in all three cases. Only the edge case saturates its correction on
+all 120 ticks. Its hammer wanders at X383.358..390.854, far to the right of the
+supported body at X293.728, while the sign proxy remains inactive.
+This is consistent with moving a free hammer, not established body authority.
+Query counts alone do not prove the internal wall-test branch or contact force.
+
+At the captured edge endpoint, body render offset is `(0,20)`. The current
+pointer's approximate equilibrium hammer target is `(386.605,80.010)`.
+Original body collider geometry extends 37.059 pixels below its position
+at direction 90; it is not a circular 21-pixel collider. The hammer collider
+is a 16x16 bitmap at resolution 2, roughly 8x8 stage pixels. This explains why
+terrain near world Y65 can support a body whose center is at Y104.
+
+Static alpha columns find surface points near X293.728 and X319.728 at Y65,
+but no surface in the sampled band at X267.728. Thus the initial offline
+left-side `(-26,-40)` plant suggestion is discarded before physical testing.
+One mechanically chosen right-side plant pointer `(26,-56)` targets about
+`(319.728,68)`, within original reach at distance 44.407. Eighteen of 81
+approximate footprint samples hit alpha. This is **not** renderer-certified
+hammer contact, nor a tested action. A subsequent pointer `(0,-56)` requests
+leftward hammer motion; the original blocked branch can then move the body
+right. The original controller gains/caps and failed validation remain fixed.
+
+The bounded audit stays inside its immutable 180-second deadline. Separate
+bounded verification checks original SVG/bitmap geometry, hashes and pause.
+A failed Pillow attempt to open the body SVG is preserved; XML inspection
+resolved it without installing a converter or changing assets.
+Evidence: `artifacts/terminal_authority_audit_20261004T221822853423Z/verification.json`.
+
+Next freeze a new ordinary-spawn legal-prefix renderer test, not a nine-case
+validation retry: reproduce the existing 600-tick edge trace, then compare
+unchanged terminal continuation with a fixed right-side plant. Allow at most
+30 plant ticks. Compare one leftward push against identical plant-only
+history, requiring equal pre-inputs, actual renderer query/travel evidence
+and positive incremental body-X response on both backends. Do not extend the
+plant cutoff, scan pointer targets, place state or admit labels if it fails.
+Only demonstrated local planting/body authority can admit a separately
+declared full recentering stage. No force, recovery, teacher or learning claim
+from approximate alpha or a one-step response.

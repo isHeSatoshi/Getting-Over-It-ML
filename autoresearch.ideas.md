@@ -1,6 +1,23 @@
 # Deferred hypotheses
 
-- **Next edge-state terminal-authority audit, no teacher admission:** fixed
+- **Next renderer planting/authority test, no recenter/teacher claim:** offline
+  6traces/3600rows show final120bodycontact120/hammerhit0 and fixedbodyX in
+  edge+central cases; onlyedgecorrection saturated120. HammerX383..391over
+  free space versusbody293.728. Original SVG collider extends37.059below
+  bodyposition; approximate surfaceY65not83. Hammer8x8stagepixels. Left
+  plant(-26,-40)unsupported in approximate sampled terrain, discarded before
+  physics. Derived rightplant(26,-56)target(319.728,68),reach44.407,footprint
+  alpha18/81, not real renderer contact. Next freeze legalordinary600tick
+  edgeprefix then<=30plantticks, compare unchanged terminal vsplant-only and
+  same-plant-history one(0,-56)leftwardpush. Require exact pre-input, real
+  query/travel/bodyXresponse and backend parity before separate full
+  recenter stage. No pointer/gain/cap/threshold/cutoff sweep, placement,
+  failed9/9gate relaxation or labels. Offline180sdeadlinevalid; PillowSVG
+  inspectionfailurepreserved/resolved viaXMLwithoutdependencies. Private
+  PAUSED1791152688.22913,7closed$0.456424187, ledger unchanged. No new play.
+  Evidence: artifacts/terminal_authority_audit_20261004T221822853423Z/verification.json.
+
+- **Closed edge-state terminal-authority audit, completed above:** fixed
   rule on9freshcases improves central finalsupport5/9to8/9 and secondary
   held6/9to9/9 versus playback; gain83every candidate. Noise12100ends
   (293.728,104), final90Xfixed/Y103.539..104/contact1/speed.46138, valid

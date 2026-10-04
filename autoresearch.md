@@ -42,7 +42,56 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current result: fresh validation improves to8/9central, fails strict9/9gate
+## Current result: terminal audit supports a right-side plant test, not recentering yet
+
+Completed frozen180second offline audit of6captured traces/3600rows:
+nominal,edge_noise12100,central_noise12101,reference+fast.0newgameplay/
+reset/learning/HFwrites. Current physical outcomes remain8/9central,
+9/9secondary,strict9/9gatefalse; no new controller, corpus or teacher.
+
+Final120ticks: all3bodies have queryhit120/120 and constantX; all3hammers
+queryhit0/120. Edge correction saturated120/120 (centralcases0), proxy
+inactive. EdgehammerX383.358..390.854 whilebodyX293.728. This is consistent
+with free hammer motion far to the right, not established body-control
+authority. Telemetry still does not expose actual solver branch/force.
+Edgecurrent quasi-static world hammer target(386.605,80.010), offset(0,20).
+
+Original Player collider is SVG16.75x49.61678, rotationcenter
+(10.43447,12.55767), bottom37.0591below position atdirection90/size100.
+Hammerhitbox16x16bitmap/resolution2 means roughly8x8stage pixels. Body
+Y104does not imply terrainY83; approximate alpha surfaceY65can support this
+tall collider. Do not substitute the alpha descriptor for renderer hitboxes.
+16905approximate terrain grid points, within25000cap; right-side surface
+atbodyX+26=319.728,Y65, no opaque sampled-band points atbodyX-26=267.728.
+
+Discarded initial offline(-26,-40)leftplant geometry before game testing.
+One derived rightplant(26,-56)pointer targets(319.728,68), reach44.407within
+26..102, approximatefootprint18/81opaque samples. This is not renderer
+contact or an actually applied action. Follow-on(0,-56)leftward hammer
+request could yield rightward body motion through original-.5blocked
+response, only if real planting occurs. No sign/gain/threshold/cap tuning.
+
+Evidence: `artifacts/terminal_authority_audit_20261004T221822853423Z/verification.json`.
+Audit completed within original immutable deadline; later bounded
+verification checked geometry/one mechanically chosen footprint/pause,
+not an audit retry/deadline extension. One inspection failed because Pillow
+does not open original body SVG; raw SVG/XML inspection resolved it without
+installing dependencies/rasterizing/editing assets. Failure preserved.
+
+Independently private PAUSED1791152688.22913;80444390source,
+onstate-20261004-v1/onstate_study and closed historical deadline unchanged.
+Ledger bytes preserved,7closed$0.4564241866528988, no new reservation. Goal0.
+
+Next bounded physics proposal: freeze ordinary-start legal600tick edge
+prefix reproduction, then unchanged terminal continuation versus fixed
+(26,-56)plant, atmost30ticks. A third branch uses identical plant history
+and one(0,-56)push; require equal pre-input, actual query/travel evidence and
+positive incremental bodyXresponse/reference-fast fidelity. No arbitrary
+placement, pointer scan, cutoff extension, force inference or teacher labels.
+Only local real planting/authority can admit a separate full terminal
+recenter stage. Preserve the failed9/9case/gate and original controller.
+
+## Prior result: fresh validation improves to8/9central, fails strict9/9gate
 
 Frozen exact same contact-sign clock-guided rule versus pure playback,
 reset13001,nominal,strongerleft/right(+/-.875,.125)*3/fourtickwarmups,
@@ -83,7 +132,7 @@ onstate-20261004-v1/onstate_study and closed historical deadline unchanged.
 Ledger bytes preserved,7closed$0.4564241866528988, no new reservation,
 HF writes, deployment, public release or substantive local training.
 
-Next bounded diagnostic: inspect terminal actuator authority at the captured
+The historical diagnostic, now completed above, inspected terminal authority at the captured
 edge landing, including hammer pose/query/travel, original planted response
 and terrain. Final16pixel correction is saturated, bodyXconstant, signproxy
 inactive; do not infer a force or that more gain cures it. Determine whether
