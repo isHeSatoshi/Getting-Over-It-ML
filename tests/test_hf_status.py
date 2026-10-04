@@ -37,6 +37,11 @@ class StatusSessionTests(unittest.TestCase):
         self.assertEqual(campaign_prefix("poc-20261004-v2"),
                          "poc-20261004-v2/pilot_campaign/runs/")
 
+    def test_imitation_monitor_excludes_imported_timing_results(self):
+        prefix = campaign_prefix("imitation-synthetic-1")
+        self.assertEqual(prefix, "imitation-synthetic-1/imitation_campaign/runs/")
+        self.assertFalse("imitation-synthetic-1/prior_timing/runs/model/evaluation.json".startswith(prefix))
+
 
 if __name__ == "__main__":
     unittest.main()

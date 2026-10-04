@@ -42,7 +42,35 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current remote state: timing study complete, verified PAUSED
+## Current remote state: fresh imitation preflight RUNNING
+
+- Fresh session **`imitation-20261004-v1`**, mode **`imitation_preflight`**.
+- Private source **`95a8e311664789bcf1be5c609dce148e1f300f93`**,
+  exact locally tested bundle `artifacts/hf_bundle_20261004T090634364226Z/`.
+- Pinned operator context **`9b3f4f0d6f1128e301e9603edecabecf12de8567`**;
+  corpus revision **`c09410fbf4fd7b36bfb6976f3659b7ec28b2e38c`**.
+- CPU Upgrade, one never-sleep replica. Published $0.03/hour is reverified
+  from official HF docs on 2026-10-04. New maximum reservation **$0.48**,
+  closed estimates plus reservation **$0.772696**, unchanged $10 ceiling.
+- Start **`1791104923.3790162`**; immutable deadline
+  **`1791162523.3790162`**, **2026-10-05 01:08:43 UTC**. This is a distinct
+  new budget, not renewal/extension/resume of the closed timing or v2 sessions.
+- Source/corpus/context/variables were published while independently PAUSED.
+  Intentional preflight restart at `1791105056.135345` returned BUILDING.
+  One bounded monitor read subsequently returned RUNNING, durable
+  **`imitation_admitted`**, no error.
+- Pinned initial dataset **`08234198856fa67a72702e89a827a6e3a3d98678`**
+  verifies source/game/all research hashes, corpus/RMS identity, context,
+  start/deadline and one never-sleep CPU Upgrade replica.
+  Evidence: `artifacts/imitation_deployment_20261004T090843379016Z/`.
+- **No passed preflight or full training is claimed yet.** Keep this active
+  image/variables/hardware/queue unchanged. Next bounded priority: inspect all
+  nine durable passed checks and auto-PAUSED; independently verify PAUSED before
+  publishing the exact passed evidence in a new context, switching only to
+  `imitation_study` and intentionally restarting under the same source/data/
+  reservation/deadline. Never start from incomplete/failed preflight.
+
+### Closed timing study, immutable history
 
 - Configured closed session: **`timing-20261004-v1`**, mode **`timing_study`**.
 - Private Space revision: **`362327f3281811b924089251aa67438fe64dc31e`**.
@@ -62,10 +90,9 @@ verified from standard campaign aggregation alone.
   Worker completion is **2026-10-04 07:19:31 UTC**; independent pause
   verification is epoch **`1791100724.3051379`**, about **07:58:44 UTC**.
   No source/session/context/deadline change or operator pause/restart occurred.
-- No timing arm qualifies for robust promotion or scaling. Next priority:
-  integrate Linux parent-bound remote BC/BC+PPO worker admission and
-  connect it to the tested three-arm trainer and nine-run checker,
-  then a fresh capped source/preflight/session. **Do not restart this closed
+- No timing arm qualifies for robust promotion or scaling. The separate
+  imitation admission/trainer/worker integration now passes locally and its
+  distinct preflight is described above. **Do not restart this closed
   timing session or deploy smoke-only imitation as full training.**
 
 The following kickoff/progress sections are historical evidence, not current
@@ -613,6 +640,56 @@ imitation executor/parent grants, pinned data/context/preflight transport and
 worker integration, then enable full trainer/clone budgets only under that
 tested admission. Keep the current full-run refusal until then. Do not
 prepare another disconnected plan, polish the viewer or renew old sessions.
+
+### Remote imitation admission, full-budget wiring and fresh preflight
+
+`research.imitation_execution` now reuses the timing executor's generic
+tested cost/source/preflight validator, with a distinct imitation protocol
+and exact nine-check set. Linux-only sequential execution binds fresh
+reserved source/session/deadline, dataset/normalization, effective capacity,
+and a durable exclusive no-resume claim before the first learner. Per-run
+grants bind direct parent PID, seed/arm, output/corpus paths and claim hash.
+Stages require a loader-created permit, not an arbitrary metadata flag.
+BC checks its deadline periodically; PPO checks each step; the parent keeps
+the 60-second cleanup reserve and terminates only its owned process group.
+
+Full 2,000-step actor BC and 393,216-transition PPO budgets are now wired
+under that permit. Standalone local cloning CLI stays smoke-only; ungranted
+full trainer calls are refused before data/browser/output access. Actual
+model/physical settings remain guarded. The original timing/pilot paths and
+scientific reward/observations/cases are preserved.
+
+`deploy.imitation_worker` imports only the owned session's pinned bounded
+context/corpus and reviewed closed timing JSON. Immutable remote byte sizes
+are checked before download; hashes/declared data/RMS are rechecked locally.
+Its fresh preflight has unit/JS/raw/reactive fidelity, benchmark/resources and
+all three bounded arm smokes. Passed preflight auto-pauses. Study start needs
+operator-reviewed exact passed evidence plus PAUSED, then durable dispatch
+and claim before any full learner. Interrupted/terminal sessions cannot
+silently restart. Worker backup now includes owned non-pickled NPZ data,
+and the monitor selects only imitation runs, not imported timing results.
+
+A focused package invocation exposes an existing bare-import assumption in
+`tests.test_timing_worker`; the repository's instructed discovery runner
+passes it and all legacy tests. No production regression is inferred from
+that invocation error. All **219 Python tests plus JS collision checks pass**,
+including the exact deployment snapshot's **422 checksummed payload files**.
+All three updated
+smokes preserve bitwise policy weights, frozen normalizer statistics and
+every reference stage trace from the prior trainer smokes.
+Evidence: `artifacts/imitation_admission_smokes_20261004T090039798467Z/verification.json`.
+No substantial desktop training or numerical-policy robustness is claimed.
+
+After local/bundle validation, the operator reverified private ownership,
+PAUSED and one never-sleep CPU Upgrade replica and reserved the distinct
+16-hour/$0.48 session before any launch. Source upload while PAUSED returned
+`95a8e311664789bcf1be5c609dce148e1f300f93`, still PAUSED. The legal 5,400-row/
+3,576-eligible corpus and context are privately published under new immutable
+revisions. Only fresh session/mode/context/deadline variables change while
+PAUSED; hardware, secrets and closed-session artifacts are not modified.
+The intentional preflight restart and pinned initial state are recorded in
+the current-state section above. This is preflight, not a nine-run learning
+result, promotion or full-game claim. Do not poll or redeploy while it runs.
 
 ### Completed historical pilot, immutable evidence
 

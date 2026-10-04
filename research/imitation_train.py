@@ -1,4 +1,4 @@
-"""Three-arm imitation/PPO trainer pipeline. Full remote dispatch is not admitted."""
+"""Three-arm imitation/PPO trainer; full runs require direct-parent Linux grants."""
 import argparse
 from datetime import datetime, timezone
 import hashlib
@@ -78,10 +78,18 @@ def require_model_settings(model, timing):
             "Actual PPO model differs from the bounded declared settings")
 
 
-def learn_arm(model, vector, observations, actions, timing, physical_work, seed):
-    require(timing == settings(timing["arm"], True),
-            "Full imitation training requires future remote runner admission")
+def require_stage(timing, permit, seed):
+    require(timing == settings(timing["arm"], timing["pipeline_smoke"]),
+            "Changed declared imitation settings")
+    if not timing["pipeline_smoke"]:
+        from research.imitation_execution import require_permit
+        require_permit(permit, timing["arm"], seed)
+
+
+def learn_arm(model, vector, observations, actions, timing, physical_work, seed, permit=None):
+    require_stage(timing, permit, seed)
     require_model_settings(model, timing)
+    require(model.seed == seed, "Model seed differs from declared imitation stage")
     require(physical_work.frame_skip == 1 and vector.gamma == timing["gamma"]
             and vector.norm_obs and not vector.norm_reward,
             "Imitation environment/normalizer differs from its physical contract")
@@ -93,15 +101,15 @@ def learn_arm(model, vector, observations, actions, timing, physical_work, seed)
         clone = warm_start(model, vector, observations, actions,
                            updates=timing["cloning_updates"], batch_size=timing["cloning_batch_size"],
                            seed=seed, learning_rate=timing["cloning_learning_rate"],
-                           fit_normalization=False)
+                           fit_normalization=False, pipeline_smoke=timing["pipeline_smoke"], permit=permit)
     require_frozen_rms(vector, frozen)
     return clone, frozen
 
 
-def fine_tune(model, vector, timing, physical_work, frozen, callback=None):
-    require(timing == settings(timing["arm"], True),
-            "Full PPO fine-tuning requires future remote runner admission")
+def fine_tune(model, vector, timing, physical_work, frozen, callback=None, permit=None, seed=6):
+    require_stage(timing, permit, seed)
     require_model_settings(model, timing)
+    require(model.seed == seed, "Model seed differs from declared imitation stage")
     require(physical_work.frame_skip == 1 and vector.gamma == timing["gamma"]
             and vector.norm_obs and not vector.norm_reward,
             "Imitation environment/normalizer differs from its physical contract")
@@ -129,11 +137,20 @@ def main():
     parser.add_argument("--smoke", action="store_true")
     parser.add_argument("--remote-training", action="store_true")
     args = parser.parse_args()
-    if not args.smoke or args.remote_training:
-        parser.error("Full imitation runs require the separately admitted remote runner")
-    timing = settings(args.arm, True)
+    if args.smoke == args.remote_training:
+        parser.error("Choose exactly one smoke or admitted remote imitation run")
+    permit = None
+    if args.remote_training:
+        try:
+            from research.imitation_execution import load_trainer_grant
+            permit = load_trainer_grant(args)
+        except (ValueError, KeyError, OSError):
+            parser.error("Full imitation runs require the separately admitted remote runner")
+    timing = settings(args.arm, args.smoke)
     current = fingerprint()
     arrays, data = load(args.dataset, current)
+    if permit:
+        permit.verify(args.arm, args.seed, data["data_sha256"])
     eligible = arrays["eligible"]
     require(eligible.any(), "No physically successful training demonstrations")
     observations, actions = arrays["observations"][eligible], arrays["actions"][eligible]
@@ -168,10 +185,15 @@ def main():
             model = sb3.PPO("MlpPolicy", vector, seed=args.seed, device="cpu",
                             gamma=timing["gamma"], **timing["ppo"],
                             policy_kwargs={"net_arch": timing["architecture"]})
-            write("manifest.json", {"version": VERSION, "purpose": "Pipeline-only three-arm smoke",
+            write("manifest.json", {"version": VERSION,
+                  "purpose": "Pipeline-only three-arm smoke" if args.smoke else "remote imitation research run",
+                  "imitation_admission": permit.record() if permit else None, "device": "cpu",
                   "config": vars(args) | {"dataset": str(args.dataset), "output_dir": str(output)},
                   "settings": timing, "dataset_sha256": data["data_sha256"],
                   "normalization_contract": normalization, "reward_contract": RewardConfig().describe(1),
+                  "reward_normalization": {"enabled": False, "clipping": "disabled", "units": "raw_task_units"},
+                  "environment_contract": {"action_mode": "absolute", "terrain": True, "frame_skip": 1,
+                                           "physics_hz": 30.0, "ordinary_start": True, "privileged_resets": False},
                   "evaluation_contract": {"cases": [c.describe() for c in STANDARD_CASES],
                                           "benchmarks": benchmark_contract(True)},
                   "python": platform.python_version(), "numpy": np.__version__,
@@ -185,12 +207,16 @@ def main():
                                     frame_skip=1, physical_case_clock=True, secondary_support=True)
 
             untrained = reference_evaluation()
-            clone, frozen = learn_arm(model, vector, observations, actions, timing, physical, args.seed)
+            clone, frozen = learn_arm(model, vector, observations, actions, timing, physical, args.seed, permit)
             after_cloning = reference_evaluation() if clone else None
             if clone:
                 model.save(str(output / "after_cloning_model"))
             class Trace(BaseCallback):
                 def _on_step(self):
+                    if permit:
+                        permit.verify(args.arm, args.seed)
+                    if not args.smoke and self.num_timesteps % 400:
+                        return True
                     info = {key: value for key, value in self.locals["infos"][0].items()
                             if key not in ("terminal_observation", "episode")}
                     info.update(transition=self.num_timesteps,
@@ -200,15 +226,22 @@ def main():
                     with (output / "physical_trace.jsonl").open("a", encoding="utf-8") as handle:
                         handle.write(json.dumps(info) + "\n")
                     return True
-            training = fine_tune(model, vector, timing, physical, frozen, Trace())
+            from stable_baselines3.common.callbacks import CheckpointCallback
+            callbacks = [Trace()]
+            if not args.smoke:
+                callbacks.append(CheckpointCallback(
+                    save_freq=40000, save_path=str(output / "checkpoints"), save_vecnormalize=True))
+            training = fine_tune(model, vector, timing, physical, frozen, callbacks, permit, args.seed)
             final = reference_evaluation() if timing["rl_transitions"] else after_cloning
             model.save(str(output / "model"))
             vector.save(str(output / "normalization.pkl"))
             write("training_summary.json", {"complete": True, "settings": timing, "cloning": clone,
-                  **training, "scope": "BC and RL recorded separately; evaluation/reset work not training"})
-            write("evaluation.json", {"evaluation_backend": "reference", "untrained": untrained,
+                  **training, "learner_gamma": model.gamma, "learner_gae_lambda": model.gae_lambda,
+                  "torch_threads": torch.get_num_threads(),
+                  "scope": "BC and RL recorded separately; evaluation/reset work not training"})
+            write("evaluation.json", {"training_backend": "fast", "evaluation_backend": "reference", "untrained": untrained,
                   "after_cloning": after_cloning, "final": final,
-                  "warning": "Pipeline-only smoke; no skill, robustness or full-game claim"})
+                  "warning": "Pipeline-only smoke; no skill, robustness or full-game claim" if args.smoke else ""})
         finally:
             vector.close()
     print("Evidence:", output)

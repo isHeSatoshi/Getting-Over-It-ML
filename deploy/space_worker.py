@@ -19,8 +19,9 @@ import time
 
 from research.browser_bridge import ROOT
 
-ALLOWED_ARTIFACT_SUFFIXES = {".json", ".jsonl", ".csv", ".log", ".png", ".zip", ".pkl", ".pt"}
-FINAL_PHASES = {"preflight_complete", "pilot_complete", "timing_complete", "failed", "budget_stopped", "interrupted"}
+ALLOWED_ARTIFACT_SUFFIXES = {".json", ".jsonl", ".csv", ".log", ".png", ".zip", ".pkl", ".pt", ".npz"}
+FINAL_PHASES = {"preflight_complete", "pilot_complete", "timing_complete", "imitation_complete",
+                "failed", "budget_stopped", "interrupted"}
 APPEND_ONLY_SUFFIXES = {".log", ".csv", ".jsonl"}
 
 
@@ -109,12 +110,17 @@ class Worker:
         if not self.session.replace("-", "").replace("_", "").isalnum():
             raise ValueError("Invalid artifact session")
         self.mode = os.environ.get("RL_MODE", "preflight")
-        if self.mode not in ("preflight", "pilot", "timing_preflight", "timing_study"):
+        if self.mode not in ("preflight", "pilot", "timing_preflight", "timing_study",
+                             "imitation_preflight", "imitation_study"):
             raise ValueError("Unknown bounded research mode")
         if self.mode.startswith("timing_"):
             from research.timing_execution import SPACE, ARTIFACT_REPO
             if self.space != SPACE or self.artifact_repo != ARTIFACT_REPO or not self.session.startswith("timing-"):
                 raise ValueError("Timing modes require a fresh session on the owned private targets")
+        if self.mode.startswith("imitation_"):
+            from research.imitation_execution import SPACE, ARTIFACT_REPO
+            if self.space != SPACE or self.artifact_repo != ARTIFACT_REPO or not self.session.startswith("imitation-"):
+                raise ValueError("Imitation modes require a fresh session on the owned private targets")
         self.api = HfApi(token=os.environ["HF_TOKEN"])
         self.max_hours = min(float(os.environ.get("RL_MAX_HOURS", "16")), 16.0)
         if not 0 < self.max_hours <= 16:
@@ -209,7 +215,7 @@ class Worker:
             self.process = subprocess.Popen(args, cwd=ROOT, env=environment, stdout=handle,
                                             stderr=subprocess.STDOUT, start_new_session=True)
             while self.process.poll() is None:
-                expired = (self.mode.startswith("timing_")
+                expired = (self.mode.startswith(("timing_", "imitation_"))
                            and time.time() >= self.deadline - FINALIZATION_SECONDS)
                 if expired or self.stop.wait(1):
                     self.terminate_owned_job()
@@ -234,7 +240,7 @@ class Worker:
 
     def watchdog(self):
         from research.timing_execution import FINALIZATION_SECONDS
-        timing = self.mode.startswith("timing_")
+        timing = self.mode.startswith(("timing_", "imitation_"))
         while not self.stop.wait(1 if timing else 10):
             if time.time() >= self.deadline - (FINALIZATION_SECONDS if timing else 0):
                 self.stop.set()
@@ -261,6 +267,10 @@ class Worker:
                     return
 
     def run(self):
+        if self.mode.startswith("imitation_"):
+            from deploy.imitation_worker import run_imitation
+            run_imitation(self)
+            return
         if self.mode.startswith("timing_"):
             from deploy.timing_worker import run_timing
             run_timing(self)

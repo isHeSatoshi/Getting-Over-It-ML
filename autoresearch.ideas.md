@@ -1,5 +1,15 @@
 # Deferred hypotheses
 
+- **Current action:** full-budget imitation stages/executor/private worker now
+  pass 219 local tests plus exact-bundle checks; updated smokes are bitwise
+  unchanged. Fresh `imitation-20261004-v1` preflight is RUNNING on private
+  source `95a8e311664789bcf1be5c609dce148e1f300f93`, context
+  `9b3f4f0d6f1128e301e9603edecabecf12de8567`, $0.48 reservation and deadline
+  2026-10-05 01:08:43 UTC. Full training is not started. Next: review all nine
+  durable checks and verified PAUSED before intentionally admitting the study.
+  No new implementation, variable/source change or polling while preflight
+  is active. Closed estimates plus reservation $0.772696 remain under $10.
+
 - **Current priority after timing closure:** the six-run timing diagnostic is
   complete/validated and the owned Space is independently PAUSED. Fine central
   holds 0/0/2, secondary 1/0/5; coarse all zero. Both worst-seed completion and

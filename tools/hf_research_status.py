@@ -21,7 +21,8 @@ def selected_session(api, requested=None):
 
 
 def campaign_prefix(session):
-    campaign = "timing_campaign" if session.startswith("timing-") else "pilot_campaign"
+    campaign = ("imitation_campaign" if session.startswith("imitation-")
+                else "timing_campaign" if session.startswith("timing-") else "pilot_campaign")
     return f"{session}/{campaign}/runs/"
 
 
@@ -52,7 +53,7 @@ def main():
             local = hf_hub_download(REPO, repo_type="dataset", revision=revision, filename=path)
             with open(local, encoding="utf-8") as handle:
                 evaluation = json.load(handle)
-            records = evaluation["after"]
+            records = evaluation["final"] if session.startswith("imitation-") else evaluation["after"]
             report["completed_runs"].append({
                 "name": path.split("/")[-2],
                 "reference_cases": len(records),
@@ -60,7 +61,7 @@ def main():
                 "full_climb_successes": sum(bool(r["final"]["success"]) for r in records),
                 "secondary_support_successes": sum(bool(r["final"]["milestone_success"].get(
                     "first_platform_support_diagnostic_v2", False)) for r in records)
-                    if session.startswith("timing-") else None,
+                    if session.startswith(("timing-", "imitation-")) else None,
             })
         if path.startswith(prefix) and path.endswith("/physical_trace.jsonl"):
             local = hf_hub_download(REPO, repo_type="dataset", revision=revision, filename=path)

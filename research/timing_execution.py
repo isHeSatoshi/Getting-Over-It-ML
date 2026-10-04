@@ -31,14 +31,21 @@ def remote_host(environment):
 
 
 def validate_admission(ticket, ledger, current, now, environment):
+    return validate_study_admission(
+        ticket, ledger, current, now, environment, version=ADMISSION_VERSION,
+        prefix="timing-", study_contract=contract(), preflight_checks=PREFLIGHT_CHECKS)
+
+
+def validate_study_admission(ticket, ledger, current, now, environment, *,
+                             version, prefix, study_contract, preflight_checks):
     """Check a parent's verified immutable context; no HF reads/writes or secrets."""
-    require(ticket["version"] == ADMISSION_VERSION, "Invalid timing admission version")
+    require(ticket["version"] == version, "Invalid study admission version")
     session = ticket["session"]
-    require(isinstance(session, str) and session.startswith("timing-")
+    require(isinstance(session, str) and session.startswith(prefix)
             and session.replace("-", "").replace("_", "").isalnum(), "A fresh timing session is required")
     require(ticket["space"] == SPACE and ticket["artifact_repo"] == ARTIFACT_REPO,
             "Admission targets a different Space/artifact repo")
-    require(ticket["contract_sha256"] == digest(contract()), "Admission protocol differs from declared study")
+    require(ticket["contract_sha256"] == digest(study_contract), "Admission protocol differs from declared study")
     require(ticket["paused_before_launch"] is True, "Independently verified PAUSED admission is required")
     require(ticket["runtime_policy"] == {"hardware": "cpu-upgrade", "sleep_policy": "never", "replicas": 1},
             "Admission requires one never-sleep CPU Upgrade replica")
@@ -88,8 +95,8 @@ def validate_admission(ticket, ledger, current, now, environment):
             and len(ticket["source_space_revision"]) == 40
             and all(c in "0123456789abcdef" for c in ticket["source_space_revision"]),
             "Invalid immutable source Space revision")
-    require(set(preflight["checks"]) == set(PREFLIGHT_CHECKS)
-            and all(preflight["checks"][name] is True for name in PREFLIGHT_CHECKS),
+    require(set(preflight["checks"]) == set(preflight_checks)
+            and all(preflight["checks"][name] is True for name in preflight_checks),
             "All declared timing-study remote preflight checks must pass")
     for key in PROVENANCE_KEYS:
         require(preflight["provenance"][key] == current[key], "Preflight source/game drift: " + key)

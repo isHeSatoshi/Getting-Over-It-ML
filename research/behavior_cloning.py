@@ -1,4 +1,4 @@
-"""Actor-only PPO warm start. CLI permits bounded pipeline smokes only."""
+"""Actor-only PPO warm start; full API work needs a verified remote run permit."""
 import argparse
 from datetime import datetime, timezone
 import json
@@ -16,14 +16,21 @@ VERSION = "ppo-actor-demonstration-warm-start-v1"
 
 
 def warm_start(model, normalization, observations, actions, *, updates=8, batch_size=64,
-               seed=0, learning_rate=0.001, pipeline_smoke=True, fit_normalization=True):
+               seed=0, learning_rate=0.001, pipeline_smoke=True, fit_normalization=True, permit=None):
     """Separate BC optimizer leaves value, log-std and PPO optimizer state alone."""
     import torch
     from stable_baselines3 import PPO
-    require(isinstance(model, PPO) and type(pipeline_smoke) is bool and pipeline_smoke,
-            "Full cloning requires a separately admitted remote experiment")
-    require(type(updates) is int and 1 <= updates <= 8
-            and type(batch_size) is int and 1 <= batch_size <= 64
+    require(isinstance(model, PPO) and type(pipeline_smoke) is bool,
+            "Invalid cloning model/run type")
+    if not pipeline_smoke:
+        from research.imitation_execution import require_permit
+        arm = getattr(permit, "run", {}).get("arm")
+        require_permit(permit, arm, seed)
+        require(arm in ("behavior_cloning_only", "behavior_cloning_then_ppo")
+                and updates == 2000 and batch_size == 256 and learning_rate == 0.001,
+                "Full cloning differs from its admitted budget")
+    require(type(updates) is int and 1 <= updates <= (8 if pipeline_smoke else 2000)
+            and type(batch_size) is int and 1 <= batch_size <= (64 if pipeline_smoke else 256)
             and type(seed) is int and 0 <= seed < 2**32
             and np.isfinite(learning_rate) and 0 < learning_rate <= 0.01,
             "Invalid bounded cloning smoke budget")
@@ -69,7 +76,9 @@ def warm_start(model, normalization, observations, actions, *, updates=8, batch_
     begin = time.perf_counter()
     try:
         model.policy.set_training_mode(True)
-        for _ in range(updates):
+        for index in range(updates):
+            if not pipeline_smoke and index % 32 == 0:
+                require_permit(permit, arm, seed)
             indices = rng.integers(0, n, size=batch_size)
             optimizer.zero_grad(set_to_none=True)
             loss = torch.mean((prediction(inputs[indices]) - targets[indices]) ** 2)
@@ -83,7 +92,8 @@ def warm_start(model, normalization, observations, actions, *, updates=8, batch_
     finally:
         model.policy.set_training_mode(was_training)
     model._demonstration_warm_started = True
-    return {"version": VERSION, "purpose": "Pipeline-only smoke, NOT skill acquisition evidence",
+    return {"version": VERSION, "purpose": ("Pipeline-only smoke, NOT skill acquisition evidence"
+                                          if pipeline_smoke else "Admitted remote actor demonstration warm start"),
             "samples": n, "optimizer_step_calls": updates, "batch_size": batch_size,
             "sample_presentations": updates * batch_size, "learning_rate": learning_rate,
             "seed": seed, "mean_squared_action_error_before": before,
