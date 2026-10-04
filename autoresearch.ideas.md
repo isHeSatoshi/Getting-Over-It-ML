@@ -20,12 +20,18 @@
   repetition,threads2/4,MKLDNN disabling and deterministic mode also exact.
   Batch8/512 introduce up to1.3411e-7/2.3842e-7 differences. Remote full
   observations are absent, so cross-host equal-input error remains unknown.
-  Next: frozen2-backend recorded-action physics replay/off-policy inference,
-  max3600control+480reset ticks/300seconds/zero updates or paid reservation.
-  Apply only saved noise8105 controls; record raw/normalized input states.
-  Require exact recorded physics/outcomes, stop on mismatch. This cannot count
-  as saved-controller skill or bypass the causal-feedback baseline gate.
-  Plan: artifacts/imitation_fixed_input_20261004T135949710988Z/recorded_action_plan.json.
+  The first recorded-action attempt stopped at84control+120reset ticks on
+  1.7347e-18reward-potential drift, because the operator incorrectly compared
+  extra remote fields. All declared physical fields and applied controls match
+  exactly through the prefix; no fast/full hold result or physics-disproof.
+  Four explicit-scope regression tests now pass; old evidence is preserved.
+  Next: fresh v2 recorded-action replay, max3600control+480reset ticks/300seconds/
+  zero updates or paid reservation, never continuation of the partial case.
+  Keep exact declared physical fields and same-host full backend comparisons.
+  Extra cross-host reward scalars are diagnostics, not an undeclared stop.
+  Apply only saved noise8105 controls and capture raw/normalized input states.
+  This cannot count as saved-controller skill or bypass causal-feedback gates.
+  Plan: artifacts/imitation_recorded_action_20261004T141840833438Z/corrected_replay_plan.json.
   Then select an actual matched-input host comparison if needed. Keep the
   operator running. Never restart this closed session or silently renew
   budgets. No more disconnected infrastructure or viewer work.

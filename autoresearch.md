@@ -42,7 +42,40 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Latest bounded diagnostic: archived-input inference is repeatable
+## Latest recorded-action attempt: operator comparison-scope failure
+
+Frozen v1 replay stopped at tick84 in its reference case before fast ran.
+The operator compared **all** remote info fields, exceeding the declared
+physical gate: reward_potential_after differs by1.734723475976807e-18.
+BodyX/Y, retained gain, body/hammer query hits, latched held flags,
+summit/death, physical-step count and truncation match exactly for all84ticks.
+Recorded applied controls match exactly. Preserve the raw failure status;
+it is not evidence that recorded physics diverged.
+
+Actual work84control+120reset ticks,1partial rollout,0updates. At abort
+pose `(-29.3055032,25.5130490)`,retained4.513049,both holdsfalse,no summit/death.
+Off-policy prediction difference over this prefix is at most8.9407e-8
+normalized units, but missing remote full observations still prevent a
+cross-host equal-input or Torch-build cause claim. No full hold/replay result.
+Evidence: `artifacts/imitation_recorded_action_20261004T141840833438Z/verification.json`.
+23focused Python tests, JS collision checks, recorded-control/terminal capture
+fixture and4explicit-comparison regression tests pass. Original attempted
+script/report remain unchanged; no extra physics or in-place retry occurred.
+Space independently PAUSED at1791123836.0914898 with unchanged source/session/
+mode/deadline. All reservations stay closed; estimated total$0.4074241866528988.
+
+Next: fresh v2 replay with **explicit original physical fields**, not a
+numerical tolerance. Cross-host additional reward fields are diagnostics;
+same-host reference/fast raw/normalized inputs, predictions, reward/info and
+pre/post physical telemetry remain exact gates. Max2cases/3600control+480reset
+ticks/300seconds/0updates or paid work. Keep the prior84+120exposure separate,
+use fresh ordinary resets/output, never resume/continue the partial instance.
+The original causal saved-feedback baseline remains blocked. No promotion,
+placement, corrective-oracle claim or blind training scale.
+Unlaunched plan:
+`artifacts/imitation_recorded_action_20261004T141840833438Z/corrected_replay_plan.json`.
+
+## Previous bounded diagnostic: archived-input inference is repeatable
 
 Offline clone7 inference used512archived pre-action normalized217-feature
 float32 inputs (256nominal/256noise8105), eight frozen variants and4096total

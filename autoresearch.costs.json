@@ -170,6 +170,22 @@
       "distinct_fixed_inputs": 512,
       "inferred_sample_presentations": 4096,
       "all_closed_estimate_unchanged": 0.4074241866528988
+    },
+    {
+      "name": "imitation_recorded_action_scope_failure",
+      "evidence": "artifacts/imitation_recorded_action_20261004T141840833438Z/verification.json",
+      "paused_verified_epoch": 1791123836.0914898,
+      "space_stage": "PAUSED",
+      "new_paid_reservation": false,
+      "remote_writes": false,
+      "controlled_ticks": 84,
+      "reset_ticks": 120,
+      "case_rollouts": 1,
+      "training_updates": 0,
+      "operator_extra_remote_reward_field_stop": true,
+      "full_replay_not_completed": true,
+      "fresh_corrected_plan_unlaunched": true,
+      "all_closed_estimate_unchanged": 0.4074241866528988
     }
   ]
 }
