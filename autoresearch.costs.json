@@ -78,7 +78,10 @@
       "last_audited_run": "ppo_absolute_repeat_1_seed_3",
       "last_audited_transition": 174800,
       "last_audit_dataset_revision": "0520df2b4c6ab9e04f83e9fb71769900c23c61e3",
-      "last_audit_evidence": "artifacts/timing_active_audit_20261004T051847531397Z/audit.json"
+      "last_audit_evidence": "artifacts/timing_active_audit_20261004T051847531397Z/audit.json",
+      "validated_completed_runs": 1,
+      "latest_result_evidence": "artifacts/timing_first_result_verified_20261004T054007933164Z/review.json",
+      "latest_result_dataset_revision": "112cb595ce2f2f42895b1e01d0185577c964f7b8"
     }
   ]
 }

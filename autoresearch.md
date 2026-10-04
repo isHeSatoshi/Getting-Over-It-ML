@@ -128,6 +128,46 @@ trace; reservation/start/deadline/source and financial caps are unchanged.
 Next scheduled priority is the first completed result with companions, or a
 bounded progress/terminal-status check. Keep the live study unchanged.
 
+### First complete timing result: repeat 1, training seed 3
+
+At the 2026-10-04 05:37 UTC check the first one-tick run is complete and the
+unchanged queue is actively training `ppo_absolute_repeat_4_seed_3`.
+Pinned dataset `112cb595ce2f2f42895b1e01d0185577c964f7b8` passes the timing
+aggregator for repeat-1 seed 3, with manifest/admission/source/reward/evaluation
+and training-work contracts intact. It has **0/9 central v1 holds, 1/9 secondary
+support holds, zero full completions and zero evaluation deaths**. Median
+retained gain is **0**, equal to its untrained baseline median.
+
+The isolated secondary hold is `action_noise_5`: first qualified at 5.83 game
+seconds, final approximately `(302.12,104)`, retaining 83 units. Body-query
+hits cover 1,753/1,800 controlled ticks, including all final four seconds.
+It remains just outside the frozen central X minimum 305. This is a genuine
+declared-case support outcome under recorded reference metrics, not
+nominal/robust skill, held-out success or portable saved-policy reproduction.
+Nominal remains near `(1.01,21)`; most other cases stay near spawn/low terrain.
+Neither the pilot gates nor metric definitions are changed.
+
+Training reports **393,216 actual controlled ticks**, **4,440 reset ticks**
+(37 resets), zero shortened terminal decisions, **3,840 actual policy calls**
+versus the separately labelled 480 internal counter, and 1,453.60 learning
+wall seconds. Model/normalizer companions are durable with nonzero immutable
+Hub metadata; they were not downloaded/reloaded for this review.
+All before/after reference cases consume 1,800 controlled ticks each and have
+separately counted initial/automatic reset work.
+
+The one-tick evaluation JSON is 81,189,517 bytes because it records four times
+as many decisions as repeat 4. An initial operator-only 32 MiB size gate refused
+it; verified immutable metadata permits a bounded 128 MiB retry, which passes
+the full trace checker. This was an audit limit, not a learner failure, and
+did not change the worker/source/settings. Use bounded per-file size metadata
+before future timing-result downloads, rather than assuming pilot file sizes.
+Evidence: `artifacts/timing_first_result_verified_20261004T054007933164Z/`.
+
+Only one of six runs is complete. Do not rank timing arms, scale, promote or
+infer a three-seed effect from it. Finish the same six-run study under its
+unchanged deadline/cost cap; next scheduled priority is the paired four-tick
+result or a bounded terminal/progress check.
+
 ### Completed historical pilot, immutable evidence
 
 - Private Space: `isHeSatoshi/rl-over-it-poc-20261004`.

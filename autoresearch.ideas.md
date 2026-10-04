@@ -37,6 +37,12 @@
   2,040 reset ticks and durable model/normalizer pairs through 160k. Contracts
   and physical accounting pass, but no final reference result is available.
   Do not compare timing arms or claim skill from that training telemetry.
+  Repeat-1 seed 3 now completes with 0/9 central and 1/9 secondary holds,
+  no full completions/deaths and median retained 0. Its noise-5 case stays at
+  `(302.12,104)` with retained 83, not nominal/robust skill. Await the paired
+  repeat-4 run and all seeds; no timing effect or scaling conclusion yet.
+  One-tick evaluation JSON is ~81 MB; precheck immutable sizes and use bounded
+  128 MiB result limits instead of the pilot's operator-only 32 MiB assumption.
 - Retain v1's narrow central-landing target, but calibrate and predeclare a
   separate actual-platform-support metric for the next study. Four-tick phases
   1/2 of the known legal trajectory already hold the platform at X about 290;
