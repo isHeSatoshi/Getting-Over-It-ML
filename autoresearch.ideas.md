@@ -3,6 +3,10 @@
 - After the current nine-run pilot: one-tick feedback versus four-tick holds.
   Match physical exposure, gamma, episode/evaluation duration, and warm-ups.
   Treat samples and optimizer steps as separate resource axes.
+  A tested non-executing plan now exists in `research.timing_study`, including
+  physical-time GAE, noise cadence, new seeds, equal planned optimizer calls,
+  larger one-tick minibatches and explicit actual-exposure/compute caveats.
+  Trainer/evaluator support and calibration remain required before activation.
 - Retain v1's narrow central-landing target, but calibrate and predeclare a
   separate actual-platform-support metric for the next study. Four-tick phases
   1/2 of the known legal trajectory already hold the platform at X about 290;

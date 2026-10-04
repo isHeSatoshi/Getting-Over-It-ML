@@ -428,3 +428,34 @@ Local Torch is `2.6.0+cu124` running on CPU; deployed Torch is `2.6.0+cpu`.
 Evidence: `artifacts/inference_probe_20261003T235912700282Z/`.
 All **98 Python tests plus JS checks** pass. The source is local only and must
 not be deployed during the current pilot.
+
+## Conditional next-study preparation
+
+`research.timing_study` now prepares a **non-executing** predeclared timing
+comparison, conditional on finishing the pilot with no eligible follow-up.
+It is not a launch, promotion, new reservation, or modification of the pilot.
+Plan: `artifacts/timing_study_20261004T004121165329Z/plan.json`.
+All **103 Python tests plus JS checks** pass.
+
+PPO/absolute repeats 1/4 use new training seeds 3/4/5, the same original game,
+terrain/raw settled reward/ordinary start, matched nominal 393,216 controlled
+physics-tick budgets, 400-second episodes and 60-second evaluations.
+One-tick decisions are 393,216 versus 98,304 for four-tick decisions.
+Rollouts/minibatches are 8,192/1,024 versus 2,048/256, keeping 48 rollouts,
+10 epochs and 3,840 planned optimizer calls per run. Gamma **and GAE lambda**
+are scaled to equal physical-time decay. Warm-ups and noise offsets are held
+for the same physical durations, not the same number of decisions.
+
+This is not equal FLOPs or identical gradient information: the one-tick arm
+has four times more decision/gradient sample presentations and observation/RPC
+overhead. Terminal short steps can also change actual exposure; report actual
+controlled ticks and reset-settling ticks separately. Do not mislabel nominal
+budget matching as identical realized physics exposure.
+
+The plan requires timing-aware trainer/evaluator/perturbation implementation,
+frame-skip-specific fidelity and smoke checks, physical calibration of a
+separate platform-support diagnostic alongside frozen v1, and a new bounded
+session/reservation before it can execute. The preparation module cannot
+launch training or bypass current campaign gates. If the remaining pilot
+produces a legitimately eligible variant, prioritize its gated follow-up
+instead of automatically executing this conditional plan.
