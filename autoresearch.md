@@ -42,7 +42,7 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current remote state: imitation study RUNNING, seed-6 scratch final result validated
+## Current remote state: imitation study RUNNING, seed-6 clone-only result validated
 
 - Fresh session **`imitation-20261004-v1`**, mode **`imitation_study`**.
 - Private source **`95a8e311664789bcf1be5c609dce148e1f300f93`**,
@@ -119,7 +119,7 @@ verified from standard campaign aggregation alone.
   imitation-checker/goal tests pass locally. Evidence:
   `artifacts/imitation_progress_review_20261004T093741216495Z/audit.json`.
   All HF operations in this chunk were reads; no running-batch changes.
-- Latest pinned result **`abe4b0aa973c702b1637648be1f1afbb703d0db8`**
+- First pinned final result **`abe4b0aa973c702b1637648be1f1afbb703d0db8`**
   validates one full run, **`ppo_from_scratch_seed_6`**, with eight still
   incomplete. Actual Space remains RUNNING, phase
   **`behavior_cloning_only_seed_6`** at that snapshot; source, context,
@@ -150,7 +150,40 @@ verified from standard campaign aggregation alone.
   three-seed cohort, candidate or final goal. Seventeen checker/goal tests
   pass; this entire chunk used HF reads only. Evidence:
   `artifacts/imitation_snapshot_review_20261004T095748247801Z/review.json`.
-- **No cloning advantage, robust skill or full completion is claimed.** Keep
+- Latest result **`d3ed8abd536e99a85a0820f1eb5f749089d7ac12`** validates
+  **two completed runs**, scratch and **`behavior_cloning_only_seed_6`**;
+  seven final runs remain incomplete. RUNNING, no error, unchanged
+  **`behavior_cloning_then_ppo_seed_6`** is active.
+- Clone-only final reference: **0/9 central holds, 0/9 secondary holds,
+  0/9 full completions, zero deaths**. Median retained gain **9** versus
+  its untrained 0 and scratch final -0.1973. Nominal ends at
+  **`(227.9007801,30)`**, retained **9**, with 120 body-query hits and
+  zero hammer hits in the last four seconds. This is small traversal/lift,
+  not the demonstrated ledge or robust skill.
+- Actual actor-only cloning is **2000 optimizer calls**, batch256,
+  **512000 sample presentations**, **3576 eligible rows**, about
+  **6.68616 seconds**. In-corpus normalized-action MSE falls from
+  **0.2562333941 to 0.0001084495**, but physical held outcomes remain false.
+  Clone-only has **zero RL/PPO calls, control/reset training ticks or resets**.
+  Low supervised error is not closed-loop expert reproduction or recovery.
+- Same-seed scratch/BC untrained reference traces match exactly. BC final
+  equals post-clone, by source and trace, **not a third independent evaluation**.
+  Actual distinct BC reference exposure is 32400 controlled +4320 reset ticks
+  (baseline and post-clone); do not double-count the duplicated final JSON.
+- BC saved final/post-clone model LFS identities match. Its initial normalizer
+  LFS identity matches hybrid's. Whole BC/hybrid post-clone ZIP hashes differ,
+  which does **not** establish differing weights/inference; no binaries were
+  loaded. Hybrid post-clone reference equality remains a required later check.
+- Hybrid's bound full-run manifest/grant/claim validates; its sparse training
+  prefix is **137200 controlled +1680 reset ticks**, latest retained
+  **32.64142**, neither held flag. This is on-policy progress only, not a
+  final result or a completed optimizer-call count.
+- Goal helper explicitly projects both validated rows: no complete
+  three-seed cohort, candidate or final goal. Seventeen checker/goal tests
+  pass. Clone evaluation123902707bytes is below the prechecked128MiB gate;
+  this chunk used HF reads only. Evidence:
+  `artifacts/imitation_clone_review_20261004T101754929686Z/review.json`.
+- **No robust cloning advantage, skill or full completion is claimed.** Keep
   this active image/variables/hardware/queue unchanged. Next: independently
   review actual training exposure and the nine
   sequential scratch/BC-only/BC+PPO results for seeds 6/7/8 using the imitation

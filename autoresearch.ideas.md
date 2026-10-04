@@ -8,19 +8,23 @@
   `95a8e311664789bcf1be5c609dce148e1f300f93`, new study context
   `ae958180b348432f236c6c1e72f832a723164199`. Same $0.48 cap and
   2026-10-05 01:08:43 UTC deadline; closed-plus-reserved $0.772696 under $10.
-  Latest result `abe4b0aa973c702b1637648be1f1afbb703d0db8` validates scratch
-  seed6 final: central/secondary/full 0/9, no deaths, median retained -0.1973,
-  nominal near spawn. Actual work393216 control/4080 reset/3840 calls.
-  Early sampled training holds did not transfer to deterministic reference.
-  BC-only seed6 is running in that snapshot; eight final runs remain missing.
+  Latest result `d3ed8abd536e99a85a0820f1eb5f749089d7ac12` validates
+  scratch/BC-only seed6: both central/secondary/full0/9, no deaths;
+  median retained -0.1973 versus9. BC nominal `(227.90,30)` misses the ledge
+  despite in-corpus MSE0.25623->0.00010845,2000BCcalls/zeroRL.
+  BC+PPOseed6 is active at137200control/1680reset; seven final runs missing.
+  Exact initial reference traces agree. Hybrid after-clone reference
+  comparability is pending; ZIP-file hash differences are not weight differences.
   Next: finish the unchanged scratch/BC-only/BC+PPO comparison, seeds6/7/8,
-  before choosing a recovery/corrective demonstration follow-up. No cloning
-  effect, robust skill or promotion from this single failed baseline.
+  before choosing a recovery/corrective demonstration follow-up. No robust
+  cloning advantage or promotion from these two failed first-skill outcomes.
   Do not change active source/variables/hardware/queue, poll, resume
   interruptions or extend this budget. No more disconnected infrastructure
   or viewer work. Historical bullets below do not authorize old restarts.
 
-- **Conditional diagnosis after this comparison:** if cloned arms also fail,
+- **Conditional diagnosis after this comparison:** BC-only seed6 already
+  fits corpus targets closely but fails closed-loop ledge reproduction. If
+  the complete cloned/hybrid cohorts also fail,
   examine stochastic-versus-deterministic control, action saturation and
   eligible-demo RMS sensitivity near spawn, plus missing reactive recovery
   coverage. Scratch seed6 nominal ends on the floor with no last-four-second
