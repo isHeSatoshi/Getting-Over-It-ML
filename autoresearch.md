@@ -42,7 +42,7 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current remote state: imitation study RUNNING, final scratch prefix and follow-up probe declared
+## Current remote state: imitation study RUNNING, scratch/clone three-seed cohorts validated
 
 - Fresh session **`imitation-20261004-v1`**, mode **`imitation_study`**.
 - Private source **`95a8e311664789bcf1be5c609dce148e1f300f93`**,
@@ -342,7 +342,7 @@ verified from standard campaign aggregation alone.
 - Complete frozen seed8 and verify automatic PAUSED before closure.
   Investigate first-divergence/recovery and preservation of primitive skills
   in a separately bounded follow-up, not blind scaling or new active settings.
-- Latest **`5df6c20390ca641d8d10a2c62471e7f4142b922e`** adds no final
+- Earlier final-scratch prefix **`5df6c20390ca641d8d10a2c62471e7f4142b922e`** adds no final
   result: six validated runs unchanged. Actual RUNNING phase
   **`ppo_from_scratch_seed_8`**, no error; all source/data/runtime/context/
   deadline/cap bindings remain valid. Prefix393200control +4560reset ticks,
@@ -373,6 +373,42 @@ verified from standard campaign aggregation alone.
   (`causal_probe_plan.json`, `declaration_verification.json`).
   This is bounded diagnostic preparation, **not a new ML result or
   hypothesis confirmation**, with zero new physical work or updates.
+- Latest **`8ab8568c299c2563302ee5ddb51c6339e7a280ef`** validates
+  **eight completed runs**, only **`behavior_cloning_then_ppo_seed_8`**
+  remains. Actual RUNNING phase is that last hybrid, no error;
+  source/context/data/runtime/deadline/cap unchanged. No PAUSED/closure yet.
+- Seed8 scratch reference: **2/9 central,6/9 secondary held events**,
+  0/9full completions,zero deaths, median retained **81.823447**.
+  Nominal **`(344.6361888,102.9068100)`**, retained81.90681, secondary
+  held but central false (X beyond335). Actual393216control+4560reset
+  ticks,38resets,3840policy calls,1406.89361learning seconds.
+- Seed8 clone-only: **2/9 central,4/9 secondary held events**,0/9summits,
+  zero deaths, median retained **11.505030**. Nominal false at
+  **`(268.5098762,31.5060203)`**, retained10.50602. Central held cases
+  are hammer-left `(317.84285,104)` and hammer-right `(311.33074,104)`,
+  each retained83. BC2000calls/512000presentations,zeroRL;
+  MSE0.25403884->0.00008516183,BC6.81014seconds.
+- Recomputed both frozen detectors from every-tick coordinates/displacement
+  velocities/body-query hits for all18new final traces. Four central and
+  ten secondary **metric windows** validate, not14independent cases.
+  **BC noise3/4 secondary holds are transient:** later endpoints are
+  `(532.64385,28.65331)` and `(268.58891,31.70660)`. A latched held event
+  is not continued final support. No support-force or portability claim.
+- Full scratch and BC cohorts now validate all seeds6/7/8:
+  central counts **scratch0/0/2, BC0/1/2**, secondary
+  **scratch0/0/6, BC0/1/4**. Both worst-seed held/full-completion rates
+  remain **0**, neither passes nominal+8/9first-skill gates. Do not select
+  or scale from seed8's favorable median or modify either frozen detector.
+- Eight completed final inventories: **five central/eleven secondary held
+  events,0/72full completions,zero deaths**. This is inventory, not a pooled
+  IID method-success rate. Matching seed8 untrained traces pass; paired
+  hybrid post-clone traces await the last result.
+- Strict full-stage/source/work checker and projected goal helper pass,
+  candidate/final false. Twenty-one saved companion identities are
+  immutable bounded metadata only; seventeen checker/goal tests pass.
+  Evidence: `artifacts/imitation_seed8_results_20261004T123812526317Z/review.json`
+  and `held_windows.json`. All HF operations were reads, no new local
+  training/rollouts, active changes or budget renewal.
 - **No robust cloning advantage, skill or full completion is claimed.** Keep
   this active image/variables/hardware/queue unchanged. Next: independently
   review actual training exposure and the nine

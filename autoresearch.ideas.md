@@ -8,13 +8,14 @@
   `95a8e311664789bcf1be5c609dce148e1f300f93`, new study context
   `ae958180b348432f236c6c1e72f832a723164199`. Same $0.48 cap and
   2026-10-05 01:08:43 UTC deadline; closed-plus-reserved $0.772696 under $10.
-  Latest `7edf76f63f4a67a236145b9cf5e0e8b183688972` validates six finals,
-  all arms seeds6/7: one central/secondary held case,0/54summits/no deaths,
-  all nominal gates false. Seed7 medians scratch/BC/hybrid10.9245/7.5115/6.
-  The clone's noisy8105 held case is present in matched hybrid post-clone
-  traces but absent after PPO, retained81.66->3.53. This is measured paired
-  loss, not a proven cause or general PPO-effect claim. All initial/post-clone
-  traces agree within both seeds. Seed8 scratch is active; three finals remain.
+  Latest `8ab8568c299c2563302ee5ddb51c6339e7a280ef` validates eight finals:
+  scratch central0/0/2,BC0/1/2; both complete cohorts have worst-seed0 and
+  fail first-skill gates. Seed8 scratch2central/6secondary,median81.8234;
+  BC2central/4secondary,median11.5050,nominal false. BC noise3/4 secondary
+  holds are real but transient; do not call latched flags final support.
+  All18new final detector traces recompute. Last hybrid8 is active; no
+  PAUSED/closure or paired seed8 post-clone comparison yet. Prior within-seed
+  initial/post-clone comparisons pass. Final inventories0/72summits/no deaths.
   Next: finish the unchanged scratch/BC-only/BC+PPO comparison, seeds6/7/8,
   before choosing a recovery/corrective demonstration follow-up. No robust
   cloning advantage or promotion from these partial and brittle outcomes.
