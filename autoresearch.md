@@ -42,7 +42,67 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current result: useful new state coverage, not improved climbing
+## Current result: next learning data and comparison implemented, smoke only
+
+The next controller-learning comparison now has an admitted data path and a
+frozen scientific contract. It compares original demonstrations alone with
+original demonstrations plus controls actually applied during the selected
+successful learner trajectory. This is preparation, not improved climbing:
+no new physical rollout or full study training ran, and the goal metric stays 0.
+
+`research/onstate_data.py` derives and safely loads 5376 raw pre-action examples:
+3576 eligible original rows and 1800 captured learner-state rows. All reviewed
+source files and component arrays are SHA-bound. The original RMS is fitted
+only on the original 3576 rows, verified exactly and frozen. Logged controls,
+physical row indices, global noise clock and normalized input continuity are
+checked. Raw replay samples normalize exactly to the successful feedback
+inputs; clipped inputs are never inverted. Source IDs avoid treating the
+reference/fast copies as independent examples. All targets and the one
+shared-input ambiguity remain visible, with no averaging or silent cleanup.
+
+`research/onstate_study.py` freezes seeds 9, 10, 11 and two fresh actor-only BC
+arms. Both use architecture [256,256], the same seed initialization, 2000
+updates x256 samples (512000 presentations) and lr 0.001, with no PPO.
+Original-only batches draw 256 original examples; augmented batches draw
+192 original and 64 logged examples, uniformly with replacement within each
+source, then shuffle. Value/logstd/PPO state stays untouched. Equal calls and
+sample counts do not imply equal FLOPs or wall time. Nine predeclared reference
+cases use nominal reset 10001, new legal warm-ups (+/-0.625,0.375)x3 and noise
+10100..10105. Existing noise 8105 is selected development/training evidence,
+never validation. Central nominal/all-seed and 8/9 gates stay unchanged; a
+ledge candidate cannot verify the summit or final held-out goal.
+
+The shared `warm_start` supports this data path only for <=8x64 pipeline smokes.
+Full on-state work is refused before old imitation permits can authorize it.
+Two actual seed 9 smokes have identical initial policy hashes, exact saved
+parameter/prediction reload and unchanged original RMS/value/logstd/PPO state.
+Actual 16 BC calls/1024 presentations: original arm 512 old, augmented 384 old +128 new;
+0 game/reset ticks, 0 PPO calls or full-study updates. MSE falls in each smoke,
+but these are different data distributions and do not rank physical skill.
+
+All 266 Python tests and JS collision checks pass. The first archive test used
+a high-entropy synthetic fixture larger than the immutable 8MiB cap; its
+compressibility was corrected without relaxing the loader. Read-only target
+tensors now copy before conversion to avoid unsafe writable tensor aliases.
+The 440-file allowlisted bundle includes data/study/tests/docs and was not uploaded.
+Derived data SHA c2d0895d56706d3c0797effae5018928229866d95c22bb72c42706876f43c268.
+Evidence: `artifacts/onstate_pipeline_20261004T170617730137Z/verification.json`.
+
+Private Space independently PAUSED at 1791133809.5616088, same `7be7d58d` source,
+noise-probe session/mode/context and deadline; no variable/source/session write.
+All six reservations stay closed at estimated $0.4179241866528988. No new spend
+or paid launch. Proposed next execution cap is 2 hours / $0.06 on CPU Upgrade,
+one replica, inside $10; this proposal is NOT a reservation/admission.
+
+Next bounded implementation: source/data/contract-bound Linux trainer and
+worker admission plus a strict six-run checker, reusing existing durable
+claim/deadline/backup/pause protections. Then passed remote preflight, new
+source/context/session/reservation and immutable deadline before intentional
+launch. Do not use old imitation permits or resume closed sessions. No more
+data-coverage/kernel/transport probes, new PPO or blind scaling.
+See `docs/ONSTATE_LEARNING.md` for the comparison and execution boundary.
+
+## Previous result: useful new state coverage, not improved climbing
 
 The offline audit compares 1800 successful full-noise learner inputs against
 3576 eligible original demonstration inputs under the exact same frozen RMS.

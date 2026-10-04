@@ -16,12 +16,19 @@ VERSION = "ppo-actor-demonstration-warm-start-v1"
 
 
 def warm_start(model, normalization, observations, actions, *, updates=8, batch_size=64,
-               seed=0, learning_rate=0.001, pipeline_smoke=True, fit_normalization=True, permit=None):
+               seed=0, learning_rate=0.001, pipeline_smoke=True, fit_normalization=True, permit=None,
+               onstate_data=None, onstate_arm=None):
     """Separate BC optimizer leaves value, log-std and PPO optimizer state alone."""
     import torch
     from stable_baselines3 import PPO
     require(isinstance(model, PPO) and type(pipeline_smoke) is bool,
             "Invalid cloning model/run type")
+    using_onstate = onstate_data is not None or onstate_arm is not None
+    if using_onstate:
+        from research.onstate_data import OnStateData
+        require(pipeline_smoke and type(onstate_data) is OnStateData
+                and fit_normalization is False,
+                "On-state comparison is smoke-only until separately admitted; never refit its RMS")
     if not pipeline_smoke:
         from research.imitation_execution import require_permit
         arm = getattr(permit, "run", {}).get("arm")
@@ -56,12 +63,16 @@ def warm_start(model, normalization, observations, actions, *, updates=8, batch_
         normalization.obs_rms.update(observations)
         normalization.training = False
     else:
-        require(normalization.training is False
-                and normalization.obs_rms.count == n + 0.0001,
-                "Pre-fitted demonstration normalization must be frozen with matching sample count")
+        if using_onstate:
+            onstate_data.validate_cloning(normalization, observations, actions, onstate_arm)
+            require(batch_size % 4 == 0, "Source-balanced batch must be divisible by four")
+        else:
+            require(normalization.training is False
+                    and normalization.obs_rms.count == n + 0.0001,
+                    "Pre-fitted demonstration normalization must be frozen with matching sample count")
     normalized = normalization.normalize_obs(observations)
     inputs = torch.as_tensor(normalized, device=model.device)
-    targets = torch.as_tensor(actions, device=model.device)
+    targets = torch.as_tensor(actions if actions.flags.writeable else actions.copy(), device=model.device)
     actor = list(model.policy.mlp_extractor.policy_net.parameters()) + list(model.policy.action_net.parameters())
     require(bool(actor), "Missing actor parameters")
     optimizer = torch.optim.Adam(actor, lr=learning_rate)
@@ -74,12 +85,18 @@ def warm_start(model, normalization, observations, actions, *, updates=8, batch_
     with torch.no_grad():
         before = float(torch.mean((prediction(inputs) - targets) ** 2).cpu())
     begin = time.perf_counter()
+    original_presentations = logged_presentations = 0
     try:
         model.policy.set_training_mode(True)
         for index in range(updates):
             if not pipeline_smoke and index % 32 == 0:
                 require_permit(permit, arm, seed)
-            indices = rng.integers(0, n, size=batch_size)
+            indices = (onstate_data.sample_indices(onstate_arm, rng, batch_size) if using_onstate
+                       else rng.integers(0, n, size=batch_size))
+            if using_onstate:
+                logged = int(np.count_nonzero(indices >= 3576))
+                logged_presentations += logged
+                original_presentations += batch_size - logged
             optimizer.zero_grad(set_to_none=True)
             loss = torch.mean((prediction(inputs[indices]) - targets[indices]) ** 2)
             require(bool(torch.isfinite(loss)), "Non-finite cloning loss")
@@ -100,7 +117,13 @@ def warm_start(model, normalization, observations, actions, *, updates=8, batch_
             "mean_squared_action_error_after": after,
             "wall_seconds": time.perf_counter() - begin,
             "rl_transitions": 0, "ppo_optimizer_state_preserved": True,
-            "normalization": "Raw demo observations fit RMS once, then frozen for BC/evaluation",
+            "normalization": ("Original eligible RMS remains frozen; logged learner states never refit it"
+                              if using_onstate else
+                              "Raw demo observations fit RMS once, then frozen for BC/evaluation"),
+            "onstate_sampling": ({"arm": onstate_arm, "original_presentations": original_presentations,
+                                  "logged_success_presentations": logged_presentations,
+                                  "data_sha256": onstate_data.record["data_sha256"]}
+                                 if using_onstate else None),
             "limit": "Lower supervised error is not physical success or recovery coverage"}
 
 

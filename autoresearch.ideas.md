@@ -1,5 +1,24 @@
 # Deferred hypotheses
 
+- **Next actionable implementation:** data admission and the matched learning
+  comparison are ready and smoke-tested, not full-training authorized. New
+  `research/onstate_data.py` derives 5376 raw rows (3576 old +1800 logged), preserves
+  exact legal pre-action/applied-label pairing and visible ambiguity, and
+  enforces original frozen RMS without inverse clipping. New
+  `research/onstate_study.py` fixes seeds 9/10/11, original-only versus 3:1 mixed
+  actor-only BC, 2000x256 per arm, original architecture/RMS and fresh
+  reference noise 10100..10105/legal warm-ups. Current 8105 is development only.
+  `warm_start` allows only bounded on-state smokes; old full permits refused.
+  Actual two 8x64 smokes give 16 calls/1024 presentations, matched initial weights
+  and saved reload, frozen RMS/value/logstd/PPO, 0 game/PPO/full-study work.
+  266 Python+JS pass; 440-file bundle not uploaded. Space still private/PAUSED,
+  closed estimated $0.417924187 unchanged. No controller improvement.
+  Next implement separate data/source-bound Linux trainer/worker admission
+  and strict six-run result checks, then remote preflight and fresh capped
+  session <=2h/$0.06 before launching. Reuse old operational protections,
+  never old closed permits/sessions. No additional diagnostic loop.
+  Evidence: artifacts/onstate_pipeline_20261004T170617730137Z/verification.json.
+
 - **Next learning comparison, stop adding diagnostics:** offline successful
   learner-state audit now complete. 1800 rows versus 3576 eligible demos, only 1 exact
   input match; normalized nearest medians 7.6021 versus original leave-one-out
