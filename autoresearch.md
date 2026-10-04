@@ -171,6 +171,17 @@ One seed remains insufficient for the parameterization comparison. Because
 this seed fails the frozen all-seed gate, the variant cannot qualify for the
 current follow-up even if later seeds improve; preserve their remaining runs.
 Evidence: `artifacts/v2_first_velocity_review_20261004T013812716866Z/`.
+SAC/velocity seed 1 subsequently validates at 98,304 transitions, 264,912 named
+optimizer calls, 2,114.77 learning seconds, 0/9 holds and no full completions/
+deaths, median retained gain **31.91**. Its nominal endpoint is approximately
+`(255.16,130.67)`, retaining 109.67 units, but not a body-supported landing.
+Over its last four game seconds, decision-boundary X varies 243.31..255.16
+and Y 113.36..130.67, with 120 hammer-hit ticks and zero body-hit ticks.
+This is a contact-rich lift/traversal trajectory, not settled platform support.
+Two warm-up cases remain at spawn; other final cases retain roughly 29..40.47
+units. A final replay buffer is present. The velocity cohort still has one
+missing seed, and both completed seeds fail the fixed retention gate.
+Evidence: `artifacts/v2_second_velocity_review_20261004T021802585667Z/`.
 
 ## How to inspect and measure
 

@@ -46,6 +46,9 @@
   unlike the inactive absolute-action cohort, but still has 0/9 platform holds.
   Finish the other seeds; distinguish low-terrain traversal from retention
   before attributing improvement to the control parameterization.
+  Second seed retains median 31.91, with nominal +109.67 height but no body
+  contact in its last four seconds. Target a reactive landing/retention skill,
+  not just further lift on a planted hammer or high endpoints.
 - Test ordinary-start skill composition before a privileged-reset curriculum.
   Never include diagnostic placements in claimed policy success.
 - Completed and deployed in the fresh v2 recovery: named optimizer-step
