@@ -42,6 +42,37 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
+## Latest local diagnostic: saved-policy portability gate failed
+
+The frozen clone7/reset1001 prefix/suffix probe ran only its four baseline
+rollouts (nominal/full-noise8105, reference/fast). Recorded local observations,
+actions, rewards, info and pre-tick telemetry agree exactly across backends.
+Both baseline first predictions differ from their remote recording by
+`5.960464477539063e-8` in action X. Byte-verified model/RMS identities match,
+and saved RMS is exactly the fresh 3576-eligible-row corpus fit.
+
+Nominal physical body positions match the remote trace throughout, despite
+the inference mismatch. Full-noise body coordinates first differ by more than
+1 pixel at tick257; local final `(219.4806113,26.5231557)` has neither hold,
+versus remote `(334.4829333,102.6639127)` with both holds. This is portability
+failure, not a diagnosed cause or proof that any particular rounding error
+caused the loss. Local CPU inference uses Torch2.6.0+cu124, remote2.6.0+cpu;
+the build difference alone is not an explanation.
+
+Actual work:7200controlled+960reset ticks,4rollouts,0updates. Early/late
+interventions were blocked, with no tolerance relaxation or physical rerun.
+Space independently PAUSED at1791120948.6116133; all reservations stay closed
+at cumulative estimated$0.4074241866528988. Goal metric remains0.
+Evidence: `artifacts/imitation_noise_probe_20261004T133305314172Z/verification.json`.
+Two preparation errors (Hub1.32 HTTP API, Windows venv launcher ancestry)
+were fixed before game work; their failed attempts are preserved. The owned
+launcher exception leaves Linux training admission unchanged. Final tool also
+captures terminal post-step telemetry and flushes partial rows for interrupted
+diagnostics; these additions are fixture-tested, not another physical rollout.
+All229Python tests and JS checks pass. Next: fixed-input inference/recorded-
+action portability diagnosis before retrying this exact frozen intervention.
+No blind BC/PPO scaling, closed-session restart or viewer work.
+
 ## Current remote state: imitation comparison complete, validated and PAUSED
 
 - Closed session **`imitation-20261004-v1`**, configured mode **`imitation_study`**.

@@ -142,5 +142,20 @@
       "initial_state_dataset_revision": "08234198856fa67a72702e89a827a6e3a3d98678",
       "initial_state_evidence": "artifacts\\imitation_deployment_20261004T090843379016Z\\initial_status_verification.json"
     }
+  ],
+  "postclosure_local_diagnostics": [
+    {
+      "name": "imitation_noise_probe_baselines",
+      "evidence": "artifacts/imitation_noise_probe_20261004T133305314172Z/verification.json",
+      "paused_verified_epoch": 1791120948.6116133,
+      "space_stage": "PAUSED",
+      "new_paid_reservation": false,
+      "remote_writes": false,
+      "controlled_ticks": 7200,
+      "reset_ticks": 960,
+      "training_updates": 0,
+      "interventions_blocked_by_saved_policy_portability": true,
+      "all_closed_estimate_unchanged": 0.4074241866528988
+    }
   ]
 }

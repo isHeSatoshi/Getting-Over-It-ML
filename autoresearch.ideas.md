@@ -10,9 +10,14 @@
   Worker complete12:57:06UTC; PAUSED independently1791118690.7391362.
   Reservation closed at estimated$0.114728001,cumulative$0.407424187 under
   $10,not bills/credit balance. No active reservation or new paid batch.
-  Next: implement/execute the frozen local causal probe; terminal/pause/
-  ledger gates now pass, but require saved-baseline reproduction and exact
-  backend fidelity before interpreting prefix/suffix effects. Keep the
+  Frozen local probe now ran four baselines,7200control+960reset ticks,0updates.
+  Local fast/reference recorded fields agree exactly; both first predictions
+  differ from remote by5.960464477539063e-8. Saved bytes/RMS match. Nominal
+  body trace remains exact, but noise8105 separates by>1coordinate pixel at
+  tick257 and loses the recorded hold. Early/late interventions were blocked.
+  Torch CPU versus CUDA-enabled CPU-inference builds are observed, not a cause.
+  Next: fixed-input saved-policy/normalizer and recorded-action portability
+  diagnosis, then retry only after exact baseline reproduction. Keep the
   operator running. Never restart this closed session or silently renew
   budgets. No more disconnected infrastructure or viewer work.
 
@@ -33,7 +38,7 @@
   exploration. Do not call this a general catastrophic-forgetting result or
   alter the current PPO/BC budgets and contracts.
 
-- **Concrete next probe is frozen, not launched:** after comparison terminal
+- **Frozen causal probe launched only baselines and stopped:** after terminal
   review/PAUSED/ledger closure, use clone-only seed7/reset1001 for nominal,
   fullnoise8105, earlynoise ticks0..59, latenoise ticks60..1799. Preserve
   the global four-tick noise sequence while masking blocks. Max8reference/
@@ -42,7 +47,8 @@
   behavior first; stop on portability/fidelity mismatch. Post-hoc selection,
   not held-out skill or a corrective oracle. Plan:
   artifacts/imitation_last_seed_review_20261004T121802090256Z/causal_probe_plan.json.
-  Current scratch8 prefix393200/393216 is not a final result; no active changes.
+  Evidence: artifacts/imitation_noise_probe_20261004T133305314172Z/verification.json.
+  All imitation runs are now final; no active remote changes or paid batch.
 
 - **Offline drift evidence, not a cause:** seed6 clone nominal differs from
   legal teacher by about2.006px on the first pointer target; body paths separate

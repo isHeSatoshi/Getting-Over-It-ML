@@ -20,6 +20,7 @@ class DeploymentTests(unittest.TestCase):
             self.assertTrue((bundle / "research/fast_rpc.js").exists())
             self.assertTrue((bundle / "deploy/space_worker.py").exists())
             self.assertTrue((bundle / "tools/research_goal_metrics.py").exists())
+            self.assertTrue((bundle / "tools/imitation_noise_probe.py").exists())
             self.assertTrue((bundle / "deployment_provenance.json").exists())
             self.assertFalse((bundle / "venv").exists())
             self.assertFalse((bundle / "chrome_profiles").exists())
