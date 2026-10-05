@@ -1,5 +1,9 @@
 # Ordered stroke-feedback diagnostic
 
+The separately named residual scaffold is now implemented and passes
+exact zero-correction fidelity. See `RESIDUAL_CONTROLLER.md`. Its unchanged
+hand-designed ledge holds are not learning progress. No model is trained.
+
 `research/stroke_controller.py` is a non-learning experiment, not a validated
 teacher. It uses the same hash-bound 600-row nominal prior as the phase
 controller. Only legal raw 217-feature pre-action inputs enter the controller.
@@ -69,7 +73,7 @@ Evidence: `artifacts/branch_attribution_audit_20261005_v1/verification.json`.
 The selected earlier support event still uses the same failed upper point,
 from a body nearly38 pixels higher. Its legal reach does not establish
 support from the low failed pose; the copied-point hypothesis is rejected.
-Next implement a separately named residual-learning scaffold around the
+The next direction selected a separately named residual-learning scaffold around the
 unchanged legal contact-feedback prior, with exact zero-actor baseline
 fidelity and explicit clock/own-command context. Hand-designed baseline
 holds must not be reported as learning. No training is admitted yet.

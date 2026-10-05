@@ -42,7 +42,76 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current result: copied-point lower-support hypothesis rejected; pivot away from proxy tuning
+## Current result: residual scaffold implemented; zero correction preserves the baseline exactly
+
+Run87 implements `research/residual_controller.py` without changing the
+original game, environment, rewards, legal controls or StrokeController.
+The actor gets222 float32 features: raw217, clamped source phase/599,
+current base proposal2, and previous OWN issued final command2.
+Legal residual2 axes produce float32clip(base+2*residual,-1,1), so a
+correction can override the prior. No privileged counters, case identity,
+seed or future noise enter the actor. A matching222 normalizer/checkpoint
+contract guard rejects old217 RMS. No learner or checkpoint was trained.
+
+Strict reset/prepare/action/actual-observe lifecycle, cached preparation,
+raw pre/post linkage, copies, horizon1800, terminal priority and separate
+base/residual/unclipped/final-issued/actual-applied records pass16 new
+tests. Previous own history remains the issued command when an external
+warm-up/noise command differs; these are not teacher labels.381 full
+Python tests,16 counter JS tests and collision JS tests pass. Flush error
+messages in the Python suite are expected fault-injection fixtures.
+
+Offline zero actions are byte-exact and all base metadata/source clocks
+match saved nominal600 and failed751 traces on both backends,2702 rows.
+The failed saved gain11/noholds remains a failure, not new recovery.
+One frozen nominal baseline/zero-actor reference/fast smoke completes
+4rollouts/2400controlled+480episode+240bootstrap=720total reset ticks,
+31.903158 seconds within immutable180work/210owned bounds. All archived
+physics/actions/raw217/rewards/infos/base metadata match exactly, as do
+both backend pairs and both baseline/scaffold physical histories.
+The222 context and own/source memory are independently reconstructed.
+
+Both reference arms hold the central and secondary ledge and finish
+(322.585886,104), retained gain83, with zero deaths/summits/updates.
+These are unchanged hand-designed baseline holds, NOT learned progress
+or full-climb competence. Primary goal remains0; no reliable learned
+climber or summit. Implementation/fidelity gate passed, not teacher,
+learning or physical-goal promotion. Evidence:
+`artifacts/residual_scaffold_fidelity_20261005_v1/verification.json`.
+Independent private Space PAUSED at1791180498.712750, source80444390,
+sessiononstate-20261004-v1/modeonstate_study/contexted3a53c3 and closed
+deadline unchanged. Ledger bytes unchanged,7closed estimates
+$0.4564241866528988; no remote writes or paid reservation.
+
+## Next bounded chunk: training adapter and zero-head initialization, no local optimizer
+
+Build a separately named Gym residual adapter around the unchanged
+one-tick absolute raw217 game environment and validated scaffold. Expose
+222 actor observation and residual Box2, preserve raw climb-v2 reward and
+actual physics, reset memory with actual episodes, and handle terminal
+and time-limit actor observations correctly for future PPO bootstrapping.
+Never return a217 terminal observation to a222 learner or advance a
+source clock by an extra hypothetical action. Test cached next-context,
+issued/applied linkage, episode/terminal/horizon transitions and reset.
+
+Implement/test zero actor mean head and logstdlog(.01), residual scale2
+(initial final-command std.02 before clipping), new222 RMS and saved
+schema/normalizer/prior/scaffold provenance. Use bounded no-optimizer
+initialization, mock/saved-trace pipeline checks, not substantive local
+training or another contact/counter refinement. No actor trained today.
+
+After adapter correctness, prepare a NEW private remote residual-PPO
+contract/source/fresh session/reservation/preflight/deadline, at least
+3training seeds and matched zero-actor baseline/fixed9case reference
+evaluations. Freeze sample/update/time/cost limits in that future plan.
+No paid reservation/deployment active now. Failed or incomplete preflight
+cannot launch training; closed sessions and interrupted SAC stay closed.
+Report learned physical benefit only over the SAME hand-designed
+zero-actor baseline, never count its initial holds as ML improvement.
+No counter labels, teacher-data gate bypass, blind BC/PPO scaling or
+goal-gate relaxation. Original summit/heldout/upper-route/replay goals fixed.
+
+## Prior result: copied-point lower-support hypothesis rejected; pivot away from proxy tuning
 
 Completed the frozenone-selector180second OFFLINE lower-support audit:
 6validatedinstrumentedtraces/2536rows, independentlyverified5.028816s,
@@ -76,7 +145,7 @@ IndependentprivatePAUSED1791178827.282319/source80444390/sessiononstate-
 Ledgerbytespreserved,7closed$0.4564241866528988; no remote write/
 deployment/publicrelease/paidreservation/substantivelocaltraining.
 
-## Next meaningful direction: zero-residual learning scaffold, not another contact audit
+## Prior declaration, completed above: zero-residual scaffold, not another contact audit
 
 Pivotto a NEW residual-PPO design thatstarts fromthe existinglegal
 contact_timed_feedback prior rather than askingimitation torediscover

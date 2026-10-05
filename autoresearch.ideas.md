@@ -1,6 +1,28 @@
 # Deferred hypotheses
 
-- **Next NEW zero-residual learning scaffold, no training yet:**
+- **Next residual training adapter/initialization, no local optimizer:**
+  Run87 scaffold implemented,16new/381fullPython+16counterJS+collision
+  pass. Offline nominal600/failed751 bothbackends2702rows byte-exact
+  zeroaction/baseclocks. Frozen4rollouts2400control+480episode+
+  240bootstrap=720totalreset/31.903s, allphysics/raw217/reward/info/base
+  archive/backend/baseline exact; causal222 context reconstructed.
+  Bothreferencearms samecentral/secondaryholds/gain83, no learned
+  improvement/death/summit/update. Goal0. New222RMS/schema guard, no
+  trainedmodel/checkpoint. PAUSED1791180498.712750/$0.456424187closed.
+  NEXT Gymadapter residualBox2/222 context/rawclimb-v2reward/frame1/
+  horizon1800 around unchanged env/scaffold. Actualreset/sourceown
+  memory, cached next preparation, correct222 terminal/time-limit
+  observation and futurePPO bootstrap, no extra hypotheticalbasecall.
+  Zero meanhead/logstdlog(.01)/scale2, new222RMS/checkpointcontract.
+  Unit/mock/savedtrace/no-optimizer initialization checks first.
+  Onlythen NEWremote3seed/fixed9case matchedzeroactor plan/source/
+  session/reservation/preflight/deadline; work/costlimits frozenlater.
+  No substantive localtraining/paidlaunchtoday/closedbatchresume/
+  counterlabels/teacherdata-gate bypass/contactproxyrefinement.
+  Learnedphysicalbenefit mustbeat SAMEzeroactorhanddesignedbaseline.
+  Evidence: artifacts/residual_scaffold_fidelity_20261005_v1/verification.json.
+
+- **Closed zero-residual scaffold implementation, completed above:**
   One-selectorlower-supportaudit completed6traces2536rows/5.029s/
   0newphysics. Selectsnominal362 stationaryblockedtip291.914,69.795,
   SAMEpreviousfailedpoint; actualsourcebody69.776→76.699 whilefailed32.
