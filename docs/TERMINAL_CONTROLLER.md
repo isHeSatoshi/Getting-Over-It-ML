@@ -162,3 +162,31 @@ baseline-post errors, plus query release or
 positive hammer travel can admit only further local controller design,
 not recovery, labels or training. No additional actions, targets or timings
 may be searched after seeing the response.
+
+## Equal-state local release passes
+
+The separately frozen one-step contrast reproduces all299 prefix controls,
+physical states and actual pre-inputs. One derived action at tick300 changes
+hammer-query hit from true to false and travel from0 to4.474497 pixels.
+Target error falls from14.708234 to11.145062, below both common-pre and
+baseline-post errors. Incremental hammer motion is `(-4.049067,+1.904252)`;
+body differences are only about `4e-13` pixels, not meaningful lift.
+
+The declared local actuator gate passes. This controlled release does not
+prove ledge recovery or explain the earlier failed acquisition causally.
+The two contrast arms stop at300 with no ledge hold. Nominal600 support
+remains exact. Six rollouts/2400 controlled+720 reset ticks, 30.928560 owned
+seconds; all raw controls/metrics/clocks, three full backend pairs and source
+prefix/baselines independently verify. 41 focused Python tests and collision
+checks pass, no controller or metric changes. Evidence:
+`artifacts/hammer_release_probe_20261005_v1/verification.json`.
+
+Next is a distinct frozen follow-through diagnostic: original versus the
+same single tick300 pulse, then resume unchanged contact feedback and noise
+through751 ticks, with the nominal600 gate. Six rollouts/at most4204 controlled
+plus720 reset ticks/180workseconds. Require original central held event and
+final90 supported central ticks, exact old prefixes/baselines and fidelity.
+Secondary support cannot replace that gate. No second release, terminal
+macro, target, gain or cutoff search. Passing would only admit later causal
+controller design, not teacher labels, corpus or learning. All earlier failed
+gates stay immutable; body lift and recovery remain untested.

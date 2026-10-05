@@ -1,6 +1,30 @@
 # Deferred hypotheses
 
-- **Next single hammer-world release authority test:** frozenoffline6traces/
+- **Next frozen single-release follow-through:** matched299prefix/preinput
+  localtest passes actualrelease: hammerquerytrue->false/travel0->4.474497,
+  targeterror14.708234->11.145062 belowcommonpre/baselinepost.
+  Tipdelta(-4.049067,+1.904252),bodydifference~4e-13/notmeaningfullift.
+  6rollouts/2400control+720reset/30.928560s,0updates/deaths/summits,
+  all raw/3backend/prefix/oldbaselines exact,41Python+JS; no labels/recovery.
+  Originalfresh8/9failedstrict9gate immutable. SameONEorderedpriorgoal/
+  pointer/rawpre/fixedoffset, no new gain/target/cap/clock or physicaledits.
+  Freeze nominal600referencefast gate; knownfailed13105/reset14001,
+  original vsone300world-goal pulse after299exactoriginalsteps,then resume
+  unchanged contactcontroller/continuousnoise through fixed751.
+  6rollouts/max4204control+720reset/180work/210ownedseconds. Exact oldnominal/
+  prefixes/base751/candidate300,allbackend/rawmetrics; require candidate
+  originalcentralheld AND final90central/speed2/bodyfraction.8/nodeaths.
+  Secondaryreportednot substitute; no automaticterminalmacro/secondrelease/
+  extra pushes/target/phase/cutoffscan or closed9case retry. Only local
+  followthrough/recoverygate for later causalcontroller design, not new
+  teacher/corpus/labels/learning. Pulse+samefeedback laterstates differ,
+  not directsingle-step effect; real recoverycannotbepresumed.
+  Causalimplementation/freshvalidation/data-clockmemorycontract remain
+  separatelyrequired. PAUSED1791162189.1954892,7closed$0.456424187,
+  ledgerunchanged,goal0.
+  Evidence: artifacts/hammer_release_probe_20261005_v1/verification.json.
+
+- **Closed single hammer-world release authority test, completed above:** frozenoffline6traces/
   4506rows complete,0newplay/reset/updates; source/metrics/controls/clocks/
   backendpairs exact. Failed13105reachesX250/Y65 but neverX285/Y100;
   X269.482fixedfrom500,lasthammerhit482,tail120bodyhits120/hammerhits0/

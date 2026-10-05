@@ -462,3 +462,8 @@ tick300 stroke and no final body authority. It derives one legal next-prior
 hammer-world target for a separately frozen equal-input one-step release
 test. This target is not an admitted corrective label or demonstrated
 recovery; the failed fresh gate remains fixed.
+The one-step equal-input check now demonstrates actual hammer release and
+reduced target error, with no meaningful incremental body lift. A separate
+single-pulse follow-through test is admitted next, with unchanged feedback
+and noise, no second release or automatic terminal macro. Labels and
+learning remain blocked pending recovery and full causal validation.

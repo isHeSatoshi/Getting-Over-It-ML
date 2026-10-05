@@ -42,7 +42,67 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current result: offline acquisition audit motivates one hammer-release authority test
+## Current result: single hammer-world action releases lower plant, recovery untested
+
+Frozen6rollout local one-step contrast completed: nominal600historical gate,
+then ordinary299step originalcontactcontroller/noise13105/reset14001prefix,
+baseline versusONEderived rawprior next-row hammer-world goal at tick300.
+Actual proposed prefix controls applied with originalcontinuousnoise, no
+placement/savedstate or recordingoverrides. One finalaction override is
+explicitdiagnostic, not a learned/validatedteacher control.
+
+Equal299fullphysical/control histories AND actual217preinput/fullprestate
+beforecontrast. Goal(186.932344,3.814357), legalpointer(-84.057472,-54.507466)
+fromrawprebody/fixedoffset0,20; float32action(-.656699002,-.425839573).
+No target/clock/gain/cap/proxy scan, extraactions or cutoff extension.
+
+| Reference local response | Baseline | Derived action |
+|---|---|---|
+| Hammer-targeterror afteraction |14.708234|11.145062|
+| Hammer queryhit |true|false|
+| Hammer travel |0|4.474497|
+
+Commonpreerror14.708234. Candidateerror below BOTHcommonpre andbaselinepost,
+queryrelease/positiveactualtravel/no deaths; declaredlocalresponsegate true.
+Incrementalhammermotion(-4.049067,+1.904252). Incrementalbodydelta only
+(+3.98e-13,+2.84e-14), numericalresidual/not meaningfulbodylift.
+This is a controlled local release effect, NOT recoveredledgelanding,
+causalproof oforiginalfailure, robustteacher, correctivecorpus or learning.
+Noise-case300tickarms stop without eitherhold; nominal600retainsgain83/
+central+secondary. Historicalfresh8/9failedstrictgate remains immutable.
+
+2400control+720reset/6rollouts,owned30.928560seconds within180work/210owned
+caps.41focusedPython+JS pass, repo controller/physics/metrics unchanged.
+Source/prior/proposal/audit/plan/script/parent/budget/deadline binding,
+secret/browser-stripped owned child/durabletraces/cleanup pass. Independent
+all6rawmilestone/proposed/applied/caseclock histories, all3fullbackendpairs,
+nominal600/baseline300sourcehistories and exactlyonecandidateoverride/backend
+verify. No updates/summits/deaths/teacher/data/fullrecoveryadmission.
+Evidence: `artifacts/hammer_release_probe_20261005_v1/verification.json`.
+
+Independently privatePAUSED1791162189.1954892;80444390source,
+onstate-20261004-v1/onstate_study/contexted3a53c3/closeddeadline unchanged.
+Ledgerbytespreserved,7closed$0.4564241866528988; no reservation, remote
+write, deployment, publicrelease or substantive localtraining. Goal0.
+
+Next admitted bounded direction: separately freeze single-release FOLLOW-
+THROUGH, not morelocaltargets. Nominal600referencefast gate; failedcase
+original versus sameone tick300worldgoal override after299exactsteps,
+then unchanged originalcontactcontroller/continuousnoise through fixed751
+horizon.6rollouts/max4204control+720reset/180work/210ownedseconds.
+All oldnominal/prefix/base751/candidate300histories exact; equalcontrastpre,
+all backend traces and raw metrics required. Candidate must have original
+centralheldevent AND final90central/speed<=2/bodyfraction>=.8/nodeaths to
+admit later causal conditionalcontroller design. Report secondarysupport
+without substituting it for declaredcentralgate. No automaticterminalmacro,
+extra release/hold pushes, target/phase/cutoff search, expiredplanretry or
+9case rewrite. This pulse+unchangedfeedback continuation is a diagnostic,
+not whole-wrapper/newcohort or labels. Localbodylift/recovery cannot be
+presumed fromtiprelease. Only after such recovery would new causalcontroller
+implementation, freshfullvalidation and separatecaptureddata/clock-memory
+learnercontract be reconsidered. Do not scale unchangedBC/PPO.
+
+## Prior result: offline acquisition audit motivates one hammer-release authority test
 
 Completed frozen180second OFFLINE audit of6saved751tick originaltraces:
 nominal,failednoise13105,successfulnoise13104,reference+fast/4506rows.
@@ -93,7 +153,7 @@ onstate-20261004-v1/onstate_study/contexted3a53c3/closeddeadline unchanged.
 Ledgerbytespreserved,7closed$0.4564241866528988; no reservation, remote
 write, deployment, publicrelease or substantive localtraining. Goal0.
 
-Next admitted bounded direction: freeze nominal600reference/fast historical
+The historical admitted one-step response check, now completed above, used nominal600reference/fast historical
 gate, then ordinary299step exactfailednoise13105/reset14001 prefix and
 baseline versus this ONE hammer-world action at controlledtick300, withsame
 continuednoise.6rollouts/max2400control+720reset/180work/210ownedseconds.
