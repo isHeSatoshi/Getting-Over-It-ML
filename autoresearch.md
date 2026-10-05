@@ -42,7 +42,79 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current result: residual scaffold implemented; zero correction preserves the baseline exactly
+## Current result: Gym222 adapter and zero-mean PPO initialization validated, no learning yet
+
+Run88 adds `research/residual_env.py` and `research/residual_policy.py`.
+The original game/physics/raw217 environment/reward/StrokeController and
+run87 residual scaffold remain byte-unchanged. The Gym adapter exposes
+222 actor context and legal residualBox2, confirms one actual applied
+command/physics tick, and returns unchanged climb-v2 raw reward. Optional
+external evaluation clock acts AFTER final issuance; seeds/noise are
+never actor inputs, and previousOWN issued history stays separate.
+
+Next-context preview uses the unchanged correction equation without
+calling base.action/prepare or stepping physics. The actual preparation
+inside step must byte-match the cached actor context. Terminal/death/
+summit/time-limit observations keep222 dimensions and actual final raw/
+clamped continuing proposal/own history, without advancing the source.
+DummyVecEnv saves that terminal context before actual reset; PPO value
+input and fresh222 normalization are tested. Terminal mock fixtures are
+not original-game deaths or completions.
+
+ZeroResidualPolicy uses[256,256], exact zero mean-head weight/bias and
+logstdlog(.01), residualscale2/std.02 final command before clipping.
+Only the mean head differs from matched ordinary policy initialization.
+Saved nonzero fixture heads reload without being zeroed again.
+Source/prior/schema/normalizer guards reject old217 RMS or mismatches.
+18new/399full Python tests plus16counter JS/collision JS pass.
+
+Frozen owned saved-trace/mock pipeline completes11.604574 seconds under
+immutable180work/210owned limits:2702 nominal600/failed751 saved rows
+across both backends,8106 deterministic predictions from initialized
+seeds12/13/14,192 reload predictions and192 distribution rows. All actor
+pre/next contexts, controls/applied commands/base metadata/raw rewards/
+infos/source/own memory match; both saved backend pairs exact. All four
+archive boundaries are explicitly MOCK time limits. Fresh222 statistics
+fit2702 causal contexts once and freeze; this is not policy optimization.
+Three owned untrained model/RMS pairs save/reload exactly, with zero
+optimizer calls/numtimesteps/parameter drift and finite222 terminal value
+inputs. Initialization seeds are NOT trained-seed success replication.
+
+Zero new gameplay/reset/optimizer work, no new physical hold, death or
+completion. Historical baseline gain83/central+secondary holds and failed
+gain11/noholds unchanged. No reliable learned climber or summit; goal0.
+Evidence: `artifacts/residual_adapter_pipeline_20261005_v1/verification.json`.
+Independent private Space PAUSED1791181805.277465/source80444390,
+sessiononstate-20261004-v1/modeonstate_study/contexted3a53c3 and closed
+deadline unchanged. Ledger bytes preserved,7closed estimated
+$0.4564241866528988; no remote write/deployment/paid reservation.
+
+## Next bounded chunk: fresh residual-PPO study contract and remote execution plumbing
+
+Adapter/initialization gate passed. Move toward learning, not another
+contact/counter/feature audit. Implement a separately named residual-PPO
+study/trainer/evaluation/admission contract around the validated adapter.
+At least3 training seeds and predeclared fresh9 nominal/warm-up/noise
+reference cases with a matched zero-actor baseline, ordinaryspawn,
+frame1/horizon1800/rawclimb-v2, actual222 normalizer and saved source/
+prior/scaffold legal trace provenance. Do not import old217 checkpoints.
+Freeze finite samples/updates/elapsed/cost/checkpoints and physical
+comparison gates before any full run. Zeroactor holds are hand-designed;
+learner benefit requires improvement over that SAME baseline.
+
+Add actual physical/reset and optimizer accounting through the new
+wrapper, bounded secret-stripped direct-parent Linux grants/deadline,
+durable stage/checkpoint backups and auto-pause. No hidden warm-up
+supervision or counter labels, substantive local training, interrupted
+SAC/closed-session resume or blind old recipe scaling. Validate narrow
+unit/mock smoke first. A fresh CPU Upgrade private preflight may be
+prepared only with current pricing/source/Space/session/context checks,
+an explicit new reservation under the cumulative$10 ceiling and a fixed
+new batch deadline. Remote preflight must durably pass and independently
+be PAUSED before intentional training launch. No active/reserved batch
+now; old closed deadlines cannot be extended. Original goal gates fixed.
+
+## Prior result: residual scaffold implemented; zero correction preserves the baseline exactly
 
 Run87 implements `research/residual_controller.py` without changing the
 original game, environment, rewards, legal controls or StrokeController.
@@ -83,7 +155,7 @@ sessiononstate-20261004-v1/modeonstate_study/contexted3a53c3 and closed
 deadline unchanged. Ledger bytes unchanged,7closed estimates
 $0.4564241866528988; no remote writes or paid reservation.
 
-## Next bounded chunk: training adapter and zero-head initialization, no local optimizer
+## Prior declaration, completed above: training adapter and zero-head initialization
 
 Build a separately named Gym residual adapter around the unchanged
 one-tick absolute raw217 game environment and validated scaffold. Expose

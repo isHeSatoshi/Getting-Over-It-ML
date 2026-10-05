@@ -1,6 +1,30 @@
 # Deferred hypotheses
 
-- **Next residual training adapter/initialization, no local optimizer:**
+- **Next fresh residual-PPO contract/trainer/admission, not another audit:**
+  Run88 Gym222adapter and zero-mean actor implemented,18new/399full
+  Python+16counterJS+collision pass. Pure next/terminal222 preview makes
+  no sourcecalls; step validates actualprepare byte-match, one applied
+  tick/rawclimb-v2 reward, separate externalcaseclock/OWNfinalhistory.
+  Frozen2702saved/mockrows/8106predictions from3initializedseeds12/13/14/
+  192reload/192distributionrows/11.605s passes; model+fresh222RMS reload
+  exact, zerooptimizer/numtimesteps/newphysics/reset. Archive-end truncation
+  explicitlymock; no originalgame hold/death/summit or learnedbenefit.
+  Checkpoint source/prior/schema guards; old217RMS rejected.
+  NEXT separatelynamed residualstudy/trainer/evaluation/admission;>=3
+  trainingseeds/freshfixed9referencecases/matchedzeroactorbaseline,
+  actual222RMS/frame1/horizon1800/rawclimb-v2/ordinaryspawn/legaltraces.
+  Freeze work/update/sample/elapsed/cost/checkpoint/gates beforefullrun.
+  Implement physical/reset/optimizer counts throughwrapper, secretstripped
+  directparent Linuxgrant/deadline/durablebackups/autopause, narrowunit/
+  mocksmoke onlylocal. FreshprivateCPUUpgradepreflight requires actual
+  pricing/source/session/context/new<=10ledgerreservation/fixeddeadline;
+  durablepassedpreflight+independentPAUSED beforeintentionaltraining.
+  No paidbatchactive/reservedtoday/counterlabels/teacherdata bypass/old
+  SACorclosedsessionresume/goalrelaxation. Goal0/PAUSED1791181805.277465/
+  $0.456424187closed; baselineholds neverlearnedprogress.
+  Evidence: artifacts/residual_adapter_pipeline_20261005_v1/verification.json.
+
+- **Closed residual training adapter/initialization, completed above:**
   Run87 scaffold implemented,16new/381fullPython+16counterJS+collision
   pass. Offline nominal600/failed751 bothbackends2702rows byte-exact
   zeroaction/baseclocks. Frozen4rollouts2400control+480episode+
