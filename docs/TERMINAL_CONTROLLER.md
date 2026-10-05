@@ -84,7 +84,45 @@ Evidence: `artifacts/terminal_wrapper_cohort_20261005_v1/verification.json`.
 This passes the new development gate, not the earlier failed 600-tick gate
 or the closed fixed-90-tick release gate. It admits only fresh fixed-wrapper
 validation. No teacher, corpus, labels, training or learned-policy promotion.
-The next proposal uses reset14001, new warm-ups `(±.75,-.125)` and
-noise13100..13105 under the same controls, support criteria and maximum
-horizon. Fresh validation must precede any separate data and honest
-clock/memory-aware learner contract. No automatic paid scaling.
+
+## Fresh validation: gate fails
+
+The unchanged controller was subsequently frozen on unused reset14001,
+warm-ups `(±.75,-.125)` and noise13100..13105, with the same support criteria,
+maximum horizon and stopping rules. Exact case/seed-field searches included
+hidden and ignored JSON/JSONL before declaration.
+
+| Reference arm | Final central support | Final secondary support | Retained gain |
+|---|---|---|---|
+| Original contact controller | 7/9 | 8/9 | Eight at 83, one at 11 |
+| Unchanged causal wrapper | 8/9 | 8/9 | Eight at 83, one at 11 |
+
+Noise13101 reaches a new edge state `(295.169,104)` and activates the single
+attempt, finishing `(315.238,104)` after 724 controls, 3 settling ticks and
+90 independent hold ticks. Eight other cases bypass with complete original
+histories preserved. This supplies a second physically exercised recentering
+example but does not establish a robust teacher.
+
+Noise13105 never acquires either hold. Before decision601 it is already at
+`(269.482,32)`, body query hit, base phase599. The wrapper correctly bypasses
+this ineligible lower state and finishes at the same pose, gain11. Final
+body contact and slow motion there are low terrain support, not ledge acquisition.
+The failure is before terminal recovery; no earlier causal error is yet
+identified. Widening the terminal trigger or changing the gate would hide it.
+
+36 rollouts, 26982 controlled plus 4320 reset ticks, 161.207101 owned seconds,
+no updates/deaths/summits. All 18 full backend pairs, 18 fresh 600-tick
+original-versus-wrapper prefixes, four historical nominal traces and full
+raw support/control/chronology reconstructions pass. 41 focused Python tests
+and collision checks pass, no controller code changed.
+Evidence: `artifacts/terminal_wrapper_fresh_20261005_v1/verification.json`
+and `failure_boundary_review.json`. The auxiliary boundary inspection first
+assumed a `phase` metadata key; inspection corrected it to `selected_phase`,
+without changing the frozen review or rerunning physics.
+
+The strict 9/9 gate fails. No data/learner contract, teacher labels, corpus or
+paid training is admitted from these eight successes. Earlier gates stay
+immutable. Next is a bounded offline acquisition/contact audit of saved
+nominal, failednoise13105 and successfulnoise13104 histories, not a trigger,
+gain, target or cutoff sweep. A new physically justified hypothesis needs
+fresh declaration and validation before any clock/memory-aware learning.

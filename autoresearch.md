@@ -42,7 +42,72 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current result: whole-wrapper development cohort9/9central, fresh validation pending
+## Current result: fresh wrapper8/9central, strictgate fails on earlier acquisition
+
+Frozen exact same originalcontactcontroller versus causalwrapper on9unused
+structuredcases: reset14001,nominal,left/right(+/-.75,-.125)*3/four-tick
+warmups,noise.02/seeds13100..13105. Hidden/ignored JSON/JSONL exact
+reset_seed/noise_seed field search found no previous use before declaration.
+Original/wrapper/reference+fast,max751ticks; fixed permanent monitor stopping
+and no rearm/caprenewal. Equal maximum horizon, not equal terminaltimes.
+No rule/source/target/gain/proxy/cap/noise/metric edits or placement.
+
+| Reference arm | Final90 central support | Final90 secondary support | Retained gain |
+|---|---|---|---|
+| Original contact-sign prior |7/9|8/9|83in8cases,11in1|
+| Causal terminal wrapper |8/9|8/9|83in8cases,11in1|
+
+Noise13101independently reaches leftedge(295.169232,104). One rawstate
+attempt recovers to(315.237517,104):600base/30plant/onepush/93release,
+3settle+90independenthold/90bodyhits,724controls. It is a second exercised
+recovery under different noise, not eightrecoveries or learnedskill.
+All8othercases permanentlybypass and full751control/physics/base-metadata
+histories equal original. Nominal/left/rightfinalX322.585886/322.585884/
+322.585903,Y104. Other successfulnoiseX325.627033/325.943050/329.308637/
+324.976926,Y104. No deaths/summits/updates.
+
+Noise13105fails BOTHledge holds; atcheckpoint after600observed transitions
+already(269.481845,32),rawbodyqueryhit1,basephase599. Final751state same
+position,gain11,body-queryfraction1/maxspeed.481703 overlast90, but below/
+outside bothregions. Wrapper correctly bypasses the ineligible rawstate;
+no failed planting/push, no phase stall or a missed eligible trigger.
+This locates an earlier acquisition failure, not its causal action/contact
+error. Do not widen terminal trigger to floor support or relax9/9to8/9.
+Auxiliary boundary inspection initially used absent phase metadata key;
+actualselected_phase corrected in inspection only, errorpreserved/no physics
+rerun or frozenreview edits.
+
+36rollouts/26982control+4320reset,owned161.207101seconds within immutable
+300work/330owned cap.41focusedPython+JS pass, controllercode unchanged.
+All18fullbackendpairs,18wrapperfirst600freshoriginalprefixes and4full
+historicalnominaltraces exact. Independent36raw milestone/support/control/
+caseclock/action-observe histories verified. Strictfresh9/9gatefalse,
+separate data/learnercontractadmissionfalse, no teacher/corpus/labels or
+paidlearning. Keep failure immutable; no successful-only8case admission,
+retuning/retry ofclosedplan or unchangedBC/PPO scaling. Primaryfullgoal0.
+Evidence: `artifacts/terminal_wrapper_fresh_20261005_v1/verification.json`
+and `failure_boundary_review.json` beside it.
+
+Independently privatePAUSED1791159934.6042366;80444390source,
+onstate-20261004-v1/onstate_study/contexted3a53c3/closeddeadline unchanged.
+Ledgerbytespreserved,7closed$0.4564241866528988; no newreservation, remote
+write, deployment, publicrelease or substantive localtraining.
+
+Next admitted bounded direction: freeze an180second OFFLINE acquisition
+audit of existing nominal,failednoise13105 andsuccessfulnoise13104 original
+traces/reference+fast,6traces/4506rows,0newgameplay/reset/learning. Bound
+source/trace/completedreview/script/plan/budget hashes beforeanalysis.
+Inspect ordered prior stroke/contact transition around lost acquisition,
+actualhammer query/travel/body motion/applied controls and original motor/
+collision response. Distinguish equal-prefix local effects from unequal-state
+descriptive comparisons; queryhits are not force/solverbranch. Only derive a
+mechanically justified distinct local contact-authority test after audit,
+with a fresh physical contract before play. No terminaltrigger widening,
+phasejump/gain/target/cap/proxy/threshold scan, closedcase retry, detector
+relaxation, labels or paidlearning. Require recovery/fidelity/fullvalidation
+before any separate captureddata/clock-memory learnercontract.
+
+## Prior result: whole-wrapper development cohort9/9central, fresh validation pending
 
 Separately frozen unchanged originalcontactcontroller versus causalwrapper
 on all nine previous developmentcases: reset13001,nominal,left/right
@@ -88,7 +153,7 @@ onstate-20261004-v1/onstate_study,contexted3a53c3 andcloseddeadline unchanged.
 Ledgerbytespreserved,7closed$0.4564241866528988; no newreservation, remote
 write, deployment, publicrelease or substantive localtraining.
 
-Next admitted bounded direction: freeze fresh development-validation cases
+The historical admitted fresh validation, now completed above, used development-validation cases
 beforeplay, reset14001,nominal,left/right(+/-.75,-.125)*3/fourtickwarmups,
 noise.02/seeds13100..13105,ninecases. Exact same original-versus-wrapper
 arms/reference+fast,atmost751ticks/36rollouts/max27036control+4320reset/

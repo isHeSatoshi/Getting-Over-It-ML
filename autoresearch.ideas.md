@@ -1,6 +1,31 @@
 # Deferred hypotheses
 
-- **Next fresh fixed-wrapper validation:** development wholecohort now passes
+- **Next frozen offline earlier-acquisition audit:** freshwrapper strictgate
+  fails8/9central/8/9secondary vsoriginal7/9central/8/9secondary.
+  Eightgain83,failednoise13105gain11/final(269.482,32); bothholdseverfalse.
+  At600checkpoint samefailedpose/bodyquery1/basephase599, ineligible,
+  correctpermanentbypass/full751exactoriginal. Another newedge13101recovers
+  (295.169,104)to(315.238,104),3settle+90hold/724ticks; distinctexercised
+  recovery, not robustteacher.36rollouts/26982control+4320reset/161.207101s,
+  0updates/deaths/summits,all18backendpairs/18fresh600prefixes/4nominal/
+  rawsupport/actions/chronology exact,41Python+JS. Strict9gate/data-and-
+  learnercontractadmissionfalse; no8case-onlylabels/learning/gaterelaxation.
+  PrivatePAUSED1791159934.6042366,7closed$0.456424187,ledgerpreserved.
+  Freeze180secondoffline audit of6existing751tick originaltraces:
+  nominal,failednoise13105,successfulnoise13104,referencefast/4506rows,
+  0newplay/reset/updates. Bindsource/traces/review/script/plan/budget.
+  Inspect priororderedstroke/contacttransition and actualhammerquery/travel/
+  bodymotion/appliedcontrols/originalmotor-solver response before deriving
+  distinct localauthoritytest. Unequalstates descriptive,querynotforce/
+  privilegedbranch. No terminaltriggerwidening/phasejump/gain/target/cap/
+  proxy/thresholdscan/closedcase retry, labels or paidlearning. Newphysical
+  hypothesisneeds freshfrozencontract and recovery/fidelity/validation first.
+  AuxiliaryboundaryreviewKeyError phase correctedtoselected_phase without
+  gameplay/frozenreview changes; failurepreserved.
+  Evidence: artifacts/terminal_wrapper_fresh_20261005_v1/verification.json
+  and failure_boundary_review.json.
+
+- **Closed fresh fixed-wrapper validation, completed above:** development wholecohort now passes
   9/9finalcentral/9/9secondary versusoriginal8/9central/9/9secondary,
   gain83everycase. One state-triggered recovery/723ticks(2settle+90hold);
   eight751tick permanentbypasses exactly preserve fulloriginal histories.

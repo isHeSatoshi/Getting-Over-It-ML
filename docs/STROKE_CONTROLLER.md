@@ -452,5 +452,8 @@ known edge recovery reproduces exactly; nominal and an already-central noisy
 case remain on the original controls. Six-rollout smoke passes, followed by
 the separately frozen nine-case whole-wrapper development cohort: 9/9 final
 central support versus 8/9 original, with eight full bypass histories exact.
-No learning or label admission. See `TERMINAL_CONTROLLER.md` for alignment,
-limits, evidence and the separately required fresh wrapper validation.
+Fresh fixed-rule validation then reaches 8/9 central versus 7/9 original,
+failing the strict 9/9 gate: a new edge recovers, but noise13105 remains at
+`(269.482,32)` before the terminal checkpoint. No learning or label admission.
+See `TERMINAL_CONTROLLER.md` for alignment, evidence and the admitted offline
+earlier-acquisition audit, not terminal-trigger widening or paid scaling.
