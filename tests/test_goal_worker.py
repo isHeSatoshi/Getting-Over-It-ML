@@ -1,5 +1,6 @@
 from copy import deepcopy
 import json
+import os
 from pathlib import Path
 import tempfile
 import threading
@@ -219,6 +220,96 @@ class GoalWorkerTests(unittest.TestCase):
         with patch("deploy.goal_worker.run_goal") as run:
             worker.run()
             run.assert_called_once_with(worker)
+
+
+class GoalProgressBackupTests(unittest.TestCase):
+    def worker(self, folder):
+        worker = Worker.__new__(Worker)
+        worker.artifacts = Path(folder)
+        (worker.artifacts/"goal_campaign").mkdir(parents=True, exist_ok=True)
+        worker.deadline = time.time()+5000
+        worker.goal_backup_lock = threading.Lock()
+        worker.write_status, worker.terminate_owned_job, worker.flush_and_pause = Mock(), Mock(), Mock()
+        return worker
+
+    def run_progress(self, worker, iterations):
+        from deploy import goal_worker
+        state = {"n": 0}
+        def wait(seconds):
+            state["n"] += 1
+            return state["n"] > iterations
+        worker.stop = Mock()
+        worker.stop.wait = wait
+        goal_worker.progress(worker)
+        return worker
+
+    def test_progress_rate_limits_syncs_and_retries_transient_failures(self):
+        # Regression: 30s backups exceeded the provider's 128 commits/hour
+        # limit and one failed flush killed a completed seed's evaluation.
+        from deploy import goal_worker
+        with tempfile.TemporaryDirectory() as folder:
+            worker = self.worker(folder)
+            attempts = []
+            def fail(worker, required=()):
+                attempts.append(list(required))
+                raise goal_worker.TransientBackupError("429 rate limit")
+            with patch.object(goal_worker, "stable_backup", side_effect=fail), \
+                    patch.object(goal_worker, "GOAL_PROGRESS_SYNC_SECONDS", 0.0):
+                self.run_progress(worker, 5)
+            self.assertEqual(len(attempts), 1)  # backoff suppresses retry hammering
+            worker.stop.set.assert_not_called()
+            worker.write_status.assert_not_called()
+            worker.terminate_owned_job.assert_not_called()
+
+    def test_progress_structural_failure_still_stops_owned_job(self):
+        from deploy import goal_worker
+        with tempfile.TemporaryDirectory() as folder:
+            worker = self.worker(folder)
+            def fail(worker, required=()):
+                raise ValueError("Backup path outside owned artifacts")
+            with patch.object(goal_worker, "stable_backup", side_effect=fail), \
+                    patch.object(goal_worker, "GOAL_PROGRESS_SYNC_SECONDS", 0.0):
+                self.run_progress(worker, 5)
+            worker.stop.set.assert_called_once()
+            worker.terminate_owned_job.assert_called_once()
+            worker.flush_and_pause.assert_called_once()
+            self.assertEqual(worker.write_status.call_args.kwargs["phase"], "failed")
+
+    def test_progress_backs_up_each_new_checkpoint_once(self):
+        from deploy import goal_worker
+        with tempfile.TemporaryDirectory() as folder:
+            worker = self.worker(folder)
+            checkpoint = worker.artifacts/"goal_campaign/seed21/training/checkpoint_40000"
+            checkpoint.mkdir(parents=True)
+            (checkpoint/"model.zip").write_bytes(b"model")
+            (checkpoint/"manifest.json").write_text(json.dumps({"files": {"model.zip": {"bytes": 5}}}))
+            old = time.time()-10
+            for path in checkpoint.iterdir():
+                os.utime(path, (old, old))
+            calls = []
+            def ok(worker, required=()):
+                calls.append(sorted(str(p) for p in required))
+                return True
+            with patch.object(goal_worker, "stable_backup", side_effect=ok):
+                self.run_progress(worker, 4)
+            self.assertEqual(len(calls), 1)
+            self.assertTrue(any(name.endswith("manifest.json") for name in calls[0]))
+            self.assertTrue(any(name.endswith("model.zip") for name in calls[0]))
+
+    def test_durable_backup_retries_transient_failure_then_succeeds(self):
+        from deploy import goal_worker
+        with tempfile.TemporaryDirectory() as folder:
+            worker = self.worker(folder)
+            calls = {"n": 0}
+            def flaky(worker, required=()):
+                calls["n"] += 1
+                if calls["n"] == 1:
+                    raise goal_worker.TransientBackupError("429")
+                return True
+            with patch.object(goal_worker, "stable_backup", side_effect=flaky), \
+                    patch.object(goal_worker.time, "sleep", lambda seconds: None):
+                self.assertTrue(goal_worker.durable_backup(worker, [worker.artifacts/"x"]))
+            self.assertEqual(calls["n"], 2)
 
 
 if __name__ == "__main__":

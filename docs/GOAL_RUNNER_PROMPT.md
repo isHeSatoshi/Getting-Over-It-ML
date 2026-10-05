@@ -36,12 +36,13 @@ Implemented entrypoints:
 Private HF Space: `isHeSatoshi/rl-over-it-poc-20261004`.
 Private artifact dataset: `isHeSatoshi/rl-over-it-research-artifacts`.
 Use existing authenticated CLI/API; never print credentials or publish.
-Last verified state: Space PAUSED, eight reservations closed, conservative
-compute estimate about$0.4796 (not a bill); the first goal pilot attempt
-stopped at seed21 on a now-fixed checkpoint serialization bug, with its
-reservation closed and no physical evaluation. Do not reopen old
-source/session deadlines, resume interrupted work, or relaunch without
-explicit authorization.
+Last verified state: Space PAUSED, nine reservations closed, conservative
+compute estimate about$0.5399 (not a bill). Pilot attempt2 trained seed21 to
+the full contract but the evaluation was killed by the provider's 128
+repository-commits/hour limit, caused by a 30-second backup cadence; the
+worker now backs up once per checkpoint with a 300-second floor and retries
+transient upload failures. Do not reopen old source/session deadlines,
+resume interrupted work, or relaunch without explicit authorization.
 
 1. Run active tests and both JS checks. Windows CUDA import may exhaust
    paging capacity; the isolatedCPU validation Python is

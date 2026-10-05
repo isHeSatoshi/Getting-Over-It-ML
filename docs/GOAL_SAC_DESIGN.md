@@ -106,15 +106,53 @@ exactly as the checkpoint writer does. The fix is validated locally but
 has not been deployed or re-run; a retry needs a fresh session and
 reservation, never a resume or deadline extension.
 
+## Pilot attempt 2 (stopped 2026-10-05)
+
+A fresh session `goal-20261005-v2` ran from the fixed source
+`f413aa63159fe341879586afd1a605080d6d4d6f` with a new `$0.30`/10h
+reservation. Preflight passed all six checks (462 tests OK remotely) and
+training was approved against the passed preflight context. Seed21
+completed the entire training contract: 160000/160000 learner transitions,
+77952/77952 SAC cycles, 315959 physics ticks, with all four checkpoints
+(40k/80k/120k/160k) durably uploaded, proving the serialization fix live.
+
+The run then stopped during the learned-only evaluation. Root cause: the
+progress thread backed up every 30 seconds (~120 commits/hour) plus
+checkpoint syncs, exceeding Hugging Face's repository-commit rate limit of
+128/hour (observed 122 and 86 commits in the failing hours). Once the
+limit was hit, `bounded_sync` failed; the progress thread treated one
+failed flush as fatal, stopped the seed mid-evaluation at 9/10 cases, and
+the worker auto-paused. No `result.json`; **no physical gate result** for
+seed21; seeds22/23 never started. Reservation closed at about `$0.0603`
+elapsed of `$0.30`.
+
+Narrow fixes in `deploy/goal_worker.py` (no algorithm, gate, reward,
+feature or tolerance change):
+
+- `TransientBackupError` distinguishes retryable failures (upload
+  timeout, network error, provider rate limit) from structural ones.
+- The progress thread backs up each new checkpoint once (tracked by
+  manifest mtime), and otherwise syncs at most every 300 seconds.
+- Transient failures retry with exponential backoff (up to 600 s) without
+  stopping the run; the immutable deadline remains the hard bound.
+- Decision-point backups (`durable_backup`) retry transient failures until
+  the deadline reserve, so seed-end evidence is still durable before the
+  next seed can start.
+
+Four regression tests cover rate-limited sync cadence, transient retry
+without stopping, structural failure still stopping the owned job, and
+durable decision-point retry. 466 active Python tests pass.
+
 ## Validation performed
 
-Post-review and pilot-fix: **462 active Python tests passed**, including
-seven new regression tests (six from the review, one for the pilot crash),
-plus all16 counter JS tests and collision JS. The same12 unfinished
-residual-worker tests remain explicitly excluded. Review validation used
-unit/mock checks only, without original-game rollout, training, deployment,
-HF API calls or paid compute. The revised source requires new remote
-preflight; old original-game fidelity evidence below is not a new-source pass.
+Post-review and pilot-fix: **466 active Python tests passed**, including
+eleven new regression tests (six review, one pilot-1 crash, four backup
+rate-limit/retry), plus all16 counter JS tests and collision JS. The same12
+unfinished residual-worker tests remain explicitly excluded. Review
+validation used unit/mock checks only, without original-game rollout,
+training, deployment, HF API calls or paid compute. The revised source
+requires new remote preflight; old original-game fidelity evidence below
+is not a new-source pass.
 
 Original build validation:
 

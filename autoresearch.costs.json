@@ -289,6 +289,49 @@
         "physical_evaluation": "not reached",
         "seeds22_23": "not started"
       }
+    },
+    {
+      "session": "goal-20261005-v2",
+      "space": "isHeSatoshi/rl-over-it-poc-20261004",
+      "tier": "cpu-upgrade",
+      "start_epoch": 1791196640.0727582,
+      "deadline_epoch": 1791232640.0727582,
+      "rate_per_hour": 0.03,
+      "maximum_estimated_compute_cost": 0.3,
+      "verified_end_epoch": 1791203881.07,
+      "status": "failed_provider_commit_rate_limit_no_resume",
+      "source_space_revision": "f413aa63159fe341879586afd1a605080d6d4d6f",
+      "actual_billed_cost_known": false,
+      "study": "legal-prefix-goal-sac-her-v1",
+      "pricing_last_verified": "2026-10-05",
+      "pricing_evidence_url": "https://huggingface.co/pricing",
+      "reservation_evidence": "artifacts/goal_deploy_20261005_v2/reservation.json",
+      "sleep_policy": "paid_default_never",
+      "source_bundle": "artifacts/hf_bundle_20261005T103238933111Z",
+      "previous_attempt": "goal-20261005-v1 closed at $0.0232; seed21 checkpoint serialization bug fixed",
+      "estimated_elapsed_compute_cost_upper_bound": 0.06034164368112882,
+      "termination": "Seed21 training completed the full contract (160000 learner/77952 cycles, all four checkpoints durable), then artifact backups exceeded the provider repository commit rate limit (128/hour) during evaluation; one failed flush stopped the run at 9/10 evaluation cases; no result.json; auto-paused; not resumed",
+      "end_evidence": "artifacts/goal_deploy_20261005_v2/failure_review/close.json",
+      "end_artifact_revision": "72f08acd08a8d9e94101c946aa995e662f614aef",
+      "pilot_attempt": {
+        "seed": 21,
+        "learner_transitions": 160000,
+        "sac_cycles": 77952,
+        "physics_total": 315959,
+        "checkpoints_durable": [
+          "checkpoint_40000",
+          "checkpoint_80000",
+          "checkpoint_120000",
+          "checkpoint_160000"
+        ],
+        "evaluation_cases_uploaded": 9,
+        "evaluation_cases_expected": 10,
+        "result_json": false,
+        "physical_gate_evaluated": false,
+        "provider_commit_limit_per_hour": 128,
+        "root_cause": "30s progress backup cadence plus checkpoint syncs exceeded the commit rate limit; single failed flush was fatal",
+        "seeds22_23": "not started"
+      }
     }
   ],
   "postclosure_local_diagnostics": [

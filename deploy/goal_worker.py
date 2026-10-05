@@ -23,6 +23,16 @@ from research.provenance import fingerprint
 from research.resources import effective_limits
 from research.timing_execution import remote_host, SPACE, ARTIFACT_REPO
 
+# Provider repository-commit budget is 128/hour. The progress thread syncs at
+# most once per interval when nothing needs a checkpoint backup, and each new
+# checkpoint is backed up once, keeping the cadence far below the limit.
+GOAL_PROGRESS_SYNC_SECONDS = 300.0
+GOAL_PROGRESS_BACKOFF_MAX = 600.0
+
+
+class TransientBackupError(RuntimeError):
+    """Retryable artifact-backup failure: upload timeout, network error or provider rate limit."""
+
 
 def pinned_context(worker):
     revision = os.environ.get("RL_CONTEXT_REVISION", "")
@@ -111,6 +121,18 @@ def stable_backup(worker, required=()):
         worker.goal_backup_lock.release()
 
 
+def durable_backup(worker, required=()):
+    """Decision-point backup: retry retryable failures until the deadline reserve."""
+    while True:
+        try:
+            return stable_backup(worker, required)
+        except TransientBackupError as error:
+            if time.time()+90 > worker.deadline-20:
+                raise
+            print("Retrying durable goal backup after transient failure:", error, flush=True)
+            time.sleep(45)
+
+
 def _stable_backup(worker, required=()):
     """Check closed checkpoint files actually exist in one private uploaded revision."""
     required = list(required)
@@ -121,11 +143,20 @@ def _stable_backup(worker, required=()):
         require(time.time()+delay+60 < worker.deadline, "No deadline reserve for closed-file backup")
         if delay:
             time.sleep(delay)
-    require(worker.bounded_sync(timeout=min(60, max(.1, worker.deadline-20-time.time()))),
-            "Goal durable upload failed or timed out")
+    try:
+        uploaded = worker.bounded_sync(timeout=min(60, max(.1, worker.deadline-20-time.time())))
+    except Exception as error:
+        raise TransientBackupError(sanitized(error)) from error
+    if not uploaded:
+        # Upload timeouts, network errors and provider rate limits are
+        # retryable; a training run must not be killed by one failed flush.
+        raise TransientBackupError("Goal durable upload failed or timed out")
     if not required:
         return True
-    metadata = worker.api.repo_info(worker.artifact_repo, repo_type="dataset", files_metadata=True)
+    try:
+        metadata = worker.api.repo_info(worker.artifact_repo, repo_type="dataset", files_metadata=True)
+    except Exception as error:
+        raise TransientBackupError(sanitized(error)) from error
     require(metadata.private and len(metadata.sha) == 40, "Goal backup must be private/revision pinned")
     entries = {entry.rfilename: entry for entry in metadata.siblings}
     for path in required:
@@ -148,15 +179,35 @@ def _stable_backup(worker, required=()):
 
 
 def progress(worker):
+    verified, last_sync, failures, next_attempt = {}, 0.0, 0, 0.0
     while not worker.stop.wait(30):
         try:
-            required = []
-            for marker in (worker.artifacts/"goal_campaign").glob("seed*/training/checkpoint_*/manifest.json"):
-                if time.time()-marker.stat().st_mtime >= 2.05:
-                    manifest = json.loads(marker.read_text())
-                    required.append(marker)
-                    required.extend(marker.parent/name for name in manifest["files"])
+            required, pending = [], []
+            for marker in sorted((worker.artifacts/"goal_campaign").glob("seed*/training/checkpoint_*/manifest.json")):
+                if time.time()-marker.stat().st_mtime < 2.05:
+                    continue
+                stamp = marker.stat().st_mtime_ns
+                if verified.get(str(marker)) == stamp:
+                    continue
+                manifest = json.loads(marker.read_text())
+                required.append(marker)
+                required.extend(marker.parent/name for name in manifest["files"])
+                pending.append((marker, stamp))
+            now = time.time()
+            if now < next_attempt:
+                continue
+            if not required and now-last_sync < GOAL_PROGRESS_SYNC_SECONDS:
+                continue
             stable_backup(worker, required)
+            for marker, stamp in pending:
+                verified[str(marker)] = stamp
+            last_sync, failures, next_attempt = time.time(), 0, 0.0
+        except TransientBackupError as error:
+            # Rate limits, network failures and upload timeouts are retried with
+            # backoff; the run continues and the deadline remains the hard bound.
+            failures += 1
+            next_attempt = time.time()+min(GOAL_PROGRESS_BACKOFF_MAX, 60*(2**min(failures, 4)))
+            print("Transient goal backup failure; training continues:", error, flush=True)
         except Exception as error:
             worker.stop.set()
             worker.terminate_owned_job()
@@ -193,7 +244,7 @@ def run_goal(worker):
             source_space_revision=ticket["source_space_revision"], operator_context_revision=revision,
             campaign_budget_start_epoch=ticket["start_epoch"], deadline_epoch=worker.deadline,
             runtime_policy=runtime, prior_data_sha256=SOURCE_DATA_SHA)
-        stable_backup(worker, [worker.state_path])
+        durable_backup(worker, [worker.state_path])
         threading.Thread(target=progress, args=(worker,), daemon=True).start()
         prior = restore_prior(worker, context, current)
         if worker.mode == "goal_preflight":
@@ -215,7 +266,7 @@ def run_goal(worker):
             claim = campaign/"execution_claim.json"
             claim.write_text(json.dumps({"version": VERSION, "state": "claimed_no_resume",
                                          "session": worker.session, "deadline_epoch": worker.deadline}))
-            stable_backup(worker, [claim, campaign/"plan.json"])
+            durable_backup(worker, [claim, campaign/"plan.json"])
             results = []
             for seed in SEEDS:
                 output, grant = campaign/f"seed{seed}", campaign/f"grant{seed}.json"
@@ -238,8 +289,8 @@ def run_goal(worker):
                         and result["pilot_gate_passed"] == bool(training["complete"] and scored["pilot_gate_passed"])
                         and result["seed"] == seed and result["physics"]["total"] <= 1200000,
                         "Goal seed result/physics budget mismatch")
-                stable_backup(worker, [path for path in output.rglob("*") if path.is_file()
-                                       and path.suffix in (".json", ".jsonl", ".zip", ".gz")])
+                durable_backup(worker, [path for path in output.rglob("*") if path.is_file()
+                                        and path.suffix in (".json", ".jsonl", ".zip", ".gz")])
                 results.append(result)
                 if not result["pilot_gate_passed"]:
                     break
@@ -248,7 +299,7 @@ def run_goal(worker):
                        "first_failed_seed_stopped_remaining": bool(results and not results[-1]["pilot_gate_passed"]),
                        "final_goal_verified": False, "results": results}
             (campaign/"summary.json").write_text(json.dumps(summary, indent=2))
-            stable_backup(worker, [campaign/"summary.json"])
+            durable_backup(worker, [campaign/"summary.json"])
             worker.write_status(phase="goal_complete", completed_seeds=summary["completed_seeds"],
                                 pilot_gate_passed=summary["all_three_pilot_gates_passed"])
     except Exception as error:

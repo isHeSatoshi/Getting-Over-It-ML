@@ -1,15 +1,22 @@
 # Deferred hypotheses
 
-- **Goal pilot attempt1 stopped by checkpoint bug; fix ready, needs fresh run:**
-  Session goal-20261005-v1, deployed source01eace30, reservation closed
-  $0.0232 of $0.30. Preflight passed after one platform-test fix. Seed21 hit
-  39936 learner/17920 cycles then crashed writing supervisor.json: waypoints()
-  emitted np.bool_ for non-central anchors. Fixed with bool() casts + regression
-  test (462active tests pass). NOT redeployed. Retry requires explicit
-  authorization, fresh session/context/deadline, new bounded reservation;
-  never resume seed21 or extend the old deadline. No physical gate measured.
+- **Pilot attempt2 trained fully but died on provider commit rate limit; backup fix ready:**
+  Session goal-20261005-v2, source f413aa63: seed21 completed 160000 learner/
+  77952 cycles/4 durable checkpoints (serialization fix proven live), then
+  evaluation was killed by the 128 commits/hour provider limit caused by
+  the 30s backup cadence; 9/10 cases, no result.json, no physical gate.
+  Closed $0.0603; loop cancelled; PAUSED verified. Fix: deploy/goal_worker.py
+  transient/structural backup errors, one backup per checkpoint, 300s
+  cadence, backoff retry, durable decision points; 466 tests pass. NOT
+  redeployed. Attempt3 needs fresh session/reservation/preflight; never
+  resume seed21 or extend deadlines.
 
-- **Post-build review complete (deployed in pilot attempt1):**
+- **Pilot attempt1 stopped by checkpoint bug; fix deployed in attempt2:**
+  Session goal-20261005-v1, source01eace30, closed $0.0232 of $0.30.
+  waypoints() np.bool_ crash writing supervisor.json; fixed with bool()
+  casts + regression test. No physical gate measured.
+
+- **Post-build review complete (deployed in pilot attempts1/2):**
   Four correctness fixes after6e5c3f9: physics-reserve finalization without
   partial-seed promotion, internally consistent tolerated nominal-prefix
   hashes, noncascading recovery candidates, serialized backup upload timers.

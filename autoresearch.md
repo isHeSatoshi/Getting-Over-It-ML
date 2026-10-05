@@ -42,7 +42,38 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current status: goal pilot attempt1 stopped at seed21 checkpoint bug (fixed, not rerun)
+## Current status: pilot attempt2 completed training, stopped by provider commit rate limit; backup fix ready for fresh attempt3
+
+Attempt2 (session `goal-20261005-v2`, source
+`f413aa63159fe341879586afd1a605080d6d4d6f`) passed fresh preflight on all
+six checks (462 tests OK remotely; prefix fidelity 3240 ticks) and ran
+seed21 to the FULL training contract: 160000/160000 learner transitions,
+77952/77952 SAC cycles, 315959 physics ticks, all four checkpoints durably
+uploaded (40k/80k/120k/160k), proving the attempt1 serialization fix live.
+
+The run then stopped during the learned-only evaluation: the 30s backup
+cadence plus checkpoint syncs exceeded the provider repository-commit rate
+limit (128/hour; observed 122 and 86 commits in the failing hours). One
+failed flush was treated as fatal, the seed was stopped mid-evaluation at
+9/10 cases, and the worker auto-paused. No result.json; NO physical gate
+result; seeds22/23 never started. PAUSED independently verified;
+reservation closed at about $0.0603 elapsed of $0.30; loop cancelled;
+journal run93 records it.
+
+Fix in `deploy/goal_worker.py` only: transient vs structural backup
+errors, one backup per new checkpoint, 300s periodic sync cadence,
+transient retry with backoff (run continues; deadline stays the hard
+bound), durable retries at decision points. No algorithm, gate, reward,
+feature or tolerance changed. 466 active Python tests +16counterJS
++collisionJS pass; same12inactive residual tests excluded. This fix is
+uncommitted and NOT yet deployed; attempt3 needs a fresh session and
+reservation, never a resume or deadline extension.
+
+No learned physical outcome exists yet: no first-ledge gate, no Y180
+hold, no deaths/summits measured. Scaffold fidelity and engineering
+checks are not learned progress. Original summit metric remains zero.
+
+## Prior attempt: goal pilot attempt1 stopped at seed21 checkpoint bug (fixed, deployed in attempt2)
 
 Executed one bounded goal-SAC/HER pilot on the reviewed tree (deployed
 `01eace30e5561321efb1f14bdcb4a342af87bd9c`, session `goal-20261005-v1`,
@@ -63,9 +94,7 @@ temporary monitoring loop cancelled; journal run92 records it.
 Fix: explicit `bool()` casts in `research/goal_archive.waypoints()` plus a
 regression test that serializes non-central anchors exactly as the
 checkpoint writer does. 462 active Python tests +16counterJS +collisionJS
-pass; same12inactive residual tests excluded. The fix is uncommitted and
-NOT deployed or re-run. A retry needs a fresh session and reservation,
-explicit authorization, and never a resume/deadline extension.
+pass; same12inactive residual tests excluded.
 
 No learned physical outcome was produced: no first-ledge gate, no Y180
 hold, no deaths/summits measured. Scaffold fidelity and engineering checks
