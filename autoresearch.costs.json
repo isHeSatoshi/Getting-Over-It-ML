@@ -332,6 +332,46 @@
         "root_cause": "30s progress backup cadence plus checkpoint syncs exceeded the commit rate limit; single failed flush was fatal",
         "seeds22_23": "not started"
       }
+    },
+    {
+      "session": "goal-20261005-v3",
+      "space": "isHeSatoshi/rl-over-it-poc-20261004",
+      "tier": "cpu-upgrade",
+      "start_epoch": 1791205138.3085952,
+      "deadline_epoch": 1791241138.3085952,
+      "rate_per_hour": 0.03,
+      "maximum_estimated_compute_cost": 0.3,
+      "verified_end_epoch": 1791217795.6012192,
+      "status": "pilot_complete_first_seed_failed_gate",
+      "source_space_revision": "978f95ab9c392770ebac303b1bfcbee0156b880f",
+      "actual_billed_cost_known": false,
+      "study": "legal-prefix-goal-sac-her-v1",
+      "pricing_last_verified": "2026-10-05",
+      "pricing_evidence_url": "https://huggingface.co/pricing",
+      "reservation_evidence": "artifacts/goal_deploy_20261005_v3/reservation.json",
+      "sleep_policy": "paid_default_never",
+      "source_bundle": "artifacts/hf_bundle_20261005T125639015598Z",
+      "previous_attempt": "goal-20261005-v2 closed $0.0603: full training, evaluation killed by 128/hour commit rate limit; backup cadence/retry fixed",
+      "estimated_elapsed_compute_cost_upper_bound": 0.10547743853330611,
+      "termination": "Pilot ran seed21 to full training (160000 learner/77952 cycles) and a completed learned-only 10-case evaluation; physical gates failed (0/10 first-ledge, no Y180 hold); protocol stopped remaining seeds; worker auto-paused; PAUSED independently verified",
+      "end_evidence": "artifacts/goal_deploy_20261005_v3/complete_review/close.json",
+      "end_artifact_revision": "d516c926dd9c5ff096e945f3a17795398ad64e71",
+      "pilot_result": {
+        "seed": 21,
+        "learner_transitions": 160000,
+        "sac_cycles": 77952,
+        "training_complete": true,
+        "stop_reason": "learner_limit",
+        "physics_total": 357109,
+        "first_ledge_successes": 0,
+        "cases": 10,
+        "nominal_height180_hold90": false,
+        "deaths": 0,
+        "summits": 0,
+        "physical_gate_passed": false,
+        "pilot_gate_passed": false,
+        "seeds22_23": "not started per protocol"
+      }
     }
   ],
   "postclosure_local_diagnostics": [

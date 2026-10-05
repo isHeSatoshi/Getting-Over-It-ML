@@ -68,14 +68,37 @@ feature or tolerance changed. 466 active Python tests +16counterJS
 +collisionJS pass; same12inactive residual tests excluded. Committed
 `f7b44b0` and deployed as source `978f95ab9c392770ebac303b1bfcbee0156b880f`.
 
-## Current run: pilot attempt3 on the backup-fixed source
+## Result: pilot attempt3 completed; physical gates failed, protocol stopped remaining seeds
 
-Session `goal-20261005-v3`, reservation $0.30/10h (deadline
-`1791241138.31`), source `978f95ab`, approved context `5ec69d95`.
-Preflight passed all six checks (466 tests OK remotely) and seed21 is
-retraining from scratch. Monitoring loop `c9115b3b` (30min, read-only
-while running). One bounded pilot; first failed/incomplete seed stops it;
-no resume or extension.
+Session `goal-20261005-v3`, reservation $0.30/10h, source `978f95ab`,
+approved context `5ec69d95`. Preflight passed all six checks (466 tests
+OK remotely). Seed21 trained the full contract and ran the complete
+learned-only 10-case reference evaluation, then the protocol stopped the
+pilot: **physical gates failed**.
+
+- Training: 160000/160000 learner transitions, 77952/77952 SAC cycles,
+  stop_reason `learner_limit`, complete=true; 357109/1200000 physics ticks
+  (8544 preflight, 58560 resets, 91533 prefix, 160000 learner, 36000
+  evaluation, 1632 forced warmup, 600 scaffold, 240 bootstrap).
+- Evaluation (ordinary spawn, 3600 ticks/case, no prefix/playback):
+  **0/10 first-ledge holds, nominal Y180 hold90 false, 0 deaths,
+  0 summits**; saved actor reload exact. Retained gains: nominal -2,
+  others +1.6..+79.6 (Y up to ~100 in several cases).
+- Outcome: `physical_gate_passed=false`, `pilot_gate_passed=false`;
+  seeds22/23 not started; `final_goal_verified=false`.
+- Closed at $0.10548 elapsed of $0.30; cumulative all-closed $0.64541 of
+  $10; PAUSED independently verified; monitoring loop cancelled; journal
+  run94 records it. Provider rate limit did not recur (backup cadence
+  ~12 commits/hour).
+
+Interpretation: this is the first completed, contract-valid learned-only
+evaluation of the goal-SAC/HER design. The learned policy reliably moves
+and sometimes climbs to Y~100 from spawn, but it does not reach or hold
+the first ledge (X305-335, Y100-112) in any of the 10 cases, and the
+nominal case ends at spawn height. The pilot gate is unmet and the design
+does not yet show the required ledge competence. No further batch is
+authorized; a next step requires a separate bounded authorization and a
+scientific (not infrastructure) change decision.
 
 ### Recovered attempt2 learned-policy measurements (not a gate result)
 
@@ -91,9 +114,10 @@ deaths, no summits. So: real repeated climbing to ~Y100 from spawn, but
 the nominal first-ledge gate was NOT met, and this is a partial,
 infrastructure-interrupted evaluation, not a validated result.
 
-No learned physical gate result exists yet: no first-ledge gate, no Y180
-hold, no deaths/summits measured by a completed evaluation. Scaffold fidelity and engineering
-checks are not learned progress. Original summit metric remains zero.
+A completed learned-only evaluation now exists (attempt3) and failed the
+physical gates (0/10 first-ledge, no Y180 hold). Scaffold fidelity and
+engineering checks are not learned progress. Original summit metric
+remains zero.
 
 ## Prior attempt: goal pilot attempt1 stopped at seed21 checkpoint bug (fixed, deployed in attempt2)
 

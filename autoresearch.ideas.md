@@ -1,5 +1,14 @@
 # Deferred hypotheses
 
+- **Pilot attempt3 completed: physical gates failed (0/10 first-ledge, no Y180 hold):**
+  Session goal-20261005-v3, source978f95ab, closed $0.10548 of $0.30.
+  Seed21 full training (160000 learner/77952 cycles/357109 physics) + complete
+  10-case learned-only reference evaluation from ordinary spawn: 0 first-ledge
+  holds, nominal Y180 false, 0 deaths/summits; retained gains -3..+79.6.
+  Protocol stopped seeds22/23. Rate-limit backup fix held (~12 commits/hour).
+  No further batch authorized; next step needs a separate bounded authorization
+  and a design-level decision, not more diagnostics.
+
 - **Pilot attempt2 trained fully but died on provider commit rate limit; backup fix ready:**
   Session goal-20261005-v2, source f413aa63: seed21 completed 160000 learner/
   77952 cycles/4 durable checkpoints (serialization fix proven live), then
