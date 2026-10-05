@@ -42,7 +42,81 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current result: fresh residual-PPO study/trainer contracts implemented; no game training yet
+## Current build: replacement goal-conditioned SAC/HER system ready for bounded execution
+
+The user canceled the old94-invocation loop, obtained an independent design
+from session `2e405d38-60cd-4412-b784-732ab4e4d1c2`, and requested this build
+plus a cheaper-agent runner prompt. Residual-PPO is not the chosen approach.
+Its unfinished worker edits remain preserved and inactive.
+
+Implemented goal environment/replay/archive/curriculum/SAC trainer/learned
+evaluation/admission/preflight/private worker/management helpers. See
+`docs/GOAL_SAC_DESIGN.md` and `docs/GOAL_RUNNER_PROMPT.md`.
+The620-feature fixed-scale four-frame actor has no query flags/reward
+history/source phase; actor issues direct legal pointer commands. HER
+reconstructs all current/next frame goal deltas from same-suffix achieved
+states. Warm-ups are excluded from actor/critic/HER; ordinary noisy
+transitions store issued actions and separate physical applied commands.
+Deaths/summit terminate bootstrap; true time limits retain final observations.
+Forced warmups consume ALLphysics, never learner/update-schedule counts.
+Training reserves a worst-case two1800tickprefixes+two120tickresets+
+600ticksuffix AND referencebootstrap/all ten3600tickevaluations before another suffix launch.
+
+Archive returns require actual ordinary reset and complete legal replay,
+actual seeds/clocks/endpoint/history verification (physicalabs1e-7,
+observationabs1e-6), no state injection. Perturbed starts retain separate
+actual prefixes/provenance. Stable waypoints supply goals, not teacher
+mouse actions. Archive256cells/two reps, prefix1800 cap, suffix600.
+SAC128/128ReLU, lr.0003/batch256/tau.005/gamma.995/autoentropy−2,
+4096initial learner ticks then onecycle/two; max77952cycles/seed.
+
+New bounded pilot: seeds21/22/23 sequential,<=160000learner transitions
+and1.2million ALLphysics ticks/seed (prefix/reset/preflight/evaluation).
+Ten predeclared cases reset18001/noise17100..17106, nominal/left-right
+12tickwarmups/seven.02noise streams held4ticks. Scored3600tick reference
+play alwaysstartsordinarily, no teacherprefix/baseline/action playback.
+Everyseed needs nominalfirstledge and>=8/10originalfirstledge holds,
+plus nominalY>=180 retained90ticks atspeed<=2. Stopafterfirstseedfailure.
+Fullsummit/three-seed/20newheldout/upperroute/savedclosedloop replay
+requirements unchanged. No goal/skill success is claimed by this build.
+
+455 active/established Python tests passed and both JS checks pass.
+Full unfiltered discovery found one failure in the canceled uncommitted
+residual-worker timestamp fixture. `research.goal_checks` explicitly
+excludes that12-test module and no other tests; residual files untouched.
+Core goal pipeline passed one synthetic SAC cycle/3optimizer callbacks
+and saved reload. A full mock curriculum/checkpoint path also passes.
+Original reference/fast scaffold600+verifiedprefix600+untrainedfeedback60
+passes sequentially:2520controlled+720reset/bootstrap=3240actual ticks,
+85.73seconds, no optimizer/game training or learned progress.
+
+Windows CUDA Torch import hit paging-file capacity. Validation used
+isolatedCPU Torch2.6.0 under `artifacts/goal_build_20261005_v1/cpu_testenv`,
+with repository dependency fallback; original venv/system settings/
+unrelated processes untouched. A float32 expected-value fixture error,
+temporary environment missing Selenium, and inactive residual fixture
+failure are preserved/reported. First fidelity attempt failed before
+gameplay; corrected bounded dependency-only plan passed without relaxing
+physical tolerances. Evidence: `artifacts/goal_build_20261005_v1/`.
+
+Private Space still PAUSED/onstate_complete/source80444390; seven costs
+closed, estimated$0.4564241866528988 unchanged. No source upload, paid
+reservation, game learner or scheduled loop started. Proposed new pilot
+cap is$0.30 AND10paid hours including preflight/evaluation, within$10.
+Actual price/runtime/source/session/deadline must be verified by runner.
+
+## Next action: cheaper agent executes one bounded goal pilot
+
+Use `docs/GOAL_RUNNER_PROMPT.md`; no new design/diagnostic loop. Fresh
+allowlisted bundle/private goal-session/context/prior/reservation,
+never-sleepCPUUpgrade1replica, durable passed preflight, independently
+verified PAUSED, then intentional goal_study launch in the SAME deadline.
+No old94-loop resurrection, no automatic budget renewal or interrupted
+SAC/replay resume. Temporary monitoring loop only while the owned pilot
+runs; cancel after its completion/failure/deadline and report. Expand only
+with a separate bounded authorization, not an indefinite loop.
+
+## Prior result: residual-PPO contracts, superseded by the independent design
 
 Run89 adds residual_study/train/evaluation/execution/campaign modules and
 24 tests. Full423 Python tests plus16counter JS/collision JS pass. The

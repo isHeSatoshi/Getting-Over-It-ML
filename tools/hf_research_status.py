@@ -80,6 +80,28 @@ def main():
               "stage": runtime["stage"], "phase": state.get("phase"),
               "updated_utc": state.get("updated_utc"), "deadline_epoch": state.get("deadline_epoch"),
               "error": state.get("error"), "completed_runs": [], "progress_samples": []}
+    if session.startswith("goal-"):
+        metadata = api.repo_info(REPO, repo_type="dataset", revision=revision, files_metadata=True)
+        require_private = metadata.private
+        sizes = {item.rfilename: item.size for item in metadata.siblings}
+        for seed in (21, 22, 23):
+            path = f"{session}/goal_campaign/seed{seed}/result.json"
+            if path not in files:
+                continue
+            if not require_private or not 0 < sizes[path] <= 2*2**20:
+                raise ValueError("Goal result must be pinned private bounded JSON")
+            local = hf_hub_download(REPO, repo_type="dataset", revision=revision, filename=path)
+            with open(local, encoding="utf-8") as handle:
+                result = json.load(handle)
+            report["completed_runs"].append({
+                "seed": seed, "first_ledge_successes": result["first_ledge_successes"],
+                "cases": len(result["records"]), "nominal_height180_hold90": result["nominal_height180_hold90"],
+                "pilot_gate_passed": result["pilot_gate_passed"], "summits": result["summits"],
+                "deaths": result["deaths"], "total_physics_ticks": result["physics"]["total"],
+                "retained_gains": [row["retained_gain"] for row in result["records"]],
+                "final_goal_verified": False})
+        print(json.dumps(report, indent=2))
+        return
     if session.startswith(("inference-", "noise-probe-")):
         noise = session.startswith("noise-probe-")
         path = f"{session}/{'noise_probe_result' if noise else 'inference_result'}/report.json"

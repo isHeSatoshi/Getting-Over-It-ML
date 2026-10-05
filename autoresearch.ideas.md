@@ -1,6 +1,25 @@
 # Deferred hypotheses
 
-- **Next private residual worker/preflight integration:**
+- **Chosen replacement: execute goal-conditioned SAC/HER legal-prefix pilot:**
+  Independent designer session2e405d38-60cd-4412-b784-732ab4e4d1c2
+  replaced residualPPO. User canceled old94-loop, requested build+cheaper
+  runner prompt. Goal620stack/directSAC/HER/legalarchive/curriculum/
+  stablegoalwaypoints, privateworker/admission/checkpoint helpers built.
+  455active tests+JS pass; canceled residual-worker12test module excluded
+  explicitly after timestampfixturefailure, not modified/revived.
+  Originallegalprefix600/replay600/feedback60 ref-fast passes3240total
+  ticks/85.73s/onesimulator atatime. No game training/learned benefit.
+  CPUtestenv used forWindows CUDApagingissue, originalvenv unchanged.
+  NEXT `docs/GOAL_RUNNER_PROMPT.md`: onefresh privategoal pilot21/22/23,
+  <=160000learner/1.2milliontotalphysics each/77952SACcycles,10reference
+  cases/3600ticks, nominalfirstledge+>=8/10 andnominalY180held90speed<=2.
+  Stopfirstfailedseed. New$0.30/10paidhrs capunder$10, NOTreservednow.
+  CurrentSpacePAUSED/sevenclosed$0.456424187, no scheduled loops.
+  Freshprice/source/session/context/deadline/passedpreflight+verified
+  PAUSED beforetraining; no oldloop/residualroute/resume/automaticrenewal.
+  Documentation: docs/GOAL_SAC_DESIGN.md and docs/GOAL_RUNNER_PROMPT.md.
+
+- **Inactive superseded residual worker/preflight direction:**
   Run89 core residual study/train/evaluation/execution/campaign implemented,
   24new/423fullPython+16counterJS+collision pass. Fixed3seeds12/13/14,
   131072transitions/seed, PPO1024/128/3/lr.0001/KL.01, max3072optcalls/
