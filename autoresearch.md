@@ -60,6 +60,12 @@ three-times data resolve the collapse and reach the first-ledge gate?
 A pass remains pilot-only; the summit win still needs the full three-seed
 program (future seeds/batches under separate bounded authorizations).
 
+Launch record: session `goal-20261006-v4`, source `24c9dbe9`, reservation
+start1791227089.37/deadline1791263089.37 at $0.03/h ($0.30 max), preflight
+passed all six checks (466 tests OK remotely), approved context `65c97eca`,
+seed21 training started 2026-10-06 00:39Z. Monitoring loop `9092f1f1`
+(30min, read-only while running). Evidence `artifacts/goal_deploy_20261006_v4/`.
+
 ## Prior attempt: pilot attempt2 stopped by provider commit rate limit (backup fix f7b44b0)
 
 Attempt2 (session `goal-20261005-v2`, source
