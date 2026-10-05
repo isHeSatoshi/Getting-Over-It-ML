@@ -1,6 +1,33 @@
 # Deferred hypotheses
 
-- **Next frozen offline tracking/disturbance audit:** newcausalraw217
+- **Next causal past-cursor response check:** offline6traces/2516rows audit
+  complete/0newphysics/updates,all source/rawarithmetic/3backendpairs exact.
+  Targetpostqueries0/30,reach86.488..90.865; naivepre-motorrequest7.412<50,
+  slewchangemax15.935<40. Gravitybeforemotorverified; simplefree-servo
+  deltaresidualmax4.70758, querynotbranch/force/noisecausality proof.
+  Rawpointertelemetrydiff<3.7842e-6; cursorresidualnormmean4.583581.
+  Strictpast rawpointer13/14-ownpreviouscommand estimator meanerror1.488157/
+  max9.968753,22/30under.002; staleatchanges/no futureoracle.
+  Failed1pixel/30stepgate3.304582stillfalse/nohold/gain11.
+  ONEFIRSTtargetstep300proposal: subtractpast(.927917480,.658210754)
+  fromsameuncompensatedpointer ->(-84.985389709,-55.165676117),
+  float32(-.663948357,-.430981845). Unitgain/no filter/clock/targetscan,
+  legalrecordedcommands/arithmeticverify, no physicaleffectsimulated.
+  Freeze nominal600ref/fast +uncompgoal vsonecompensated300action after
+  equal299ordinaryprefix/reset14001/noise13105/samecontinuednoise:
+  6rollouts/max2400control+720reset/180work/210ownedsecs. Require lower
+  actualcursor error relativeCOMMONdesired goal-derivedpointer/legal/
+  alive/fullhistoryfidelity; reporttip/bodyeffects eveniferrorworsens.
+  Onlycausal-feedbackimplementation/smoke admission, not release/target
+  completion/recovery/labels/learning. No noisechange/seed/currentfuture
+  noiseoracle/filter/gain/goal/phase/capscan/closed30retry.
+  Later30step needsnewmemory-awarecontract/unchanged1pixel30cap,
+  recovery/wholevalidation before data/learning. PrivatePAUSED
+  1791165658.0955834,7closed$0.456424187/ledgerunchanged/goal0.
+  Evidence: artifacts/tracking_audit_20261005_v1/verification.json
+  and causal_cursor_feedback_proposal.json/proposal_verification.json.
+
+- **Closed frozen offline tracking/disturbance audit, completed above:** newcausalraw217
   targetphase implemented/action-postobserve/prepostlink/legalaxes128/
   reach26..102/no rearm.8new/49focused/338fullPython+JS pass.
   Fixedsamegoal/formula/offset/noise/tolerance1/cap30 localphase timesout:

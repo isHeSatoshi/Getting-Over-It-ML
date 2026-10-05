@@ -477,3 +477,8 @@ physical error3.304582, failing its unchanged1-pixel completion rule.
 338 Python tests and full reference/fast local histories pass. Next is an
 offline tracking/disturbance audit, not tolerance relaxation, extra ticks
 or teacher/learning admission.
+The offline tracking audit now finds a useful but imperfect past-cursor
+disturbance estimate, with no new game exposure. One unit past-error
+subtraction is proposed for an equal-state cursor-response check. Original
+gravity/contact behavior still prevents a simple linear solver claim;
+cursor alignment would not prove hammer completion or body recovery.

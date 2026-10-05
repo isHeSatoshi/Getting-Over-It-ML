@@ -260,3 +260,38 @@ proposal must use past actual pointer and own command history, not evaluator
 noise seeds or future noise. No goal, gain, tolerance or cap search, noise
 suppression or retry of this failed test. Body alignment, acquisition and
 full validation remain separate requirements.
+
+## Offline tracking audit and causal pointer proposal
+
+The saved six-trace/2516-row audit adds no game exposure. All30 target-stage
+post hammer query flags are false. Computed pre-state motor requests and
+slew changes remain below original caps; target reach is within26..102.
+But the actual hammer increment differs from the naive0.4 pre-state model
+by up to4.707578 pixels on query-free steps. Original Gravity runs before
+the motor, so those flags and this model cannot certify a free linear solver
+or attribute all error to noise.
+
+Actual raw pointer matches telemetry within3.78418e-6 pixels. Cursor-minus-
+command residual averages4.583581 pixels. An estimate using only the next
+pre-input's previous actual pointer minus the previous own command has mean
+current-residual error1.488157/max9.968753;22/30 errors are under.002.
+It is useful when the disturbance persists and stale when it changes.
+No seed, current post-state or future applied noise enters this predictor.
+
+One proposed unit past-residual subtraction uses the first target action,
+not a selected low-error/noise block. Its legal pointer is
+`(-84.985389709,-55.165676117)`. All counterfactual command arithmetic is on
+recorded inputs only, not a new trajectory, release or target-completion
+result. The failed1-pixel/30-step gate remains unchanged.
+Evidence: `artifacts/tracking_audit_20261005_v1/verification.json`,
+`causal_cursor_feedback_proposal.json` and `proposal_verification.json`.
+
+Next is a separately frozen equal-state one-step uncompensated-versus-
+compensated cursor response check after299 ordinary prefix steps, with
+unchanged noise and a nominal600 gate. Six rollouts/max2400 controlled+720
+reset ticks/180workseconds. Require strictly lower actual cursor error
+relative to the common desired pointer and full fidelity/legal controls.
+Report hammer and body effects even if they worsen. A cursor-alignment pass
+admits only later causal feedback implementation/smoke, not labels, target
+completion, body recovery or training. No disturbance-oracle input, filter,
+gain, goal, tolerance or cap scan.

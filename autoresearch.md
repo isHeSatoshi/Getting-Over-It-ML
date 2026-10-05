@@ -42,7 +42,69 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current result: observed hammer-target phase times out, tracking audit next
+## Current result: offline pointer audit supports causal lagged-cursor local test
+
+Frozen180second OFFLINE audit completed on6savedtraces/2516rows from failed
+observedtargetphase,0newplay/reset/updates. Trace/source/project/completed
+review/script/plan/budget hashes verified; all3fullbackendpairs exact,
+30targetstep pointer/error/servo arithmetic independentlyreconstructed.
+Original1pixel/30stepfailure remains3.304582physicalerror/nohold/gain11;
+no player/learnedpolicy improvement or teacher admission from audit.
+
+All30posthammer queriesfalse,29pre+postbothfalse; stagegoalreach86.488407..
+90.864862 within26..102, renderoffset always0,20. Pre-stateunclampedmotor
+requestmax7.411530<50, slewchangemax15.934812<40. These simplecomputed
+requests don't show cap pressure; they are not fullinternal branch/force
+observations. OriginalGravity executes BEFOREmotor; naiveprestate0.4motor
+prediction differs fromactualhammerdelta byup to4.707578 inquery-free steps.
+So do not claim cursor noise is the onlycause or freequery guarantees a
+linearservo. Sourceorder/motor/limits excerptsverify independently.
+
+Actualrawpointer13/14 matchesphysicalpointer within3.78418e-6pixels
+across2516rows. Actualcursor-command residual mean norm4.583581pixels.
+Strict causal ONE-step-lag estimate=currentpre rawpointer*128 minus previous
+actuallyissued owncommand*128. Predictor uses only previousactualpost and
+owncommand, no currentappliedaction/post/noise_seed/metadata/future noise.
+Descriptiveestimate-currentresidual mean1.488157/max9.968753pixels,
+22/30errors<.002pixel. Estimate becomesstale when disturbancechanges.
+No claim thispredicts allfuture noise or reconstructs any changed trajectory.
+All30counterfactualunit-subtractioncommandslegalonRECORDEDinputs only.
+Physicalminimumtiperror2.140451/final3.304582; no passedcompletion.
+
+Derived ONE proposal atFIRSTdeclaredtargetaction300, not chosenbystable
+blocks/lowesterror: pastestimate(+.927917480,+.658210754) subtractfrom
+uncompensatedpointer(-84.057472229,-54.507465363) gives
+(-84.985389709,-55.165676117),float32action(-.663948357,-.430981845).
+Gain1unit residual subtraction, no filter/gain/clock/target scan. Independent
+scalar raw-pointer/own-action arithmetic verifies; originalGravity-before-
+motor excerpt retained. Command is not executed/simulated; realtip/body
+effect or goalcompletion not inferred. Laterboundedproposal/source review
+did not rerun audit or extend its originaldeadline.
+Evidence: `artifacts/tracking_audit_20261005_v1/verification.json`,
+`causal_cursor_feedback_proposal.json`, `proposal_verification.json`.
+
+Independently privatePAUSED1791165658.0955834;80444390source,
+onstate-20261004-v1/onstate_study/contexted3a53c3/closeddeadline unchanged.
+Ledgerbytespreserved,7closed$0.4564241866528988; no paidreservation, remote
+write, deployment, publicrelease or substantive localtraining. Goal0.
+
+Next admitted bounded direction: separately freeze ONE-step actualcursor
+response comparison, nominal600historicalreferencefast gate then
+ordinary299prefix/reset14001/noise13105 with uncompensatedsameworldgoal
+versusoneunit pastobservedcursor-residual subtraction at300.6rollouts/
+max2400control+720reset/180work/210ownedseconds. Equalactualprestate/full
+prefix and allbaseline/history/backend/rawmetric fields mandatory.
+Require strictlylower actualcursor error relative to the COMMONdesired
+goal-derivedpointer, legalaction/no deaths. Report actualhammer targeterror/
+query/travel/bodyresponse honestly, even iftiperrorworsens; cursor alignment
+is not plantrelease, completion or bodylift. No changednoise, currentfuture
+noiseoracle/seedinput/filter/gain/goal/cutoffscan or failed30planretry.
+Pass onlyadmits separate causalfeedback implementation/smoke, not target
+completion/fullrecovery/teacher/labels/learning. Any eventual30step proposal
+needs a newfullcontract, honestmemory/command-observe linkage andunchanged
+1pixel/30cap, then recovery/wholevalidation beforedata/learning.
+
+## Prior result: observed hammer-target phase times out, tracking audit next
 
 Implemented separate `research/hammer_target.py`, onefixedworldgoal and
 actualraw217pre/post pairs only. Recompute pointer=goal-currentrawbody-
@@ -83,7 +145,7 @@ onstate-20261004-v1/onstate_study/contexted3a53c3/closeddeadline unchanged.
 Ledgerbytespreserved,7closed$0.4564241866528988; no paidreservation, remote
 write, deployment, publicrelease or substantive localtraining.
 
-Next admitted bounded direction: freeze180second OFFLINE tracking-authority/
+The historical admitted180second OFFLINE tracking-authority/
 disturbance audit of this6savedtrace/2516row set,0newplay/reset/updates.
 Bindtrace/source/completedreview/script/plan/budget beforeanalysis. Inspect
 each30goalstep actualraw13/14pointer versus commandedaction andposthammer
