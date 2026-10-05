@@ -1,6 +1,29 @@
 # Deferred hypotheses
 
-- **Next DIFFERENT causal observed-contact phase + one-step authority contrast:**
+- **Next OFFLINE branch/direction audit, no pressure/controller retry:**
+  Separatecontact_pressure module implemented/14new365fullPython+JS;
+  oldsourcebytes/pointcontracts unchanged,325+8offline/actions/target
+  summaries exact. Frozen6rollouts2536control720reset/62.117s.
+  Contact8proxyacquires/shared333history/pre/owncursor/anchor/noise exact.
+  Pressureanalytic9.283006/radius26.001, delta(-5.105474,-7.752957);
+  candidateaction(.081858017,.038346972). Bothpotdelta(0,0), bothgain11/
+  noholds, candidate-baseline(0,0); strictauthoritygatefalse. Tipmoves
+  differently butbothqueryfree; no laterpressure/recoverydesign/teacher/
+  learning. Nominalgain83/bothholds,0deaths/summits/updates.3backend/
+  allraw/source/onecontrast histories exact. Allfailedgates immutable.
+  Freeze180secondOFFLINE6traces2536rows/source/project/trace/completed
+  review/scripts/plan/budget. Equalhistoryactualendpoint/body/impulse/
+  request/query/pressurevector vsoriginalhammerwall/axisprobes/rollback/
+  moveplayernext_freehammer order; actualbranchunobserved/querynotplant/
+  force. Decide need forread-only originalprocedurecallcounter design,
+  notcontactpersistence/gain/target/nudge/cap scans/probe-wrapperretry/
+  gatechange/newplant/labels/learning. Callcountertelemetry neverpolicy
+  input/teacherlabel; laterinstrumented-uninstrumented physicalfidelity
+  smoke must precede branchinterpretation. No paidlearning.
+  PAUSED1791174301.353306,$0.456424187closed/goal0.
+  Evidence: artifacts/contact_pressure_probe_20261005_v1/verification.json.
+
+- **Closed DIFFERENT causal observed-contact phase + one-step contrast, completed above:**
   Offline4traces1910rows audit verified49.646s/original180cap/0newphysics.
   RuntimequeryOR overattemptssubsteps, notendpointoverlap/force/branch.
   Firstpair7–8 querytrue/travel<3 ends333, tipstill10.667937off/bodyY32.

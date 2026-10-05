@@ -548,3 +548,45 @@ Require actual positive body movement and a positive
 counterfactual difference on both axes, each>.1pixel, before any later
 pressure/recovery design. Query acquisition alone is insufficient.
 The failed1-pixel/30-step point gate is immutable.
+
+## Contact/pressure implementation: no actual body authority
+
+`research/contact_pressure.py` implements the separate query-proxy phase
+and one-shot observed-anchor contrast. The underlying cursor/point/source
+controllers are unchanged. Two actual query/low-travel posts acquire only
+a fallible proxy, with terminal/target-failure priority and no rearm.
+The one pressure direction has a16-pixel maximum and an analytical first
+26.001/102 reach-circle bound. Actual own-command history, input copies,
+pre/post alignment and one-action/one-observe guards apply.
+
+14 new tests and365 full Python tests plus collision checks pass.
+Offline saved325+8 histories reproduce all controls and underlying target
+summaries. The historical geometric point failure is not reclassified.
+
+The frozen six-rollout probe acquires the proxy at contact step8. Both
+arms reproduce all333 preceding physical/control rows exactly and share
+the same actual raw tip anchor, pre-input and perturbation history.
+The pressure length is analytically shortened to9.283006 pixels, requested
+reach26.001, with delta `(-5.105474,-7.752957)`.
+
+Both actions leave the pot exactly at `(268.844997,32)`, gain11/no holds.
+Both actual body deltas and the pressure-minus-baseline difference are
+zero on both axes. The strict>.1-pixel authority gate fails. The hammer
+does respond differently: baseline `(282.838223,63.766221)` versus
+pressure `(281.476890,61.698754)`, both queryfalse. This verifies
+different actuation, not a planted response or a complete branch explanation.
+Nominal retains both holds/gain83; zero deaths, summits or updates.
+No later pressure/recovery design, labels or learning is admitted.
+
+2536 controlled+720 reset ticks,62.117223 owned seconds, six rollouts.
+All raw milestones/controls/clocks/own-memory/contact histories, three
+backend pairs and exact prefixes independently verify. HF remains PAUSED;
+the closed ledger is unchanged. Evidence:
+`artifacts/contact_pressure_probe_20261005_v1/verification.json`.
+
+Next audit saved branch/direction mechanics offline. Query flags are not
+the true solver branch or a planted endpoint. If source inspection warrants
+read-only procedure-call telemetry, it needs a separately frozen
+instrumented/uninstrumented fidelity check. Such privileged diagnostic
+telemetry must never become controller input or teacher labels.
+No contact-duration, gain or target scan can pass the failed authority gate.

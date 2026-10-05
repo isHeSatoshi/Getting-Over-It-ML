@@ -42,7 +42,73 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current result: offline contact audit admits a different design, not body authority
+## Current result: causal contact/pressure implementation passes, body authority fails
+
+Added `research/contact_pressure.py` ONLY; existing source/defaultcursor/
+point/sourcegoal bytes unchanged. ContactTargetPhase wrapsunchangedOWN-
+cursor pointservo/max30, twoactualpostquerytrue/lasttravel<3/gapreset,
+raw217/prepost/actionobserve guards. Terminal/targetfailure priority,
+freegeometriccompletion fails beforeunqualifiedextraqueryticks; oneattempt/
+no rearm. Acquiredactualrawtip anchor copied. SeparateAnchorPressureStep
+bootsactualOWNcommand/post, sameobservedanchor botharms, fixedsource300
+bodyreference, negativebodyerror direction/norm16MAX, analyticalFIRST
+inner26.001/outer102intersection/no search, legalaxes/reach/controlguards,
+oneaction+actualpostobserve/no reuse.14new/365fullPython+JS pass.
+Offlineboth full325prefix/8approach actions/targetobserve summaries exact;
+onlynewcontactmetadata/earlystop differ; oldpoint30failure unchanged.
+
+Frozen originalphysics six-rollout localauthority contrast: nominal600
+gate/ref-fast, failedordinary325+8contactsteps+ONEkeep-anchor vsONEpressure.
+Queryproxy acquires333 despite underlyinggoal10.667936away/notcompleted.
+Botharms identical333raw/control/physics/contact/cursor/sourcehistories
+andcontrastpre/anchor/noise. Sourcegoalexecuted325/base300/source299 frozen,
+no source300resume/recordedprefixoverride/placement/rearm/latermacro.
+Anchorraw(282.838305995,64.187736899), actualphysicaltipdiff~2e-6pixels.
+
+Pressure normshortensanalytically9.283006 (not scannedgain) torequested
+radius26.001, delta(-5.105474,-7.752957), action(.081858017,.038346972).
+Keep-anchor action(.121744528,.098916948). ACTUALbodydelta BOTH(0,0),
+candidate-minus-baseline(0,0), strict>.1eachaxisgatefalse. Bothfinalpot
+(268.844997,32)/gain11/no centralORsecondaryhold/finalcentralsupport.
+Baselinehammer(282.838223,63.766221), pressurehammer(281.476890,61.698754);
+bothfinalhammerqueryfalse, loggedtravel1.421514versus3.745189. Bothbody
+querytrue. This equalhistory contrast proves differentactuation/tipmotion,
+NOT verifiedplanted transfer/bodyauthority or itsfullcausalexplanation.
+Nominal still(322.585886,104)/gain83/bothholds/finalcentralsupport.
+0deaths/summits/optimizerupdates. No laterpressure/recoverydesign admission,
+teacher/corpus/labels/learning or threshold/cap/goal/gain retry.
+
+6rollouts/2536controlled+720reset/62.117223ownedseconds within2624/720/
+180work210ownedcaps. Independent all6rawmilestone/control/caseclock/
+contact/postobserve/OWNmemory/sourceclock histories,3backendpairs,full
+nominal600/allordinary325+8physics exact. Sharedcontactpre/anchor/own
+history/noise andonecontrast/analyticbound/sourcefreeze verified. Source/
+newmodule/contract/admission/offlinepreflight/plan/scripts/parent/budget/
+deadline/secretstrippedchild/durabletraces/ownedcleanup bound. Alloldpoint
+1pixel30/sourcewrapper/751pulse/fresh8of9 failures immutable; goal0.
+Evidence: `artifacts/contact_pressure_probe_20261005_v1/verification.json`.
+
+IndependentprivatePAUSED1791174301.353306/source80444390/session
+onstate-20261004-v1/modeonstate_study/contexted3a53c3/closeddeadline
+unchanged. Ledgerbytespreserved,7closed$0.4564241866528988; no newpaid
+reservation/remote write/deployment/publicrelease/substantivelocaltraining.
+
+Nextbounded direction: freeze180second **OFFLINE branch/direction audit**
+ofthese6savedtraces/2536rows,0newplay/reset/updates. Compareequalhistory
+one-step tip/body/impulse/request/query endpoints and actualpressurevector
+withoriginalhammer-wall/axisprobe/rollback/moveplayernext vsfreehammer
+ordering. Observedquery pair/lowtravel NOT actualbranch or endpointplant;
+tipdeparture/freequery isdescriptive, not proofwhichinternalbranch ran.
+No contactpersistence/pressuregain/target/nudge/cap scan orsameprobe/
+wrapperretry/metricrelaxation. Determine whether missingblocked-branch/
+direction support warrants a **read-only diagnostic callcounter**
+design atoriginalprocedures withoutphysics/controls/gameasset/raw217
+changes. Ifjustified, telemetryonly/nevercontrollerinput/teacherlabel;
+requires separatelyfrozen instrumented-vs-uninstrumented physicalfidelity
+smoke beforeinterpretingbranchdata. No newplant/controlproposal orpaid
+learning untilactualauthority; oldlocalauthoritygate cannotbe relaxed.
+
+## Prior result: offline contact audit admits a different design, not body authority
 
 Frozen180second OFFLINE audit of4savedtraces/1910rows independently
 verified49.645733seconds,0newplay/reset/updates. Originalruntime counts

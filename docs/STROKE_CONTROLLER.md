@@ -34,6 +34,14 @@ Any proposed pressure requires an equal-history actual-body response
 contrast before recovery or teacher admission.
 Evidence: `artifacts/contact_transition_audit_20261005_v1/verification.json`.
 
+The separate contact/pressure implementation passes14 new/365 full tests,
+but its matched one-step body-authority contrast fails. Both arms have
+actual pot delta `(0,0)` and finishY32/gain11/no holds. Pressure moves
+the hammer differently, not the pot; both final hammer queries are false.
+No pressure-phase/recovery/teacher admission follows. Next inspect the
+unobserved solver branch and direction, not a contact/gain/target retry.
+Evidence: `artifacts/contact_pressure_probe_20261005_v1/verification.json`.
+
 Original Scratch Player blocks `bF`/`bG` request
 `0.4 * (pointer - hammer_world + body_world + render_offset)`.
 The original 40-unit change limit, 50-unit motor limit, 26..102 reach and
