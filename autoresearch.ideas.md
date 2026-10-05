@@ -1,6 +1,35 @@
 # Deferred hypotheses
 
-- **Next fresh residual-PPO contract/trainer/admission, not another audit:**
+- **Next private residual worker/preflight integration:**
+  Run89 core residual study/train/evaluation/execution/campaign implemented,
+  24new/423fullPython+16counterJS+collision pass. Fixed3seeds12/13/14,
+  131072transitions/seed, PPO1024/128/3/lr.0001/KL.01, max3072optcalls/
+  257resets each, rawclimb-v2/frame1/horizon1800/freshonline222RMS.
+  Fresh reset15001/noise14100..14105 verified unused beforedeclaration;
+  matchedzeroactor/finalonly9case reference comparison, actualcausal
+  traces/hold reconstruction, directGym120reset/case. No baselineholds
+  asMLprogress. No originalgame work/trainedclimber/summit, goal0.
+  ParentLinuxsource/prior/context/preflight/reservation/deadline/livePID/
+  durableclaim grants andsequentialbackup/autopause callbackstested.
+  Frozen8mocktransition/2optcall/120mockreset/4.266s only; prepregex/KL
+  expectationfailurespreserved, fullstudyKLunchanged. Postsmoke trace
+  storage correction: boundedhashindexedpercaseJSON, learnerASTexact,
+  originalplanpreserved/no retryextension. New$.06/7200sec capproposal,
+  NOreservation/deployment/remotevarwrite. PAUSED/$0.456424187closed.
+  NEXT dedicated residualHFworker/dispatcher/pinnedcontext+prior+
+  runtime never-sleepCPUUpgrade1replica/resources, durablebackups/
+  watchdog/auto-pause; unitcontext_mode_failure_deadline_cleanup first.
+  Requiredpreflight unit_collision_resources_benchmark_zeroactororiginal
+  fidelity_adapterpipeline_mockoptimizer, boundedownedsecretstripped.
+  Onlythen reverifyprice/source/Spacevars, freshbundle/context/session/
+  <=7200s/$.06ledgerreservationunder$10, intentionallydeploypreflight.
+  Durablepassedpreflight+independentPAUSED beforefulltraining.
+  No directtrainer/oldonstatepilotresume/newproviderGPU/publicrelease/
+  substantive localtraining/gatechange orfurthercontactproxyrefinement.
+  Evidence: artifacts/residual_research_contract_20261005_v1/verification.json
+  and storage_amendment.json.
+
+- **Closed residual-PPO core contract/trainer/admission, completed above:**
   Run88 Gym222adapter and zero-mean actor implemented,18new/399full
   Python+16counterJS+collision pass. Pure next/terminal222 preview makes
   no sourcecalls; step validates actualprepare byte-match, one applied

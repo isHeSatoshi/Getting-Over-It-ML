@@ -42,7 +42,88 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current result: Gym222 adapter and zero-mean PPO initialization validated, no learning yet
+## Current result: fresh residual-PPO study/trainer contracts implemented; no game training yet
+
+Run89 adds residual_study/train/evaluation/execution/campaign modules and
+24 tests. Full423 Python tests plus16counter JS/collision JS pass. The
+original game/physics/env/reward/adapter/scaffold/prior bytes stay unchanged.
+This is the learning study's executable core, NOT a trained climber.
+
+Fixed proposal: seeds12/13/14,131072 actual training transitions each,
+frame1/horizon1800, fresh online222 RMS from actual training contexts only,
+unchanged raw climb-v2 reward. PPO1024rollout/128batch/3epochs/lr.0001/
+gamma physical-time/GAE.95**.25/clip.2/targetKL.01. Atmost3072 completed
+optimizer calls and257actual120-tick resets per seed; stop before more
+work. No forced warm-ups/noise/teacher labels during training.
+Checkpoints65536/131072 are after optimizer update boundaries; final-only
+selection, matched zeroactor baseline plus final learned evaluation.
+
+Fresh reset15001/noise14100..14105 fields verified absent in prior hidden/
+ignored artifacts before declaration. Nine nominal/left-right warm-up/
+noise reference cases,1800 controls maximum, four-tick external noise
+hold. Direct Gym evaluation counts ONE120tick reset/case, no auto-reset.
+Preserve full causal raw217/actor222/residual/finalissued/applied/physical
+trace, independently reconstruct holds and actual source/control clocks.
+Zeroactor holds nevercount as learning. Replicated first-ledge benefit
+requires each seed nominalcentral and>=8/9central, no moredeaths/lower
+medianretention, plus>=1additionalcentral hold or fullcompletion versus
+the SAME baseline. Fullgoal still needs original summit/multi-seed
+completion/heldout/upper-route/saved-policy replay; goalprojection never
+claims finalverification from standard cases.
+
+New parent-bound Linux grants bind source/prior/context/reservation/
+passedfreshpreflight/independentPAUSED/deadline/liveparent PID+creation/
+exclusive durableclaim. Sequential runs require contract-validation and
+durable backup before next seed; owned auto-pause callback finally on
+admitted dispatch completion/failure. Reject desktop/unadmitted/full old
+checkpoint or interrupted claim. Proposed7200seconds/$0.06 ceiling under
+$10 total is NOT an active reservation. No remote deployment/variables
+or paid batch started today; actual old Space stays PAUSED.
+
+One frozen owned MOCK-only smoke executes8 synthetic transitions/2
+optimizer calls/120mock reset steps in4.265868seconds, zero actual game/
+reset ticks. This proves accounting/optimizer plumbing, not climb learning.
+Preparation regex-quoting error and failed toy expectation (KL stopped
+after1 instead of2updates) are retained. Only the separate8step mock
+disables KL early-stop; full-study targetKL.01 remains fixed.
+
+Post-smoke review catches combined9case trace possibly exceeding128MiB
+JSON limit. Store bounded per-case JSON with hash/size/path-checked index.
+Original smoke plan/result kept intact; separately bound storage amendment
+reconstructs original trainer hash and proves learning/init/accounting
+AST unchanged,423tests pass. No mock retry, deadline extension or new
+optimizer/game work in amendment. Evidence:
+`artifacts/residual_research_contract_20261005_v1/verification.json` and
+`storage_amendment.json`.
+No new physical holds/deaths/completions, no reliable learned climber or
+summit. Historical baselinegain83/holds andfailedgain11/noholds unchanged;
+primarygoal0. Independent private PAUSED/source80444390/sessiononstate-
+20261004-v1/modeonstate_study/contexted3a53c3/oldcloseddeadline unchanged.
+Ledgerbytespreserved,7closed estimated$0.4564241866528988.
+
+## Next bounded chunk: private residual worker/preflight integration
+
+Wire a separately named private residual deployment worker into the
+existing owned Space dispatcher, with pinned fresh context/prior/source,
+required runtime never-sleep CPUUpgrade/onereplica/resource checks,
+durable claim/checkpoint/case backups and watchdog/auto-pause. Current
+residual_execution callback API is tested; HF worker wiring is NOT yet
+implemented or launched. Do not call the trainer directly or reuse
+closed onstate/pilot source/session/preflight.
+
+Preflight must run declared unit/collision/resource/benchmark/zeroactor
+original-physics fidelity/adapter pipeline/mock optimizer checks, with
+finite work/deadlines and secret-stripped owned children. Test worker
+mode dispatch/context/preflight failure/deadline/durable artifacts/pause
+first, not another contact/feature audit or substantive local training.
+Then reverify current CPUUpgrade price and actual Space variables, create
+fresh immutable bundle/context/session and explicit<=7200s/$.06 ledger
+reservation under$10, and intentionally deploy only the fresh preflight.
+No full training until durable completepassedpreflight and independent
+PAUSED. Current proposal caps/cases/gates stay fixed; old deadlines cannot
+be renewed. Success/heldout criteria unchanged, operator remains active.
+
+## Prior result: Gym222 adapter and zero-mean PPO initialization validated
 
 Run88 adds `research/residual_env.py` and `research/residual_policy.py`.
 The original game/physics/raw217 environment/reward/StrokeController and
@@ -89,7 +170,7 @@ sessiononstate-20261004-v1/modeonstate_study/contexted3a53c3 and closed
 deadline unchanged. Ledger bytes preserved,7closed estimated
 $0.4564241866528988; no remote write/deployment/paid reservation.
 
-## Next bounded chunk: fresh residual-PPO study contract and remote execution plumbing
+## Prior declaration, implemented above: residual-PPO core contracts
 
 Adapter/initialization gate passed. Move toward learning, not another
 contact/counter/feature audit. Implement a separately named residual-PPO

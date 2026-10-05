@@ -100,8 +100,10 @@ All four archive endings are explicitly mocked time limits, not actual
 original-game endings. Fresh RMS statistics fitting is not policy training.
 Evidence: `artifacts/residual_adapter_pipeline_20261005_v1/verification.json`.
 
-Next implement the fresh bounded three-seed residual-PPO study/trainer/
-admission contract and narrow no-training checks. No remote batch is
-active or reserved yet. Any learner benefit must beat this exact
-zero-actor baseline. Full-climb, held-out, upper-route fidelity and
-saved-policy goals remain unchanged.
+The fresh three-seed residual-PPO study/trainer/admission core is now
+implemented, including bounded actual physics/optimizer accounting and
+hash-indexed per-case reference traces. See `RESIDUAL_STUDY.md`.
+No original-game training or paid reservation is active yet.
+Next integrate the owned private worker and preflight. Any learner
+benefit must beat this exact zero-actor baseline. Full-climb, held-out,
+upper-route fidelity and saved-policy goals remain unchanged.
