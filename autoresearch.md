@@ -42,7 +42,66 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current result: offline joint audit identifies one approach hypothesis, not a plant
+## Current result: one-point approach times out, no contact/body-authority admission
+
+Freshfrozen originalphysics point/contact probe completed: unchanged
+nominal600/sourcecontroller histories, then knownfailedordinary325
+SourceGoalController prefix (299base+26observedgoal) and ONErecorded
+point(291.913596991,69.795227082). Unchangedcursor-feedback phase
+bootsactualOWNissuedcommand/post/raw217, sourcegoalexecuted325/
+basecalls300/source299 frozen through approach, no source300resume,
+push/rearm/extra contact-seeking ticks. Source/controller/goals/limits/
+localadmission/offlinepreflight/scripts/parent/budget/deadline/secret-
+stripped child/durabletraces/ownedcleanup bound beforephysics.
+
+Point stage TIMESOUT30: rawerror2.071693/physical2.071702>fixed1pixel.
+Finalhammer(289.860451,69.518563), finalqueryfalse/travel1.966822.
+21of30posthammer queries/30bodyqueries, but not observedpointcompletion
+or finalcontact. Bodydelta(-.338735,0), final(268.506262,32)/gain11,
+no centralORsecondaryhold/finalcentralsupport. Nominal600 retains both
+holds/finalcentralsupport at(322.585886,104)/gain83.0deaths/summits/
+optimizerupdates. Strictpoint/contactgate and separatebodyauthority
+DESIGN admission bothfalse; no push, recovery, teacher/labels/learning.
+Queryhits atothersteps cannot retrospectively pass the frozencompletion
+gate or become force/branch/normal measurements.
+
+4rollouts/1910controlled+480reset,26.714771ownedseconds inside180work/
+210ownedcaps. Independent all4rawmilestone/action/postobserve/caseclock/
+OWNcursor-memory/source-clock histories,2backendpairs,2fullnominal600
+and2fullfailed325 histories exact. Sourcegoal clock freezing/bootstrap/
+30cap/earlystop verified.351fullPython+JS pass; offline both325prefix
+proposal/observation/sourceclock and firstlegalpointcommand preflightpass.
+No runtimeorinspection failure in this physicalprobe. Allclosedtip30/
+pulse751/sourcewrapper/fresh8of9gates unchanged; primarygoal0.
+The tools.research_goal_metrics projection viaresearch.onstate_campaign.goal_projection
+exactlymatches the pinnedcompletedlearnedstudy: worstseedcompletion0,
+candidate/finalgoalfalse. This physicaldiagnostic doesnotpromotelearnergoal.
+Evidence: `artifacts/point_contact_probe_20261005_v1/verification.json`.
+
+IndependentprivatePAUSED1791171767.910565/source80444390/session
+onstate-20261004-v1/modeonstate_study/contexted3a53c3/closeddeadline
+unchanged. Ledgerbytespreserved,7closed$0.4564241866528988; no paid
+reservation/remote write/deployment/publicrelease/substantivelocaltraining.
+
+Nextadmitted direction is **180second OFFLINE contact-transition/servo
+audit** ofthese4savedtraces/1910rows,0newplay/reset/updates. Bind source/
+project/traces/completedreview/scripts/plan/budget beforeanalysis.
+Fixed snapshots: firstpointposthammerquery, firstlaterqueryfree transition,
+lastpointstep; comparepre/post hammer travel/bodyresponse/motorrequest/
+OWNcursor residual and fixedgoalerror. Inspect original query/collision
+ordering and conditionalblockedbody transfer with bodyfloor constraints,
+not merely alpha or query==force assumptions. Source nominal367 query
+pose versus lowbodypointstage is descriptive/unequalstate, no causalforce
+claim; equalprefix325 preserved. Determine whether a distinct causal
+observe-contact/pressure primitive, rather than geometricpointaccuracy,
+has mechanical support before proposing any new physical test.
+No earlierquery posthoc completion, tolerance/capextension/retarget/nudge/
+gain scan, sameprobe/wrapperretry/sourcephasejump/push/labels/learning.
+Any newcontact-phase criterion mustbe predeclared as DIFFERENT design,
+leave failedpoint1pixel30gate immutable, and still require later equal-
+history actualbodyauthority before recovery/wholefresh/data admission.
+
+## Prior result: offline joint audit identifies one approach hypothesis, not a plant
 
 Completed the frozen180second OFFLINE audit of4saved751traces/3004rows,
 with independent review in122.029318seconds. Added0gameplay/reset ticks,

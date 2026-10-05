@@ -1,6 +1,30 @@
 # Deferred hypotheses
 
-- **Next frozen one-point/contact feasibility probe, NOT body recovery:**
+- **Next frozen OFFLINE contact-transition/servo audit, no new physics:**
+  Pointonly4rollout probe completed1910control480reset/26.714771s,
+  351Python+JS/offline325prefix-bootstrap pass;2backendpairs/allrawmemory/
+  sourceclocks/fullnominal600/failed325 exact. Nominalgain83/holds,
+  failedonepoint30TIMEOUT/raw2.071693/physical2.071702>1,
+  finalhammerqueryfalse/travel1.966822;21of30hammer/30bodyqueries but
+  bodydelta(-.338735,0)/final(268.506262,32)/gain11/noholds.0deaths/
+  summits/updates. Pointcontactgate ANDbodyauthoritydesign admissionfalse,
+  no push/teacher/learning; earlierqueriescannotposthocpass completion.
+  Freeze180secondOFFLINE4savedtraces/1910rows source/project/trace/review/
+  script/plan/budget audit,0newplay/reset/updates. Firstpointquery,
+  firstlaterqueryfree transition,lastpointstep fixedsnapshots; actual
+  preposttiptravel/bodyresponse/motorrequest/OWNcursorresidual/goalerror
+  and originalquery/collisionordering/blockedbodytransfer/bodyfloor.
+  Nominal367pose versus lowbodypoint is unequalstate/descriptive, no
+  causalforce claim; querynotbranch/force/normal/alphaauthority.
+  Decide mechanicalsupport for DIFFERENT causalobserve-contact/pressure
+  design, not pointaccuracy/gain scans. No posthocquerycompletion/
+  1pixel30gatechange/retarget/downnudge/extensions/probe-wrapperretry/
+  sourcejump/push/labels/learning. Freshcontactphase criterion andlater
+  equalhistoryactualbodyauthority/recovery/wholefreshdata gates separate.
+  PAUSED1791171767.910565,7closed$0.456424187/goal0.
+  Evidence: artifacts/point_contact_probe_20261005_v1/verification.json.
+
+- **Closed one-point/contact feasibility probe, completed above:**
   Offline4savedtraces/3004rows audit verified122.029s/original180budget,
   0newplay/reset/updates;351full62focusedPython+JS pass. Failedhandoff
   body19.157607off despite tip.870482, goal26hammerquery0/bodyquery25,

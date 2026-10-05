@@ -455,3 +455,40 @@ query/low travel at completion before a separate equal-history body-
 authority contrast. A free completion or timeout fails without nudges,
 new goals, extra ticks or gate relaxation. Whole-controller validation,
 teacher data and learning remain blocked.
+
+## One-point feasibility probe: timeout, no body-authority admission
+
+The frozen four-rollout probe reproduces nominal600 and the failed
+ordinary325 wrapper prefix exactly, then approaches only the selected
+point `(291.913596991,69.795227082)`. The unchanged own-command cursor
+phase uses raw inputs and its actual preceding command/post history.
+Source calls/phase remain300/299 and wrapper executed count325 throughout
+the approach; source300 never resumes. No push or extra contact-seeking
+ticks occur.
+
+The point stage times out at30, raw error2.071693 and physical error
+2.071702, both outside the fixed1-pixel threshold. Final hammer is
+`(289.860451,69.518563)`, queryfalse/travel1.966822. Although21 of30
+steps have a hammer query, there is no point completion or final contact.
+Earlier queries cannot retrospectively pass the declared gate.
+
+The pot moves left.338735, with zero net vertical movement, and finishes
+`(268.506262,32)`, gain11/no central or secondary hold. Nominal retains
+both holds at `(322.585886,104)`, gain83. Zero deaths, summits or updates.
+Point/contact and separate body-authority-design admission both fail;
+no teacher data, labels or learning is admitted.
+
+1910 controlled+480 reset ticks,26.714771 owned seconds, four rollouts.
+All raw milestones/actions/clocks/own-command memory, both backend pairs
+and both full nominal600/failed325 histories independently verify.
+351 Python tests and collision checks pass. Private HF remains PAUSED;
+the closed ledger is unchanged. Evidence:
+`artifacts/point_contact_probe_20261005_v1/verification.json`.
+
+Next is a frozen offline contact-transition/servo audit of the saved
+1910 rows. Inspect the first point query, first later query-free transition
+and final step, original collision ordering and body-floor constraints.
+A distinct observed-contact/pressure design needs mechanical support and
+a fresh contract, not retargeting, extra ticks or relaxing the failed
+1-pixel/30-step gate. Actual equal-history body authority remains a later
+requirement before recovery, whole-controller validation or learning.

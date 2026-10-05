@@ -17,6 +17,14 @@ point/contact feasibility test only, not a plant, push or teacher. See
 `TERMINAL_CONTROLLER.md` and
 `artifacts/joint_authority_audit_20261005_v1/verification.json`.
 
+The subsequent point-only probe times out after30 steps, physical error
+2.071702>1, final hammer queryfalse. It records21 intermediate hammer
+queries but no net pot lift or point/contact gate pass. Source progress
+stays frozen, both backend pairs/prefix histories are exact. No push or
+learning is admitted. Intermediate query hits are not a retrospective
+completion, force measurement or permission to change the failed gate.
+Evidence: `artifacts/point_contact_probe_20261005_v1/verification.json`.
+
 Original Scratch Player blocks `bF`/`bG` request
 `0.4 * (pointer - hammer_world + body_world + render_offset)`.
 The original 40-unit change limit, 50-unit motor limit, 26..102 reach and
