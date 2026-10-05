@@ -126,3 +126,39 @@ immutable. Next is a bounded offline acquisition/contact audit of saved
 nominal, failednoise13105 and successfulnoise13104 histories, not a trigger,
 gain, target or cutoff sweep. A new physically justified hypothesis needs
 fresh declaration and validation before any clock/memory-aware learning.
+
+## Acquisition audit and proposed local test
+
+The frozen offline follow-up checks six saved trajectories, 4506 rows, no
+new gameplay or learning. The failed run reaches X250 and Y65 but never
+X285 or Y100. Its final X becomes invariant at tick500; its last hammer
+query hit is tick482. All final120 body-query hits, zero hammer hits and
+120 saturated corrections describe a low-terrain stall, not body authority.
+
+At the predeclared tick300 snapshot the failed hammer is lower and queried
+with zero travel, while the nominal hammer is free. The failed body falls as
+the hammer stays fixed. These later states differ, so this is an observed
+stroke/contact mismatch, not a controlled causal explanation of the failure.
+All compared noise streams differ from their first applied action.
+
+One mechanically derived release goal uses the next ordered raw prior row:
+hammer-world `(186.932344,3.814357)`. Subtracting the actual failed pre-body
+and the original fixed `(0,20)` render offset gives legal pointer
+`(-84.057472,-54.507466)`, reach90.864866 within26..102. No target, gain or
+clock scan was performed. The reference point is a goal, not a valid
+corrective label at this different state. No release or body lift is proved.
+
+All six raw histories, three backend copies and original motor/blocked-body
+source excerpts independently verify. Evidence:
+`artifacts/acquisition_audit_20261005_v1/verification.json` and
+`local_authority_proposal.json`.
+
+Next is a separately frozen one-step baseline-versus-derived-action check at
+controlledtick300 after299 exact ordinary-start failed-prefix steps, with
+continued noise and a nominal600 historical gate. Six rollouts, at most2400
+controlled plus720 reset ticks/180workseconds. Equal actual pre-input and
+full fidelity are mandatory. Post-target error below both common-pre and
+baseline-post errors, plus query release or
+positive hammer travel can admit only further local controller design,
+not recovery, labels or training. No additional actions, targets or timings
+may be searched after seeing the response.

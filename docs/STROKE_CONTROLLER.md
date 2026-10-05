@@ -457,3 +457,8 @@ failing the strict 9/9 gate: a new edge recovers, but noise13105 remains at
 `(269.482,32)` before the terminal checkpoint. No learning or label admission.
 See `TERMINAL_CONTROLLER.md` for alignment, evidence and the admitted offline
 earlier-acquisition audit, not terminal-trigger widening or paid scaling.
+The completed offline audit finds a lower queried/zero-travel hammer at the
+tick300 stroke and no final body authority. It derives one legal next-prior
+hammer-world target for a separately frozen equal-input one-step release
+test. This target is not an admitted corrective label or demonstrated
+recovery; the failed fresh gate remains fixed.

@@ -1,6 +1,34 @@
 # Deferred hypotheses
 
-- **Next frozen offline earlier-acquisition audit:** freshwrapper strictgate
+- **Next single hammer-world release authority test:** frozenoffline6traces/
+  4506rows complete,0newplay/reset/updates; source/metrics/controls/clocks/
+  backendpairs exact. Failed13105reachesX250/Y65 but neverX285/Y100;
+  X269.482fixedfrom500,lasthammerhit482,tail120bodyhits120/hammerhits0/
+  norm16saturation120. Atfixedsnapshot300failedlowerhammer(194.995,-8.487)
+  previoushittrue/travel0/bodyfalling; nominalhammer(188.480,.670)free.
+  Same-clock unequal-state contrast descriptive, not firstcausalerror;
+  streams differfromtick1/commonappliedprefix0.
+  One derived ordered next rawprior row300goal(186.932344,3.814357);
+  pointertarget-body-fixedoriginaloffset(0,20). Failedprebody270.990,38.322
+  givespointer(-84.057472,-54.507466),float32(-.656699002,-.425839573),
+  reach90.864866/legalaxes128. Noscan/futurefailedobservation/labels; real
+  release or bodylift untested. All4506offsetstates0,20/arithmetic verified.
+  Freeze6rollouts:nominal600historicalreferencefast gate,then two arms
+  baseline vsONEderived action atcontrolled300 after299exactordinary
+  reset14001/noise13105prefix/samecontinuednoise;max2400control+720reset/
+  180work/210ownedseconds. Require equalactualpreinputs/prefix/fidelity/
+  baselines and posthammer-targeterror below bothcommonpre/baselinepost
+  errors with actualqueryrelease OR
+  positivehammertravel/nodeaths; no bodylift/recovery presumed.
+  Only local response admission, no labels/teacher/learner/recovery gate.
+  No additional targets/pushes/timingattempts, sweep,phasejump/trigger/
+  metric edits or failed9case retry. Newcontroller/recovery/validation
+  separate before data/clockmemorylearning. PAUSED1791160887.322387,
+  7closed$0.456424187/ledgerunchanged,goal0.
+  Evidence: artifacts/acquisition_audit_20261005_v1/verification.json
+  and local_authority_proposal.json.
+
+- **Closed frozen offline earlier-acquisition audit, completed above:** freshwrapper strictgate
   fails8/9central/8/9secondary vsoriginal7/9central/8/9secondary.
   Eightgain83,failednoise13105gain11/final(269.482,32); bothholdseverfalse.
   At600checkpoint samefailedpose/bodyquery1/basephase599, ineligible,

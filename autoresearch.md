@@ -42,7 +42,72 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current result: fresh wrapper8/9central, strictgate fails on earlier acquisition
+## Current result: offline acquisition audit motivates one hammer-release authority test
+
+Completed frozen180second OFFLINE audit of6saved751tick originaltraces:
+nominal,failednoise13105,successfulnoise13104,reference+fast/4506rows.
+0newgameplay/reset/updates; all trace/project/source/completedreview/script/
+plan/budget bindings verified. All6raw milestone/proposed/applied/control-
+clock histories and3fullbackendpairs exact. Original motor0.4/blocked
+bodyrequest-.5/sourceexcerpt exact; queryflags still not forces/solverbranch.
+Evidence: `artifacts/acquisition_audit_20261005_v1/verification.json`,
+`audit.json`, `original_contact_excerpt.txt`, `local_authority_proposal.json`.
+
+Physical results unchanged: freshwrapper8/9central/8/9secondary,failed
+noise13105final(269.481845,32)/gain11/nohold,0summits/deaths/learning.
+Audit is explanation/proposal, not player improvement or teacher admission.
+
+Failedcase reachesX200tick269/X250tick276/Y65tick268, but neverX285 orY100
+through751. Nominal/successfulnoise13104 reachY100tick367/X285tick368.
+FailurebodyX fixes at269.481845fromtick500; last hammerqueryhit482.
+Last120bodyqueryhits120/hammerhits0/saturated16pixelcorrections120.
+Late heldfloor and free-hammer motion are not target-platform acquisition
+or established body authority. No gain/terminaltrigger/cap widening.
+
+At predeclared100tick snapshot300, failedbodypre(270.989817,38.321823),
+hammerpre(194.994691,-8.487297), causal previoushammerhittrue/travel0.
+Nominalbodypre(279.381311,48),hammerpre(188.480375,.670175),previous
+hammerhitfalse/travel2.850853. Failedactualbody moves(-1.195117,-3.279796)
+and hammer remainsfixed; nominalbody stationary and hammer moves freely.
+Signproxy active onfailedcase, but the continuing prior is at a different
+plant geometry. This is a descriptive same-clock contact/stroke mismatch,
+not proof the proxy/action at300caused the earlier loss.
+All noise streams differ fromtick1, commonapplied-control/stateprefix0;
+only firstpreinputs exact. Failed-vsnominal >1bodypixel starts30/>10starts289;
+vs successfulnoise13104 starts28/170. Later unequal-state differences do
+not isolate single-action effects or identify first causal failure.
+
+Derived ONE local mechanically motivated goal, no target/action/clock scan:
+ordered next rawprior row300hammerworldtarget(186.932344,3.814357).
+Originaloffset0,20 holds all4506savedstates; pointer=target-actualbody-offset.
+At failedtick300pre, proposedpointer(-84.057472,-54.507466),float32action
+(-.656699002,-.425839573),targetreach90.864866within26..102/axes128.
+Reference row is a fixed prior goal, not a futurefailed observation or an
+off-state corrective label. Candidate requests motion away from lower plant
+toward the known next stroke, but real release/bodyeffect not yet tested.
+Independent scalar arithmetic/prior/raw linkage/legalbounds verify.
+Later boundedproposalreview did not rerun audit or renew its deadline.
+
+Independently privatePAUSED1791160887.322387;80444390source,
+onstate-20261004-v1/onstate_study/contexted3a53c3/closeddeadline unchanged.
+Ledgerbytespreserved,7closed$0.4564241866528988; no reservation, remote
+write, deployment, publicrelease or substantive localtraining. Goal0.
+
+Next admitted bounded direction: freeze nominal600reference/fast historical
+gate, then ordinary299step exactfailednoise13105/reset14001 prefix and
+baseline versus this ONE hammer-world action at controlledtick300, withsame
+continuednoise.6rollouts/max2400control+720reset/180work/210ownedseconds.
+Actual pre-input/history must be equal, all prefixes/baselines/backend fields
+exact. Require candidate posthammer-targeterror below BOTHcommonpreerror
+and baselineposterror, plus actualqueryrelease OR positivehammertravel,
+no deaths; no assumed sign/bodylift.
+Local actuator-response gate only, never fullrecovery/teacher/labels/learning.
+No further targets/pushes/timingattempts, phasejumps, sweeps, placement, failed
+9case retry or gate rewrite. New causalcontroller/recovery/freshvalidation
+would be separate contracts after local authority, before data/clock-memory
+learner admission. Do not blindly scale unchangedBC/PPO.
+
+## Prior result: fresh wrapper8/9central, strictgate fails on earlier acquisition
 
 Frozen exact same originalcontactcontroller versus causalwrapper on9unused
 structuredcases: reset14001,nominal,left/right(+/-.75,-.125)*3/four-tick
@@ -93,7 +158,7 @@ onstate-20261004-v1/onstate_study/contexted3a53c3/closeddeadline unchanged.
 Ledgerbytespreserved,7closed$0.4564241866528988; no newreservation, remote
 write, deployment, publicrelease or substantive localtraining.
 
-Next admitted bounded direction: freeze an180second OFFLINE acquisition
+The historical admitted offline audit, now completed above, used acquisition
 audit of existing nominal,failednoise13105 andsuccessfulnoise13104 original
 traces/reference+fast,6traces/4506rows,0newgameplay/reset/learning. Bound
 source/trace/completedreview/script/plan/budget hashes beforeanalysis.
