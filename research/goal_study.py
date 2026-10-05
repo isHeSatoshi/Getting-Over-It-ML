@@ -1,13 +1,16 @@
-"""Approved goal-conditioned SAC/HER pilot; no job is launched by this module."""
+"""Approved goal-conditioned SAC/HER pilot and bounded scale probe; no job is launched by this module."""
 import json
 
 from research.evaluation_cases import EvaluationCase
 
-VERSION = "legal-prefix-goal-sac-her-v1"
-SEEDS = (21, 22, 23)
-MAX_LEARNER = 160000
+VERSION = "legal-prefix-goal-sac-her-scale-probe-v2"
+SEEDS = (21,)
+# Scale probe: three times the original learner budget inside the unchanged
+# 1.2M physics cap. One seed per session: ~4.7h/seed at the observed ~60
+# physics ticks/s makes the original three-seed session structure infeasible.
+MAX_LEARNER = 480000
 MAX_PHYSICS = 1200000
-MAX_CYCLES = 77952
+MAX_CYCLES = 237952
 MAX_PREFIX = 1800
 SUFFIX_TICKS = 600
 CASES = (
@@ -20,7 +23,11 @@ CASES = (
 
 def plan():
     return json.loads(json.dumps({
-        "version": VERSION, "seeds": list(SEEDS), "algorithm": "SAC", "goal_frame": 155,
+        "version": VERSION, "seeds": list(SEEDS),
+        "scale_probe": {"kind": "learner-budget-3x", "baseline_learner_transitions": 160000,
+                        "note": "Single-seed probe. Algorithm, reward, feature set, cases, physical "
+                                "gates, physics cap and evaluation are unchanged."},
+        "algorithm": "SAC", "goal_frame": 155,
         "stack_frames": 4, "observation_dimension": 620, "action": "own absolute float32 pointerBox2",
         "network": [128, 128], "activation": "ReLU", "learning_rate": .0003,
         "batch_size": 256, "tau": .005, "gamma": .995, "entropy": "auto",

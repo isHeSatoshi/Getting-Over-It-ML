@@ -40,8 +40,9 @@ class GoalCampaignTests(unittest.TestCase):
         from research.goal_env import schema
         from research.goal_study import plan
         self.assertEqual(schema()["dimension"], 620)
-        self.assertEqual(plan()["seeds"], [21, 22, 23])
-        self.assertEqual(plan()["max_sac_cycles_per_seed"], (160000-4096)//2)
+        self.assertEqual(plan()["seeds"], [21])
+        self.assertEqual(plan()["scale_probe"]["baseline_learner_transitions"], 160000)
+        self.assertEqual(plan()["max_sac_cycles_per_seed"], (480000-4096)//2)
         self.assertFalse(plan()["pilot_gate"]["prefix_or_playback_in_evaluation"])
 
 

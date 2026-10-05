@@ -42,6 +42,24 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
+## Current run: scale probe attempt4 (480k learner, seed21 only, gates unchanged)
+
+User direction (2026-10-06): "your goal is now to make it win" (win = solve
+Getting Over It: original summit, >=3 seeds, >=80% held-out, fidelity,
+saved replay). Attempt3's completed evaluation failed the physical gates
+with a fixed-point collapse after the opening climb. The next experiment
+declared here is a **scale probe**, not a gate change: one seed, learner
+budget160000 ->480000 transitions (maximum inside the unchanged1.2M
+physics cap), cycles77952 ->237952, contract version
+`legal-prefix-goal-sac-her-scale-probe-v2`. SAC settings, reward,
+620-feature stack, HER, legal-prefix curriculum, archive, evaluation
+cases, physical gates, physics cap and $0.30/10h reservation are unchanged.
+Single seed because ~4.7h/seed at the observed ~60 physics ticks/s makes
+the three-seed session structure infeasible in ten hours. Purpose: does
+three-times data resolve the collapse and reach the first-ledge gate?
+A pass remains pilot-only; the summit win still needs the full three-seed
+program (future seeds/batches under separate bounded authorizations).
+
 ## Prior attempt: pilot attempt2 stopped by provider commit rate limit (backup fix f7b44b0)
 
 Attempt2 (session `goal-20261005-v2`, source

@@ -42,7 +42,8 @@ result remains visible but cannot promote the seed or start another one.
 - `research/goal_train.py`: CPU SAC,128/128 ReLU actor/twin critics,
   lr.0003, batch256, tau.005, gamma.995, auto entropy/target−2.
   The first4096 eligible learner transitions have no updates; then one cycle per
-  two eligible learner transitions, at most77952. Counts actor, critic and
+  two eligible learner transitions, at most237952 in the current scale probe
+  (77952 in the original160k pilot). Counts actor, critic and
   entropy optimizer calls separately.
 - `research/goal_evaluation.py`: ordinary-spawn learned-only3600-tick
   reference cases. Supervisor supplies stable waypoint goals, never mouse
@@ -52,9 +53,12 @@ result remains visible but cannot promote the seed or start another one.
 
 ## Pilot, not summit success
 
-Seeds21/22/23 run sequentially, sharing only historical opening scaffolding.
-Each gets at most160000 learner transitions and1.2million total physics
-ticks including prefixes, resets, preflight allocation and evaluation.
+The original pilot runs seeds21/22/23 sequentially, sharing only historical
+opening scaffolding. Each gets at most160000 learner transitions and1.2million
+total physics ticks including prefixes, resets, preflight allocation and
+evaluation. The scale probe (2026-10-06) raises the learner budget to480000
+(maximum inside the same physics cap) and runs seed21 only; all other
+settings, cases and gates are unchanged.
 Ten fresh reference cases: reset18001, nominal, left/right12-tick warm-ups,
 noise.02 held four ticks with seeds17100..17106.
 
@@ -142,6 +146,29 @@ feature or tolerance change):
 Four regression tests cover rate-limited sync cadence, transient retry
 without stopping, structural failure still stopping the owned job, and
 durable decision-point retry. 466 active Python tests pass.
+
+## Pilot attempt 3 result (2026-10-05)
+
+Session `goal-20261005-v3` completed the full160k training contract and the
+complete learned-only ten-case reference evaluation: **0/10 first-ledge
+holds, nominal Y180 hold90 false, 0 deaths, 0 summits**. Retained gains were
+-3..+79.6; the policy climbs to Y~100 in several cases but stalls ~25-40
+units short of the ledge box (305-335,100-112). The headed local replay
+(`tools/goal_policy_viewer.py`) showed the same failure mode: a fixed-point
+collapse after the opening climb. The protocol stopped seeds22/23 and the
+reservation closed at $0.10548 of $0.30.
+
+## Scale probe attempt 4 (2026-10-06)
+
+One change from the pilot: learner budget160000 ->480000 transitions
+(maximum inside the unchanged1.2M physics cap), cycles77952 ->237952,
+single seed21. Everything else - SAC settings, reward,620-feature stack,
+HER, legal-prefix curriculum, archive, evaluation cases, physical gates and
+physics cap - is unchanged. Single seed because ~4.7h/seed at the observed
+~60 physics ticks/s makes the three-seed session structure infeasible in
+the ten-hour session. Purpose: test whether three-times data resolves the
+fixed-point collapse and reaches the first-ledge gate. A pass is still
+pilot-only; the full win remains the three-seed summit program.
 
 ## Validation performed
 

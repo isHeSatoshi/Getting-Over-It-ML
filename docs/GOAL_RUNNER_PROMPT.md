@@ -36,13 +36,13 @@ Implemented entrypoints:
 Private HF Space: `isHeSatoshi/rl-over-it-poc-20261004`.
 Private artifact dataset: `isHeSatoshi/rl-over-it-research-artifacts`.
 Use existing authenticated CLI/API; never print credentials or publish.
-Last verified state: Space PAUSED, nine reservations closed, conservative
-compute estimate about$0.5399 (not a bill). Pilot attempt2 trained seed21 to
-the full contract but the evaluation was killed by the provider's 128
-repository-commits/hour limit, caused by a 30-second backup cadence; the
-worker now backs up once per checkpoint with a 300-second floor and retries
-transient upload failures. Do not reopen old source/session deadlines,
-resume interrupted work, or relaunch without explicit authorization.
+Last verified state (2026-10-06): Space PAUSED, ten reservations closed,
+conservative compute estimate about$0.6454 (not a bill). Pilot attempt3
+completed full training and the learned-only evaluation but failed the
+physical gates (0/10 first-ledge, no Y180 hold); the scale probe v4 now
+runs480000 learner transitions with seed21 only. Do not reopen old
+source/session deadlines, resume interrupted work, or relaunch without
+explicit authorization.
 
 1. Run active tests and both JS checks. Windows CUDA import may exhaust
    paging capacity; the isolatedCPU validation Python is
@@ -75,9 +75,9 @@ resume interrupted work, or relaunch without explicit authorization.
    original preflight-context revision. Only then intentionally set
    `RL_MODE=goal_study` and restart within the SAME deadline/reservation.
 
-6. Seeds21/22/23 run sequentially with no learned weights or discovered
-   routes shared. Per seed:<=160000 learner transitions,<=1.2million total
-   physics ticks including prefixes/resets/preflight/evaluation,<=77952
+6. Scale probe: seed21 only, no learned weights or discovered routes
+   shared. Per seed:<=480000 learner transitions,<=1.2million total
+   physics ticks including prefixes/resets/preflight/evaluation,<=237952
    SAC cycles. Evaluation is final-only learned play from ordinary spawn,
    no prefix/baseline/playback. Each seed needs nominal first-ledge hold,
    >=8/10 existing first-ledge successes, and nominal Y>=180 held90ticks

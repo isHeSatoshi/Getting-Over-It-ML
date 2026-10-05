@@ -1,5 +1,13 @@
 # Deferred hypotheses
 
+- **Scale probe attempt4 declared (2026-10-06): 480k learner, seed21 only:**
+  User goal now explicitly "make it win" (solve the game). Attempt3 failed
+  gates with fixed-point collapse; probe raises learner160k->480k (max
+  inside unchanged1.2M physics cap), cycles->237952, single seed, version
+  legal-prefix-goal-sac-her-scale-probe-v2. Everything else unchanged.
+  Question: does 3x data resolve the collapse and reach the ledge gate?
+  A pass is pilot-only; the win needs the 3-seed summit program.
+
 - **Pilot attempt3 completed: physical gates failed (0/10 first-ledge, no Y180 hold):**
   Session goal-20261005-v3, source978f95ab, closed $0.10548 of $0.30.
   Seed21 full training (160000 learner/77952 cycles/357109 physics) + complete
