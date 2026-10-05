@@ -590,3 +590,45 @@ read-only procedure-call telemetry, it needs a separately frozen
 instrumented/uninstrumented fidelity check. Such privileged diagnostic
 telemetry must never become controller input or teacher labels.
 No contact-duration, gain or target scan can pass the failed authority gate.
+
+## Offline branch audit: compiled-call observability design
+
+The saved six-trace audit confirms the zero pot response and different tip
+actuation from the same333-step history. Both query flags end false.
+Direction-dependent original wall probes include current body impulse
+and intermediate positions, then restore the tip before selecting blocked
+body versus free-hammer procedures. Final query/position data does not
+identify which branch actually executed.
+
+Both backends default to the original compiled runtime. The packaged
+compiler emits direct `thread.procedures[variant](...)` calls, bypassing
+an interpreter-only `procedures_call` wrapper. `Thread.tryCompile` builds
+per-thread procedure functions; spawned/restarted threads can appear
+during advance and reset. Decorating only existing threads is insufficient.
+
+Only a read-only compiled-counter **design** is admitted. Whitelist four
+unique original Player procedure callsites, decorate actual compiled
+tables after compilation and cover existing threads. Preserve function
+and generator semantics, including arguments, `this`, returns, throws,
+yields and generator execution timing. Use bounded per-tick/reset counts
+and overflow flags, never argument traces, controls, raw217 inputs or
+teacher labels. Installation/restoration stays within the owned page.
+
+Before use, synthetic delegation/lifecycle/reset/whitelist/restoration/
+overflow tests and separately frozen instrumented/uninstrumented physical
+fidelity are required. Preserve nominal600 and both failed334 contrast
+histories on reference/fast, including all legacy states, actions, rewards,
+raw inputs and controller memory. Counter validation is not a body-authority
+or recovery pass. No instrumentation or gameplay occurred in this audit.
+
+2536 saved rows,3.438915 seconds within the180-second cap,365 Python
+tests and collision checks pass. HF remains PAUSED; ledger unchanged.
+Evidence: `artifacts/branch_direction_audit_20261005_v1/verification.json`.
+
+Source inspection also distinguishes reset scopes: each bridge page
+performs an initial120-tick reset before the environment's episode resets.
+Earlier diagnostic `reset_ticks` fields count episode settling only.
+Future12-rollout fidelity must explicitly count1440 episode plus240
+bridge-bootstrap ticks,1680 total resets. This correction does not alter
+old physical gates or renew a closed plan. Initial bootstrap precedes
+counter installation and must not be claimed as instrumented coverage.

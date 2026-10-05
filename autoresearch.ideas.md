@@ -1,6 +1,38 @@
 # Deferred hypotheses
 
-- **Next OFFLINE branch/direction audit, no pressure/controller retry:**
+- **Next IMPLEMENTopt-in compiledcallcounter + physicalfidelity only:**
+  Offline6traces2536rows audit verified3.439s/180cap/0newphysics,365Python+
+  JS. Bothbodydelta0/candidategain11/noholds, authorityfalse. Logged
+  pressuredirectionleftdown notactualwallprobe/branch; source probes
+  includeimpulse/intermediatepositions andrestoretip beforetouch branch.
+  BOTHcompiledtrue; directthread.procedures variantcalls bypassprimitive
+  procedures_call counter. Thread.tryCompile createsfunctions; push/
+  restartduringadvance/reset mustbeintercepted too. FouruniquePlayer
+  callsites(b{,b|,Z,c), no oldbranchobserved orforceclaim.
+  IMPLEMENTstandaloneopt-inJScompiledtable counter: afteroriginaltryCompile
+  pluslivePlayerthreads, validatedactualvariantmapping, boundedcounts/
+  overflow perphysics/resetclock. Preserve this/args/returns/throws/
+  generatorentry/yield/return/throw; saturationnotthrowinphysics, unsupported
+  failsadmission, restoreonlyownhooks/tables. Syntheticlifecycle/whitelist/
+  copies/doubleinstall/reset/overflow/uninstall/compiler guards first.
+  Owneddiagnosticinjection only/no gameassets/compiler/raw217/reward/
+  controllerinputs/labels/sourcecontrols change. Thenfreshfreeze12rollout
+  instrumented/uninstrumented nominal600 andfailed334keep-anchor/pressure
+  referencefast fidelity, max5072control1440reset/180work210ownedsecs.
+  ALLnewoldphysics/controls/rewards/raw/memory/source exact, compiled
+  meaningfulnominalblocked/freecoverage andcounterclock/reset validation
+  beforeuse. No newactions/tuning/pressure/learning; branchinterpretation
+  afterward/separate. Failure=>no instrumentationadmission/no retry/
+  capextension/gatechange. Bodyauthority/teacher remainsblocked.
+  Resetclarificationbeforefreshfreeze: bridgepageinitialawaitreset adds
+  2*120 bootstrap ticks. Declare1440episode+240bootstrap=1680TOTALreset,
+  not silentunreported1440. Priorrecord resetfields episode-only scope/
+  oldgates unchanged; no closedplanrenewal. Counterinstallafterbootstrap,
+  beforeepisode resets; no claimedinitialcountercoverage.
+  PAUSED1791175352.345762,$0.456424187closed/goal0.
+  Evidence: artifacts/branch_direction_audit_20261005_v1/verification.json.
+
+- **Closed OFFLINE branch/direction audit, completed above:**
   Separatecontact_pressure module implemented/14new365fullPython+JS;
   oldsourcebytes/pointcontracts unchanged,325+8offline/actions/target
   summaries exact. Frozen6rollouts2536control720reset/62.117s.

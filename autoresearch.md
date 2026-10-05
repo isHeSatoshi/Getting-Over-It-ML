@@ -42,7 +42,87 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current result: causal contact/pressure implementation passes, body authority fails
+## Current result: branch audit rejects primitive-only telemetry, admits compiled-counter design
+
+Frozen180second OFFLINE audit of6savedtraces/2536rows independently
+verified3.438915seconds,0newplay/reset/updates.3backendpairs/common333
+history/pre/anchor/OWNmemory andonecontrast endpoints exact. Bothbodydelta
+(0,0)/gain11/nohold/unchangedimpulses; actualtiptick334 netdisplacement
+baseline.421514 versuspressure2.836984, bothhammerqueryfalse/bodyquerytrue.
+Loggedmotor baseline(-.000123,-.399894), pressure(-2.042123,-3.501094);
+naivepregeometry differs.4each. Request-only direction suggestsdownbaseline/
+leftdownpressure, NOT actualwallprobe direction or observedsolverbranch:
+originalprobe addscontemporaneousbodyimpulse/distance andintermediate
+geometry. No sourcebranchassignment/bodyauthority fromtheseendpoints.
+
+OriginalPlayergraph: hammer-wall direction-dependent±1axisprobes only
+when|axis/norm|>.2, thenhammerpositionsrestore BEFORE touch>0branch.
+Uniqueoriginalcallsites: b{=>moveplayernext(blocked), b|=>movehammerfirst
+(free), Z=>hammerwallprobe, c=>hammersubstep. Subsequentaxis/body rollback
+canalsoyieldqueryhits/zeromotion; queryORnotbranch/force/endpointplant.
+Authoritygate>.1bothaxes staysfalse; alloldfailuresimmutable.
+
+Importantobservabilityconstraint: BOTH backends defaultcompiledtrue.
+Packagedcompiler emitsdirect thread.procedures[variant](...) calls;
+Thread.tryCompile createsper-threadprocedurefunctions fromcachedcompiled
+factories; runtime_pushThread/_restartThread calltryCompile fornewthreads,
+includinghatsthatsurfaceDURINGadvance/reset. Wrappingonly interpreter
+runtime._primitives.procedures_call MISSES thesecompiledcalls andisrejected.
+No VM/game execution or instrumentationimplemented inthisaudit.
+
+Admitted **diagnostic-only compiledcounter DESIGN**: decoratewhitelisted
+originalPlayer thread.procedures afteroriginaltryCompile returns, plus
+existingcompiledthreads. Hooklifecyclemustinclude spawned/restartedthreads,
+readproccodevariants fromactualcompiledtable/validatedbundlesuffix rules,
+not inventprefixes. Preserve this/arguments/returns/throws andgenerator
+yield/return/throw delegation; generatorentry countwhenactuallyexecuted,
+notwhencreated. Fourboundedcounts/overflowflag only perexistingphysics
+tick/reset, no argumenttraces/random/timestamps or extra solvercalls,
+no changingcompiler/controls/gameassets/schema2/raw217/rewards.
+Opt-inownedheadlesspage installation; restoreonlyownhooks/tables onteardown.
+Counts areprocedureentries, notforces or proofsuccessfulbodytransfer.
+Nevercontrollerinput, runtimepolicyoracle or teacherlabel.
+
+365Python+JS pass, no runtime/inspection failure. Allsource/script/plan/
+project/package/traces/completedreview/budget/deadline hashes verify.
+Pinned tools.research_goal_metrics projection exact/0candidatefinalfalse.
+Evidence: `artifacts/branch_direction_audit_20261005_v1/verification.json`
+and `bundle_snippets.json`. PrivatePAUSED1791175352.345762/source80444390/
+sessiononstate-20261004-v1/modeonstate_study/contexted3a53c3/closeddeadline
+unchanged. Ledgerbytespreserved,7closed$0.4564241866528988. Goal0.
+
+Nextbounded direction: IMPLEMENT/TEST standaloneopt-in compiledprocedure
+counter JS module andsyntheticnormal/generator delegation/exception/this/
+yield_return_throw/whitelist/doubleinstall/restoration/reset/saturation/
+newthreadlifecycle/unsupportedcompiler guards. No originalphysics edits,
+no interpreter fallbackorcompiler disabling. IntegrateONLYthroughowned
+diagnostic injection/read, not raw217/NUMERIC/DISCRETE/control features.
+Failclosedonunsupportedvariant/table/lifecycle/overflow; countersmustnot
+throwfromunderlyingphysicscalls or suppressoriginalexceptions.
+Afterunitchecksfreeze instrumented-vs-uninstrumented PHYSICALFIDELITY
+smoke, originalnominal600 andsamefailed334keep-anchor/pressure histories,
+referencefast. NO newactions/controls/pressurelaw/tuning/learner/admission.
+12rollouts/max5072controlled+1440reset/180work210ownedseconds, all
+instrumented/uninstrumented/oldarchived physical/control/reward/raw/memory/
+sourcehistoriesexact; expectedcompiledcoverage andreset/per-tickcounter
+clock correctness beforecounterVALIDATION. Recordcounterinterpretation
+separatelyafterthisgate, no offlineclaimwhichbranch previouslyran.
+Meaningfulblocked/free coverage mustbe shown onnominalhistory; no oracle
+feedback orlabel reuse. Ifinstrumentationchangesphysics orisunsupported,
+preservefailure/disableitsuse, no waveform/capretryor gatechange. Old
+bodyauthority/recovery/teacher/learning gates remainblocked.
+
+Resetaccounting clarification fromsourceinspection: eachownedbridgepage
+also executes initialruntime `await reset()`/120ticks beforeepisodeenv
+resets. Previousdiagnostic resetfields countEPISODEsettling only, excluding
+thetwo bridgebootstrap resets; do not rewriteoldrecords/gates orpretend
+thoseextras wereabsent. Beforefuturefreeze, declare BOTH1440episode+
+240bridgebootstrap=1680TOTALresetticks for12rollouts; controlled5072/
+work180/owned210unchanged. This isexplicit futureaccounting correction,
+notrenewal ofanyclosedphysical/paidplan. Counters installafterbootstrap,
+beforeepisode resets, soinitial240 notclaimed instrumentedcoverage.
+
+## Prior result: causal contact/pressure implementation passes, body authority fails
 
 Added `research/contact_pressure.py` ONLY; existing source/defaultcursor/
 point/sourcegoal bytes unchanged. ContactTargetPhase wrapsunchangedOWN-
