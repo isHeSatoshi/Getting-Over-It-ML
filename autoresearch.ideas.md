@@ -1,6 +1,27 @@
 # Deferred hypotheses
 
-- **Next separately frozen whole-wrapper cohort:** causal wrapper rawpre/post
+- **Next fresh fixed-wrapper validation:** development wholecohort now passes
+  9/9finalcentral/9/9secondary versusoriginal8/9central/9/9secondary,
+  gain83everycase. One state-triggered recovery/723ticks(2settle+90hold);
+  eight751tick permanentbypasses exactly preserve fulloriginal histories.
+  36rollouts/26980control+4320reset/159.047487s,0updates/deaths/summits;
+  all18backendpairs/36old600prefixes/6smokehistories/rawmetric/actions/
+  chronology exact,41Python+JS. No controllerchange or labels. Old600gate/
+  fixed90failure immutable; equalmax751not equalterminaltimes, known
+  developmentcases not freshheldout/learnedpolicy/teacher. Independently
+  PAUSED1791158683.839298,7closed$0.456424187,ledgerpreserved.
+  Next freeze9newcases: reset14001,nominal,left/right(+/-.75,-.125)*3/
+  four-tickwarmups,noise.02/seeds13100..13105. Verify unusedexactcase/seed
+  fields; unchanged original-versus-wrapper/referencefast,max751/
+  36rollouts/27036control+4320reset/300work/330ownedseconds. Require all9
+  referencefinalcentral support/no deaths/nominalexact/fullfidelity and
+  bypasspreservation. Do not presume activation bycase or retune/retry
+  caps/gain/proxy/targets/trigger. Pass only admits separately captured
+  actualpre-action/appliedcontrol data and honest clock-memory learner
+  contract, not automaticlabels/paidlearning/summits. No unchangedBC/PPO.
+  Evidence: artifacts/terminal_wrapper_cohort_20261005_v1/verification.json.
+
+- **Closed separately frozen whole-wrapper cohort, completed above:** causal wrapper rawpre/post
   action-observe pairs, one checkpoint after600executed transitions:
   supportedslowleftedge285<=X<305/Y100..112/speed<=2, encodedcentral305
   bypasses. No case/seed/traceoracle/rearm,751cap; fixed30plant/onepush/

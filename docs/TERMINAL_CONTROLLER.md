@@ -55,12 +55,36 @@ suite and collision checks pass; the final encoded-boundary change also
 passes 15 focused tests.
 Evidence: `artifacts/terminal_wrapper_smoke_20261004T234047944352Z/verification.json`.
 
-Only a separately frozen whole-wrapper cohort is admitted next. Proposed
-comparison: original contact-sign controller versus wrapper, same nine
-development cases, at most 751 ticks each, both backends, no rule changes.
-Require all nine reference final supported central holds, no deaths and exact
-fidelity, with original 600-tick histories preserved. The earlier failed
-600-tick gate stays immutable; this is a new controller and horizon.
-Passing would still require fresh wrapper validation before considering data
-and a clock/memory-aware learner contract. No labels, paid training, learned
-policy or summit promotion from this smoke.
+## Whole-wrapper development cohort
+
+A separately frozen comparison now covers all nine previous development
+cases, original contact controller versus unchanged wrapper, both backends.
+Each arm has the same maximum 751-tick opportunity. The original runs to that
+cap; the wrapper also stops on its permanent monitor success/failure. These
+are not equal executed ticks or matched terminal times.
+
+| Reference arm | Final central support | Final secondary support | Retained gain |
+|---|---|---|---|
+| Original contact controller | 8/9 | 9/9 | 83 each |
+| Unchanged causal wrapper | 9/9 | 9/9 | 83 each |
+
+The wrapper attempts recovery once, on the observed edge state, finishing at
+`(314.428,104)` after 723 controls, 2 settling ticks and 90 independent hold
+ticks. The other eight cases bypass it; their full 751-tick control, physics
+and base metadata histories exactly equal the original. This preserves
+successful landings but does not independently exercise eight recoveries.
+
+36 rollouts, 26980 controlled plus 4320 reset ticks, 159.047487 owned seconds
+within the immutable 300-second work cap. No updates, deaths or summits.
+All 18 full backend pairs, 36 old 600-tick prefixes, six smoke histories and
+all raw metric/action/observe/noise reconstructions independently pass.
+41 focused Python tests and JS collision checks pass; no controller changed.
+Evidence: `artifacts/terminal_wrapper_cohort_20261005_v1/verification.json`.
+
+This passes the new development gate, not the earlier failed 600-tick gate
+or the closed fixed-90-tick release gate. It admits only fresh fixed-wrapper
+validation. No teacher, corpus, labels, training or learned-policy promotion.
+The next proposal uses reset14001, new warm-ups `(±.75,-.125)` and
+noise13100..13105 under the same controls, support criteria and maximum
+horizon. Fresh validation must precede any separate data and honest
+clock/memory-aware learner contract. No automatic paid scaling.

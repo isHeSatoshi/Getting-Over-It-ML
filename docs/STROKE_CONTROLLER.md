@@ -449,6 +449,8 @@ are still required; no automatic old-gate pass or paid scaling.
 clock. One state-based checkpoint after 600 executed transitions chooses the
 unchanged plant/push/settle/hold sequence or permanent bypass. The complete
 known edge recovery reproduces exactly; nominal and an already-central noisy
-case remain on the original controls. Six-rollout smoke passes with no
-learning or label admission. See `TERMINAL_CONTROLLER.md` for its alignment,
-limits, evidence and separately required whole-wrapper validation.
+case remain on the original controls. Six-rollout smoke passes, followed by
+the separately frozen nine-case whole-wrapper development cohort: 9/9 final
+central support versus 8/9 original, with eight full bypass histories exact.
+No learning or label admission. See `TERMINAL_CONTROLLER.md` for alignment,
+limits, evidence and the separately required fresh wrapper validation.

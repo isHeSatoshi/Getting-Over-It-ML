@@ -42,7 +42,66 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current result: causal terminal wrapper smoke passes, whole cohort pending
+## Current result: whole-wrapper development cohort9/9central, fresh validation pending
+
+Separately frozen unchanged originalcontactcontroller versus causalwrapper
+on all nine previous developmentcases: reset13001,nominal,left/right
+(+/-.875,.125)*3/four-tick warmups,noise.02/seeds12100..12105. Max751
+controlledticks/arm/reference+fast. Original runs full751; wrapper stops on
+its fixed permanent monitor success/failure or751cap. Equal maximum horizon,
+not equal executedticks or matched terminaltimes. No rule/source/target/gain/
+proxy/cap/noise/metric edits, recordedactionoverride or placement.
+
+| Reference arm | Final90 central support | Final90 secondary support | Retained gain |
+|---|---|---|---|
+| Original contact-sign prior |8/9|9/9|83each|
+| Causal terminal wrapper |9/9|9/9|83each|
+
+One observed-state attempt in noise12100:600base/30plant/onepush/92release,
+2settle+90qualifiedholdticks,723controls,final(314.427961,104) instead of
+original751tick edge(293.727677,104). Eight cases permanently bypass at the
+one checkpoint; ALL751raw/control/physics/base-metadata rows equal original
+arm, not just finalposes. No harm to alreadycentral histories. Nominal/
+left/rightfinalX322.585886/322.585759/322.585918,Y104. Remaining five
+noisefinalX325.311196/322.016009/325.547513/324.204089/324.070853,Y104.
+All9centralfinalsupported windows/originalheldevents,0deaths/summits/updates.
+
+36rollouts/26980control+4320reset,owned159.047487seconds within immutable
+300work/330owned cap. Source/controller/prior/plan/scripts/admission/budget
+bound; secret/browser-stripped owned child, durable rows and owned cleanup.
+41focusedPython+JS collision checks pass; no repo controllercode changed.
+All18fullsamehostbackendpairs,36old600physical/controlprefixes and6known
+fullsmoke wrapper histories exact. Independent36raw milestone/support/
+applied-control/caseclock/action-observe histories reconstruct and strict
+9/9gate recomputes. Backend copies are fidelity, not extra independent trials.
+Evidence: `artifacts/terminal_wrapper_cohort_20261005_v1/verification.json`.
+
+Pass admits fresh fixed-wrapper validation ONLY. Cases are reused development,
+not freshheldout, multipletrainingseeds, learnedpolicy or admittedteacher/
+corpus. Original600eightofninefailedgate and fixed90failure remain immutable;
+this is a distinct newcontroller/751maximum protocol, not a retroactive pass.
+Primaryfullgoal0, no paidlearning or labels. Eight bypass exactness is
+preservation evidence, not eight separately exercised recovery primitives.
+
+Independently privatePAUSED1791158683.839298;80444390source,
+onstate-20261004-v1/onstate_study,contexted3a53c3 andcloseddeadline unchanged.
+Ledgerbytespreserved,7closed$0.4564241866528988; no newreservation, remote
+write, deployment, publicrelease or substantive localtraining.
+
+Next admitted bounded direction: freeze fresh development-validation cases
+beforeplay, reset14001,nominal,left/right(+/-.75,-.125)*3/fourtickwarmups,
+noise.02/seeds13100..13105,ninecases. Exact same original-versus-wrapper
+arms/reference+fast,atmost751ticks/36rollouts/max27036control+4320reset/
+300work/330ownedseconds; fixed stoppingrule and all original metric/support
+criteria. Verify exact case/seed fields unused before declaration. Require
+9/9reference finalcentral supported holds/no deaths/nominalexact/fullbackend
+fidelity, preserve bypass exactness, no gains/caps/targets/proxy/trigger scans.
+Do not presume one arming attempt or success by noise/case identity. Fresh
+validation pass may admit a separately captured data/clock-memory-aware
+learner contract, never automatic labels/paidlearning/summit promotion.
+Failure stays closed, not renewed or reclassified. No unchangedBC/PPO scaling.
+
+## Prior result: causal terminal wrapper smoke passes, whole cohort pending
 
 Implemented `research/terminal_controller.py` around unchanged contact-sign
 prior. Only raw217pre/post float32 and resettable privateclock/phase, no
@@ -81,7 +140,7 @@ onstate-20261004-v1/onstate_study and closed historical deadline unchanged.
 Ledgerbytespreserved,7closed$0.4564241866528988; no new reservation/HFwrite/
 deployment/publicrelease/substantive local training.
 
-Next admitted bounded direction: separately freeze wholewrapper versus
+The historical admitted cohort, now completed above, compared wholewrapper versus
 originalcontactcontroller on same9developmentcases reset13001/warmups/
 noise12100..12105, atmost751ticks/arm/reference+fast,36rollouts/max27036
 control+4320reset/300work/330ownedseconds. No controller/rule/timing edits,
