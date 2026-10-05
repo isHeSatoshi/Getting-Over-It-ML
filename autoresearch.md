@@ -42,7 +42,98 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current result: one-point approach times out, no contact/body-authority admission
+## Current result: offline contact audit admits a different design, not body authority
+
+Frozen180second OFFLINE audit of4savedtraces/1910rows independently
+verified49.645733seconds,0newplay/reset/updates. Originalruntime counts
+successfulrenderer queries across attemptedsubsteps and resetsperadvance;
+hammer_collision isOR(queryhits), NOT finalendpointoverlap/contactforce/
+normal/actualsolverbranch. Originalblocked-.5body/.4motor sign andbody
+axisrollback areverified; Gravity-before-motor/slew40/cap50/reach remain.
+
+Fixedfirstquery: pointstep7/controlled332, loggedhammertravel.974976/bodydelta0,
+goalerror9.561013. Firstconsecutive querytrue/lasttravel<3pair7–8 ends
+controlled333: hammer(282.838305,64.187735), body(268.844997,32), goalerror
+10.667937, bodydelta0. Queryproxy isfallible, not stationaryendpoint:
+bothsteps actuallymove thehammer. Firstlaterfree step28/controlled353
+hasloggedtravel2.751715/bodydy+.474907; finalstep30 travels1.966822/falsequery,
+pointfailureerror2.071702 preserved.21query/21lowtravelquery/30bodyquery
+posts, bodyY31.525093..32.145437/netdelta(-.338735,0). No newhold/lift.
+Snapshot travelnumbers above mustbe read as original telemetry, not force.
+
+Naivepregeometrymotor versus loggedpre-extent request differsmax9.816461
+atfirststep, and.4 onselectedsnapshots; it omitsslew/intermediatecoords,
+isnot acomplete
+Gravity/contactsolve. Original last_hammer_distance also differs from
+networlddisplacement: firstresidual.501865/maxabs1.0. Theinitialinspection
+assertion of equality failed and isretained; separatelyhashboundcorrected
+audit recordsresidual instead, sameoriginal180deadline/selector/gates.
+Do NOT infer telemetrycorruption, exactbranch, gravity-onlycausality or
+trust lasttravel as measurednormal/force. All30residuals independently
+reconstructed; runtimequery semantics auditeddirectly.
+
+ONEoffline proposal atfirstrawpair end: fixedreference source300body
+(279.381311,48)-actualbody, existingnorm16cap ofnegativeerror/.2 gives
+delta(-8.799691,-13.362838). Samepoint-equilibrium pointer plusdelta,
+subtract actualpast(rawpointer-OWNissuedcommand), legalproposalaction
+(.123897664,.038328301). Conditionalbody-requestdelta(+1.759938,+2.672568)
+isNOT applied or netmotion. Bodyfloorscan rollback downrequests; model
+support warrants **different contact/pressure DESIGN ONLY**, not pressure/
+bodyauthority/recovery. Source nominal367pose differsbody/camera/contact
+geometry, descriptiveonly. Old1pixel30pointgate staysfailed; no earlier
+query becomesretrospectivepointcompletion or teacherdata.
+
+Bothbackendpairs/rawquery/sourceclock/OWNhistory/snapshotarithmetics/
+originalgraph exact.351Python+JS pass (flushfaultinjectionmessages expected).
+Pinnedlearnedstudy tools.research_goal_metrics projection exact:0worstseed
+completion/candidatefalse/finalfalse. No labels/learning/paidwrite.
+Evidence: `artifacts/contact_transition_audit_20261005_v1/verification.json`
+and `inspection_error.json`. PrivatePAUSED1791173010.251579/source80444390/
+sessiononstate-20261004-v1/modeonstate_study/contexted3a53c3/closeddeadline
+unchanged. Ledgerbytespreserved,7closed$0.4564241866528988. Primarygoal0.
+
+Nextbounded direction: IMPLEMENT/TEST a separatecausal observedcontact
+phase, raw217/OWNissuedhistory/onefixedpoint/oneattempt/privatecounter.
+Use unchangedcursor-feedback fixedpointservo/max30/ordinary325prefix,
+observeEVERYactualpost, andfinishonlyafterTWOconsecutivepostquerytrue+
+rawlasttravel<3, withgapreset. This isqueryproxyacquisition, NOT geometric
+pointcompletion or certifiedplant. Ifunderlyingtarget endsfree/timeout/
+illegal/terminal first, fail/no rearm/extra ticks. Sourcegoal325/base300/
+source299 staysfrozen; no sourcejump, case/seed/traceoracle or prefixplacement.
+Tests plusofflineoldphysics/newmonitor replay first; newcriterion explicit
+DIFFERENTdesign leavesclosedpoint1pixel30failure immutable.
+
+Thenfreeze a matched **one-step localbody-authority contrast ONLY**:
+nominal600 exactreferencefast baseline, failedordinary325+newcontactphase
+onreferencefast, keep-anchor actionversusONEboundedpressure action after
+sameobservedcontacthistory/noise. Atnewcontactphase handoff captureONE
+actual rawobservedhammerworldpoint aspressureanchor forBOTHarms.
+Baseline unitOWNcursorcompensatedanchorservo; candidate existingnorm16
+negative(source300body-currentrawbody)/.2 delta relative tothatSAMEanchor,
+withsamepastOWNcursor subtraction; legalaxes/reach
+guards forbothrequestedpoints. Preserve16MAX, shortenpressurealongthat
+ONEdirection onlyby analyticalFIRSTreach-circle intersection when needed
+to keeprequestedradius>=26.001 (original26plus.001roundingclearance).
+No search or tunedgain; unit-testboundary/no positivelegalstep=>fail/no
+pressureaction. Originalphysicsreach26..102 and all metricgates unchanged.
+No point/gain/threshold/cap/noise scan,
+retargetedAPPROACH/downnudge/rearm/laterprior/macro/labels/training.
+This supersedes run81's futurekeep-point wording: residualapproacherror
+mustnotbecome extraunmeasuredpressure at the newcontact-phase handoff.
+TheONEofflinepoint-relativeproposal above remainsunapplied/historical;
+do notreplaceitsnumbers, oldpointgoal oroldfailedgate. Observedanchor
+stillnotcertifiedplant; actualcontrast musttestfallibleproxy/authority.
+Max6rollouts/2624controlled+720reset/180work210ownedseconds, matched
+earlystops counted. Ifno proxyacquisition, no pressurestep/admission.
+Require commonprefix/contactpreinputs/arms/ref-fast/rawhistories exact,
+alive, ACTUALcandidate bodydx>0.1 ANDdy>0.1 and candidate-minus-baseline
+endpointdelta>0.1onBOTHaxes before any laterpressure-phase/recoverydesign.
+The.1pixel gate rejects numericalresiduals, not aledgehold. Reporttipquery/
+travel/departure/support separately; queryalone insufficient. One-step
+authoritypass stillnot robustteacher/hold/recovery/data/learning; later
+actualretainedrecovery/wholefreshvalidation/data_clockmemory gates separate.
+
+## Prior result: one-point approach times out, no contact/body-authority admission
 
 Freshfrozen originalphysics point/contact probe completed: unchanged
 nominal600/sourcecontroller histories, then knownfailedordinary325

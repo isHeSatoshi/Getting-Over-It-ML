@@ -1,6 +1,41 @@
 # Deferred hypotheses
 
-- **Next frozen OFFLINE contact-transition/servo audit, no new physics:**
+- **Next DIFFERENT causal observed-contact phase + one-step authority contrast:**
+  Offline4traces1910rows audit verified49.646s/original180cap/0newphysics.
+  RuntimequeryOR overattemptssubsteps, notendpointoverlap/force/branch.
+  Firstpair7–8 querytrue/travel<3 ends333, tipstill10.667937off/bodyY32.
+  Oldpoint1pixel30gate staysfailed. Legalofflinepressureaction
+  (.123897664,.038328301)/norm16 modelbodydelta(+1.759938,+2.672568),
+  notapplied/notactualauthority. Naivepregeometry/loggedrequestresidual
+  max9.81646; loggedtravel≠netdisplacement first.501865/maxabs1.0,
+  failedassertionpreserved/corrected asresidualsame180deadline.
+  IMPLEMENTseparate raw217/OWNhistory/onefixedpoint/max30/contactproxy
+  phase: unchangedcursorservo, observeactualpost, TWOconsecutivequerytrue
+  andrawtravel<3/gapreset; source325/base300/299frozen. Freeunderlying
+  goalend/timeout/illegal/terminal fails/no rearm; no pointcompletionclaim.
+  Unit/offlinephysicsparity first, thenfreshfreeze nominal600ref-fast and
+  failed325+contactphase, SAMEhistory one keep-anchor actionvsONEpressure
+  action. Captureactualrawhammerworldanchor atNEWcontactphase handoff
+  forBOTHarms; baselineholdanchor/candidateexistingnorm16negative
+  (source300body-currentrawbody)/.2 plusanchor-equilibrium pointer,
+  unitpastOWNcursor compensation/legalaxesreachguards. Approachgoal stays
+  unchanged; thissupersedes run81futurekeep-point hint, notitsunapplied
+  oneofflineproposal oroldfailedgate. Residualapproacherror not extraload;
+  observedanchor stillnot plant/branchproof, actualcontrast required.
+  Norm16 isMAX, analyticalfirstreach-circle intersection shortensalong
+  theonepressure direction ifneeded for26.001radius (26+.001rounding
+  clearance). No scan/tunedgain; no positivelegalstep=>fail/noaction.
+  Unit-testbounds, original26..102physics/metricgates unchanged.
+  6rollouts/max2624control720reset/180work210ownedsecs. Ifno proxy no push.
+  Requirecommonprefix/contactpre/noise/arms/backend/raw exact/alive,
+  candidate actualdx>0.1/dy>0.1 ANDcandidate-baselineendpoint>.1eachaxis
+  forlaterdesignonly. Notforceinverse/hold/teacher/recovery; no approach
+  retarget/downnudge/gain_threshold_cap_tolerance_noise scan/macros/
+  sourcejump/labels/learning. Laterrecovery/wholefreshdata separate.
+  351Python+JS/goalprojection0;PAUSED1791173010.251579,$0.456424187closed.
+  Evidence: artifacts/contact_transition_audit_20261005_v1/verification.json.
+
+- **Closed OFFLINE contact-transition/servo audit, completed above:**
   Pointonly4rollout probe completed1910control480reset/26.714771s,
   351Python+JS/offline325prefix-bootstrap pass;2backendpairs/allrawmemory/
   sourceclocks/fullnominal600/failed325 exact. Nominalgain83/holds,

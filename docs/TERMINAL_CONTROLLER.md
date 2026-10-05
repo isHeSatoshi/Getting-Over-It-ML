@@ -492,3 +492,59 @@ A distinct observed-contact/pressure design needs mechanical support and
 a fresh contract, not retargeting, extra ticks or relaxing the failed
 1-pixel/30-step gate. Actual equal-history body authority remains a later
 requirement before recovery, whole-controller validation or learning.
+
+## Offline transition audit: query proxy is not endpoint contact
+
+The runtime records whether **any attempted renderer query** hits during
+the tick. It resets this count per advance. The reported hammer query
+therefore does not certify final endpoint overlap, a normal, force or the
+solver branch. Original blocked-body sign and per-axis collision rollback
+are verified separately from these flags.
+
+The first point-stage query occurs at step7. Steps7–8 are the first
+consecutive query hits with logged travel<3, but both actually move the
+hammer. At step8 the point error is10.667937 and the body remainsY32.
+First later query-free transition occurs at28, then final30 remains
+query-free/error2.071702. The old geometric gate stays failed.
+
+Naive pre-state motor reconstruction differs from the logged pre-extent
+request by up to9.816461. The logged original travel also differs from
+the net captured hammer displacement, first residual.501865/maxabs1.
+An initial assertion assuming equality failed; its preserved correction
+records the residual without changing the physical gate or original
+180-second deadline. These are ordering/reconstruction limits, not
+proof of a specific force, solver branch or corrupt telemetry.
+
+A single legal offline pressure proposal at the first query pair uses
+the existing norm16 body-error sign, fixed point and past own-command
+cursor estimate. Action `(.123897664,.038328301)` gives a conditional
+model request change `(+1.759938,+2.672568)`, not measured motion.
+Only a **different observed-contact/pressure design** is admitted.
+No body authority, recovery, teacher or learning is demonstrated.
+
+Four saved traces/1910 rows,49.645733 seconds within the original cap,
+zero new gameplay/reset/updates. Both backend pairs, raw/source/own-history
+arithmetic and original graph/query semantics independently verify.
+351 Python tests plus collision checks pass. HF remains PAUSED and the
+closed ledger is unchanged. Evidence:
+`artifacts/contact_transition_audit_20261005_v1/verification.json`.
+
+Next implement a one-attempt raw observed-contact phase, separately named
+and gated, requiring two consecutive query/low-travel posts while preserving
+the fixed-point approach and its30-step cap. Free geometric completion,
+timeout or illegal control ends the attempt; no rearm or extra ticks.
+After tests, separately freeze a common-history keep-anchor versus one-pressure
+step contrast. At the new phase handoff, capture the actual raw hammer-world
+point for both arms. This avoids adding residual approach error to the intended
+pressure. It changes neither the approach target nor the failed geometric gate;
+the historical offline point-relative proposal remains unapplied. An observed
+anchor still does not certify contact or body authority.
+Keep the16-pixel maximum, shortening only along the one pressure direction
+at its analytical first reach-circle intersection if needed. Require radius
+at least26.001, the original26 plus.001 rounding clearance. This is a legal
+control guard, not a new physical reach or metric threshold. If no positive
+legal pressure exists, fail without a step; do not scan gains or targets.
+Require actual positive body movement and a positive
+counterfactual difference on both axes, each>.1pixel, before any later
+pressure/recovery design. Query acquisition alone is insufficient.
+The failed1-pixel/30-step point gate is immutable.
