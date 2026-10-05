@@ -50,6 +50,14 @@ It cannot become policy input or labels, and no actual branch/body authority
 has yet been observed.
 Evidence: `artifacts/branch_direction_audit_20261005_v1/verification.json`.
 
+The opt-in compiled counter now passes16 synthetic tests and exact
+instrumented/uninstrumented original-physics fidelity across12 rollouts.
+Every archived legacy row, all backend/mode histories and per-tick counter
+histories match. Counts remain diagnostic-only, outside raw217/controller
+inputs. Per-tick branch attribution is next; body authority, recovery and
+teacher/learning gates remain failed or unadmitted.
+Evidence: `artifacts/procedure_counter_fidelity_20261005_v1/verification.json`.
+
 Original Scratch Player blocks `bF`/`bG` request
 `0.4 * (pointer - hammer_world + body_world + render_offset)`.
 The original 40-unit change limit, 50-unit motor limit, 26..102 reach and

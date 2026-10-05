@@ -42,7 +42,76 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current result: branch audit rejects primitive-only telemetry, admits compiled-counter design
+## Current result: compiled counters pass original-physics fidelity, diagnostics only
+
+Implemented standaloneopt-in `research/procedure_counter.js` ONLY; no
+legacyruntime/game/compiler/controller/observation changes. Exact W/Z
+proccodeencoding verified inpackagedcompiler source. OriginalPlayer
+compiledtables decorated afteroriginaltryCompile andexistingthreads;
+normalfunctions/generators delegate this,args,returns,throws/yields,
+generatorcountonexecution. Perlabel4096/tick and8192trackedentries caps,
+overflow/unsupportederrors metadata, no throws/suppression insideoriginal
+physicscalls. Clock/counts reset peroriginalruntime_step; explicitepisode
+reset, boundedfourwhitelistlabels. Ownhook/table restoration preserves
+externalinterventions.16syntheticJS/365Python/collisionJS pass.
+
+Frozen12rollout instrumented/uninstrumented originalfidelity completed:
+nominal600 andexistingfailed334keep-anchor/pressure onreferencefast,
+unchangedcausalcontrols/source/cursor/contact/pressure histories.
+ALL12 full legacyrowobjects exactoldarchive, all6modebackendpairs,
+allinstrumented-uninstrumentedphysicspairs and3counterbackendhistories
+exact. Legacyphysics/actions/rewards/infos/raw217/controller/private
+memory/clock unchanged. Counters NEVERcontrollerinput: ownedresearch.step
+delegates/copiesone-state diagnosticenvelope; ownedPythonstrip BEFORE
+environment/observations, thenrecord metadata separately. No extra
+physics/RPCperstep. Countertick120+controlledstep equalsactualgame tick,
+resetclock/coverage/overflowerrorfree, teardown ownhooks/envelope restored.
+
+Instrumentednominal compiledcoverage: blocked_body136/free_hammer464/
+wall_probe334/hammer_substep2150, samebothbackends. Failedkeep-anchor
+aggregate73/261/151/1478; pressure73/261/151/1480. These arevalidated
+procedureentry COUNTS ONLY, notforce/normal/bodytransfer proof or new
+authoritypass. Separateoffline per-tick branchinterpretation next, no
+counteroracle feedback/teacherlabels. Historicalfailedauthority>.1axes
+andpoint1pixel30gates stayfalse; no latercontrol/recovery/learning admission.
+Nominalstill(322.585886,104)/gain83/bothholds; failedboth
+(268.844997,32)/gain11/noholds.0deaths/summits/updates. Goal0.
+
+5072controlled+1440EPISODEreset+240bridgebootstrap=1680TOTALreset,
+12rollouts/110.757635ownedseconds within180work210ownedcaps.
+Initialbridge240beforecounterinstallation, explicitlycounted/notclaimed
+instrumented. Oldresetfields episode-only scope/gates notrewritten.
+Source/newJS/contract/admission/plan/scripts/parent/budget/deadline/
+secretstrippedchild/durabletraces/cleanup hashes bind. Independent all
+legacyarchive/fullcounter histories andmeaningfulnominalboth-branch
+coverage verify. CounterVALIDATION-onlygate true, primarymetricunchanged/
+runstatusdiscard; retained diagnosticimplementation not climbingpolicy.
+Evidence: `artifacts/procedure_counter_fidelity_20261005_v1/verification.json`.
+
+Pinned tools.research_goal_metrics projection exact:0worstseedcompletion/
+candidatefalse/finalfalse. IndependentprivatePAUSED1791176918.518355/
+source80444390/sessiononstate-20261004-v1/modeonstate_study/context
+ed3a53c3/closeddeadline unchanged. Ledgerbytespreserved,7closed
+$0.4564241866528988; no paidreservation/remote write/deployment/public
+release/substantivelocaltraining.
+
+Nextbounded direction: freeze180second **OFFLINE validated per-tick
+branch attribution** of6INSTRUMENTEDsavedtraces/2536rows,0newplay/reset/
+updates. Bindsource/project/traces/completedfidelityreview/scripts/plan/
+budget. Fixed nominalcontrolled367; failedcontactquery7–8/controlled332–333
+andsharedonecontrast334, plus declaredcontact8-window aggregate.
+Readactualcallcounts withtip/body/query/impulse/request/sourcephase.
+Separatevalidated uniqueprocedure-entry branch evidence from physical
+bodymotion/force/normal, and from laterunequalstate trajectory contrasts.
+Determine whether failedqueryproxy selectsfree-moving rather than
+blocked-body transfer andwhyoldqueryOR cannotcertifycontactauthority;
+do not infer directionalcollision normals or completeinverse dynamics.
+No newcontrollercriterion/plant/target/pressureduration/gain/cap scan,
+sameprobe/wrapperretry/oldgatechange/labels/learning. Any newcontrol
+mechanics requires another explicitlyfrozen localauthority contract,
+not simplyfeeding privilegedbranchcounts into thepolicy.
+
+## Prior result: branch audit rejects primitive-only telemetry, admits compiled-counter design
 
 Frozen180second OFFLINE audit of6savedtraces/2536rows independently
 verified3.438915seconds,0newplay/reset/updates.3backendpairs/common333

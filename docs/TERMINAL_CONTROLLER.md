@@ -632,3 +632,38 @@ Future12-rollout fidelity must explicitly count1440 episode plus240
 bridge-bootstrap ticks,1680 total resets. This correction does not alter
 old physical gates or renew a closed plan. Initial bootstrap precedes
 counter installation and must not be claimed as instrumented coverage.
+
+## Compiled counter validation: exact legacy fidelity
+
+`research/procedure_counter.js` implements opt-in original Player compiled
+procedure-table counters. The verified W/Z variant encoding, after-compile
+and existing-thread interception, normal/generator delegation, per-tick
+reset, bounded counts/overflow and own-hook/table restoration have16
+synthetic tests.365 Python tests and collision checks also pass.
+No legacy runtime, game, compiler or controller code changes.
+
+The frozen12-rollout instrumented/uninstrumented test preserves **every
+legacy row field exactly** against the archived nominal600 and both
+failed334 histories on reference/fast. All mode/backend physical histories
+and all three instrumented counter histories agree. Counts are reset per
+actual VM step, episode counter clock equals game tick, coverage/error/
+overflow checks pass, and teardown restores hooks and diagnostic envelopes.
+
+The owned diagnostic envelope is stripped before environment/raw217/
+controller processing. No counter enters policy observations or labels.
+Nominal coverage includes136 blocked-body and464 free-hammer entries.
+This validates counter visibility, not body transfer or a new climbing skill.
+Per-tick branch attribution remains a separate offline analysis.
+
+5072 controlled,1440 episode-reset and240 bridge-bootstrap ticks,1680
+total resets,110.757635 owned seconds. Initial bootstrap precedes
+instrumentation and is not claimed as instrumented coverage. Nominal
+still holds atY104/gain83; both failed arms stayY32/gain11/no holds.
+Zero deaths, summits or updates. The point and body-authority failures
+remain fixed; no recovery, teacher or learning admission follows.
+
+HF remains PAUSED and the closed ledger is unchanged. Evidence:
+`artifacts/procedure_counter_fidelity_20261005_v1/verification.json`.
+Next inspect validated per-tick counters at the fixed contact/contrast
+snapshots offline, without changing controls or feeding privileged branch
+information into a policy.

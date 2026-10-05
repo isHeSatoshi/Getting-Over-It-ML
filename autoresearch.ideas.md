@@ -1,6 +1,33 @@
 # Deferred hypotheses
 
-- **Next IMPLEMENTopt-in compiledcallcounter + physicalfidelity only:**
+- **Next OFFLINE validated per-tick branch attribution, no new controls:**
+  Opt-inprocedure_counter.js implemented/16syntheticJS/365Python/
+  collisionJS pass. ExactW/Zvariants/compiledthread lifecycle/normal-
+  generator delegation/clock/reset/overflow/ownhook restoration guards.
+  Frozen12fidelityrollouts5072control+1440episode+240bootstrap=1680
+  totalreset/110.758s. ALL12legacyarchive/fullmodephysics/rawmemory/
+  source histories exact,6backendpairs/3counterpairs exact/errorfree.
+  Nominalcompiledcounts136blocked/464free/334wall/2150substeps;
+  failedkeep-anchor73/261/151/1478, pressure73/261/151/1480, bothgain11/
+  noholds versusnominal83/bothholds.0deaths/summits/updates. COUNTERS
+  validationonly, no force/transfer/authority/recovery/teacherpromotion.
+  Ownedone-stateenvelope strippedBEFORE env/raw217/counterneverinput.
+  Initialbootstrap240explicit/notinstrumented; oldepisode-only reset
+  records/gates immutable. Alloldpoint/authority failures unchanged.
+  Freeze180secondOFFLINE6INSTRUMENTEDtraces2536rows/source/project/
+  trace/completedfidelityreview/scripts/plan/budget,0newplay_reset_updates.
+  Fixednominal367; failedcontact7–8 at332–333 andcontrast334, declared
+  contact8window. Actualuniqueprocedureentry counts vstip/body/query/
+  impulse/request/sourcephase. Determine failedproxy freevsblocked path;
+  callentry notforce/normal or guaranteebodylift. Equalprefixcausal
+  controls versuslaterunequalstates explicit; no completeinverse solver/
+  privilegedcounterpolicyoracle/labels. No newplant/criterion/target/
+  pressureduration/gain/cap scan/probe-wrapperretry/oldgatechange/training.
+  Futurecontrol needsseparatefreshlocalauthority, notbranchoracle input.
+  PAUSED1791176918.518355,$0.456424187closed/goal0.
+  Evidence: artifacts/procedure_counter_fidelity_20261005_v1/verification.json.
+
+- **Closed compiledcallcounter implementation/fidelity, completed above:**
   Offline6traces2536rows audit verified3.439s/180cap/0newphysics,365Python+
   JS. Bothbodydelta0/candidategain11/noholds, authorityfalse. Logged
   pressuredirectionleftdown notactualwallprobe/branch; source probes
