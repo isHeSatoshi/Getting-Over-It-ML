@@ -42,7 +42,7 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current status: pilot attempt2 completed training, stopped by provider commit rate limit; backup fix ready for fresh attempt3
+## Prior attempt: pilot attempt2 stopped by provider commit rate limit (backup fix f7b44b0)
 
 Attempt2 (session `goal-20261005-v2`, source
 `f413aa63159fe341879586afd1a605080d6d4d6f`) passed fresh preflight on all
@@ -99,6 +99,22 @@ nominal case ends at spawn height. The pilot gate is unmet and the design
 does not yet show the required ledge competence. No further batch is
 authorized; a next step requires a separate bounded authorization and a
 scientific (not infrastructure) change decision.
+
+### Local headed replay of the saved checkpoint (2026-10-05, diagnostic only)
+
+`tools/goal_policy_viewer.py` ran checkpoint_160000 (hash-verified against
+its manifest) in a visible local Chrome at real-time pacing: nominal and
+noise_5, 3600 ticks each. Local nominal moved to (34.8,19.0) by tick ~31,
+then held one fixed-point command for the rest of the episode (the game
+tick kept advancing 121->420 while position/speed stayed exactly static,
+so this is policy behavior, not a paused page); the remote scored nominal
+instead wandered to x~280, so the deterministic policy is brittle across
+hosts. Local noise_5 reproduced the climb to (281.1,100.6) by tick ~211 -
+the exact endpoint of the remote partial trace - then held the same fixed
+point for ~3400 ticks. Visual reading: the policy can climb the opening
+to ledge height (y~100) but stalls ~25 units short of the ledge box
+(305-335,100-112) and cannot get onto it. No gate change; no remote
+writes.
 
 ### Recovered attempt2 learned-policy measurements (not a gate result)
 

@@ -186,6 +186,15 @@ node .\tests\procedure_counter.test.js
 node .\tests\collision_memo.test.js
 ```
 
+Watch a saved checkpoint in a visible browser (local only, no HF writes):
+
+```powershell
+& .\artifacts\goal_build_20261005_v1\cpu_testenv\Scripts\python.exe -m tools.goal_policy_viewer `
+  --checkpoint .\artifacts\goal_policy_view_20261005_v1 `
+  --supervisor .\artifacts\goal_policy_view_20261005_v1\supervisor.json `
+  --cases nominal noise_5 --fps 30
+```
+
 Fresh private deployment tree, never profiles/logs/credentials:
 
 ```powershell
