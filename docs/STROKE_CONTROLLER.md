@@ -8,6 +8,15 @@ Private phase and call count reset with every episode. The default remains
 
 ## Original motor and proposed feedback
 
+The subsequent saved joint audit confirms the original conditional transfer
+sign, but does not measure a new body response. During the completed local
+tip phase, hammer queries remain zero and the pot drops6.321821 pixels.
+A single stationary nominal-query point is legally reachable from the failed
+pose, but its approximate footprint has no overlap. It admits a separate
+point/contact feasibility test only, not a plant, push or teacher. See
+`TERMINAL_CONTROLLER.md` and
+`artifacts/joint_authority_audit_20261005_v1/verification.json`.
+
 Original Scratch Player blocks `bF`/`bG` request
 `0.4 * (pointer - hammer_world + body_world + render_offset)`.
 The original 40-unit change limit, 50-unit motor limit, 26..102 reach and

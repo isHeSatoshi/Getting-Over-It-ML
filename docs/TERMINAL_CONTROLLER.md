@@ -403,3 +403,55 @@ and original planted body response before deriving a different legal
 alignment primitive. Query flags are not forces, approximate terrain is
 not renderer contact. Any new physical law requires a fresh local authority
 contract, then recovery and whole-controller validation before data/learning.
+
+## Offline joint-body audit: one approach hypothesis, no plant
+
+The hash-bound audit and independent review cover four saved traces,
+3004 rows and the original block/collider/terrain sources. They finish
+within the original180-second cap (122.029 seconds), with no new gameplay,
+reset ticks or optimizer updates. Both backend pairs and raw query
+chronology agree.351 full/62 focused Python tests and collision checks pass.
+
+During the26-step tip phase, the hammer has zero post-action query hits;
+the body has25. The pot moves left2.144816 and down6.321821 pixels.
+At the first resumed decision it is19.157607 pixels from the required
+body pose, despite.870482 hammer error. The failed final120 ticks have
+120 body queries, zero hammer queries and120 norm-capped corrections.
+There is no common nominal/failed applied prefix, so later comparisons
+remain descriptive. Neither query flags nor these differences measure forces.
+
+The original graph verifies Gravity before motor and a conditional blocked
+body request of `-.5 * hammer_request`, with motor coefficient `.4`.
+Thus a left/down pointer change can request right/up body movement **if
+that branch actually applies**. Collisions, reach, gravity and momentum
+still matter. This is not a net-motion prediction or an inverse solver.
+
+One frozen selector chooses the first nominal post-state with bodyY>=100
+and a hammer query within the original600 ticks. Decision367/source366
+has stationary hammer `(291.913596991,69.795227082)`. That point is
+legally reachable from the failed handoff, reach44.279109, equilibrium
+pointer `(23.068600,17.795227)`. Its approximate9x9 footprint has zero
+opaque samples. Recorded query/travel and approximate alpha do not certify
+a plant at either the recorded point or the failed-state endpoint.
+
+The one offline directional proposal uses the existing16-pixel cap:
+pointer change `(-8.799691,-13.362838)` would give a conditional
+body-request change `(+1.759938,+2.672568)` before other dynamics.
+It has not been applied. Only a point/contact feasibility-test design
+is admitted, not a push, recovery, teacher or learning.
+
+Two inspection assumptions failed and remain in the evidence: hammer
+query is feature22, not feature20 (`last_effort`); exact norm equality
+also rejected reduction-order roundoff. Separately hash-bound corrections
+kept the same original deadline and physical gates. The `1e-12` comparison
+is inspection arithmetic only. No completed trial was extended or replayed.
+Evidence: `artifacts/joint_authority_audit_20261005_v1/verification.json`.
+
+Next freeze a point-only ordinary-prefix probe. Preserve nominal600 and
+the failed wrapper325 history, then freeze source progress and use the
+unchanged own-command cursor phase toward this one point, tolerance1/
+max30/early stop. Require raw and physical completion **and** hammer
+query/low travel at completion before a separate equal-history body-
+authority contrast. A free completion or timeout fails without nudges,
+new goals, extra ticks or gate relaxation. Whole-controller validation,
+teacher data and learning remain blocked.

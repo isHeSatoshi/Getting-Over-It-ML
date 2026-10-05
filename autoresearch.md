@@ -42,7 +42,81 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current result: causal source-goal wrapper preserves clocks, fails body acquisition
+## Current result: offline joint audit identifies one approach hypothesis, not a plant
+
+Completed the frozen180second OFFLINE audit of4saved751traces/3004rows,
+with independent review in122.029318seconds. Added0gameplay/reset ticks,
+optimizer updates, deaths or summits. Both backend pairs, raw positions/
+query chronology, linked original blocks, collider geometry and scalar/
+vectorized approximate terrain agree.351full/62focused Python tests and
+collision checks pass. Prior failed recovery/hold gates stay unchanged.
+
+At the first resumed decision326/source300, actual body is(268.844997,32),
+reference(279.381311,48), error19.157607; hammererror.870482 but queryfalse.
+The26-step tip stage has0hammer/25body postqueryhits. Body moves
+(-2.144816,-6.321821), not toward joint alignment. Failed final120 has
+120body/0hammer queries and120norm16 corrections, Xfixed268.879707,
+Y31.518297..32/gain11/nohold. Nominal retains central/gain83. Streams
+have0commonappliedprefix, so later contrasts are descriptive, not causal.
+
+Original Gravity precedes motor. Conditional blocked branch requests
+body=-.5*hammer request, motor=.4*pointererror, giving a conditional-.2
+pointer/body sign, not guaranteed net movement or an inverse solver.
+Direction90 body SVG extends37.059111below anchor; actual lower envelope
+-5.059111 versus reference10.940889. Alpha atX269 has no opaque sample
+within declaredY-20..120, whileX293..335 top65. This mismatch itself
+reinforces that alpha/envelope are not exact renderer contact evidence.
+
+Frozen ONE selector: first nominal postbodyY>=existing ledgeYmin100 and
+actualhammerquerytrue within original600. Selects decision367/source366,
+hammer(291.913596991,69.795227082), travel0/body(283.228280,103.447684).
+This is not a central/secondary hold at that instant, nor teacher data.
+From failed handoff the point has reach44.279109/legalaxes, equilibrium
+pointer(23.068600,17.795227), normalized(.180223435,.139025211).
+Approximate9x9footprint has **0**hits. A recorded query and zero travel
+do NOT certify a physical plant at the current or new failed-state point.
+Only a local point/contact-test DESIGN is admitted, not body authority.
+
+The one offline blocked-only directional proposal is existingnorm16cap
+of-(referencebody-actualbody)/.2: pointerdelta(-8.799691,-13.362838),
+conditional body-request delta(+1.759938,+2.672568)/norm3.2. It is NOT
+applied, a measured response or permission to push before real contact.
+No fallback point, downward nudge, gain/phase/cap/tolerance scan or macro.
+
+Inspection errors retained: rawindex20 islast_effort, not hammerquery22;
+bodyquery21 unchanged. Separate corrected hash-bound scripts/plans keep
+the ORIGINAL180second deadline. A strict norm comparison rejected float
+reduction-order roundoff; only inspection arithmetic nowuses1e-12, no
+physical tolerance/gate change. Correction-script syntax error preserved
+in norm error record. Completed output/independent verification valid
+within originalbudget; no completed-plan or gameplay retry. Test invocation
+namespace errors resolved by isolating repositorytests before351pass.
+Evidence: `artifacts/joint_authority_audit_20261005_v1/verification.json`,
+`audit.json`, `inspection_error.json`, `norm_inspection_error.json`.
+
+Private independently PAUSED1791170879.662234, source80444390/session
+onstate-20261004-v1/modeonstate_study/contexted3a53c3/closeddeadline
+unchanged. Ledgerbytesunchanged,7closed$0.4564241866528988; no newpaid
+reservation/remote write/deployment/publicrelease/localtraining. Goal0.
+
+Next admitted bounded direction: fresh frozen **point/contact probe ONLY**,
+no wrapper modification/resumedprior/push/recovery claims. Nominal600
+baseline gate/referencefast, then failed ordinary SourceGoalController
+prefix325 (299base+26goal), exact saved physics/sourceclocks. Freeze this
+ONE recorded point and unchangedcursor-feedback HammerTargetPhase/
+raw217/OWNissuedhistory/bootstrap/tolerance1/max30/earlystop. Basestays
+frozen during point stage; no sourcejump/rearm/extra contact-seeking ticks.
+Max4rollouts/1910controlled+480reset/180work210ownedseconds: two600
+nominals plus two(325+<=30)point cases. Require rawANDphysical1pixel
+completion, actualhammerquerytrue/lasttravel<3 at completion, alive and
+fullsource/backend/rawchronology exact before any body-authority contrast.
+If point completes free or timesout, preserve failure without downward
+nudge/newpoint/capextension. Query stillnot force/branch; later equal-
+history baselinevsone legalpush with rawbody movement/support gate is
+SEPARATE, only after contact feasibility. Bodyrecovery/wholefreshcohort/
+teacher/data_clockmemory/learning gates remain blocked.
+
+## Prior result: causal source-goal wrapper preserves clocks, fails body acquisition
 
 Implemented `research/source_goal_controller.py`, one rawlower-plantedhammer
 checkpoint after299ACTUALobserved transitions/beforedecision300. Query1/

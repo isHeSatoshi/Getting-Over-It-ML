@@ -1,6 +1,31 @@
 # Deferred hypotheses
 
-- **Next frozen offline joint-body authority/terrain audit:** causalwrapper
+- **Next frozen one-point/contact feasibility probe, NOT body recovery:**
+  Offline4savedtraces/3004rows audit verified122.029s/original180budget,
+  0newplay/reset/updates;351full62focusedPython+JS pass. Failedhandoff
+  body19.157607off despite tip.870482, goal26hammerquery0/bodyquery25,
+  bodydelta(-2.144816,-6.321821); failedtail120body120/hammer0/norm16
+  correction120. Querynotforce/branch; laternominalfailedstatesdescriptive/
+  commonappliedprefix0. Originalconditional-.5body/.4motor yields-.2
+  sign, not guaranteednetmotion. ONEpredeclared recordedcontact selector
+  picksnominal367/source366 hammer(291.913596991,69.795227082)/travel0,
+  legally44.279109fromfailedhandoff, butapprox9x9footprint0hit, no
+  rendererplant/bodyauthorityclaim. Conditional leftdown norm16delta
+  (-8.799691,-13.362838) onlyoffline/notapplied. Index20last_effortvs22
+  hammerquery andfloatnorminspectionerrors preserved/corrected withsame
+  deadline; no metric/gate/tolerance renewal.
+  Freshfreeze nominal600gate/referencefast then ordinaryfailedwrapper325
+  prefix/clockphysics exact. ONEpoint/unchangedcursorphase/bootstrapOWN
+  history/raw217/tolerance1/max30/earlystop; sourcefrozen/no priorresume/
+  phasejump/rearm/push/extra contact-seeking ticks.4rollouts/max1910control+
+  480reset/180work210ownedsecs. Require rawANDphysical1pixel plusactual
+  hammerquerytrue/travel<3/alive/fidelity ATcompletion for laterseparate
+  equalhistorybodyauthoritycontrast. Freecompletion/timeout fails without
+  nudge/newpoint/capextension/scans. No labels/recovery/wholevalidation/
+  learning. PAUSED1791170879.662234,7closed$0.456424187/goal0.
+  Evidence: artifacts/joint_authority_audit_20261005_v1/verification.json.
+
+- **Closed offline joint-body authority/terrain audit, completed above:** causalwrapper
   implemented/7new62focused351fullPython+JS. Nominal751permanentbypass
   fulloriginalcontrols/physics exact/gain83/holds. Failedcase299base+
   26goal+426resumed,goal325physics exact/sourcecalls300_299frozen/
