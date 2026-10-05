@@ -42,7 +42,70 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current result: offline pointer audit supports causal lagged-cursor local test
+## Current result: causal cursor alignment passes, hammer error slightly worsens
+
+Frozen6rollout one-step cursor-response comparison completed. Nominal600
+historicalgate, then exact299ordinary originalcontrollerprefix/reset14001/
+noise13105, uncompensatedsameworldgoal versusunitpastobservedcursor-error
+subtraction at300. Equal299fullphysics/controls AND actualraw217pre/full
+prestate. Samecontinuousnoise; no seed/currentappliedaction/future noise
+in estimator. Firsttargetaction fixed, no stableblock/errorminimum selection.
+
+| Reference one-step measure | Uncompensated | Past-cursor compensated |
+|---|---|---|
+| Actualcursor error toCOMMONdesiredpointer |1.137445398|.000703795|
+| Hammer-world targeterror |11.145062381|11.265576588|
+| Hammer travel |4.474497014|4.715062720|
+| Hammer queryhit |false|false|
+
+Declaredcursoralignmentgate true, but HAMMERerror worsensslightly. This
+cannot be promoted as hammertracking/completion/recovery/learning progress.
+Incrementalhammer(-.3712,-.2632), bodydelta(0,0), no lift orhold.
+Pastestimate(.927917480,.658210754) fromrawprepointer13/14*128 minus
+previousactuallyissuedowncommand; currentseed/noise/post notreadbypredictor.
+Uncompgoalpointer andsourceprior remainfixed; candidatefloat32action
+(-.663948357,-.430981845) legal. Originalmotionrequestgain0.4consistent
+withlocalcursorchange, not completegravity/contactsolver inversion.
+
+2400control+720reset/6rollouts,owned31.341925seconds within180work/210owned
+caps.49focusedPython+JS safeguards pass, controller/physics/metrics unchanged.
+All6rawmilestone/proposed/applied/caseclock histories,3fullbackendpairs,
+nominal600/uncompensated300sourcehistories/equal299prefix/preinputs exact.
+Source/prior/proposal/completedaudit/plan/scripts/parent/budget/deadline/
+secret-stripped ownedchild/durabletraces/cleanup verified.0updates/deaths/
+summits/labels/completion/recoveryadmission. Only separatecausalfeedback
+implementation/smoke admitted, not anotherfullpolicy or teacher.
+Evidence: `artifacts/cursor_response_probe_20261005_v1/verification.json`.
+Closeduncompensated1pixel/30stepfailure3.304582 and allpriorgates preserved.
+
+Independently privatePAUSED1791166955.9553962;80444390source,
+onstate-20261004-v1/onstate_study/contexted3a53c3/closeddeadline unchanged.
+Ledgerbytespreserved,7closed$0.4564241866528988; no reservation, remote
+write, deployment, publicrelease or substantive localtraining. Goal0.
+
+Next admitted bounded IMPLEMENTATION/smoke: opt-in past-cursor feedback in
+the boundedhammer-target phase, defaultuncompensated behavior exact.
+State ONLYraw217pre/post, fixedgoal and ownactuallyissuedcommand history.
+Bootstrap once from last actuallyexecuted prefixcommand and its observedpost;
+aftereachstep estimate=actualpostrawpointer*128-OWNcommand*128 (not prior
+uncompensateddesiredcommand). Nextaction subtract that estimate withunitgain.
+Explicit action/actualpostobserve/prepostlink, rejectmissing/wrong/duplicate
+history, no first-step seedoracle or recurringbootstrap. Legalaxes/reach
+guards; samegoal/offset/1pixel/30steps/no rearm orcaprenewal. No filters/gain/
+noise/tolerance/goal/cutoff scan. Preservealloldactions/contracts bydefault.
+Freeze source/rules/plan before actualpipeline-smokephysics. Nominal600
+gate, knownordinary299prefix/noise13105/reset14001, defaulttargetphase versus
+optinfeedbackphase onreferencefast,max6rollouts/2516control+720reset/
+180work/210ownedseconds, variableearlystop declared. Default6available
+priorhistories/sourceprefixes exact; candidatefirst300mustreproducecurrent
+cursorcontrastphysically. Require raw ANDphysicaltiperror<=1/actualmotion/
+alive/fullfidelity for localtargetcompletion; otherwise preservefailure.
+Cursoralignmentpass alone notcompletion/bodylift. Even localcompletion
+only admits further causalphase DESIGN; recovery/composition/freshwhole
+validation and captureddata/clock-memorylearnercontract remain separate.
+No substantivelearning, paidscaling, targetretry ofoldclosedplan or labels.
+
+## Prior result: offline pointer audit supports causal lagged-cursor local test
 
 Frozen180second OFFLINE audit completed on6savedtraces/2516rows from failed
 observedtargetphase,0newplay/reset/updates. Trace/source/project/completed
@@ -88,7 +151,7 @@ onstate-20261004-v1/onstate_study/contexted3a53c3/closeddeadline unchanged.
 Ledgerbytespreserved,7closed$0.4564241866528988; no paidreservation, remote
 write, deployment, publicrelease or substantive localtraining. Goal0.
 
-Next admitted bounded direction: separately freeze ONE-step actualcursor
+The historical admitted separately frozen ONE-step actualcursor
 response comparison, nominal600historicalreferencefast gate then
 ordinary299prefix/reset14001/noise13105 with uncompensatedsameworldgoal
 versusoneunit pastobservedcursor-residual subtraction at300.6rollouts/

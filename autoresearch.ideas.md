@@ -1,6 +1,31 @@
 # Deferred hypotheses
 
-- **Next causal past-cursor response check:** offline6traces/2516rows audit
+- **Next causal cursor-feedback implementation/smoke only:** equal299prefix
+  localcontrast passescursorerror1.137445->.000703795, buttiptargeterror
+  WORSENS11.145062->11.265577;queryfree/travel4.474497->4.715063,
+  bodydelta0. No completion/recovery/learning.6rollouts/2400control+720reset/
+  31.341925s,0updates/deaths/summits,49Python+JS/fullraw3backend/source
+  histories exact. Failed1pixel30stepgate3.304582immutable.
+  Implement opt-inunitpast-cursorfeedback inHammerTargetPhase, default
+  exactunchanged. Raw217pre/post/fixedgoal/OWNactuallyissuedcommandhistory
+  only; bootstraponce lastactualprefixcommand+itsactualpost. Observeafter
+  everyaction computesrawpointer*128-OWNcommand*128, notdesireduncomp
+  pointer; nextaction subtractsestimate. Strictprepostlink/no missing/
+  duplicate/wrongbootstrap/step ordering, legalbounds/no rearm/caprenewal,
+  samegoal/offset/1pixel/30cap, nofilter/gain/goal/timing/noiseoracle scan.
+  Tests/olddefaultparity thenfreeze source/rules/plan beforephysicssmoke:
+  nominal600gate,defaultphase vsoptin afterordinary299prefix/reset14001/
+  noise13105/referencefast,max6rollouts/2516control+720reset/180work/
+  210ownedsecs,variableearlystop. Defaultoldhistories exact; newfirst300
+  actualphysics matchescursorcontrast. Localgate rawANDphysicaltiperror1/
+  realmotion/alive/fidelity, notcursor-onlypass. Failurepreserved evenif
+  cursoraligns; localcompletion would admitphase DESIGN only, not body
+  recovery/teacherlabels/data/learning. Composition/freshwholevalidation/
+  captureddata_clockmemory remain separate. PAUSED1791166955.9553962,
+  7closed$0.456424187/ledgerunchanged/goal0.
+  Evidence: artifacts/cursor_response_probe_20261005_v1/verification.json.
+
+- **Closed causal past-cursor response check, completed above:** offline6traces/2516rows audit
   complete/0newphysics/updates,all source/rawarithmetic/3backendpairs exact.
   Targetpostqueries0/30,reach86.488..90.865; naivepre-motorrequest7.412<50,
   slewchangemax15.935<40. Gravitybeforemotorverified; simplefree-servo

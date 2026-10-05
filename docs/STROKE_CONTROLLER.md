@@ -482,3 +482,8 @@ disturbance estimate, with no new game exposure. One unit past-error
 subtraction is proposed for an equal-state cursor-response check. Original
 gravity/contact behavior still prevents a simple linear solver claim;
 cursor alignment would not prove hammer completion or body recovery.
+The controlled cursor response now improves alignment but slightly worsens
+tip target error, with unchanged body motion. Only an opt-in memory-aware
+feedback implementation/smoke is admitted, using actually issued command
+history and unchanged goal/tolerance/cap. No target-completion or learner
+promotion follows from this cursor-only pass.

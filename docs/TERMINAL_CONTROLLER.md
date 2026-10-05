@@ -295,3 +295,35 @@ Report hammer and body effects even if they worsen. A cursor-alignment pass
 admits only later causal feedback implementation/smoke, not labels, target
 completion, body recovery or training. No disturbance-oracle input, filter,
 gain, goal, tolerance or cap scan.
+
+## Causal cursor response: alignment improves, tip error worsens
+
+The separately frozen equal-state one-step check improves actual cursor
+error to the common desired pointer from1.137445 to.000704 pixels.
+But hammer-target error slightly worsens,11.145062 to11.265577.
+Both hammer queries are false, travel4.474497 versus4.715063, body
+difference exactly zero. This passes only the cursor-alignment gate, not
+hammer tracking, target completion, body recovery or teacher competence.
+
+The estimator reads the previous actual raw pointer and previous own
+command only. Same299 ordinary prefix, same current pre-input/noise, no
+seed or future-noise access. Six rollouts/2400 controlled+720 reset ticks,
+31.341925 owned seconds;49 focused tests and JS checks pass. Full raw
+controls/metrics/clocks, three backend pairs and source histories verify.
+Evidence: `artifacts/cursor_response_probe_20261005_v1/verification.json`.
+
+Next is an opt-in memory-aware feedback implementation and bounded pipeline
+smoke, preserving exact default target-phase behavior. Bootstrap once from
+the actual preceding prefix command and its observed post-input. Each
+subsequent estimate must subtract the command actually issued by this
+controller, not the uncompensated desired pointer, from actual post-pointer.
+Strict action/observe/pre-post linkage and bootstrap guards are required.
+
+Keep the same goal, unit subtraction, offset,1-pixel completion,30-step cap,
+legal controls and no-rearm rules. Freeze nominal600 plus default-versus-
+feedback target-stage smokes after299 steps, both backends, at most2516
+controlled+720 reset ticks/180workseconds. Default histories and the new
+first-step cursor contrast must remain exact. Require actual raw and physical
+tip completion, not merely smaller cursor error. No filters, gain scans,
+noise changes, labels or learning; even local completion would need later
+body acquisition, composition and fresh whole-controller validation.
