@@ -42,7 +42,63 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current result: single release follow-through fails acquisition, completion-phase next
+## Current result: observed hammer-target phase times out, tracking audit next
+
+Implemented separate `research/hammer_target.py`, onefixedworldgoal and
+actualraw217pre/post pairs only. Recompute pointer=goal-currentrawbody-
+fixedoriginaloffset0,20; legalaxes128/reach26..102 checked, no clipping or
+caprenewal. Exactlyactionthenactualpostobserve/nextpre=lastpost. Target
+completion is rawposthammer-worlderror<=1, notqueryrelease/bodyalignment.
+Atmost30steps/oneattempt; illegalgoal/terminalaltitude/timeout terminal,
+no rearm/reset/resumedfeedback. Existing stationarytolerance1unchanged.
+8newtests/49focused/338fullPython+JS pass; originalcontrollers/physics/
+milestones unchanged. Fullsuite fault-injection flushwarnings expected/pass.
+
+Separately frozen6rollout localtest: nominal600historical gate, known
+noise13105/reset14001 baseline299+30original versus candidate299+atmost30
+goalsteps. Currentrawbody feedback, samepriorrow300worldgoal/noise/offset;
+basephase stays298/calls299 throughout targetstage, no laterprior actions.
+Variableearlystop/equalmax329 declared, not equalterminaltimes. No placement,
+recordedprefixoverride, tolerance/gain/duration scan, secondgoal ormacro.
+
+Candidate timesout30, rawgoalerror3.304590/physicalerror3.304582>1.
+Actualhammermotion occurs, but neither rawcompletion nor physicalgatepasses.
+Candidatefinalbody(268.882791,32),gain11 versusbaseline(268.888479,32),
+gain11; neitherhold. No deaths/summits/updates/bodyrecovery/design/data/
+teacher/learningadmission. Keep failed1pixel/30stepgate, no retrospective
+3.4pixel tolerance or extra ticks. This test isolates bounded tiptracking,
+not validatedacquisition or proof a differentgoal/largergain wouldwork.
+
+2516control+720reset/6rollouts,owned30.220299seconds within180work/210owned
+caps. Source/newphase/prior/completedfailedfollowthrough/plan/scripts/parent/
+budget/deadline/secret-stripped ownedchild/durabletraces/cleanup bound.
+All6rawmilestone/control/caseclock/action-observehistories,3fullbackendpairs,
+equal299prefix/initialprestate, oldnominal600/baseline329/candidate300physical
+histories independentlyexact. Bothgoalstages stop30/no rearm.
+Evidence: `artifacts/hammer_target_probe_20261005_v1/verification.json`.
+All earlierclosedpulse751/fresh8of9gates remainimmutable, primarygoal0.
+
+Independently privatePAUSED1791164643.951258;80444390source,
+onstate-20261004-v1/onstate_study/contexted3a53c3/closeddeadline unchanged.
+Ledgerbytespreserved,7closed$0.4564241866528988; no paidreservation, remote
+write, deployment, publicrelease or substantive localtraining.
+
+Next admitted bounded direction: freeze180second OFFLINE tracking-authority/
+disturbance audit of this6savedtrace/2516row set,0newplay/reset/updates.
+Bindtrace/source/completedreview/script/plan/budget beforeanalysis. Inspect
+each30goalstep actualraw13/14pointer versus commandedaction andposthammer
+worldtargeterror, originalmotor/slew/reach andbody/renderoffset. Determine
+whether residuals track applied cursor noise or contact/servo/geometry lag;
+different laterstates remain descriptive/querynotforce. Any disturbance
+estimate must use only past actually observed pointer and owncommand history,
+never evaluatornoise_seed/currentfuture noise or unobservedstate.
+Only mechanically supported causal feedback hypothesis may be proposed
+after audit, with a fresh localphysicalcontract before testing.
+No tolerance/30cap/noise suppression/goal/gain/phase scan, target retry,
+closedplan extension, labels or paidlearning. Goalcompletion/bodyalignment/
+recovery/fullvalidation and data-clockmemorylearnercontract remainseparate.
+
+## Prior result: single release follow-through fails acquisition, completion-phase next
 
 Separately frozen single-release FOLLOW-THROUGH completed. Nominal600gate,
 knownfailednoise13105/reset14001 originalversus sameONEtick300worldgoal
@@ -88,7 +144,7 @@ onstate-20261004-v1/onstate_study/contexted3a53c3/closeddeadline unchanged.
 Ledgerbytespreserved,7closed$0.4564241866528988; no reservation, remote
 write, deployment, publicrelease or substantive localtraining. Goal0.
 
-Next admitted bounded direction: separate observed HAMMER-TARGET completion
+The historical admitted separate observed HAMMER-TARGET completion
 phase, not a pulse-length scan or recoveryretry. Keep ONEfixedrawpriorrow300
 worldgoal/offset0,20/formula/noise andordinary299prefix unchanged. Recompute
 pointer=goal-currentrawbody-offset eachaction, until ACTUALpostrawhammer

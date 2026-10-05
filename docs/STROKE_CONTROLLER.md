@@ -472,3 +472,8 @@ in both arms. The tip stays free initially but timed later strokes move away
 from the incomplete release goal. The next separate local test qualifies
 actual hammer-target completion with a bounded observed phase, not release
 alone or pulse-duration tuning. Body recovery and learning remain unproved.
+The new bounded raw217 hammer-target phase now times out at30 steps with
+physical error3.304582, failing its unchanged1-pixel completion rule.
+338 Python tests and full reference/fast local histories pass. Next is an
+offline tracking/disturbance audit, not tolerance relaxation, extra ticks
+or teacher/learning admission.

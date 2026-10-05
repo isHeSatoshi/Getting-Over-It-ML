@@ -228,3 +228,35 @@ fidelity. Only observed target completion can admit further causal phase
 design; recovery, composition, full validation and learning remain separate.
 No goal/tolerance/gain/cap scans, added macro or extension of the failed751
 experiment.
+
+## Observed hammer-target phase: timeout
+
+`research/hammer_target.py` implements the separately declared raw217 phase.
+Each legal action is followed by its actual post-input; the next pre-input
+must match. The fixed world goal is unchanged, pointer updates from actual
+body position, and base playback stays frozen. Query release is not target
+completion. At most30 steps, tolerance1 pixel, no rearm or renewed cap.
+
+Eight new tests, 49 focused and338 full Python tests plus collision checks
+pass. The original controllers and milestone detector remain unchanged.
+
+The frozen six-rollout local comparison times out at30 steps. Raw goal error
+is3.304590, physical goal error3.304582, outside the original1-pixel gate.
+The hammer moves, but this is not target completion. Candidate and baseline
+finish near `(268.89,32)`, both gain11/no holds; no deaths or summits.
+No phase-controller design, recovery, teacher labels or learning is admitted.
+Do not increase the tolerance or append ticks after seeing this result.
+
+2516 controlled+720 reset ticks,30.220299 owned seconds. All six raw
+control/metric/clock/action-observe histories, three full backend pairs,
+old nominal600/baseline329/candidate300 physical histories and initial
+equal299-prefix/pre-input reconstruct exactly. Base phase298/calls299
+remain frozen during the goal stage. Evidence:
+`artifacts/hammer_target_probe_20261005_v1/verification.json`.
+
+Next is an offline audit of tracking error, actual pointer versus commanded
+actions, contact and original servo/reach behavior. Any disturbance-feedback
+proposal must use past actual pointer and own command history, not evaluator
+noise seeds or future noise. No goal, gain, tolerance or cap search, noise
+suppression or retry of this failed test. Body alignment, acquisition and
+full validation remain separate requirements.

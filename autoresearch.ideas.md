@@ -1,6 +1,29 @@
 # Deferred hypotheses
 
-- **Next separate observed hammer-target completion phase:** frozen pulse+
+- **Next frozen offline tracking/disturbance audit:** newcausalraw217
+  targetphase implemented/action-postobserve/prepostlink/legalaxes128/
+  reach26..102/no rearm.8new/49focused/338fullPython+JS pass.
+  Fixedsamegoal/formula/offset/noise/tolerance1/cap30 localphase timesout:
+  rawerror3.304590/physical3.304582>1,actualtipmotion butgatefalse.
+  Candidate(268.882791,32)/baseline(268.888479,32),bothgain11/noholds;
+  nominal600gain83/holds exact.6rollouts/2516control+720reset/30.220299s,
+  all3backend/raw/oldprefixhistories exact,0updates/deaths/summits,
+  basephase298/calls299frozen throughgoalstage. No3.4tolerance/extraticks,
+  newcausaldesign/labels/learning or original8/9gate rewrite.
+  Freeze180secondOFFLINE audit ofexisting6traces/2516rows,0play/reset/
+  updates, source/trace/review/script/plan/budgetbound. Inspect30goalstep
+  commandedaction vsactualrawpointer13/14/posthammerworlderror andoriginal
+  motor/slew/reach/body/renderoffset. Separate cursor-noise residuals from
+  contact/servo/geometrylag descriptively,querynotforce. Causal disturbance
+  estimate onlyfrompastactualpointer/owncommand history, no seed/evaluator
+  future noise/state. Onlymechanicallysupported feedbackproposal afterward,
+  freshphysicalcontract beforeplay. No goal/gain/tolerance/30cap/noise
+  suppression/phase scans, closedtargetretry or labels/paidlearning.
+  Completion/bodyalignment/recovery/fullvalidation/data-clockmemory remain
+  separate. PAUSED1791164643.951258,7closed$0.456424187/ledgerunchanged.
+  Evidence: artifacts/hammer_target_probe_20261005_v1/verification.json.
+
+- **Closed separate observed hammer-target completion phase, completed above:** frozen pulse+
   originalfeedback751 failsbothholds/finalsupport, baseline(269.481845,32)
   versuspulse(269.479241,32),gain11/nodeaths/summits/updates.6rollouts/
   4204control+720reset/36.495458s,41Python+JS,all3backend/raw/source/
