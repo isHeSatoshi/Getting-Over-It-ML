@@ -121,13 +121,15 @@ def train_seed(env, opening_actions, seed, output, *, guard, maximum=MAX_LEARNER
     model = make_model(seed, replay_capacity)
     rng, step, cycles = np.random.default_rng(seed+300000), 0, 0
     last_checkpoint = None
+    stop_reason = "learner_limit"
     with OptimizerWork(model, "sac") as work:
         while step < maximum:
             guard()
             # Reserve one full evaluation before another legal return, so a cap
             # cannot leave a nominal-only scored result.
-            if not allow_mock:
-                env.budget.before(NEXT_RETURN_AND_EVALUATION_RESERVE)
+            if not allow_mock and env.budget.total+NEXT_RETURN_AND_EVALUATION_RESERVE > env.budget.maximum:
+                stop_reason = "physics_reserve"
+                break
             session = curriculum.start()
             if session is None:
                 continue
@@ -167,7 +169,8 @@ def train_seed(env, opening_actions, seed, output, *, guard, maximum=MAX_LEARNER
                 if terminal or truncated:
                     break
         counts = work.summary()
-        require(step == maximum and cycles <= MAX_CYCLES and model._n_updates == cycles,
+        require(0 <= step <= maximum and cycles == max(0, (step-4096)//2)
+                and cycles <= MAX_CYCLES and model._n_updates == cycles,
                 "Incomplete/excess SAC work")
         require(counts["optimizer_step_calls"] == {"actor": cycles, "critic": cycles, "entropy_temperature": cycles},
                 "Actual optimizer callbacks differ from SAC cycles")
@@ -175,7 +178,8 @@ def train_seed(env, opening_actions, seed, output, *, guard, maximum=MAX_LEARNER
             last_checkpoint = checkpoint(model, curriculum, env.budget, output, step, counts, curriculum.rng)
     targets = waypoints(curriculum.archive.best["route"])
     require(targets, "No stable deployment goal route")
-    summary = {"version": "goal-training-v1", "seed": seed, "complete": True,
+    summary = {"version": "goal-training-v1", "seed": seed, "complete": step == maximum,
+               "stop_reason": stop_reason,
                "learner_transitions": step, "sac_cycles": cycles, "optimizer": counts,
                "physics": env.budget.record(), "checkpoint": last_checkpoint.name,
                "shared_scaffold_only": True, "teacher_actions_in_evaluation": False,

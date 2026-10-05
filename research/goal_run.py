@@ -18,6 +18,13 @@ from research.goal_study import plan, SEEDS
 from research.provenance import fingerprint
 
 
+def admission_result(evaluation, training):
+    # A partial cap-stopped learner is still saved and evaluated, but cannot
+    # promote the seed or silently start the next one.
+    return {**evaluation, "physical_gate_passed": evaluation["pilot_gate_passed"],
+            "pilot_gate_passed": bool(training["complete"] and evaluation["pilot_gate_passed"])}
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--remote-training", action="store_true")
@@ -65,6 +72,7 @@ def main():
         budget.add("bridge_bootstrap", reference.read_state()["tick"])
         result = evaluate(loaded, reference, targets, budget, output/"evaluation", guard=guard)
     validate_evaluation(output/"evaluation")
+    result = admission_result(result, summary)
     result.update(seed=args.seed, physics=budget.record(), checkpoint=summary["checkpoint"],
                   training_summary=summary, saved_reload_exact=True, original_start=True,
                   final_goal_verified=False)

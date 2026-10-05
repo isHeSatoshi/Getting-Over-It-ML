@@ -246,6 +246,49 @@
       "provider_minute_rounding_upper_bound_applied": true,
       "end_artifact_revision": "d3fc0808ad5e434b839963529989c6bf4545f739",
       "end_evidence": "D:\\Project\\cat\\artifacts\\onstate_complete_review_20261004T191902458785Z\\complete_review.json"
+    },
+    {
+      "session": "goal-20261005-v1",
+      "space": "isHeSatoshi/rl-over-it-poc-20261004",
+      "tier": "cpu-upgrade",
+      "start_epoch": 1791192704.5364196,
+      "deadline_epoch": 1791228704.5364196,
+      "rate_per_hour": 0.03,
+      "maximum_estimated_compute_cost": 0.3,
+      "verified_end_epoch": 1791195484.4380467,
+      "status": "failed_no_resume_implementation_bug",
+      "source_space_revision": "01eace30e5561321efb1f14bdcb4a342af87bd9c",
+      "actual_billed_cost_known": false,
+      "study": "legal-prefix-goal-sac-her-v1",
+      "pricing_last_verified": "2026-10-05",
+      "pricing_evidence_url": "https://huggingface.co/pricing",
+      "reservation_evidence": "artifacts/goal_deploy_20261005_v1/reservation.json",
+      "sleep_policy": "paid_default_never",
+      "source_bundle": "artifacts/hf_bundle_20261005T092928743652Z",
+      "preflight_retry_1": {
+        "reason": "unit_tests failed: platform-dependent residual research test asserted desktop guard on Linux host",
+        "old_source_space_revision": "4f2f1202c8a3f1b2cd7433eb83719d6a89423103",
+        "new_source_space_revision": "01eace30e5561321efb1f14bdcb4a342af87bd9c",
+        "fix": "tests/test_residual_research.py now sets FACTORY_DESKTOP_CDP_PORT explicitly; no goal/scientific change",
+        "evidence": "goal-20261005-v1/operator/preflight_retry_1/",
+        "deadline_unchanged": true,
+        "cap_unchanged": true
+      },
+      "estimated_elapsed_compute_cost_upper_bound": 0.023165846892197927,
+      "termination": "Seed21 crashed at the first checkpoint (numpy bool not JSON serializable in supervisor.json); worker auto-paused; no physical evaluation; pilot stopped at first incomplete seed per protocol",
+      "end_evidence": "artifacts/goal_deploy_20261005_v1/failure_review/close.json",
+      "end_artifact_revision": "942629414b9eb84152f60b58e754fc8096def9ac",
+      "pilot_attempt": {
+        "seed": 21,
+        "learner_transitions": 39936,
+        "sac_cycles": 17920,
+        "physics_total": 88313,
+        "checkpoints": [
+          "checkpoint_40000_incomplete"
+        ],
+        "physical_evaluation": "not reached",
+        "seeds22_23": "not started"
+      }
     }
   ],
   "postclosure_local_diagnostics": [

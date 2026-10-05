@@ -5,6 +5,21 @@ This implements the replacement design from session
 `artifacts/goal_design_handoff_20261005_v1/clarification_reply.txt`.
 The residual-PPO route is inactive. Its unfinished files were preserved.
 
+## Post-build correctness review
+
+The review after `6e5c3f9` preserves SAC/HER, the fixed observation/reward,
+physical gates, prefix tolerances and all budgets. See `GOAL_REVIEW.md`.
+Verified nominal prefixes retain consistent immutable causal records when
+numerical differences are inside tolerance. Fall recovery keeps its
+original candidate boundary until reacquisition, rather than cascading
+backward on identical observations. Backup callers serialize before their
+individual upload timers start, while retaining the absolute deadline.
+
+Insufficient physics budget for another full return/suffix plus evaluation
+now finalizes the learner and performs the already-reserved evaluation.
+It reports `complete=false`, `stop_reason=physics_reserve`; the physical
+result remains visible but cannot promote the seed or start another one.
+
 ## Implemented contracts
 
 - `research/goal_env.py`: unchanged real physics and controls, separate local
@@ -74,7 +89,34 @@ compressed prefix archive, RNG state, fixed schema, waypoint supervisor,
 source/assets and file hashes. Verify trusted checkpoint hashes before
 loading. Do not silently resume an interrupted pilot.
 
+## Pilot attempt 1 (stopped 2026-10-05)
+
+One bounded pilot ran from the reviewed tree plus the platform-guard test
+fix (deployed source `01eace30e5561321efb1f14bdcb4a342af87bd9c`, session
+`goal-20261005-v1`, reservation `$0.30`/10h at verified `$0.03`/h). A first
+preflight failed on one platform-dependent inactive-residual test; its
+evidence is preserved and the clean re-run passed all six checks. Seed21
+reached 39936/160000 learner transitions and 17920 SAC cycles, then the
+first checkpoint crashed writing `supervisor.json` because `waypoints()`
+emitted `np.bool_` for non-central anchors. No physical evaluation ran;
+seeds22/23 never started; the worker auto-paused and the reservation was
+closed at about `$0.0232` elapsed of `$0.30`. Fix: explicit `bool()` casts
+in `waypoints()` and a regression test that serializes non-central anchors
+exactly as the checkpoint writer does. The fix is validated locally but
+has not been deployed or re-run; a retry needs a fresh session and
+reservation, never a resume or deadline extension.
+
 ## Validation performed
+
+Post-review and pilot-fix: **462 active Python tests passed**, including
+seven new regression tests (six from the review, one for the pilot crash),
+plus all16 counter JS tests and collision JS. The same12 unfinished
+residual-worker tests remain explicitly excluded. Review validation used
+unit/mock checks only, without original-game rollout, training, deployment,
+HF API calls or paid compute. The revised source requires new remote
+preflight; old original-game fidelity evidence below is not a new-source pass.
+
+Original build validation:
 
 - 455 active/established Python tests passed, plus16 counter JS tests and
   collision JS. Twelve tests from the canceled, unfinished residual worker

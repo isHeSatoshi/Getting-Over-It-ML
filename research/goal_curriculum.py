@@ -94,10 +94,14 @@ class LegalCurriculum:
         case = perturbation(self.rng, selected["reset_seed"])
         # Always verify the nominal record first. A second, perturbed legal reset
         # deliberately creates a different actual state and counts all work.
-        commands, route, valid = replay_prefix(self.env, selected)
+        _, _, valid = replay_prefix(self.env, selected)
         require(valid, "Verified nominal replay unexpectedly stopped")
+        # Tolerated numerical drift must not mix actual route states with the
+        # archived snapshots/hash chain. Keep the verified prefix immutable.
+        commands, route = list(selected["commands"]), list(selected["route"])
         snapshots = list(selected["snapshots"])
         reset = deepcopy(selected["reset"])
+        parent = selected["id"]
         if case.warmup or case.action_noise_std:
             self.env.reset(seed=selected["reset_seed"])
             require(self.env.game_seed == selected["game_seed"], "Perturbed prefix reset seed changed")
@@ -117,6 +121,7 @@ class LegalCurriculum:
                     return None
             actual = self.record(commands, route, snapshots, reset, selected["id"], case, chain)
             self.archive.add(actual)
+            parent = actual["id"]
         else:
             chain = selected["chain"]
             self.archive.add(selected)
@@ -128,7 +133,7 @@ class LegalCurriculum:
         suffix_case = perturbation(self.rng, selected["reset_seed"])
         return {"observation": observation, "goal": goal, "clock": PhysicalCaseClock(suffix_case),
                 "case": suffix_case, "commands": commands, "route": route, "snapshots": snapshots,
-                "reset": reset, "parent": selected["id"], "chain": chain}
+                "reset": reset, "parent": parent, "chain": chain}
 
     def choose_goal(self):
         actual = self.env.body

@@ -1,5 +1,20 @@
 # Deferred hypotheses
 
+- **Goal pilot attempt1 stopped by checkpoint bug; fix ready, needs fresh run:**
+  Session goal-20261005-v1, deployed source01eace30, reservation closed
+  $0.0232 of $0.30. Preflight passed after one platform-test fix. Seed21 hit
+  39936 learner/17920 cycles then crashed writing supervisor.json: waypoints()
+  emitted np.bool_ for non-central anchors. Fixed with bool() casts + regression
+  test (462active tests pass). NOT redeployed. Retry requires explicit
+  authorization, fresh session/context/deadline, new bounded reservation;
+  never resume seed21 or extend the old deadline. No physical gate measured.
+
+- **Post-build review complete (deployed in pilot attempt1):**
+  Four correctness fixes after6e5c3f9: physics-reserve finalization without
+  partial-seed promotion, internally consistent tolerated nominal-prefix
+  hashes, noncascading recovery candidates, serialized backup upload timers.
+  Read docs/GOAL_REVIEW.md then docs/GOAL_RUNNER_PROMPT.md.
+
 - **Chosen replacement: execute goal-conditioned SAC/HER legal-prefix pilot:**
   Independent designer session2e405d38-60cd-4412-b784-732ab4e4d1c2
   replaced residualPPO. User canceled old94-loop, requested build+cheaper

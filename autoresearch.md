@@ -42,7 +42,58 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current build: replacement goal-conditioned SAC/HER system ready for bounded execution
+## Current status: goal pilot attempt1 stopped at seed21 checkpoint bug (fixed, not rerun)
+
+Executed one bounded goal-SAC/HER pilot on the reviewed tree (deployed
+`01eace30e5561321efb1f14bdcb4a342af87bd9c`, session `goal-20261005-v1`,
+reservation $0.30/10h at reverified $0.03/h). First preflight failed on one
+platform-dependent inactive-residual test; evidence preserved, narrow test
+fix, clean re-run passed all six checks (461 tests OK, prefix fidelity
+3240 ticks, resources/benchmark/pipeline passed). Training was approved
+against the passed preflight context and launched in the SAME deadline.
+
+Seed21 reached 39936/160000 learner transitions and 17920/77952 SAC cycles
+(88313 total physics ticks including 8544 preflight), then crashed writing
+the first checkpoint: `waypoints()` returned `np.bool_` for non-central
+anchors, and `supervisor.json` json.dumps rejected it. No physical
+evaluation ran; seeds22/23 never started. Worker auto-paused; independent
+PAUSED verified; reservation closed at about $0.0232 elapsed of $0.30;
+temporary monitoring loop cancelled; journal run92 records it.
+
+Fix: explicit `bool()` casts in `research/goal_archive.waypoints()` plus a
+regression test that serializes non-central anchors exactly as the
+checkpoint writer does. 462 active Python tests +16counterJS +collisionJS
+pass; same12inactive residual tests excluded. The fix is uncommitted and
+NOT deployed or re-run. A retry needs a fresh session and reservation,
+explicit authorization, and never a resume/deadline extension.
+
+No learned physical outcome was produced: no first-ledge gate, no Y180
+hold, no deaths/summits measured. Scaffold fidelity and engineering checks
+are not learned progress. Original summit metric remains zero.
+
+## Prior review: Goal-SAC correctness fixes (deployed and preflight-passed)
+
+Reviewed build `6e5c3f9` against the approved design. Fixed physics-cap
+finalization, tolerated-prefix hash consistency, cascading fall recovery,
+and concurrent backup timeout accounting. A physics-reserve stop now saves
+and evaluates the partial learner but cannot promote a seed: report both
+physical_gate_passed and pilot_gate_passed plus training completeness/reason.
+No algorithm, reward, feature, tolerance, physical gate or compute cap changed.
+
+461 active Python tests and16counter JS/collision JS passed; the same12
+unfinished residual-worker tests remain excluded. Six regression tests
+cover the fixes. Unit/mock validation only, no original-game ticks/training,
+HF calls, deployment, reservations or loops. Last reported PAUSED state was
+not independently rechecked. Cost ledger unchanged.
+
+Review changes are uncommitted working-tree changes AFTER `6e5c3f9`.
+Preserve other user work; do not deploy the original commit alone.
+Next: `docs/GOAL_RUNNER_PROMPT.md`, with `docs/GOAL_REVIEW.md` first.
+New-source passed preflight and independently verified PAUSED remain
+mandatory. One bounded pilot only; no automatic next batch or indefinite
+monitoring. No learned progress or summit success is claimed.
+
+## Prior build: replacement goal-conditioned SAC/HER system
 
 The user canceled the old94-invocation loop, obtained an independent design
 from session `2e405d38-60cd-4412-b784-732ab4e4d1c2`, and requested this build

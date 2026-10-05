@@ -128,8 +128,11 @@ def waypoints(route):
                      and not row["dead"] and not row["success"] for row in recent)
         if not stable or np.linalg.norm(point-[0, 21]) <= 12:
             continue
-        central = (305 <= point[0] <= 335 and 100 <= point[1] <= 112)
-        forced = central and not first_ledge
+        # Cast explicitly: comparisons against numpy coordinates yield
+        # np.bool_, which standard json.dumps cannot serialize when the
+        # supervisor/checkpoint writes these anchors.
+        central = bool(305 <= point[0] <= 335 and 100 <= point[1] <= 112)
+        forced = bool(central and not first_ledge)
         if forced or last is None or np.linalg.norm(point-last) >= 25:
             anchors.append({"xy": point.tolist(), "index": index, "first_ledge": forced})
             last = point
@@ -140,7 +143,8 @@ def waypoints(route):
                and not row["dead"] and not row["success"] for row in route[-30:]):
             if np.linalg.norm(point-[0, 21]) > 12 and (not anchors or anchors[-1]["index"] != len(route)-1):
                 anchors.append({"xy": point.tolist(), "index": len(route)-1,
-                                "first_ledge": not first_ledge and 305 <= point[0] <= 335 and 100 <= point[1] <= 112})
+                                "first_ledge": bool(not first_ledge
+                                                    and 305 <= point[0] <= 335 and 100 <= point[1] <= 112)})
     return anchors
 
 
@@ -218,6 +222,7 @@ class WaypointSupervisor:
         self.targets = deepcopy(targets)
         self.target, self.completed, self.hold = 0, -1, 0
         self.recovering = False
+        self.recovery_limit = None
 
     def goal(self):
         return np.asarray(self.targets[self.target]["xy"], np.float64)
@@ -227,9 +232,9 @@ class WaypointSupervisor:
         speed = math.hypot(state["player_vx"], state["player_vy"])
         if self.completed >= 0 and point[1] < min(
                 self.targets[self.completed]["xy"][1], self.goal()[1])-30:
-            choices = [index for index in range(self.completed+1) if index < self.target]
-            if not choices:
-                choices = [0]
+            if not self.recovering:
+                self.recovery_limit = max(0, min(self.completed, self.target-1))
+            choices = range(self.recovery_limit+1)
             self.target = min(choices, key=lambda i: (float(np.linalg.norm(point-self.targets[i]["xy"])), -i))
             self.hold, self.recovering = 0, True
         self.hold = self.hold+1 if np.linalg.norm(point-self.goal()) <= 12 and speed <= 2 else 0
@@ -239,4 +244,5 @@ class WaypointSupervisor:
             if self.target+1 < len(self.targets):
                 self.target += 1
             self.hold, self.recovering = 0, False
+            self.recovery_limit = None
         return self.goal()

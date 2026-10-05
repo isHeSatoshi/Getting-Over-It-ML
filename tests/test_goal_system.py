@@ -17,9 +17,10 @@ from research.evaluation_cases import EvaluationCase
 from research.goal_env import GoalEnv, GoalHistory, local_reward, relabel, schema
 from research.goal_archive import (GoalArchive, WaypointSupervisor, compare_snapshot, digest,
                                   extend_chain, make_prefix, prefix_identity, replay_prefix, snapshot, waypoints)
-from research.goal_curriculum import truncate_prefix
+from research.goal_curriculum import LegalCurriculum, truncate_prefix
 from research.goal_replay import GoalReplayBuffer
 from research.goal_train import TickBudget, make_model, verify_checkpoint, train_seed, NEXT_RETURN_AND_EVALUATION_RESERVE
+from research.goal_run import admission_result
 
 
 class MockBridge:
@@ -244,6 +245,33 @@ class GoalReplayTests(unittest.TestCase):
 
 
 class GoalArchiveTests(unittest.TestCase):
+    def test_tolerated_nominal_drift_keeps_extendable_prefix_chain(self):
+        env, record = prefix_fixture(4)
+        curriculum = LegalCurriculum(env, 21, {"mock_only": True})
+        curriculum.archive.add(record)
+        curriculum.rng = type("ChooseArchive", (), {"random": lambda self: .9})()
+        nominal = EvaluationCase("nominal", record["reset_seed"])
+        replay = replay_prefix
+
+        def drifted_replay(environment, selected):
+            commands, route, valid = replay(environment, selected)
+            route[-1]["player_world_x"] += 5e-8
+            environment.env.state["player_world_x"] += 5e-8
+            compare_snapshot(snapshot(environment), selected["endpoint"])
+            return commands, route, valid
+
+        with patch("research.goal_curriculum.perturbation", return_value=nominal), \
+             patch.object(curriculum.archive, "choose", return_value=record), \
+             patch.object(curriculum, "choose_goal", return_value=np.asarray([10., 25.])), \
+             patch("research.goal_curriculum.replay_prefix", side_effect=drifted_replay):
+            session = curriculum.start()
+        _, _, _, _, info = env.step_recorded(np.zeros(2, np.float32), np.zeros(2, np.float32))
+        curriculum.retain(session, info["goal_transition"])
+        extended = curriculum.record(session["commands"], session["route"], session["snapshots"],
+                                     session["reset"], chain=session["chain"])
+        replay_prefix(env, extended)
+        compare_snapshot(snapshot(env), extended["endpoint"])
+
     def test_nominal_prefix_replay_verifies_game_seed_endpoint_and_history(self):
         env, record = prefix_fixture()
         replay_prefix(env, record)
@@ -289,6 +317,23 @@ class GoalArchiveTests(unittest.TestCase):
         self.assertTrue(anchors[0]["first_ledge"])
         self.assertEqual(anchors[-1]["index"], 99)
 
+    def test_noncentral_waypoint_anchors_serialize_for_supervisor_checkpoint(self):
+        # Regression: non-central anchors previously emitted np.bool_, and the
+        # first real checkpoint crashed writing supervisor.json with
+        # "Object of type bool is not JSON serializable".
+        _, record = prefix_fixture(100)
+        route = record["route"]
+        for index, row in enumerate(route):
+            row.update(player_world_x=400 if index < 50 else 322,
+                       player_world_y=200 if index < 50 else 104, player_vx=0, player_vy=0)
+        anchors = waypoints(route)
+        self.assertGreaterEqual(len(anchors), 2)
+        self.assertIs(type(anchors[0]["first_ledge"]), bool)
+        self.assertIs(type(anchors[1]["first_ledge"]), bool)
+        self.assertTrue(anchors[1]["first_ledge"])
+        # Exact writer used by the checkpoint and deployment supervisor files.
+        json.dumps({"version": "stable-waypoint-v1", "waypoints": anchors}, indent=2)
+
     def test_waypoint_hold_firstledge_gate_and_fall_recovery(self):
         targets = [{"xy": [322, 104], "first_ledge": True}, {"xy": [450, 180], "first_ledge": False}]
         supervisor = WaypointSupervisor(targets)
@@ -302,8 +347,54 @@ class GoalArchiveTests(unittest.TestCase):
         supervisor.observe(state, True)
         self.assertEqual(supervisor.target, 0)
 
+    def test_recovery_candidates_do_not_shrink_without_a_new_fall(self):
+        targets = [{"xy": point, "first_ledge": False} for point in
+                   ([322, 104], [450, 180], [500, 260], [520, 340])]
+        supervisor = WaypointSupervisor(targets)
+        supervisor.completed, supervisor.target = 2, 3
+        state = {"player_world_x": 450, "player_world_y": 100, "player_vx": 0, "player_vy": 0}
+        for _ in range(10):
+            supervisor.observe(state)
+            self.assertEqual(supervisor.target, 1)
+        state.update(player_world_x=322, player_world_y=30)
+        supervisor.observe(state)
+        self.assertEqual(supervisor.target, 0)
+        state["player_world_y"] = 104
+        for _ in range(30):
+            supervisor.observe(state)
+        self.assertEqual(supervisor.target, 1)
+        self.assertFalse(supervisor.recovering)
+        self.assertIsNone(supervisor.recovery_limit)
+
 
 class GoalModelTests(unittest.TestCase):
+    def test_physics_reserve_finalizes_without_spending_evaluation_ticks(self):
+        _, record = prefix_fixture(100)
+        for row in record["route"]:
+            row.update(player_world_x=322, player_world_y=104, player_vx=0, player_vy=0)
+        budget = TickBudget(maximum=NEXT_RETURN_AND_EVALUATION_RESERVE,
+                            initial={"mock_prior_work": 1})
+        env = GoalEnv(MockGoalRaw(), budget=budget)
+        guard = lambda: None
+        with tempfile.TemporaryDirectory() as folder:
+            with patch("research.goal_train.LegalCurriculum") as factory:
+                factory.return_value.archive.best = record
+                factory.return_value.rng = np.random.default_rng(21)
+                model, targets, report = train_seed(env, np.zeros((600, 2), np.float32), 21,
+                    Path(folder)/"owned", guard=guard, maximum=16, replay_capacity=64,
+                    checkpoint_every=0)
+                factory.return_value.start.assert_not_called()
+            self.assertFalse(report["complete"])
+            self.assertEqual(report["stop_reason"], "physics_reserve")
+            self.assertEqual(report["learner_transitions"], 0)
+            self.assertEqual(report["sac_cycles"], 0)
+            self.assertEqual(budget.total, 1)
+            self.assertTrue(targets)
+            saved = verify_checkpoint(Path(folder)/"owned"/report["checkpoint"])
+            self.assertEqual(saved["step"], 0)
+            self.assertFalse(admission_result({"pilot_gate_passed": True}, report)["pilot_gate_passed"])
+            self.assertTrue(admission_result({"pilot_gate_passed": True}, {"complete": True})["pilot_gate_passed"])
+
     def test_sac_settings_and_bounded_mock_update(self):
         model = make_model(21, 64)
         self.assertEqual(model.gamma, .995)

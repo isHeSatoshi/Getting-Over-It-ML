@@ -4,7 +4,9 @@ Copy the text below into a new execution-agent session.
 
 ---
 
-Implementations are ready in `D:\Project\cat`. Execute **one bounded
+Use the reviewed working tree in `D:\Project\cat`, including the review
+fixes AFTER commit `6e5c3f9`; do not deploy that commit alone or discard
+uncommitted work. Read `docs/GOAL_REVIEW.md` first. Execute **one bounded
 goal-conditioned SAC/HER/legal-prefix pilot**, not the old residual-PPO
 study and not the canceled94-invocation loop. Ask no decision questions.
 This is execution/management, not a new design session.
@@ -34,9 +36,12 @@ Implemented entrypoints:
 Private HF Space: `isHeSatoshi/rl-over-it-poc-20261004`.
 Private artifact dataset: `isHeSatoshi/rl-over-it-research-artifacts`.
 Use existing authenticated CLI/API; never print credentials or publish.
-Last verified old study is PAUSED, seven reservations closed, conservative
-compute estimate about$0.4564 (not a bill). Do not reopen old source/session
-deadlines or resume interrupted SAC.
+Last verified state: Space PAUSED, eight reservations closed, conservative
+compute estimate about$0.4796 (not a bill); the first goal pilot attempt
+stopped at seed21 on a now-fixed checkpoint serialization bug, with its
+reservation closed and no physical evaluation. Do not reopen old
+source/session deadlines, resume interrupted work, or relaunch without
+explicit authorization.
 
 1. Run active tests and both JS checks. Windows CUDA import may exhaust
    paging capacity; the isolatedCPU validation Python is
@@ -76,10 +81,16 @@ deadlines or resume interrupted SAC.
    no prefix/baseline/playback. Each seed needs nominal first-ledge hold,
    >=8/10 existing first-ledge successes, and nominal Y>=180 held90ticks
    with speed<=2. Stop the whole pilot after the first failed seed.
+   A physics-reserve stop saves a final checkpoint and runs the reserved
+   evaluation, but `training_summary.complete=false` makes the pilot fail
+   even if `physical_gate_passed=true`. Never reinterpret partial work as
+   permission to run the next seed, resume, or extend the reservation.
 
 7. While running, do not upload code/restart/resize/change variables/secrets.
    Read only bounded JSON pinned to a single artifact commit. Inspect
    actual tick/update progress and errors, not stale logs/rewards alone.
+   Distinguish `physical_gate_passed` from the admission
+   `pilot_gate_passed`, and report `training_summary.stop_reason`.
    Preserve backups/checkpoint companions and verify PAUSED at completion,
    failure or deadline. Pause only this owned Space if the watchdog failed.
 
@@ -88,6 +99,13 @@ deadlines or resume interrupted SAC.
    read-only during active work, and cancel after completion/failure/deadline.
    Never recreate the old generic loop or automatically reserve/run another
    batch. No indefinite loop. Report the completed pilot and stop.
+
+After completion, report per seed: actual learner/prefix/reset/evaluation
+ticks, update cycles, training completeness/stop reason, nominal first-ledge
+and Y180 holds, first-ledge fraction, deaths/summits, saved checkpoint and
+pinned artifact revision. Close only this fresh reservation using verified
+end evidence. Cancel its temporary monitoring loop and independently verify
+PAUSED. No unattended progression to another batch.
 
 Record contracts, failures, costs and actual physical results. Scaffold
 holds and engineering checks are not learned progress. A pilot pass still

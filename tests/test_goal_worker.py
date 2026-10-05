@@ -3,11 +3,12 @@ import json
 from pathlib import Path
 import tempfile
 import threading
+import time
 from types import SimpleNamespace
 import unittest
 from unittest.mock import Mock, patch
 
-from deploy.goal_worker import commands, run_goal, validate_context
+from deploy.goal_worker import commands, run_goal, stable_backup, validate_context
 from deploy.space_worker import Worker
 from research.campaign import digest
 from research.goal_execution import CHECKS, VERSION, GoalPermit, validate_admission
@@ -38,6 +39,7 @@ def fixture(folder, preflight=True):
     worker.artifacts, worker.state_path = Path(folder), Path(folder)/"status.json"
     worker.state_path.write_text("{}")
     worker.stop, worker.status = threading.Event(), {}
+    worker.goal_backup_lock = threading.Lock()
     worker.api = Mock()
     worker.api.repo_info.return_value = SimpleNamespace(private=True, sha="a"*40)
     worker.api.get_space_runtime.return_value = SimpleNamespace(hardware="cpu-upgrade",
@@ -55,6 +57,53 @@ def fixture(folder, preflight=True):
 
 
 class GoalWorkerTests(unittest.TestCase):
+    def test_concurrent_backups_wait_before_starting_upload_timeout(self):
+        with tempfile.TemporaryDirectory() as folder:
+            worker, _, _, _ = fixture(folder)
+            worker.deadline = time.time()+120
+            entered, release = threading.Event(), threading.Event()
+            calls, failures = [], []
+
+            def upload(timeout):
+                calls.append(timeout)
+                if len(calls) == 1:
+                    entered.set()
+                    self.assertTrue(release.wait(2))
+                return True
+
+            worker.bounded_sync = Mock(side_effect=upload)
+
+            def backup():
+                try:
+                    stable_backup(worker)
+                except BaseException as error:
+                    failures.append(error)
+
+            first, second = threading.Thread(target=backup), threading.Thread(target=backup)
+            first.start()
+            self.assertTrue(entered.wait(2))
+            second.start()
+            try:
+                time.sleep(.03)
+                self.assertEqual(len(calls), 1)
+            finally:
+                release.set()
+                first.join(2)
+                second.join(2)
+            self.assertFalse(first.is_alive() or second.is_alive())
+            self.assertEqual(failures, [])
+            self.assertEqual(len(calls), 2)
+            self.assertTrue(all(0 < timeout <= 60 for timeout in calls))
+
+    def test_serialized_backup_remains_deadline_bounded(self):
+        with tempfile.TemporaryDirectory() as folder:
+            worker, _, _, _ = fixture(folder)
+            worker.deadline = time.time()+19
+            worker.bounded_sync = Mock()
+            with self.assertRaisesRegex(ValueError, "deadline"):
+                stable_backup(worker)
+            worker.bounded_sync.assert_not_called()
+
     def test_budget_session_runtime_prior_and_passed_gate_required(self):
         ticket, ledger, environment = admission_fixture()
         self.assertEqual(validate_admission(ticket, ledger, CURRENT, 200, environment)["reserved_maximum_cost"], .03)
@@ -128,6 +177,31 @@ class GoalWorkerTests(unittest.TestCase):
             self.assertEqual(worker.run_command.call_count, 1)
             self.assertFalse(any(call.kwargs.get("phase") == "preflight_complete"
                                  for call in worker.write_status.call_args_list))
+            worker.flush_and_pause.assert_called_once()
+
+    def test_cap_stopped_seed_cannot_promote_even_if_physical_gate_passes(self):
+        with tempfile.TemporaryDirectory() as folder:
+            worker, context, environment, previous = fixture(folder, False)
+            worker.restore_status.return_value = previous
+
+            def seed_result(args, name, child_environment):
+                output = Path(args[args.index("--output-dir")+1])
+                (output/"training").mkdir(parents=True)
+                training = {"complete": False, "stop_reason": "physics_reserve"}
+                (output/"training"/"training_summary.json").write_text(json.dumps(training))
+                (output/"result.json").write_text(json.dumps({
+                    "seed": 21, "pilot_gate_passed": False, "physical_gate_passed": True,
+                    "training_summary": training, "physics": {"total": 1190000}}))
+
+            worker.run_command.side_effect = seed_result
+            with patch("research.goal_evaluation.validate_evaluation", return_value={"pilot_gate_passed": True}):
+                self.run_mock(worker, context, environment)
+            worker.run_command.assert_called_once()
+            summary = json.loads((worker.artifacts/"goal_campaign"/"summary.json").read_text())
+            self.assertEqual(summary["completed_seeds"], [21])
+            self.assertFalse(summary["all_three_pilot_gates_passed"])
+            self.assertTrue(summary["first_failed_seed_stopped_remaining"])
+            self.assertFalse(any(call.kwargs.get("phase") == "failed" for call in worker.write_status.call_args_list))
             worker.flush_and_pause.assert_called_once()
 
     def test_cleanup_error_cannot_skip_pause(self):

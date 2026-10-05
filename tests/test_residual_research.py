@@ -73,8 +73,11 @@ class ResidualResearchTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "validated"):
             require_permit({"old": True}, 12)
         ticket, ledger, environment = admission_fixture()
+        # Simulate a Factory desktop session explicitly so the platform guard is
+        # exercised on any host, not only when the tests run on Windows.
+        desktop = {**environment, "FACTORY_DESKTOP_CDP_PORT": "1"}
         with self.assertRaisesRegex(ValueError, "Linux"):
-            execute(Path("missing"), Path("missing"), ticket, ledger, environment=environment,
+            execute(Path("missing"), Path("missing"), ticket, ledger, environment=desktop,
                     durable_claim=lambda: True, durable_run=lambda _: True, auto_pause=lambda: True)
 
     def test_children_remove_credentials_and_user_browser_sessions(self):

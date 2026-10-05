@@ -100,6 +100,18 @@ def commands(worker, prior):
 
 
 def stable_backup(worker, required=()):
+    # Coordinate callers before bounded_sync starts its upload timer. Waiting
+    # for another healthy upload consumes deadline, not this upload's timeout.
+    remaining = worker.deadline-20-time.time()
+    require(remaining > 0 and worker.goal_backup_lock.acquire(timeout=remaining),
+            "No deadline reserve for serialized backup")
+    try:
+        return _stable_backup(worker, required)
+    finally:
+        worker.goal_backup_lock.release()
+
+
+def _stable_backup(worker, required=()):
     """Check closed checkpoint files actually exist in one private uploaded revision."""
     required = list(required)
     if required:
@@ -155,6 +167,7 @@ def progress(worker):
 
 def run_goal(worker):
     try:
+        worker.goal_backup_lock = threading.Lock()
         require(remote_host(os.environ), "Goal worker is isolated Linux remote-only")
         worker.deadline = float(os.environ.get("RL_DEADLINE_EPOCH", "nan"))
         require(math.isfinite(worker.deadline) and time.time()+60 < worker.deadline <= time.time()+36000,
@@ -219,7 +232,10 @@ def run_goal(worker):
                     f"goal_seed{seed}", environment)
                 result = json.loads((output/"result.json").read_text())
                 scored = validate_evaluation(output/"evaluation")
-                require(result["pilot_gate_passed"] == scored["pilot_gate_passed"]
+                training = json.loads((output/"training"/"training_summary.json").read_text())
+                require(result["training_summary"] == training
+                        and result["physical_gate_passed"] == scored["pilot_gate_passed"]
+                        and result["pilot_gate_passed"] == bool(training["complete"] and scored["pilot_gate_passed"])
                         and result["seed"] == seed and result["physics"]["total"] <= 1200000,
                         "Goal seed result/physics budget mismatch")
                 stable_backup(worker, [path for path in output.rglob("*") if path.is_file()
