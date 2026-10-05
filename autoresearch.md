@@ -42,7 +42,73 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current result: memory-aware hammer goal completes26steps, body acquisition untested
+## Current result: causal source-goal wrapper preserves clocks, fails body acquisition
+
+Implemented `research/source_goal_controller.py`, one rawlower-plantedhammer
+checkpoint after299ACTUALobserved transitions/beforedecision300. Query1/
+lasttravel<3/hammerworldY<fixedrow300goalY-1/legalgoalreach/axes only, no
+case/seed/traceoracle. Ineligiblepermanentbypass, sourcecontrolsexact.
+Eligiblefixedgoal/optinOWN-command phase bootsactualprefixcommand/post.
+Firstactualgoalaction consumesONEordinary source299proposal, explicitly
+overridden/ignored; sourcecalls300/phase299thenfreeze throughgoalstage.
+Actualcompletion resumes nextorderedsource300, not physicalelapsedclock.
+Fail/timeout terminal/no rearm/extra macro, globalaction-postobserve/
+prepostlink/max751/reset guards.7new/62focused/351fullPython+JS pass.
+
+Frozen4rollout original-physics implementation smoke, nominal/reset14001
+andknownfailed13105noise,referencefast/max751. No gains/goals/tolerance/
+cap/noise/cutoff scan, placement or recordedprefixoverride.
+Nominalpermanentbypass all751raw/control/physics/base-metadata originalexact,
+final(322.585886,104)/gain83/central+secondaryhold.
+Failedcaseattempts once:299base/26goal/426resumed, all325goalphysicalrows
+and observedtargetphase summariesexactpreviousvalidatedsmoke; sourceclock
+metadata alone intentionallydifferent. Controlled326resumesbasephase300/
+calls301 asdeclared. Tipgoal stillcompletes.870482, butbodyfinal
+(268.879707,32)/gain11/no centralORsecondaryhold/finalsupport.
+0deaths/summits/updates. Strictrecovery/broaderwrappergatefalse; no teacher/
+corpus/labels/learning. Goalcompletioncannotbecome a ledgepass.
+
+Savedjoint review atfirstresumed326: source-row300bodyreference
+(279.381311,48) versusactual(268.844997,32), bodyerror19.157607.
+Hammerreference(186.932344,3.814357), actual(186.822921,2.950780),
+tiperror.870482. Bodyquerytrue/hammerqueryfalse; firstresumedcorrection
+(8.799691,13.362838), norm16/signon-unreversed. This describes joint-pose/
+contact mismatch, not proof a largergain/anotherphasejump solves it or a
+completecausal account ofearlierfailure. Bodyalignment/actuator authority
+was explicitlynotpart ofthe localtipcompletiongate andremainsunproved.
+Supplemental savedjoint review adds0physics.
+
+3004control+480reset/4rollouts,owned32.703722seconds within180work/210owned
+caps. Source/newwrapper/prior/localadmission/plan/scripts/parent/budget/
+deadline/ownedsecret-stripped child/durabletrace/cleanup bind. Independent
+all4full rawmilestone/control/caseclock/actionobserve/sourceclock histories,
+2fullbackendpairs, nominal751bypass,299prefix/goal325physicalhistory exact.
+ONEignoredsourceproposal/frozen299/ordered300resume verified. Allclosed
+goal30/pulse751/fresh8of9failedgates preserved; primarygoal0.
+Evidence: `artifacts/source_goal_smoke_20261005_v1/verification.json`
+and `joint_review.json`.
+
+Independently privatePAUSED1791169432.987507;80444390source,
+onstate-20261004-v1/onstate_study/contexted3a53c3/closeddeadline unchanged.
+Ledgerbytespreserved,7closed$0.4564241866528988; no paidreservation, remote
+write, deployment, publicrelease or substantive localtraining.
+
+Next admitted bounded direction: freeze180second OFFLINE joint-body
+actuation/terrain audit ofthis4saved751traces/3004rows,0newplay/reset/
+updates. Bindsource/project/traces/completedreview/script/plan/budget.
+Compare required sourcebody/hammer/contact pose atfirsthandoff toactual
+lowterrain supportedbody/freetip; inspectoriginalblocked-.5bodyresponse,
+actualhammer authority, collider/approximate terrain, and earliercontact
+stroke. Determine mechanically whether a distinct legal plant/bodyalignment
+primitive is justified before any physical proposal. Tipgoalreach/smallerror
+cannotcertify potalignment/bodyforces. Equalprefix versusunequalstates
+explicit, querynotforce/solverbranch; alpha geometry not renderer authority.
+No bodygain/target/phase/cap/tolerance scan, repeatedsamewrapper/terminal
+macroaddition/forcedsourcejump/closedplanretry/metricrelaxation, labels or
+paidlearning. Any newpoint/plant/control law needs separatefrozen local
+authority then actualrecovery/wholefreshvalidation/data-clockmemory gates.
+
+## Prior result: memory-aware hammer goal completes26steps, body acquisition untested
 
 Added ONLYopt-in `cursor_feedback=True` to `HammerTargetPhase`; default
 contract/actions/observe summaries unchanged, all30historical defaultsteps/
@@ -87,7 +153,7 @@ onstate-20261004-v1/onstate_study/contexted3a53c3/closeddeadline unchanged.
 Ledgerbytespreserved,7closed$0.4564241866528988; no paidreservation, remote
 write, deployment, publicrelease or substantive localtraining. Goal0.
 
-Next admitted bounded IMPLEMENTATION/design+smoke: a causal one-attempt
+The historical admitted bounded IMPLEMENTATION/design+smoke implemented a causal one-attempt
 source-clock wrapper around unchangedcontactprior, raw217/owncommandhistory/
 resettableprivatephase only. Singlecheckpoint beforecontrolleddecision300
 after299actualobservedsteps; lowerplantedhammer predicate:

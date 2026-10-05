@@ -366,3 +366,40 @@ checks. Nominal bypass and existing prefix/goal physics must remain exact.
 Require full final central support, not goal completion or secondary support,
 before broader validation. Body recovery, composition, fresh whole-controller
 validation and a memory-aware learning contract remain separate gates.
+
+## Causal source-clock wrapper: recovery fails
+
+`research/source_goal_controller.py` implements the one observed-state
+checkpoint and one goal attempt. The first goal action overrides one ordinary
+source-phase299 proposal, then source calls/phase freeze until actual target
+completion. The next action resumes ordered source-phase300. Physical time
+and source progress stay distinct. There is no case/seed input, extra macro,
+phase jump or rearm; all actions link to actual post-inputs.
+
+Seven new tests,62 focused and351 full Python tests plus collision checks
+pass. The nominal751 bypass exactly preserves original controls and physics,
+gain83/central+secondary support. The failed case completes its goal in26
+steps, exactly reproducing all325 known physical rows, then resumes source300
+at controlled326. Nevertheless it finishes `(268.879707,32)`, gain11, no
+central or secondary hold/final support. Recovery and broader validation
+gates fail; no labels or learning is admitted.
+
+Saved handoff review shows why tip completion is not joint alignment:
+the source-row body is `(279.381311,48)`, actual body `(268.844997,32)`,
+error19.157607, while hammer error is only.870482. Actual body query is
+true and hammer query false. The initial resumed correction is norm16.
+This is a pose/contact mismatch, not a proof that more gain or a source
+phase jump would recover it.
+
+Four rollouts/3004 controlled+480 reset ticks,32.703722 owned seconds.
+All raw metric/control/clock histories, two full backend pairs, nominal
+bypass and known prefix/goal physical histories independently verify.
+Evidence: `artifacts/source_goal_smoke_20261005_v1/verification.json`
+and `joint_review.json`. All earlier failed gates remain immutable.
+
+Next is a frozen offline joint-body authority/terrain audit, not another
+wrapper retry. Inspect required versus actual body/hammer/contact geometry
+and original planted body response before deriving a different legal
+alignment primitive. Query flags are not forces, approximate terrain is
+not renderer contact. Any new physical law requires a fresh local authority
+contract, then recovery and whole-controller validation before data/learning.

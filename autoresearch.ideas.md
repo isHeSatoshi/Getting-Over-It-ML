@@ -1,6 +1,29 @@
 # Deferred hypotheses
 
-- **Next causal source-clock goal wrapper design/smoke:** optin pastcursor
+- **Next frozen offline joint-body authority/terrain audit:** causalwrapper
+  implemented/7new62focused351fullPython+JS. Nominal751permanentbypass
+  fulloriginalcontrols/physics exact/gain83/holds. Failedcase299base+
+  26goal+426resumed,goal325physics exact/sourcecalls300_299frozen/
+  orderedsource300resumed atcontrolled326, butfinal(268.879707,32)/gain11/
+  noholds.4rollouts/3004control+480reset/32.703722s,0updates/deaths/summits,
+  all2backend/raw/sourceclock/prefixhistories exact. Recovery/broadergate
+  false, no labels/learning. Handoff sourcebody279.381,48 vsactual268.845,
+  32,error19.157607 despitehammererror.870482;bodyhittrue/hammerfalse,
+  correctionnorm16. Descriptivejointmismatch, no larger gain/phasejump claim.
+  Freeze180secondOFFLINE4savedtraces/3004rows source/project/trace/review/
+  script/plan/budget audit,0newplay/reset/updates. Inspect jointrequired
+  body_hammer_contactpose vsactual lowterrain/free tip, originalblocked-.5
+  bodyresponse,hammer authority/collider/approxterrain/earlierstroke before
+  deriving distinctlegalplant/bodyalignment primitive. Querynotforces/
+  branch,alphadescriptive notrendererauthority,equalprefix vsunequalstates.
+  No gain/target/phase/cap/tolerance scan/wrapperretry/terminalmacroaddition/
+  forcedsourcejump/gaterelaxation/labels/paidlearning. Newmechanics needs
+  freshlocalpointauthority thenrecovery/wholefreshvalidation/data_clockmemory.
+  PAUSED1791169432.987507,7closed$0.456424187,ledgerunchanged/goal0.
+  Evidence: artifacts/source_goal_smoke_20261005_v1/verification.json
+  and joint_review.json.
+
+- **Closed causal source-clock goal wrapper design/smoke, completed above:** optin pastcursor
   phase completes26steps/raw.870480/physical.870482,default30timeout3.304582,
   bothlowY32/gain11/noholds,0updates/deaths/summits.2508control+720reset/
   6rollouts/30.222317s,14phase/55focused/344fullPython+JS; oldcontract/

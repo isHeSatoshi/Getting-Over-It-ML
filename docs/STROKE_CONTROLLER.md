@@ -492,3 +492,8 @@ goal in26 steps/error.870482, with exact default preservation and344 tests.
 The body remains atY32/noholds. Only a causal source-clock/observed-goal
 wrapper design is admitted next; no teacher labels, acquisition or learning
 claim follows from local tip completion.
+The source-clock wrapper now preserves the nominal trajectory and correct
+ordered handoff, but the known failed case still retains11/noholds. The tip
+is aligned while the body is19.157607 pixels from its source-row pose.
+351 tests and physical fidelity pass. Offline joint-body authority/terrain
+analysis, not another wrapper/gain/phase retry, is admitted next.
