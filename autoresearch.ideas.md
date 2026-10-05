@@ -1,6 +1,30 @@
 # Deferred hypotheses
 
-- **Next OFFLINE validated per-tick branch attribution, no new controls:**
+- **Next OFFLINE lower-support/joint-pose geometry audit, not proxy retry:**
+  Validated6instrumentedtraces2536rows attribution verified3.331s/180cap/
+  0newphysics. Failedcontact8 ALLfree_hammer/blocked0, includingbothpost
+  queriesat332–333; contrast334 bothfree/wall1, baseline2pressure4
+  substeps/bothbodydelta0/noholds/gain11. QuerypairdidNOT execute
+  blocked-.5bodytransfer. Nominal367 blocked1/wall1/steadyhammer69.795,
+  bodydelta(+2.867400,+4.180986) butbodyY99..103 vsfailed32, unequal/
+  descriptive notcopyableforce orsame-statecounterfactual. Whole600
+  nominalfreepath10queryhits; queryOR insufficient, countersnotpolicy.
+  Freeze180secondOFFLINE6samevalidatedtraces2536rows source/project/
+  trace/review/scripts/plan/budget,0newplay_reset_updates. Fixednominal
+  controlled300..366 before367upperpose andfailed333. ONEselector:
+  FIRSTnominalblocked_body inwindow withactualbodydy>.1 ANDposthammerY<
+  postbodyY; no match=>no fallback. Actualprepost/collider/approxterrain/
+  nextstroke/relativeanchor/reach fromfailedlowpose beforeONEmechanical
+  geometricapproach/plant hypothesis. No point/gain/phase/tolerance/
+  cap scan/newcontrols/counteroracle/labels/learning; sourcepose unequal,
+  alpha notrenderer/entrynotforce. Laterordinaryprefix actualrenderer
+  contact ANDmatchedbodyauthority, retainedrecovery/wholefreshdata gates
+  separate. Oldtwoquery/point/authority failures immutable/noretuning.
+ 365Python/16counterJS/collisionJS/goal0;PAUSED1791177695.735806,
+  $0.456424187closed.
+  Evidence: artifacts/branch_attribution_audit_20261005_v1/verification.json.
+
+- **Closed validated per-tick branch attribution, completed above:**
   Opt-inprocedure_counter.js implemented/16syntheticJS/365Python/
   collisionJS pass. ExactW/Zvariants/compiledthread lifecycle/normal-
   generator delegation/clock/reset/overflow/ownhook restoration guards.

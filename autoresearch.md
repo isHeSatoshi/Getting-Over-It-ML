@@ -42,7 +42,70 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current result: compiled counters pass original-physics fidelity, diagnostics only
+## Current result: validated counters identify the failed query proxy's free-hammer path
+
+Frozen180second OFFLINE attribution of6INSTRUMENTEDsavedtraces/2536rows
+independentlyverified3.330535seconds,0newplay/reset/updates. Priorcounter
+fidelityadmission/source/project/traces/completedreview/script/plan/budget
+hashes bind. Every savedtick has exactlyONEuniqueoriginalblocked_body OR
+free_hammer entry; 3backendpairs/rawclock/query/fullcommon333 histories
+exact. UniquePlayercallsites/parenttouchbranch verified. Privilegedcounts
+remain diagnostic-only, nevercontrollerinput/teacherlabels.
+
+Failedcontact8window controlled326..333: blocked_body0/free_hammer8/
+wall_probe2/hammer_substep124. Six postqueryfalse andtwo postquerytrue,
+ALLfreepath. At332/querytrue, previousloggedtravel3.413560>3 and wallprobe
+count0; free_hammer1/substep4. At333/querytrue/previousloggedtravel.974976,
+wallprobe1 butblocked0/free1/substep2. Thus newquerypair atsteps7–8
+doesnot establish execution ofthe -.5blocked-body transfer branch.
+At334 SAMEprehistory bothkeep-anchor andpressure againwallprobe1,
+blocked0/free1; baseline2versuspressure4hammer_substeps. Bothpotdelta0/
+gain11/noholds, candidate-minus-baseline0, bothpostqueryfalse. This
+validatedpath evidence narrows thefailedlocalcontrast explanation,
+not a force/normal/fullsubstep causal model or a guaranteeofbodylifting.
+Free-hammerprocedure itself stillincludes terrain/body collision handling.
+
+Fixednominal367: blocked1/free0/wallprobe1/substep0, hammerstationary
+(291.913597,69.795227), body(280.360880,99.266699)→
+(283.228280,103.447684), actualdelta(+2.867400,+4.180986).
+Loggedrequest(-9.831087,-5.946211), bothhammerqueriestrue/loggedtravel0.
+This isrecordednominal transfer/bodymovement, not a matchedcounterfactual
+tofailedbodyY32 or proofcopying thatpressure/contactpoint willwork there.
+Nominalfull600 cross-table: blocked136/querytrue136; free464, ofwhich
+10querytrue/454queryfalse. Querytrue notsufficient forblockedbranch,
+not a universalclassifier or directionalnormal. No physicalgatepromotion.
+
+Oldpoint1pixel30/authority>.1axes/sourcewrapper/751pulse/fresh8of9
+failures immutable. No newplant/criterion/target/pressure/gain/cap probe,
+wrapperretry/labels/corpus/learning. Nominalretainedgain83/bothholds and
+failedgain11/noholds remainhistoricalphysicaloutcomes;0newdeaths/summits/
+updates.365Python/16counterJS/collisionJS pass; tools.research_goal_metrics
+pinnedprojection exact/0candidatefinalfalse. Primarygoal0.
+Evidence: `artifacts/branch_attribution_audit_20261005_v1/verification.json`
+and `audit.json`. IndependentprivatePAUSED1791177695.735806/source80444390/
+sessiononstate-20261004-v1/modeonstate_study/contexted3a53c3/closeddeadline
+unchanged. Ledgerbytespreserved,7closed$0.4564241866528988; no paid
+reservation/remote write/deployment/publicrelease/substantivelocaltraining.
+
+Nextbounded direction: freeze180second **OFFLINE lower-support/joint-pose
+geometry audit**, same6validatedinstrumentedtraces/2536rows/0newphysics.
+Usefixednominalsource window controlled300..366 (before367upperpose)
+andfailed333actualpose. ONEpredeclared sourceevent selector: first
+nominalblocked_body entry inthatwindow withactualbodydy>.1 and posthammer
+worldY<postbodyY. Ifnone, no fallback. Inspect its actualpre/post hammer/
+body/request/query/geometry and nextrecordedstroke. Compare reach/relative
+point/radius andoriginalcollider/approximate terrain fromfailedlowpose,
+not simplyassert theupperledgepoint transferable frombelow. Captured
+nominalbranch/anchor only offlinepriorevidence, never a livecontroloracle.
+AtmostONE mechanicallysupported geometricapproach/plant hypothesis,
+no plant/gain/phase/tolerance/cap scan; alpha not renderer authority,
+counterentrynotforce. No newcontrols/labels/learning.
+Any resultingpoint/support law needsfresh predeclared ordinaryprefix
+renderercontact AND matchedactualbodyauthority tests, then retained
+recovery/wholefreshvalidation/data_clockmemory contracts. Do notretune
+thefailedtwoquerycontroller orpromoteearlierquery/branchentry as a hold.
+
+## Prior result: compiled counters pass original-physics fidelity, diagnostics only
 
 Implemented standaloneopt-in `research/procedure_counter.js` ONLY; no
 legacyruntime/game/compiler/controller/observation changes. Exact W/Z

@@ -667,3 +667,37 @@ HF remains PAUSED and the closed ledger is unchanged. Evidence:
 Next inspect validated per-tick counters at the fixed contact/contrast
 snapshots offline, without changing controls or feeding privileged branch
 information into a policy.
+
+## Validated per-tick attribution: query hits on the free path
+
+The frozen offline attribution verifies one exclusive blocked-body or
+free-hammer entry per saved tick, using the original unique callsites.
+All three backend pairs and the333-step common contrast history agree.
+
+All eight failed approach steps take the free-hammer procedure, including
+query-hit steps7–8. The first hit has no wall-probe entry because previous
+logged travel exceeds3. The next hit does probe the wall but still takes
+the free path. Both contrast actions also take that path: two baseline
+versus four pressure substeps, zero pot movement in either arm.
+Thus query-pair acquisition did not demonstrate entry into the particular
+`-.5 * hammer_request` blocked-body transfer branch. The free procedure
+still handles terrain/body collisions; these counts do not measure forces.
+
+Fixed nominal step367 does take the blocked-body path with a stationary
+hammer, actual pot movement `(+2.867400,+4.180986)`. Its body starts
+nearY99, not the failedY32 pose. This is recorded transfer evidence,
+not proof that copying its point/pressure from below would recover.
+The nominal600 trace also has10 query-hit ticks on the free path.
+No query/branch entry is promoted to a hold, body-authority pass or label.
+
+2536 saved rows,3.330535 seconds within the180-second cap, zero new
+gameplay/reset/updates.365 Python tests,16 counter tests and collision
+checks pass. HF remains PAUSED; ledger unchanged.
+Evidence: `artifacts/branch_attribution_audit_20261005_v1/verification.json`.
+
+Next audit lower-support/joint-pose geometry offline. Use one predeclared
+source event in the fixed pre-upper-pose window, actual collider/terrain
+and reach from the failed low pose before any different plant hypothesis.
+No query-controller tuning or privileged branch feedback. A new support
+law still needs renderer contact and matched actual body authority,
+then retained recovery, fresh whole-controller validation and data gates.

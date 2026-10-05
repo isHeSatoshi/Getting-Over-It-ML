@@ -58,6 +58,14 @@ inputs. Per-tick branch attribution is next; body authority, recovery and
 teacher/learning gates remain failed or unadmitted.
 Evidence: `artifacts/procedure_counter_fidelity_20261005_v1/verification.json`.
 
+Validated attribution now shows that all eight failed approach steps and
+both matched contrast actions use the free-hammer path, not the specific
+blocked-body transfer procedure. Query hits at steps7–8 therefore do not
+certify that transfer. Nominal367 does use the blocked path and moves the
+pot right/up, but from a different high body pose. Counts are path evidence,
+not forces or a matched proof that this plant works from the failed pose.
+Evidence: `artifacts/branch_attribution_audit_20261005_v1/verification.json`.
+
 Original Scratch Player blocks `bF`/`bG` request
 `0.4 * (pointer - hammer_world + body_world + render_offset)`.
 The original 40-unit change limit, 50-unit motor limit, 26..102 reach and
