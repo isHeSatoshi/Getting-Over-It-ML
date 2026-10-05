@@ -42,7 +42,81 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current result: causal cursor alignment passes, hammer error slightly worsens
+## Current result: memory-aware hammer goal completes26steps, body acquisition untested
+
+Added ONLYopt-in `cursor_feedback=True` to `HammerTargetPhase`; default
+contract/actions/observe summaries unchanged, all30historical defaultsteps/
+backend exact beforephysics. Bootstrap once from last actuallyissued prefix
+command and actualpostraw217; nextpre mustequal thatpost. Eachactualpost
+updates estimate=rawpointer13/14*128 minus OWNissuedfloat32command*128,
+never uncompensateddesiredpointer. Returned/bootstrap inputs copied; pending/
+prepost/invalidmode/legalcommand/duplicatebootstrap/timeout/no rearm guards.
+Goal/reach/axes/offset/tolerance1/cap30unchanged; illegalcompensationfails,
+no clipping/filter/gain/seed/currentfuture noise oracle.14phase/55focused/
+344fullPython+JS pass. Fullsuite flushwarnings are expectedfaultinjection.
+
+Frozen6rollout implementation smoke: nominal600historical gate, known
+ordinary299prefix/reset14001/noise13105 defaulttargetphase versusoptin,
+allactualcontrols withsamecontinuousnoise; variableearlystop/equalmax329
+declared. Goalstage basephase298/calls299staysfrozen, no laterplayback.
+
+| Reference targetphase | Steps | Physical tiperror | Final body / gain |
+|---|---|---|---|
+| Defaultuncompensated |30timeout|3.304582|(268.882791,32)/11|
+| Opt-inpastcursorfeedback |26success|.870482|(268.844997,32)/11|
+
+Candidate rawtiperror.870480, actualmotion, alive; localrawANDphysical1pixel
+completiongate true. Stopscontrolled325, default329. Body NOT reference-
+aligned andneithercontrastarmholdsledge;0deaths/summits/updates. This is
+singleknownstate hand-designed localcompletion, not robustteacher/corpus/
+learning/bodyrecovery. Default30failure andclosedpulse751/fresh8/9strict
+failures immutable; no retrospectiveextensionor tolerance relaxation.
+Only causalphasecontroller DESIGN admitted after this completion.
+
+2508control+720reset/6rollouts,owned30.222317seconds within180work/210owned
+caps. Source/newmode/prior/cursoradmission/plan/scripts/parent/budget/deadline/
+secret-stripped ownedchild/durabletrace/cleanup bound. Independentall6raw
+metric/control/caseclock/actionobserve/memory histories and3fullbackendpairs
+exact. All4nominal/defaultFULLhistoricaltraces unchanged; both newfirst300
+physicalhistories reproducecursorcontrast. Equal299prefix/actualpreinputs,
+eachpostestimate subtracts ownissuedaction, baseclock frozen verified.
+Evidence: `artifacts/cursor_feedback_smoke_20261005_v1/verification.json`.
+
+Independently privatePAUSED1791168305.4767606;80444390source,
+onstate-20261004-v1/onstate_study/contexted3a53c3/closeddeadline unchanged.
+Ledgerbytespreserved,7closed$0.4564241866528988; no paidreservation, remote
+write, deployment, publicrelease or substantive localtraining. Goal0.
+
+Next admitted bounded IMPLEMENTATION/design+smoke: a causal one-attempt
+source-clock wrapper around unchangedcontactprior, raw217/owncommandhistory/
+resettableprivatephase only. Singlecheckpoint beforecontrolleddecision300
+after299actualobservedsteps; lowerplantedhammer predicate:
+rawprevioushammerqueryhit==1,lasttravel<3,hammerworldY<fixedrow300goalY-1,
+legalgoalreach26..102/axes128. No case/seed/traceoracle. Ineligiblecheckpoint
+permanentbypass/exactoriginal. Eligiblecase uses unchangedfixedgoal/optin
+cursorphase/tolerance1/max30steps; bootstrappreviousactuallyissuedcommand.
+On firstactualgoalaction consume ONE baseprior phase299 via its ordinary
+proposalcall, explicitlyignored/overridden; basecalls300/sourcephase299
+thenfreeze throughgoalstage, NOT tied to additionalphysicalgoalsteps.
+Afteractualgoalcompletion resume nextorderedbasephase300; no arbitrary
+phasejump, backtracking, repeat/rearm, extra goal or terminalmacro.
+Fail/timeout terminal. Preserve globaloneaction/actualpostobserve/prepostlink/
+privateclocks/max751controls, and firstgoal actualphysics current325history;
+baseproposal/sourceclock metadata difference explicit, ignoredproposal not
+teacherlabel. This is a controller design, not alreadyprovenbodyrecovery.
+Tests/default/bypassparity first, freezeactualsource/rule/plan/deadline
+beforeknowncase nominal/failed13105 originalphysicssmoke onreferencefast:
+4rollouts/max3004control+480reset/180work/210ownedseconds. Nominal must
+bypassexactall751originalcontrols/physics; prefix299 andgoalphysical325exact,
+allbackend/rawmetrics. Require candidate originalcentralheld ANDfinal90
+central/speed2/bodyfraction.8/nodeaths before broaderwrapper validation.
+Secondaryreportednot substitute; goalcompletionalone notacquisition.
+No laterpriorplaybackduringgoal or blindphysical-clockadvance, target/gain/
+noise/cap/tolerance/cutoffscans, closedplanretry/9case rewrite, labels or
+learning. Any latercomposition/freshwholevalidation/captureddata/clock-
+memorylearnercontract remainsseparate; no unchangedBC/PPO scaling.
+
+## Prior result: causal cursor alignment passes, hammer error slightly worsens
 
 Frozen6rollout one-step cursor-response comparison completed. Nominal600
 historicalgate, then exact299ordinary originalcontrollerprefix/reset14001/
@@ -83,7 +157,7 @@ onstate-20261004-v1/onstate_study/contexted3a53c3/closeddeadline unchanged.
 Ledgerbytespreserved,7closed$0.4564241866528988; no reservation, remote
 write, deployment, publicrelease or substantive localtraining. Goal0.
 
-Next admitted bounded IMPLEMENTATION/smoke: opt-in past-cursor feedback in
+The historical admitted bounded IMPLEMENTATION/smoke added opt-in past-cursor feedback in
 the boundedhammer-target phase, defaultuncompensated behavior exact.
 State ONLYraw217pre/post, fixedgoal and ownactuallyissuedcommand history.
 Bootstrap once from last actuallyexecuted prefixcommand and its observedpost;

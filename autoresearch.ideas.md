@@ -1,6 +1,33 @@
 # Deferred hypotheses
 
-- **Next causal cursor-feedback implementation/smoke only:** equal299prefix
+- **Next causal source-clock goal wrapper design/smoke:** optin pastcursor
+  phase completes26steps/raw.870480/physical.870482,default30timeout3.304582,
+  bothlowY32/gain11/noholds,0updates/deaths/summits.2508control+720reset/
+  6rollouts/30.222317s,14phase/55focused/344fullPython+JS; oldcontract/
+  defaultfulltraces exact,3backend/raw/postOWNcommand estimates exact,
+  newfirst300actualphys currentcursorcontrast exact. Completiononly admits
+  causalphase DESIGN, not bodyalignment/teacher/labels/learning.
+  Implementonecheckpoint after299observedtransitions/beforedecision300:
+  rawhammerquery1,lasttravel<3,hammerworldY<fixedrow300goalY-1/legalreach
+  26..102/axes128; no case/seed/traceoracle. Ineligible permanentbypass
+  originalexact. Eligiblefixedgoal/optinphase/1pixel30cap/bootstrapowncommand,
+  firstactualgoalaction consumesONEordinarybaseproposal phase299
+  (overridden/ignored),thenfreezebasecalls300/source299 throughstage.
+  Resume nextorderedbase300 onlyafteractualcompletion; no forcedjump or
+  physical-clock phaseadvance duringstage. Failureterminal/oneattempt/no
+  rearm/terminalmacro. Globalaction/postobserve/prepostlink/751cap,
+  baseproposalmetadata differenceexplicit/notlabel; actualgoal325history
+  mustmatch. Tests/parity thenfreshfreeze nominal/failed13105 ref-fast
+  originalphysicssmoke4rollouts/max3004control+480reset/180work/210ownedsecs.
+  Nominal751bypassexact,299prefix/goalphysics exact/raw/backendfidelity;
+  require originalcentralheld+final90central/speed2/bodyfraction.8/alive
+  beforebroaderwrappervalidation. No secondarysubstitution/goal-only
+  acquisitionclaim/target-gain-noise-tolerance-cap-cutoffscans/closedretry/
+  labels/learning. Wholefreshvalidation/data-clockmemory/composition
+  remainseparate. PAUSED1791168305.4767606,7closed$0.456424187,goal0.
+  Evidence: artifacts/cursor_feedback_smoke_20261005_v1/verification.json.
+
+- **Closed causal cursor-feedback implementation/smoke, completed above:** equal299prefix
   localcontrast passescursorerror1.137445->.000703795, buttiptargeterror
   WORSENS11.145062->11.265577;queryfree/travel4.474497->4.715063,
   bodydelta0. No completion/recovery/learning.6rollouts/2400control+720reset/

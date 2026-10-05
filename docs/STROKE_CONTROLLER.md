@@ -487,3 +487,8 @@ tip target error, with unchanged body motion. Only an opt-in memory-aware
 feedback implementation/smoke is admitted, using actually issued command
 history and unchanged goal/tolerance/cap. No target-completion or learner
 promotion follows from this cursor-only pass.
+The opt-in issued-command feedback smoke now completes its local hammer
+goal in26 steps/error.870482, with exact default preservation and344 tests.
+The body remains atY32/noholds. Only a causal source-clock/observed-goal
+wrapper design is admitted next; no teacher labels, acquisition or learning
+claim follows from local tip completion.

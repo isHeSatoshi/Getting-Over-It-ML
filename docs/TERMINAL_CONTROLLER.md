@@ -327,3 +327,42 @@ first-step cursor contrast must remain exact. Require actual raw and physical
 tip completion, not merely smaller cursor error. No filters, gain scans,
 noise changes, labels or learning; even local completion would need later
 body acquisition, composition and fresh whole-controller validation.
+
+## Opt-in issued-command feedback completes the local goal
+
+The memory-aware mode now preserves the exact default contract and all
+historical default actions/observe summaries. Bootstrap occurs once from
+the previous executed command and actual post-input. Every later estimate
+subtracts the controller's own issued command, not its uncompensated desired
+pointer. Input copies, bootstrap, pre/post ordering, legal controls and
+permanent failure are guarded.14 phase tests,55 focused and344 full Python
+tests plus collision checks pass.
+
+The frozen smoke reaches the same fixed goal in26 steps: raw error.870480,
+physical error.870482, actual motion/no death. The default still times out
+at30 with error3.304582. Candidate stops at controlled325, default329.
+Both bodies remain near `(268.85,32)`, gain11/no ledge holds. Local hammer
+completion is not body alignment, recovery or a learned policy.
+
+2508 controlled+720 reset ticks,30.222317 owned seconds, six rollouts.
+All raw metrics/actions/clocks/memory updates, three full backend pairs,
+four unchanged full nominal/default histories and first300 candidate
+physics match independently. Evidence:
+`artifacts/cursor_feedback_smoke_20261005_v1/verification.json`.
+All previous failed gates remain fixed; no labels or training is admitted.
+
+Only causal phase-controller design is next. Proposed wrapper has one
+raw lower-planted-hammer checkpoint after299 actual transitions, no case
+or seed input; ineligible cases permanently retain original controls.
+The first goal action overrides one ordinary source-phase299 proposal,
+then source progress freezes until observed goal completion. Resume the
+next ordered source-phase300, not the elapsed physical clock. Failed target
+completion is terminal, no rearm or extra macro. All ignored proposals remain
+diagnostic, not labels. This clock/goal composition is not implemented yet.
+
+Freeze a four-rollout nominal/knownfailed reference+fast smoke, max3004
+controls+480 reset ticks/180workseconds/751maxhorizon, after unit/parity
+checks. Nominal bypass and existing prefix/goal physics must remain exact.
+Require full final central support, not goal completion or secondary support,
+before broader validation. Body recovery, composition, fresh whole-controller
+validation and a memory-aware learning contract remain separate gates.
