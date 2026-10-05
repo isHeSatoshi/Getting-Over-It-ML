@@ -1,6 +1,32 @@
 # Deferred hypotheses
 
-- **Next frozen single-release follow-through:** matched299prefix/preinput
+- **Next separate observed hammer-target completion phase:** frozen pulse+
+  originalfeedback751 failsbothholds/finalsupport, baseline(269.481845,32)
+  versuspulse(269.479241,32),gain11/nodeaths/summits/updates.6rollouts/
+  4204control+720reset/36.495458s,41Python+JS,all3backend/raw/source/
+  local300histories exact. Localreleasepass reproduces, buterror after
+  handoff9.504tick301->14.798tick302->27.598tick305;tipfree300..305,
+  firstlaterqueryhit352,not immediate replant. Timedlaterstrokes advance
+  before referencegoaltip completion, a descriptivehand-off mismatch.
+  Recovery/design/teacher/dataadmissionfalse; earlier8/9failedgate fixed.
+  Freeze separateoneattempt goalcompletion: samefixedrawpriorrow300
+  worldgoal/offset0,20/formula/ordinary299prefix/noise. Currentrawbody
+  updatespointer eachstep; actualpostrawhammer-worlderror<=1(existing
+  stationarytolerance),max30steps/1s/no rearm/caprenewal. Queryrelease is
+  not completion; no bodyalignment or acquisition implied. No laterprior/
+  resumedfeedback until separate design. Legalaxes128/reach26..102,
+  action-observe alignment/realhammermotion/finalerror1/alive/fidelity.
+  Nominal600referencefast gate,baseline299+30original vs candidate299+
+  atmost30goalsteps,6rollouts/max2516control+720reset/180work/210ownedsecs,
+  variableearlystop explicit/equalmax329notterminaltimes. Oldprefix/
+  300response/base329exact. Pass onlylater causalphaseDESIGN, no labels/
+  fullrecovery/learning. No target/tolerance/gain/duration scan, second
+  goal/terminalmacro/phasejump/closed751retry; fixedcap not pulse-length
+  sweep. PAUSED1791163335.8149176,7closed$0.456424187,ledgerunchanged.
+  Evidence: artifacts/hammer_followthrough_probe_20261005_v1/verification.json
+  and handoff_review.json.
+
+- **Closed frozen single-release follow-through, completed above:** matched299prefix/preinput
   localtest passes actualrelease: hammerquerytrue->false/travel0->4.474497,
   targeterror14.708234->11.145062 belowcommonpre/baselinepost.
   Tipdelta(-4.049067,+1.904252),bodydifference~4e-13/notmeaningfullift.

@@ -467,3 +467,8 @@ reduced target error, with no meaningful incremental body lift. A separate
 single-pulse follow-through test is admitted next, with unchanged feedback
 and noise, no second release or automatic terminal macro. Labels and
 learning remain blocked pending recovery and full causal validation.
+The fixed751 single-pulse continuation fails both ledge holds, retaining11
+in both arms. The tip stays free initially but timed later strokes move away
+from the incomplete release goal. The next separate local test qualifies
+actual hammer-target completion with a bounded observed phase, not release
+alone or pulse-duration tuning. Body recovery and learning remain unproved.

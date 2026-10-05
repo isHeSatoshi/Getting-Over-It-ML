@@ -42,7 +42,73 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current result: single hammer-world action releases lower plant, recovery untested
+## Current result: single release follow-through fails acquisition, completion-phase next
+
+Separately frozen single-release FOLLOW-THROUGH completed. Nominal600gate,
+knownfailednoise13105/reset14001 originalversus sameONEtick300worldgoal
+override after299exactordinarysteps, then unchanged contactcontroller/
+continuousnoise throughfixed751. No secondrelease, terminalmacro, extra
+targets/gains/caps/proxychanges, placement or closed9case retry.
+
+| Reference arm | Final body | Retained gain | Central/secondary held |
+|---|---|---|---|
+| Original contact controller |(269.481845,32)|11|false/false|
+| One release + original continuation |(269.479241,32)|11|false/false|
+
+Both final90central/secondary supportfalse,0deaths/summits/updates.
+Declaredcentralrecovery/designadmissiongatefalse. Originalnominal600
+central+secondary/gain83 exact. Candidate is a failed pulse+feedback
+diagnostic, not causalcontroller/teacher/corpus/labels or learnedpolicy.
+Originalfresh8/9failedstrictgate and localreleasepass remain immutable.
+
+Controlledtick300localeffect exactlyreproduces: error14.708234->11.145062,
+querytrue->false/travel4.474497, tip(-4.049067,+1.904252),body~4e-13.
+Savedhandoffreview: error tofixedgoal9.504054tick301,14.798242tick302,
+19.645380/24.818840/27.598087ticks303..305 asbasephases300..304advance.
+Hammer remainsquery-free throughout300..305, firstlater queryhit352.
+So this is NOT immediate replanting on the nextstep. The released hammer
+does not complete the fixedreferencegoal before blindly timedlater strokes;
+body falls tolowY32. Laterstates differ betweenarms, so follow-through is a
+wholefeedback-stage comparison, not a directsingle-step bodyeffect or proof
+of the firstfailure's completecause. Queryhits notforces/solverbranch.
+Supplemental savedhandoffinspection adds0gameplay, no timing/tolerance search.
+
+6rollouts/4204control+720reset,owned36.495458seconds within180work/210owned
+caps.41focusedPython+JS pass, controller/physics/metrics unchanged.
+All6rawmilestone/proposed/applied/caseclock histories,3fullbackendpairs,
+all6priornominal/300ticklocalhistories, fullbaseline751 andequal299prefix/
+contrastactualprestate exact. Exactlyonecandidateoverride/backend verified.
+Source/prior/localadmission/plan/scripts/budget/deadline/ownedsecret-stripped
+child/durabletrace/cleanup bindings pass.
+Evidence: `artifacts/hammer_followthrough_probe_20261005_v1/verification.json`
+and `handoff_review.json`.
+
+Independently privatePAUSED1791163335.8149176;80444390source,
+onstate-20261004-v1/onstate_study/contexted3a53c3/closeddeadline unchanged.
+Ledgerbytespreserved,7closed$0.4564241866528988; no reservation, remote
+write, deployment, publicrelease or substantive localtraining. Goal0.
+
+Next admitted bounded direction: separate observed HAMMER-TARGET completion
+phase, not a pulse-length scan or recoveryretry. Keep ONEfixedrawpriorrow300
+worldgoal/offset0,20/formula/noise andordinary299prefix unchanged. Recompute
+pointer=goal-currentrawbody-offset eachaction, until ACTUALpostrawhammer
+worlderror<=1pixel (existingstroke stationarypositiontolerance), atmost30
+steps/1second, oneattempt/no rearm/caprenewal. Do not count firstqueryrelease
+as completion; no bodyalignment/acquisition implied by tipqualification.
+No laterprior strokes during target stage; no resumedfeedback yet.
+Require causal action/postobserve alignment, legal128axes/reach26..102,
+real hammer motion andfinalerror<=1/no death/fullfidelity, not queryalone.
+Freeze phase/source/work/deadline beforephysics. Nominal600referencefast
+gate, baseline299+30originalcontinuation versus candidate299+atmost30
+completionsteps,6rollouts/max2516control+720reset/180work/210ownedseconds.
+Variablecandidate stoppingexplicit, equalmax329not equalterminaltimes.
+Allprefix/old300response/baseline329histories exact. This pass would admit
+later causal phasecontroller DESIGN only, not fullrecovery/teacher/data/
+learning; bodypath, composition, wholevalidation remainseparate. No new
+goal/tolerance/gain/time scan, terminalmacro, phasejump or failed751plan
+extension. Preserve failures anddo notscale unchangedBC/PPO.
+
+## Prior result: single hammer-world action releases lower plant, recovery untested
 
 Frozen6rollout local one-step contrast completed: nominal600historical gate,
 then ordinary299step originalcontactcontroller/noise13105/reset14001prefix,
@@ -85,7 +151,7 @@ onstate-20261004-v1/onstate_study/contexted3a53c3/closeddeadline unchanged.
 Ledgerbytespreserved,7closed$0.4564241866528988; no reservation, remote
 write, deployment, publicrelease or substantive localtraining. Goal0.
 
-Next admitted bounded direction: separately freeze single-release FOLLOW-
+The historical admitted separate single-release FOLLOW-
 THROUGH, not morelocaltargets. Nominal600referencefast gate; failedcase
 original versus sameone tick300worldgoal override after299exactsteps,
 then unchanged originalcontactcontroller/continuousnoise through fixed751

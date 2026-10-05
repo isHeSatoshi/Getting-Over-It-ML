@@ -190,3 +190,41 @@ Secondary support cannot replace that gate. No second release, terminal
 macro, target, gain or cutoff search. Passing would only admit later causal
 controller design, not teacher labels, corpus or learning. All earlier failed
 gates stay immutable; body lift and recovery remain untested.
+
+## Single-pulse follow-through fails
+
+The separately declared continuation runs both arms to751 ticks with no
+second pulse or terminal macro. Baseline finishes `(269.481845,32)` and
+the pulse branch `(269.479241,32)`, both gain11 and no central or secondary
+hold/final support. No deaths or summits. The strict recovery gate fails;
+neither causal-controller design nor labels/learning is admitted.
+
+The local tick300 release reproduces exactly. Saved post-pulse history has
+fixed-goal error9.504054 at301,14.798242 at302 and27.598087 at305 while
+timed base phases continue advancing. The tip stays query-free through305;
+its first later query hit is352, so immediate replanting is not the observed
+problem. This describes an incomplete target/handoff, not a complete causal
+diagnosis of the earlier failure or a direct one-step body effect.
+
+Six rollouts/4204 controlled+720 reset ticks,36.495458 owned seconds.
+41 focused tests and JS checks, all raw metrics/actions/clocks, three full
+backend pairs and every available historical prefix/baseline pass.
+Evidence: `artifacts/hammer_followthrough_probe_20261005_v1/verification.json`
+and `handoff_review.json`. All earlier closed gates stay unchanged.
+
+Next is a distinct bounded observed hammer-target completion test, not a
+pulse-length search: the same one fixed world goal and pointer formula,
+updated from actual raw body input until post-action hammer error<=1 pixel,
+with at most30 steps/one attempt. The tolerance comes from the existing
+stationary-stroke criterion. Query release alone is not completion, and
+tip completion would not establish body alignment or ledge acquisition.
+No later prior strokes or resumed feedback in this local stage.
+
+Declare nominal600 gate and baseline299+30 versus candidate299+at most30,
+both backends: six rollouts/max2516 controlled+720 reset ticks/180workseconds.
+Candidate early stopping and equal maximum horizon must be explicit.
+Keep legal axes/reach, exact old prefixes/300response/baseline329 and full
+fidelity. Only observed target completion can admit further causal phase
+design; recovery, composition, full validation and learning remain separate.
+No goal/tolerance/gain/cap scans, added macro or extension of the failed751
+experiment.
