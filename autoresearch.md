@@ -65,12 +65,34 @@ errors, one backup per new checkpoint, 300s periodic sync cadence,
 transient retry with backoff (run continues; deadline stays the hard
 bound), durable retries at decision points. No algorithm, gate, reward,
 feature or tolerance changed. 466 active Python tests +16counterJS
-+collisionJS pass; same12inactive residual tests excluded. This fix is
-uncommitted and NOT yet deployed; attempt3 needs a fresh session and
-reservation, never a resume or deadline extension.
++collisionJS pass; same12inactive residual tests excluded. Committed
+`f7b44b0` and deployed as source `978f95ab9c392770ebac303b1bfcbee0156b880f`.
 
-No learned physical outcome exists yet: no first-ledge gate, no Y180
-hold, no deaths/summits measured. Scaffold fidelity and engineering
+## Current run: pilot attempt3 on the backup-fixed source
+
+Session `goal-20261005-v3`, reservation $0.30/10h (deadline
+`1791241138.31`), source `978f95ab`, approved context `5ec69d95`.
+Preflight passed all six checks (466 tests OK remotely) and seed21 is
+retraining from scratch. Monitoring loop `c9115b3b` (30min, read-only
+while running). One bounded pilot; first failed/incomplete seed stops it;
+no resume or extension.
+
+### Recovered attempt2 learned-policy measurements (not a gate result)
+
+Attempt2's killed evaluation still uploaded 9/10 per-tick traces from
+ordinary spawn (3600 ticks each, measured from raw states; evidence
+`artifacts/goal_deploy_20261005_v2/trace_analysis/evaluation_trace_analysis.json`).
+The learned policy moved from spawn (0,21) to Y≈100, X≈280 in the nominal
+and most noise cases: nominal path length 13969 units, final (280.5,88.8),
+net +67.8; noise_0 +76.9; noise_1 +79.6; right +52.8. Two perturbed cases
+stalled near spawn (left +(-1), noise_3 +2). It never entered the first
+ledge box (305-335,100-112): 0 ledge ticks in every case, no holds, no
+deaths, no summits. So: real repeated climbing to ~Y100 from spawn, but
+the nominal first-ledge gate was NOT met, and this is a partial,
+infrastructure-interrupted evaluation, not a validated result.
+
+No learned physical gate result exists yet: no first-ledge gate, no Y180
+hold, no deaths/summits measured by a completed evaluation. Scaffold fidelity and engineering
 checks are not learned progress. Original summit metric remains zero.
 
 ## Prior attempt: goal pilot attempt1 stopped at seed21 checkpoint bug (fixed, deployed in attempt2)
