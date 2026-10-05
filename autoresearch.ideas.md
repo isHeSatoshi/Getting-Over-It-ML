@@ -1,6 +1,35 @@
 # Deferred hypotheses
 
-- **Next OFFLINE lower-support/joint-pose geometry audit, not proxy retry:**
+- **Next NEW zero-residual learning scaffold, no training yet:**
+  One-selectorlower-supportaudit completed6traces2536rows/5.029s/
+  0newphysics. Selectsnominal362 stationaryblockedtip291.914,69.795,
+  SAMEpreviousfailedpoint; actualsourcebody69.776→76.699 whilefailed32.
+  Legal44.279reach butpoint37.795abovefailedbody, mismatch38.074,
+  supportdesignfalse/alphafootprint0. No fallback/retarget/querygain/cap
+  retry. Rejectstaticpoint-transfer route, not universalimpossibility.
+  PivotIMPLEMENT/unit/offline/physicalsmoke residualscaffold around
+  UNCHANGEDcontact_timed_feedback prior/horizon1800/frame1. Actor222=
+  raw217+explicitclampedphase1+baseproposal2+pastOWNissuedfinalcommand2.
+  No livecounteroracle/seed/future noise; new222RMS, old217notreused.
+  Residual2axes[-1,1], finalfloat32clip(base+2*residual,-1,1). Zeroactor
+  actionexactbaseline; correctioncanoverride, notnorm16boxed. All
+  residual/base/finalissued/applied fieldsseparate/actionobserve/prepost/
+  reset/copies/budget tested. No originalphysics/rewards/sourcecontrols
+  edits, no labels/optimizer/candidate competence claims.
+  Offlinezero600nominal/savedfailedbasecontrols parity thenfreshfreeze
+  baselinevszero-scaffold nominal600/ref-fast4rollouts/max2400control+
+  480episode+240bootstrap=720TOTALreset/180work210ownedsecs. Allraw217/
+  physical/action/reward/baseclock exact, actor222contexthonestcausal.
+  Onlyaftergate NEWresidualPPO remotecontract/freshsession/source/
+  reservation/preflight/deadline/3seeds/fixed9cases matchedzero baseline,
+  meanhead0/logstdlog(.01), saved222RMS+prior/scaffold/clockmemory.
+  Paidworklimitschosenfutureplan, notactive/reservednow. Learnedbenefit
+  mustbeat SAMEhanddesignedzeroactor baseline; no handcodedholdsasML
+  progress/no counterlabels/data-gate bypass/oldbatchresume/BCscale.
+  Goal0/PAUSED1791178827.282319/$0.456424187closed.
+  Evidence: artifacts/lower_support_audit_20261005_v1/verification.json.
+
+- **Closed lower-support/joint-pose geometry audit, completed above:**
   Validated6instrumentedtraces2536rows attribution verified3.331s/180cap/
   0newphysics. Failedcontact8 ALLfree_hammer/blocked0, includingbothpost
   queriesat332–333; contrast334 bothfree/wall1, baseline2pressure4

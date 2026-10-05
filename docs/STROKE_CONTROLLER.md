@@ -66,6 +66,15 @@ pot right/up, but from a different high body pose. Counts are path evidence,
 not forces or a matched proof that this plant works from the failed pose.
 Evidence: `artifacts/branch_attribution_audit_20261005_v1/verification.json`.
 
+The selected earlier support event still uses the same failed upper point,
+from a body nearly38 pixels higher. Its legal reach does not establish
+support from the low failed pose; the copied-point hypothesis is rejected.
+Next implement a separately named residual-learning scaffold around the
+unchanged legal contact-feedback prior, with exact zero-actor baseline
+fidelity and explicit clock/own-command context. Hand-designed baseline
+holds must not be reported as learning. No training is admitted yet.
+Evidence: `artifacts/lower_support_audit_20261005_v1/verification.json`.
+
 Original Scratch Player blocks `bF`/`bG` request
 `0.4 * (pointer - hammer_world + body_world + render_offset)`.
 The original 40-unit change limit, 50-unit motor limit, 26..102 reach and

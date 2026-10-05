@@ -701,3 +701,31 @@ and reach from the failed low pose before any different plant hypothesis.
 No query-controller tuning or privileged branch feedback. A new support
 law still needs renderer contact and matched actual body authority,
 then retained recovery, fresh whole-controller validation and data gates.
+
+## Lower-support check rejects the copied-point route
+
+The single predeclared selector finds nominal step362, a stationary
+blocked-body event with actual pot movement `(+1.689555,+6.923428)`.
+Its hammer anchor is the same `(291.913597,69.795227)` point already
+tested unsuccessfully, not a new lower support.
+
+From the failed pot atY32, that anchor is37.795227 pixels above the
+body. It is legally reachable, but the source body starts nearY69.776,
+38.073514 pixels from the failed pose. Below the source post-body does
+not mean below the failed body. The lower-support design gate fails.
+No alternative target, selector or gain/cap retry follows.
+
+2536 saved rows,5.028816 seconds, zero new gameplay/reset/updates.
+Three backend pairs, reach/collider and scalar/vectorized approximate
+terrain checks verify. The approximate footprint has zero hits and is
+not renderer authority. HF remains PAUSED; ledger unchanged.
+Evidence: `artifacts/lower_support_audit_20261005_v1/verification.json`.
+
+This rules out the selected copied-point hypothesis, not climbing itself.
+The next direction moves away from query-proxy refinements to a separately
+declared zero-initialized residual-learning scaffold around the legal
+contact-feedback prior. Its initial hand-designed holds cannot count as
+learning. First require exact zero-residual baseline fidelity and explicit
+causal clock/own-command input, then a fresh remote learning contract.
+Any learner claim must improve physical outcomes over the same scaffold
+with a zero actor. No training or new climbing progress occurred here.

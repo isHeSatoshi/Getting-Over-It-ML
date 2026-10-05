@@ -42,7 +42,89 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current result: validated counters identify the failed query proxy's free-hammer path
+## Current result: copied-point lower-support hypothesis rejected; pivot away from proxy tuning
+
+Completed the frozenone-selector180second OFFLINE lower-support audit:
+6validatedinstrumentedtraces/2536rows, independentlyverified5.028816s,
+0newplay/reset/updates. Firstqualifying sourceevent incontrolled300..366
+is362/source361: blockedbody1, stationarytip(291.913597,69.795227),
+body(264.092617,69.775751)→(265.782172,76.699179), delta
+(+1.689555,+6.923428). Nextsaved363 repeatsblocked/stationarytip and
+bodydy+6.859745. This isrealrecordedsource motion, NOT newrecovery.
+
+It selects EXACTLYthe sameupperpoint alreadyapproached unsuccessfully,
+not a newlowerplant. Fromfailed333body(268.844997,32), relativepoint
+(23.068600,37.795227), reach44.279109/legalpointer(23.068600,17.795227).
+Pointis37.795227ABOVEfailedbody, thoughbelowsourcepostbody76.699.
+Sourceprebody mismatch38.073514pixels. One-supportdesigngatefalse:
+legalreach andnominalblockedmotion doNOT justify transplanting the
+source support geometry tolowfailedpose. Alpha9x9footprint0; bodySVG/
+hammerbbox/selectedcolumns scalar/vectorizedexact, stillapproximate/
+notrendererauthority. No alternative selector, pointscan, downwardnudge,
+query/persistence/pressuregain/cap/phase retry. Rejectthiscopiedpoint/
+lower-support hypothesis; do not generalizephysicalimpossibility.
+
+Priorrealoutcomes unchanged: nominalgain83/bothholds, failedgain11/
+noholds, no reliabletrainedclimber ororiginalsummit. No newdeaths/
+summits/optimizerupdates/teacherlabels. Primarygoal0. This is a decision
+to stopanunproductive controller-refinement route, not climbingprogress.
+Source/project/asset/traces/fidelity+attributionreview/scripts/plan/budget/
+deadline bound,3backendpairs exact/1974totalalphaqueries. Evidence:
+`artifacts/lower_support_audit_20261005_v1/verification.json`.
+IndependentprivatePAUSED1791178827.282319/source80444390/sessiononstate-
+20261004-v1/modeonstate_study/contexted3a53c3/closeddeadline unchanged.
+Ledgerbytespreserved,7closed$0.4564241866528988; no remote write/
+deployment/publicrelease/paidreservation/substantivelocaltraining.
+
+## Next meaningful direction: zero-residual learning scaffold, not another contact audit
+
+Pivotto a NEW residual-PPO design thatstarts fromthe existinglegal
+contact_timed_feedback prior rather than askingimitation torediscover
+anunstableopen-loop stroke. No traininglaunched, paidbatchplannedas
+active, or newclimbing/learning successclaim. The scaffold is explicitly
+hand-designed: itszeroactor performance cannotcountas learnedprogress.
+Require improvementoverthis SAMEzeroactor baseline before claiming
+any learner benefit. No supervisedcounterlabels or teacherdata-gate bypass.
+
+Nextboundedchunk IMPLEMENT/UNIT/OFFLINE/PHYSICSSMOKE only, nooptimizer:
+oneper-tick statefulresidual scaffold aroundUNCHANGED StrokeController
+modecontact_timed_feedback, ordinaryspawn/frame1/horizon1800. Actorinput
+222float32 =raw217 +explicitcausalclampedsourcephase1+currentbaseproposal2+
+previousOWNissuedfinalcommand2. Allprivateclock/history nowexplicit,
+no case/seed/future noise/branchcounter/force oracle. NewactorRMS222;
+old217RMS/checkpoints NOTsilentlyreused. Actorcommand2 normalizedresidual
+axes[-1,1]; finallegal action=float32clip(baseproposal+2*residual,-1,1).
+Thus zeroresidualdeterministicactor exactlypreserves baselineactions,
+while learnedcorrection canoverride ratherthanbeing trappedbynorm16.
+No originalmotor/reach/physics/reward changes. Trackproposedresidual,
+baseproposal, finalissued andactualappliedcontrols separately; ignored/
+clippedproposalnot physicalteacherlabel. Exactlyaction/actualobserve/
+preposthistory/reset/horizon guards.
+
+Tests forzeroactionparity/residualbounds/copies/owncommandhistory/
+clockalignment/reset/terminal/nonfiniteinputs andexplicit222contract first.
+Offline all600nominal prioractions+savedknownfailure contactbasecontrols
+mustmatch unchangedbasewhenresidual0. Freezea fourrollout baseline vs
+zeroresidual scaffold nominal600 onreferencefast, max2400controlled+
+480episode+240bootstrap=720TOTALreset/180work210ownedseconds. ALLold/new
+actions/physics/rewards/raw217/base clocks exact, actor222context causal
+andseparatefromlegacyobservations. No learnerupdates/modelcompetence
+or countsofhanddesignedholdsaslearnergain.
+
+Onlyafter that implementation/fidelitygate: a NEWremotefresh residual
+PPO contract/session/reservation/preflight/deadline may be prepared,
+atleast3trainingseeds and matchedzeroactor baseline/fixed9case physical
+evaluations. Meanheadinitializedzero, logstdlog(.01) withresidualscale2
+(initialappliedstd.02beforeclipping), savedmatching222normalizer plus
+hashedlegalprior+scaffold+ownmemory/sourceclock provenance. Warm-up
+ignored controls nottraininglabels; no interruptedSAC/closedsessionresume.
+Choose sample/update/batch/cost limits onlyin that future frozenplan,
+no blindoldBC/PPO scaling. Report learned IMPROVEMENT in physicalholds/
+retainedheight/deaths/completions beyondbaseline, not rewards ordebug
+checks; fullsummit/multiple-seed/heldout/upperroute/savedpolicy goalfixed.
+No paidtraining today, no newprovider/GPU, no operatorcancellation.
+
+## Prior result: validated counters identify the failed query proxy's free-hammer path
 
 Frozen180second OFFLINE attribution of6INSTRUMENTEDsavedtraces/2536rows
 independentlyverified3.330535seconds,0newplay/reset/updates. Priorcounter
