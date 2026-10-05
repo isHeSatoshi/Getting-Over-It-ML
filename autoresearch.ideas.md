@@ -1,5 +1,17 @@
 # Deferred hypotheses
 
+- **Scale probe v4 decision framework (predeclared 2026-10-06):**
+  PASS (nominal first-ledge + >=8/10 + Y180 hold90): replicate seeds22/23
+  in separate bounded batches, declare the20-case held-out set BEFORE
+  evaluating the chosen checkpoint, then upper-route fidelity and saved
+  closed-loop replay. FAIL with the same fixed-point collapse: candidate
+  causes to test one at a time - (a) curriculum goal resampling when a
+  suffix makes no progress for N ticks, (b) finer goals/scale near the
+  ledge lip (x300-340), (c) entropy floor or higher target entropy at the
+  collapse, (d) demonstration-seeded prefix practice for the lip
+  maneuver. FAIL with a new failure mode: diagnose from the pinned trace
+  before changing anything.
+
 - **Scale probe attempt4 declared (2026-10-06): 480k learner, seed21 only:**
   User goal now explicitly "make it win" (solve the game). Attempt3 failed
   gates with fixed-point collapse; probe raises learner160k->480k (max
