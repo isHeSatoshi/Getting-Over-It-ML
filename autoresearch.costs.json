@@ -453,6 +453,26 @@
         "pilot_gate_passed": false,
         "conclusion": "Demo seeding improved retention (all 10 cases positive vs 4/10 in v4) but still no ledge hold; the ledge-wall swing remains unsolved"
       }
+    },
+    {
+      "session": "goal-20261006-v6",
+      "space": "isHeSatoshi/rl-over-it-poc-20261004",
+      "tier": "cpu-upgrade",
+      "start_epoch": 1791282917.2649393,
+      "deadline_epoch": 1791318917.2649393,
+      "rate_per_hour": 0.03,
+      "maximum_estimated_compute_cost": 0.3,
+      "verified_end_epoch": null,
+      "status": "reserved_preflight",
+      "source_space_revision": "f973d07a7f21855162bf222ab4fccd9f372dca43",
+      "actual_billed_cost_known": false,
+      "study": "legal-prefix-goal-sac-her-demo-seed-v2",
+      "pricing_last_verified": "2026-10-06",
+      "pricing_evidence_url": "https://huggingface.co/pricing",
+      "reservation_evidence": "artifacts/goal_deploy_20261006_v6/reservation.json",
+      "sleep_policy": "paid_default_never",
+      "source_bundle": "artifacts/hf_bundle_20261006T103441120972Z",
+      "change": "demo burst cap 60->180 so one burst covers the full ~123-tick wall->ledge swing"
     }
   ],
   "postclosure_local_diagnostics": [

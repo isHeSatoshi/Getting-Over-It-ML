@@ -97,8 +97,13 @@ wall->ledge swing plus margin. Everything else - match threshold10.0,
 burst probability0.0033/eligible tick, reward,620 stack, HER,
 legal-prefix curriculum, archive, ten cases, physical gates, physics cap,
 SAC settings, $0.30/10h reservation and learned-only evaluation - is
-identical to attempt5. Session `goal-20261006-v6`, source TBD; preflight
-must pass all six checks on the new source before training approval.
+identical to attempt5. Session `goal-20261006-v6`, source
+`f973d07a7f21855162bf222ab4fccd9f372dca43`, reservation
+start1791282917.26/deadline1791318917.26 at $0.03/h ($0.30 max), preflight
+passed all six checks (470 tests OK remotely), approved context `b52f8364`,
+seed21 training started 2026-10-06 16:11Z. Monitoring loop `d99f4352`
+(30min, read-only while running). Evidence
+`artifacts/goal_deploy_20261006_v6/`.
 
 ## Prior attempt: demo-seeded probe attempt5 launch record (superseded)
 
