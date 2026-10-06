@@ -76,9 +76,13 @@ used in scoring, and no teacher action, prefix or playback appears in any
 scored case. Transitions remain real physics with real rewards, so this is
 exploration seeding, not imitation.
 
-Launch record: session `goal-20261006-v5`, source TBD, reservation
-$0.30/10h; preflight must pass all six checks on the new source before
-training approval. Monitoring loop created per protocol.
+Launch record: session `goal-20261006-v5`, source
+`f0e85e73cc7a756609b99f48698d18be717c5f85`, reservation
+start1791250237.82/deadline1791286237.82 at $0.03/h ($0.30 max), preflight
+passed all six checks (470 tests OK remotely), approved context `7718dd71`,
+seed21 training started 2026-10-06 07:05Z. Monitoring loop `4b819358`
+(30min, read-only while running). Evidence
+`artifacts/goal_deploy_20261006_v5/`.
 
 ## Prior attempt: scale probe attempt3-era launch record (superseded)
 
