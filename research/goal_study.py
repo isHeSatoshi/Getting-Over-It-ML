@@ -3,21 +3,21 @@ import json
 
 from research.evaluation_cases import EvaluationCase
 
-VERSION = "legal-prefix-goal-sac-her-demo-seed-v1"
+VERSION = "legal-prefix-goal-sac-her-demo-seed-v2"
 SEEDS = (21,)
-# Demo-seeded exploration probe: the 480k scale probe failed the same
-# fixed-point collapse as 160k. Measured exploration sigma at target
-# entropy -2 is ~0.09 while the demo's own actions are sigma~0.5, so pure
-# exploration cannot sample the ledge swing. Training now mixes coherent
-# demonstration-action bursts (state-matched) into exploration; evaluation
-# remains learned-only and every gate, case and cap is unchanged.
+# Demo-seeded exploration probe v2: v5 showed demo seeding improves
+# retention (all10 cases positive, nominal+43.5) but never a ledge hold.
+# Diagnosis: the wall->ledge swing spans demo indices318-441 (~123 ticks)
+# while bursts capped at60, so the swing was always fragmented. v6 raises
+# the cap to180 so one burst covers the full swing plus margin; every
+# other setting, case, gate and cap is unchanged.
 MAX_LEARNER = 480000
 MAX_PHYSICS = 1200000
 MAX_CYCLES = 237952
 MAX_PREFIX = 1800
 SUFFIX_TICKS = 600
 DEMO_MATCH_THRESHOLD = 10.0
-DEMO_BURST_TICKS = 60
+DEMO_BURST_TICKS = 180
 DEMO_BURST_START = 0.0033
 CASES = (
     EvaluationCase("nominal", 18001),
@@ -30,12 +30,12 @@ CASES = (
 def plan():
     return json.loads(json.dumps({
         "version": VERSION, "seeds": list(SEEDS),
-        "scale_probe": {"kind": "demo-seeded-exploration", "baseline_learner_transitions": 160000,
-                        "note": "Single-seed probe. Adds state-matched demonstration-action bursts as "
-                                "training exploration (target entropy -2 gives sigma~0.09, the demo's own "
-                                "actions are sigma~0.5, so pure exploration cannot sample the ledge swing). "
-                                "Reward, feature set, cases, physical gates, physics cap, SAC settings and "
-                                "learned-only evaluation are unchanged."},
+        "scale_probe": {"kind": "demo-seeded-exploration-v2", "baseline_learner_transitions": 160000,
+                        "note": "Single-seed probe. State-matched demonstration-action bursts as training "
+                                "exploration with a180-tick cap so one burst covers the full ~123-tick "
+                                "wall->ledge swing (v5 used60 and fragmented it). Reward, feature set, "
+                                "cases, physical gates, physics cap, SAC settings and learned-only "
+                                "evaluation are unchanged."},
         "demo_seed": {"match_threshold": DEMO_MATCH_THRESHOLD, "burst_ticks": DEMO_BURST_TICKS,
                       "burst_start_probability_per_eligible_tick": DEMO_BURST_START,
                       "matcher": "nearest of600 nominal demo states on the position-weighted clipped "

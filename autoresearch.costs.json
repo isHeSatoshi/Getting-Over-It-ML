@@ -421,8 +421,8 @@
       "deadline_epoch": 1791286237.8152866,
       "rate_per_hour": 0.03,
       "maximum_estimated_compute_cost": 0.3,
-      "verified_end_epoch": null,
-      "status": "reserved_preflight",
+      "verified_end_epoch": 1791282651.9006462,
+      "status": "demo_seed_probe_completed_gates_failed",
       "source_space_revision": "f0e85e73cc7a756609b99f48698d18be717c5f85",
       "actual_billed_cost_known": false,
       "study": "legal-prefix-goal-sac-her-demo-seed-v1",
@@ -431,7 +431,28 @@
       "reservation_evidence": "artifacts/goal_deploy_20261006_v5/reservation.json",
       "sleep_policy": "paid_default_never",
       "source_bundle": "artifacts/hf_bundle_20261006T013005017509Z",
-      "demo_seed_probe": "state-matched demo-action bursts during training exploration only; evaluation/gates/caps unchanged"
+      "demo_seed_probe": "state-matched demo-action bursts during training exploration only; evaluation/gates/caps unchanged",
+      "estimated_elapsed_compute_cost_upper_bound": 0.2701173779964447,
+      "termination": "Demo-seeded exploration probe completed the full training contract and the complete learned-only 10-case evaluation; physical gates failed (0/10 first-ledge, no Y180 hold); no deaths/summits; all cases retained positive height (2.0-43.5) instead of collapsing to spawn; auto-paused; PAUSED verified",
+      "end_evidence": "artifacts/goal_deploy_20261006_v5/complete_review/close.json",
+      "end_artifact_revision": "f5134add0081d0ce1a929e3ccbb9783154d3cd6a",
+      "probe_result": {
+        "seed": 21,
+        "learner_transitions": 480000,
+        "sac_cycles": 237952,
+        "training_complete": true,
+        "stop_reason": "learner_limit",
+        "demo_seed_learner_transitions": 51632,
+        "physics_total": 1016407,
+        "first_ledge_successes": 0,
+        "cases": 10,
+        "nominal_height180_hold90": false,
+        "deaths": 0,
+        "summits": 0,
+        "physical_gate_passed": false,
+        "pilot_gate_passed": false,
+        "conclusion": "Demo seeding improved retention (all 10 cases positive vs 4/10 in v4) but still no ledge hold; the ledge-wall swing remains unsolved"
+      }
     }
   ],
   "postclosure_local_diagnostics": [

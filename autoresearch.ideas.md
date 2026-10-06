@@ -1,6 +1,17 @@
 # Deferred hypotheses
 
-- **Demo-seeded exploration probe v5 implementing (2026-10-06):**
+- **v5 result: demo seeding improved retention, not the ledge; burst-truncation diagnosed:**
+  Session goal-20261006-v5, closed $0.27012 of $0.30. Full 480k contract,
+  51632 demo-seeded learner ticks (10.8%), complete learned-only eval:
+  still 0/10 ledge, no Y180, 0 deaths/summits - but ALL 10 cases positive
+  (2.0-43.5; nominal 43.5 = best nominal of any attempt, vs +8.9 v4, -2 v3).
+  Archive best still scaffold (parent=None). Training trace maxY168.2,
+  maxX856.5. Diagnosis: the wall->ledge swing spans demo indices318-441
+  (~123 ticks) but bursts cap at60 ticks, so the swing is always
+  fragmented (~300 expected ticks between bursts). v6 single change:
+  burst_ticks 60->180 (full swing + margin). All else unchanged.
+
+- **Demo-seeded exploration probe v5 launched (2026-10-06):**
   v4 falsified the scale hypothesis: 480k learner/237952 cycles full
   contract, 0/10 ledge, best route never improved (parent=None), six cases
   ended at exactly +27 (the wall below the ledge). Exploration sigma ~0.09

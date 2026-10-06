@@ -174,18 +174,29 @@ the demonstration's own actions are sigma~0.5 (max1.0), so pure Gaussian
 exploration essentially cannot sample the coordinated ~120-tick
 ledge-wall swing at (279,48)->(322,104). Closed $0.18862 of $0.30.
 
-## Demo-seeded exploration probe attempt 5 (2026-10-06)
+## Demo-seeded exploration probe attempt 5 result (2026-10-06)
 
-One declared change: `research/goal_demo.py` matches the current actual
-raw217 state to the nearest of the600 nominal demonstration states on the
-position-weighted clipped normalized kinematic13 metric and, with
-probability0.0033 per eligible training tick, issues demonstration
-actions for a burst of up to60 ticks (abandoned when no demo state is
-within threshold10.0). Transitions remain real physics with real rewards
-and the issued action is what gets stored, so this is exploration seeding,
-not imitation. Evaluation is unchanged learned-only play with no teacher
-actions, prefixes or playback; all cases, gates, caps and SAC settings are
-identical to attempt4.
+Session `goal-20261006-v5` ran the full480k contract with51632 demo-seeded
+learner ticks (10.8%) and the complete learned-only ten-case evaluation:
+**still 0/10 first-ledge holds, nominal Y180 false, 0 deaths, 0 summits** -
+but all ten cases retained positive height (2.0-43.5; nominal +43.5, the
+best nominal of any attempt) instead of collapsing to spawn. The archive's
+best route never improved from the scaffold (parentNone). Training-time
+suffixes reached maxY168.2 and maxX856.5 with demo help.
+
+Diagnosis: the wall->ledge swing spans demo indices318-441 (~123 ticks)
+while bursts were capped at60 ticks, so the swing was always fragmented -
+roughly60 demo ticks, then ~300 expected ticks before the next burst. The
+policy almost never observed a complete swing transition.
+
+## Demo-seeded exploration probe attempt 6 (2026-10-06)
+
+One declared change (`legal-prefix-goal-sac-her-demo-seed-v2`): the burst
+cap rises60 ->180 ticks so one burst covers the full ~123-tick swing plus
+margin. Every other setting - match threshold, burst probability, reward,
+620 stack, HER, legal-prefix curriculum, archive, ten cases, physical
+gates, physics cap, SAC settings and learned-only evaluation - is
+identical to attempt5.
 
 ## Validation performed
 

@@ -71,20 +71,36 @@ height): ledge height reached, ~25 units short horizontally. Attempt2's
 partial traces briefly touched Y~100.6 at X281.1 (infrastructure-
 interrupted, not a gate result).
 
-## Current run: demo-seeded exploration probe attempt5
+## Result: demo-seeded probe attempt5 - retention improved, ledge still unsolved (2026-10-06)
 
-One declared change (contract version `legal-prefix-goal-sac-her-demo-seed-v1`):
-training exploration now mixes state-matched demonstration-action bursts
-(`research/goal_demo.py`). With probability0.0033 per eligible tick, a burst
-of up to60 ticks issues the demo action nearest the current actual state on
-the position-weighted clipped normalized kinematic13 metric, abandoning the
-burst when no demo state is within threshold10.0. Everything else is
-unchanged: 480k learner/1.2M physics caps, SAC settings, reward,620 stack,
-HER, legal-prefix curriculum, archive, ten cases, physical gates and
-$0.30/10h reservation. Evaluation stays learned-only - the matcher is never
-used in scoring, and no teacher action, prefix or playback appears in any
-scored case. Transitions remain real physics with real rewards, so this is
-exploration seeding, not imitation.
+Session `goal-20261006-v5`, source `f0e85e73`: full 480k training contract
+with 51632 demo-seeded learner ticks (10.8% of learner ticks) and the
+complete learned-only 10-case evaluation: **still 0/10 first-ledge, no
+Y180 hold, 0 deaths, 0 summits** - but ALL ten cases retained positive
+height (2.0-43.5; nominal +43.5, the best nominal of any attempt, vs +8.9
+in v4 and -2 in v3) instead of collapsing to spawn. The archive best
+route still never improved from the scaffold (parent=None). Training-time
+suffixes reached maxY168.2 and maxX856.5 with demo help. Closed $0.27012
+of $0.30 (cumulative $1.10415); PAUSED verified; loop cancelled; journal
+run96.
+
+Diagnosis: the wall->ledge swing spans demo indices318-441 (~123 ticks)
+while bursts were capped at60 ticks, so the swing was always fragmented
+(~300 expected ticks between bursts). The policy almost never observed a
+complete swing transition.
+
+## Current run: demo-seeded probe attempt6 (burst cap 60->180)
+
+One declared change (`legal-prefix-goal-sac-her-demo-seed-v2`): the demo
+burst cap rises60 ->180 ticks so one burst covers the full ~123-tick
+wall->ledge swing plus margin. Everything else - match threshold10.0,
+burst probability0.0033/eligible tick, reward,620 stack, HER,
+legal-prefix curriculum, archive, ten cases, physical gates, physics cap,
+SAC settings, $0.30/10h reservation and learned-only evaluation - is
+identical to attempt5. Session `goal-20261006-v6`, source TBD; preflight
+must pass all six checks on the new source before training approval.
+
+## Prior attempt: demo-seeded probe attempt5 launch record (superseded)
 
 Launch record: session `goal-20261006-v5`, source
 `f0e85e73cc7a756609b99f48698d18be717c5f85`, reservation

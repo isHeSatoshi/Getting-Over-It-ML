@@ -36,15 +36,14 @@ Implemented entrypoints:
 Private HF Space: `isHeSatoshi/rl-over-it-poc-20261004`.
 Private artifact dataset: `isHeSatoshi/rl-over-it-research-artifacts`.
 Use existing authenticated CLI/API; never print credentials or publish.
-Last verified state (2026-10-06): Space PAUSED, eleven reservations closed,
-conservative compute estimate about$0.8340 (not a bill). Attempts3/4 both
-completed full training plus learned-only evaluation and both failed the
-physical gates (0/10 first-ledge, no Y180 hold); 3x data did not fix the
-fixed-point collapse. The demo-seeded exploration probe v5 (contract
-`legal-prefix-goal-sac-her-demo-seed-v1`) adds state-matched demonstration
-bursts to training exploration only, with evaluation, cases, gates and
-caps unchanged. Do not reopen old source/session deadlines, resume
-interrupted work, or relaunch without explicit authorization.
+Last verified state (2026-10-06): Space PAUSED, twelve reservations closed,
+conservative compute estimate about$1.1042 (not a bill). Attempts3/4 failed
+the physical gates outright; attempt5 (demo-seeded exploration) improved
+retention but still 0/10 first-ledge. Attempt6 (contract
+`legal-prefix-goal-sac-her-demo-seed-v2`) raises the demo-burst cap60->180
+ticks so one burst covers the full wall->ledge swing; evaluation, cases,
+gates and caps unchanged. Do not reopen old source/session deadlines,
+resume interrupted work, or relaunch without explicit authorization.
 
 1. Run active tests and both JS checks. Windows CUDA import may exhaust
    paging capacity; the isolatedCPU validation Python is
