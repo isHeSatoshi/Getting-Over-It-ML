@@ -1,5 +1,21 @@
 # Deferred hypotheses
 
+- **Demo-seeded exploration probe v5 implementing (2026-10-06):**
+  v4 falsified the scale hypothesis: 480k learner/237952 cycles full
+  contract, 0/10 ledge, best route never improved (parent=None), six cases
+  ended at exactly +27 (the wall below the ledge). Exploration sigma ~0.09
+  vs demo sigma ~0.5. v5 adds state-matched demo-action bursts during
+  training only (prob0.0033/eligible tick, bursts<=60 ticks, threshold10.0
+  on the position-weighted clipped normalized kinematic13 metric).
+  Evaluation/gates/caps unchanged, learned-only. If v5 still fails the
+  ledge gate: next candidates are (a) denser route goals near the wall,
+  (b) stagnation resampling, (c) entropy floor - one change per probe.
+  A pass is still pilot-only; the win needs the 3-seed summit program.
+
+- **Scale probe v4 result: falsified (kept for reference):**
+  Session goal-20261006-v4 closed $0.18862; full training+eval; same
+  0/10 gates; diagnosis: never produced a stable hold above Y104.
+
 - **Scale probe v4 decision framework (predeclared 2026-10-06):**
   PASS (nominal first-ledge + >=8/10 + Y180 hold90): replicate seeds22/23
   in separate bounded batches, declare the20-case held-out set BEFORE

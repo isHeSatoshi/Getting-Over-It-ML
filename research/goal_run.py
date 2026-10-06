@@ -40,7 +40,10 @@ def main():
     from research.study_metrics import enable_platform_support
     import stable_baselines3
     current = fingerprint()
-    _, opening, _ = load_prior(args.prior, current)
+    observations, opening, rms = load_prior(args.prior, current)
+    from research.goal_demo import DemoActionMatcher
+    from research.goal_study import DEMO_BURST_START, DEMO_BURST_TICKS, DEMO_MATCH_THRESHOLD
+    demo = DemoActionMatcher(observations, opening, rms, DEMO_MATCH_THRESHOLD)
     # All preflight physics is conservatively charged to the first seed.
     budget = TickBudget(initial={"preflight": int(preflight_ticks)})
     output = args.output_dir
@@ -57,7 +60,9 @@ def main():
         raw = RealGettingOverItEnv(bridge=bridge, action_mode="absolute", terrain=True, frame_skip=1, horizon=2400)
         enable_platform_support(raw)
         env = GoalEnv(raw, budget=budget)
-        model, targets, summary = train_seed(env, opening, args.seed, training, guard=guard)
+        model, targets, summary = train_seed(env, opening, args.seed, training, guard=guard,
+                                             demo=demo, demo_burst_start=DEMO_BURST_START,
+                                             demo_burst_ticks=DEMO_BURST_TICKS)
         env.close()
     checkpoint = training/summary["checkpoint"]
     saved = verify_checkpoint(checkpoint)

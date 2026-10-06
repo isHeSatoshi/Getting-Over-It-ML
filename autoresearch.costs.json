@@ -372,6 +372,46 @@
         "pilot_gate_passed": false,
         "seeds22_23": "not started per protocol"
       }
+    },
+    {
+      "session": "goal-20261006-v4",
+      "space": "isHeSatoshi/rl-over-it-poc-20261004",
+      "tier": "cpu-upgrade",
+      "start_epoch": 1791227089.3715558,
+      "deadline_epoch": 1791263089.3715558,
+      "rate_per_hour": 0.03,
+      "maximum_estimated_compute_cost": 0.3,
+      "verified_end_epoch": 1791249724.0183496,
+      "status": "scale_probe_completed_gates_failed",
+      "source_space_revision": "24c9dbe99e0d1552f445a7e5ef2b84ddf3057e8f",
+      "actual_billed_cost_known": false,
+      "study": "legal-prefix-goal-sac-her-scale-probe-v2",
+      "pricing_last_verified": "2026-10-06",
+      "pricing_evidence_url": "https://huggingface.co/pricing",
+      "reservation_evidence": "artifacts/goal_deploy_20261006_v4/reservation.json",
+      "sleep_policy": "paid_default_never",
+      "source_bundle": "artifacts/hf_bundle_20261005T190359086226Z",
+      "scale_probe": "480k learner single seed21; 3x attempt3; all gates/settings unchanged",
+      "estimated_elapsed_compute_cost_upper_bound": 0.18862205661535264,
+      "termination": "480k-learner single-seed scale probe completed the full training contract and the complete learned-only 10-case evaluation; physical gates failed (0/10 first-ledge, no Y180 hold); worker auto-paused; PAUSED independently verified",
+      "end_evidence": "artifacts/goal_deploy_20261006_v4/complete_review/close.json",
+      "end_artifact_revision": "4b58413eac4d1b7fc3566760f45ef4b7ca110ab3",
+      "probe_result": {
+        "seed": 21,
+        "learner_transitions": 480000,
+        "sac_cycles": 237952,
+        "training_complete": true,
+        "stop_reason": "learner_limit",
+        "physics_total": 993290,
+        "first_ledge_successes": 0,
+        "cases": 10,
+        "nominal_height180_hold90": false,
+        "deaths": 0,
+        "summits": 0,
+        "physical_gate_passed": false,
+        "pilot_gate_passed": false,
+        "conclusion": "3x learner budget did not resolve the fixed-point collapse; same failure mode as 160k"
+      }
     }
   ],
   "postclosure_local_diagnostics": [

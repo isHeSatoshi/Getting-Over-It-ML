@@ -158,17 +158,34 @@ units short of the ledge box (305-335,100-112). The headed local replay
 collapse after the opening climb. The protocol stopped seeds22/23 and the
 reservation closed at $0.10548 of $0.30.
 
-## Scale probe attempt 4 (2026-10-06)
+## Scale probe attempt 4 result (2026-10-06)
 
-One change from the pilot: learner budget160000 ->480000 transitions
-(maximum inside the unchanged1.2M physics cap), cycles77952 ->237952,
-single seed21. Everything else - SAC settings, reward,620-feature stack,
-HER, legal-prefix curriculum, archive, evaluation cases, physical gates and
-physics cap - is unchanged. Single seed because ~4.7h/seed at the observed
-~60 physics ticks/s makes the three-seed session structure infeasible in
-the ten-hour session. Purpose: test whether three-times data resolves the
-fixed-point collapse and reaches the first-ledge gate. A pass is still
-pilot-only; the full win remains the three-seed summit program.
+Session `goal-20261006-v4` ran the full480k training contract
+(480000/480000 learner, 237952/237952 cycles, 1029289 physics) and the
+complete learned-only ten-case evaluation: **0/10 first-ledge holds,
+nominal Y180 false, 0 deaths, 0 summits**. Six of ten cases ended at
+exactly +27 (the wall below the ledge); nominal +8.9. The archive's best
+route never improved from the scaffold (score104, parentNone): no stable
+hold above Y104 was ever produced. Three times the data did not resolve
+the fixed-point collapse.
+
+Diagnosis: measured exploration sigma at target entropy -2 is ~0.09 while
+the demonstration's own actions are sigma~0.5 (max1.0), so pure Gaussian
+exploration essentially cannot sample the coordinated ~120-tick
+ledge-wall swing at (279,48)->(322,104). Closed $0.18862 of $0.30.
+
+## Demo-seeded exploration probe attempt 5 (2026-10-06)
+
+One declared change: `research/goal_demo.py` matches the current actual
+raw217 state to the nearest of the600 nominal demonstration states on the
+position-weighted clipped normalized kinematic13 metric and, with
+probability0.0033 per eligible training tick, issues demonstration
+actions for a burst of up to60 ticks (abandoned when no demo state is
+within threshold10.0). Transitions remain real physics with real rewards
+and the issued action is what gets stored, so this is exploration seeding,
+not imitation. Evaluation is unchanged learned-only play with no teacher
+actions, prefixes or playback; all cases, gates, caps and SAC settings are
+identical to attempt4.
 
 ## Validation performed
 

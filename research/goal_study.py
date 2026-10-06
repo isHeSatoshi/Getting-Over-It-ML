@@ -1,18 +1,24 @@
-"""Approved goal-conditioned SAC/HER pilot and bounded scale probe; no job is launched by this module."""
+"""Approved goal-conditioned SAC/HER probes; no job is launched by this module."""
 import json
 
 from research.evaluation_cases import EvaluationCase
 
-VERSION = "legal-prefix-goal-sac-her-scale-probe-v2"
+VERSION = "legal-prefix-goal-sac-her-demo-seed-v1"
 SEEDS = (21,)
-# Scale probe: three times the original learner budget inside the unchanged
-# 1.2M physics cap. One seed per session: ~4.7h/seed at the observed ~60
-# physics ticks/s makes the original three-seed session structure infeasible.
+# Demo-seeded exploration probe: the 480k scale probe failed the same
+# fixed-point collapse as 160k. Measured exploration sigma at target
+# entropy -2 is ~0.09 while the demo's own actions are sigma~0.5, so pure
+# exploration cannot sample the ledge swing. Training now mixes coherent
+# demonstration-action bursts (state-matched) into exploration; evaluation
+# remains learned-only and every gate, case and cap is unchanged.
 MAX_LEARNER = 480000
 MAX_PHYSICS = 1200000
 MAX_CYCLES = 237952
 MAX_PREFIX = 1800
 SUFFIX_TICKS = 600
+DEMO_MATCH_THRESHOLD = 10.0
+DEMO_BURST_TICKS = 60
+DEMO_BURST_START = 0.0033
 CASES = (
     EvaluationCase("nominal", 18001),
     EvaluationCase("left", 18001, ((-.75, -.125),)*3),
@@ -24,9 +30,17 @@ CASES = (
 def plan():
     return json.loads(json.dumps({
         "version": VERSION, "seeds": list(SEEDS),
-        "scale_probe": {"kind": "learner-budget-3x", "baseline_learner_transitions": 160000,
-                        "note": "Single-seed probe. Algorithm, reward, feature set, cases, physical "
-                                "gates, physics cap and evaluation are unchanged."},
+        "scale_probe": {"kind": "demo-seeded-exploration", "baseline_learner_transitions": 160000,
+                        "note": "Single-seed probe. Adds state-matched demonstration-action bursts as "
+                                "training exploration (target entropy -2 gives sigma~0.09, the demo's own "
+                                "actions are sigma~0.5, so pure exploration cannot sample the ledge swing). "
+                                "Reward, feature set, cases, physical gates, physics cap, SAC settings and "
+                                "learned-only evaluation are unchanged."},
+        "demo_seed": {"match_threshold": DEMO_MATCH_THRESHOLD, "burst_ticks": DEMO_BURST_TICKS,
+                      "burst_start_probability_per_eligible_tick": DEMO_BURST_START,
+                      "matcher": "nearest of600 nominal demo states on the position-weighted clipped "
+                                 "normalized kinematic13 metric; never used in scoring",
+                      "role": "exploration only; transitions are real physics with real rewards"},
         "algorithm": "SAC", "goal_frame": 155,
         "stack_frames": 4, "observation_dimension": 620, "action": "own absolute float32 pointerBox2",
         "network": [128, 128], "activation": "ReLU", "learning_rate": .0003,

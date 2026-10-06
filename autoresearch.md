@@ -42,29 +42,51 @@ are advisory, not a substitute for independent training-seed replication.
 `tools/research_goal_metrics.py` deliberately never declares the final goal
 verified from standard campaign aggregation alone.
 
-## Current run: scale probe attempt4 (480k learner, seed21 only, gates unchanged)
+## Result: scale probe attempt4 failed the same gates (2026-10-06)
 
-User direction (2026-10-06): "your goal is now to make it win" (win = solve
-Getting Over It: original summit, >=3 seeds, >=80% held-out, fidelity,
-saved replay). Attempt3's completed evaluation failed the physical gates
-with a fixed-point collapse after the opening climb. The next experiment
-declared here is a **scale probe**, not a gate change: one seed, learner
-budget160000 ->480000 transitions (maximum inside the unchanged1.2M
-physics cap), cycles77952 ->237952, contract version
-`legal-prefix-goal-sac-her-scale-probe-v2`. SAC settings, reward,
-620-feature stack, HER, legal-prefix curriculum, archive, evaluation
-cases, physical gates, physics cap and $0.30/10h reservation are unchanged.
-Single seed because ~4.7h/seed at the observed ~60 physics ticks/s makes
-the three-seed session structure infeasible in ten hours. Purpose: does
-three-times data resolve the collapse and reach the first-ledge gate?
-A pass remains pilot-only; the summit win still needs the full three-seed
-program (future seeds/batches under separate bounded authorizations).
+Session `goal-20261006-v4`, source `24c9dbe9`: full 480k training contract
+(480000/480000 learner, 237952/237952 cycles, 1029289 physics) and the
+complete learned-only 10-case evaluation: **0/10 first-ledge, nominal Y180
+false, 0 deaths, 0 summits**. Retained gains: nominal +8.9; six cases ended
+at exactly +27 (the wall below the ledge); right/noise_5 at -3/-2. Three
+times the data did NOT resolve the fixed-point collapse - it made the
+failure more consistent.
 
-Launch record: session `goal-20261006-v4`, source `24c9dbe9`, reservation
+Diagnosis (from pinned evidence): the archive's best route never improved
+from the scaffold (score104, parent=None) - the learner never produced a
+stable hold above Y104 in either budget. The blocker is the (279,48) ->
+(322,104) ledge-wall swing. Measured exploration sigma at target entropy -2
+is ~0.09, while the demonstration's own actions are sigma~0.5 with max1.0,
+so pure exploration essentially cannot sample the coordinated ~120-tick
+swing. Closed $0.18862 of $0.30 (cumulative $0.83403); PAUSED verified;
+loop cancelled; journal run95.
+
+## Current run: demo-seeded exploration probe attempt5
+
+One declared change (contract version `legal-prefix-goal-sac-her-demo-seed-v1`):
+training exploration now mixes state-matched demonstration-action bursts
+(`research/goal_demo.py`). With probability0.0033 per eligible tick, a burst
+of up to60 ticks issues the demo action nearest the current actual state on
+the position-weighted clipped normalized kinematic13 metric, abandoning the
+burst when no demo state is within threshold10.0. Everything else is
+unchanged: 480k learner/1.2M physics caps, SAC settings, reward,620 stack,
+HER, legal-prefix curriculum, archive, ten cases, physical gates and
+$0.30/10h reservation. Evaluation stays learned-only - the matcher is never
+used in scoring, and no teacher action, prefix or playback appears in any
+scored case. Transitions remain real physics with real rewards, so this is
+exploration seeding, not imitation.
+
+Launch record: session `goal-20261006-v5`, source TBD, reservation
+$0.30/10h; preflight must pass all six checks on the new source before
+training approval. Monitoring loop created per protocol.
+
+## Prior attempt: scale probe attempt3-era launch record (superseded)
+
+Session `goal-20261006-v4`, source `24c9dbe9`, reservation
 start1791227089.37/deadline1791263089.37 at $0.03/h ($0.30 max), preflight
 passed all six checks (466 tests OK remotely), approved context `65c97eca`,
-seed21 training started 2026-10-06 00:39Z. Monitoring loop `9092f1f1`
-(30min, read-only while running). Evidence `artifacts/goal_deploy_20261006_v4/`.
+seed21 training started 2026-10-06 00:39Z. Evidence
+`artifacts/goal_deploy_20261006_v4/`.
 
 ## Prior attempt: pilot attempt2 stopped by provider commit rate limit (backup fix f7b44b0)
 

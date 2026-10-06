@@ -106,9 +106,17 @@ def checkpoint(model, curriculum, budget, output, step, optimizer_counts, rng):
 
 
 def train_seed(env, opening_actions, seed, output, *, guard, maximum=MAX_LEARNER,
-               replay_capacity=300000, checkpoint_every=40000, allow_mock=False):
+               replay_capacity=300000, checkpoint_every=40000, allow_mock=False,
+               demo=None, demo_burst_start=0.0, demo_burst_ticks=0):
     require(type(maximum) is int and 1 <= maximum <= MAX_LEARNER,
             "Invalid bounded learner transitions")
+    if demo is not None:
+        require(type(demo_burst_start) is float and 0 < demo_burst_start <= .05
+                and type(demo_burst_ticks) is int and 1 <= demo_burst_ticks <= 600,
+                "Demo seeding needs bounded burst settings")
+    else:
+        require(demo_burst_start == 0.0 and demo_burst_ticks == 0,
+                "Demo burst settings require the state-matched matcher")
     if allow_mock:
         require(getattr(env.env, "pipeline_mock_only", False) and not hasattr(env.env.bridge, "driver"),
                 "Mock optimizer test cannot use original game")
@@ -122,6 +130,7 @@ def train_seed(env, opening_actions, seed, output, *, guard, maximum=MAX_LEARNER
     rng, step, cycles = np.random.default_rng(seed+300000), 0, 0
     last_checkpoint = None
     stop_reason = "learner_limit"
+    demo_seed_learner = 0
     with OptimizerWork(model, "sac") as work:
         while step < maximum:
             guard()
@@ -133,24 +142,39 @@ def train_seed(env, opening_actions, seed, output, *, guard, maximum=MAX_LEARNER
             session = curriculum.start()
             if session is None:
                 continue
+            demo_burst = 0
             model.replay_buffer.begin_suffix()
             observation = session["observation"]
             while env.active and step < maximum:
                 guard()
-                if step < 4096:
-                    issued = rng.uniform(-1, 1, 2).astype(np.float32)
-                else:
-                    issued = model.predict(observation, deterministic=False)[0].astype(np.float32)
                 elapsed = env.suffix_steps
-                applied = session["clock"].apply(issued[None, :], elapsed)[0]
                 warmup = len(session["case"].warmup)*4
                 eligible = elapsed >= warmup
+                seeded = False
+                if demo is not None and eligible:
+                    if demo_burst > 0:
+                        candidate, _ = demo.seed_action(env.raw)
+                        if candidate is None:
+                            demo_burst = 0
+                        else:
+                            issued, seeded, demo_burst = candidate, True, demo_burst-1
+                    if not seeded and demo_burst <= 0 and rng.random() < demo_burst_start:
+                        candidate, _ = demo.seed_action(env.raw)
+                        if candidate is not None:
+                            issued, seeded, demo_burst = candidate, True, demo_burst_ticks-1
+                if not seeded:
+                    if step < 4096:
+                        issued = rng.uniform(-1, 1, 2).astype(np.float32)
+                    else:
+                        issued = model.predict(observation, deterministic=False)[0].astype(np.float32)
+                applied = session["clock"].apply(issued[None, :], elapsed)[0]
                 observation, reward, terminal, truncated, info = env.step_recorded(
                     issued, applied, category="learner" if eligible else "forced_warmup", eligible=eligible)
                 transition = info["goal_transition"]
                 model.replay_buffer.add_transition(transition)
                 curriculum.retain(session, transition)
                 step += int(eligible)
+                demo_seed_learner += int(seeded)
                 model.num_timesteps = step
                 if eligible and step > 4096 and (step-4096) % 2 == 0:
                     require(cycles < MAX_CYCLES, "SAC update-cycle budget exhausted")
@@ -162,7 +186,8 @@ def train_seed(env, opening_actions, seed, output, *, guard, maximum=MAX_LEARNER
                         stream.write(json.dumps({"step": step, "cycles": cycles, "physics": env.budget.record(),
                             "issued": issued.tolist(), "applied": applied.tolist(), "goal": session["goal"].tolist(),
                             "body": transition["achieved"].tolist(), "reward_local": reward,
-                            "reward_climb_v2": transition["original_reward"], "eligible": transition["eligible"]},
+                            "reward_climb_v2": transition["original_reward"], "eligible": transition["eligible"],
+                            "demo_seeded": seeded},
                             separators=(",", ":"), allow_nan=False)+"\n")
                 if eligible and checkpoint_every and step % checkpoint_every == 0:
                     last_checkpoint = checkpoint(model, curriculum, env.budget, output, step, work.summary(), curriculum.rng)
@@ -181,6 +206,8 @@ def train_seed(env, opening_actions, seed, output, *, guard, maximum=MAX_LEARNER
     summary = {"version": "goal-training-v1", "seed": seed, "complete": step == maximum,
                "stop_reason": stop_reason,
                "learner_transitions": step, "sac_cycles": cycles, "optimizer": counts,
+               "demo_seed_learner_transitions": demo_seed_learner,
+               "demo_burst_start": demo_burst_start, "demo_burst_ticks": demo_burst_ticks,
                "physics": env.budget.record(), "checkpoint": last_checkpoint.name,
                "shared_scaffold_only": True, "teacher_actions_in_evaluation": False,
                "plan": plan(), "schema": schema()}
