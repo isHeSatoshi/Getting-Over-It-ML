@@ -412,6 +412,26 @@
         "pilot_gate_passed": false,
         "conclusion": "3x learner budget did not resolve the fixed-point collapse; same failure mode as 160k"
       }
+    },
+    {
+      "session": "goal-20261006-v5",
+      "space": "isHeSatoshi/rl-over-it-poc-20261004",
+      "tier": "cpu-upgrade",
+      "start_epoch": 1791250237.8152866,
+      "deadline_epoch": 1791286237.8152866,
+      "rate_per_hour": 0.03,
+      "maximum_estimated_compute_cost": 0.3,
+      "verified_end_epoch": null,
+      "status": "reserved_preflight",
+      "source_space_revision": "f0e85e73cc7a756609b99f48698d18be717c5f85",
+      "actual_billed_cost_known": false,
+      "study": "legal-prefix-goal-sac-her-demo-seed-v1",
+      "pricing_last_verified": "2026-10-06",
+      "pricing_evidence_url": "https://huggingface.co/pricing",
+      "reservation_evidence": "artifacts/goal_deploy_20261006_v5/reservation.json",
+      "sleep_policy": "paid_default_never",
+      "source_bundle": "artifacts/hf_bundle_20261006T013005017509Z",
+      "demo_seed_probe": "state-matched demo-action bursts during training exploration only; evaluation/gates/caps unchanged"
     }
   ],
   "postclosure_local_diagnostics": [
