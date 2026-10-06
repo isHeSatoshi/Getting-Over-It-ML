@@ -89,7 +89,32 @@ while bursts were capped at60 ticks, so the swing was always fragmented
 (~300 expected ticks between bursts). The policy almost never observed a
 complete swing transition.
 
-## Current run: demo-seeded probe attempt6 (burst cap 60->180)
+## Result: demo-seeded probe attempt6 (burst cap 180) - gates failed, route progress worse than attempt5 (2026-10-06)
+
+Session `goal-20261006-v6`, source `f973d07a`: full 480k training contract
+with 85475 demo-seeded learner ticks (17.8% of learner ticks, up from
+51632 in v5) and the complete learned-only 10-case evaluation: **still
+0/10 first-ledge, no Y180 hold, 0 deaths, 0 summits**, and route progress
+regressed against v5. Only 3/10 cases passed X120 and none reached the
+wall at X~279; seven cases ended within X35-73 of spawn. Best evaluation
+reach was maxY77.0 at X219.4 (noise_4) versus v5's maxY71.8 at X280.3
+(noise_5, with 9/10 cases arriving at the wall). Nominal retention fell to
++2 (v5: +43.5). Training maxY172.7-173.0 was the best of any attempt, but
+it never transferred to learned-only rollouts. Training completed the
+whole contract (`stop_reason: learner_limit`, 237952 SAC cycles, 985339
+physics ticks, checkpoint_480000, saved/reload exact); the provider
+128 commits/hour rate limit did not recur. Closed $0.18711 of $0.30
+(cumulative $1.29125); PAUSED verified independently; loop `d99f4352`
+cancelled; journal run97. Per-case reach in
+`artifacts/goal_deploy_20261006_v6/complete_review/per_case_reach.json`.
+
+Diagnosis: a 180-tick burst does cover the whole swing, but it also
+replays long demo stretches whose states no longer match the policy's
+actual state, and it raises demo-driven ticks while diluting the policy's
+own exploration. The result is less wall arrival, not more. The swing
+still never occurred as a *learned* transition.
+
+## Prior attempt: demo-seeded probe attempt6 launch record (superseded)
 
 One declared change (`legal-prefix-goal-sac-her-demo-seed-v2`): the demo
 burst cap rises60 ->180 ticks so one burst covers the full ~123-tick
