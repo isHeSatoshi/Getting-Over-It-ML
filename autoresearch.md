@@ -61,6 +61,16 @@ so pure exploration essentially cannot sample the coordinated ~120-tick
 swing. Closed $0.18862 of $0.30 (cumulative $0.83403); PAUSED verified;
 loop cancelled; journal run95.
 
+Max-distance analysis (user question, saved to
+`artifacts/goal_deploy_20261006_v4/complete_review/max_distance_analysis.json`):
+best scored case noise_0 reached maxY96.1 at X279.3; six of ten cases
+stall at exactly (279,48) - the wall below the first ledge. Spawn is
+(0,21), the ledge box is X305-335/Y100-112, summit is Y>16000. So the
+furthest from ordinary spawn is ~75 units above spawn (~0.6% of summit
+height): ledge height reached, ~25 units short horizontally. Attempt2's
+partial traces briefly touched Y~100.6 at X281.1 (infrastructure-
+interrupted, not a gate result).
+
 ## Current run: demo-seeded exploration probe attempt5
 
 One declared change (contract version `legal-prefix-goal-sac-her-demo-seed-v1`):
