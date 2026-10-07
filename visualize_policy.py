@@ -35,6 +35,10 @@ def trigger_game_start(env):
         env.bridge.driver.execute_script("window.isResetting = true;")
 
 def main():
+    raise SystemExit(
+        "Legacy checkpoints use an invalid physics/observation interface. "
+        "Use python -m research.replay with a trusted research trial directory."
+    )
     print("==================================================", flush=True)
     print("🎮 LAUNCHING HEADED BROWSER - RECURRENT PPO MODEL EVALUATION", flush=True)
     print("==================================================", flush=True)

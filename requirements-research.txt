@@ -1,0 +1,8 @@
+# Tested Python 3.11 environment. Install PyTorch for the target host separately.
+numpy==2.4.3
+gymnasium==1.2.3
+stable-baselines3==2.7.1
+selenium==4.41.0
+pillow==12.1.1
+websockets==15.0.1
+psutil==7.0.0

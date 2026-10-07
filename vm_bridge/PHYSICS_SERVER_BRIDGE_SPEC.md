@@ -1,5 +1,11 @@
 # Physics Server Bridge — Complete Design Spec (Updated)
 
+> **Superseded, 2026-10-03:** This specification's renderer-free physics premise
+> is false. The original game uses renderer silhouette collisions for both
+> body and hammer hitboxes. `physics_server.js` stubs these collisions out.
+> Do not use this worker for learning or treat its throughput as gameplay
+> throughput. See `docs/RESEARCH_AUDIT.md` and the validated `research/` path.
+
 ## The core insight
 
 The game "does physics in scripts": the Scratch project computes position, velocity, collisions itself using block math against costume collision data, keeping state in Stage variables (`PLAYER X`, `PLAYER Y`, `HAMMER X`, `HAMMER Y`, `PLAYER SX`, `PLAYER SY`, `HAMMER AIR`). The renderer is not the simulator — it just shows them. So you can simulate the game entirely headlessly by:

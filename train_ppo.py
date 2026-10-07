@@ -32,6 +32,11 @@ class EnvWrapper:
         return env
 
 def main():
+    raise SystemExit(
+        "Legacy training is disabled: its Node renderer has no collision physics. "
+        "Use python -m research.train --algorithm ppo --smoke for a bounded check. "
+        "Full training belongs on a separate host."
+    )
     print("==================================================")
     print("MISSION: Phase 3 - Training the Autonomous Locomotion Policy")
     print("ARCHITECTURE: Recurrent PPO (LSTM)")

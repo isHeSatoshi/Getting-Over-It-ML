@@ -1,5 +1,10 @@
 # Reward Function Redesign - 2026-08-05
 
+> **Superseded by the 2026-10-03 audit.** The assumed ground height of -264.7
+> was produced by missing terrain collisions, not a real spawn rock. Reward
+> changes alone could not repair that backend. This file is historical;
+> use `docs/RESEARCH_AUDIT.md` and `research/env.py` for the current contract.
+
 ## What was broken
 
 The previous run (163,840 steps) produced a policy that climbed to Y=-216,

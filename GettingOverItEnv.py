@@ -308,6 +308,11 @@ class GettingOverItEnv(gym.Env):
 
     def __init__(self, bridge=None, port=8000, headless=True, driver_path=None,
                  k_frames=4, render_every=0, pmdp_cfg=None, port_for_log=None):
+        if bridge is None:
+            raise RuntimeError(
+                "Legacy backends are unvalidated (Node has no collisions; browser stepping is asynchronous). "
+                "Use research.env.RealGettingOverItEnv. Injected legacy bridges are forensic-only."
+            )
         super().__init__()
         self.k_frames = int(k_frames)
         self.render_every = int(render_every)

@@ -10,6 +10,10 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from GettingOverItEnv import GettingOverItEnv
 
 def main():
+    raise SystemExit(
+        "Legacy action-file streaming is not synchronized gameplay evaluation. "
+        "Use python -m research.replay with a trusted research trial directory."
+    )
     print("==================================================", flush=True)
     print("📡 LIVE AI POLICY BROWSER STREAMER")
     print("==================================================", flush=True)
