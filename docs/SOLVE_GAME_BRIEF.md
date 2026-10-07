@@ -21,6 +21,31 @@ single-threaded CPU; if this machine has a GPU, use it. Read
 time limit; a human full climb takes 1-2 hours, so do not cap episodes at the
 few-minute horizons earlier experiments used.
 
+## How to work: small, cheap, verified steps
+
+**Do not launch full training campaigns. That is exactly what failed six
+times before.** Full runs of 160k-480k transitions, ~6 hours each, ~28
+CPU-hours total, and not one of them crossed the first ledge. More compute
+never helped; the failures repeated identically at every budget. A full run
+that fails teaches you nothing a 10-minute run would not have. Do not waste
+time or resources repeating it.
+
+Work in bounded, measurable steps instead:
+
+- Start with the cheapest experiment that can falsify your approach: minutes,
+  not hours. If a method cannot show measured progress past the previous best
+  (Y ~100, X ~279) in a short bounded run, it will not in a long one. Kill it
+  and change the approach.
+- Diagnose before scaling. Is the bottleneck exploration, control bandwidth,
+  credit assignment, or the interface? Answer each with a tiny experiment
+  before committing compute.
+- Keep every run bounded and resumable, and stop it fast when the curve is
+  flat.
+- Only escalate to longer or GPU-scale training after a short run shows a
+  real, measured signal. Never scale on a hunch.
+- Log every attempt with its command, budget, and result so nothing gets
+  re-burned.
+
 ## Environment facts (fixed)
 
 - Real game: Scratch project 389464290, compiled, real renderer, real
@@ -80,7 +105,9 @@ few-minute horizons earlier experiments used.
    Transient height is never progress; only a retained hold counts.
 
 6. **Budget lesson.** Brute-force multi-hour CPU training produced zero
-   progress past `Y ~100` across six campaigns. Do not start another one.
+   progress past `Y ~100` across six campaigns. The full-run-then-check
+   pattern is the trap this project fell into; see "How to work" above. Do
+   not start another full run.
 
 ## Untouched ground (unknown, not recommendations)
 
