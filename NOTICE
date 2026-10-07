@@ -1,0 +1,53 @@
+# NOTICE
+
+## The game
+
+This repository runs **Getting Over It** (Scratch edition), created by
+Griffpatch, originally by Bennett Foddy, as a Scratch project hosted at
+<https://scratch.mit.edu/projects/389464290/>.
+
+The game, its name, its artwork, its sound, and its source are the property of
+their respective owners. This project is **not affiliated with, endorsed by, or
+sponsored by** Griffpatch, Bennett Foddy, the Scratch Foundation, or any
+affiliate. "Getting Over It" is used here for identification of the work being
+studied, and to describe the environment this challenge runs.
+
+## Assets
+
+The directory `Getting Over It v1/` contains the original project's packaged
+scripts and its asset files (images, sounds, and the project JSON), as obtained
+from the Scratch project above.
+
+**These assets are third-party copyrighted material and are not covered by the
+MIT license that applies to the source code in this repository.**
+
+Their inclusion here is for reproducibility of research measurements. No
+redistribution right, license grant, or permission has been obtained from the
+copyright holders. The assets remain the property of their owners.
+
+If you are a rights holder and want these files removed, open an issue or
+contact the maintainers and they will be removed promptly. Because they are
+committed to a Git history, a fresh clone without history is the cleanest
+remedy.
+
+## Provenance
+
+The exact project bytes used are pinned so results are reproducible:
+
+- `Getting Over It v1/project.json` SHA-256:
+  `e72f65668b86b0e37c30c2f2c67f2a39319acb1a31f5fe589bd5842e2c94e120`
+
+This hash establishes the identity of the local files only. It is not an
+independent authentication of the current state of the upstream Scratch project.
+
+## Third-party runtime
+
+The packaged game scripts include a TurboWarp/Scaffolding virtual machine
+build. That runtime is third-party software under its own license terms and is
+not relicensed by this repository.
+
+## Your submission
+
+Code you contribute to this challenge is published under the repository's MIT
+license. By submitting a pull request you confirm you have the right to license
+your contribution under those terms.

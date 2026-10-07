@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1920, height=1080">
+    <title>Solve Getting Over It with ML</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; background: #07080c; }
+      #root { position: relative; width: 100%; height: 100%; overflow: hidden; }
+    </style>
+  </head>
+  <body>
+    <div data-hf-id="hf-qbnw" id="root" data-composition-id="main" data-start="0" data-width="1920" data-height="1080" data-duration="60">
+
+      <div data-hf-id="hf-wv17" data-composition-id="beat-game" data-composition-src="compositions/beat-game.html" data-start="0" data-duration="13" data-track-index="0" data-width="1920" data-height="1080"></div>
+
+      <div data-hf-id="hf-s8sy" data-composition-id="beat-control" data-composition-src="compositions/beat-control.html" data-start="13" data-duration="12" data-track-index="0" data-width="1920" data-height="1080"></div>
+
+      <div data-hf-id="hf-wu4j" data-composition-id="beat-physics" data-composition-src="compositions/beat-physics.html" data-start="25" data-duration="12" data-track-index="0" data-width="1920" data-height="1080"></div>
+
+      <div data-hf-id="hf-kr0p" data-composition-id="beat-ask" data-composition-src="compositions/beat-ask.html" data-start="37" data-duration="13" data-track-index="0" data-width="1920" data-height="1080"></div>
+
+      <div data-hf-id="hf-2vgt" data-composition-id="beat-where" data-composition-src="compositions/beat-where.html" data-start="50" data-duration="10" data-track-index="0" data-width="1920" data-height="1080"></div>
+
+    </div>
+
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      // Each beat owns its animation; the host only sequences the slots.
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

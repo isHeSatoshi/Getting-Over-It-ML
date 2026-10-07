@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <template>
+      <style>
+        #root { position: absolute; inset: 0; overflow: hidden; background: #07080c;
+          font-family: "Segoe UI", system-ui, sans-serif; }
+        .stage { position: absolute; left: 50%; top: 50%;
+          transform: translate(-50%, -50%);
+          width: 1020px; height: 765px; border-radius: 20px; overflow: hidden;
+          box-shadow: 0 60px 140px rgba(0,0,0,0.72); }
+        .stage img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .veil { position: absolute; inset: 0;
+          background: linear-gradient(180deg, rgba(7,8,12,0.2) 0%, rgba(7,8,12,0) 30%, rgba(7,8,12,0.55) 100%); }
+        .scrim { position: absolute; inset: 0; z-index: 1;
+          background: radial-gradient(56% 30% at 50% 26%, rgba(4,5,9,0.92) 0%, rgba(4,5,9,0.66) 58%, rgba(4,5,9,0) 100%); }
+        .layer { position: absolute; inset: 0; z-index: 2; display: flex;
+          align-items: flex-start; justify-content: center; padding-top: 190px; text-align: center; }
+        .stack { position: relative; z-index: 3; display: flex; flex-direction: column; align-items: center; gap: 24px; }
+        h1 { font-size: 126px; font-weight: 800; letter-spacing: -0.045em; line-height: 0.94;
+             color: #fff; text-shadow: 0 12px 44px rgba(0,0,0,0.95); }
+        h1 .warm { color: #ffb02e; }
+        .sub { font-size: 40px; font-weight: 600; color: #f0f2f6; letter-spacing: -0.012em;
+               line-height: 1.34; max-width: 1180px; text-shadow: 0 6px 26px rgba(0,0,0,0.95); }
+        .pill { display: inline-flex; align-items: center; gap: 16px;
+          padding: 22px 40px; border-radius: 999px;
+          background: rgba(20,14,4,0.72); border: 2px solid rgba(255,176,46,0.6);
+          font-size: 31px; font-weight: 600; color: #ffd79a; letter-spacing: 0.005em; }
+        .pill .dot { width: 15px; height: 15px; border-radius: 50%; background: #ffb02e;
+          box-shadow: 0 0 22px #ffb02e; }
+      </style>
+
+      <div data-hf-id="hf-5hl0" id="root" data-composition-id="beat-game" data-width="1920" data-height="1080">
+        <div data-hf-id="hf-xhd3" class="stage" data-layout-allow-overflow="true">
+          <img data-hf-id="hf-9iak" src="assets/01_spawn.png" alt="Getting Over It starting in the pot">
+        </div>
+        <div data-hf-id="hf-h5f4" class="veil"></div>
+        <div data-hf-id="hf-a8wf" class="layer">
+          <div data-hf-id="hf-261e" class="scrim"></div>
+          <div data-hf-id="hf-d1zs" class="stack">
+            <h1 data-hf-id="hf-tgf6">Getting <span data-hf-id="hf-c7bd" class="warm">Over It</span></h1>
+            <p data-hf-id="hf-ae1u" class="sub">Scratch edition · project 389464290</p>
+            <div data-hf-id="hf-anb3" class="pill"><span data-hf-id="hf-9gry" class="dot"></span>Open to everyone</div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        const tl = gsap.timeline({ paused: true });
+        tl.fromTo(".stage", { opacity: 0, scale: 1.06 },
+          { opacity: 1, scale: 1, duration: 1.6, ease: "power2.out" }, 0);
+        tl.fromTo("#beat-game h1", { y: 54, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.85, ease: "power3.out" }, 0.7);
+        tl.fromTo("#beat-game .sub", { y: 32, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.7, ease: "power3.out" }, 1.0);
+        tl.fromTo("#beat-game .pill", { y: 26, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" }, 1.3);
+        window.__timelines["beat-game"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

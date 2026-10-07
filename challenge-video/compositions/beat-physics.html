@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <template>
+      <style>
+        #root { position: absolute; inset: 0; overflow: hidden; background: #07080c;
+          font-family: "Segoe UI", system-ui, sans-serif; }
+        .stage { position: absolute; left: 50%; top: 50%;
+          transform: translate(-50%, -50%);
+          width: 1020px; height: 765px; border-radius: 20px; overflow: hidden;
+          box-shadow: 0 60px 140px rgba(0,0,0,0.72); }
+        .stage img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .veil { position: absolute; inset: 0;
+          background: linear-gradient(180deg, rgba(7,8,12,0.34) 0%, rgba(7,8,12,0.1) 34%, rgba(7,8,12,0.72) 100%); }
+        .scrim { position: absolute; inset: 0; z-index: 1;
+          background: radial-gradient(56% 30% at 50% 26%, rgba(4,5,9,0.9) 0%, rgba(4,5,9,0.6) 60%, rgba(4,5,9,0) 100%); }
+        .layer { position: absolute; inset: 0; z-index: 2; display: flex; align-items: flex-start; justify-content: center; padding-top: 200px; text-align: center; }
+        .stack { position: relative; z-index: 3; display: flex; flex-direction: column; align-items: center; gap: 24px; }
+        h1 { font-size: 116px; font-weight: 800; letter-spacing: -0.045em; line-height: 0.96;
+             color: #fff; text-shadow: 0 12px 44px rgba(0,0,0,0.95); }
+        h1 .warm { color: #ffb02e; }
+        .sub { font-size: 40px; font-weight: 600; color: #f0f2f6; letter-spacing: -0.012em;
+               line-height: 1.34; max-width: 1180px; text-shadow: 0 6px 26px rgba(0,0,0,0.95); }
+      </style>
+
+      <div data-hf-id="hf-skt7" id="root" data-composition-id="beat-physics" data-width="1920" data-height="1080">
+        <div data-hf-id="hf-xhd3" class="stage" data-layout-allow-overflow="true">
+          <img data-hf-id="hf-q5za" src="assets/05_side.png" alt="Character lifted above the pot rim">
+        </div>
+        <div data-hf-id="hf-h5f4" class="veil"></div>
+        <div data-hf-id="hf-a8wf" class="layer">
+          <div data-hf-id="hf-261e" class="scrim"></div>
+          <div data-hf-id="hf-d1zs" class="stack">
+            <h1 data-hf-id="hf-fkjd">Real physics,<br data-hf-id="hf-x5px"><span data-hf-id="hf-gfka" class="warm">no shortcuts</span></h1>
+            <p data-hf-id="hf-73an" class="sub">Every frame is the original game running its own renderer.</p>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        const tl = gsap.timeline({ paused: true });
+        tl.fromTo("#beat-physics .stage img", { scale: 1.11 },
+          { scale: 1, duration: 12, ease: "none" }, 0);
+        tl.fromTo("#beat-physics h1", { y: 50, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" }, 0.5);
+        tl.fromTo("#beat-physics .sub", { y: 30, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.7, ease: "power3.out" }, 0.9);
+        window.__timelines["beat-physics"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

@@ -32,3 +32,17 @@ models/
 .DS_Store
 Thumbs.db
 .vscode/
+
+# Reproducible run outputs (summary findings live in docs/)
+artifacts/
+
+# HyperFrames build output (sources under challenge-video/ are tracked)
+challenge-video/renders/
+challenge-video/snapshots/
+challenge-video/verify/
+challenge-video/.media/cache/
+
+# Local capture tooling scratch
+_tools/
+_cdp_profile/
+challenge-video/.hyperframes/
