@@ -28,15 +28,17 @@ def env_meta(b):
             "frame_rate": info["research"].get("frameRate"), "python": sys.version.split()[0], "os": sys.platform}
 
 
-def hud_text(seed, speed, tick, total, phase, hold_i, hold_n, x, y, max_y, route_end, outcome):
+def hud_text(seed, speed, tick, total, phase, hold_i, hold_n, x, y, max_y, route_end, outcome, success=False):
     lines = [f"Getting Over It  route replay   seed {seed}   speed {speed:g}x",
              f"tick {tick:6d} / {total}   [{phase}]" + (f" {hold_i}/{hold_n}" if phase == "HOLD" else ""),
              f"X {x!r}", f"Y {y!r}", f"max Y so far {max_y!r}"]
     if route_end is None:
-        lines.append(f"gain since spawn  {y - SPAWN_Y:+.3f}  (provisional until the hold)")
+        lines.append(f"gain since spawn  {y - SPAWN_Y:+.3f}")
     else:
         lines.append(f"hold drift  dY {y - route_end[1]:+.4f}  dX {x - route_end[0]:+.4f}"
                      f"   (pass: dY > -{HOLD_DY:g} and |dX| < {HOLD_DX:g})")
+    if success:
+        lines.append("*** SUCCESS: world Y > 16000 (summit) reached ***")
     if outcome is not None:
         lines.append(("*** HOLD COMPLETE %d/%d: HELD  retained gain %+.3f ***" % (hold_n, hold_n, outcome["gain"]))
                      if outcome["held"] else ("*** HOLD COMPLETE %d/%d: NOT HELD ***" % (hold_n, hold_n)))
@@ -86,8 +88,8 @@ def run(b, actions, hold, seed, noise, rng, hold_ticks, headed=False, speed=1.0,
             if render_every and frame_i[0] % render_every == 0:
                 s = trace[-1]
                 b.evaluate("window.research.render()")
-                color = "#3c3" if outcome[0] and outcome[0]["held"] else ("#e44" if state["dead"] or outcome[0] else "#fc3")
-                b.evaluate(f"({HUD_JS})({json.dumps(hud_text(seed, speed, s['tick'], total, phase, hold_i, hold_ticks, s['player_world_x'], s['player_world_y'], state['maxy'], route_end[0], outcome[0]))}, {json.dumps(color)})")
+                color = "#3c3" if (outcome[0] and outcome[0]["held"]) or state["success"] else ("#e44" if state["dead"] or outcome[0] else "#fc3")
+                b.evaluate(f"({HUD_JS})({json.dumps(hud_text(seed, speed, s['tick'], total, phase, hold_i, hold_ticks, s['player_world_x'], s['player_world_y'], state['maxy'], route_end[0], outcome[0], state['success']))}, {json.dumps(color)})")
             next_frame[0] += frame_dt
             delay = next_frame[0] - time.perf_counter()
             if delay > 0: time.sleep(delay)
@@ -190,12 +192,12 @@ def main():
                     if nz != 0: continue
                     if a.headed or a.trace_out or a.compare_trace:
                         final_line = (f"FINAL seed={seed} tick={out['ticks']} x={out['x']!r} y={out['y']!r} max_y={out['max_y']!r} "
-                                      f"dead={out['dead']} held={out.get('held')}")
+                                      f"dead={out['dead']} success={out['success']} held={out.get('held')}")
                         print(final_line, flush=True)
                         if a.headed:                      # show the FINAL line in the window too (viewing only)
                             cur = b.evaluate("(document.getElementById('rl-hud')||{}).textContent || ''")
                             b.evaluate(f"({HUD_JS})({json.dumps(cur + chr(10) + final_line)}, "
-                                       f"{json.dumps('#3c3' if out.get('held') else '#e44')})")
+                                       f"{json.dumps('#3c3' if (out.get('held') or out['success']) else '#e44')})")
                     if a.trace_out:
                         p = Path(a.trace_out)
                         if traced > 1: p = p.with_name(f"{p.stem}.seed{seed}{p.suffix}")

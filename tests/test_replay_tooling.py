@@ -60,5 +60,18 @@ class ChromeDiscoveryTests(unittest.TestCase):
                 self.assertEqual(cdp_browser.find_chrome(), str(exe))
 
 
+class HudTextTests(unittest.TestCase):
+    def test_success_line(self):
+        text = rr.hud_text(0, 1.0, 13937, 13940, "ROUTE", 0, 0, 3589.23, 16000.81, 16000.81, None, None, True)
+        self.assertIn("SUCCESS", text)
+        self.assertIn("16000.81", text)
+
+    def test_hold_outcome_line_without_success(self):
+        text = rr.hud_text(0, 1.0, 9424, 9604, "HOLD", 180, 180, 4974.5, 9338.9, 9341.0,
+                           (4973.3, 9341.0), {"held": True, "gain": 9317.9})
+        self.assertIn("HOLD COMPLETE 180/180: HELD", text)
+        self.assertNotIn("SUCCESS", text)
+
+
 if __name__ == "__main__":
     unittest.main()
