@@ -35,7 +35,7 @@ What success looks like for this route (also printed by the headless command abo
 
 - Final line: `tick 13937 x 3589.2328706585417 y 16000.818689285075 max_y 16000.818689285075 dead=False success=True`.
   Pass tolerance within +-0.001 per axis; bit-exact hosts give 0.
-- The HUD shows `*** SUCCESS: world Y > 16000 (summit) reached ***` when the game's own win flag fires.
+- The HUD shows `*** SUCCESS: world Y > 16000 (summit) reached ***` when the harness `success` flag fires (it mirrors the project's own finish condition: the Player script's main loop is `repeat until PLAYER Y > 16000 or PLAYER Y < -180`, and on exit above 16000 it broadcasts `SAVE TIME TO CLOUD`; the end title itself was not watched because the harness stops stepping at success).
 - `--hold-ticks 0` for this route (it ends in the success state; the hold test does not apply).
 
 ---
