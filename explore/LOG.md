@@ -247,3 +247,14 @@ Search used 4 parallel Chrome workers (~1 GB each; cgroup limit 7 GB); never sta
   backend is. `RL_CHROME_EXTRA_FLAGS` added for further experiments (e.g. `--disable-gpu-rasterization`).
 - This is very likely the same class of failure seen on the user's Windows machine (which also diverged at tick 2000):
   worth retrying there with the automatic flag and `--compare-trace`.
+
+## Recording the summit route (viewing only; no new searches)
+- Confirmation: `python explore/replay_route.py explore/runs/e28_SUCCESS_s3100.json --seeds 0 1 2 3 --hold-ticks 0`
+  -> tick 13937, x 3589.2328706585417, y 16000.818689285075, **success true** on all four reset seeds (bit-identical).
+- Headed recording under Xvfb + ffmpeg x11grab at speed 1 (`explore/runs/e28_recording/`):
+  `e28_success_headed_full.mp4` (7:53, 1100x820@30), `contact_sheet.png` (10 frames), `recording.trace.jsonl`,
+  `replay_stdout.log`, `divergence_report.json`. Recorded run trace **BIT-EXACT** vs `explore/reference/e28_success_16001.trace.jsonl`
+  (final delta [0.0, 0.0]); HUD shows the green SUCCESS banner and the FINAL line with success=True.
+- Viewing-only changes: HUD success banner + `success=` field in the FINAL line; `hud_text` tests.
+- Fixed the E26 crash: `pick()` now zeroes non-finite tier weights and falls back to uniform when the tier
+  leaves all weights at zero (regression test `tests/test_explore_pick.py`). Suite: 521 tests OK + node test OK.

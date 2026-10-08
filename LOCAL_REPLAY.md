@@ -10,6 +10,34 @@ Expected final line: tick 13937, x 3589.2328706585417, y 16000.818689285075, suc
 Same caveats as below: this is an open-loop trace (any pointer noise, even std 0.01, makes it fall), and cross-host determinism is unmeasured; use `--compare-trace`.
 The sections below describe the earlier Y 9341 route and tooling (still valid, same commands).
 
+## Recorded reference video (summit run)
+`explore/runs/e28_recording/` contains a full headed recording of the summit route, made on the cloud host under Xvfb
+(no monitor attached) with ffmpeg x11grab, real time:
+
+```bash
+xvfb-run -a -s "-screen 0 1100x820x24" bash -c '
+  export RL_CHROME_CONTAINER=1
+  ffmpeg -y -f x11grab -framerate 30 -video_size 1100x820 -i "$DISPLAY" -c:v libx264 -preset veryfast -crf 23 -pix_fmt yuv420p explore/runs/e28_recording/e28_success_headed_full.mp4 &
+  sleep 3
+  python explore/replay_route.py explore/runs/e28_SUCCESS_s3100.json --seeds 0 --headed --speed 1 --hold-ticks 0 --linger 6 \
+    --trace-out explore/runs/e28_recording/recording.trace.jsonl \
+    --compare-trace explore/reference/e28_success_16001.trace.jsonl \
+    --report-out explore/runs/e28_recording/divergence_report.json'
+```
+
+Artifacts: `e28_success_headed_full.mp4` (7 min 53 s, 1100x820, 30 fps, the whole route at real time ending on the
+green `*** SUCCESS: world Y > 16000 (summit) reached ***` banner and the `FINAL ... success=True` line),
+`contact_sheet.png` (10 frames across the run), `recording.trace.jsonl` (per-tick trace of the recorded run),
+`replay_stdout.log`, `divergence_report.json`. The recorded run is **bit-exact** against the reference trace
+(final delta [0.0, 0.0]).
+
+What success looks like for this route (also printed by the headless command above):
+
+- Final line: `tick 13937 x 3589.2328706585417 y 16000.818689285075 max_y 16000.818689285075 dead=False success=True`.
+  Pass tolerance within +-0.001 per axis; bit-exact hosts give 0.
+- The HUD shows `*** SUCCESS: world Y > 16000 (summit) reached ***` when the game's own win flag fires.
+- `--hold-ticks 0` for this route (it ends in the success state; the hold test does not apply).
+
 ---
 
 # Replaying the verified 9341 route locally (headed Chrome)
