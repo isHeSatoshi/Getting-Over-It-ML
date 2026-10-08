@@ -216,6 +216,8 @@ def main():
     ap.add_argument("--gait-frac", type=float, default=0.0, help="fraction of segments from the hammer-aligned gait generator")
     ap.add_argument("--local-radius", type=float, default=0.0, help="restrict picks to cells within this height of the best retained cell")
     ap.add_argument("--heap-mb", type=float, default=600, help="prune stored cells above this JS heap size")
+    ap.add_argument("--no-hold-test", action="store_true",
+                    help="ablation: accept frontier states without the retained (pointer-frozen) hold test, so transient flung height counts as progress")
     a = ap.parse_args()
     out = Path(a.out); out.mkdir(parents=True, exist_ok=True)
     rng = np.random.default_rng(a.seed)
@@ -239,7 +241,8 @@ def main():
             nid = pick(arch, rng, stalled_for > 90); e = arch.info[nid]; e["chosen"] += 1
             seg_len = int(rng.integers(a.min_len, (a.max_len * 2 if stalled_for > 90 else a.max_len) + 1))
             acts = gen_gait(rng, seg_len, e["ha"]) if (a.gait_frac and rng.random() < a.gait_frac) else gen_segment(rng, seg_len)
-            r = b.explore_segment(e["snap"], acts, HOLD, a.cx, a.cy, {"phiMargin": a.phi_margin}); norm(r["found"])
+            r = b.explore_segment(e["snap"], acts, HOLD, a.cx, a.cy,
+                                  {"phiMargin": a.phi_margin, **({"noHoldTest": True} if a.no_hold_test else {})}); norm(r["found"])
             stats["segments"] += 1; stats["ticks"] += r["decisions"] * HOLD + r["holdTests"] * 90; stats["hold_tests"] += r["holdTests"]
             for c in r["found"]:
                 if len(arch.cell_node) >= a.max_cells and c["key"] not in arch.cell_node: continue
