@@ -20,7 +20,7 @@
             const request = JSON.parse(event.data);
             try {
                 let value;
-                if (request.method === "step") value = research.step(request.commands);
+                if (request.method === "step") value = research.step(request.commands, request.after);
                 else if (request.method === "reset") value = await research.reset(request.seed);
                 else if (request.method === "state") value = research.state();
                 else if (request.method === "snapshot") value = research.snapshot();

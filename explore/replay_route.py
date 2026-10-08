@@ -9,6 +9,8 @@ verification options below never touch physics or the route.
   python explore/replay_route.py ROUTE.json --hold-ticks 180 --trace-out my_trace.jsonl \
       --compare-trace explore/reference/e14_best_9341.trace.jsonl                    # cross-host drift check
   python explore/replay_route.py ROUTE.json --noise 0 0.25 --trials 2                # open-loop brittleness probe
+  python explore/replay_route.py ROUTE.json --headed --after-success 1200 --ending-speed 1   # play the game's ending
+  python explore/replay_route.py ROUTE.json --after-success 1200 --presentation --fastest-frames 3000   # normal "Win" end title
 
 Environment: RL_BROWSER_DRIVER=cdp|selenium (Windows defaults to cdp), RL_CHROME_BINARY, RL_CDP_URL (see LOCAL_REPLAY.md).
 """
@@ -17,6 +19,12 @@ from pathlib import Path
 from research.fast_bridge import FastBridge
 
 SPAWN_Y = 21.0
+# Stage variable the game's own win path compares against: with an empty cloud leaderboard the game
+# broadcasts "Win - Record" (its rule: fastest < 10 frames counts as empty), so the ending shows the
+# world-record screen. --fastest-frames emulates a populated leaderboard (viewing only).
+SET_FASTEST_JS = ("(n) => { const st = window.vm.runtime.getTargetForStage();"
+                  " const v = Object.values(st.variables).find(v => v.name === '\u2601 FASTEST');"
+                  " if (!v) throw new Error('missing FASTEST'); v.value = String(n); return v.value; }")
 HOLD_DY, HOLD_DX = 6.0, 12.0          # same retained-hold test used by the search
 
 
@@ -30,7 +38,7 @@ def env_meta(b):
 
 def hud_text(seed, speed, tick, total, phase, hold_i, hold_n, x, y, max_y, route_end, outcome, success=False):
     lines = [f"Getting Over It  route replay   seed {seed}   speed {speed:g}x",
-             f"tick {tick:6d} / {total}   [{phase}]" + (f" {hold_i}/{hold_n}" if phase == "HOLD" else ""),
+             f"tick {tick:6d} / {total}   [{phase}]" + (f" {hold_i}/{hold_n}" if phase != "ROUTE" and hold_n else ""),
              f"X {x!r}", f"Y {y!r}", f"max Y so far {max_y!r}"]
     if route_end is None:
         lines.append(f"gain since spawn  {y - SPAWN_Y:+.3f}")
@@ -58,14 +66,19 @@ HUD_JS = """(text, color) => {
   d.textContent = text; d.style.borderLeftColor = color; return true; }"""
 
 
-def run(b, actions, hold, seed, noise, rng, hold_ticks, headed=False, speed=1.0, chunk=None, render_every=1):
+def run(b, actions, hold, seed, noise, rng, hold_ticks, headed=False, speed=1.0, chunk=None, render_every=1,
+        after_success=0, ending_speed=1.0, fastest_frames=None):
     """Replay once. Returns (summary dict, per-tick list of (tick, x, y)).
 
     chunk = ticks per step_commands call / rendered frame (headed; default = --speed rounded).
     render_every = render+HUD every N chunks (0 = never render; headed only). Rendering cadence
     affects the real renderer's collision state, so bit-exactness must be re-verified per cadence.
+    after_success = keep stepping this many ticks past the win flag so the project's own ending
+    scripts can run (viewing only). ending_speed = playback speed of that phase (headed only).
     """
     base_tick = b.reset(seed)["tick"]                        # the game runs 120 warm-up ticks inside reset
+    if fastest_frames is not None:
+        b.evaluate(f"({SET_FASTEST_JS})({int(fastest_frames)})")
     cmds, cid = [], 1
     for ax, ay in actions:
         if noise:
@@ -73,13 +86,13 @@ def run(b, actions, hold, seed, noise, rng, hold_ticks, headed=False, speed=1.0,
             ax, ay = float(np.clip(ax + rng.normal(0, noise), -128, 128)), float(np.clip(ay + rng.normal(0, noise), -128, 128))
         for _ in range(hold):
             cmds.append({"x": ax, "y": ay, "id": cid}); cid += 1
-    total = base_tick + len(cmds) + (hold_ticks or 0)
+    total = base_tick + len(cmds) + (hold_ticks or 0) + (after_success or 0)
     ticks, state = [], {"last": None, "maxy": -1e9, "dead": False, "success": False}
     frame_ticks = (chunk or max(1, round(speed))) if headed else 2400
     frame_dt = frame_ticks / (30.0 * speed) if headed else 0.0       # the game runs at 30 ticks/s
-    route_end = [None]; outcome = [None]; next_frame = [time.perf_counter()]; frame_i = [0]
+    route_end = [None]; outcome = [None]; next_frame = [time.perf_counter()]; frame_i = [0]; last_applied = [None]
 
-    def consume(trace, phase, hold_i=0):
+    def consume(trace, phase, hold_i=0, hold_n=None, dt=None):
         for s in trace:
             ticks.append((s["tick"], s["player_world_x"], s["player_world_y"]))
             state["maxy"] = max(state["maxy"], s["player_world_y"]); state["dead"] |= bool(s["dead"]); state["success"] |= bool(s["success"])
@@ -89,19 +102,39 @@ def run(b, actions, hold, seed, noise, rng, hold_ticks, headed=False, speed=1.0,
                 s = trace[-1]
                 b.evaluate("window.research.render()")
                 color = "#3c3" if (outcome[0] and outcome[0]["held"]) or state["success"] else ("#e44" if state["dead"] or outcome[0] else "#fc3")
-                b.evaluate(f"({HUD_JS})({json.dumps(hud_text(seed, speed, s['tick'], total, phase, hold_i, hold_ticks, s['player_world_x'], s['player_world_y'], state['maxy'], route_end[0], outcome[0], state['success']))}, {json.dumps(color)})")
-            next_frame[0] += frame_dt
+                b.evaluate(f"({HUD_JS})({json.dumps(hud_text(seed, speed, s['tick'], total, phase, hold_i, (hold_ticks if hold_n is None else hold_n), s['player_world_x'], s['player_world_y'], state['maxy'], route_end[0], outcome[0], state['success']))}, {json.dumps(color)})")
+            next_frame[0] += (frame_dt if dt is None else dt)
             delay = next_frame[0] - time.perf_counter()
             if delay > 0: time.sleep(delay)
             else: next_frame[0] = time.perf_counter()
         frame_i[0] += 1
 
     for i in range(0, len(cmds), frame_ticks):
-        consume(b.step_commands(cmds[i:i + frame_ticks]), "ROUTE")
+        trace = b.step_commands(cmds[i:i + frame_ticks])
+        if trace: last_applied[0] = cmds[i + len(trace) - 1]
+        consume(trace, "ROUTE")
         if state["dead"] or state["success"]: break
     last = state["last"]
     out = {"seed": seed, "noise": noise, "ticks": last["tick"], "x": last["player_world_x"], "y": last["player_world_y"],
            "max_y": state["maxy"], "dead": state["dead"], "success": state["success"]}
+    if after_success and state["success"] and not state["dead"]:
+        # The harness normally stops at the win flag; keep stepping so the project's own ending
+        # scripts (Win / SAVE TIME TO CLOUD / high-score table) can play. Viewing only.
+        ax = last_applied[0]["x"] if last_applied[0] else 0.0
+        ay = last_applied[0]["y"] if last_applied[0] else 0.0
+        e_chunk = max(1, round(ending_speed)) if headed else 2400
+        e_dt = e_chunk / (30.0 * ending_speed) if headed else 0.0
+        next_frame[0] = time.perf_counter()
+        done = 0
+        while done < after_success and not state["dead"]:
+            n = min(e_chunk, after_success - done)
+            trace = b.step_commands([{"x": ax, "y": ay, "id": cid + done + j} for j in range(n)], after=True)
+            if not trace: break
+            consume(trace, "ENDING", done + len(trace), after_success, e_dt)
+            done += len(trace)
+        e = state["last"]
+        out["ending_ticks"] = done
+        out["ending_x"], out["ending_y"], out["ending_dead"] = e["player_world_x"], e["player_world_y"], state["dead"]
     if hold_ticks and not (state["dead"] or state["success"]):
         ax, ay = actions[-1]
         route_end[0] = (out["x"], out["y"])
@@ -149,9 +182,11 @@ def compare_traces(ref_rows, got_ticks, eps):
             if dev > eps and first_eps is None: first_eps = {"tick": t, "ref": ref_rows[t], "got": got[t], "dx": dx, "dy": dy}
             if dev > max_dev[0]: max_dev = (dev, t)
     last_common = max((t for t in ref_rows if t in got), default=None)
-    verdict = ("BIT-EXACT" if first_exact is None and common == len(ref_rows) == len(got) else
+    extra_local = len(got) - common                        # e.g. ending ticks past the reference's win tick
+    verdict = ("BIT-EXACT" if first_exact is None and common == len(ref_rows) else
                "WITHIN-EPS (not bit-exact)" if first_eps is None and common else "DIVERGED")
     return {"verdict": verdict, "eps": eps, "ticks_reference": len(ref_rows), "ticks_local": len(got), "ticks_compared": common,
+            "extra_local_ticks": extra_local, "reference_complete": common == len(ref_rows),
             "first_bit_difference": first_exact, "first_divergence_over_eps": first_eps,
             "differing_ticks": differing, "max_abs_deviation": max_dev[0], "max_abs_deviation_tick": max_dev[1],
             "final_tick_compared": last_common,
@@ -166,6 +201,12 @@ def main():
     ap.add_argument("--hold-ticks", type=int, default=0); ap.add_argument("--screenshot", default=None)
     ap.add_argument("--headed", action="store_true", help="visible Chrome window with a HUD overlay")
     ap.add_argument("--speed", type=float, default=1.0, help="playback speed in multiples of real time (headed only; game = 30 ticks/s)")
+    ap.add_argument("--after-success", type=int, default=0, help="keep stepping this many ticks past the win flag (play the project's ending; viewing only)")
+    ap.add_argument("--presentation", action=argparse.BooleanOptionalAction, default=None,
+                    help="reproduce the title-screen presentation state (timer digits + win animation). Default: on with --after-success")
+    ap.add_argument("--fastest-frames", type=int, default=None,
+                    help="set the cloud fastest time (frames) before the win so the game shows its normal end title instead of world record")
+    ap.add_argument("--ending-speed", type=float, default=1.0, help="playback speed for the after-success phase (headed only)")
     ap.add_argument("--chunk", type=int, default=None, help="ticks per rendered frame / step call (headed; default = round(--speed))")
     ap.add_argument("--render-every", type=int, default=1, help="render+HUD every N frames (headed; 0 = never render, diagnostics only)")
     ap.add_argument("--trace-out", default=None, help="write per-tick JSONL (tick, x, y) for noiseless runs")
@@ -174,6 +215,8 @@ def main():
     ap.add_argument("--report-out", default="divergence_report.json")
     ap.add_argument("--linger", type=float, default=10.0, help="seconds to keep the headed window open at the end")
     a = ap.parse_args()
+    if a.presentation is None:
+        a.presentation = a.after_success > 0
     d = json.load(open(a.route))
     rng = None
     if any(a.noise):
@@ -181,23 +224,30 @@ def main():
         rng = np.random.default_rng(0)
     ref_meta, ref_rows = load_trace(a.compare_trace) if a.compare_trace else ({}, None)
     runs, reports, diverged = 0, [], False
-    with FastBridge(headless=not a.headed) as b:
+    with FastBridge(headless=not a.headed, presentation=a.presentation) as b:
         meta = env_meta(b) if (a.trace_out or a.compare_trace or a.headed) else None
         traced = sum(1 for _ in a.seeds for nz in a.noise if nz == 0)
         for seed in a.seeds:
             for nz in a.noise:
                 for t in range(1 if nz == 0 else a.trials):
-                    out, ticks = run(b, d["actions"], d["hold"], seed, nz, rng, a.hold_ticks, a.headed and nz == 0, a.speed, a.chunk, a.render_every)
+                    out, ticks = run(b, d["actions"], d["hold"], seed, nz, rng, a.hold_ticks, a.headed and nz == 0, a.speed,
+                                     a.chunk, a.render_every, a.after_success, a.ending_speed, a.fastest_frames)
                     print(json.dumps(out), flush=True)
                     if nz != 0: continue
+                    final_line = (f"FINAL seed={seed} tick={out['ticks']} x={out['x']!r} y={out['y']!r} max_y={out['max_y']!r} "
+                                  f"dead={out['dead']} success={out['success']} held={out.get('held')}")
+                    ending_line = None
+                    if out.get("ending_ticks") is not None:
+                        ending_line = (f"ENDING seed={seed} ticks_after_success={out['ending_ticks']} "
+                                       f"x={out['ending_x']!r} y={out['ending_y']!r} dead={out['ending_dead']}")
                     if a.headed or a.trace_out or a.compare_trace:
-                        final_line = (f"FINAL seed={seed} tick={out['ticks']} x={out['x']!r} y={out['y']!r} max_y={out['max_y']!r} "
-                                      f"dead={out['dead']} success={out['success']} held={out.get('held')}")
                         print(final_line, flush=True)
-                        if a.headed:                      # show the FINAL line in the window too (viewing only)
-                            cur = b.evaluate("(document.getElementById('rl-hud')||{}).textContent || ''")
-                            b.evaluate(f"({HUD_JS})({json.dumps(cur + chr(10) + final_line)}, "
-                                       f"{json.dumps('#3c3' if (out.get('held') or out['success']) else '#e44')})")
+                        if ending_line: print(ending_line, flush=True)
+                    if a.headed:                          # show FINAL (+ ending) in the window too (viewing only)
+                        cur = b.evaluate("(document.getElementById('rl-hud')||{}).textContent || ''")
+                        extra = chr(10).join(x for x in (final_line, ending_line) if x)
+                        b.evaluate(f"({HUD_JS})({json.dumps(cur + chr(10) + extra)}, "
+                                   f"{json.dumps('#3c3' if (out.get('held') or out['success']) else '#e44')})")
                     if a.trace_out:
                         p = Path(a.trace_out)
                         if traced > 1: p = p.with_name(f"{p.stem}.seed{seed}{p.suffix}")
@@ -209,7 +259,7 @@ def main():
                         print(f"COMPARE seed={seed}: {rep['verdict']}; first divergence > {a.eps:g}: "
                               + (f"tick {fd['tick']} (dx={fd['dx']:.3e}, dy={fd['dy']:.3e})" if fd else "none")
                               + f"; first bit difference: " + (str(rep['first_bit_difference']['tick']) if rep['first_bit_difference'] else "none")
-                              + f"; final delta {rep['final_delta']}", flush=True)
+                              + f"; extra local ticks: {rep['extra_local_ticks']}; final delta {rep['final_delta']}", flush=True)
         if a.screenshot:
             run(b, d["actions"], d["hold"], a.seeds[0], 0.0, rng, 0)
             b.evaluate("research.render()")

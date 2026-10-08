@@ -10,6 +10,9 @@
     const height = Number(params.get("height") || 360);
     const compiled = params.get("compiled") !== "false";
     const fast = params.get("fast") === "true";
+    // Presentation emulation for viewing (see startPresentation/primeSplash): reproduces the title
+    // screen state the real game has when play starts. Never changes physics or the win condition.
+    const present = params.get("present") === "true";
     if (![30, 60].includes(fps) || ![480, 640].includes(width) || ![360, 480].includes(height)) {
         throw new Error("Unsupported reference-runtime configuration");
     }
@@ -146,6 +149,23 @@
         lastState = state();
         return lastState;
     }
+    // The real game is only reached through its title screen (the green-flag script): by the time
+    // play starts the Splash sprite is visible at ghost 100 (white costume) and the Timer's six
+    // digit clones exist, which is what makes the finish time and the win animation render.
+    // Episodes here start with "New Game" directly, so those presentation sprites never get set up.
+    // These two helpers reproduce that state with the project's own scripts (viewing only: no
+    // variable the physics reads, no RNG draw, no collision drawable is touched).
+    function startPresentation() {
+        run.startHats("event_whenbroadcastreceived", {BROADCAST_OPTION: "splash - hit"}, target("Timer"));
+    }
+    function primeSplash() {
+        const splash = target("Splash");
+        splash.setVisible(true);
+        splash.clearEffects();
+        splash.setEffect("ghost", 100);
+        const white = splash.getCostumes().findIndex(c => String(c.name).toLowerCase() === "white");
+        if (white >= 0) splash.setCostume(white);
+    }
     async function reset(seed = 0) {
         run.stopAll();
         seedState = seed >>> 0;
@@ -184,7 +204,13 @@
         levelIds = [];
         pointer(0, 0);
         run.startHats("event_whenbroadcastreceived", {BROADCAST_OPTION: "New Game"});
-        for (let i = 0; i < 120; i++) advance(0, 0, 0);
+        if (present) startPresentation();
+        for (let i = 0; i < 120; i++) {
+            // The Timer's own startup needs 0.5 s before its digit clones exist; show them after.
+            if (present && i === 30) run.startHats("event_whenbroadcastreceived", {BROADCAST_OPTION: "Show Score"});
+            advance(0, 0, 0);
+        }
+        if (present) primeSplash();
         if (memo) memo.resetStats();
         if (!fast) {
             vm.renderer.draw();
@@ -322,7 +348,7 @@
         if (phiGrid.data) frontier.phi = Math.min(frontier.phi, phiAt(lastState.player_world_x, lastState.player_world_y));
     }
     function exploreSegment(startSnap, actions, hold, cx, cy, opts) {
-        const o = Object.assign({margin: 60, holdTicks: 90, retainDy: 6, retainDx: 12, maxSpeed: 8, every: 1, testAll: false, phiMargin: 150}, opts || {});
+        const o = Object.assign({margin: 60, holdTicks: 90, retainDy: 6, retainDx: 12, maxSpeed: 8, every: 1, testAll: false, noHoldTest: false, phiMargin: 150}, opts || {});
         const s = snapshots.get(startSnap);
         if (!s) throw new Error("Unknown snapshot " + startSnap);
         if (!Array.isArray(actions) || actions.length > 5000) throw new Error("Invalid segment");
@@ -343,7 +369,11 @@
             const near = phiGrid.data
                 ? phiAt(lastState.player_world_x, lastState.player_world_y) <= frontier.phi + o.phiMargin
                 : lastState.player_world_y >= frontier.y - o.margin;
-            if (o.testAll || (speed < o.maxSpeed && near)) {
+            if (o.noHoldTest) {
+                // Ablation: no retained (pointer-frozen) check at all, so flung/airborne height
+                // counts as frontier progress. Search bookkeeping only; physics untouched.
+                retained = true;
+            } else if (o.testAll || (speed < o.maxSpeed && near)) {
                 const known = cells.get(fullKey(cx, cy, true));
                 if (!(known && known.tick <= tick)) {
                     holdTests++;
@@ -415,12 +445,14 @@
         dropSnapshot: id => snapshots.delete(id),
         clearSnapshots: () => snapshots.clear(),
         snapshotCount: () => snapshots.size,
-        step: (commands) => {
+        step: (commands, after) => {
             if (!Array.isArray(commands) || commands.length > 2400) throw new Error("Invalid command budget");
             const trace = [];
             for (const c of commands) {
                 if (![c.x, c.y, c.id].every(Number.isFinite)) throw new Error("Non-finite command");
-                if (lastState.dead || lastState.success) break;
+                // `after` keeps stepping past the win flag so the project's own ending scripts can run
+                // (viewing only; the win condition and physics are untouched).
+                if (lastState.dead || (lastState.success && !after)) break;
                 trace.push({...advance(c.x, c.y, c.id, !!c.down)});
             }
             if (!fast) {
@@ -431,7 +463,7 @@
         },
         metadata: () => ({stageWidth: run.stageWidth, stageHeight: run.stageHeight,
                           targets: run.targets.length, frameRate: run.frameLoop.framerate,
-                          skins: Object.keys(vm.renderer._allSkins).length, compiled, fast}),
+                          skins: Object.keys(vm.renderer._allSkins).length, compiled, fast, present}),
         stats: () => memo ? memo.stats() : {calls: 0, hits: 0, misses: 0},
         render: () => {
             vm.renderer.dirty = true;

@@ -12,7 +12,7 @@ from research.browser_bridge import BrowserBridge
 
 
 class FastBridge(BrowserBridge):
-    def __init__(self, headless=None):
+    def __init__(self, headless=None, presentation=False):
         from websockets.sync.server import serve
         self._rpc_ready = False
         self._connection = None
@@ -56,7 +56,12 @@ class FastBridge(BrowserBridge):
             # RL_BROWSER_DRIVER=selenium|cdp. Windows defaults to CDP (no chromedriver); elsewhere Selenium
             # with automatic CDP fallback if chromedriver fails to start.
             driver = os.environ.get("RL_BROWSER_DRIVER") or ("cdp" if os.name == "nt" else "selenium")
-            super().__init__(driver=driver, headless=headless, runtime_config={"fast": "true"},
+            config = {"fast": "true"}
+            if presentation:
+                # Reproduce the title-screen state the real game has at play start, so the game's own
+                # HUD (timer digits) and win animation render. Viewing only; physics untouched.
+                config["present"] = "true"
+            super().__init__(driver=driver, headless=headless, runtime_config=config,
                              page_fragment={"rpc_port": self._socket_server.socket.getsockname()[1],
                                             "rpc_token": token})
             if not self._connected.wait(timeout=30):
@@ -122,8 +127,9 @@ class FastBridge(BrowserBridge):
     def clear_cells(self):
         self._rpc("clear_cells")
 
-    def step_commands(self, commands):
-        trace = self._rpc("step", commands=commands)
+    def step_commands(self, commands, after=False):
+        """Step commands. With after=True, keep stepping past the win flag (ending playback, viewing only)."""
+        trace = self._rpc("step", commands=commands, after=bool(after))
         if trace:
             self._state = trace[-1]
         return trace
