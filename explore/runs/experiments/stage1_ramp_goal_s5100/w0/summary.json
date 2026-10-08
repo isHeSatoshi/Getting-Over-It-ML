@@ -1,0 +1,56 @@
+{
+ "args": {
+  "secs": 240.0,
+  "seed": 5100,
+  "cx": 16.0,
+  "cy": 8.0,
+  "min_len": 6,
+  "max_len": 48,
+  "max_cells": 9000,
+  "out": "/home/factory-user/repos/Getting-Over-It-ML/explore/runs/experiments/stage1_ramp_goal_s5100/w0",
+  "share_dir": "/home/factory-user/repos/Getting-Over-It-ML/explore/runs/experiments/stage1_ramp_goal_s5100/share",
+  "sync_s": 60.0,
+  "import_margin": 250.0,
+  "stall_s": 560.0,
+  "phi": true,
+  "phi_margin": 150,
+  "front_scale": 30.0,
+  "gait_frac": 0.4,
+  "local_radius": 250.0,
+  "heap_mb": 450.0,
+  "no_hold_test": false
+ },
+ "elapsed_s": 240.1,
+ "cells": 5505,
+ "segments": 868,
+ "ticks": 203822,
+ "ticks_per_s": 849,
+ "maxY_any": 9354.828140213545,
+ "maxRetainedY": -3776.32275390625,
+ "retained_cells": 451,
+ "hold_tests": 917,
+ "imports": 1,
+ "stalled": false,
+ "maxX_y90": 4989.4611057774355,
+ "ledge_first_s": null,
+ "success": false,
+ "best_node": 392,
+ "best_xy": [
+  4565.984714961259,
+  8538.081261050267
+ ],
+ "best_progress": -3776.32275390625,
+ "best_path_decisions": 2262,
+ "best_replay_verify": {
+  "x": 4565.984714961259,
+  "y": 8538.081261050267,
+  "tick": 9168,
+  "match": true,
+  "after_180tick_hold_xy": [
+   4571.964716805216,
+   8587.210773682262
+  ],
+  "min_y_during_hold": 8559.260706390085,
+  "held": true
+ }
+}

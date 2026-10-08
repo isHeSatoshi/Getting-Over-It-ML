@@ -1,0 +1,36 @@
+{
+ "args": {
+  "out": "explore/runs/p_mpc_height",
+  "seed": 0,
+  "secs": 300.0,
+  "phi": false,
+  "phi_tag": "",
+  "horizon": 16,
+  "knot_every": 4,
+  "suffix": 15,
+  "pop": 32,
+  "iters": 2,
+  "elite": 6,
+  "commit": 4,
+  "std": 70.0,
+  "warm": true,
+  "cx": 16,
+  "cy": 8,
+  "trace_out": null
+ },
+ "elapsed_s": 302.0,
+ "decisions": 324,
+ "ticks": 1296,
+ "ticks_per_s": 4,
+ "max_y": 174.8909894022282,
+ "final_x": 299.66777622688204,
+ "final_y": 169.53497087472167,
+ "dead": false,
+ "success": false,
+ "best_progress": 174.8909894022282,
+ "best_xy": [
+  276.6779818534229,
+  174.8909894022282
+ ],
+ "units": "height"
+}

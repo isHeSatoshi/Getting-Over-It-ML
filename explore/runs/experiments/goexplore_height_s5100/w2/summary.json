@@ -1,0 +1,56 @@
+{
+ "args": {
+  "secs": 240.0,
+  "seed": 5102,
+  "cx": 16.0,
+  "cy": 8.0,
+  "min_len": 6,
+  "max_len": 30,
+  "max_cells": 60000,
+  "out": "/home/factory-user/repos/Getting-Over-It-ML/explore/runs/experiments/goexplore_height_s5100/w2",
+  "share_dir": "/home/factory-user/repos/Getting-Over-It-ML/explore/runs/experiments/goexplore_height_s5100/share",
+  "sync_s": 20,
+  "import_margin": 30,
+  "stall_s": 0,
+  "phi": false,
+  "phi_margin": 150,
+  "front_scale": 40,
+  "gait_frac": 0.0,
+  "local_radius": 0.0,
+  "heap_mb": 600,
+  "no_hold_test": false
+ },
+ "elapsed_s": 240.0,
+ "cells": 5747,
+ "segments": 2153,
+ "ticks": 411904,
+ "ticks_per_s": 1716,
+ "maxY_any": 3187.0736961038588,
+ "maxRetainedY": 3060.047105957491,
+ "retained_cells": 1337,
+ "hold_tests": 2734,
+ "imports": 5,
+ "stalled": false,
+ "maxX_y90": 3475.4880758550617,
+ "ledge_first_s": 15.2,
+ "success": false,
+ "best_node": 8292,
+ "best_xy": [
+  3454.6888771166387,
+  3060.047105957491
+ ],
+ "best_progress": 3060.047105957491,
+ "best_path_decisions": 829,
+ "best_replay_verify": {
+  "x": 3454.6888771166387,
+  "y": 3060.047105957491,
+  "tick": 3436,
+  "match": true,
+  "after_180tick_hold_xy": [
+   3451.576237171097,
+   3056.4657431236647
+  ],
+  "min_y_during_hold": 3056.0558627466407,
+  "held": true
+ }
+}

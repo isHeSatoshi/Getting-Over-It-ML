@@ -1,0 +1,36 @@
+{
+ "args": {
+  "out": "explore/runs/p_mpc_phi",
+  "seed": 0,
+  "secs": 600.0,
+  "phi": true,
+  "phi_tag": "_full2",
+  "horizon": 12,
+  "knot_every": 3,
+  "suffix": 10,
+  "pop": 24,
+  "iters": 2,
+  "elite": 6,
+  "commit": 6,
+  "std": 70.0,
+  "warm": true,
+  "cx": 16,
+  "cy": 8,
+  "trace_out": null
+ },
+ "elapsed_s": 600.6,
+ "decisions": 2790,
+ "ticks": 11160,
+ "ticks_per_s": 19,
+ "max_y": 177.85041266296017,
+ "final_x": 850.6240781144294,
+ "final_y": -9,
+ "dead": false,
+ "success": false,
+ "best_progress": -40066.36328125,
+ "best_xy": [
+  850.0201224094444,
+  -1.8807176146999156
+ ],
+ "units": "phi"
+}

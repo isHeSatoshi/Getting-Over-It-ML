@@ -1,0 +1,56 @@
+{
+ "args": {
+  "secs": 300.0,
+  "seed": 5100,
+  "cx": 16.0,
+  "cy": 8.0,
+  "min_len": 6,
+  "max_len": 48,
+  "max_cells": 9000,
+  "out": "/home/factory-user/repos/Getting-Over-It-ML/explore/runs/experiments/no_potential_s5100/w0",
+  "share_dir": "/home/factory-user/repos/Getting-Over-It-ML/explore/runs/experiments/no_potential_s5100/share",
+  "sync_s": 60.0,
+  "import_margin": 250.0,
+  "stall_s": 560.0,
+  "phi": false,
+  "phi_margin": 150,
+  "front_scale": 30.0,
+  "gait_frac": 0.4,
+  "local_radius": 250.0,
+  "heap_mb": 450.0,
+  "no_hold_test": false
+ },
+ "elapsed_s": 300.3,
+ "cells": 4708,
+ "segments": 1331,
+ "ticks": 275244,
+ "ticks_per_s": 917,
+ "maxY_any": 10902.9356105955,
+ "maxRetainedY": 10808.699658869602,
+ "retained_cells": 493,
+ "hold_tests": 1190,
+ "imports": 1,
+ "stalled": false,
+ "maxX_y90": 4030.460469817859,
+ "ledge_first_s": null,
+ "success": false,
+ "best_node": 2929,
+ "best_xy": [
+  3929.574501594365,
+  10808.699658869602
+ ],
+ "best_progress": 10808.699658869602,
+ "best_path_decisions": 2929,
+ "best_replay_verify": {
+  "x": 3929.574501594365,
+  "y": 10808.699658869602,
+  "tick": 11836,
+  "match": true,
+  "after_180tick_hold_xy": [
+   3931.2565042936812,
+   10803.83384886133
+  ],
+  "min_y_during_hold": 10796.608976643376,
+  "held": true
+ }
+}

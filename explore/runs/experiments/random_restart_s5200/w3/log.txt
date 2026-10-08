@@ -1,0 +1,42 @@
+[    15s] seg=50 ticks/s=1200 elite_y=160.6 maxY_any=195 restarts=0 improvements=5 holdTests=158
+[    30s] seg=181 ticks/s=1619 elite_y=160.6 maxY_any=219 restarts=0 improvements=5 holdTests=381
+[    45s] seg=330 ticks/s=1755 elite_y=169.2 maxY_any=220 restarts=0 improvements=7 holdTests=593
+[    60s] seg=555 ticks/s=1938 elite_y=169.2 maxY_any=220 restarts=0 improvements=7 holdTests=822
+[    75s] seg=715 ticks/s=1921 elite_y=169.2 maxY_any=220 restarts=0 improvements=7 holdTests=1000
+[    90s] seg=928 ticks/s=1996 elite_y=169.2 maxY_any=220 restarts=0 improvements=7 holdTests=1215
+[   105s] seg=1097 ticks/s=2042 elite_y=112.1 maxY_any=220 restarts=1 improvements=10 holdTests=1451
+[   120s] seg=1203 ticks/s=2064 elite_y=341.4 maxY_any=399 restarts=1 improvements=17 holdTests=1729
+[   136s] seg=1346 ticks/s=2095 elite_y=347.0 maxY_any=399 restarts=1 improvements=18 holdTests=2013
+[   151s] seg=1443 ticks/s=2096 elite_y=442.0 maxY_any=484 restarts=1 improvements=25 holdTests=2279
+[   166s] seg=1546 ticks/s=2030 elite_y=458.6 maxY_any=484 restarts=1 improvements=27 holdTests=2419
+[   181s] seg=1643 ticks/s=1985 elite_y=460.5 maxY_any=484 restarts=1 improvements=28 holdTests=2584
+[   196s] seg=1726 ticks/s=1934 elite_y=464.5 maxY_any=484 restarts=1 improvements=29 holdTests=2729
+[   212s] seg=1837 ticks/s=1890 elite_y=465.5 maxY_any=484 restarts=1 improvements=30 holdTests=2856
+[   227s] seg=1944 ticks/s=1848 elite_y=465.5 maxY_any=511 restarts=1 improvements=30 holdTests=2966
+{
+ "args": {
+  "secs": 240.0,
+  "seed": 5203,
+  "cx": 16.0,
+  "cy": 8.0,
+  "min_len": 6,
+  "max_len": 30,
+  "restart_s": 60.0,
+  "out": "/home/factory-user/repos/Getting-Over-It-ML/explore/runs/experiments/random_restart_s5200/w3"
+ },
+ "elapsed_s": 240.2,
+ "segments": 2044,
+ "ticks": 436312,
+ "ticks_per_s": 1817,
+ "restarts": 1,
+ "improvements": 30,
+ "hold_tests": 3076,
+ "maxY_any": 511.4809376749138,
+ "maxRetainedY": 465.5222351757237,
+ "best_xy": [
+  1651.9451263626152,
+  465.5222351757237
+ ],
+ "best_path_decisions": 230,
+ "success": false
+}

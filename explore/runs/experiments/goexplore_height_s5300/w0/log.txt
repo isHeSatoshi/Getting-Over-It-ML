@@ -1,0 +1,75 @@
+[    15s] cells=260 seg=48 ticks/s=1118 maxY(any)=90 maxRetainedProg=89.4 bestXY=(-295,89) maxX(y>=90)=0 ledgeHeld_first=None holdTests=153 heapMB=121
+  import from seed 5301: y=207.5 (path 116 decisions; 20 route cells, 15 retained)
+[    31s] cells=766 seg=166 ticks/s=1678 maxY(any)=206 maxRetainedProg=207.5 bestXY=(989,207) maxX(y>=90)=1017 ledgeHeld_first=24.2 holdTests=438 heapMB=143
+[    46s] cells=1202 seg=303 ticks/s=1802 maxY(any)=314 maxRetainedProg=313.8 bestXY=(945,314) maxX(y>=90)=1017 ledgeHeld_first=24.2 holdTests=663 heapMB=102
+[    61s] cells=1691 seg=480 ticks/s=1824 maxY(any)=423 maxRetainedProg=348.4 bestXY=(943,348) maxX(y>=90)=1435 ledgeHeld_first=24.2 holdTests=837 heapMB=135
+[    76s] cells=1970 seg=636 ticks/s=1753 maxY(any)=423 maxRetainedProg=348.4 bestXY=(943,348) maxX(y>=90)=1445 ledgeHeld_first=24.2 holdTests=943 heapMB=145
+[    91s] cells=2199 seg=805 ticks/s=1746 maxY(any)=423 maxRetainedProg=348.4 bestXY=(943,348) maxX(y>=90)=1445 ledgeHeld_first=24.2 holdTests=1090 heapMB=139
+[   106s] cells=2399 seg=993 ticks/s=1768 maxY(any)=423 maxRetainedProg=353.0 bestXY=(1040,353) maxX(y>=90)=1445 ledgeHeld_first=24.2 holdTests=1249 heapMB=186
+[   121s] cells=2535 seg=1181 ticks/s=1778 maxY(any)=423 maxRetainedProg=353.0 bestXY=(1040,353) maxX(y>=90)=1445 ledgeHeld_first=24.2 holdTests=1392 heapMB=136
+  import from seed 5302: y=855.4 (path 284 decisions; 37 route cells, 16 retained)
+[   136s] cells=2828 seg=1326 ticks/s=1758 maxY(any)=934 maxRetainedProg=855.4 bestXY=(2455,855) maxX(y>=90)=2588 ledgeHeld_first=24.2 holdTests=1531 heapMB=217
+[   151s] cells=3240 seg=1460 ticks/s=1795 maxY(any)=1032 maxRetainedProg=986.4 bestXY=(2680,986) maxX(y>=90)=2706 ledgeHeld_first=24.2 holdTests=1772 heapMB=263
+[   166s] cells=3688 seg=1613 ticks/s=1799 maxY(any)=1270 maxRetainedProg=1237.3 bestXY=(2654,1237) maxX(y>=90)=2777 ledgeHeld_first=24.2 holdTests=1952 heapMB=253
+[   182s] cells=4090 seg=1776 ticks/s=1768 maxY(any)=1375 maxRetainedProg=1237.3 bestXY=(2654,1237) maxX(y>=90)=2777 ledgeHeld_first=24.2 holdTests=2054 heapMB=171
+[   197s] cells=4365 seg=1947 ticks/s=1746 maxY(any)=1375 maxRetainedProg=1248.4 bestXY=(2743,1248) maxX(y>=90)=2777 ledgeHeld_first=24.2 holdTests=2147 heapMB=262
+  import from seed 5301: y=2257.1 (path 572 decisions; 60 route cells, 29 retained)
+[   214s] cells=4606 seg=2096 ticks/s=1693 maxY(any)=1375 maxRetainedProg=2257.1 bestXY=(2936,2257) maxX(y>=90)=2777 ledgeHeld_first=24.2 holdTests=2228 heapMB=344
+[   229s] cells=5070 seg=2243 ticks/s=1682 maxY(any)=2393 maxRetainedProg=2374.5 bestXY=(2987,2374) maxX(y>=90)=3005 ledgeHeld_first=24.2 holdTests=2354 heapMB=272
+  import from seed 5301: y=2709.0 (path 698 decisions; 39 route cells, 15 retained)
+{
+ "args": {
+  "secs": 240.0,
+  "seed": 5300,
+  "cx": 16.0,
+  "cy": 8.0,
+  "min_len": 6,
+  "max_len": 30,
+  "max_cells": 60000,
+  "out": "/home/factory-user/repos/Getting-Over-It-ML/explore/runs/experiments/goexplore_height_s5300/w0",
+  "share_dir": "/home/factory-user/repos/Getting-Over-It-ML/explore/runs/experiments/goexplore_height_s5300/share",
+  "sync_s": 20,
+  "import_margin": 30,
+  "stall_s": 0,
+  "phi": false,
+  "phi_margin": 150,
+  "front_scale": 40,
+  "gait_frac": 0.0,
+  "local_radius": 0.0,
+  "heap_mb": 600,
+  "no_hold_test": false
+ },
+ "elapsed_s": 240.2,
+ "cells": 5327,
+ "segments": 2299,
+ "ticks": 395822,
+ "ticks_per_s": 1648,
+ "maxY_any": 2745.928210568815,
+ "maxRetainedY": 2708.9966678059554,
+ "retained_cells": 1072,
+ "hold_tests": 2421,
+ "imports": 4,
+ "stalled": false,
+ "maxX_y90": 3005.4676579720076,
+ "ledge_first_s": 24.2,
+ "success": false,
+ "best_node": 7634,
+ "best_xy": [
+  2877.1870629890564,
+  2708.9966678059554
+ ],
+ "best_progress": 2708.9966678059554,
+ "best_path_decisions": 698,
+ "best_replay_verify": {
+  "x": 2877.1870629890564,
+  "y": 2708.9966678059554,
+  "tick": 2912,
+  "match": true,
+  "after_180tick_hold_xy": [
+   2872.879745620659,
+   2706.5268044084387
+  ],
+  "min_y_during_hold": 2706.217350231939,
+  "held": true
+ }
+}

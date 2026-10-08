@@ -1,0 +1,73 @@
+  import from seed 3000: y=-2861.8 (path 2326 decisions; 385 route cells, 235 retained)
+[    29s] cells=390 seg=1 ticks/s=11 maxY(any)=21 maxRetainedProg=-3776.3 bestXY=(4566,8538) maxX(y>=90)=0 ledgeHeld_first=None holdTests=3 heapMB=333
+[    45s] cells=1367 seg=88 ticks/s=482 maxY(any)=9351 maxRetainedProg=-3776.3 bestXY=(4566,8538) maxX(y>=90)=4989 ledgeHeld_first=None holdTests=147 heapMB=380
+[    60s] cells=2155 seg=192 ticks/s=667 maxY(any)=9351 maxRetainedProg=-3776.3 bestXY=(4566,8538) maxX(y>=90)=4989 ledgeHeld_first=None holdTests=232 heapMB=386
+[    83s] cells=2443 seg=226 ticks/s=560 maxY(any)=9355 maxRetainedProg=-3776.3 bestXY=(4566,8538) maxX(y>=90)=4989 ledgeHeld_first=None holdTests=278 heapMB=372
+[    98s] cells=2798 seg=298 ticks/s=674 maxY(any)=9363 maxRetainedProg=-3776.3 bestXY=(4566,8538) maxX(y>=90)=4989 ledgeHeld_first=None holdTests=413 heapMB=406
+[   113s] cells=3222 seg=408 ticks/s=752 maxY(any)=9363 maxRetainedProg=-3776.3 bestXY=(4566,8538) maxX(y>=90)=4989 ledgeHeld_first=None holdTests=499 heapMB=366
+  heap 518MB > 450.0: pruned 182 cells
+[   142s] cells=3502 seg=486 ticks/s=716 maxY(any)=9363 maxRetainedProg=-3776.3 bestXY=(4566,8538) maxX(y>=90)=4989 ledgeHeld_first=None holdTests=567 heapMB=518
+[   158s] cells=3882 seg=558 ticks/s=756 maxY(any)=9363 maxRetainedProg=-3776.3 bestXY=(4566,8538) maxX(y>=90)=4989 ledgeHeld_first=None holdTests=629 heapMB=447
+[   173s] cells=4431 seg=630 ticks/s=800 maxY(any)=9363 maxRetainedProg=-3776.3 bestXY=(4566,8538) maxX(y>=90)=4989 ledgeHeld_first=None holdTests=700 heapMB=394
+[   188s] cells=4865 seg=715 ticks/s=827 maxY(any)=9363 maxRetainedProg=-3776.3 bestXY=(4566,8538) maxX(y>=90)=4989 ledgeHeld_first=None holdTests=744 heapMB=431
+  heap 461MB > 450.0: pruned 110 cells
+[   203s] cells=4774 seg=721 ticks/s=778 maxY(any)=9363 maxRetainedProg=-3776.3 bestXY=(4566,8538) maxX(y>=90)=4989 ledgeHeld_first=None holdTests=758 heapMB=461
+  heap 472MB > 450.0: pruned 45 cells
+[   218s] cells=5116 seg=801 ticks/s=811 maxY(any)=9363 maxRetainedProg=-3776.3 bestXY=(4566,8538) maxX(y>=90)=4989 ledgeHeld_first=None holdTests=815 heapMB=472
+[   233s] cells=5659 seg=897 ticks/s=824 maxY(any)=9363 maxRetainedProg=-2500.6 bestXY=(2369,8817) maxX(y>=90)=4989 ledgeHeld_first=None holdTests=840 heapMB=450
+{
+ "args": {
+  "secs": 240.0,
+  "seed": 5102,
+  "cx": 16.0,
+  "cy": 8.0,
+  "min_len": 6,
+  "max_len": 48,
+  "max_cells": 9000,
+  "out": "/home/factory-user/repos/Getting-Over-It-ML/explore/runs/experiments/stage1_ramp_goal_s5100/w2",
+  "share_dir": "/home/factory-user/repos/Getting-Over-It-ML/explore/runs/experiments/stage1_ramp_goal_s5100/share",
+  "sync_s": 60.0,
+  "import_margin": 250.0,
+  "stall_s": 560.0,
+  "phi": true,
+  "phi_margin": 150,
+  "front_scale": 30.0,
+  "gait_frac": 0.4,
+  "local_radius": 250.0,
+  "heap_mb": 450.0,
+  "no_hold_test": false
+ },
+ "elapsed_s": 240.2,
+ "cells": 5829,
+ "segments": 965,
+ "ticks": 198456,
+ "ticks_per_s": 826,
+ "maxY_any": 9363.215156227345,
+ "maxRetainedY": -2500.551025390625,
+ "retained_cells": 444,
+ "hold_tests": 840,
+ "imports": 1,
+ "stalled": false,
+ "maxX_y90": 4989.447889900415,
+ "ledge_first_s": null,
+ "success": false,
+ "best_node": 7705,
+ "best_xy": [
+  2368.733668154309,
+  8817
+ ],
+ "best_progress": -2500.551025390625,
+ "best_path_decisions": 2464,
+ "best_replay_verify": {
+  "x": 2368.733668154309,
+  "y": 8817,
+  "tick": 9976,
+  "match": true,
+  "after_180tick_hold_xy": [
+   2368.7331624999697,
+   8817
+  ],
+  "min_y_during_hold": 8816.570182169016,
+  "held": true
+ }
+}

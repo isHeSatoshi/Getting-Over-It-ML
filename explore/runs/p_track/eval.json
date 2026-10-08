@@ -1,0 +1,36 @@
+[
+ {
+  "seed": 0,
+  "noise": 0.0,
+  "trial": 0,
+  "decisions": 3455,
+  "tick": 13937,
+  "x": 3589.2328706585417,
+  "y": 16000.818689285075,
+  "dead": false,
+  "success": true,
+  "replans": 0,
+  "on_reference": 3455,
+  "resyncs": 3178,
+  "max_dev": 0.0,
+  "mean_dev": 0.0,
+  "elapsed_s": 15.6
+ },
+ {
+  "seed": 1,
+  "noise": 0.0,
+  "trial": 0,
+  "decisions": 3455,
+  "tick": 13937,
+  "x": 3589.2328706585417,
+  "y": 16000.818689285075,
+  "dead": false,
+  "success": true,
+  "replans": 0,
+  "on_reference": 3455,
+  "resyncs": 3178,
+  "max_dev": 0.0,
+  "mean_dev": 0.0,
+  "elapsed_s": 14.6
+ }
+]

@@ -1,0 +1,56 @@
+{
+ "args": {
+  "secs": 300.0,
+  "seed": 5201,
+  "cx": 16.0,
+  "cy": 8.0,
+  "min_len": 6,
+  "max_len": 48,
+  "max_cells": 9000,
+  "out": "/home/factory-user/repos/Getting-Over-It-ML/explore/runs/experiments/no_ceiling_penalty_s5200/w1",
+  "share_dir": "/home/factory-user/repos/Getting-Over-It-ML/explore/runs/experiments/no_ceiling_penalty_s5200/share",
+  "sync_s": 60.0,
+  "import_margin": 250.0,
+  "stall_s": 560.0,
+  "phi": true,
+  "phi_margin": 150,
+  "front_scale": 30.0,
+  "gait_frac": 0.4,
+  "local_radius": 250.0,
+  "heap_mb": 450.0,
+  "no_hold_test": false
+ },
+ "elapsed_s": 300.2,
+ "cells": 5281,
+ "segments": 1508,
+ "ticks": 344020,
+ "ticks_per_s": 1146,
+ "maxY_any": 10969.572371018976,
+ "maxRetainedY": -25843.076171875,
+ "retained_cells": 469,
+ "hold_tests": 1404,
+ "imports": 1,
+ "stalled": false,
+ "maxX_y90": 4030.365212645509,
+ "ledge_first_s": null,
+ "success": false,
+ "best_node": 515,
+ "best_xy": [
+  3934.04059947325,
+  10808
+ ],
+ "best_progress": -25843.076171875,
+ "best_path_decisions": 2951,
+ "best_replay_verify": {
+  "x": 3934.04059947325,
+  "y": 10808,
+  "tick": 11924,
+  "match": true,
+  "after_180tick_hold_xy": [
+   3936.493563946461,
+   10805.492928681002
+  ],
+  "min_y_during_hold": 10805.444209602667,
+  "held": true
+ }
+}

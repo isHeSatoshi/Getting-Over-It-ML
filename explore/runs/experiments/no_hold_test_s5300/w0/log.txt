@@ -1,0 +1,47 @@
+  import from seed 3000: y=14884.3 (path 3418 decisions; 565 route cells, 311 retained)
+[    40s] cells=581 seg=1 ticks/s=2 maxY(any)=83 maxRetainedProg=14884.3 bestXY=(3569,14884) maxX(y>=90)=0 ledgeHeld_first=None holdTests=0 heapMB=373
+{
+ "args": {
+  "secs": 150.0,
+  "seed": 5300,
+  "cx": 16.0,
+  "cy": 8.0,
+  "min_len": 6,
+  "max_len": 48,
+  "max_cells": 9000,
+  "out": "/home/factory-user/repos/Getting-Over-It-ML/explore/runs/experiments/no_hold_test_s5300/w0",
+  "share_dir": "/home/factory-user/repos/Getting-Over-It-ML/explore/runs/experiments/no_hold_test_s5300/share",
+  "sync_s": 60.0,
+  "import_margin": 100.0,
+  "stall_s": 380.0,
+  "phi": false,
+  "phi_margin": 150,
+  "front_scale": 60.0,
+  "gait_frac": 0.3,
+  "local_radius": 0.0,
+  "heap_mb": 450.0,
+  "no_hold_test": true
+ },
+ "elapsed_s": 39.8,
+ "cells": 609,
+ "segments": 3,
+ "ticks": 208,
+ "ticks_per_s": 5,
+ "maxY_any": 16003.633253611639,
+ "maxRetainedY": 16003.633253611639,
+ "retained_cells": 355,
+ "hold_tests": 0,
+ "imports": 1,
+ "stalled": false,
+ "maxX_y90": 3760.146832490263,
+ "ledge_first_s": null,
+ "success": true,
+ "best_node": 608,
+ "best_xy": [
+  3760.146832490263,
+  16003.633253611639
+ ],
+ "best_progress": 16003.633253611639,
+ "best_path_decisions": 3445,
+ "best_replay_verify": null
+}

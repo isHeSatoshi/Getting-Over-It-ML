@@ -1,0 +1,27 @@
+{
+ "args": {
+  "secs": 240.0,
+  "seed": 5101,
+  "cx": 16.0,
+  "cy": 8.0,
+  "min_len": 6,
+  "max_len": 30,
+  "restart_s": 60.0,
+  "out": "/home/factory-user/repos/Getting-Over-It-ML/explore/runs/experiments/random_restart_s5100/w1"
+ },
+ "elapsed_s": 240.0,
+ "segments": 2335,
+ "ticks": 445696,
+ "ticks_per_s": 1857,
+ "restarts": 2,
+ "improvements": 22,
+ "hold_tests": 2928,
+ "maxY_any": 392.2152002205646,
+ "maxRetainedY": 346.545719473712,
+ "best_xy": [
+  931.8016427051662,
+  346.545719473712
+ ],
+ "best_path_decisions": 21,
+ "success": false
+}

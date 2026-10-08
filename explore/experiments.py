@@ -28,7 +28,10 @@ FULL_MID = ["--phi", "--front-scale", "30", "--gait-frac", "0.4", "--local-radiu
 FULL_LAST = ["--front-scale", "60", "--gait-frac", "0.3", "--local-radius", "0",
              "--sync-s", "60", "--import-margin", "100", "--stall-s", "380", "--max-cells", "9000",
              "--heap-mb", "450", "--min-len", "6", "--max-len", "48"]
-ENV_MID = {"PHI_TAG": "_c6", "PHI_MAXX": "4600"}
+# Potentials saved by explore/potential.py. Tags map to files: "" -> phi.npy (PHI_COVER=1, full goal),
+# "_full2" -> phi_full2.npy (PHI_COVER=6, full goal; the potential E24-E28 used), "_ramp" -> phi_ramp.npy
+# (PHI_GOAL_BOX=2900,3600,10400,10700, the E20-E23 staged goal), "_blob" -> phi_blob.npy (E21 goal).
+ENV_FULL = {"PHI_TAG": "_full2", "PHI_MAXX": "4600"}
 
 
 def flag(args, name, value):
@@ -53,23 +56,23 @@ SUITES = {
         {"name": "no_gait", "kind": "goexplore", "start": "e28_share/best_3000.json",
          "args": flag(FULL_LAST, "--gait-frac", "0")},
         {"name": "with_potential", "kind": "goexplore", "start": "e28_share/best_3000.json", "args": FULL_LAST + ["--phi"],
-         "env": ENV_MID},
+         "env": ENV_FULL},
     ],
     # Mid leg: from the verified Y 10808 route, the config that reached Y 14564 (E26).
     "mid_leg": [
-        {"name": "full", "kind": "goexplore", "start": "e25_best_10808.json", "args": FULL_MID, "env": ENV_MID},
+        {"name": "full", "kind": "goexplore", "start": "e25_best_10808.json", "args": FULL_MID, "env": ENV_FULL},
         {"name": "no_potential", "kind": "goexplore", "start": "e25_best_10808.json",
          "args": [x for x in FULL_MID if x != "--phi"], "env": {}},
         {"name": "no_ceiling_penalty", "kind": "goexplore", "start": "e25_best_10808.json", "args": FULL_MID,
-         "env": {"PHI_TAG": "_c1", "PHI_MAXX": "4600"}},
+         "env": {"PHI_TAG": "", "PHI_MAXX": "4600"}},
         {"name": "no_gait", "kind": "goexplore", "start": "e25_best_10808.json",
-         "args": flag(FULL_MID, "--gait-frac", "0"), "env": ENV_MID},
+         "args": flag(FULL_MID, "--gait-frac", "0"), "env": ENV_FULL},
     ],
     # Staged goals: from the verified Y 9341 route, the final goal vs the first staged goal (the
     # plateau above the west ramp, PHI_GOAL_BOX=2900,3600,10400,10700 -> phi_ramp.npy).
     "staged_goals": [
         {"name": "final_goal", "kind": "goexplore", "start": "e14_best_9341.json", "args": FULL_MID,
-         "env": ENV_MID},
+         "env": ENV_FULL},
         {"name": "stage1_ramp_goal", "kind": "goexplore", "start": "e14_best_9341.json", "args": FULL_MID,
          "env": {"PHI_TAG": "_ramp", "PHI_MAXX": "4600"}},
     ],
@@ -128,14 +131,17 @@ def publish_start(cfg, share):
 
 
 def run_seed(cfg, seed, secs, workers, out_root):
-    share = Path(out_root) / f"{cfg['name']}_s{seed}" / "share"
+    # Include the suite in the path: suites share config names (e.g. "full"), and without it a later
+    # run overwrites the earlier one's artifacts (the recorded rows stay correct, the files do not).
+    run_dir = Path(out_root) / f"{cfg['suite']}_{cfg['name']}_s{seed}"
+    share = run_dir / "share"
     share.mkdir(parents=True, exist_ok=True)
     started = publish_start(cfg, share)
     env = dict(os.environ, PYTHONPATH=str(ROOT), **cfg.get("env", {}))
     procs = []
     for i in range(workers):
         wseed = seed + i
-        out = Path(out_root) / f"{cfg['name']}_s{seed}" / f"w{i}"
+        out = run_dir / f"w{i}"
         out.mkdir(parents=True, exist_ok=True)
         if cfg["kind"] == "goexplore":
             cmd = [sys.executable, str(ROOT / "explore" / "goexplore.py"), "--secs", str(secs), "--seed", str(wseed),
@@ -148,7 +154,7 @@ def run_seed(cfg, seed, secs, workers, out_root):
     for p in procs: p.wait()
     summaries = []
     for i in range(workers):
-        out = Path(out_root) / f"{cfg['name']}_s{seed}" / f"w{i}"
+        out = run_dir / f"w{i}"
         s = json.loads((out / "summary.json").read_text()) if (out / "summary.json").exists() else {"success": False, "maxRetainedY": None}
         s["success_path"] = (out / "SUCCESS_path.json").exists()
         s["worker"] = i
@@ -196,6 +202,7 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("command", choices=["list", "run", "table"])
     ap.add_argument("--suite", default=None); ap.add_argument("--config", default=None)
+    ap.add_argument("--only", nargs="+", default=None, help="run only these config names (e.g. --only full no_gait)")
     ap.add_argument("--seeds", type=int, nargs="+", default=[5100, 5200, 5300])
     ap.add_argument("--secs", type=float, default=None, help="budget per run (default: suite-specific)")
     ap.add_argument("--workers", type=int, default=4)
@@ -213,6 +220,7 @@ def main():
     for suite in suites:
         for cfg in SUITES[suite]:
             if a.config and cfg["name"] != a.config: continue
+            if a.only and cfg["name"] not in a.only: continue
             cfg = dict(cfg, suite=suite)
             secs = a.secs or default_secs[suite]
             for seed in a.seeds:

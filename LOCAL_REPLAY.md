@@ -1,14 +1,77 @@
-# UPDATE: full-route replay that reaches Y > 16000 (`success: true`)
+# UPDATE: the game's own ending (win animation, finish time, end title)
 
 `explore/runs/e28_SUCCESS_s3100.json` (3455 pointer decisions x 4 ticks, open loop) reaches `success` (world Y 16000.8189) from ordinary spawn on the real game:
 
     python explore/replay_route.py explore/runs/e28_SUCCESS_s3100.json --seeds 0 1 2 3 --hold-ticks 0
     # headed + trace compare against the reference trace exported from the cloud host:
     python explore/replay_route.py explore/runs/e28_SUCCESS_s3100.json --headed --speed 4 --hold-ticks 0 --trace-out local.trace.jsonl --compare-trace explore/reference/e28_success_16001.trace.jsonl
+    # watch the ending: keep stepping 1500 ticks (50 s) past the win flag
+    python explore/replay_route.py explore/runs/e28_SUCCESS_s3100.json --headed --speed 1 --hold-ticks 0 --after-success 1500
 
 Expected final line: tick 13937, x 3589.2328706585417, y 16000.818689285075, success true (bit-identical on reset seeds 0-3 on the cloud host).
 Same caveats as below: this is an open-loop trace (any pointer noise, even std 0.01, makes it fall), and cross-host determinism is unmeasured; use `--compare-trace`.
 The sections below describe the earlier Y 9341 route and tooling (still valid, same commands).
+
+## The ending (what the harness used to cut off)
+
+The harness stops stepping as soon as world Y exceeds 16000. The game's own finish path is: the Player
+main loop exits above 16000 and broadcasts `SAVE TIME TO CLOUD`; `High Score` compares the time and
+broadcasts `Win` (or `Win - Record`); `Splash` fades to black and shows the end title over a scrolling
+star field; `Cursor` hides. None of that ran before.
+
+`--after-success N` keeps stepping N ticks past the win flag (neutral pointer, still the real game).
+The ending also needs the presentation state the real game only reaches through its title screen, so
+`--presentation` (on by default with `--after-success`) reproduces it: the Splash sprite visible at
+ghost 100 and the Timer's six digit clones, using the project's own scripts. It draws no random number
+and writes no variable the physics reads; the recorded run is **BIT-EXACT** against the reference trace
+with 1500 extra ticks (final delta [0.0, 0.0]).
+
+What you see: the finish time (the game's own `TIME` digits, e.g. `7'44`), then either
+
+- `New World Record!` (default: with no cloud leaderboard the game treats any time as a record), or
+- `You Got Over It!` with `--fastest-frames 3000` (emulates a populated leaderboard; 3000 frames = 100 s).
+
+`--ending-speed N` plays that phase at N x real time.
+
+## Baselines, ablations and policies (what was measured, and what failed)
+
+Everything below is reproducible from this branch. Results table: `explore/runs/experiments/results.jsonl`
+(render it with `python explore/experiments.py table`); full notes in `explore/LOG.md` (E30, E31).
+
+    python explore/experiments.py list
+    python explore/experiments.py run --suite baselines --seeds 5100 5200 5300 --secs 240 --workers 4
+    python explore/experiments.py table
+
+Measured, 3 seeds x 4 islands per config: from spawn, Go-Explore beats random restarts (3747 vs 2281 retained
+height in 240 s); the last leg succeeds for every variant (the start route is 1100 units from the finish, so that
+suite cannot separate anything); at a 300 s budget the mid-leg potential / ceiling-penalty / gait ablations are all
+flat at their start route, so those questions are **not** answerable at that budget (the E18-E28 evidence was
+collected at 600-800 s per island).
+
+Policies (`explore/policy_bc.py`, `explore/policy_mpc.py`, `explore/policy_track.py`, `explore/policy_dagger.py`):
+
+    # closed-loop tracking controller: reaches the summit when the run stays on the reference
+    python explore/policy_track.py --route explore/runs/e28_SUCCESS_s3100.json --seeds 0 1 --noise 0
+    # the same controller under the noise that kills the open loop (slow: it replans)
+    python explore/policy_track.py --seeds 0 --noise 0.25 --trials 1 --max-decisions 1600
+    # behaviour cloning and MPC
+    python explore/policy_bc.py collect --routes explore/runs/e28_SUCCESS_s3100.json explore/runs/e26_best_14564.json
+    python explore/policy_bc.py train --data explore/runs/policy_bc/data.npz --out explore/runs/policy_bc
+    python explore/policy_bc.py eval --model explore/runs/policy_bc/model.pt --seeds 9001 9002 9003 --secs 150
+    python explore/policy_mpc.py --out explore/runs/p_mpc_phi --secs 600 --phi --phi-tag _full2
+
+Honest results: behaviour cloning stalls at Y 158 on every held-out seed; MPC stalls at Y ~175 with either the
+height or the potential objective. The tracking controller reaches the summit **bit-exactly** (0 replans, max
+deviation 0.0) when the run stays on the reference, and under noise 0.25 it stays alive past the tick where the
+open loop dies but does not climb. **No policy that climbs from arbitrary states was obtained.**
+
+## Recorded ending video
+`explore/runs/e28_ending_recording/`:
+
+- `e28_success_ending_full.mp4` (8:45, 1100x820, 30 fps): the whole route at real time plus 50 s of ending and the linger.
+- `ending_clip.mp4` (0:52): just the ending.
+- `end_title_frame.png`, `contact_sheet_ending.png`: stills of the end title.
+- `recording.trace.jsonl`, `replay_stdout.log`, `divergence_report.json`: BIT-EXACT, 1500 extra ticks, final delta [0.0, 0.0].
 
 ## Recorded reference video (summit run)
 `explore/runs/e28_recording/` contains a full headed recording of the summit route, made on the cloud host under Xvfb

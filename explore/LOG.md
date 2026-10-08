@@ -221,6 +221,38 @@ Env for all commands: `cd <repo> && . .venv/bin/activate && export RL_CHROME_NO_
     python explore/replay_route.py explore/runs/e14_best_9341.json --seeds 0 1 2 3 --hold-ticks 180   # verify best route (needs no potential)
 Search used 4 parallel Chrome workers (~1 GB each; cgroup limit 7 GB); never start extra Chrome while 4 islands run.
 
+## E31: closed-loop policies (behaviour cloning, MPC, tracking)
+- **Why this matters.** Everything above is an open-loop trace: `--noise 0.01` already breaks it. A policy has to
+  act from whatever state it is in. Four closed-loop approaches were built and measured; three stall near spawn,
+  one reaches the summit.
+- **Behaviour cloning** (`explore/policy_bc.py`): 25 game state features -> pointer offset. Trained on all four
+  verified routes (12,052 decisions, 200 epochs, MSE 1100 units^2 ~ 33 pointer units RMS). Closed loop on
+  held-out seeds 9001/9002/9003, 150 s each: **max Y 158.28 on all three, final Y 49.0, identical every time** -
+  it converges to one looping behaviour and never climbs. Compounding error: it only ever saw reference states.
+- **MPC on the real game, height objective** (`explore/policy_mpc.py`): receding-horizon CEM, fitness = retained
+  height after a held suffix. 300 s, 324 decisions (4 ticks/s - the planner is the bottleneck): **max Y 174.9**.
+- **MPC with the geometry potential** (same file, `--phi --phi-tag _full2`): 600 s, 2790 decisions, 19 ticks/s:
+  **max Y 177.9, final Y -9**. Global cost-to-goal guidance did not help at this horizon.
+- **Tracking controller** (`explore/policy_track.py`): the verified route is treated as a *reference* (position per
+  tick). At each decision the controller compares the live state with the reference; on reference it applies the
+  reference action, off reference it re-plans a short pointer plan with the real game as the simulator, aiming at
+  the reference `horizon` decisions ahead, and commits the first few decisions. A phase estimator matches the live
+  position against a forward window of reference points so a deviation does not lose the reference.
+  - **Noise 0, seeds 0 and 1: reaches the summit, `success: true`, tick 13937, x 3589.2328706585417,
+    y 16000.818689285075 - bit-identical to the open-loop reference, 0 replans, max deviation 0.0.** The
+    controller is exact when it can be.
+  - **Noise 0.25 (the perturbation that kills the open loop at tick ~5300, Y -206), 1600 decisions / 6400 ticks:**
+    both variants stay alive to the decision cap (open loop is dead by then). Final Y 516.0 without phase
+    re-synchronisation, 169.4 with it; mean deviation 1360-1833 units either way. Honest reading: feedback keeps
+    the run alive past the open-loop death point, but at this noise the deviation is far outside the basin where
+    this reference is a useful target, so neither variant is actually tracking, and neither climbs.
+- **Honest bottom line.** The only thing that reaches the summit is the verified open-loop route; the closed-loop
+  controller also reaches it, but only by staying exactly on that route. No learned or planning policy that climbs
+  from arbitrary states was obtained in this session. The infrastructure for all four approaches is committed and
+  reproducible (`policy_bc.py`, `policy_mpc.py`, `policy_track.py`, `policy_dagger.py`).
+- Cost note: the MPC planners run at 4-19 ticks/s (the planner, not the game, is the bottleneck), which is why
+  their budgets buy so few decisions; the tracking controller runs at 220 decisions/s on reference.
+
 ## Viewing / verification tooling (no new searches)
 - `explore/replay_route.py`: `--headed`, `--speed`, HUD overlay, `--trace-out`, `--compare-trace` (first-divergence report, exit code 3 on divergence).
   `research/cdp_browser.py` + `research/browser_bridge.py`: CDP launch/attach (no chromedriver), Windows Chrome detection, automatic CDP fallback.
@@ -258,3 +290,66 @@ Search used 4 parallel Chrome workers (~1 GB each; cgroup limit 7 GB); never sta
 - Viewing-only changes: HUD success banner + `success=` field in the FINAL line; `hud_text` tests.
 - Fixed the E26 crash: `pick()` now zeroes non-finite tier weights and falls back to uniform when the tier
   leaves all weights at zero (regression test `tests/test_explore_pick.py`). Suite: 521 tests OK + node test OK.
+
+## E29: the game's own ending (viewing only; no new searches)
+- Why it never showed: the harness stopped stepping the moment world Y passed 16000, so the project's own
+  finish path never ran. The path is `Player` main loop exits above 16000 -> broadcast `SAVE TIME TO CLOUD`
+  -> `High Score` compares the time -> broadcast `Win` or `Win - Record` -> `Splash` fades to black, shows
+  the end title over a scrolling star field -> `Cursor` hides.
+- Two viewing-only changes: `step(commands, after=True)` keeps stepping past the win flag
+  (`replay_route.py --after-success N`, default pointer neutral), and `--presentation` (default on with
+  `--after-success`) reproduces the title-screen presentation state the real game only reaches through its
+  title screen: Splash visible at ghost 100 plus the Timer's six digit clones (via the project's own
+  `splash - hit` / `Show Score` scripts). No RNG draw, no variable the physics reads, no collision drawable.
+- Verified: `--seeds 0 1 2 3 --after-success 1200 --trace-out ... --compare-trace ...` -> **BIT-EXACT** on all
+  four seeds with 1200 extra ticks (final delta [0.0, 0.0]). Success line unchanged (tick 13937, y 16000.8189).
+- The ending shows the game's own finish time (`TIME` digits, `7'44` for this route) and `New World Record!`
+  by default; `--fastest-frames 3000` emulates a populated leaderboard and shows `You Got Over It!`.
+- Recorded under Xvfb + ffmpeg x11grab at speed 1 (`explore/runs/e28_ending_recording/`):
+  `e28_success_ending_full.mp4` (8:45, 1100x820@30), `ending_clip.mp4` (0:52, the ending only),
+  `end_title_frame.png`, `contact_sheet_ending.png`, `recording.trace.jsonl`, `replay_stdout.log`,
+  `divergence_report.json` (BIT-EXACT, 1500 extra ticks).
+
+## E30: baselines and ablations (equal budget, 3 seeds, 4 islands)
+- Program: `explore/experiments.py` (`list` / `run` / `table`), driver `explore/run_experiments.sh`.
+  Every config-seed is 4 Go-Explore islands in parallel on 4 cores for a fixed wall-clock budget; configs that
+  start from a verified route republish it into a fresh share dir so the islands import it at their first sync
+  (in the units the islands compare: height, or -phi under `--phi`).
+- `--no-hold-test` ablation added (`goexplore.py`, `runtime.js`): accept frontier states without the retained
+  (pointer-frozen) hold test, so flung/airborne height counts as progress. Baseline `explore/random_restart.py`:
+  same action interface and hold test, no cell archive, no potential, restart from spawn after a stall.
+- **Results** (3 seeds x 4 islands per config, fixed seeds 5100/5200/5300, `explore/runs/experiments/results.jsonl`;
+  every config-seed is a fresh share dir with the start route republished in the units the islands compare):
+
+| suite | config | budget | best retained progress | units | summit reached |
+|---|---|---|---|---|---|
+| baselines | go-explore (height) | 240s x 4 | 3747.5 | height | 0/3 |
+| baselines | random restart | 240s x 4 | 2281.3 | height | 0/3 |
+| last_leg | full | 150s x 4 | 16005.7 | height | 3/3 |
+| last_leg | no hold test | 150s x 4 | 16010.4 | height | 3/3 |
+| last_leg | no gait moves | 150s x 4 | 16005.6 | height | 3/3 |
+| last_leg | with potential | 150s x 4 | -0.0 (phi) | phi | 3/3 |
+| mid_leg | full | 300s x 4 | -27700.2 (start, no gain) | phi | 0/3 |
+| mid_leg | no potential | 300s x 4 | 10808.7 | height | 0/3 |
+| mid_leg | no ceiling penalty | 300s x 4 | -16052.4 | phi | 0/3 |
+| mid_leg | no gait moves | 300s x 4 | -13640.5 | phi | 0/3 |
+| staged_goals | final goal | 240s x 4 | -28979.6 (start, no gain) | phi | 0/3 |
+| staged_goals | stage-1 ramp goal | 240s x 4 | -2500.6 (start, no gain) | phi | 0/3 |
+
+- **What the ablations do and do not show.** They are honest but weaker than the original E-runs, because the
+  budget had to be cut to fit a 3-seed program: E24-E26 used 600-800 s per island and several rounds, these runs
+  get 240-300 s and one round.
+  - **From spawn (informative).** Go-Explore beats random restarts with the same interface, hold test and budget:
+    3747 vs 2281 retained height. Neither reaches the summit in 4 minutes; the E-series needed ~45 min of 4-island
+    time to pass the same terrain, so this is a budget statement, not a method statement.
+  - **Last leg (saturated).** Every variant succeeds on every seed in under 60 s, including with the hold test
+    removed and with the gait generator off. The start route is 1100 units from the finish, so this suite cannot
+    separate anything; it does show the last leg is easy from a good start state.
+  - **Mid leg and staged goals (budget-limited, flat).** No config beat its start route. The height baseline
+    gained 0.7 units; the phi configs gained nothing (their "progress" equals the start route's own value). Two
+    variants show transient excursions the retained metric rejects (no_gait 13449.7, no_ceiling_penalty 12672.0),
+    which is exactly what the hold test exists to filter. To say anything about the potential, the ceiling penalty
+    or staged goals, these need the original 600-800 s budgets; at 300 s every variant is at the start.
+  - Honest summary: the program confirms the baseline ordering and the mechanics of each ablation, and it shows
+    the potential/ceiling/staging questions are **not** answerable at this budget. The E18-E28 evidence for those
+    (LOG above) was collected at 600-800 s per island and is the stronger evidence.

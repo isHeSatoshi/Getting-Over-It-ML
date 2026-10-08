@@ -1,0 +1,35 @@
+[
+ {
+  "seed": 9001,
+  "decisions": 73615,
+  "ticks": 294460,
+  "max_y": 158.28141706204798,
+  "final_y": 49.013196309660685,
+  "final_x": 820.646428783916,
+  "dead": false,
+  "success": false,
+  "elapsed_s": 150.0
+ },
+ {
+  "seed": 9002,
+  "decisions": 77795,
+  "ticks": 311180,
+  "max_y": 158.28141706204798,
+  "final_y": 49.013196309660145,
+  "final_x": 820.6464287839178,
+  "dead": false,
+  "success": false,
+  "elapsed_s": 150.0
+ },
+ {
+  "seed": 9003,
+  "decisions": 77678,
+  "ticks": 310712,
+  "max_y": 158.28141706204798,
+  "final_y": 49.013196309660145,
+  "final_x": 820.6464287839178,
+  "dead": false,
+  "success": false,
+  "elapsed_s": 150.0
+ }
+]

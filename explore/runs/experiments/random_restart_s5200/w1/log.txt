@@ -1,0 +1,42 @@
+[    15s] seg=52 ticks/s=1357 elite_y=90.4 maxY_any=100 restarts=0 improvements=5 holdTests=188
+[    30s] seg=178 ticks/s=1793 elite_y=163.8 maxY_any=223 restarts=0 improvements=9 holdTests=451
+[    45s] seg=311 ticks/s=1786 elite_y=169.5 maxY_any=223 restarts=0 improvements=10 holdTests=631
+[    61s] seg=436 ticks/s=1867 elite_y=336.4 maxY_any=360 restarts=0 improvements=14 holdTests=878
+[    76s] seg=547 ticks/s=1842 elite_y=351.1 maxY_any=412 restarts=0 improvements=17 holdTests=1072
+[    91s] seg=762 ticks/s=1836 elite_y=351.1 maxY_any=412 restarts=0 improvements=17 holdTests=1186
+[   106s] seg=979 ticks/s=1836 elite_y=351.1 maxY_any=412 restarts=0 improvements=17 holdTests=1313
+[   121s] seg=1122 ticks/s=1812 elite_y=469.6 maxY_any=477 restarts=0 improvements=21 holdTests=1463
+[   136s] seg=1215 ticks/s=1812 elite_y=562.0 maxY_any=705 restarts=0 improvements=24 holdTests=1683
+[   151s] seg=1327 ticks/s=1785 elite_y=562.0 maxY_any=705 restarts=0 improvements=24 holdTests=1841
+[   166s] seg=1426 ticks/s=1810 elite_y=871.7 maxY_any=1112 restarts=0 improvements=31 holdTests=2096
+[   181s] seg=1528 ticks/s=1846 elite_y=881.1 maxY_any=1112 restarts=0 improvements=33 holdTests=2380
+[   196s] seg=1625 ticks/s=1854 elite_y=1237.1 maxY_any=1448 restarts=0 improvements=40 holdTests=2625
+[   211s] seg=1732 ticks/s=1840 elite_y=1689.4 maxY_any=1718 restarts=0 improvements=46 holdTests=2816
+[   226s] seg=1812 ticks/s=1882 elite_y=2001.5 maxY_any=2006 restarts=0 improvements=53 holdTests=3160
+{
+ "args": {
+  "secs": 240.0,
+  "seed": 5201,
+  "cx": 16.0,
+  "cy": 8.0,
+  "min_len": 6,
+  "max_len": 30,
+  "restart_s": 60.0,
+  "out": "/home/factory-user/repos/Getting-Over-It-ML/explore/runs/experiments/random_restart_s5200/w1"
+ },
+ "elapsed_s": 240.1,
+ "segments": 1897,
+ "ticks": 446026,
+ "ticks_per_s": 1857,
+ "restarts": 0,
+ "improvements": 54,
+ "hold_tests": 3305,
+ "maxY_any": 2035.098063487935,
+ "maxRetainedY": 2016.5666816560845,
+ "best_xy": [
+  3005.4217447899323,
+  2016.5666816560845
+ ],
+ "best_path_decisions": 580,
+ "success": false
+}

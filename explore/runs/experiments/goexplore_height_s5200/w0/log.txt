@@ -1,0 +1,76 @@
+  import from seed 5202: y=82.9 (path 10 decisions; 2 route cells, 2 retained)
+[    15s] cells=261 seg=50 ticks/s=956 maxY(any)=189 maxRetainedProg=162.7 bestXY=(375,163) maxX(y>=90)=694 ledgeHeld_first=10.4 holdTests=113 heapMB=97
+  import from seed 5202: y=341.5 (path 148 decisions; 24 route cells, 16 retained)
+[    30s] cells=754 seg=226 ticks/s=1389 maxY(any)=369 maxRetainedProg=341.5 bestXY=(914,341) maxX(y>=90)=1148 ledgeHeld_first=10.4 holdTests=265 heapMB=105
+[    45s] cells=1296 seg=395 ticks/s=1557 maxY(any)=412 maxRetainedProg=341.5 bestXY=(914,341) maxX(y>=90)=1524 ledgeHeld_first=10.4 holdTests=430 heapMB=143
+[    60s] cells=1852 seg=535 ticks/s=1605 maxY(any)=510 maxRetainedProg=423.5 bestXY=(1607,424) maxX(y>=90)=2158 ledgeHeld_first=10.4 holdTests=600 heapMB=181
+[    75s] cells=2203 seg=647 ticks/s=1549 maxY(any)=510 maxRetainedProg=457.2 bestXY=(1645,457) maxX(y>=90)=2158 ledgeHeld_first=10.4 holdTests=719 heapMB=173
+[    90s] cells=2601 seg=796 ticks/s=1559 maxY(any)=611 maxRetainedProg=516.5 bestXY=(2232,516) maxX(y>=90)=2237 ledgeHeld_first=10.4 holdTests=859 heapMB=224
+[   105s] cells=3075 seg=940 ticks/s=1628 maxY(any)=919 maxRetainedProg=880.4 bestXY=(2522,880) maxX(y>=90)=2593 ledgeHeld_first=10.4 holdTests=1079 heapMB=222
+[   120s] cells=3543 seg=1108 ticks/s=1632 maxY(any)=1282 maxRetainedProg=1218.8 bestXY=(2729,1219) maxX(y>=90)=2777 ledgeHeld_first=10.4 holdTests=1215 heapMB=261
+[   136s] cells=3948 seg=1238 ticks/s=1659 maxY(any)=1282 maxRetainedProg=1239.7 bestXY=(2743,1240) maxX(y>=90)=2777 ledgeHeld_first=10.4 holdTests=1416 heapMB=237
+[   151s] cells=4223 seg=1420 ticks/s=1639 maxY(any)=1301 maxRetainedProg=1250.4 bestXY=(2743,1250) maxX(y>=90)=2777 ledgeHeld_first=10.4 holdTests=1505 heapMB=219
+[   166s] cells=4489 seg=1582 ticks/s=1623 maxY(any)=1588 maxRetainedProg=1588.5 bestXY=(2847,1588) maxX(y>=90)=2873 ledgeHeld_first=10.4 holdTests=1616 heapMB=187
+  import from seed 5201: y=1782.4 (path 471 decisions; 33 route cells, 24 retained)
+[   181s] cells=4914 seg=1680 ticks/s=1613 maxY(any)=2024 maxRetainedProg=1963.0 bestXY=(3008,1963) maxX(y>=90)=3012 ledgeHeld_first=10.4 holdTests=1786 heapMB=246
+[   196s] cells=5162 seg=1815 ticks/s=1619 maxY(any)=2024 maxRetainedProg=2016.4 bestXY=(3008,2016) maxX(y>=90)=3097 ledgeHeld_first=10.4 holdTests=1948 heapMB=216
+  import from seed 5203: y=2260.0 (path 621 decisions; 42 route cells, 26 retained)
+[   214s] cells=5337 seg=1979 ticks/s=1586 maxY(any)=2024 maxRetainedProg=2260.0 bestXY=(2954,2260) maxX(y>=90)=3097 ledgeHeld_first=10.4 holdTests=2046 heapMB=225
+[   229s] cells=5730 seg=2118 ticks/s=1576 maxY(any)=2368 maxRetainedProg=2359.8 bestXY=(2991,2360) maxX(y>=90)=3097 ledgeHeld_first=10.4 holdTests=2165 heapMB=267
+  import from seed 5203: y=2743.6 (path 684 decisions; 15 route cells, 6 retained)
+{
+ "args": {
+  "secs": 240.0,
+  "seed": 5200,
+  "cx": 16.0,
+  "cy": 8.0,
+  "min_len": 6,
+  "max_len": 30,
+  "max_cells": 60000,
+  "out": "/home/factory-user/repos/Getting-Over-It-ML/explore/runs/experiments/goexplore_height_s5200/w0",
+  "share_dir": "/home/factory-user/repos/Getting-Over-It-ML/explore/runs/experiments/goexplore_height_s5200/share",
+  "sync_s": 20,
+  "import_margin": 30,
+  "stall_s": 0,
+  "phi": false,
+  "phi_margin": 150,
+  "front_scale": 40,
+  "gait_frac": 0.0,
+  "local_radius": 0.0,
+  "heap_mb": 600,
+  "no_hold_test": false
+ },
+ "elapsed_s": 240.3,
+ "cells": 5917,
+ "segments": 2159,
+ "ticks": 366644,
+ "ticks_per_s": 1526,
+ "maxY_any": 2748.9816346206717,
+ "maxRetainedY": 2743.5837862686203,
+ "retained_cells": 1036,
+ "hold_tests": 2202,
+ "imports": 5,
+ "stalled": false,
+ "maxX_y90": 3097.4995863680624,
+ "ledge_first_s": 10.4,
+ "success": false,
+ "best_node": 8072,
+ "best_xy": [
+  2785.6542631082234,
+  2743.5837862686203
+ ],
+ "best_progress": 2743.5837862686203,
+ "best_path_decisions": 684,
+ "best_replay_verify": {
+  "x": 2785.6542631082234,
+  "y": 2743.5837862686203,
+  "tick": 2856,
+  "match": true,
+  "after_180tick_hold_xy": [
+   2782.03402145167,
+   2742.3379815013795
+  ],
+  "min_y_during_hold": 2740.7014667091,
+  "held": true
+ }
+}

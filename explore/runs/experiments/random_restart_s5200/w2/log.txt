@@ -1,0 +1,42 @@
+[    15s] seg=29 ticks/s=1265 elite_y=150.5 maxY_any=173 restarts=0 improvements=8 holdTests=186
+[    30s] seg=199 ticks/s=1494 elite_y=169.1 maxY_any=173 restarts=0 improvements=11 holdTests=332
+[    45s] seg=373 ticks/s=1679 elite_y=169.1 maxY_any=179 restarts=0 improvements=11 holdTests=527
+[    60s] seg=553 ticks/s=1771 elite_y=169.1 maxY_any=179 restarts=0 improvements=11 holdTests=716
+[    75s] seg=690 ticks/s=1726 elite_y=169.1 maxY_any=179 restarts=0 improvements=11 holdTests=858
+[    90s] seg=840 ticks/s=1775 elite_y=146.2 maxY_any=180 restarts=1 improvements=14 holdTests=1068
+[   105s] seg=972 ticks/s=1793 elite_y=151.4 maxY_any=180 restarts=1 improvements=15 holdTests=1274
+[   120s] seg=1106 ticks/s=1784 elite_y=154.8 maxY_any=182 restarts=1 improvements=16 holdTests=1451
+[   136s] seg=1244 ticks/s=1777 elite_y=154.8 maxY_any=182 restarts=1 improvements=16 holdTests=1618
+[   151s] seg=1396 ticks/s=1806 elite_y=169.3 maxY_any=182 restarts=1 improvements=18 holdTests=1829
+[   166s] seg=1575 ticks/s=1839 elite_y=169.3 maxY_any=182 restarts=1 improvements=18 holdTests=2026
+[   181s] seg=1781 ticks/s=1872 elite_y=169.3 maxY_any=182 restarts=1 improvements=18 holdTests=2228
+[   196s] seg=1980 ticks/s=1888 elite_y=169.3 maxY_any=182 restarts=1 improvements=18 holdTests=2410
+[   211s] seg=2135 ticks/s=1901 elite_y=210.2 maxY_any=210 restarts=2 improvements=21 holdTests=2627
+[   226s] seg=2220 ticks/s=1914 elite_y=210.2 maxY_any=239 restarts=2 improvements=21 holdTests=2906
+{
+ "args": {
+  "secs": 240.0,
+  "seed": 5202,
+  "cx": 16.0,
+  "cy": 8.0,
+  "min_len": 6,
+  "max_len": 30,
+  "restart_s": 60.0,
+  "out": "/home/factory-user/repos/Getting-Over-It-ML/explore/runs/experiments/random_restart_s5200/w2"
+ },
+ "elapsed_s": 240.0,
+ "segments": 2330,
+ "ticks": 456292,
+ "ticks_per_s": 1901,
+ "restarts": 2,
+ "improvements": 26,
+ "hold_tests": 3070,
+ "maxY_any": 374.52919199402896,
+ "maxRetainedY": 290,
+ "best_xy": [
+  1019.4001138381005,
+  290
+ ],
+ "best_path_decisions": 64,
+ "success": false
+}

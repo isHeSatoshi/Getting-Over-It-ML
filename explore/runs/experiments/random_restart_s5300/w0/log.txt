@@ -1,0 +1,13 @@
+[    15s] seg=31 ticks/s=1406 elite_y=60.7 maxY_any=86 restarts=0 improvements=3 holdTests=211
+[    30s] seg=131 ticks/s=1998 elite_y=154.8 maxY_any=213 restarts=0 improvements=8 holdTests=560
+[    45s] seg=266 ticks/s=2120 elite_y=167.1 maxY_any=213 restarts=0 improvements=10 holdTests=836
+[    60s] seg=404 ticks/s=2017 elite_y=167.1 maxY_any=213 restarts=0 improvements=10 holdTests=1002
+[    75s] seg=511 ticks/s=1867 elite_y=167.1 maxY_any=213 restarts=0 improvements=10 holdTests=1116
+[    91s] seg=649 ticks/s=1815 elite_y=167.1 maxY_any=213 restarts=0 improvements=10 holdTests=1258
+Traceback (most recent call last):
+  File "/home/factory-user/repos/Getting-Over-It-ML/explore/random_restart.py", line 69, in <module>
+    main()
+  File "/home/factory-user/repos/Getting-Over-It-ML/explore/random_restart.py", line 51, in main
+    elite = {"snap": root["snap"], "x": root["x"], "y": root["y"], "path": [], "decisions": 0}
+                     ~~~~^^^^^^^^
+TypeError: 'NoneType' object is not subscriptable
