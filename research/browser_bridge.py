@@ -79,6 +79,9 @@ class BrowserBridge:
         options = Options()
         if headless:
             options.add_argument("--headless=new")
+        else:
+            # Headed must match the verified reference rasterization (see research/cdp_browser.py).
+            options.add_argument("--disable-accelerated-2d-canvas")
         options.add_argument("--mute-audio")
         options.add_argument("--disable-background-timer-throttling")
         options.add_argument("--disable-renderer-backgrounding")

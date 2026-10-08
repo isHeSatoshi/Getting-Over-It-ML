@@ -203,3 +203,19 @@ Search used 4 parallel Chrome workers (~1 GB each; cgroup limit 7 GB); never sta
 - Same-host checks: Selenium launch vs CDP launch (`RL_BROWSER_DRIVER=cdp ... --compare-trace`, seeds 0 and 1): BIT-EXACT over all ticks.
   Cross-host determinism is unmeasured; the route is chaotic (0.25 pointer noise breaks it), so use `--compare-trace` locally.
 - The 9424 "ticks" quoted earlier is the game tick counter (120 warm-up ticks inside reset + 9304 route ticks).
+
+## Recording the verified 9341 route (viewing only; no new searches)
+- Confirmation: `python explore/replay_route.py explore/runs/e14_best_9341.json --seeds 0 --hold-ticks 180`
+  -> tick 9424, x 4973.256002255466, y 9341.049378508918, held true.
+- Headed replay on the cloud host: Xvfb (`xvfb-run -a -s "-screen 0 1100x820x24"`) + ffmpeg x11grab, speed 1.
+  Artifacts in `explore/runs/e14_recording/`: `e14_best_9341_headed_full.mp4` (5:29, 1100x820@30),
+  `contact_sheet.png` (10 frames), `recording.trace.jsonl`, `replay_stdout.log`, `divergence_report.json`.
+  The recorded run's trace is **bit-exact** vs the reference (final delta [0.0, 0.0]); HUD shows the
+  `HOLD COMPLETE 180/180: HELD` banner and the FINAL line.
+- Measured failure mode fixed while recording: a headed Chrome with an accelerated 2D canvas diverges from the
+  reference at **tick 2000** (one ULP, then chaos -> Y~286). Cause: rasterization of the SVG skin silhouettes that
+  feed collision. Fix (now automatic for headed launches in both the CDP and Selenium paths):
+  `--disable-accelerated-2d-canvas`. Rendering cadence (every tick vs never) is *not* the trigger; the GL/canvas
+  backend is. `RL_CHROME_EXTRA_FLAGS` added for further experiments (e.g. `--disable-gpu-rasterization`).
+- This is very likely the same class of failure seen on the user's Windows machine (which also diverged at tick 2000):
+  worth retrying there with the automatic flag and `--compare-trace`.

@@ -91,10 +91,17 @@ class CdpSession:
                 "--window-size=1100,820"]
         if headless:
             args.append("--headless=new")
+        else:
+            # Headed runs must match the verified reference rasterization: the SVG skin silhouettes
+            # that feed collision are rasterized through a 2D canvas, and an accelerated 2D canvas
+            # diverges from the reference at tick 2000 (measured; see LOCAL_REPLAY.md).
+            args.append("--disable-accelerated-2d-canvas")
         if os.environ.get("RL_CHROME_NO_SANDBOX") == "1":
             args.append("--no-sandbox")
         if os.environ.get("RL_CHROME_CONTAINER") == "1":
             args += ["--disable-dev-shm-usage", "--use-gl=angle", "--use-angle=swiftshader", "--enable-unsafe-swiftshader"]
+        extra = os.environ.get("RL_CHROME_EXTRA_FLAGS", "").split()   # e.g. GPU/rasterization flags for recording
+        args += extra
         args.append(url)
         env = {k: v for k, v in os.environ.items() if k not in ("HF_TOKEN", "HUGGING_FACE_HUB_TOKEN", "RL_CONTROL_TOKEN")}
         process = subprocess.Popen(args, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, env=env)

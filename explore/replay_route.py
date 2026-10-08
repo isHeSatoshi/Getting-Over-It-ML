@@ -56,8 +56,13 @@ HUD_JS = """(text, color) => {
   d.textContent = text; d.style.borderLeftColor = color; return true; }"""
 
 
-def run(b, actions, hold, seed, noise, rng, hold_ticks, headed=False, speed=1.0):
-    """Replay once. Returns (summary dict, per-tick list of (tick, x, y))."""
+def run(b, actions, hold, seed, noise, rng, hold_ticks, headed=False, speed=1.0, chunk=None, render_every=1):
+    """Replay once. Returns (summary dict, per-tick list of (tick, x, y)).
+
+    chunk = ticks per step_commands call / rendered frame (headed; default = --speed rounded).
+    render_every = render+HUD every N chunks (0 = never render; headed only). Rendering cadence
+    affects the real renderer's collision state, so bit-exactness must be re-verified per cadence.
+    """
     base_tick = b.reset(seed)["tick"]                        # the game runs 120 warm-up ticks inside reset
     cmds, cid = [], 1
     for ax, ay in actions:
@@ -68,9 +73,9 @@ def run(b, actions, hold, seed, noise, rng, hold_ticks, headed=False, speed=1.0)
             cmds.append({"x": ax, "y": ay, "id": cid}); cid += 1
     total = base_tick + len(cmds) + (hold_ticks or 0)
     ticks, state = [], {"last": None, "maxy": -1e9, "dead": False, "success": False}
-    frame_ticks = max(1, round(speed)) if headed else 2400
+    frame_ticks = (chunk or max(1, round(speed))) if headed else 2400
     frame_dt = frame_ticks / (30.0 * speed) if headed else 0.0       # the game runs at 30 ticks/s
-    route_end = [None]; outcome = [None]; next_frame = [time.perf_counter()]
+    route_end = [None]; outcome = [None]; next_frame = [time.perf_counter()]; frame_i = [0]
 
     def consume(trace, phase, hold_i=0):
         for s in trace:
@@ -78,14 +83,16 @@ def run(b, actions, hold, seed, noise, rng, hold_ticks, headed=False, speed=1.0)
             state["maxy"] = max(state["maxy"], s["player_world_y"]); state["dead"] |= bool(s["dead"]); state["success"] |= bool(s["success"])
         if trace: state["last"] = trace[-1]
         if headed and trace:
-            s = trace[-1]
-            b.evaluate("window.research.render()")
-            color = "#3c3" if outcome[0] and outcome[0]["held"] else ("#e44" if state["dead"] or outcome[0] else "#fc3")
-            b.evaluate(f"({HUD_JS})({json.dumps(hud_text(seed, speed, s['tick'], total, phase, hold_i, hold_ticks, s['player_world_x'], s['player_world_y'], state['maxy'], route_end[0], outcome[0]))}, {json.dumps(color)})")
+            if render_every and frame_i[0] % render_every == 0:
+                s = trace[-1]
+                b.evaluate("window.research.render()")
+                color = "#3c3" if outcome[0] and outcome[0]["held"] else ("#e44" if state["dead"] or outcome[0] else "#fc3")
+                b.evaluate(f"({HUD_JS})({json.dumps(hud_text(seed, speed, s['tick'], total, phase, hold_i, hold_ticks, s['player_world_x'], s['player_world_y'], state['maxy'], route_end[0], outcome[0]))}, {json.dumps(color)})")
             next_frame[0] += frame_dt
             delay = next_frame[0] - time.perf_counter()
             if delay > 0: time.sleep(delay)
             else: next_frame[0] = time.perf_counter()
+        frame_i[0] += 1
 
     for i in range(0, len(cmds), frame_ticks):
         consume(b.step_commands(cmds[i:i + frame_ticks]), "ROUTE")
@@ -157,6 +164,8 @@ def main():
     ap.add_argument("--hold-ticks", type=int, default=0); ap.add_argument("--screenshot", default=None)
     ap.add_argument("--headed", action="store_true", help="visible Chrome window with a HUD overlay")
     ap.add_argument("--speed", type=float, default=1.0, help="playback speed in multiples of real time (headed only; game = 30 ticks/s)")
+    ap.add_argument("--chunk", type=int, default=None, help="ticks per rendered frame / step call (headed; default = round(--speed))")
+    ap.add_argument("--render-every", type=int, default=1, help="render+HUD every N frames (headed; 0 = never render, diagnostics only)")
     ap.add_argument("--trace-out", default=None, help="write per-tick JSONL (tick, x, y) for noiseless runs")
     ap.add_argument("--compare-trace", default=None, help="reference trace JSONL; report first divergence")
     ap.add_argument("--eps", type=float, default=1e-6, help="divergence threshold (world units) for --compare-trace")
@@ -176,12 +185,17 @@ def main():
         for seed in a.seeds:
             for nz in a.noise:
                 for t in range(1 if nz == 0 else a.trials):
-                    out, ticks = run(b, d["actions"], d["hold"], seed, nz, rng, a.hold_ticks, a.headed and nz == 0, a.speed)
+                    out, ticks = run(b, d["actions"], d["hold"], seed, nz, rng, a.hold_ticks, a.headed and nz == 0, a.speed, a.chunk, a.render_every)
                     print(json.dumps(out), flush=True)
                     if nz != 0: continue
                     if a.headed or a.trace_out or a.compare_trace:
-                        print(f"FINAL seed={seed} tick={out['ticks']} x={out['x']!r} y={out['y']!r} max_y={out['max_y']!r} "
-                              f"dead={out['dead']} held={out.get('held')}", flush=True)
+                        final_line = (f"FINAL seed={seed} tick={out['ticks']} x={out['x']!r} y={out['y']!r} max_y={out['max_y']!r} "
+                                      f"dead={out['dead']} held={out.get('held')}")
+                        print(final_line, flush=True)
+                        if a.headed:                      # show the FINAL line in the window too (viewing only)
+                            cur = b.evaluate("(document.getElementById('rl-hud')||{}).textContent || ''")
+                            b.evaluate(f"({HUD_JS})({json.dumps(cur + chr(10) + final_line)}, "
+                                       f"{json.dumps('#3c3' if out.get('held') else '#e44')})")
                     if a.trace_out:
                         p = Path(a.trace_out)
                         if traced > 1: p = p.with_name(f"{p.stem}.seed{seed}{p.suffix}")

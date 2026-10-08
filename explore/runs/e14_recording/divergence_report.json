@@ -1,0 +1,51 @@
+{
+ "reference": {
+  "path": "explore/reference/e14_best_9341.trace.jsonl",
+  "meta": {
+   "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+   "platform": "Linux x86_64",
+   "devicePixelRatio": 1,
+   "stage": [
+    480,
+    360
+   ],
+   "frame_rate": 30,
+   "python": "3.12.3",
+   "os": "linux",
+   "seed": 0,
+   "ticks": 9484
+  }
+ },
+ "local_meta": {
+  "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36",
+  "platform": "Linux x86_64",
+  "devicePixelRatio": 1,
+  "stage": [
+   480,
+   360
+  ],
+  "frame_rate": 30,
+  "python": "3.12.3",
+  "os": "linux"
+ },
+ "runs": [
+  {
+   "verdict": "BIT-EXACT",
+   "eps": 1e-06,
+   "ticks_reference": 9484,
+   "ticks_local": 9484,
+   "ticks_compared": 9484,
+   "first_bit_difference": null,
+   "first_divergence_over_eps": null,
+   "differing_ticks": 0,
+   "max_abs_deviation": 0.0,
+   "max_abs_deviation_tick": null,
+   "final_tick_compared": 9604,
+   "final_delta": [
+    0.0,
+    0.0
+   ],
+   "seed": 0
+  }
+ ]
+}

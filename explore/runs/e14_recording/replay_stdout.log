@@ -1,0 +1,6 @@
+{"seed": 0, "noise": 0.0, "ticks": 9424, "x": 4973.256002255466, "y": 9341.049378508918, "max_y": 9341.049378508918, "dead": false, "success": false, "after_hold_y": 9338.878770709565, "after_hold_x": 4974.478889239314, "held": true}
+FINAL seed=0 tick=9424 x=4973.256002255466 y=9341.049378508918 max_y=9341.049378508918 dead=False held=True
+trace explore/runs/e14_recording/recording.trace.jsonl
+COMPARE seed=0: BIT-EXACT; first divergence > 1e-06: none; first bit difference: none; final delta [0.0, 0.0]
+replay finished; window stays open 6s
+divergence report explore/runs/e14_recording/divergence_report.json

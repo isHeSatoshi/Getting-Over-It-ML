@@ -12,7 +12,15 @@ I do **not** promise cross-host bit-exactness. What I measured:
 | Reset seeds 0, 1, 2, 3 (same host) | identical end state and identical per-tick trace |
 | Selenium launch vs CDP launch (same host) | per-tick trace **bit-exact** (`--compare-trace`, 9484 ticks) |
 | Linux x86_64, headless Chrome 154, Python 3.12.3 | reference trace in `explore/reference/` was produced here |
+| Headed Chrome on Linux under Xvfb, recorded run | per-tick trace **bit-exact** with the software-canvas flag below |
 | Any other OS / Chrome version / GPU / display scale | **not measured** |
+
+**Important measured failure mode (likely what you hit on Windows).** A headed Chrome whose 2D canvas is
+GPU-accelerated diverges from the reference at **tick 2000** by one ULP, which chaos amplifies into a completely
+different run (Y ~286, falls). The cause is rasterization of the SVG skin silhouettes that feed collision.
+Fix, now automatic for headed CDP launches: `--disable-accelerated-2d-canvas`. With it, the recorded headed run
+is bit-exact over all 9484 ticks. If your local run still diverges at tick 2000, try adding
+`--disable-gpu-rasterization` via `RL_CHROME_EXTRA_FLAGS` and send `divergence_report.json`.
 
 Why it may be host-sensitive: the game's collision uses Chrome's real renderer (costume rasterisation and silhouettes),
 and the route is chaotic (pointer noise of only 0.25 out of +-128 already breaks it), so a one-bit difference anywhere can
@@ -64,6 +72,27 @@ gain since spawn (provisional), hold drift, and a green banner `HOLD COMPLETE 18
 
 Headless regression (same as before): `python explore/replay_route.py explore/runs/e14_best_9341.json --seeds 0 1 2 3 --hold-ticks 180`
 
+## Recorded reference video
+`explore/runs/e14_recording/` contains a full headed recording made on the cloud host under Xvfb
+(no monitor attached), captured with ffmpeg x11grab. These artifacts live on branch `explore-9341-recording`
+(which is `explore-9341` plus one recording commit):
+
+```bash
+xvfb-run -a -s "-screen 0 1100x820x24" bash -c '
+  export RL_CHROME_CONTAINER=1
+  ffmpeg -y -f x11grab -framerate 30 -video_size 1100x820 -i "$DISPLAY" -c:v libx264 -preset veryfast -crf 23 -pix_fmt yuv420p explore/runs/e14_recording/e14_best_9341_headed_full.mp4 &
+  sleep 3
+  python explore/replay_route.py explore/runs/e14_best_9341.json --seeds 0 --headed --speed 1 --hold-ticks 180 --linger 6 \
+    --trace-out explore/runs/e14_recording/recording.trace.jsonl \
+    --compare-trace explore/reference/e14_best_9341.trace.jsonl \
+    --report-out explore/runs/e14_recording/divergence_report.json'
+```
+
+Artifacts: `e14_best_9341_headed_full.mp4` (5 min 29 s, 1100x820, 30 fps, the whole route at real time including the
+hold and the FINAL line), `contact_sheet.png` (10 frames across the run), `recording.trace.jsonl` (per-tick trace of
+the recorded run), `replay_stdout.log` (JSON result + FINAL line + `COMPARE ... BIT-EXACT`), `divergence_report.json`.
+The recorded run is **bit-exact** against the reference trace (final delta [0.0, 0.0]).
+
 ## What success looks like
 - Final route position **x = 4973.256002255466, y = 9341.049378508918** at tick counter 9424. Pass tolerance: within **+-0.001** on each axis
   (equivalently the printed `FINAL` line rounds to 4973.256 / 9341.049). On a bit-exact host the difference is exactly 0.
@@ -94,5 +123,7 @@ Headless regression (same as before): `python explore/replay_route.py explore/ru
   exists and antivirus is not blocking the local server.
 
 ## Status of this tooling
-Implemented and tested on Linux only (headless, Selenium and CDP launch paths, trace export/compare unit tests). **The headed window, the HUD in a visible window,
-and all Windows code paths are untested**; I could not run them from the cloud box. Report anything odd and I will fix it.
+Implemented and tested on Linux: headless and headed (under Xvfb) runs, Selenium and CDP launch paths, trace export/compare,
+and the full recorded capture above. **Windows code paths and a Windows headed window are still untested**; report anything
+odd and I will fix it. The most likely Windows-specific issue is the canvas-rasterization divergence described at the top;
+the headed flag that fixes it is applied automatically, and `RL_CHROME_EXTRA_FLAGS` exists for further experiments.
