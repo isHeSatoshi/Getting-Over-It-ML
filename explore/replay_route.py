@@ -240,7 +240,7 @@ def main():
                     if out.get("ending_ticks") is not None:
                         ending_line = (f"ENDING seed={seed} ticks_after_success={out['ending_ticks']} "
                                        f"x={out['ending_x']!r} y={out['ending_y']!r} dead={out['ending_dead']}")
-                    if a.headed or a.trace_out or a.compare_trace:
+                    if a.headed or a.trace_out or a.compare_trace or a.after_success:
                         print(final_line, flush=True)
                         if ending_line: print(ending_line, flush=True)
                     if a.headed:                          # show FINAL (+ ending) in the window too (viewing only)
