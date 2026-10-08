@@ -179,8 +179,9 @@ Headless regression (same as before): `python explore/replay_route.py explore/ru
 
 ## Recorded reference video
 `explore/runs/e14_recording/` contains a full headed recording made on the cloud host under Xvfb
-(no monitor attached), captured with ffmpeg x11grab. These artifacts live on branch `explore-9341-recording`
-(which is `explore-9341` plus one recording commit):
+(no monitor attached), captured with ffmpeg x11grab. All recordings (this one, the summit run, and the ending)
+are on `explore-9341-recording`; both branches currently point at the same commit, so `explore-9341` carries the
+videos too:
 
 ```bash
 xvfb-run -a -s "-screen 0 1100x820x24" bash -c '
