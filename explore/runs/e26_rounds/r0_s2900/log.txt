@@ -1,0 +1,41 @@
+  import from seed 2813: y=-27708.7 (path 2909 decisions; 482 route cells, 290 retained)
+[    35s] cells=488 seg=1 ticks/s=11 maxY(any)=21 maxRetainedProg=-27708.7 bestXY=(3940,10800) maxX(y>=90)=0 ledgeHeld_first=None holdTests=4 heapMB=386
+[    50s] cells=1237 seg=156 ticks/s=458 maxY(any)=10941 maxRetainedProg=-27708.7 bestXY=(3940,10800) maxX(y>=90)=4030 ledgeHeld_first=None holdTests=82 heapMB=400
+[    65s] cells=1746 seg=291 ticks/s=636 maxY(any)=10941 maxRetainedProg=-27708.7 bestXY=(3940,10800) maxX(y>=90)=4030 ledgeHeld_first=None holdTests=138 heapMB=384
+[    81s] cells=2086 seg=440 ticks/s=759 maxY(any)=10941 maxRetainedProg=-27708.7 bestXY=(3940,10800) maxX(y>=90)=4030 ledgeHeld_first=None holdTests=189 heapMB=441
+[    96s] cells=2353 seg=583 ticks/s=819 maxY(any)=10941 maxRetainedProg=-27708.7 bestXY=(3940,10800) maxX(y>=90)=4030 ledgeHeld_first=None holdTests=217 heapMB=386
+[   111s] cells=2689 seg=731 ticks/s=884 maxY(any)=10941 maxRetainedProg=-27708.7 bestXY=(3940,10800) maxX(y>=90)=4030 ledgeHeld_first=None holdTests=263 heapMB=393
+[   126s] cells=2942 seg=890 ticks/s=931 maxY(any)=10941 maxRetainedProg=-27708.7 bestXY=(3940,10800) maxX(y>=90)=4030 ledgeHeld_first=None holdTests=301 heapMB=426
+  heap 474MB > 450.0: pruned 162 cells
+[   141s] cells=3061 seg=986 ticks/s=975 maxY(any)=10941 maxRetainedProg=-27708.7 bestXY=(3940,10800) maxX(y>=90)=4030 ledgeHeld_first=None holdTests=328 heapMB=474
+  heap 461MB > 450.0: pruned 26 cells
+[   156s] cells=3377 seg=1087 ticks/s=1014 maxY(any)=10941 maxRetainedProg=-27708.7 bestXY=(3940,10800) maxX(y>=90)=4030 ledgeHeld_first=None holdTests=359 heapMB=461
+  heap 500MB > 450.0: pruned 25 cells
+[   171s] cells=3607 seg=1197 ticks/s=1050 maxY(any)=10941 maxRetainedProg=-27708.7 bestXY=(3940,10800) maxX(y>=90)=4030 ledgeHeld_first=None holdTests=383 heapMB=500
+  heap 514MB > 450.0: pruned 20 cells
+[   186s] cells=3857 seg=1303 ticks/s=1077 maxY(any)=10941 maxRetainedProg=-27708.7 bestXY=(3940,10800) maxX(y>=90)=4030 ledgeHeld_first=None holdTests=415 heapMB=514
+  heap 473MB > 450.0: pruned 19 cells
+[   201s] cells=4101 seg=1414 ticks/s=1095 maxY(any)=10941 maxRetainedProg=-27708.7 bestXY=(3940,10800) maxX(y>=90)=4030 ledgeHeld_first=None holdTests=432 heapMB=473
+  heap 465MB > 450.0: pruned 21 cells
+[   216s] cells=4326 seg=1526 ticks/s=1116 maxY(any)=10941 maxRetainedProg=-27708.7 bestXY=(3940,10800) maxX(y>=90)=4030 ledgeHeld_first=None holdTests=459 heapMB=465
+[   231s] cells=4536 seg=1636 ticks/s=1131 maxY(any)=10941 maxRetainedProg=-27708.7 bestXY=(3940,10800) maxX(y>=90)=4030 ledgeHeld_first=None holdTests=474 heapMB=435
+  import from seed 2902: y=-27127.5 (path 2971 decisions; 255 route cells, 11 retained)
+  heap 478MB > 450.0: pruned 48 cells
+[   267s] cells=4967 seg=1735 ticks/s=1049 maxY(any)=10941 maxRetainedProg=-27127.5 bestXY=(4068,11429) maxX(y>=90)=4030 ledgeHeld_first=None holdTests=493 heapMB=478
+  heap 503MB > 450.0: pruned 17 cells
+[   282s] cells=5572 seg=1812 ticks/s=1073 maxY(any)=11824 maxRetainedProg=-26846.5 bestXY=(4086,11749) maxX(y>=90)=4098 ledgeHeld_first=None holdTests=658 heapMB=503
+  heap 581MB > 450.0: pruned 18 cells
+[   297s] cells=6046 seg=1884 ticks/s=1099 maxY(any)=12685 maxRetainedProg=-26727.9 bestXY=(4120,11887) maxX(y>=90)=4524 ledgeHeld_first=None holdTests=854 heapMB=581
+/home/factory-user/repos/Getting-Over-It-ML/explore/goexplore.py:127: RuntimeWarning: invalid value encountered in divide
+  return ids[int(rng.choice(len(ids), p=w / w.sum()))]
+Traceback (most recent call last):
+  File "/home/factory-user/repos/Getting-Over-It-ML/explore/goexplore.py", line 293, in <module>
+    main()
+  File "/home/factory-user/repos/Getting-Over-It-ML/explore/goexplore.py", line 235, in main
+    nid = pick(arch, rng, stalled_for > 90); e = arch.info[nid]; e["chosen"] += 1
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/factory-user/repos/Getting-Over-It-ML/explore/goexplore.py", line 127, in pick
+    return ids[int(rng.choice(len(ids), p=w / w.sum()))]
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "numpy/random/_generator.pyx", line 887, in numpy.random._generator.Generator.choice
+ValueError: Probabilities contain NaN
