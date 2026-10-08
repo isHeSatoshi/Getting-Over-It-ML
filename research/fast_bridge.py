@@ -53,7 +53,10 @@ class FastBridge(BrowserBridge):
         if headless is None:
             headless = not bool(os.environ.get("FACTORY_DESKTOP_CDP_PORT"))
         try:
-            super().__init__(driver="selenium", headless=headless, runtime_config={"fast": "true"},
+            # RL_BROWSER_DRIVER=selenium|cdp. Windows defaults to CDP (no chromedriver); elsewhere Selenium
+            # with automatic CDP fallback if chromedriver fails to start.
+            driver = os.environ.get("RL_BROWSER_DRIVER") or ("cdp" if os.name == "nt" else "selenium")
+            super().__init__(driver=driver, headless=headless, runtime_config={"fast": "true"},
                              page_fragment={"rpc_port": self._socket_server.socket.getsockname()[1],
                                             "rpc_token": token})
             if not self._connected.wait(timeout=30):

@@ -192,3 +192,14 @@ Env for all commands: `cd <repo> && . .venv/bin/activate && export RL_CHROME_NO_
     python explore/potential.py 3 0.3 60 16                                  # geometry potential phi.npy / phi_x4.npy
     python explore/replay_route.py explore/runs/e14_best_9341.json --seeds 0 1 2 3 --hold-ticks 180   # verify best route (needs no potential)
 Search used 4 parallel Chrome workers (~1 GB each; cgroup limit 7 GB); never start extra Chrome while 4 islands run.
+
+## Viewing / verification tooling (no new searches)
+- `explore/replay_route.py`: `--headed`, `--speed`, HUD overlay, `--trace-out`, `--compare-trace` (first-divergence report, exit code 3 on divergence).
+  `research/cdp_browser.py` + `research/browser_bridge.py`: CDP launch/attach (no chromedriver), Windows Chrome detection, automatic CDP fallback.
+  Setup and success criteria: `LOCAL_REPLAY.md`.
+- Reference trace exported from the verified cloud run (Linux x86_64, headless Chrome 154, Python 3.12.3):
+  `python explore/replay_route.py explore/runs/e14_best_9341.json --seeds 0 --hold-ticks 180 --trace-out explore/reference/e14_best_9341.trace.jsonl`
+  (ticks 121..9604 = 9304 route ticks + the 180-tick hold; full-precision floats).
+- Same-host checks: Selenium launch vs CDP launch (`RL_BROWSER_DRIVER=cdp ... --compare-trace`, seeds 0 and 1): BIT-EXACT over all ticks.
+  Cross-host determinism is unmeasured; the route is chaotic (0.25 pointer noise breaks it), so use `--compare-trace` locally.
+- The 9424 "ticks" quoted earlier is the game tick counter (120 warm-up ticks inside reset + 9304 route ticks).

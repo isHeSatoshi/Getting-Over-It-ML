@@ -7,6 +7,7 @@ from pathlib import Path
 import shutil
 import subprocess
 import threading
+import warnings
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -25,6 +26,7 @@ class BrowserBridge:
         self._state = None
         self.driver = None
         self._cli = None
+        self._cdp = None
         try:
             url = f"http://127.0.0.1:{self._server.server_port}/Getting%20Over%20It%20v1/research.html"
             if runtime_config:
@@ -44,36 +46,22 @@ class BrowserBridge:
                 self._command(["open", url])
                 self._command(["wait", "--fn", "window.researchReady || window.researchError"])
             elif driver == "selenium":
-                from selenium import webdriver
-                from selenium.webdriver.chrome.options import Options
-                from selenium.webdriver.chrome.service import Service
-                from selenium.webdriver.support.ui import WebDriverWait
-                options = Options()
-                if headless:
-                    options.add_argument("--headless=new")
-                options.add_argument("--mute-audio")
-                options.add_argument("--disable-background-timer-throttling")
-                options.add_argument("--disable-renderer-backgrounding")
-                if os.environ.get("RL_CHROME_BINARY"):
-                    options.binary_location = os.environ["RL_CHROME_BINARY"]
-                if os.environ.get("RL_CHROME_CONTAINER") == "1":
-                    options.add_argument("--disable-dev-shm-usage")
-                    options.add_argument("--use-gl=angle")
-                    options.add_argument("--use-angle=swiftshader")
-                    options.add_argument("--enable-unsafe-swiftshader")
-                if os.environ.get("RL_CHROME_NO_SANDBOX") == "1":
-                    options.add_argument("--no-sandbox")
-                # Chrome and its driver do not need deployment credentials.
-                browser_env = {k: v for k, v in os.environ.items()
-                               if k not in ("HF_TOKEN", "HUGGING_FACE_HUB_TOKEN", "RL_CONTROL_TOKEN")}
-                service = Service(executable_path=os.environ["RL_CHROMEDRIVER"], env=browser_env) if os.environ.get(
-                    "RL_CHROMEDRIVER") else Service(env=browser_env)
-                self.driver = webdriver.Chrome(service=service, options=options)
-                self.driver.set_script_timeout(60)
-                self.driver.get(url)
-                WebDriverWait(self.driver, 60).until(
-                    lambda d: d.execute_script("return window.researchReady || window.researchError"))
-            else:
+                try:
+                    self._start_selenium(url, headless)
+                except Exception as exc:
+                    if os.environ.get("RL_BROWSER_DRIVER_FALLBACK", "1") != "1":
+                        raise
+                    warnings.warn(f"Selenium/chromedriver launch failed ({exc!r}); falling back to CDP")
+                    if self.driver:
+                        try:
+                            self.driver.quit()
+                        except Exception:
+                            pass
+                        self.driver = None
+                    driver = "cdp"
+            if driver == "cdp":
+                self._start_cdp(url, headless)
+            elif driver not in ("embedded", "selenium"):
                 raise ValueError("Unknown browser driver")
             error = self.evaluate("window.researchError || null")
             if error:
@@ -82,6 +70,49 @@ class BrowserBridge:
         except BaseException:
             self.close()
             raise
+
+    def _start_selenium(self, url, headless):
+        from selenium import webdriver
+        from selenium.webdriver.chrome.options import Options
+        from selenium.webdriver.chrome.service import Service
+        from selenium.webdriver.support.ui import WebDriverWait
+        options = Options()
+        if headless:
+            options.add_argument("--headless=new")
+        options.add_argument("--mute-audio")
+        options.add_argument("--disable-background-timer-throttling")
+        options.add_argument("--disable-renderer-backgrounding")
+        if os.environ.get("RL_CHROME_BINARY"):
+            options.binary_location = os.environ["RL_CHROME_BINARY"]
+        if os.environ.get("RL_CHROME_CONTAINER") == "1":
+            options.add_argument("--disable-dev-shm-usage")
+            options.add_argument("--use-gl=angle")
+            options.add_argument("--use-angle=swiftshader")
+            options.add_argument("--enable-unsafe-swiftshader")
+        if os.environ.get("RL_CHROME_NO_SANDBOX") == "1":
+            options.add_argument("--no-sandbox")
+        # Chrome and its driver do not need deployment credentials.
+        browser_env = {k: v for k, v in os.environ.items()
+                       if k not in ("HF_TOKEN", "HUGGING_FACE_HUB_TOKEN", "RL_CONTROL_TOKEN")}
+        service = Service(executable_path=os.environ["RL_CHROMEDRIVER"], env=browser_env) if os.environ.get(
+            "RL_CHROMEDRIVER") else Service(env=browser_env)
+        self.driver = webdriver.Chrome(service=service, options=options)
+        self.driver.set_script_timeout(60)
+        self.driver.get(url)
+        WebDriverWait(self.driver, 60).until(
+            lambda d: d.execute_script("return window.researchReady || window.researchError"))
+
+    def _start_cdp(self, url, headless):
+        import time
+        from research.cdp_browser import CdpSession
+        self._cdp = CdpSession.start(url, headless=headless)
+        if not headless:
+            self._cdp.bring_to_front()
+        deadline = time.time() + 60
+        while not self._cdp.evaluate("window.researchReady || window.researchError"):
+            if time.time() > deadline:
+                raise RuntimeError("Game page did not become ready")
+            time.sleep(0.2)
 
     def _command(self, args, source=None):
         result = subprocess.run(self._cli + args, input=source, text=True,
@@ -100,6 +131,8 @@ class BrowserBridge:
     def evaluate(self, expression):
         if self._cli:
             return self._command(["eval", "--stdin"], expression).get("result")
+        if self._cdp:
+            return self._cdp.evaluate(expression)
         result = self.driver.execute_async_script(
             "const done=arguments[arguments.length-1];"
             "Promise.resolve().then(()=>(" + expression + "))"
@@ -123,6 +156,9 @@ class BrowserBridge:
 
     def close(self):
         # Never close the user's embedded browser or any unrelated process.
+        if self._cdp:
+            self._cdp.close()
+            self._cdp = None
         if self.driver:
             self.driver.quit()
             self.driver = None
