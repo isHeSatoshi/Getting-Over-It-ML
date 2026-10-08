@@ -1,0 +1,46 @@
+  import from seed 3000: y=14884.3 (path 3418 decisions; 565 route cells, 311 retained)
+[    38s] cells=576 seg=1 ticks/s=21 maxY(any)=27 maxRetainedProg=14884.3 bestXY=(3569,14884) maxX(y>=90)=0 ledgeHeld_first=None holdTests=8 heapMB=398
+{
+ "args": {
+  "secs": 400.0,
+  "seed": 3102,
+  "cx": 16,
+  "cy": 8,
+  "min_len": 6,
+  "max_len": 48,
+  "max_cells": 9000,
+  "out": "explore/runs/e28_rounds/r0_s3102",
+  "share_dir": "explore/runs/e28_share",
+  "sync_s": 60.0,
+  "import_margin": 100.0,
+  "stall_s": 380.0,
+  "phi": false,
+  "phi_margin": 150,
+  "front_scale": 60.0,
+  "gait_frac": 0.3,
+  "local_radius": 0.0,
+  "heap_mb": 450.0
+ },
+ "elapsed_s": 43.6,
+ "cells": 993,
+ "segments": 33,
+ "ticks": 21634,
+ "ticks_per_s": 496,
+ "maxY_any": 16002.411479909155,
+ "maxRetainedY": 16002.411479909155,
+ "retained_cells": 359,
+ "hold_tests": 205,
+ "imports": 1,
+ "stalled": false,
+ "maxX_y90": 4743.4921078987645,
+ "ledge_first_s": null,
+ "success": true,
+ "best_node": 1007,
+ "best_xy": [
+  3641.1276194460934,
+  16002.411479909155
+ ],
+ "best_progress": 16002.411479909155,
+ "best_path_decisions": 3487,
+ "best_replay_verify": null
+}

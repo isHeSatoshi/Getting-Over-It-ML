@@ -180,7 +180,7 @@ Env for all commands: `cd <repo> && . .venv/bin/activate && export RL_CHROME_NO_
   (only search bookkeeping: snapshot/restore, cell archive, hold test, rollout batch, optional potential grid).
 
 ## Status
-- Best verified (update): retained height **10808 (X 3934)**, 67.5% of 16000, route `explore/runs/e25_best_10808.json` (see E18-E25 below).
+- **SUCCESS (Y > 16000) reached on the real game, open-loop**: `explore/runs/e28_SUCCESS_s3100.json`, verified on fresh resets seeds 0-3 (see E26-E28 below). Earlier: retained height 10808 (`e25_best_10808.json`).
 - Previous best: retained height **9341.0 (X 4973.3)**, 58% of the summit height (16000), from ordinary spawn, 2326 decisions x 4 ticks = 9424 ticks (~2.6 game-min),
   fresh-reset replay bit-exact, 180-tick hold stable. Prior RL best in this repo: Y 96. **Summit NOT reached; no policy distilled.**
 - Remaining blockers: (1) the bulge/overhang of the leaning "Scratch Tower" face at Y 9400-9800 (X 4900-4975) resisted Go-Explore (about 1 h of 4-core time),
@@ -203,7 +203,16 @@ Env for all commands: `cd <repo> && . .venv/bin/activate && export RL_CHROME_NO_
   per potential; (2) with a fast-moving frontier, islands re-import each other's routes (~20 s each) and starve - raise `--import-margin`.
 - Verified: `python explore/replay_route.py explore/runs/e25_best_10808.json --seeds 0 1 2 3 --hold-ticks 180` -> tick 11924, x 3934.04, y 10808.0,
   held true on all four reset seeds (bit-identical). Route file: `explore/runs/e25_best_10808.json` (2951 decisions x 4 ticks); earlier `e24_best_10802.json`.
-- Next blocker: the scroll below the umbrella cap of the chalice (X 3925-3990, Y 10800-10930): 2 rounds x 4 islands flat (max transient Y 10970).
+- **E26 (full potential, `PHI_COVER=6`, `PHI_MAXX=4600`, `--gait-frac 0.4 --local-radius 250 --front-scale 30`)**: one island passed the chalice/umbrella cap, climbed the
+  pagoda spire (Y 11000-11900), flung to the sky islands and stood retained on the Y 14564 island (X 3138) within the first 600 s round
+  (`explore/runs/e26_best_14564.json`, 3320 decisions, replay held on seeds 0-3). The other three islands crashed with `ValueError: Probabilities contain NaN`
+  (pick weights all zero under `--local-radius`; not fixed).
+- **E27/E28 (plain height progress, no potential, from the Y 14564 route)**: E27 reached success inside the page in 42 s but the saved SUCCESS_path was the best
+  retained node, not the successful segment (bug). Fixed in `goexplore.py` (`success_actions = path(picked node) + segment[:decisions]`).
+  E28 re-ran: all 4 islands reached success in 69 s. Fresh-reset replay of `explore/runs/e28_SUCCESS_s3100.json` (3455 decisions, 13937 ticks):
+  **y 16000.8189, success true on reset seeds 0, 1, 2, 3 (bit-identical)**. Last leg: retained at (3569, 14884), then a smooth ~10 units/tick vertical rise to 16000 (a game mechanic, not understood).
+- Robustness: open-loop only. `--noise 0.01` and `0.25` both die at Y ~260-340 (tick ~4700-5300). No feedback policy exists.
+- (superseded) previous blocker: the scroll below the umbrella cap of the chalice (X 3925-3990, Y 10800-10930): 2 rounds x 4 islands flat (max transient Y 10970).
 
 ## Reproduce (from a clean checkout, Python 3.12 venv with requirements-research.txt + huggingface_hub httpx scipy pillow; Chrome present)
     export PYTHONPATH=$PWD RL_CHROME_NO_SANDBOX=1

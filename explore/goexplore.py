@@ -253,6 +253,8 @@ def main():
                     stats["ledge_first_s"] = round(time.time() - t0, 1); stats["ledge_node"] = new_id
                 if c["x"] > xmax_hi and c["ry"] >= 90: xmax_hi = c["x"]
             stats["success"] = bool(r["success"])
+            if stats["success"]:
+                stats["success_actions"] = arch.path(nid) + acts[:r["decisions"]]
             if a.share_dir and time.time() - last_sync > a.sync_s:
                 last_sync = time.time()
                 if rymax > published_y + 1e-9:
@@ -274,7 +276,7 @@ def main():
         nodes_log.close()
         el = time.time() - t0
         bn = best_node
-        verify = replay_verify(b, arch.path(bn), (arch.info[bn]["x"], arch.info[bn]["ry"]))
+        verify = None if stats["success"] else replay_verify(b, arch.path(bn), (arch.info[bn]["x"], arch.info[bn]["ry"]))   # a success run is verified by explore/replay_route.py on SUCCESS_path.json
         summary = {"args": vars(a), "elapsed_s": round(el, 1), "cells": len(arch.cell_node), "segments": stats["segments"],
                    "ticks": stats["ticks"], "ticks_per_s": round(stats["ticks"] / el), "maxY_any": ymax, "maxRetainedY": rymax, "retained_cells": sum(1 for i in arch.cell_node.values() if arch.info[i]["retained"]), "hold_tests": stats["hold_tests"], "imports": imports, "stalled": bool(a.stall_s and time.time() - last_improve > a.stall_s), "maxX_y90": xmax_hi,
                    "ledge_first_s": stats["ledge_first_s"], "success": stats["success"],
@@ -283,7 +285,7 @@ def main():
         (out / "summary.json").write_text(json.dumps(summary, indent=1))
         (out / "best_path.json").write_text(json.dumps({"hold": HOLD, "actions": arch.path(bn)}))
         if stats["success"]:
-            (out / "SUCCESS_path.json").write_text(json.dumps({"hold": HOLD, "actions": arch.path(best_node)}))
+            (out / "SUCCESS_path.json").write_text(json.dumps({"hold": HOLD, "actions": stats["success_actions"]}))
         if stats.get("ledge_node") is not None:
             (out / "ledge_path.json").write_text(json.dumps({"hold": HOLD, "actions": arch.path(stats["ledge_node"])}))
         print(json.dumps(summary, indent=1))

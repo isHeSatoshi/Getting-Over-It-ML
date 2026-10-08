@@ -1,3 +1,17 @@
+# UPDATE: full-route replay that reaches Y > 16000 (`success: true`)
+
+`explore/runs/e28_SUCCESS_s3100.json` (3455 pointer decisions x 4 ticks, open loop) reaches `success` (world Y 16000.8189) from ordinary spawn on the real game:
+
+    python explore/replay_route.py explore/runs/e28_SUCCESS_s3100.json --seeds 0 1 2 3 --hold-ticks 0
+    # headed + trace compare against the reference trace exported from the cloud host:
+    python explore/replay_route.py explore/runs/e28_SUCCESS_s3100.json --headed --speed 4 --hold-ticks 0 --trace-out local.trace.jsonl --compare-trace explore/reference/e28_success_16001.trace.jsonl
+
+Expected final line: tick 13937, x 3589.2328706585417, y 16000.818689285075, success true (bit-identical on reset seeds 0-3 on the cloud host).
+Same caveats as below: this is an open-loop trace (any pointer noise, even std 0.01, makes it fall), and cross-host determinism is unmeasured; use `--compare-trace`.
+The sections below describe the earlier Y 9341 route and tooling (still valid, same commands).
+
+---
+
 # Replaying the verified 9341 route locally (headed Chrome)
 
 **Scope.** This replays one saved open-loop route (`explore/runs/e14_best_9341.json`, 2326 pointer decisions x 4 ticks)

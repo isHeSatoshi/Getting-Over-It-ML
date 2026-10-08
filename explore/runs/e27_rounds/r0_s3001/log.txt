@@ -1,0 +1,12 @@
+  import from seed 2901: y=14563.9 (path 3320 decisions; 549 route cells, 308 retained)
+[    39s] cells=558 seg=1 ticks/s=14 maxY(any)=69 maxRetainedProg=14563.9 bestXY=(3138,14564) maxX(y>=90)=0 ledgeHeld_first=None holdTests=5 heapMB=417
+Traceback (most recent call last):
+  File "/home/factory-user/repos/Getting-Over-It-ML/explore/goexplore.py", line 293, in <module>
+    main()
+  File "/home/factory-user/repos/Getting-Over-It-ML/explore/goexplore.py", line 277, in main
+    verify = replay_verify(b, arch.path(bn), (arch.info[bn]["x"], arch.info[bn]["ry"]))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/factory-user/repos/Getting-Over-It-ML/explore/goexplore.py", line 144, in replay_verify
+    end["after_180tick_hold_xy"] = [hold[-1]["player_world_x"], hold[-1]["player_world_y"]]
+                                    ~~~~^^^^
+IndexError: list index out of range
