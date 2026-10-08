@@ -124,7 +124,11 @@ def pick(archive, rng, stalled=False):
         w = w * ret * np.exp((ys - ys[ret].max()) / 800.0)
     elif u < p_front + p_route + p_high:                      # high non-retained (apex/sliding) states too
         w = w * np.exp((ys - ys.max()) / FRONT_SCALE[0])
-    return ids[int(rng.choice(len(ids), p=w / w.sum()))]
+    w = np.where(np.isfinite(w), w, 0.0)                      # degenerate tier (e.g. --local-radius left only
+    total = float(w.sum())                                    # cells far below the global max): fall back to uniform
+    if total <= 0.0:
+        w = np.ones(len(ids), float); total = float(len(ids))
+    return ids[int(rng.choice(len(ids), p=w / total))]
 
 
 def replay_verify(bridge, actions, expect_xy):
