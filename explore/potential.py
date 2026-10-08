@@ -4,7 +4,7 @@ phi(p) = cheapest cost to reach the goal region: crossing free space costs dista
 downward x DOWN_MULT), moving over solid pixels costs SOLID_COST per unit. Saves explore/world/phi.npy
 (float32, same grid as world_occ.npy) and prints/plots the cheapest route from spawn.
 """
-import json, sys
+import json, os, sys
 import numpy as np
 from scipy.sparse import coo_matrix
 from scipy.sparse.csgraph import dijkstra
@@ -20,13 +20,18 @@ K_EDT = float(sys.argv[3]) if len(sys.argv) > 3 else 60.0                    # f
 edt = distance_transform_edt(~occ) * u
 K_IN = float(sys.argv[4]) if len(sys.argv) > 4 else 16.0                      # solid cost density 1 + depth/K_IN: hug surfaces, don't tunnel through mass
 edt_in = distance_transform_edt(occ) * u
+COVER = float(os.environ.get('PHI_COVER', '1'))                              # free pixels with solid within 200 units above cost x COVER (no hanging under ceilings)
+covered = np.zeros_like(occ)
+for k in range(1, 26): covered[k:] |= occ[:-k]
+covered &= ~occ
+cover_mult = 1.0 + (COVER - 1.0) * covered
 rows, cols, w = [], [], []
 def add(dr, dc):
     r0, r1 = max(0, -dr), H - max(0, dr); c0, c1 = max(0, -dc), W - max(0, dc)
     a = idx[r0:r1, c0:c1]; b = idx[r0 + dr:r1 + dr, c0 + dc:c1 + dc]       # edge a -> b
     dist = u * np.hypot(dr, dc)
     up = (dr < 0)                                                          # row decreasing = world y up
-    dens = 1.0 + edt[r0 + dr:r1 + dr, c0 + dc:c1 + dc] / K_EDT
+    dens = (1.0 + edt[r0 + dr:r1 + dr, c0 + dc:c1 + dc] / K_EDT) * cover_mult[r0 + dr:r1 + dr, c0 + dc:c1 + dc]
     smult = SOLID_UP if dr < 0 else (SOLID_DOWN if dr > 0 else SOLID_H)
     sdens = 1.0 + edt_in[r0 + dr:r1 + dr, c0 + dc:c1 + dc] / K_IN
     mult = np.where(occ[r0 + dr:r1 + dr, c0 + dc:c1 + dc] & occ[r0:r1, c0:c1], smult * sdens,
@@ -38,13 +43,22 @@ rows = np.concatenate(rows); cols = np.concatenate(cols); w = np.concatenate(w)
 # goal: solid pixels with world y >= 14500 (reverse graph: run from the goal on transposed edges)
 G = coo_matrix((w, (cols, rows)), shape=(H * W, H * W)).tocsr()             # transposed: dijkstra from goal gives cost-to-goal
 gy = np.arange(H) * -u + y1
-goal_rows = np.where((gy >= 14500))[0]
-goal = [int(i) for i in idx[goal_rows][occ[goal_rows]]]
+import os
+GB = os.environ.get('PHI_GOAL_BOX')                                          # 'xa,xb,ya,yb': alternate goal region (solid pixels inside)
+TAG = os.environ.get('PHI_TAG', '')
+if GB:
+    xa, xb, ya, yb = map(float, GB.split(','))
+    gx = np.arange(W) * u + x0
+    m = occ & (gy[:, None] >= ya) & (gy[:, None] <= yb) & (gx[None, :] >= xa) & (gx[None, :] <= xb)
+    goal = [int(i) for i in idx[m]]
+else:
+    goal_rows = np.where((gy >= 14500))[0]
+    goal = [int(i) for i in idx[goal_rows][occ[goal_rows]]]
 print('goal px', len(goal))
 d = dijkstra(G, directed=True, indices=goal, min_only=True)
 phi = d.reshape(H, W).astype(np.float32)
-phi[~np.isfinite(phi)] = np.nanmax(phi[np.isfinite(phi)]); np.save('explore/world/phi.npy', phi)
-np.save('explore/world/phi_x4.npy', phi[::4, ::4].copy())                  # coarse grid (32 units) for the page-side gate
+phi[~np.isfinite(phi)] = np.nanmax(phi[np.isfinite(phi)]); np.save(f'explore/world/phi{TAG}.npy', phi)
+np.save(f'explore/world/phi_x4{TAG}.npy', phi[::4, ::4].copy())                  # coarse grid (32 units) for the page-side gate
 def px(x, y): return int(round((y1 - y) / u)), int(round((x - x0) / u))
 r, c = px(0, 21); print('phi(spawn)', phi[r, c])
 # cheapest route from spawn by greedy descent on phi

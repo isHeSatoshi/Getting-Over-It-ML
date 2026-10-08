@@ -14,11 +14,13 @@ from research.fast_bridge import FastBridge
 HOLD = 4
 PHI = None                                     # optional geometry potential (explore/potential.py); progress = -phi
 _META = None
+PHI_MAXX = float(os.environ.get('PHI_MAXX', '1e9'))   # cells right of this rank last (forbid returning to a known dead-end region)
+PHI_MINY = float(os.environ.get('PHI_MINY', '-1e9'))   # cells below this height rank last (stage a search above a known staircase)
 
 
 def load_phi():
     global PHI, _META
-    PHI = np.load("explore/world/phi.npy"); _META = json.load(open("explore/world/world_meta.json"))
+    PHI = np.load(f"explore/world/phi{os.environ.get('PHI_TAG', '')}.npy"); _META = json.load(open("explore/world/world_meta.json"))
 
 
 def prog(x, y):
@@ -26,12 +28,12 @@ def prog(x, y):
     if PHI is None: return y
     r = min(PHI.shape[0] - 1, max(0, int(round((_META["y1"] - y) / _META["unit"]))))
     c = min(PHI.shape[1] - 1, max(0, int(round((x - _META["x0"]) / _META["unit"]))))
-    return -float(PHI[r, c])
+    return -float(PHI[r, c]) - (1e5 if (y < PHI_MINY or x > PHI_MAXX) else 0.0)
 
 
 def norm(cells):
     for c in cells:
-        c["ry"] = c["y"]; c["y"] = prog(c["x"], c["y"])
+        c["ry"] = c["y_raw"] = c["y"]; c["y"] = prog(c["x"], c["y"])
     return cells
 LEDGE = (305.0, 335.0, 100.0, 112.0)          # first ledge box (X range, Y range)
 
@@ -46,6 +48,19 @@ def gen_spin_release(rng, total):
     out += [(r2 * math.cos(end + delta), r2 * math.sin(end + delta))] * n2
     while len(out) < total: out.append(out[-1])
     return out[:max(total, n1 + n2)]
+
+
+def gen_gait(rng, length, ha):
+    """Climbing gait aligned to the hammer's current direction `ha` (rad): the pointer circles/rocks starting where the
+    hammer already is, so there is no whip at the start. Climbing in the verified route is ~50 deg/decision circling at r~120."""
+    r = rng.uniform(90, 128); w = float(rng.choice([-1, 1])) * rng.uniform(0.25, 1.0)
+    th0 = ha + rng.uniform(-0.9, 0.9); n = int(rng.integers(8, max(9, length) + 1)); mode = int(rng.integers(0, 3))
+    if mode == 2:                                           # rocking arc: back-and-forth around th0
+        amp = rng.uniform(0.6, 2.2); out = [(r * math.cos(th0 + amp * math.sin(w * i)), r * math.sin(th0 + amp * math.sin(w * i))) for i in range(n)]
+    else:
+        out = [(r * math.cos(th0 + w * i), r * math.sin(th0 + w * i)) for i in range(n)]
+        if mode == 1: out += [out[-1]] * int(rng.integers(3, 11))        # dwell: let the body settle on the last pointer
+    return [[float(np.clip(x, -128, 128)), float(np.clip(y, -128, 128))] for x, y in out]
 
 
 def gen_segment(rng, length, use_spin=True):
@@ -73,6 +88,7 @@ def gen_segment(rng, length, use_spin=True):
 
 
 FRONT_SCALE = [40.0]
+LOCAL = {"radius": 0.0}                         # if > 0: only pick cells within this real height of the best retained cell
 
 
 class Archive:
@@ -97,6 +113,10 @@ def pick(archive, rng, stalled=False):
     ys = np.array([archive.info[i]["y"] for i in ids], float)
     ret = np.array([archive.info[i]["retained"] for i in ids], bool)
     w = (chosen + 1.0) ** -0.5
+    if LOCAL["radius"] > 0:
+        ry = np.array([archive.info[i].get("ry", archive.info[i]["y"]) for i in ids], float)
+        near = ry >= ry[ret].max() - LOCAL["radius"] if ret.any() else np.ones(len(ids), bool)
+        if near.any(): w = w * near
     u = rng.random(); p_front, p_route, p_high = (0.4, 0.25, 0.15) if stalled else (0.35, 0.25, 0.1)
     if ret.any() and u < p_front:
         w = w * ret * np.exp((ys - ys[ret].max()) / FRONT_SCALE[0])
@@ -160,7 +180,7 @@ def import_path(b, arch, root_snap, d, cx, cy, every=6):
         old = arch.cell_node.get(c["key"])
         if old is not None: arch.info[old]["snap"] = None
         arch.cell_node[c["key"]] = nid
-        arch.info[nid] = {"key": c["key"], "snap": c["snap"], "tick": c["tick"], "x": c["x"], "y": c["y"], "ry": c["ry"], "chosen": 0, "retained": bool(c["retained"])}
+        arch.info[nid] = {"key": c["key"], "snap": c["snap"], "tick": c["tick"], "x": c["x"], "y": c["y"], "ry": c["ry"], "chosen": 0, "retained": bool(c["retained"]), "ha": math.atan2(c["hy"] - c["y_raw"], c["hx"] - c["x"])}
         if c["retained"] and (last is None or c["y"] >= arch.info[last]["y"]): last = nid
     if last is None: return None
     return last, {"y": arch.info[last]["y"], "n": len(r["found"]), "retained": sum(1 for c in r["found"] if c["retained"])}
@@ -189,6 +209,8 @@ def main():
     ap.add_argument("--stall-s", type=float, default=0, help="stop if retained Y does not improve for this long (0=off)")
     ap.add_argument("--phi", action="store_true", help="progress = -phi (offline geometry potential) instead of height")
     ap.add_argument("--phi-margin", type=float, default=150); ap.add_argument("--front-scale", type=float, default=40)
+    ap.add_argument("--gait-frac", type=float, default=0.0, help="fraction of segments from the hammer-aligned gait generator")
+    ap.add_argument("--local-radius", type=float, default=0.0, help="restrict picks to cells within this height of the best retained cell")
     ap.add_argument("--heap-mb", type=float, default=600, help="prune stored cells above this JS heap size")
     a = ap.parse_args()
     out = Path(a.out); out.mkdir(parents=True, exist_ok=True)
@@ -198,20 +220,21 @@ def main():
     stats = {"segments": 0, "ticks": 0, "hold_tests": 0, "ledge_first_s": None, "success": False}
     nodes_log = (out / "nodes.jsonl").open("w")
     if a.phi: load_phi()
-    FRONT_SCALE[0] = a.front_scale
+    FRONT_SCALE[0] = a.front_scale; LOCAL["radius"] = a.local_radius
     with FastBridge(headless=True) as b:
         b.reset(0)
         if a.phi:
-            g = np.load("explore/world/phi_x4.npy")
+            g = np.load(f"explore/world/phi_x4{os.environ.get('PHI_TAG', '')}.npy")
             b.set_phi(g.shape[1], g.shape[0], _META["x0"], _META["y1"], _META["unit"] * 4, [round(float(v), 1) for v in g.ravel()])
         root = b.seed_cell(a.cx, a.cy); norm([root])
         arch.cell_node[root["key"]] = 0
-        arch.info[0] = {"key": root["key"], "snap": root["snap"], "tick": root["tick"], "x": root["x"], "y": root["y"], "ry": root["ry"], "chosen": 0, "retained": True}
+        arch.info[0] = {"key": root["key"], "snap": root["snap"], "tick": root["tick"], "x": root["x"], "y": root["y"], "ry": root["ry"], "chosen": 0, "retained": True, "ha": math.atan2(root["hy"] - root["y_raw"], root["hx"] - root["x"])}
         ymax, xmax_hi, best_node, rymax = root["ry"], 0.0, 0, root["y"]
         while time.time() - t0 < a.secs and not stats["success"] and not (a.stall_s and time.time() - last_improve > a.stall_s):
             stalled_for = time.time() - last_improve
             nid = pick(arch, rng, stalled_for > 90); e = arch.info[nid]; e["chosen"] += 1
-            acts = gen_segment(rng, int(rng.integers(a.min_len, (a.max_len * 2 if stalled_for > 90 else a.max_len) + 1)))
+            seg_len = int(rng.integers(a.min_len, (a.max_len * 2 if stalled_for > 90 else a.max_len) + 1))
+            acts = gen_gait(rng, seg_len, e["ha"]) if (a.gait_frac and rng.random() < a.gait_frac) else gen_segment(rng, seg_len)
             r = b.explore_segment(e["snap"], acts, HOLD, a.cx, a.cy, {"phiMargin": a.phi_margin}); norm(r["found"])
             stats["segments"] += 1; stats["ticks"] += r["decisions"] * HOLD + r["holdTests"] * 90; stats["hold_tests"] += r["holdTests"]
             for c in r["found"]:
@@ -223,7 +246,7 @@ def main():
                 old = arch.cell_node.get(c["key"])
                 if old is not None: arch.info[old]["snap"] = None
                 arch.cell_node[c["key"]] = new_id
-                arch.info[new_id] = {"key": c["key"], "snap": c["snap"], "tick": c["tick"], "x": c["x"], "y": c["y"], "ry": c["ry"], "chosen": 0, "retained": bool(c["retained"])}
+                arch.info[new_id] = {"key": c["key"], "snap": c["snap"], "tick": c["tick"], "x": c["x"], "y": c["y"], "ry": c["ry"], "chosen": 0, "retained": bool(c["retained"]), "ha": math.atan2(c["hy"] - c["y_raw"], c["hx"] - c["x"])}
                 if c["ry"] > ymax: ymax = c["ry"]
                 if c["retained"] and c["y"] > rymax: rymax, best_node, last_improve = c["y"], new_id, time.time()
                 if c["retained"] and LEDGE[0] <= c["x"] <= LEDGE[1] and LEDGE[2] <= c["ry"] <= LEDGE[3] and stats["ledge_first_s"] is None:

@@ -1,0 +1,55 @@
+{
+ "args": {
+  "secs": 800.0,
+  "seed": 2301,
+  "cx": 16,
+  "cy": 8,
+  "min_len": 6,
+  "max_len": 40,
+  "max_cells": 9000,
+  "out": "explore/runs/e22_rounds/r0_s2301",
+  "share_dir": "explore/runs/e22_share",
+  "sync_s": 20,
+  "import_margin": 30,
+  "stall_s": 700.0,
+  "phi": true,
+  "phi_margin": 150,
+  "front_scale": 60.0,
+  "gait_frac": 0.2,
+  "local_radius": 0.0,
+  "heap_mb": 450.0
+ },
+ "elapsed_s": 800.0,
+ "cells": 9000,
+ "segments": 5880,
+ "ticks": 976246,
+ "ticks_per_s": 1220,
+ "maxY_any": 9368.62375619768,
+ "maxRetainedY": -1451.5826416015625,
+ "retained_cells": 359,
+ "hold_tests": 1833,
+ "imports": 1,
+ "stalled": false,
+ "maxX_y90": 4854.278598694001,
+ "ledge_first_s": null,
+ "success": false,
+ "best_node": 6892,
+ "best_xy": [
+  2694.307878830054,
+  9113.444036821396
+ ],
+ "best_progress": -1451.5826416015625,
+ "best_path_decisions": 2529,
+ "best_replay_verify": {
+  "x": 2694.307878830054,
+  "y": 9113.444036821396,
+  "tick": 10236,
+  "match": true,
+  "after_180tick_hold_xy": [
+   2699.072459538422,
+   9107.90549541591
+  ],
+  "min_y_during_hold": 9106.600215151402,
+  "held": true
+ }
+}

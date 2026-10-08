@@ -1,0 +1,90 @@
+  import from seed 2203: y=-2720.3 (path 2491 decisions; 413 route cells, 252 retained)
+[    30s] cells=420 seg=1 ticks/s=13 maxY(any)=69 maxRetainedProg=-2356.9 bestXY=(2379,8857) maxX(y>=90)=0 ledgeHeld_first=None holdTests=4 heapMB=332
+[    45s] cells=1492 seg=107 ticks/s=377 maxY(any)=8940 maxRetainedProg=-2174.1 bestXY=(2314,8870) maxX(y>=90)=4676 ledgeHeld_first=None holdTests=90 heapMB=386
+[    61s] cells=2367 seg=229 ticks/s=542 maxY(any)=8945 maxRetainedProg=-2174.1 bestXY=(2314,8870) maxX(y>=90)=4676 ledgeHeld_first=None holdTests=151 heapMB=386
+  import from seed 2301: y=-1543.2 (path 2539 decisions; 218 route cells, 9 retained)
+  heap 468MB > 450.0: pruned 82 cells
+[    87s] cells=3026 seg=292 ticks/s=453 maxY(any)=8945 maxRetainedProg=-1543.2 bestXY=(2704,9094) maxX(y>=90)=4676 ledgeHeld_first=None holdTests=159 heapMB=468
+  import from seed 2302: y=-1469.7 (path 2539 decisions; 7 route cells, 1 retained)
+[   107s] cells=3327 seg=329 ticks/s=414 maxY(any)=9117 maxRetainedProg=-1469.7 bestXY=(2700,9105) maxX(y>=90)=4676 ledgeHeld_first=None holdTests=176 heapMB=382
+  heap 495MB > 450.0: pruned 57 cells
+[   122s] cells=4186 seg=482 ticks/s=490 maxY(any)=9132 maxRetainedProg=-1469.7 bestXY=(2700,9105) maxX(y>=90)=4737 ledgeHeld_first=None holdTests=198 heapMB=495
+  heap 502MB > 450.0: pruned 52 cells
+[   137s] cells=4837 seg=634 ticks/s=555 maxY(any)=9167 maxRetainedProg=-1469.7 bestXY=(2700,9105) maxX(y>=90)=4737 ledgeHeld_first=None holdTests=222 heapMB=502
+[   152s] cells=5499 seg=782 ticks/s=614 maxY(any)=9167 maxRetainedProg=-1469.7 bestXY=(2700,9105) maxX(y>=90)=4737 ledgeHeld_first=None holdTests=260 heapMB=401
+  heap 573MB > 450.0: pruned 91 cells
+[   167s] cells=6161 seg=923 ticks/s=653 maxY(any)=9167 maxRetainedProg=-1469.7 bestXY=(2700,9105) maxX(y>=90)=4737 ledgeHeld_first=None holdTests=291 heapMB=573
+  heap 535MB > 450.0: pruned 48 cells
+[   182s] cells=6721 seg=1067 ticks/s=695 maxY(any)=9173 maxRetainedProg=-1469.7 bestXY=(2700,9105) maxX(y>=90)=4737 ledgeHeld_first=None holdTests=330 heapMB=535
+[   198s] cells=7270 seg=1213 ticks/s=726 maxY(any)=9173 maxRetainedProg=-1469.7 bestXY=(2700,9105) maxX(y>=90)=4737 ledgeHeld_first=None holdTests=362 heapMB=429
+  heap 618MB > 450.0: pruned 80 cells
+[   213s] cells=7876 seg=1319 ticks/s=770 maxY(any)=9173 maxRetainedProg=-1469.7 bestXY=(2700,9105) maxX(y>=90)=4737 ledgeHeld_first=None holdTests=393 heapMB=618
+  heap 534MB > 450.0: pruned 44 cells
+[   228s] cells=8477 seg=1445 ticks/s=799 maxY(any)=9173 maxRetainedProg=-1451.6 bestXY=(2692,9114) maxX(y>=90)=4737 ledgeHeld_first=None holdTests=421 heapMB=534
+  heap 625MB > 450.0: pruned 57 cells
+[   243s] cells=8925 seg=1612 ticks/s=829 maxY(any)=9173 maxRetainedProg=-1451.6 bestXY=(2692,9114) maxX(y>=90)=4795 ledgeHeld_first=None holdTests=470 heapMB=625
+  heap 667MB > 450.0: pruned 47 cells
+[   258s] cells=8953 seg=1754 ticks/s=839 maxY(any)=9175 maxRetainedProg=-1451.6 bestXY=(2692,9114) maxX(y>=90)=4795 ledgeHeld_first=None holdTests=502 heapMB=667
+  heap 623MB > 450.0: pruned 44 cells
+[   273s] cells=8956 seg=1890 ticks/s=851 maxY(any)=9175 maxRetainedProg=-1451.6 bestXY=(2692,9114) maxX(y>=90)=4795 ledgeHeld_first=None holdTests=539 heapMB=623
+  heap 649MB > 450.0: pruned 45 cells
+[   288s] cells=8955 seg=2038 ticks/s=866 maxY(any)=9175 maxRetainedProg=-1451.6 bestXY=(2692,9114) maxX(y>=90)=4795 ledgeHeld_first=None holdTests=574 heapMB=649
+  heap 670MB > 450.0: pruned 58 cells
+[   303s] cells=8942 seg=2192 ticks/s=882 maxY(any)=9175 maxRetainedProg=-1451.6 bestXY=(2692,9114) maxX(y>=90)=4795 ledgeHeld_first=None holdTests=613 heapMB=670
+  heap 605MB > 450.0: pruned 47 cells
+[   318s] cells=8953 seg=2318 ticks/s=888 maxY(any)=9175 maxRetainedProg=-1451.6 bestXY=(2692,9114) maxX(y>=90)=4795 ledgeHeld_first=None holdTests=625 heapMB=605
+  heap 579MB > 450.0: pruned 30 cells
+[   333s] cells=8970 seg=2427 ticks/s=905 maxY(any)=9175 maxRetainedProg=-1451.6 bestXY=(2692,9114) maxX(y>=90)=4795 ledgeHeld_first=None holdTests=651 heapMB=579
+  heap 549MB > 450.0: pruned 21 cells
+[   348s] cells=8979 seg=2540 ticks/s=922 maxY(any)=9175 maxRetainedProg=-1451.6 bestXY=(2692,9114) maxX(y>=90)=4795 ledgeHeld_first=None holdTests=677 heapMB=549
+  heap 480MB > 450.0: pruned 18 cells
+[   363s] cells=8982 seg=2633 ticks/s=931 maxY(any)=9175 maxRetainedProg=-1451.6 bestXY=(2692,9114) maxX(y>=90)=4795 ledgeHeld_first=None holdTests=700 heapMB=480
+  heap 694MB > 450.0: pruned 22 cells
+[   378s] cells=8978 seg=2733 ticks/s=942 maxY(any)=9175 maxRetainedProg=-1451.6 bestXY=(2692,9114) maxX(y>=90)=4795 ledgeHeld_first=None holdTests=729 heapMB=694
+  heap 653MB > 450.0: pruned 17 cells
+[   393s] cells=8983 seg=2832 ticks/s=955 maxY(any)=9175 maxRetainedProg=-1451.6 bestXY=(2692,9114) maxX(y>=90)=4795 ledgeHeld_first=None holdTests=762 heapMB=653
+  heap 554MB > 450.0: pruned 17 cells
+[   408s] cells=8983 seg=2931 ticks/s=966 maxY(any)=9175 maxRetainedProg=-1451.6 bestXY=(2692,9114) maxX(y>=90)=4795 ledgeHeld_first=None holdTests=795 heapMB=554
+  heap 791MB > 450.0: pruned 19 cells
+[   424s] cells=8981 seg=3031 ticks/s=976 maxY(any)=9175 maxRetainedProg=-1451.6 bestXY=(2692,9114) maxX(y>=90)=4795 ledgeHeld_first=None holdTests=819 heapMB=791
+  heap 704MB > 450.0: pruned 17 cells
+[   439s] cells=8983 seg=3131 ticks/s=988 maxY(any)=9175 maxRetainedProg=-1451.6 bestXY=(2692,9114) maxX(y>=90)=4795 ledgeHeld_first=None holdTests=855 heapMB=704
+  heap 553MB > 450.0: pruned 21 cells
+[   454s] cells=8979 seg=3232 ticks/s=995 maxY(any)=9175 maxRetainedProg=-1451.6 bestXY=(2692,9114) maxX(y>=90)=4795 ledgeHeld_first=None holdTests=887 heapMB=553
+  heap 759MB > 450.0: pruned 15 cells
+[   469s] cells=8985 seg=3333 ticks/s=1003 maxY(any)=9175 maxRetainedProg=-1451.6 bestXY=(2692,9114) maxX(y>=90)=4795 ledgeHeld_first=None holdTests=918 heapMB=759
+  heap 571MB > 450.0: pruned 16 cells
+[   484s] cells=8984 seg=3425 ticks/s=1009 maxY(any)=9175 maxRetainedProg=-1451.6 bestXY=(2692,9114) maxX(y>=90)=4795 ledgeHeld_first=None holdTests=945 heapMB=571
+  heap 697MB > 450.0: pruned 28 cells
+[   499s] cells=8972 seg=3519 ticks/s=1013 maxY(any)=9175 maxRetainedProg=-1451.6 bestXY=(2692,9114) maxX(y>=90)=4795 ledgeHeld_first=None holdTests=966 heapMB=697
+  heap 843MB > 450.0: pruned 23 cells
+[   514s] cells=8977 seg=3618 ticks/s=1018 maxY(any)=9175 maxRetainedProg=-1451.6 bestXY=(2692,9114) maxX(y>=90)=4795 ledgeHeld_first=None holdTests=995 heapMB=843
+  heap 591MB > 450.0: pruned 17 cells
+[   529s] cells=8983 seg=3707 ticks/s=1021 maxY(any)=9175 maxRetainedProg=-1451.6 bestXY=(2692,9114) maxX(y>=90)=4795 ledgeHeld_first=None holdTests=1023 heapMB=591
+  heap 759MB > 450.0: pruned 27 cells
+[   544s] cells=8973 seg=3817 ticks/s=1030 maxY(any)=9175 maxRetainedProg=-1451.6 bestXY=(2692,9114) maxX(y>=90)=4795 ledgeHeld_first=None holdTests=1047 heapMB=759
+  heap 870MB > 450.0: pruned 17 cells
+[   559s] cells=8983 seg=3907 ticks/s=1033 maxY(any)=9175 maxRetainedProg=-1451.6 bestXY=(2692,9114) maxX(y>=90)=4795 ledgeHeld_first=None holdTests=1069 heapMB=870
+  heap 585MB > 450.0: pruned 16 cells
+[   574s] cells=8984 seg=3999 ticks/s=1036 maxY(any)=9175 maxRetainedProg=-1451.6 bestXY=(2692,9114) maxX(y>=90)=4795 ledgeHeld_first=None holdTests=1088 heapMB=585
+  heap 694MB > 450.0: pruned 19 cells
+[   589s] cells=8981 seg=4089 ticks/s=1039 maxY(any)=9175 maxRetainedProg=-1451.6 bestXY=(2692,9114) maxX(y>=90)=4795 ledgeHeld_first=None holdTests=1115 heapMB=694
+Traceback (most recent call last):
+  File "/home/factory-user/repos/Getting-Over-It-ML/explore/goexplore.py", line 293, in <module>
+    main()
+  File "/home/factory-user/repos/Getting-Over-It-ML/explore/goexplore.py", line 238, in main
+    r = b.explore_segment(e["snap"], acts, HOLD, a.cx, a.cy, {"phiMargin": a.phi_margin}); norm(r["found"])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/factory-user/repos/Getting-Over-It-ML/research/fast_bridge.py", line 109, in explore_segment
+    return self._rpc("explore_segment", snapshot=int(snapshot), actions=actions,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/factory-user/repos/Getting-Over-It-ML/research/fast_bridge.py", line 76, in _rpc
+    self._connection.send(json.dumps({"id": request_id, "method": method, **payload}, allow_nan=False))
+  File "/home/factory-user/repos/Getting-Over-It-ML/.venv/lib/python3.12/site-packages/websockets/sync/connection.py", line 467, in send
+    with self.send_context():
+  File "/usr/lib/python3.12/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "/home/factory-user/repos/Getting-Over-It-ML/.venv/lib/python3.12/site-packages/websockets/sync/connection.py", line 1012, in send_context
+    raise self.protocol.close_exc from original_exc
+websockets.exceptions.ConnectionClosedOK: received 1001 (going away); then sent 1001 (going away)

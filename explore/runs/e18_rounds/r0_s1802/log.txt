@@ -1,0 +1,113 @@
+  import from seed 1512: y=-25649.0 (path 2337 decisions; 387 route cells, 236 retained)
+[    29s] cells=417 seg=1 ticks/s=59 maxY(any)=57 maxRetainedProg=-25649.0 bestXY=(4973,9339) maxX(y>=90)=0 ledgeHeld_first=None holdTests=17 heapMB=323
+[    44s] cells=1201 seg=70 ticks/s=564 maxY(any)=9354 maxRetainedProg=-25649.0 bestXY=(4973,9339) maxX(y>=90)=4987 ledgeHeld_first=None holdTests=199 heapMB=394
+[    59s] cells=1722 seg=163 ticks/s=830 maxY(any)=9354 maxRetainedProg=-25649.0 bestXY=(4973,9339) maxX(y>=90)=4987 ledgeHeld_first=None holdTests=373 heapMB=403
+[    74s] cells=2030 seg=241 ticks/s=888 maxY(any)=9354 maxRetainedProg=-25649.0 bestXY=(4973,9339) maxX(y>=90)=4987 ledgeHeld_first=None holdTests=485 heapMB=416
+[    89s] cells=2329 seg=333 ticks/s=977 maxY(any)=9354 maxRetainedProg=-25649.0 bestXY=(4973,9339) maxX(y>=90)=4987 ledgeHeld_first=None holdTests=634 heapMB=394
+[   104s] cells=2636 seg=426 ticks/s=1035 maxY(any)=9375 maxRetainedProg=-25649.0 bestXY=(4973,9339) maxX(y>=90)=4988 ledgeHeld_first=None holdTests=771 heapMB=371
+  heap 478MB > 450.0: pruned 116 cells
+[   120s] cells=2781 seg=521 ticks/s=1081 maxY(any)=9375 maxRetainedProg=-25649.0 bestXY=(4973,9339) maxX(y>=90)=4988 ledgeHeld_first=None holdTests=903 heapMB=478
+  heap 457MB > 450.0: pruned 10 cells
+[   135s] cells=3081 seg=577 ticks/s=1087 maxY(any)=9375 maxRetainedProg=-25649.0 bestXY=(4973,9339) maxX(y>=90)=4988 ledgeHeld_first=None holdTests=984 heapMB=457
+  heap 456MB > 450.0: pruned 16 cells
+[   150s] cells=3274 seg=639 ticks/s=1101 maxY(any)=9375 maxRetainedProg=-25649.0 bestXY=(4973,9339) maxX(y>=90)=4988 ledgeHeld_first=None holdTests=1076 heapMB=456
+  heap 493MB > 450.0: pruned 15 cells
+[   165s] cells=3510 seg=711 ticks/s=1121 maxY(any)=9375 maxRetainedProg=-25649.0 bestXY=(4973,9339) maxX(y>=90)=4988 ledgeHeld_first=None holdTests=1190 heapMB=493
+  heap 490MB > 450.0: pruned 15 cells
+[   180s] cells=3731 seg=783 ticks/s=1129 maxY(any)=9375 maxRetainedProg=-25649.0 bestXY=(4973,9339) maxX(y>=90)=4988 ledgeHeld_first=None holdTests=1281 heapMB=490
+[   196s] cells=3931 seg=846 ticks/s=1132 maxY(any)=9375 maxRetainedProg=-25649.0 bestXY=(4973,9339) maxX(y>=90)=4988 ledgeHeld_first=None holdTests=1375 heapMB=413
+  heap 454MB > 450.0: pruned 30 cells
+[   211s] cells=3992 seg=902 ticks/s=1139 maxY(any)=9375 maxRetainedProg=-25649.0 bestXY=(4973,9339) maxX(y>=90)=4988 ledgeHeld_first=None holdTests=1476 heapMB=454
+[   226s] cells=4113 seg=978 ticks/s=1153 maxY(any)=9375 maxRetainedProg=-25649.0 bestXY=(4973,9339) maxX(y>=90)=4988 ledgeHeld_first=None holdTests=1579 heapMB=425
+  heap 456MB > 450.0: pruned 24 cells
+[   241s] cells=4255 seg=1042 ticks/s=1153 maxY(any)=9375 maxRetainedProg=-25649.0 bestXY=(4973,9339) maxX(y>=90)=4988 ledgeHeld_first=None holdTests=1655 heapMB=456
+  heap 509MB > 450.0: pruned 13 cells
+[   256s] cells=4350 seg=1110 ticks/s=1159 maxY(any)=9375 maxRetainedProg=-25649.0 bestXY=(4973,9339) maxX(y>=90)=4988 ledgeHeld_first=None holdTests=1746 heapMB=509
+  heap 540MB > 450.0: pruned 16 cells
+[   272s] cells=4439 seg=1172 ticks/s=1167 maxY(any)=9375 maxRetainedProg=-25649.0 bestXY=(4973,9339) maxX(y>=90)=4988 ledgeHeld_first=None holdTests=1854 heapMB=540
+[   287s] cells=4566 seg=1247 ticks/s=1172 maxY(any)=9375 maxRetainedProg=-25649.0 bestXY=(4973,9339) maxX(y>=90)=4988 ledgeHeld_first=None holdTests=1943 heapMB=439
+  heap 499MB > 450.0: pruned 27 cells
+[   302s] cells=4645 seg=1317 ticks/s=1177 maxY(any)=9412 maxRetainedProg=-25649.0 bestXY=(4973,9339) maxX(y>=90)=4988 ledgeHeld_first=None holdTests=2025 heapMB=499
+  heap 531MB > 450.0: pruned 15 cells
+[   317s] cells=4742 seg=1386 ticks/s=1181 maxY(any)=9412 maxRetainedProg=-25649.0 bestXY=(4973,9339) maxX(y>=90)=4988 ledgeHeld_first=None holdTests=2110 heapMB=531
+  heap 495MB > 450.0: pruned 17 cells
+[   332s] cells=4818 seg=1459 ticks/s=1191 maxY(any)=9412 maxRetainedProg=-25649.0 bestXY=(4973,9339) maxX(y>=90)=4989 ledgeHeld_first=None holdTests=2205 heapMB=495
+  heap 514MB > 450.0: pruned 14 cells
+[   347s] cells=4932 seg=1531 ticks/s=1193 maxY(any)=9412 maxRetainedProg=-25649.0 bestXY=(4973,9339) maxX(y>=90)=4989 ledgeHeld_first=None holdTests=2288 heapMB=514
+  heap 523MB > 450.0: pruned 16 cells
+[   363s] cells=5022 seg=1609 ticks/s=1199 maxY(any)=9412 maxRetainedProg=-25649.0 bestXY=(4973,9339) maxX(y>=90)=4989 ledgeHeld_first=None holdTests=2382 heapMB=523
+[   378s] cells=5181 seg=1693 ticks/s=1205 maxY(any)=9412 maxRetainedProg=-25649.0 bestXY=(4973,9339) maxX(y>=90)=4989 ledgeHeld_first=None holdTests=2480 heapMB=424
+  heap 485MB > 450.0: pruned 42 cells
+[   393s] cells=5296 seg=1765 ticks/s=1212 maxY(any)=9412 maxRetainedProg=-25649.0 bestXY=(4973,9339) maxX(y>=90)=4989 ledgeHeld_first=None holdTests=2571 heapMB=485
+  heap 474MB > 450.0: pruned 18 cells
+[   408s] cells=5388 seg=1839 ticks/s=1213 maxY(any)=9412 maxRetainedProg=-25649.0 bestXY=(4973,9339) maxX(y>=90)=4989 ledgeHeld_first=None holdTests=2664 heapMB=474
+  heap 453MB > 450.0: pruned 21 cells
+[   423s] cells=5522 seg=1910 ticks/s=1211 maxY(any)=9419 maxRetainedProg=-25649.0 bestXY=(4973,9339) maxX(y>=90)=4989 ledgeHeld_first=None holdTests=2739 heapMB=453
+[   438s] cells=5659 seg=1995 ticks/s=1211 maxY(any)=9419 maxRetainedProg=-25649.0 bestXY=(4973,9339) maxX(y>=90)=4989 ledgeHeld_first=None holdTests=2809 heapMB=419
+  heap 520MB > 450.0: pruned 47 cells
+[   453s] cells=5700 seg=2076 ticks/s=1207 maxY(any)=9419 maxRetainedProg=-25649.0 bestXY=(4973,9339) maxX(y>=90)=4989 ledgeHeld_first=None holdTests=2871 heapMB=520
+  heap 489MB > 450.0: pruned 13 cells
+[   468s] cells=5793 seg=2138 ticks/s=1207 maxY(any)=9419 maxRetainedProg=-25649.0 bestXY=(4973,9339) maxX(y>=90)=4989 ledgeHeld_first=None holdTests=2936 heapMB=489
+  heap 456MB > 450.0: pruned 17 cells
+[   484s] cells=5914 seg=2206 ticks/s=1210 maxY(any)=9419 maxRetainedProg=-25649.0 bestXY=(4973,9339) maxX(y>=90)=4989 ledgeHeld_first=None holdTests=3023 heapMB=456
+  heap 544MB > 450.0: pruned 14 cells
+[   499s] cells=5972 seg=2278 ticks/s=1208 maxY(any)=9419 maxRetainedProg=-25649.0 bestXY=(4973,9339) maxX(y>=90)=4989 ledgeHeld_first=None holdTests=3089 heapMB=544
+  heap 507MB > 450.0: pruned 22 cells
+[   514s] cells=6022 seg=2358 ticks/s=1208 maxY(any)=9419 maxRetainedProg=-25649.0 bestXY=(4973,9339) maxX(y>=90)=4989 ledgeHeld_first=None holdTests=3150 heapMB=507
+  heap 576MB > 450.0: pruned 14 cells
+[   529s] cells=6061 seg=2428 ticks/s=1204 maxY(any)=9419 maxRetainedProg=-25649.0 bestXY=(4973,9339) maxX(y>=90)=4989 ledgeHeld_first=None holdTests=3220 heapMB=576
+{
+ "args": {
+  "secs": 600.0,
+  "seed": 1802,
+  "cx": 16,
+  "cy": 8,
+  "min_len": 6,
+  "max_len": 48,
+  "max_cells": 9000,
+  "out": "explore/runs/e18_rounds/r0_s1802",
+  "share_dir": "explore/runs/e18_share",
+  "sync_s": 20,
+  "import_margin": 30,
+  "stall_s": 500.0,
+  "phi": true,
+  "phi_margin": 150,
+  "front_scale": 60.0,
+  "gait_frac": 0.6,
+  "local_radius": 600.0,
+  "heap_mb": 450.0
+ },
+ "elapsed_s": 529.0,
+ "cells": 6061,
+ "segments": 2429,
+ "ticks": 636948,
+ "ticks_per_s": 1204,
+ "maxY_any": 9418.539261740361,
+ "maxRetainedY": -25648.984375,
+ "retained_cells": 539,
+ "hold_tests": 3220,
+ "imports": 1,
+ "stalled": true,
+ "maxX_y90": 4989.325707113128,
+ "ledge_first_s": null,
+ "success": false,
+ "best_node": 416,
+ "best_xy": [
+  4972.9868019882,
+  9339.16194332305
+ ],
+ "best_progress": -25648.984375,
+ "best_path_decisions": 2337,
+ "best_replay_verify": {
+  "x": 4972.9868019882,
+  "y": 9339.16194332305,
+  "tick": 9468,
+  "match": true,
+  "after_180tick_hold_xy": [
+   4974.481345503373,
+   9336.921243849487
+  ],
+  "min_y_during_hold": 9336.638409234252,
+  "held": true
+ }
+}

@@ -180,11 +180,30 @@ Env for all commands: `cd <repo> && . .venv/bin/activate && export RL_CHROME_NO_
   (only search bookkeeping: snapshot/restore, cell archive, hold test, rollout batch, optional potential grid).
 
 ## Status
-- Best verified: retained height **9341.0 (X 4973.3)**, 58% of the summit height (16000), from ordinary spawn, 2326 decisions x 4 ticks = 9424 ticks (~2.6 game-min),
+- Best verified (update): retained height **10808 (X 3934)**, 67.5% of 16000, route `explore/runs/e25_best_10808.json` (see E18-E25 below).
+- Previous best: retained height **9341.0 (X 4973.3)**, 58% of the summit height (16000), from ordinary spawn, 2326 decisions x 4 ticks = 9424 ticks (~2.6 game-min),
   fresh-reset replay bit-exact, 180-tick hold stable. Prior RL best in this repo: Y 96. **Summit NOT reached; no policy distilled.**
 - Remaining blockers: (1) the bulge/overhang of the leaning "Scratch Tower" face at Y 9400-9800 (X 4900-4975) resisted Go-Explore (about 1 h of 4-core time),
   receding-horizon CEM and goal CEM; (2) beyond the tower the map only has isolated floating islands separated by ~500-1500 unit gaps (Y 12000-15000), and the
   game's Y>16000 win line is above the last tile (14972), so the finish itself is unexplored.
+
+## E18-E25: leaving the column crux via the west ramp (58% -> 67.5%)
+- E18 (gait-aligned primitives, `--gait-frac 0.6 --local-radius 600`, 4 islands x 539 s at the Y 9341 column pocket): zero gain.
+- E19 (goal = floating platform P2 at X 4250-4500, Y 9900-10100; `PHI_TAG=_p2`): zero gain, the search just returns to the pocket.
+- Map reading (`explore/world/crop_P.png`, `crop_R.png`): the column face at Y 9340-9740 is a ~15 deg overhang, and the screenshot shows the verified
+  9341 state is the cat standing on a green mound under it, not climbing. West of the staircase there is a chain of round "ball stones" (Y ~8800),
+  a blob (X 2150-2450), a cage structure, and a ~55 deg slope ramp (X 2650-3500, Y 9300-10500) that leads to a plateau (Y ~10600) with a chalice,
+  umbrella cap and the pagoda spire (to Y ~12000).
+- Fix 1: the offline potential can be re-aimed (`PHI_TAG`, `PHI_GOAL_BOX=xa,xb,ya,yb`, `PHI_COVER=k` penalises free space under ceilings so the
+  potential cannot route around the underside of a bulge). `goexplore.py` gates with `PHI_MAXX` / `PHI_MINY` (cells outside rank last) to forbid
+  returning to the known column dead end. Staged goals: E20/E20b (ramp goal, pocket/base-top local minima, flat), E21 (goal = blob at X 2150-2450:
+  reached in <280 s), E22 (ramp goal without `PHI_COVER`: trapped under the ramp nose at (2694, 9120)), E23 (`PHI_COVER=6`, goal = ramp top):
+  retained Y 10186 in 800 s, E24c/E25 (`PHI_COVER=6`, full goal, `PHI_MAXX=4600`, import margin 250): retained **Y 10808 at X 3934** (chalice left scroll).
+- Pitfalls found: (1) sharing files from runs with different potentials in one share dir breaks island ranking (units differ) - use a fresh share dir
+  per potential; (2) with a fast-moving frontier, islands re-import each other's routes (~20 s each) and starve - raise `--import-margin`.
+- Verified: `python explore/replay_route.py explore/runs/e25_best_10808.json --seeds 0 1 2 3 --hold-ticks 180` -> tick 11924, x 3934.04, y 10808.0,
+  held true on all four reset seeds (bit-identical). Route file: `explore/runs/e25_best_10808.json` (2951 decisions x 4 ticks); earlier `e24_best_10802.json`.
+- Next blocker: the scroll below the umbrella cap of the chalice (X 3925-3990, Y 10800-10930): 2 rounds x 4 islands flat (max transient Y 10970).
 
 ## Reproduce (from a clean checkout, Python 3.12 venv with requirements-research.txt + huggingface_hub httpx scipy pillow; Chrome present)
     export PYTHONPATH=$PWD RL_CHROME_NO_SANDBOX=1
