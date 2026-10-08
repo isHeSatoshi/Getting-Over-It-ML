@@ -1,0 +1,33 @@
+{
+ "args": {
+  "secs": 60.0,
+  "seed": 0,
+  "cx": 16,
+  "cy": 8,
+  "min_len": 6,
+  "max_len": 30,
+  "max_cells": 60000,
+  "out": "explore/runs/e3_smoke"
+ },
+ "elapsed_s": 60.1,
+ "cells": 1280,
+ "segments": 1148,
+ "ticks": 82556,
+ "ticks_per_s": 1373,
+ "maxY": 352.76605815747035,
+ "maxX_y90": 1408.2503557110867,
+ "ledge_first_s": 7.4,
+ "success": false,
+ "best_node": 1927,
+ "best_xy": [
+  1091.0257564332799,
+  352.76605815747035
+ ],
+ "best_path_decisions": 109,
+ "best_replay_verify": {
+  "x": 1091.0257564332799,
+  "y": 352.76605815747035,
+  "tick": 556,
+  "match": true
+ }
+}

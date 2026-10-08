@@ -1,0 +1,13 @@
+  import from seed 110: y=5052.7 (path 1514 decisions; 127 route cells, 87 retained)
+[    18s] cells=141 seg=1 ticks/s=62 maxY(any)=51 maxRetainedY=5052.7 maxX(y>=90)=0 ledgeHeld_first=None holdTests=11 heapMB=261
+[    33s] cells=1399 seg=209 ticks/s=750 maxY(any)=5059 maxRetainedY=5052.7 maxX(y>=90)=3521 ledgeHeld_first=None holdTests=109 heapMB=226
+[    48s] cells=2216 seg=377 ticks/s=984 maxY(any)=5059 maxRetainedY=5052.7 maxX(y>=90)=3521 ledgeHeld_first=None holdTests=221 heapMB=333
+[    63s] cells=2877 seg=533 ticks/s=1091 maxY(any)=5059 maxRetainedY=5054.8 maxX(y>=90)=3569 ledgeHeld_first=None holdTests=331 heapMB=320
+[    80s] cells=3321 seg=666 ticks/s=1070 maxY(any)=5059 maxRetainedY=5054.8 maxX(y>=90)=3569 ledgeHeld_first=None holdTests=415 heapMB=358
+[    95s] cells=3904 seg=832 ticks/s=1119 maxY(any)=5059 maxRetainedY=5054.8 maxX(y>=90)=3569 ledgeHeld_first=None holdTests=520 heapMB=337
+[   111s] cells=4467 seg=984 ticks/s=1134 maxY(any)=5059 maxRetainedY=5054.8 maxX(y>=90)=3569 ledgeHeld_first=None holdTests=604 heapMB=371
+[   126s] cells=4986 seg=1159 ticks/s=1151 maxY(any)=5076 maxRetainedY=5055.8 maxX(y>=90)=3569 ledgeHeld_first=None holdTests=689 heapMB=325
+[   141s] cells=5419 seg=1332 ticks/s=1170 maxY(any)=5076 maxRetainedY=5055.8 maxX(y>=90)=3569 ledgeHeld_first=None holdTests=773 heapMB=396
+[   156s] cells=5932 seg=1485 ticks/s=1180 maxY(any)=5086 maxRetainedY=5055.8 maxX(y>=90)=3569 ledgeHeld_first=None holdTests=860 heapMB=325
+[   171s] cells=6414 seg=1644 ticks/s=1195 maxY(any)=5086 maxRetainedY=5055.8 maxX(y>=90)=3569 ledgeHeld_first=None holdTests=952 heapMB=359
+[   186s] cells=6872 seg=1790 ticks/s=1194 maxY(any)=5086 maxRetainedY=5055.8 maxX(y>=90)=3569 ledgeHeld_first=None holdTests=1033 heapMB=315

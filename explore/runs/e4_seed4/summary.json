@@ -1,0 +1,33 @@
+{
+ "args": {
+  "secs": 300.0,
+  "seed": 4,
+  "cx": 16,
+  "cy": 8,
+  "min_len": 6,
+  "max_len": 30,
+  "max_cells": 60000,
+  "out": "explore/runs/e4_seed4"
+ },
+ "elapsed_s": 300.0,
+ "cells": 3607,
+ "segments": 4468,
+ "ticks": 320008,
+ "ticks_per_s": 1067,
+ "maxY": 928.3343329281731,
+ "maxX_y90": 2592.876225321127,
+ "ledge_first_s": 8.3,
+ "success": false,
+ "best_node": 6892,
+ "best_xy": [
+  2465.4961271710595,
+  928.3343329281731
+ ],
+ "best_path_decisions": 281,
+ "best_replay_verify": {
+  "x": 2465.4961271710595,
+  "y": 928.3343329281731,
+  "tick": 1244,
+  "match": true
+ }
+}

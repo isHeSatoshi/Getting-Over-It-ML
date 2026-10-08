@@ -1,0 +1,7 @@
+{"outer": 1, "x": 4942.8, "y": 9269, "pred_endY": 9322.5, "retained": true, "best_y": 9341.0, "stuck": 1, "dead_frac": 0.0, "t": 27.1}
+{"outer": 2, "x": 4942.8, "y": 9269, "pred_endY": 9338.5, "retained": true, "best_y": 9341.0, "stuck": 2, "dead_frac": 0.0, "t": 44.1}
+{"outer": 3, "x": 4923.8, "y": 9263, "pred_endY": 9339.1, "retained": true, "best_y": 9341.0, "stuck": 3, "dead_frac": 0.0, "t": 61.1}
+{"outer": 4, "x": 4921.2, "y": 9262, "pred_endY": 9339.1, "retained": true, "best_y": 9341.0, "stuck": 4, "dead_frac": 0.0, "t": 78.8}
+{"outer": 5, "x": 4921.2, "y": 9262, "pred_endY": 9339.3, "retained": true, "best_y": 9341.0, "stuck": 5, "dead_frac": 0.0, "t": 94.6}
+{"outer": 6, "x": 4881.1, "y": 9285.0, "pred_endY": 9339.4, "retained": true, "best_y": 9341.0, "stuck": 6, "dead_frac": 0.0, "t": 111.5}
+{"outer": 7, "x": 4970.1, "y": 9317.5, "pred_endY": 9339.5, "retained": true, "best_y": 9341.0, "stuck": 7, "dead_frac": 0.0, "t": 127.7}

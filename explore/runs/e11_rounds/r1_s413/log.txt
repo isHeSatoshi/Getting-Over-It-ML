@@ -1,0 +1,4 @@
+  import from seed 111: y=5053.6 (path 1504 decisions; 250 route cells, 157 retained)
+[    23s] cells=265 seg=1 ticks/s=51 maxY(any)=47 maxRetainedY=5053.6 maxX(y>=90)=0 ledgeHeld_first=None holdTests=12 heapMB=215
+[    38s] cells=1695 seg=177 ticks/s=516 maxY(any)=5066 maxRetainedY=5053.6 maxX(y>=90)=3517 ledgeHeld_first=None holdTests=71 heapMB=235
+[    53s] cells=2729 seg=333 ticks/s=720 maxY(any)=5077 maxRetainedY=5053.6 maxX(y>=90)=3561 ledgeHeld_first=None holdTests=137 heapMB=342

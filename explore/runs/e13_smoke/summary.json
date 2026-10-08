@@ -1,0 +1,53 @@
+{
+ "args": {
+  "secs": 90.0,
+  "seed": 31,
+  "cx": 16,
+  "cy": 8,
+  "min_len": 6,
+  "max_len": 30,
+  "max_cells": 12000,
+  "out": "explore/runs/e13_smoke",
+  "share_dir": "explore/runs/e13_smoke_share",
+  "sync_s": 20,
+  "import_margin": 30,
+  "stall_s": 0,
+  "phi": true,
+  "phi_margin": 150,
+  "front_scale": 40,
+  "heap_mb": 500.0
+ },
+ "elapsed_s": 90.1,
+ "cells": 3038,
+ "segments": 601,
+ "ticks": 120474,
+ "ticks_per_s": 1336,
+ "maxY_any": 5048.70475429842,
+ "maxRetainedY": -27375.3671875,
+ "retained_cells": 435,
+ "hold_tests": 835,
+ "imports": 1,
+ "stalled": false,
+ "maxX_y90": 3510.6265790764514,
+ "ledge_first_s": null,
+ "success": false,
+ "best_node": 2460,
+ "best_xy": [
+  2212.516612062114,
+  4678.846938624634
+ ],
+ "best_progress": -27375.3671875,
+ "best_path_decisions": 1458,
+ "best_replay_verify": {
+  "x": 2212.516612062114,
+  "y": 4678.846938624634,
+  "tick": 5952,
+  "match": true,
+  "after_180tick_hold_xy": [
+   2212.2119205477816,
+   4677.05424346483
+  ],
+  "min_y_during_hold": 4676.111000261373,
+  "held": true
+ }
+}

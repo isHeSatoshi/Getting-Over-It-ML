@@ -1,0 +1,42 @@
+{
+ "args": {
+  "secs": 90.0,
+  "seed": 0,
+  "cx": 16,
+  "cy": 8,
+  "min_len": 6,
+  "max_len": 30,
+  "max_cells": 60000,
+  "out": "explore/runs/e5_smoke"
+ },
+ "elapsed_s": 90.1,
+ "cells": 1564,
+ "segments": 1469,
+ "ticks": 186882,
+ "ticks_per_s": 2075,
+ "maxY_any": 439.2178369057892,
+ "maxRetainedY": 328.37562404909835,
+ "retained_cells": 323,
+ "hold_tests": 913,
+ "maxX_y90": 1339.243465940089,
+ "ledge_first_s": 21.9,
+ "success": false,
+ "best_node": 2349,
+ "best_xy": [
+  844.1828059935341,
+  328.37562404909835
+ ],
+ "best_path_decisions": 150,
+ "best_replay_verify": {
+  "x": 844.1828059935341,
+  "y": 328.37562404909835,
+  "tick": 720,
+  "match": true,
+  "after_180tick_hold_xy": [
+   842.9039830090906,
+   326.0647088152408
+  ],
+  "min_y_during_hold": 325.55644125104527,
+  "held": true
+ }
+}

@@ -1,0 +1,42 @@
+{
+ "args": {
+  "start": "explore/runs/e14_best_9341.json",
+  "out": "explore/runs/e15_mpc_smoke",
+  "seed": 1,
+  "secs": 120.0,
+  "horizon": 24,
+  "knot_every": 4,
+  "suffix": 23,
+  "pop": 64,
+  "elite": 8,
+  "iters": 3,
+  "commit": 8,
+  "std": 60.0,
+  "stall_outer": 40,
+  "share_dir": null,
+  "tag": 0,
+  "phi": false,
+  "cx": 16,
+  "cy": 8
+ },
+ "elapsed_s": 135.6,
+ "outer_steps": 7,
+ "start_y": -25648.984375,
+ "best_xy": [
+  4973.256002255466,
+  9341.049378508918
+ ],
+ "decisions": 2326,
+ "replay_verify": {
+  "x": 4973.256002255466,
+  "y": 9341.049378508918,
+  "tick": 9424,
+  "match": true,
+  "after_180tick_hold_xy": [
+   4974.478889239314,
+   9338.878770709565
+  ],
+  "min_y_during_hold": 9338.234564290053,
+  "held": true
+ }
+}

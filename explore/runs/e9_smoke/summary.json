@@ -1,0 +1,49 @@
+{
+ "args": {
+  "secs": 90.0,
+  "seed": 200,
+  "cx": 16,
+  "cy": 8,
+  "min_len": 6,
+  "max_len": 30,
+  "max_cells": 9000,
+  "out": "explore/runs/e9_smoke",
+  "share_dir": "explore/runs/e9_share",
+  "sync_s": 20,
+  "import_margin": 30,
+  "stall_s": 0,
+  "heap_mb": 450.0
+ },
+ "elapsed_s": 90.0,
+ "cells": 4053,
+ "segments": 986,
+ "ticks": 127890,
+ "ticks_per_s": 1421,
+ "maxY_any": 5083.77100544626,
+ "maxRetainedY": 5053.564648235624,
+ "retained_cells": 192,
+ "hold_tests": 655,
+ "imports": 1,
+ "stalled": false,
+ "maxX_y90": 3568.933660809689,
+ "ledge_first_s": null,
+ "success": false,
+ "best_node": 131,
+ "best_xy": [
+  1506.9740797620848,
+  5053.564648235624
+ ],
+ "best_path_decisions": 1504,
+ "best_replay_verify": {
+  "x": 1506.9740797620848,
+  "y": 5053.564648235624,
+  "tick": 6136,
+  "match": true,
+  "after_180tick_hold_xy": [
+   1518.0650560042068,
+   5048.169892579117
+  ],
+  "min_y_during_hold": 5044.644807775009,
+  "held": true
+ }
+}

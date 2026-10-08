@@ -1,0 +1,32 @@
+{
+ "args": {
+  "share_dir": "explore/runs/e9_share",
+  "out": "explore/runs/e10_cem2",
+  "goal": [
+   1960.0,
+   2110.0,
+   5170.0,
+   5330.0
+  ],
+  "start_index": 2,
+  "seed": 3,
+  "horizon": 48,
+  "knot_every": 4,
+  "pop": 128,
+  "elite": 16,
+  "iters": 15,
+  "gain": 40,
+  "cx": 16,
+  "cy": 8,
+  "secs": 240
+ },
+ "start": {
+  "node": 129,
+  "x": 1508.9197050842251,
+  "y": 5055.750197397062
+ },
+ "iters": 10,
+ "elapsed_s": 255.9,
+ "best_minD": 229.96588535867704,
+ "success": false
+}

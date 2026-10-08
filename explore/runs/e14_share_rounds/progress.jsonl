@@ -1,0 +1,3 @@
+{"round": 0, "elapsed_s": 431, "global_best_retained_y": -28165.8984375, "from_seed": 1503, "exit_codes": [0, 0, 0, 0], "success_paths": []}
+{"round": 1, "elapsed_s": 432, "global_best_retained_y": -25648.984375, "from_seed": 1511, "exit_codes": [0, 0, 0, 0], "success_paths": []}
+{"round": 2, "elapsed_s": 407, "global_best_retained_y": -25648.984375, "from_seed": 1511, "exit_codes": [0, 0, 0, 0], "success_paths": []}

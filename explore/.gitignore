@@ -1,0 +1,4 @@
+__pycache__/
+runs/**/nodes.jsonl
+vm_vars.json
+world/*.npy
