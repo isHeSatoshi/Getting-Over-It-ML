@@ -87,6 +87,38 @@ class FastBridge(BrowserBridge):
         self._state = self._rpc("reset", seed=int(seed))
         return dict(self._state)
 
+    def snapshot(self):
+        """Exact in-page state handle (see research/runtime.js); stays in the browser."""
+        return int(self._rpc("snapshot"))
+
+    def restore(self, handle):
+        self._state = self._rpc("restore", snapshot=int(handle))
+        return dict(self._state)
+
+    def drop_snapshot(self, handle):
+        self._rpc("drop_snapshot", snapshot=int(handle))
+
+    def seed_cell(self, cx, cy):
+        return self._rpc("seed_cell", cx=cx, cy=cy)
+
+    def explore_segment(self, snapshot, actions, hold, cx, cy, opts=None):
+        """Step decisions from a snapshot; page registers new/faster cells (search bookkeeping)."""
+        return self._rpc("explore_segment", snapshot=int(snapshot), actions=actions,
+                         hold=int(hold), cx=cx, cy=cy, opts=opts)
+
+    def register_current(self, cx, cy, retained):
+        return self._rpc("register_current", cx=cx, cy=cy, retained=bool(retained))
+
+    def rollout_batch(self, snapshot, candidates, hold, goal):
+        return self._rpc("rollout_batch", snapshot=int(snapshot), candidates=candidates, hold=int(hold), goal=goal)
+
+    def set_phi(self, W, H, x0, y1, unit, data):
+        """Install an optional search-guidance potential grid (row-major, world y descending)."""
+        return self._rpc("set_phi", W=int(W), H=int(H), x0=float(x0), y1=float(y1), unit=float(unit), data=data)
+
+    def clear_cells(self):
+        self._rpc("clear_cells")
+
     def step_commands(self, commands):
         trace = self._rpc("step", commands=commands)
         if trace:

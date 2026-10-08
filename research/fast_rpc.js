@@ -23,6 +23,16 @@
                 if (request.method === "step") value = research.step(request.commands);
                 else if (request.method === "reset") value = await research.reset(request.seed);
                 else if (request.method === "state") value = research.state();
+                else if (request.method === "snapshot") value = research.snapshot();
+                else if (request.method === "restore") value = research.restore(request.snapshot);
+                else if (request.method === "drop_snapshot") value = research.dropSnapshot(request.snapshot);
+                else if (request.method === "seed_cell") value = research.seedCell(request.cx, request.cy);
+                else if (request.method === "explore_segment") value = research.exploreSegment(
+                    request.snapshot, request.actions, request.hold, request.cx, request.cy, request.opts);
+                else if (request.method === "register_current") value = research.registerCurrent(request.cx, request.cy, request.retained);
+                else if (request.method === "rollout_batch") value = research.rolloutBatch(request.snapshot, request.candidates, request.hold, request.goal);
+                else if (request.method === "set_phi") value = research.setPhi(request.W, request.H, request.x0, request.y1, request.unit, request.data);
+                else if (request.method === "clear_cells") value = research.clearCells();
                 else if (request.method === "evaluate") value = await (0, eval)(request.expression);
                 else throw new Error("Unknown RPC method");
                 socket.send(JSON.stringify({id: request.id, value: value === undefined ? null : value}));
